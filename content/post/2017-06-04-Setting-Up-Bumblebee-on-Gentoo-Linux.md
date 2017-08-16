@@ -31,17 +31,14 @@ Before we get started, I want to point out that bumblebee is a fairly old projec
 <br/>
 This is pretty much straightforward. If you have an intel processor (2nd Gen +) and a NVIDIA gpu, then you probably have optimus on your laptop. For those who want to check fire up your favorite terminal and run:
 
-```bash
-lspci -k
-```
-```bash
-...
+<pre><code class="language-bash">lspci -k</code></pre>
+<pre data-line="2, 5"><code class="language-bash">...
 00:02.0 VGA compatible controller: Intel Corporation 4th Gen Core Processor Integrated Graphics Controller (rev 06)
 	Subsystem: Toshiba America Info Systems 4th Gen Core Processor Integrated Graphics Controller
 	Kernel driver in use: i915
 01:00.0 3D controller: NVIDIA Corporation GK208M [GeForce GT 740M] (rev ff)
 ...
-```
+</code></pre>
 <br/>
 In my case I'm using an <mark>Intel HD4600</mark> (cpu is 4th Gen Core i7 4700MQ) as my iGPU and my dGPU is a <mark>NVIDIA GT740M</mark>.
 <br/>
@@ -66,26 +63,19 @@ Make sure that <mark>CONFIG_MODULES=y</mark> and <mark>CONFIG_MODULE_UNLOAD=y</m
 <br/>
 Now make sure that you have the following in your <mark>/etc/portage/make.conf</mark>:
 <br/>
-```bash
-vim /etc/portage/make.conf
-```
-```properties...
+<pre><code class="language-bash">vim /etc/portage/make.conf</code></pre>
+<pre data-line="2"><code class="language-properties">...
 VIDEO_CARDS="intel i965 nvidia"
-...
-```
+...</code></pre>
 <br/>
 In most cases using <mark>i965</mark> should be fine, however if you were using an older card then please check the following <a href="https://wiki.gentoo.org/wiki/Intel#Feature_support" target="_blank">Intel Feature Support on Gentoo Linux</a>.
 <br/>
 <br/>
 Now sync and update your system:
-```bash
-emerge --sync && emerge -avuDN @world
-```
+<pre><code class="language-bash">emerge --sync && emerge -avuDN @world</code></pre>
 <br/>
 Now simply reboot your system, and continue this article.
-```bash
-shutdown -r now
-```
+<pre><code class="language-bash">shutdown -r now</code></pre>
 <hr/>
 <h3>4- Installation</h3>
 <br/>
@@ -93,23 +83,17 @@ For the installation part, we need 3 packages, <mark>bumblebee</mark>,<mark>prim
 <br/>
 <br/>
 Fire up your favorite text editor, and make sure your <mark>/etc/portage/package.accept_keywords</mark> -(which in my case is a single file and not a directory)- contains the following:
-```properties
-=sys-power/bbswitch-9999 **
+<pre><code class="language-properties">=sys-power/bbswitch-9999 **
 =x11-misc/bumblebee-9999 **
-=x11-misc/primus-0.2 ~amd64
-```
+=x11-misc/primus-0.2 ~amd64 </code></pre>
 <br/>
 Now simply run:
-```bash
-emerge -av bbswitch primus bumblebee
-```
+<pre><code class="language-bash">emerge -av bbswitch primus bumblebee</code></pre>
 <hr/>
 <h3>5- Adding Your User to the Groups video and bumblebee</h3>
 <br/>
 After installing the previous packages, add your <mark>USER</mark> to the groups <mark>video</mark> and <mark>bumblebee</mark>:
-```bash
-gpasswd -a USER video && gpasswd -a USER bumblebee
-```
+<pre><code class="language-bash">gpasswd -a USER video && gpasswd -a USER bumblebee</code></pre>
 <br/>
 Don't forget to replace <mark>USER</mark> with your real username.
 <br/>
@@ -126,11 +110,8 @@ You see it depends on xdm to make sure that bumblebee isn't started if there's n
 <br/>
 Open a terminal emulator and edit <mark>/etc/init.d/bumblebee</mark> with your favorite editor (vim is my favorite editor now), and delete the first 5 lines (or their equivalent; the depend() part) as shown below:
 <br/>
-```bash
-vim /etc/init.d/bumblebee
-```
-```properties,line-numbers
-depend() {
+<pre><code class="language-bash">vim /etc/init.d/bumblebee</code></pre>
+<pre class="line-numbers" data-line="1, 2, 3, 4, 5"><code class="language-properties">depend() {
     need xdm
     need vgl
 	after sshd
@@ -147,12 +128,10 @@ stop() {
 	ebegin "Stopping BumbleBee Daemon"
 		start-stop-daemon -K -p "${PIDFILE}" -R SIGTERM/10
 	eend $?
-}
-```
+}</code></pre>
 <br/>
 So your file should look like this:
-```properties,line-numbers
-start() {
+<pre class="line-numbers"><code class="language-properties">start() {
 	ebegin "Starting BumbleBee Daemon"
 		start-stop-daemon -S -p "${PIDFILE}" -x /usr/sbin/bumblebeed -- -D ${BUMBLEBEE_EXTRA_OPTS} --pidfile "${PIDFILE}"
 	eend $?
@@ -163,14 +142,12 @@ stop() {
 	ebegin "Stopping BumbleBee Daemon"
 		start-stop-daemon -K -p "${PIDFILE}" -R SIGTERM/10
 	eend $?
-}
-```
+}</code></pre>
 <hr/>
 <h3>7- Modifying /etc/bumblebee/bumblebee.conf</h3>
 <br/>
 We need to change some of the default settings that bumblebee uses, start that terminal emulator and with your favorite editor (vim), edit the file <mark>/etc/bumblebee/bumblebee.conf</mark>:
-```properties,line-numbers
-# Configuration file for Bumblebee. Values should **not** be put between quotes
+<pre class="line-numbers" data-line="10, 22, 30, 33, 55, 56"><code class="language-properties"># Configuration file for Bumblebee. Values should **not** be put between quotes
 
 ## Server options. Any change made in this section will need a server restart
 # to take effect.
@@ -232,7 +209,7 @@ LibraryPath=/usr/lib64/opengl/nvidia/lib:/usr/lib/opengl/nvidia/lib
 # default Xorg modules path
 XorgModulePath=/usr/lib64/opengl/nvidia/lib,/usr/lib64/opengl/nvidia/extensions,/usr/lib64/xorg/modules/drivers,/usr/lib64/xorg/modules
 XorgConfFile=/etc/bumblebee/xorg.conf.nvidia
-```
+</code></pre>
 <br/>
 I've highlited the lines that you should check, just make sure that:
 	<br/>
@@ -253,14 +230,10 @@ I've highlited the lines that you should check, just make sure that:
 <h3>8- Enabling and Starting bumblebee Service</h3>
 <br/>
 Simply add the service <mark>bumblebee</mark> to the runlevel <mark>default</mark>:
-```bash
-rc-update add bumblebee default
-```
+<pre><code class="language-bash">rc-update add bumblebee default</code></pre>
 <br/>
 Now simply reboot and you should be good to go!
-```bash
-shutdown -r now
-```
+<pre><code class="language-bash">shutdown -r now</code></pre>
 <hr/>
 <h3>(Optional) Checking if bumblebee is Working</h3>
 <br/>
@@ -268,26 +241,17 @@ If you've followed along with this article then your bumblebee setup should be w
 <br/>
 <br/>
 To test our bumblebee configuration, install the package <mark>mesa-progs</mark>:
-```bash
-emerge -av mesa-progs
-```
+<pre><code class="language-bash">emerge -av mesa-progs</code></pre>
 <br/>
 Now before testing anything the NVIDIA card should be OFF, and the nvidia module shouldn't be loaded, instead the module bbswitch should be loaded. To double check fire up that terminal emulator and run:
-```bash
-lsmod
-```
-```properties
-Module                  Size  Used by
+<pre><code class="language-bash">lsmod</code></pre>
+<pre data-line="2"><code class="language-properties">Module                  Size  Used by
 bbswitch                5461  0
-```
+</code></pre>
 <br/>
 then run:
-```bash
-cat /proc/acpi/bbswitch
-```
-```properties
-0000:01:00.0 OFF
-```
+<pre><code class="language-bash">cat /proc/acpi/bbswitch</code></pre>
+<pre><code class="language-properties">0000:01:00.0 OFF</code></pre>
 <br/>
 As you can see:
 <br/>
@@ -302,45 +266,30 @@ Now let's check if the NVIDIA card will be switched ON and the nvidia module wil
 <br/>
 <br/>
 Inside your terminal emulator (and while you're running in a Xorg session... obviously...) run:
-```bash
-optirun glxgears
-```
+<pre><code class="language-bash">optirun glxgears</code></pre>
 <br/>
 or (but not both):
-```bash
-primusrun glxgears
-```
+<pre><code class="language-bash">primusrun glxgears</code></pre>
 <br/>
 A window showing glxgears should open. While it's running check the following:
-```bash
-lsmod
-```
-```properties
-Module                  Size  Used by
+<pre><code class="language-bash">lsmod</code></pre>
+<pre data-line="2, 3"><code class="language-properties">Module                  Size  Used by
 nvidia              10652360  51
 bbswitch                5461  0
-```
+</code></pre>
 <br/>
 and:
-```bash
-cat /proc/acpi/bbswitch
-```
-```properties
-0000:01:00.0 ON
-```
+<pre><code class="language-bash">cat /proc/acpi/bbswitch</code></pre>
+<pre><code class="language-properties">0000:01:00.0 ON</code></pre>
 <br/>
 Notice how the nvidia module got loaded and the card switched on. Now end the running glxgears and do a simple check, the card should be OFF and the nvidia module should be unloaded and bbswitch will stay loaded.
 <br/>
 <br/>
 Some of you may say that using vgl gets me more fps when running glxgears or any benchmark application. That is simply not the case as vgl doesn't adjust itself to the screen's refresh rate like primus does. Try running the following and see how primus crushes vgl:
-```bash
-vblank_mode=0 primusrun glxgears
-```
+<pre><code class="language-bash">vblank_mode=0 primusrun glxgears</code></pre>
 <br/>
 If your card was refusing to turn OFF and the nvidia module is still loaded upon finishing the execution, then run the following:
-```bash
-rmmod nvidia && echo "OFF" >> /proc/acpi/bbswitch
-```
+<pre><code class="language-bash">rmmod nvidia && echo "OFF" >> /proc/acpi/bbswitch</code></pre>
 <hr/>
 <h3>(Optional) USE Flags</h3>
 <br/>
@@ -348,8 +297,7 @@ For those of you that are wondering what USE flags I'm using for my packages:
 <br/>
 <br/>
 For <mark>nvidia-drivers</mark>(notice how I disabled <mark>uvm</mark> and <mark>kms</mark> USE flags, as they can lead to errors when unloading the nvidia module unless you're using a patched version of bumblebee):
-```properties
- * Found these USE flags for x11-drivers/nvidia-drivers-381.22:
+<pre data-line="1, 3, 4, 5, 6 ,7 ,11"><code class="language-properties"> * Found these USE flags for x11-drivers/nvidia-drivers-381.22:
  U I
  + + X           : Install the X.org driver, OpenGL libraries, XvMC libraries, and VDPAU libraries
  + + acpi        : Add support for Advanced Configuration and Power Interface
@@ -362,11 +310,10 @@ For <mark>nvidia-drivers</mark>(notice how I disabled <mark>uvm</mark> and <mark
  + + tools       : Install additional tools such as nvidia-settings
  - - uvm         : Install the Unified Memory kernel module (nvidia-uvm) for sharing memory between CPU and GPU in CUDA programs
  - - wayland     : Enable dev-libs/wayland backend
-```
+</code></pre>
 <br/>
 For <mark>xf86-video-intel</mark>:
-```properties
- * Found these USE flags for x11-drivers/xf86-video-intel-2.99.917_p20170313:
+<pre data-line="1, 5, 6, 8, 10"><code class="language-properties"> * Found these USE flags for x11-drivers/xf86-video-intel-2.99.917_p20170313:
  U I
  - - debug : Enable extra debug codepaths, like asserts and extra output. If you want to get meaningful backtraces see
              https://wiki.gentoo.org/wiki/Project:Quality_Assurance/Backtraces
@@ -378,16 +325,15 @@ For <mark>xf86-video-intel</mark>:
  + + udev  : Enable virtual/udev integration (device discovery, power and storage device support, etc)
  - - uxa   : Enable UMA Acceleration Architecture
  + + xvmc  : Enables X-Video Motion Compensation support
-```
+</code></pre>
 <br/>
 For <mark>bumblebee</mark>:
-```properties
- * Found these USE flags for x11-misc/bumblebee-3.2.1:
+<pre data-line="1, 3, 5"><code class="language-properties"> * Found these USE flags for x11-misc/bumblebee-3.2.1:
  U I
  + + bbswitch            : Add dependency on sys-power/bbswitch for PM feature
  - - video_cards_nouveau : VIDEO_CARDS setting to build reverse-engineered driver for nvidia cards
  + + video_cards_nvidia  : VIDEO_CARDS setting to build driver for nvidia video cards
-```
+</code></pre>
 <hr/>
 <h3>Conclusion</h3>
 <br/>
