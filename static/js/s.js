@@ -33,6 +33,6 @@
       }
     }
     );
-    var results = idx.search(searchTerm);dsr(results, window.store);
+    var results = idx.search(searchTerm + "~1");dsr(results, window.store);
   }
 })();
