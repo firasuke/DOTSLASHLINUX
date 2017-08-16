@@ -134,11 +134,9 @@ e3 is the lightest and is written in assembly. Nano and e3 are for when you're i
 <hr/>
 <h3>19- Screen Capture Tool: <a href="https://github.com/naelstrof/maim" target="_blank">maim</a></h3>
 MAIM or (MAke IMage) is a lightweight screen capture tool that utilizes imlib2 to take screenshots. Just fire up a terminal and type:
-```bash
-maim imagename.format
-```
+<pre><code class="language-bash">maim imagename.format</code></pre>
 <br/>
-And a screenshot of your desktop with the name and format that you specified will be saved in the current directory that you're in. It has some nice options and can be mapped to a given keyboard shortcut.
+and a screenshot of your desktop with the name and format that you specified will be saved in the current directory that you're in. It has some nice options and can be mapped to a given keyboard shortcut.
 <br/>
 <hr/>
 <h3>20- Screen Recording Tool: <a href="http://recordmydesktop.sourceforge.net/" target="_blank">recordMyDesktop</a> VS <a href="http://www.maartenbaert.be/simplescreenrecorder/" target="_blank">SimpleScreenRecorder</a> VS <a href="https://github.com/green-project/green-recorder" target="_blank">Green Recorder</a></h3>

@@ -11,4 +11,4 @@ comment: >-
   to boot properly. I'd suggest asking the devs responsible for maintaining Slackware
   GNU/Linux and Crux GNU/Linux live bootable ISOs on how they do it. On the other hand
   booting without an initrd on a specific setup isn't that hard at all.
-date: '2017-07-13'
+date: '2017-07-13T11:30:49.425Z'

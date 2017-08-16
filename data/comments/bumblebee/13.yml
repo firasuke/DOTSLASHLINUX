@@ -2,4 +2,4 @@ order: 13
 replying_to: '9'
 name: Michael Mounteney
 comment: "Thank you for the reply.\r\n\r\nHere are two more relevant files:  (8) /etc/bumblebee/bumblebee.conf https://pastebin.com/SjWZmK\r\nwV (9) kernel .config https://pastebin.com/gvs5ES .\r\n\r\nI removed use flag uxa and rebuilt.\r\n\r\nAfter rebooting, /proc/acpi/bbswitch contains \"0000:01:00.0 OFF\"\r\n\r\nIf I run \"primusrun X\", the output is as per Xorg.0.log in https://pastebin.com/WAMACsNR includi\r\nng the \"no screens found(EE)\" line.\r\n\r\nAfter running \"primusrun X\" /proc/acpi/bbswitch still contains \"0000:01:00.0 OFF\" so it seems th\r\nat the nvidia driver is not being loaded.\r\n\r\nKernel module \"nvidia_drm\" is loaded;  is that significant?"
-date: '2017-07-24'
+date: '2017-07-24T08:06:24.403Z'
