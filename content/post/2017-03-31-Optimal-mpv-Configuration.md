@@ -15,7 +15,9 @@ In this article I'll show you how to setup mpv and arm it up with the best mpv.c
 <h3 id="Installation">1- Installation</h3>
 <br/>
 Gentoo Linux:
-<pre><code class="language-bash">emerge --ask --update --newuse media-video/mpv</code></pre>
+```bash
+emerge --ask --update --newuse media-video/mpv
+```
 <br/>
 Void Linux:
 <pre><code class="language-bash">xbps-install -S mpv</code></pre>
