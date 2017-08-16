@@ -64,7 +64,7 @@ nano /usr/bin/startx
 ```
 <br/>
 Then change <mark>enable_xauth=1</mark> to <mark>enable_xauth=0</mark>:
-```bash,line-numbers
+```bash,line-numbers,data-line=29
 #!/bin/sh
 
 #
@@ -100,13 +100,10 @@ enable_xauth=0 # Change this from 1 to 0
 <h3 id="xinitrc">3- xinitrc</h3>
 <br/>
 As we did with xserverrc, we need to copy the global xinitrc to our home directory and name it as .xinitrc:
-```bash
-cp /etc/X11/xinit/xserverrc ~/.xserverrc
-```
+<div><code class="language-bash">cp /etc/X11/xinit/xserverrc ~/.xserverrc</code></div>
 <br/>
 The global xinitrc configuration file (which will be executed if you forgot to make your own in your home directory) has the following:
-```bash,line-numbers
-#!/bin/sh
+<pre class="line-numbers" data-line="51, 52, 53, 54, 55"><code class="language-bash">#!/bin/sh
 
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
@@ -160,36 +157,27 @@ twm &
 xclock -geometry 50x50-1+1 &
 xterm -geometry 80x50+494+51 &
 xterm -geometry 80x20+494-0 &
-exec xterm -geometry 80x66+0+0 -name login
-```
+exec xterm -geometry 80x66+0+0 -name login</code></div>
 <br/>
 Notice lines 51 to 55, these are the only lines that you should edit! These lines indicate that twm, xclock and 3 xterm instances will be started (if installed obviously) once an Xorg session starts.
 <br/>
 <br/>
 Since these are very outdated versions of what we intend to use, delete lines 51 to 55 and replace them with your favored session. In our case we love dwm and openbox delete lines 51 to 55 and add this for dwm:
-```bash
-exec dwm
-```
+<div><code class="language-bash">exec dwm</code></div>
 <br/>
 or this for openbox:
-```bash
-exec openbox-session
-```
+<div><code class="language-bash">exec openbox-session</code></div>
 <br/>
 Please be noted that the program(s) that you intend to start must be installed!
 <hr/>
 <h3 id="startx">4- startx</h3>
 <br/>
 Once you've done configuring xinit, you can now start your X session simply by running:
-```bash
-startx
-```
+<div><code class="language-bash">startx</code></div>
 <hr/>
 <h3 id="Auto_startx_at_Login">(Optional) Auto startx at Login (BASH Users Only)</h3>
 <br/>
 If you're using BASH you can automate the process of startx after logging in by adding this line to your ~/.bash_profile (create this file if it doesn't exist):
-```bash
-if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
+<div><code class="language-bash">if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
   exec startx
-fi
-```
+fi</code></div>
