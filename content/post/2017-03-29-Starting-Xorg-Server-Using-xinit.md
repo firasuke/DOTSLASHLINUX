@@ -4,8 +4,8 @@ slug = "starting xorg server using xinit"
 nick = "xinit"
 date = "2017-03-29"
 author = "Firas Khalil Khana"
-imgsrc = "/img/startx.png"
-imgalt = "startx"
+imgsrc = "/img/xinit.png"
+imgalt = "xinit"
 +++
 In this article I'll show you how to correctly setup xinit to start your xorg server. I'll also demonstrate how you can auto startx once logged in a tty.
 <br/>
