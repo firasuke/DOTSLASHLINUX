@@ -1,5 +1,0 @@
-order: 15
-replying_to: ''
-name: peedub
-comment: "@DOTSLASHLINUX, Great job documenting the process! I have run into a similar issue as to what @drakkar had. On boot bumblebee is running but the card is on and i have the 3 nvidia modules loaded \"nvidia nvidia_modeset nvidia_drm\". I've compiled nvidia-drivers with USE=\"-kms\" but the module is still being loaded and I was under the impression that getting rid of the kmd use flag would get rid of the modeset module but its not seaming to.. nvidia-drivers-384.59-r1. If I rmmod the modules after boot and turn off the card that works. also the card is turned back on when running primusrun glxgears but is not turned back off after exiting due to having the nvidia_modeset module loaded again. I'm pretty sure my solution here is to blacklist the nvidia_modeset module but haven't given it a shot to verify if in fact this fi xes the issue or causes yet another. any ways, thanks and cheers for the docs so far, great work!! keep em coming!"
-date: '2017-08-16'

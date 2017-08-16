@@ -2,4 +2,4 @@ order: 2
 replying_to: '1'
 name: DOTSLASHLINUX
 comment: "@drkhsh, it's a pleasure to have you on the website Aaron. Yup slstatus is something you should be proud of, it's the best statusbar to ever exist... The documentation is a little bit lacking though so you might want to look into that ;D\r\n\r\nThanks a ton for the suggestion; however, all my modules are built in and I've disabled loading modules support for now so \"modprobe\" won't work for me.\r\n\r\nI found another way to get the mixers to show in /dev, that is by enabling CONFIG_SOUND_OSS_CORE_PRECLAIM, and then specifying /dev/mixer1 instead of /dev/mixer which seems to have fixed the problem (at least on my end).\r\n\r\nI've updated the article accordingly."
-date: '2017-05-08'
+date: '2017-05-08T22:18:28.544Z'

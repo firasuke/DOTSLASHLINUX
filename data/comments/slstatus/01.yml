@@ -2,4 +2,5 @@ order: 1
 replying_to: ''
 name: drkhsh
 comment: "If there is no /dev/mixer on your system and you use ALSA, it means you have to load the OSS compatibility module by issuing:<mark>$ modprobe snd-pcm-oss</mark>\r\n\r\nThat will fix your problem with the vol_perc() function!\r\n\r\nRegards,\r\nAaron aka drkhsh, creator of slstatus ;)"
-date: '2017-05-08'
+
+date: '2017-05-08T20:12:08.430Z'
