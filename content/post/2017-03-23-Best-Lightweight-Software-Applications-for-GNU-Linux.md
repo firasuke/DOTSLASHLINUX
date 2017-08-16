@@ -12,7 +12,7 @@ In this article I'll be listing some of the lightest applications the GNU/Linux 
 <br/>
 <br/>
 
-I'll start from ground up, and by that I mean from the <strong>bootloader</strong> to <strong>userspace</strong>.
+I'll start from ground up, and by that I mean from the bootloader to userspace.
 <br/>
 <hr/>
 <h3>1- Bootloader: <a href="https://lilo.alioth.debian.org/" target="_blank">LILO</a> vs <a href="http://www.syslinux.org/wiki/index.php?title=EXTLINUX" target="_blank">EXTLINUX</a></h3>
