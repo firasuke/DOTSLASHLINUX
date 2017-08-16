@@ -50,17 +50,13 @@ It doesn't really matter what distro you use (that is if you know that your dist
 <h3>1- Removing initrd/initramfs Support from the Linux Kernel</h3>
 <br/>
 If you're using Gentoo Linux, simply navigate to:
-```bash
-cd /usr/src/linux
-```
+<pre><code class="language-bash">cd /usr/src/linux</code></pre>
 <br/>
 Now make sure you have <mark>ncurses</mark> installed and run:
-```bash
-make menuconfig
-```
+<pre><code class="language-bash">make menuconfig</code></pre>
 <br>
 Now go to <mark>General Setup</mark> then search for <mark>CONFIG_BLK_DEV_INITRD</mark> and disable it:
-```properties
+<pre data-line="14"><code class="language-properties">
   RCU Subsystem  --->
   < > Kernel .config support
   (12) Kernel log buffer size (16 => 64KB, 17 => 128KB)
@@ -99,8 +95,7 @@ Now go to <mark>General Setup</mark> then search for <mark>CONFIG_BLK_DEV_INITRD
   Stack Protector buffer overflow detection (None)  --->
   (28) Number of bits to use for ASLR of mmap base address
   [*] Use a virtually-mapped stack
-  GCOV-based kernel profiling  --->
-```
+  GCOV-based kernel profiling  ---></code></pre>
   <br/>
   <hr/>
 <h3>2- Remove these UUIDs!</h3>
@@ -121,8 +116,7 @@ as a kernel command line parameter or inside your <mark>/etc/fstab</mark>, then 
 <br/>
 <br/>
 For example, I'm using LILO as my bootloader and here's my <mark>/etc/lilo.conf</mark>:
-```properties,line-numbers
-lba32
+<pre class="line-numbers" data-line="8"><code class="language-properties">lba32
 boot=/dev/sda
 default=gentoo
 
@@ -130,22 +124,18 @@ image=/boot/vmlinuz-4.10.13-gentoo-DOTSLASHLINUX
 	label=gentoo
 	read-only
 	root=/dev/sda1
-	append="rootfstype=ext4"
-```
+	append="rootfstype=ext4"</code></pre>
 <br/>
 And here's my <mark>/etc/fstab</mark>:
-```properties
-# (fs)			(mountpoint)	(type)		(opts)		(dump/pass)
-/dev/sda1		/		         ext4		 noatime		0 1
-```
+<pre><code class="language-properties"># (fs)			(mountpoint)	(type)		(opts)		(dump/pass)
+/dev/sda1		/		         ext4		 noatime		0 1</code></pre>
 <br/>
 <hr/>
 <h3>3- Build All Modules into the Linux Kernel</h3>
 <br/>
 Things may get a little controversial here. I generally recommend building all modules into the linux kernel and disable loadable modules support since my setup doesn't require many modules (I only have support for the basic stuff I use). You can do that by disabling <mark>CONFIG_MODULES</mark>:
 <br/>
-```properties
-  Gentoo Linux  --->
+<pre data-line="4"><code class="language-properties">  Gentoo Linux  --->
   [*] 64-bit kernel
   General setup  --->
   [ ] Enable loadable module support  ----
@@ -162,8 +152,7 @@ Things may get a little controversial here. I generally recommend building all m
   Security options  --->
   -*- Cryptographic API  --->
   [ ] Virtualization  ----
-  Library routines  --->
-```
+  Library routines  ---></code></pre>
   <br/>
 However, if you were one of those guys who use tons of devices then you may leave the extra devices as loadable modules.
 <br/>
@@ -172,8 +161,7 @@ There are still some necessary modules that need to be build into the linux kern
 <br/>
 <br/>
 If you're using ext4, navigate to <mark>Filesystems</mark> and make sure that <mark>CONFIG_EXT4_FS</mark> is built-in:
-```properties
-  [ ] Second extended fs support
+<pre data-line="3"><code class="language-properties">  [ ] Second extended fs support
   [ ] The Extended 3 (ext3) filesystem
   [*] The Extended 4 (ext4) filesystem
   [ ]   Use ext4 for ext2 file systems
@@ -210,24 +198,18 @@ If you're using ext4, navigate to <mark>Filesystems</mark> and make sure that <m
   [ ] Miscellaneous filesystems  ----
   [ ] Network File Systems  ----
   -*- Native language support  ---
-  [ ] Distributed Lock Manager (DLM)  ----
-```
+  [ ] Distributed Lock Manager (DLM)  ----</code></pre>
   <br/>
   Now you need to check what block devices are you using (to be more precise, the block device where your root resides on), find out its kernel module and mark it as built-in. This is simple, fire up a terminal emulator and type:
-  ```bash
-  lspci -kk
-  ```
+  <pre><code class="language-bash">lspci -kk</code></pre>
   <br/>
   In my case I'm using a Toshiba MQ01ABD100 which is a SATA HDD that uses the <mark>ahci</mark> kernel module:
-  ```properties
-  00:1f.2 SATA controller: Intel Corporation 8 Series/C220 Series Chipset Family 6-port SATA Controller 1 [AHCI mode] (rev 04)
+  <pre data-line="3"><code class="language-properties">00:1f.2 SATA controller: Intel Corporation 8 Series/C220 Series Chipset Family 6-port SATA Controller 1 [AHCI mode] (rev 04)
 	    Subsystem: Toshiba America Info Systems 8 Series/C220 Series Chipset Family 6-port SATA Controller 1 [AHCI mode]
-	    Kernel driver in use: ahci
-  ```
+	    Kernel driver in use: ahci</code></pre>
 <br/>
 I navigate to <mark>Device Drivers</mark> then to <mark>Serial ATA and Parallel ATA drivers (libata)</mark> and mark <mark>CONFIG_SATA_AHCI</mark> as built-in:
-```properties
-  --- Serial ATA and Parallel ATA drivers (libata)
+<pre data-line="7"><code class="language-properties">  --- Serial ATA and Parallel ATA drivers (libata)
   [ ]   Verbose ATA error reporting
   [*]   ATA ACPI Support
   [*]     SATA Zero Power Optical Disc Drive (ZPODD) support
@@ -238,8 +220,7 @@ I navigate to <mark>Device Drivers</mark> then to <mark>Serial ATA and Parallel 
   [ ]   Initio 162x SATA support (Very Experimental)
   [ ]   ACard AHCI variant (ATP 8620)
   [ ]   Silicon Image 3124/3132 SATA support
-  [ ]   ATA SFF support (for legacy IDE and PATA)
-```
+  [ ]   ATA SFF support (for legacy IDE and PATA)</code></pre>
 <br/>
 <hr/>
 <h3>4- Notifying the Bootloader of the changes</h3>
@@ -247,11 +228,8 @@ Now we need to tell our bootloader the info that the initrd/initramfs would tell
 <br/>
 <br/>
 If you're using grub, fire up your favorite editor and edit <mark>/etc/default/grub</mark>:
-```bash
-nano /etc/default/grub
-```
-```properties,line-numbers
-# Copyright 1999-2015 Gentoo Foundation
+<pre><code class="language-bash">nano /etc/default/grub</code></pre>
+<pre data-line="21"><code class="language-properties"># Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 #
 # To populate all changes in this file you need to regenerate your
@@ -323,12 +301,10 @@ GRUB_CMDLINE_LINUX="root=/dev/sda1 rootfstype=ext4"
 # Uncomment to play a tone when the main menu is displayed.
 # This is useful, for example, to allow users who can't see the screen
 # to know when they can make a choice on the menu.
-#GRUB_INIT_TUNE="60 800 1"
-```
+#GRUB_INIT_TUNE="60 800 1"</code></pre>
 <br/>
 However, if you're lucky enough to use LILO (like me xD), then the following configuration file will do:
-```properties,line-numbers
-lba32
+<pre class="line-numbers" data-line="8, 9"><code class="language-properties">lba32
 boot=/dev/sda
 default=gentoo
 
@@ -336,20 +312,17 @@ image=/boot/vmlinuz-4.10.13-gentoo-DOTSLASHLINUX
 	label=gentoo
 	read-only
 	root=/dev/sda1
-	append="rootfstype=ext4"
-```
+	append="rootfstype=ext4"</code></pre>
 <br/>
 This'll also work as well:
-```properties,line-numbers
-lba32
+<pre class="line-numbers" data-line="8"><code class="language-properties">lba32
 boot=/dev/sda
 default=gentoo
 
 image=/boot/vmlinuz-4.10.13-gentoo-DOTSLASHLINUX
 	label=gentoo
 	read-only
-	append="root=/dev/sda1 rootfstype=ext4"
-```
+	append="root=/dev/sda1 rootfstype=ext4"</code></pre>
 <br/>
 You may have to delete your initd/initramfs from your <mark>/boot</mark> and the initrd/initramfs entries in your bootloader's configuration files. Don't forget to recompile your kernel and to update your bootloader (if you're using GRUB2 or LILO) before rebooting.
 <br/>
