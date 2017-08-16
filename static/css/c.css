@@ -180,6 +180,10 @@ p {
   margin: 10px 0 10px 30px;
 }
 
+#leavecomment {
+  margin-bottom: 50px;
+}
+
 #leavecomment input,
 #leavecomment textarea,
 #leavecomment button {
