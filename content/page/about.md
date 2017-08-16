@@ -1,4 +1,5 @@
 +++
+title = "About"
 type = "page"
 +++
 <div class="box about">

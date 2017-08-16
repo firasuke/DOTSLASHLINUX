@@ -1,4 +1,5 @@
 +++
+title = "Search"
 type = "page"
 +++
 <div class="row" id="search-results">
