@@ -13,19 +13,16 @@ In this article I'll show you how to setup dwm and equip it with a nice basic co
 <h3>1- Installation</h3>
 <br/>
 Gentoo Linux:
-```bash
-emerge --ask --update --newuse x11-wm/dwm
-```
+
+<pre><code class="language-bash">emerge --ask --update --newuse x11-wm/dwm</code></pre>
 <br/>
 Void Linux:
-```bash
-xbps-install -S dwm
-```
+
+<pre><code class="language-bash">xbps-install -S dwm</code></pre>
 <br/>
 Arch Linux:
-```bash
-pacman -Syu dwm
-```
+
+<pre><code class="language-bash">pacman -Syu dwm</code></pre>
 <hr/>
 <h3>2- Accessing Configuration Files</h3>
 <br/>
@@ -36,19 +33,13 @@ However, if you're using Arch Linux or Void Linux then you'll want to check <a h
 <br/>
 <br/>
 On gentoo, it's highly recommended to enable the <mark>savedconfig</mark> USE flag (After all who wouldn't want to save their configuration file once they're done lol). You can do that easily by:
-```bash
-echo "x11-wm/dwm savedconfig" >> /etc/portage/package.use
-```
+<pre><code class="language-bash">echo "x11-wm/dwm savedconfig" >> /etc/portage/package.use</code></pre>
 <br/>
 Before accessing the configuration file, and in order to enable syntax highlighting for the C language in your favourite editor, you need to create a symlink using a header filename:
-```bash
-ln -s /etc/portage/savedconfig/x11-wm/dwm-6.1-r1 /etc/portage/savedconfig/x11-wm/dwm-6.1-r1.h
-```
+<pre><code class="language-bash">ln -s /etc/portage/savedconfig/x11-wm/dwm-6.1-r1 /etc/portage/savedconfig/x11-wm/dwm-6.1-r1.h</code></pre>
 <br/>
 Now, you can easily edit the configuration file (or the header file for syntax highlighting support) and start editing it with your favorite editor (for me that's nano and I respect your editor!):
-```bash
-nano /etc/portage/savedconfig/x11-wm/dwm-6.1-r1.h
-```
+<pre><code class="language-bash">nano /etc/portage/savedconfig/x11-wm/dwm-6.1-r1.h</code></pre>
 <br/>
 At the time of writing this article, dwm's version is 6.1-r1. Your version is probably the same, even if it's different just change the version number and you'll be good to go.
 <br/>
@@ -58,8 +49,7 @@ For those using nano as well, I recommend enabling syntax highlighting since it 
 <h3>3- Configuration</h3>
 <br/>
 Once you've opened the configuration file, start editing it and tuning it to your liking. It's pretty straightforward as everything is explained. However, I'm here to provide you with a nice configuration file and save you some time. Here's my configuration file tuned to be used with gentoo:
-```c,line-numbers
-/* appearance */
+<pre class="line-numbers" data-line="93, 108"><code class="language-c">/* appearance */
 static const char *fonts[] = {
 	"xos4 Terminus:size=10"
 };
@@ -129,44 +119,44 @@ static const char *brtupcmd[]  = { "xbacklight","+10", NULL};
 
 /* shortcut keys */
 static Key keys[] = {
-	/* modifier                  key          function        argument */
-	{ MODKEY,                    XK_d,        spawn,          {.v = dmenucmd } },
-	{ MODKEY,	                 XK_x, 	      spawn,          {.v = termcmd } },
-	{ MODKEY,	       	         XK_w,        spawn,          {.v = webcmd } },
-    { MODKEY,                    XK_e,	      spawn,          {.v = filecmd } },
-    { 0,                         0x1008ff03,  spawn,          {.v = brtdwncmd } },
-    { 0,                         0x1008ff02,  spawn,          {.v = brtupcmd } },
-    { 0,                         0x1008ff11,  spawn,          {.v = voldwcmd } },
-    { 0,             	     	 0x1008ff13,  spawn,          {.v = volupcmd } },
-    { 0,                         0x1008ff12,  spawn,          {.v = volmcmd } },
-	{ MODKEY,                    XK_b,        togglebar,      {0} },
-	{ MODKEY,                    XK_j,        focusstack,     {.i = +1 } },
-	{ MODKEY,                    XK_k,        focusstack,     {.i = -1 } },
-	{ MODKEY,                    XK_i,        incnmaster,     {.i = +1 } },
-	{ MODKEY,                    XK_p,        incnmaster,     {.i = -1 } },
-	{ MODKEY,                    XK_h,        setmfact,       {.f = -0.05} },
-	{ MODKEY,                    XK_l,        setmfact,       {.f = +0.05} },
-	{ MODKEY,                    XK_Return,   zoom,           {0} },
-	{ MODKEY,                    XK_Tab,      view,           {0} },
+	/* modifier                     key        function        argument */
+	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,	                	XK_x, 	   spawn,          {.v = termcmd } },
+	{ MODKEY,	       	       		XK_w,      spawn,          {.v = webcmd } },
+    { MODKEY,                       XK_e,	   spawn,          {.v = filecmd } },
+    { 0,                            0x1008ff03,         spawn,          {.v = brtdwncmd } },
+    { 0,                            0x1008ff02,         spawn,          {.v = brtupcmd } },
+    { 0,                            0x1008ff11,	   		spawn,          {.v = voldwcmd } },
+    { 0,             	        	0x1008ff13,	   		spawn,          {.v = volupcmd } },
+    { 0,                            0x1008ff12,	   		spawn,          {.v = volmcmd } },
+	{ MODKEY,                       XK_b,      togglebar,      {0} },
+	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
+	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
+	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
+	{ MODKEY,                       XK_p,      incnmaster,     {.i = -1 } },
+	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
+	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+	{ MODKEY,                       XK_Return, zoom,           {0} },
+	{ MODKEY,                       XK_Tab,    view,           {0} },
 	/* Since I use Shift+Alt to switch keyboard layouts I've changed ShiftMask to ControlMask */
 	/* If you wanted to revert to the default configuration use this instead: */
-	/* { MODKEY|ShiftMask,       XK_c,        killclient,     {0} }, */
-	{ MODKEY,                    XK_c,        killclient,     {0} },
-	{ MODKEY,                    XK_t,        setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                    XK_f,        setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                    XK_m,        setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                    XK_space,    setlayout,      {0} },
-	{ MODKEY|ControlMask,        XK_space,    togglefloating, {0} },
-	{ MODKEY,                    XK_0,        view,           {.ui = ~0 } },
-	{ MODKEY|ControlMask,        XK_0,        tag,            {.ui = ~0 } },
-	{ MODKEY,                    XK_comma,    focusmon,       {.i = -1 } },
-	{ MODKEY,                    XK_period,   focusmon,       {.i = +1 } },
-	{ MODKEY|ControlMask,        XK_comma,    tagmon,         {.i = -1 } },
-	{ MODKEY|ControlMask,        XK_period,   tagmon,         {.i = +1 } },
+	/* { MODKEY|ShiftMask,           			XK_c,      killclient,     {0} }, */
+	{ MODKEY,           			XK_c,      killclient,     {0} },
+	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
+	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
+	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_space,  setlayout,      {0} },
+	{ MODKEY|ControlMask,           XK_space,  togglefloating, {0} },
+	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
+	{ MODKEY|ControlMask,           XK_0,      tag,            {.ui = ~0 } },
+	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
+	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
+	{ MODKEY|ControlMask,           XK_comma,  tagmon,         {.i = -1 } },
+	{ MODKEY|ControlMask,           XK_period, tagmon,         {.i = +1 } },
 	/* Since I use Shift+Alt to switch keyboard layouts I've changed ShiftMask to ControlMask */
 	/* If you wanted to revert to the default configuration use this instead: */
-	/* { MODKEY|ShiftMask,        XK_q,       quit,           {0} } */
-	{ MODKEY|ControlMask,        XK_q,        quit,           {0} }
+	/* { MODKEY|ShiftMask,           XK_q,      quit,           {0} } */
+	{ MODKEY|ControlMask,           XK_q,      quit,           {0} }
 };
 
 /* button definitions */
@@ -185,7 +175,8 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
-```
+
+</code></pre>
 <br/>
 I've explained the basic stuff using comments in the configuration file for those who want further optimization. For those who love to copy-paste configuration files and use them directly, I've changed the main shortcuts for killing clients and quiting dwm since I use <mark>Shift+Alt</mark> for changing keyboard layouts. Here are the changes I made:
 <br/>
@@ -200,9 +191,7 @@ I've included these default shortcuts in the configuration file as well, just co
 <hr/>
 <h3>4- Starting dwm</h3>
 After we've done configuring dwm, it's time to fire it up. To start dwm, simply add the following to your .xinitrc:
-```bash
-exec dwm
-```
+<pre><code class="lang-properties">exec dwm</code></pre>
 <br/>
 <hr/>
 <h3>Conclusion</h3>
