@@ -1,10 +1,11 @@
 +++
-title="What is DOTSLASHLINUX?"
-date="2017-03-20"
-author="Firas Khalil Khana"
-imgsrc="/img/lightweight.png"
-imgalt="lightweight"
-nick="what"
+title = "What is DOTSLASHLINUX?"
+slug = "what is dotslashlinux"
+nick = "what"
+date = "2017-03-20"
+author = "Firas Khalil Khana"
+imgsrc = "/img/lightweight.png"
+imgalt = "lightweight"
 +++
 DOTSLASHLINUX is a new website on the web (duh), aside from that it's a website about all the cool stuff that you can do with a GNU/Linux distro.
 <br>

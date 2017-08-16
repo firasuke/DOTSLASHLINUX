@@ -1,12 +1,12 @@
 +++
-title="Best Lightweight Software/Applications for GNU/Linux!"
-slug="Best Lightweight Software-Applications for GNU-Linux!"
-date="2017-03-23"
-author="Firas Khalil Khana"
-imgsrc="/img/lightweight.png"
-imgalt="lightweight"
-categories=[ "popular" ]
-nick="lapps"
+title = "Best Lightweight Software/Applications for GNU/Linux!"
+slug = "best lightweight software applications for gnu linux"
+nick = "lapps"
+date = "2017-03-23"
+author = "Firas Khalil Khana"
+imgsrc = "/img/lightweight.png"
+imgalt = "lightweight"
+categories = [ "popular" ]
 +++
 In this article I'll be listing some of the lightest applications the GNU/Linux world has to offer, some of which you may know and some not. These applications will not only be lightweight but will not sacrifice that much convenience for the performance and low memory footprint they offer.
 <br/>

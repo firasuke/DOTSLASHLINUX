@@ -1,10 +1,11 @@
 +++
-title="Best slstatus Configuration"
-date="2017-04-24"
-author="Firas Khalil Khana"
-imgsrc="/img/slstatus.png"
-imgalt="slstatus"
-nick="slstatus"
+title = "Best slstatus Configuration"
+slug = "best slstatus configuration"
+nick = "slstatus"
+date = "2017-04-24"
+author = "Firas Khalil Khana"
+imgsrc = "/img/slstatus.png"
+imgalt = "slstatus"
 +++
 In this article I'll show you how to setup and configure slstatus the lightest status bar to use with dwm.
 <br/>

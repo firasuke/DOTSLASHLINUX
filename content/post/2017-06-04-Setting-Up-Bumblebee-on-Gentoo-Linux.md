@@ -1,10 +1,11 @@
 +++
-title="Setting Up Bumblebee on Gentoo Linux"
-date="2017-06-04"
-author="Firas Khalil Khana"
-imgsrc="/img/bumblebee.png"
-imgalt="bumblebee"
-nick="bumblebee"
+title = "Setting Up Bumblebee on Gentoo Linux"
+slug = "setting up bumblebee on gentoo linux"
+nick = "bumblebee"
+date = "2017-06-04"
+author = "Firas Khalil Khana"
+imgsrc = "/img/bumblebee.png"
+imgalt = "bumblebee"
 +++
 Optimus support on a GNU/Linux distro has always been a hassle thanks to NVIDIA... Therefore projects were created to compensate for this powersaving feature. Enter bumblebee a project aimed to replicate NVIDIA's optimus function on GNU/Linux!.
 <br/>

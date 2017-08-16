@@ -1,11 +1,11 @@
 +++
-title="Best Lightweight GNU/Linux Distros!"
-slug="Best Lightweight GNU-Linux Distros!"
-date="2017-03-21"
-author="Firas Khalil Khana"
-imgsrc="/img/lightweight.png"
-imgalt="lightweight"
-nick="ldistros"
+title = "Best Lightweight GNU/Linux Distros!"
+slug = "best lightweight gnu linux distros"
+nick = "ldistros"
+date = "2017-03-21"
+author = "Firas Khalil Khana"
+imgsrc = "/img/lightweight.png"
+imgalt = "lightweight"
 +++
 In this article I'll be talking about some lightweight GNU/Linux distro that don't sacrifice conveniency for being lightweight. (Yes I'm looking at you TinyCoreLinux)...
 <br/>

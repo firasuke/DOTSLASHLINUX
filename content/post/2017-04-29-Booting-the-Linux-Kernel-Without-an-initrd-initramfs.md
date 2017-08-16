@@ -1,12 +1,12 @@
 +++
-title="Booting the Linux Kernel Without an initrd/initramfs"
-slug="Booting the Linux Kernel Without an initrd-initramfs"
-date="2017-04-29"
-author="Firas Khalil Khana"
-imgsrc="/img/noinitrd.png"
-imgalt="noinitrd"
-categories=[ "popular" ]
-nick="noinitrd"
+title = "Booting the Linux Kernel Without an initrd/initramfs"
+slug = "booting the linux kernel without an initrd initramfs"
+nick = "noinitrd"
+date = "2017-04-29"
+author = "Firas Khalil Khana"
+imgsrc = "/img/noinitrd.png"
+imgalt = "noinitrd"
+categories = [ "popular" ]
 +++
 No, this is not a myth... It's not a legend... It's the truth and it's doable!
 <br/>

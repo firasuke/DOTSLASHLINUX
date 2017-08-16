@@ -27,9 +27,9 @@
   if (searchTerm){
     document.getElementById('search-box').setAttribute("value", searchTerm);
     var idx = lunr(function(){this.field('id');
-      this.field('title');
+      this.field('slug');
       for (var key in window.store){
-        this.add({'id': key,'title': window.store[key].title,'author': window.store[key].author,});
+        this.add({'id': key,'slug': window.store[key].slug});
       }
     }
     );

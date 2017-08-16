@@ -1,10 +1,11 @@
 +++
-title="Best dwm Configuration"
-date="2017-04-23"
-author="Firas Khalil Khana"
-imgsrc="/img/dwm.png"
-imgalt="dwm"
-nick="dwm"
+title = "Best dwm Configuration"
+slug = "best dwm configuration"
+nick = "dwm"
+date = "2017-04-23"
+author = "Firas Khalil Khana"
+imgsrc = "/img/dwm.png"
+imgalt = "dwm"
 +++
 In this article I'll show you how to setup dwm and equip it with a nice basic configuration file.
 <br/>

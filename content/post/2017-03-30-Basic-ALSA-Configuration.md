@@ -1,10 +1,11 @@
 +++
-title="Basic ALSA Configuration"
-date="2017-03-30"
-author="Firas Khalil Khana"
-imgsrc="/img/alsa.png"
-imgalt="alsa"
-nick="alsa"
+title = "Basic ALSA Configuration"
+slug = "basic alsa configuration"
+nick = "alsa"
+date = "2017-03-30"
+author = "Firas Khalil Khana"
+imgsrc = "/img/alsa.png"
+imgalt = "alsa"
 +++
 In this article I'll show you how to setup ALSA, with a working .asoundrc configuration file that supports multiple applications!
 <br/>
