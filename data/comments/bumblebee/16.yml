@@ -1,0 +1,5 @@
+order: 16
+replying_to: '15'
+name: DOTSLASHLINUX
+comment: "@peedub, thanks for your reply! Indeed, the problem is from nvidia_drm and nvidia_modeset being loaded at boot time. Unless bumblebee and bbswitch were patched to prevent these 3 from loading (which is unlikely), the only way to do that is by disabling the kms USE flag. The reason that they're still being loaded on your end is that the modules were previously built for your kernel so you have to remove them manually or remove the /lib/modules/linux* dir and build the kernel and nvidia-drivers and bbswitch again. That can be troublesome for some users, but give it a shot along with the blacklisting and tell me how things go! Glad you liked the article!"
+date: '2017-08-17'

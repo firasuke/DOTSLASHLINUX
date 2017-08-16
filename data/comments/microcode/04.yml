@@ -2,4 +2,4 @@ order: 4
 replying_to: '3'
 name: DOTSLASHLINUX
 comment: "@atbd, I agree that should be the most obvious way to get the signature;however, on some installations the output of \"dmesg\" may be a lot more that it can be truncated and the microcode part won't be shown, another thing is that the user may reduce the verbosity of dmesg so the microcode updates won't be shown.\r\n\r\nThe user might also be using a custom kernel build and has disabled \"early microcode updates support\" from his/her kernel.\r\n\r\nThe point is to get the signature from more than one source to successfully choose your microcode update file. Another way would be to choose all microcode update files and let the kernel pick the right one for you. That might work but still the article was intended to make things easier for the reader.\r\n\r\nThanks for your reply! Your suggestion is much appreciated!"
-date: '2017-06-03T22:42:52.780Z'
+date: '2017-06-03'

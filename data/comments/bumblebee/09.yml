@@ -13,4 +13,4 @@ comment: >-
   https://pastebin.com/J8n0zqBB (6) Xorg.0.log https://pastebin.com/WAMACsNR (7)
   lsmod https://pastebin.com/AcLuyYq9 .  I had 'modprobe nvidia' which accounts
   for the appearance of that driver in the lspci and lsmod output
-date: '2017-07-23T10:58:11.529Z'
+date: '2017-07-23'

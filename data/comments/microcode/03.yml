@@ -2,4 +2,4 @@ order: 3
 replying_to: ''
 name: atbd
 comment: "By the way, I found a « method » to be sure about microcode signature: \r\n*  install iucode_tool (available on gentoo, i don't know for others)\r\n* run `dmesg | grep microcode` & search for signature\r\n* run `iucode_tool -L /lib/firmware/intel-ucode/` and grep the signature found in your `dmesg`"
-date: '2017-06-03T22:17:07.664Z'
+date: '2017-06-03'

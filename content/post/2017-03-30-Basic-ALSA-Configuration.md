@@ -14,8 +14,9 @@ In this article I'll show you how to setup ALSA, with a working .asoundrc config
 <h3 id="Installation">1- Installation</h3>
 <br/>
 Gentoo Linux:
-
-<pre><code class="language-bash">emerge --ask --update --newuse media-sound/alsa-utils</code></pre>
+```language-bash
+emerge --ask --update --newuse media-sound/alsa-utils
+```
 <br/>
 Void Linux:
 
@@ -156,11 +157,12 @@ ctl.dmixer {
 <hr/>
 <h3 id="Controlling_Volume_using_shortcut_keys_on_dwm">(Optional) Controlling Volume using shortcut keys on dwm</h3>
 Let's start by adding this to the commands section (Remeber we need to specify our default sound card in our previous case):
-<pre class="line-numbers"><code class="language-c">/* commands */
+```bash,line-numbers
+/* commands */
 static const char *voldwcmd[]  = { "amixer", "-c", "PCH", "set", "Master", "1%-", NULL};
 static const char *volupcmd[]  = { "amixer", "-c", "PCH", "set", "Master", "1%+", NULL};
 static const char *volmcmd[]  = { "amixer", "-c", "PCH", "set", "Master", "toggle", NULL};
-</code></pre>
+```
 <br/>
 This defines 3 character arrays that will hold our volume controlling commands respectively.
 <br/>
