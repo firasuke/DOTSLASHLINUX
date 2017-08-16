@@ -15,7 +15,6 @@ I highly recommend installing the source files for slstatus from github and comp
 <br/>
 <br/>
 Void Linux:
-
 <pre><code class="language-bash">xbps-install -S slstatus</code></pre>
 <br/>
 What I recommend is doing this instead. Navigate to your home directory (any directory is fine but keep track of the directory you're using), and clone slstatus's github repo:
