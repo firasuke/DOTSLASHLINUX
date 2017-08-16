@@ -16,31 +16,22 @@ I highly recommend installing the source files for slstatus from github and comp
 <br/>
 <br/>
 Void Linux:
-```bash
-xbps-install -S slstatus
-```
+<pre><code class="language-bash">xbps-install -S slstatus</code></pre>
 <br/>
 What I recommend is doing this instead. Navigate to your home directory (any directory is fine but keep track of the directory you're using), and clone slstatus's github repo:
-```bash
-cd ~
-git clone https://github.com/drkhsh/slstatus
-```
+<pre><code class="language-bash">cd ~
+git clone https://github.com/drkhsh/slstatus</code></pre>
 <hr/>
 <h3 id="Configuration">2- Configuration</h3>
 <br/>
 Navigate to your freshly cloned directory:
-```bash
-cd ~/slstatus
-```
+<pre><code class="language-bash">cd ~/slstatus</code></pre>
 <br/>
 Now edit the file config.h with your beloved editor:
-```bash
-nano ~/slstatus/config.h
-```
+<pre><code class="language-bash">nano ~/slstatus/config.h</code></pre>
 <br/>
 Due to lack of documentation available, you may find it hard to get everything working the way you like it, but I've been lucky enough to get mine working after the 20th try or so (not kidding :P). Here's my configuration file:
-```c,line-numbers
-/* See LICENSE file for copyright and license details. */
+<pre class="line-numbers" data-line="51"><code class="language-c">/* See LICENSE file for copyright and license details. */
 
 /* how often to update the statusbar (min value == 1) */
 #define UPDATE_INTERVAL 1
@@ -85,31 +76,27 @@ static const struct arg args[] = {
         /* Displays the temperature read from the file /sys/class/thermal/thermal_zone0/temp , you can change that file
         to any other file that displays the temperature of certain components, you can even list multiple
         temperatures by duplicating it */
-        { temp,         "[TEMP %s] ",     "/sys/class/thermal/thermal_zone0/temp"},
-        { cpu_perc,     "[CPU %s] ",      NULL },
-        { ram_perc,     "[RAM %s] ",      NULL },
+        { temp, "[TEMP %s] ",     "/sys/class/thermal/thermal_zone0/temp"},
+        { cpu_perc, "[CPU %s] ", NULL },
+        { ram_perc, "[RAM %s] ", NULL },
         /* If you have two sound cards (like me PCH/HDMI) then you may need to use /dev/mixer1 instead of /dev/mixer to get vol_perc working*/
-        { vol_perc,     "[VOL %s] ",      "/dev/mixer1"},
+        { vol_perc, "[VOL %s] ", "/dev/mixer1"},
         /* Displays battery's capacity, you need to specify the battery folder's name listed in /sys/class/power_supply,
         for me it's BAT0 and it'll automatically read the capacity file */
-        { battery_perc, "[BAT %s] ",      "BAT0"},
+        { battery_perc, "[BAT %s] ",     "BAT0"},
         /* Displays IPv4 address for the given network interface (which in my case is wlp3s0) in your local network */
-        { ip,           "[IP %s] ",       "wlp3s0"},
-        { datetime,     "[%s]",           "%F %r" }
+        { ip, "[IP %s] ",     "wlp3s0"},
+        { datetime, "[%s]",     "%F %r" }
 };
-```
+</code></pre>
 <br/>
 If you were facing problems getting <mark>vol_perc</mark> working, then you may be specifying the wrong mixer as an argument. You see on laptops or any other 
 setup that uses 2 sound cards (PCH,HDMI), you'll get 2 mixers in <mark>/dev</mark> the first being <mark>mixer</mark> and the second being <mark>mixer1</mark>.
 <br/>
 If so, simply use this instead:
-```c
-{ vol_perc, "[VOL %s] ", "/dev/mixer1"},
-```
+<pre><code class="language-c">{ vol_perc, "[VOL %s] ", "/dev/mixer1"},</code></pre>
 <hr/>
 <br/>
 <h3 id="Starting_slstatus">3- Starting slstatus</h3>
 After configuring slstatus, we now have to start it. To do that add the following to your .xinitrc:
-```bash
-slstatus -d
-```
+<pre><code class="lang-properties">slstatus -d</code></pre>
