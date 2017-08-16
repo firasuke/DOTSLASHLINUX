@@ -1,0 +1,6 @@
+order: 6
+replying_to: '1'
+name: DOTSLASHLINUX
+comment: "@Drakkar, that dmesg output doesn't look so good. I suggest you stick around here until the kernel configuration guide comes out. For now here's what you can do. \r\n\r\n1- Disable \"CONFIG_VGA_SWITCHEROO\", we're already relying on bbswitch so there's no need for vga_switcheroo.\r\n\r\n2- Looks like you're using more than one driver for you nvidia card which is creating conflicts, I suggest that you disable \"CONFIG_DRM_NOUVEAU\" and blacklist it's driver. The nvidia driver that you're supposed to use for this setup to work is \"nvidia.ko\" provided by the package \"nvidia-drivers\".\r\n\r\n3- You should also disable \"nvidiafb\" the only framebuffer kernel config that you should be using is \"CONFIG_DRM_FBDEV_EMULATION\".\r\n\r\nKeep me updated after you try the suggestions listed above. Best of luck!"
+date: '2017-07-13T11:11:28.710Z'
+timestamp: 1499944288

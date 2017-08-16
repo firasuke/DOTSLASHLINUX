@@ -1,0 +1,16 @@
+order: 14
+replying_to: '9'
+name: DOTSLASHLINUX
+comment: >-
+  @Michael Mounteney, "primusrun X"? Are you trying to run a Xorg session on
+  your discrete GPU? I'd suggest checking "eselect opengl list" and switching it
+  to "xorg-x11". Another thing I'd recommend is test older or stable versions of
+  both the kernel and nvidia-drivers. I had problems getting bbswitch and
+  bumblebee to work with the "~amd64" unstable branch, but it's working fine on
+  the "amd64" stable branch (kernel version 4.9.34, nvidia-drivers version 381.22). 
+  You might want to disable runtime power manager as well for the nvidia card such as
+  TLP/powertop and see how things go. Oh and the link to the kernel .config you shared
+  is broken. It'd be better as well if you clarified what the problem is because it's 
+  still vague to me, and perhaps mention the steps required to recreate it. Thanks for 
+  stopping by! Have a great day!
+date: '2017-07-24T10:12:47.011Z'

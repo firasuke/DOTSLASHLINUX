@@ -1,0 +1,27 @@
+{{ partial "t" . }}
+<div class="box map">
+  <h2>{{ .Title }}</h2>
+  <div class="frame"><img src="{{ .Params.imgsrc }}" alt="{{ .Params.imgalt }}"></div>
+  <div class="info"><small>By {{ .Params.author }} on {{ .Date.Format "02/01/2006" }}</small></div>
+  {{ .Content }}
+</div>
+<div id="comments" class="box">{{ $.Scratch.Set "path" "/data/comments/" }}{{ $.Scratch.Add "path" .Params.nick }}{{ $path := $.Scratch.Get "path" }}{{ $comments := readDir $path }}{{ $.Scratch.Set "counter" 1 }}
+  <h3>{{ len $comments }} Comments</h3>{{ range $index, $comments := (index $.Site.Data.comments .Params.nick) }}{{ if eq .order ($.Scratch.Get "counter") }}
+  <div class="{{ if eq .replying_to "" }}main-comment{{ else }}reply{{ end }}">
+    <p><strong>{{ .name }}</strong></p>
+    <p>{{ dateFormat "02/01/2006" .date }}</p>
+    <p>{{ .comment | markdownify }}</p>
+  </div>{{ $.Scratch.Add "counter" 1 }}{{ end }}{{ end }}
+  <div id="leavecomment">
+    <h3>Leave A Comment</h3>
+    <form action="https://getsimpleform.com/messages?form_api_token=4458712617021cb12239cbfd2942b227" method="post">
+      <input name="options[redirect]" type="hidden" value="{{ .Site.BaseURL }}{{ .Page.URL }}#comments">
+      <input name="options[slug]" type="hidden" value="{{ .Page.Slug }}">
+      <input type="hidden" id="reply" name="fields[replying_to]" value="">
+      <input name="fields[name]" type="text" placeholder="Name">
+      <textarea rows="5" name="fields[comment]" placeholder="Your comment here.&#10;&#10;Comments support Markdown.&#10;&#10;Comments are being moderated to prevent spam so it may take a while before your comment is posted."></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+{{ partial "b" . }}

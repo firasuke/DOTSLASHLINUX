@@ -1,0 +1,65 @@
+{{ if .IsHome }}</div>
+<div class="box popular">
+  <h2>Popular Articles</h2>
+  <div class="row">
+    {{ range .Site.Taxonomies.categories.popular }}
+    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+      <div class="box card">
+        <a href="{{ .Permalink }}">
+          <div class="frame"><img src="{{ .Params.imgsrc }}" alt="{{ .Params.imgalt }}"></div>
+          <h3>{{ .Title }}</h3></a>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</div>{{ end }}
+</div>
+<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 side">
+  <div class="box search">
+    <form action="{{ .Site.BaseURL }}/search/" method="get">
+      <input type="text" id="search-box" name="query" placeholder="Search">
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  <div class="box distros">
+    <h3>Recommended Distros</h3>
+    <ul>
+      <li id="gentoo"><a href="https://www.gentoo.org/" target="_blank">Gentoo Linux</a></li>
+      <li id="void"><a href="https://www.voidlinux.eu/" target="_blank">Void Linux</a></li>
+      <li id="arch"><a href="https://www.archlinux.org/" target="_blank">Arch Linux</a></li>
+    </ul>
+  </div>
+  <div class="box upcoming">
+    <h3>Upcoming Articles</h3>
+    <ul>
+      <li>The Linux Kernel Configuration Guide Part 1</li>
+      <li>The Linux Kernel Configuration Guide Part 2</li>
+      <li>The Linux Kernel Configuration Guide Part 3</li>
+      <li>The Linux Kernel Configuration Guide Part 4</li>
+      <li>The Linux Kernel Configuration Guide Part 5</li>
+      <li>The Linux Kernel Configuration Guide Part 6</li>
+      <li>The Linux Kernel Configuration Guide Part 7</li>
+    </ul>
+  </div>
+  <div class="box suggestions">
+    <h3>Suggestions</h3>
+    <p>Apart from the comments' section, if you wanted to see an article on how to configure a certain application for a GNU/Linux distro, or wanted to share one (perhaps one that you've written), feel free to send me an email on:<br/><br/>firasuke@gmail.com</p>
+  </div>
+  <div class="box donate">
+    <h3>Donate</h3>
+    <p>PayPal: <a href="https://www.paypal.me/DOTSLASHLINUX/5" target="_blank">firasuke@gmail.com</a></p>
+  </div>
+</div>
+</div>
+<div class="row footer container">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="box">
+      <h4>Copyright &copy; 2017 DOTSLASHLINUX | Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></h4>
+    </div>
+  </div>
+</div>
+<script src="/js/p.min.js"></script>
+<script src="/js/l.min.js"></script>
+<script src="/js/s.js"></script>
+</body>
+</html>

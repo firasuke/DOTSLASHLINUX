@@ -1,0 +1,14 @@
+{{ partial "t" . }}
+{{ .Content }}
+{{ if eq (relURL .URL) ("/search/" | safeHTML) }}
+<script>
+window.store = { {{ range $index, $page := where .Site.Pages "Section" "post"}}
+  {{ if and $index (gt $index 0) }},{{ end }}"{{ $page.Title }}" : {
+  "url": "{{ $page.Permalink }}",
+  "title": "{{ $page.Title }}",
+  "imgsrc": "{{ $page.Params.imgsrc }}",
+  "imgalt": "{{ $page.Params.imgalt }}"
+} {{ end }} }
+</script>
+{{ end }}
+{{ partial "b" . }}
