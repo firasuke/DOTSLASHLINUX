@@ -1,5 +1,6 @@
 +++
 title="Booting the Linux Kernel Without an initrd/initramfs"
+slug="Booting the Linux Kernel Without an initrd-initramfs"
 date="2017-04-29"
 author="Firas Khalil Khana"
 imgsrc="/img/noinitrd.png"

@@ -1,5 +1,6 @@
 +++
 title="Best Lightweight GNU/Linux Distros!"
+slug="Best Lightweight GNU-Linux Distros!"
 date="2017-03-21"
 author="Firas Khalil Khana"
 imgsrc="/img/lightweight.png"

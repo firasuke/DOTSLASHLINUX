@@ -1,5 +1,6 @@
 +++
 title="Best Lightweight Software/Applications for GNU/Linux!"
+slug="Best Lightweight Software-Applications for GNU/Linux!"
 date="2017-03-23"
 author="Firas Khalil Khana"
 imgsrc="/img/lightweight.png"
