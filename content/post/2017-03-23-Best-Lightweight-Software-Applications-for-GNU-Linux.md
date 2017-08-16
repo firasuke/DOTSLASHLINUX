@@ -33,7 +33,7 @@ Hopefully, a whole series on how to configure your kernel is coming, so please l
 Yes, you can boot without an initrd/initramfs. Kindly check our article <a href="https://www.dotslashlinux.com/2017/04/29/Booting-the-Linux-Kernel-Without-an-initrd-initramfs.html" target="_blank">Booting the Linux Kernel Without an initrd/initramfs</a>.
 <br/>
 <br/>
-<strong>" Hold your horses... What about the intel/amd microcode updates that boost my processor's performance? "</strong> Well, I never said that you needed an initrd to use them. You can easily build them directly into the linux kernel. How you ask? Kindly follow our guide on <a href="https://www.dotslashlinux.com/2017/04/30/Building-Intel-CPU-Microcode-Updates-Directly-into-the-Linux-Kernel.html" target="_blank">Building Intel CPU Microcode Updates Directly into the Linux Kernel</a>.
+"Hold your horses... What about the intel/amd microcode updates that boost my processor's performance?" Well, I never said that you needed an initrd to use them. You can easily build them directly into the linux kernel. How you ask? Kindly follow our guide on <a href="https://www.dotslashlinux.com/2017/04/30/Building-Intel-CPU-Microcode-Updates-Directly-into-the-Linux-Kernel.html" target="_blank">Building Intel CPU Microcode Updates Directly into the Linux Kernel</a>.
 <br/>
 <hr/>
 <h3>4- Shell: <a href="https://en.wikipedia.org/wiki/Almquist_shell" target="_blank">DASH</a> VS <a href="https://www.gnu.org/software/bash/" target="_blank">GNU BASH</a></h3>
@@ -46,7 +46,7 @@ So if you're that type of person that loves minimalism and speed and can type lo
 <br/>
 <hr/>
 <h3>5- Display Servers: <a href="https://www.x.org/wiki/" target="_blank">Xorg</a> VS <a href="https://wayland.freedesktop.org/" target="_blank">Wayland</a></h3>
-We have a tie here why? Well I'd pick a tie over flame wars any day! <strong>" Xorg is outdated, bloated with old unnecessary code... "</strong> we get that and we all hope that wayland will replace it one day. If wayland is working for you then stick with it, otherwise (and for the sake of this article) go for xorg.
+We have a tie here why? Well I'd pick a tie over flame wars any day! "Xorg is outdated, bloated with old unnecessary code..." we get that and we all hope that wayland will replace it one day. If wayland is working for you then stick with it, otherwise (and for the sake of this article) go for xorg.
 <br/>
 <hr/>
 <h3>6- Starting X Server: <a href="https://en.wikipedia.org/wiki/Xinit" target="_blank">xinit</a></h3>
@@ -111,7 +111,7 @@ It's a matter of preference and easiness of use as both are lightweight image vi
 <br/>
 <hr/>
 <h3>16- Web Browser: <a href="https://www.qupzilla.com/" target="_blank">Qupzilla</a> VS <a href="https://otter-browser.org/" target="_blank">Otter</a></h3>
-These two are the lightest "usable" web browsers with a GUI available on GNU/Linux. You may be wondering that <strong>" If they were so lightweight then why is my package manager pulling lots of dependencies? "</strong>. True they have some dependencies related to qt5 and qtwebkit, but once they're installed, they're much lighter than your mainstream browsers. They're even lighter than midori which is considered a lightweight gtk web browser. Otter is lighter than qupzilla but it's still under heavy development.
+These two are the lightest "usable" web browsers with a GUI available on GNU/Linux. You may be wondering that " If they were so lightweight then why is my package manager pulling lots of dependencies? ". True they have some dependencies related to qt5 and qtwebkit, but once they're installed, they're much lighter than your mainstream browsers. They're even lighter than midori which is considered a lightweight gtk web browser. Otter is lighter than qupzilla but it's still under heavy development.
 <br/>
 <hr/>
 <h3>17- PDF Reader: <a href="https://github.com/jristz/epdfview" target="_blank">ePDFView</a> VS <a href="https://mupdf.com/" target="_blank">MuPDF</a></h3>
@@ -133,8 +133,7 @@ e3 is the lightest and is written in assembly. Nano and e3 are for when you're i
 <br/>
 <hr/>
 <h3>19- Screen Capture Tool: <a href="https://github.com/naelstrof/maim" target="_blank">maim</a></h3>
-MAIM or (MAke IMage) is a lightweight screen capture tool that utilizes imlib2 to take screenshots. Just fire up a terminal and type
-
+MAIM or (MAke IMage) is a lightweight screen capture tool that utilizes imlib2 to take screenshots. Just fire up a terminal and type:
 <pre><code class="language-bash">maim imagename.format</code></pre>
 <br/>
 and a screenshot of your desktop with the name and format that you specified will be saved in the current directory that you're in. It has some nice options and can be mapped to a given keyboard shortcut.

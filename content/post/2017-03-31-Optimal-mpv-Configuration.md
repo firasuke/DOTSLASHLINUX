@@ -15,15 +15,12 @@ In this article I'll show you how to setup mpv and arm it up with the best mpv.c
 <h3 id="Installation">1- Installation</h3>
 <br/>
 Gentoo Linux:
-
 <pre><code class="language-bash">emerge --ask --update --newuse media-video/mpv</code></pre>
 <br/>
 Void Linux:
-
 <pre><code class="language-bash">xbps-install -S mpv</code></pre>
 <br/>
 Arch Linux:
-
 <pre><code class="language-bash">pacman -Syu mpv</code></pre>
 <hr/>
 <h3 id="Setup_Configuration_Files">2- Setup Configuration Files</h3>
