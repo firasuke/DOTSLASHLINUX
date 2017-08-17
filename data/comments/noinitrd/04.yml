@@ -1,12 +1,11 @@
 order: 4
 replying_to: '3'
 name: DOTSLASHLINUX
-comment: >-
-  @atbd, thanks for the suggestion. Unfortunately, my laptop has a buggy uefi
+comment: "@atbd, thanks for the suggestion. Unfortunately, my laptop has a buggy uefi
   implementation and all available UEFI solutions didn't work for me. Thus, I
   sticked with mbr. It's a toshiba laptop from late 2013 and has both BIOS/uefi.
   Although I'm able to boot using UEFI, boot time increases dramatically because
   of the buggy firmware telling me that no bootable media found (lasts for like
   5 seconds) then proceeds to boot properly. Thanks for stopping by though
-  fellow son of a tux ;P
-date: '2017-07-01T23:05:15.050Z'
+  fellow son of a tux ;P"
+date: '2017-07-01'
