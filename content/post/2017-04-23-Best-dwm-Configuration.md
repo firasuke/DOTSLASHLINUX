@@ -13,16 +13,13 @@ In this article I'll show you how to setup dwm and equip it with a nice basic co
 <h3>1- Installation</h3>
 <br/>
 Gentoo Linux:
-
-<pre><code class="language-bash">emerge --ask --update --newuse x11-wm/dwm</code></pre>
+{{< highlight bash >}}emerge --ask --update --newuse x11-wm/dwm{{< /highlight >}}
 <br/>
 Void Linux:
-
-<pre><code class="language-bash">xbps-install -S dwm</code></pre>
+{{< highlight bash >}}xbps-install -S dwm{{< /highlight >}}
 <br/>
 Arch Linux:
-
-<pre><code class="language-bash">pacman -Syu dwm</code></pre>
+{{< highlight bash >}}pacman -Syu dwm{{< /highlight >}}
 <hr/>
 <h3>2- Accessing Configuration Files</h3>
 <br/>
@@ -33,13 +30,13 @@ However, if you're using Arch Linux or Void Linux then you'll want to check <a h
 <br/>
 <br/>
 On gentoo, it's highly recommended to enable the <mark>savedconfig</mark> USE flag (After all who wouldn't want to save their configuration file once they're done lol). You can do that easily by:
-<pre><code class="language-bash">echo "x11-wm/dwm savedconfig" >> /etc/portage/package.use</code></pre>
+{{< highlight bash >}}echo "x11-wm/dwm savedconfig" >> /etc/portage/package.use{{< /highlight >}}
 <br/>
 Before accessing the configuration file, and in order to enable syntax highlighting for the C language in your favourite editor, you need to create a symlink using a header filename:
-<pre><code class="language-bash">ln -s /etc/portage/savedconfig/x11-wm/dwm-6.1-r1 /etc/portage/savedconfig/x11-wm/dwm-6.1-r1.h</code></pre>
+{{< highlight bash >}}ln -s /etc/portage/savedconfig/x11-wm/dwm-6.1-r1 /etc/portage/savedconfig/x11-wm/dwm-6.1-r1.h{{< /highlight >}}
 <br/>
 Now, you can easily edit the configuration file (or the header file for syntax highlighting support) and start editing it with your favorite editor (for me that's nano and I respect your editor!):
-<pre><code class="language-bash">nano /etc/portage/savedconfig/x11-wm/dwm-6.1-r1.h</code></pre>
+{{< highlight bash >}}nano /etc/portage/savedconfig/x11-wm/dwm-6.1-r1.h{{< /highlight >}}
 <br/>
 At the time of writing this article, dwm's version is 6.1-r1. Your version is probably the same, even if it's different just change the version number and you'll be good to go.
 <br/>
@@ -49,7 +46,7 @@ For those using nano as well, I recommend enabling syntax highlighting since it 
 <h3>3- Configuration</h3>
 <br/>
 Once you've opened the configuration file, start editing it and tuning it to your liking. It's pretty straightforward as everything is explained. However, I'm here to provide you with a nice configuration file and save you some time. Here's my configuration file tuned to be used with gentoo:
-<pre class="line-numbers" data-line="93, 108"><code class="language-c">/* appearance */
+{{< highlight c "linenos=inline,hl_lines=93 108" >}}/* appearance */
 static const char *fonts[] = {
 	"xos4 Terminus:size=10"
 };
@@ -176,7 +173,7 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
 
-</code></pre>
+{{< /highlight >}}
 <br/>
 I've explained the basic stuff using comments in the configuration file for those who want further optimization. For those who love to copy-paste configuration files and use them directly, I've changed the main shortcuts for killing clients and quiting dwm since I use <mark>Shift+Alt</mark> for changing keyboard layouts. Here are the changes I made:
 <br/>
@@ -191,7 +188,7 @@ I've included these default shortcuts in the configuration file as well, just co
 <hr/>
 <h3>4- Starting dwm</h3>
 After we've done configuring dwm, it's time to fire it up. To start dwm, simply add the following to your .xinitrc:
-<pre><code class="lang-properties">exec dwm</code></pre>
+{{< highlight vim >}}exec dwm{{< /highlight >}}
 <br/>
 <hr/>
 <h3>Conclusion</h3>
