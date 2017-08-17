@@ -14,22 +14,19 @@ In this article I'll show you how to setup ALSA, with a working .asoundrc config
 <h3 id="Installation">1- Installation</h3>
 <br/>
 Gentoo Linux:
-
-<pre><code class="language-bash">emerge --ask --update --newuse media-sound/alsa-utils</code></pre>
+{{< highlight bash >}}emerge --ask --update --newuse media-sound/alsa-utils{{< /highlight >}}
 <br/>
 Void Linux:
-
-<pre><code class="language-bash">xbps-install -S alsa-utils</code></pre>
+{{< highlight bash >}}xbps-install -S alsa-utils{{< /highlight >}}
 <br/>
 Arch Linux:
-
-<pre><code class="language-bash">pacman -Syu alsa-utils</code></pre>
+{{< highlight bash >}}pacman -Syu alsa-utils{{< /highlight >}}
 <br/>
 <hr/>
 <h3 id="Unmuting_Channels">2- Unmuting Channels</h3>
 <br/>
 Once ALSA is installed, we need to unmute the master channel for our sound card. We can do that using the ncurses interface of alsamixer (Use F6 to switch to your default soundcard):
-<pre><code class="language-properties">┌────────────────────────────────────────────────────────────────────────── AlsaMixer v1.1.3 ───────────────────────────────────────────────────────────────────────────┐
+{{< highlight vim >}}┌────────────────────────────────────────────────────────────────────────── AlsaMixer v1.1.3 ───────────────────────────────────────────────────────────────────────────┐
 │ Card: HDA Intel PCH                                                                                                                           F1:  Help               │
 │ Chip: IDT 92HD99BXX                                                                                                                           F2:  System information │
 │ View: F3:[Playback] F4: Capture  F5: All                                                                                                      F6:  Select sound card  │
@@ -71,7 +68,7 @@ Once ALSA is installed, we need to unmute the master channel for our sound card.
 │                                                                                                                                                                       │
 │                                                                                                                                                                       │
 │                                                                                                                                                                       │
-└───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘</code></pre>
+└───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘{{< /highlight >}}
 
 <hr/>
 <h3 id="ALSA_Services">3- ALSA Services</h3>
@@ -80,24 +77,24 @@ These are (alsa-restore, alsa-state, alsasound... etc). In most distros, these s
 <br/>
 <br/>
 Gentoo Linux (start and enable)
-<pre><code class="language-bash">service alsasound start
-rc-update add alsasound boot</code></pre>
+{{< highlight bash >}}service alsasound start
+rc-update add alsasound boot{{< /highlight >}}
 <br/>
 Void Linux (start and enable)
-<pre><code class="language-bash">sv start alsa
-ln -s /etc/sv/alsa /var/service/</code></pre>
+{{< highlight bash >}}sv start alsa
+ln -s /etc/sv/alsa /var/service/{{< /highlight >}}
 <br/>
 Arch Linux (start and enable)
-<pre><code class="language-bash">systemctl start alsa-restore.service
+{{< highlight bash >}}systemctl start alsa-restore.service
 systemctl start alsa-state.service
 systemctl enable alsa-restore.service
-systemctl enable alsa-state.service</code></pre>
+systemctl enable alsa-state.service{{< /highlight >}}
 <hr/>
 <h3 id="Default_Sound_Card_and_Sound_from_Multiple_Applications">4- Default Sound Card & Sound from Multiple Applications</h3>
 <br/>
 After you've done all the previous steps, ALSA should be working perfectly. Sound from multiple applications which is supported by alsa's dmix plugin is enabled by default. However, on some setups (like mine), the default sound card may not be your main sound card (for example HDMI and Intel HD Audio PCH):
-<pre><code class="language-bash">aplay -l</code></pre>
-<pre><code class="language-bash">**** List of PLAYBACK Hardware Devices ****
+{{< highlight bash >}}aplay -l{{< /highlight >}}
+{{< highlight bash >}}**** List of PLAYBACK Hardware Devices ****
 card 0: HDMI [HDA Intel HDMI], device 3: HDMI 0 [HDMI 0]
   Subdevices: 1/1
   Subdevice #0: subdevice #0
@@ -110,25 +107,25 @@ card 0: HDMI [HDA Intel HDMI], device 8: HDMI 2 [HDMI 2]
 card 1: PCH [HDA Intel PCH], device 0: 92HD99BXX Analog [92HD99BXX Analog]
   Subdevices: 1/1
   Subdevice #0: subdevice #0
-</code></pre>
+{{< /highlight >}}
 <br/>
 The HDMI soundcard is given an index of 0, and your main PCH soundcard is given an index of 1. Thus the default card chosen by ALSA is the HDMI card. Therefore, you'll hear nothing. To fix this, first we need to tell if the soundcard drivers and codecs are built into the kernel or left as modules.
 <br/>
 <br/>
 In the latter, we can easily fix this problem by specifying our default sound card as a kernel parameter. Create a file in /etc/modprobe.d called alsa.conf or whatever_you_like.conf:
-<pre><code class="language-bash">touch /etc/modprobe.d/alsa.conf</code></pre>
+{{< highlight bash >}}touch /etc/modprobe.d/alsa.conf{{< /highlight >}}
 <br/>
 And put the following in it:
-<pre><code class="language-properties">options snd-hda-intel index=1,0</code></pre>
+{{< highlight vim >}}options snd-hda-intel index=1,0{{< /highlight >}}
 <br/>
 This swaps the index numbers of both cards giving your main PCH sound card an index of 0, and your HDMI soundcard an index of 1.
 <br/>
 <br/>
 However, if your soundcard drivers and codecs are built into the kernel. That previous line won't do a thing. You have to tell ALSA when you're starting an X session which card you want to use as your default soundcard. Therefore you need to create a file in your home directory called .asoundrc:
-<pre><code class="language-bash">touch ~/.asoundrc</code></pre>
+{{< highlight bash >}}touch ~/.asoundrc{{< /highlight >}}
 <br/>
 Now here's a custom configuration that I use to swap both cards, and enable sound from multiple applications without sacrificing any sound quality whatsoever:
-<pre class="line-numbers"><code class="language-properties">pcm.!default {
+{{< highlight vim "linenos=inline,hl_lines=10" >}}pcm.!default {
 	type plug
 	slave.pcm "dmixer"
 }
@@ -152,22 +149,22 @@ pcm.dmixer  {
 ctl.dmixer {
 	type hw
 	card PCH
-}</code></pre>
+}{{< /highlight >}}
 <hr/>
 <h3 id="Controlling_Volume_using_shortcut_keys_on_dwm">(Optional) Controlling Volume using shortcut keys on dwm</h3>
 Let's start by adding this to the commands section (Remeber we need to specify our default sound card in our previous case):
-<pre class="line-numbers"><code class="language-c">/* commands */
+{{< highlight c "linenos=inline" >}}/* commands */
 static const char *voldwcmd[]  = { "amixer", "-c", "PCH", "set", "Master", "1%-", NULL};
 static const char *volupcmd[]  = { "amixer", "-c", "PCH", "set", "Master", "1%+", NULL};
 static const char *volmcmd[]  = { "amixer", "-c", "PCH", "set", "Master", "toggle", NULL};
-</code></pre>
+{{< /highlight >}}
 <br/>
 This defines 3 character arrays that will hold our volume controlling commands respectively.
 <br/>
 <br/>
 Now, let's map these commands to the hexadecimal code of your multimedia volume keys. To find out the hexadecimal code of your multimedia volume keys, fire up a terminal in a X session, focus on the shown window, press your shortcut keys and copy the codes. You should get something like this:
-<pre><code class="language-bash">xev</code></pre>
-<pre data-line="3, 9, 15"><code class="language-vim">KeyRelease event, serial 32, synthetic NO, window 0xe00001,
+{{< highlight bash >}}xev{{< /highlight >}}
+{{< highlight vim "linenos=inline,hl_lines=3 9 15" >}}KeyRelease event, serial 32, synthetic NO, window 0xe00001,
     root 0xd4, subw 0xe00002, time 4421968, (57,25), root:(1111,260),
     state 0x0, keycode 122 (keysym 0x1008ff11, XF86AudioLowerVolume), same_screen YES,
     XLookupString gives 0 bytes:
@@ -184,10 +181,10 @@ KeyPress event, serial 32, synthetic NO, window 0xe00001,
     state 0x0, keycode 121 (keysym 0x1008ff12, XF86AudioMute), same_screen YES,
     XLookupString gives 0 bytes:
     XmbLookupString gives 0 bytes:
-    XFilterEvent returns: False</code></pre>
+    XFilterEvent returns: False{{< /highlight >}}
 <br/>
 Then we'll add this entry to the modifiers section:
-<pre class="line-numbers"><code class="language-c">/* modifier                     key        function        argument */
+{{< highlight c "linenos=inline" >}}/* modifier                     key        function        argument */
 { 0,                            0x1008ff11,	   spawn,          {.v = voldwcmd } },
-{ 0,             	            0x1008ff13,	   spawn,          {.v = volupcmd } },
-{ 0,                            0x1008ff12,	   spawn,          {.v = volmcmd } },</code></pre>
+{ 0,             	          0x1008ff13,	   spawn,          {.v = volupcmd } },
+{ 0,                            0x1008ff12,	   spawn,          {.v = volmcmd } },{{< /highlight >}}

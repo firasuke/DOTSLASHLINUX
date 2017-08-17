@@ -14,23 +14,18 @@ In this article I'll show you how to get your urxvt daemon up and running, and g
 <h3 id="Installation">1- Installation</h3>
 <br/>
 Gentoo Linux:
-
-<pre><code class="language-bash">emerge --ask --update --newuse x11-terms/rxvt-unicode</code></pre>
-
+{{< highlight bash >}}emerge --ask --update --newuse x11-terms/rxvt-unicode{{< /highlight >}}
 Void Linux:
-
-<pre><code class="language-bash">xbps-install -S rxvt-unicode</code></pre>
-
+{{< highlight bash >}}xbps-install -S rxvt-unicode{{< /highlight >}}
 Arch Linux:
-
-<pre><code class="language-bash">pacman -Syu rxvt-unicode</code></pre>
+{{< highlight bash >}}pacman -Syu rxvt-unicode{{< /highlight >}}
 <hr/>
 <h3 id="Starting_the_urxvt_daemon">2- Starting the urxvt daemon</h3>
 <br/>
 Once urxvt is installed, we should enable and start its daemon.
 
 Assuming you've read our xinit configuration guide, paste the following line of span in your ~/.xinitrc just before your dwm or openbox session:
-<pre><code class="language-bash">urxvtd --quiet --opendisplay --fork &</code></pre>
+{{< highlight bash >}}urxvtd --quiet --opendisplay --fork &{{< /highlight >}}
 This will start the urxvt daemon every time the X server is started via startx.
 <hr/>
 <h3 id="Configuring_urxvtc">3- Configuring urxvtc</h3>
@@ -39,7 +34,7 @@ Let's face it, urxvt looks hideous out of the box with that super small font and
 
 Here's this useful piece of code:
 <br/>
-<pre><code class="language-bash">urxvtc -bg black -fg white -sr -fn "xft:DejaVu Sans Mono:pixelsize=15,style=Book"</code></pre>
+{{< highlight bash >}}urxvtc -bg black -fg white -sr -fn "xft:DejaVu Sans Mono:pixelsize=15,style=Book"{{< /highlight >}}
 This will start the urxvt client(s), with the following options (black background color, white text color, scrollbar to the right side, DejaVu Sans Book font with a size of 15 pixels).
 <br/>
 <br/>
@@ -48,35 +43,35 @@ You need to have dejavu fonts installed in order for this to work. You can alway
 Now keep in mind that whenever you need to launch urxvtc you need to use these options, so it's highly recommended that you map them to your prefered shortcut keys.
 
 Another configuration made especially for use in dwm on gentoo (paste it in your ~/.Xresources):
-<pre class="line-numbers"><code class="language-properties">urxvt*font:             xft:Terminus:size=10
-urxvt*termName:               rxvt
-urxvt*background:             #33393b
-urxvt*foreground:             white
-urxvt*scrollBar:              false
-urxvt*perl-lib:               /usr/lib/urxvt/perl/
-urxvt*perl-ext-common:        default,matcher
-urxvt*urlLauncher:            /usr/bin/firefox
-urxvt*matcher.button:         1
+{{< highlight vim "linenos=inline">}}urxvt*font:                  xft:Terminus:size=10
+urxvt*termName:              rxvt
+urxvt*background:            #33393b
+urxvt*foreground:            white
+urxvt*scrollBar:             false
+urxvt*perl-lib:              /usr/lib/urxvt/perl/
+urxvt*perl-ext-common:       default,matcher
+urxvt*urlLauncher:           /usr/bin/firefox
+urxvt*matcher.button:        1
 
-Xft*dpi:                      96
-Xft*antialias:                true
-Xft*hinting:                  true
-Xft*hintstyle:		          hintfull
-Xft*rgba:		              rgb
+Xft*dpi:                     96
+Xft*antialias:               true
+Xft*hinting:                 true
+Xft*hintstyle:		hintfull
+Xft*rgba:		        rgb
 
-URxvt.transparent:   	      false
-URxvt.tintColor:     	      #54487a
-URxvt.shading:       	      100
-URxvt.inheritPixmap: 	      false
-URxvt.fading: 		          100
-URxvt.saveLines: 	          50000
+URxvt.transparent:   	false
+URxvt.tintColor:     	#54487a
+URxvt.shading:       	100
+URxvt.inheritPixmap:         false
+URxvt.fading:   	        100
+URxvt.saveLines: 	        50000
 
-URxvt*scrollTtyOutput: 	    false
-URxvt*scrollWithBuffer:     true
-URxvt*scrollTtyKeypress:    true
+URxvt*scrollTtyOutput: 	false
+URxvt*scrollWithBuffer:      true
+URxvt*scrollTtyKeypress:     true
 
 URxvt*color0:      	        #000000
-URxvt*color1:       	    #9e1828
+URxvt*color1:       	        #9e1828
 URxvt*color2:      	        #aece92
 URxvt*color3:      	        #968a38
 URxvt*color4:      	        #414171
@@ -91,17 +86,17 @@ URxvt*color12:     	        #4186be
 URxvt*color13:     	        #cf9ebe
 URxvt*color14:     	        #71bebe
 URxvt*color15:     	        #ffffff
-</code></pre>
+{{< /highlight >}}
 <br/>
 If these settings aren't being loaded (or are reset), then add the following to your .xinitrc file:
-<pre><code class="language-properties">[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources</code></pre>
+{{< highlight vim >}}[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources{{< /highlight >}}
 <hr/>
 <h3 id="Mapping_urxvtc_to_a_shortcut_key_on_dwm">(Optional) Mapping urxvtc to a shortcut key on dwm</h3>
 <br/>
 Let's start by adding this to the commands section:
-<pre class="line-numbers"><code class="language-c">/* commands */
-static const char *termcmd[]  = { "urxvtc", NULL};
-</code></pre>
+{{< highlight c "linenos=inline" >}}/* commands */
+static const char *termcmd[]  = { "urxvtc", NULL};{{< /highlight >}}
+<br/>
 Then let's add this entry to the modifiers section (In our case the shortcut keys will be ALT + x):
-<pre class="line-numbers"><code class="language-c">/* modifier                     key        function        argument */
-{ MODKEY,	                XK_x, 	   spawn,          {.v = termcmd } },</code></pre>
+{{< highlight c "linenos=inline" >}}/* modifier                     key        function        argument */
+{ MODKEY,	                XK_x, 	   spawn,          {.v = termcmd } },{{< /highlight >}}
