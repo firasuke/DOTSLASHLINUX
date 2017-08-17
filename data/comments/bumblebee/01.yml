@@ -2,4 +2,4 @@ order: 1
 replying_to: ''
 name: Drakkar
 comment: "Hi. I am Spanish and I am writing from the Google translator, I hope it is understood well. I followed your tutorial and I never turned off the Nvidia card, it always stays on.\r\n\"cat /proc/acpi/bbswitch \r\n0000:01:00.0 ON \"\r\nE followed the tutorial step by step. And the only way I have to shut down my Nvidia is this way\r\n\"rmmod nvidia\r\nrmmod nvidia_modeset\r\ntee /proc/acpi/bbswitch <<< OFF \"\r\nEven without having switched it on before, bbswitch does not seem to be working.\r\nIf you could lend me a hand I would be grateful.\r\nregards"
-date: '2017-07-09T10:24:19.302Z'
+date: '2017-07-09'

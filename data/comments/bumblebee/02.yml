@@ -1,17 +1,16 @@
 order: 2
 replying_to: '1'
 name: DOTSLASHLINUX
-comment: >-
-  @Drakkar, Hey there, thanks for reading the article above. Yes, I completely
+comment: "@Drakkar, Hey there, thanks for reading the article above. Yes, I completely
   understood what you said. As I mentioned above, setting up bumblebee on Gentoo
-  GNU/Linux can really be a hassle. Looks like "nvidia_modeset" is being loaded
-  along side "nvidia", this may prevent bbswitch from correctly turning off the
+  GNU/Linux can really be a hassle. Looks like <mark>nvidia_modeset</mark> is being loaded
+  along side <mark>nvidia</mark>, this may prevent bbswitch from correctly turning off the
   card after boot and will definitely prevent bumblebee from turning off the
   card using bbswitch after using optirun unless you're using a patched version of bumblebee. 
-  I listed my USE flags above and I recommend that you disable the "kms" USE flag for "nvidia-drivers" package and
-  re-emerge it again. Disabling "kms" should remove the "nvidia-modeset" kernel
-  module. Another thing to do would be to double check if "bumblebee" -the service- is
+  I listed my USE flags above and I recommend that you disable the <mark>kms</mark> USE flag for <mark>nvidia-drivers</mark>
+  package and re-emerge it again. Disabling <mark>kms</mark> should remove the <mark>nvidia-modeset</mark> kernel
+  module. Another thing to do would be to double check if <mark>bumblebee</mark> -the service- is
   actually running or not. Might as well confirm that the USE flags on your
   packages match the ones listed in the article above. Hope this helps! Best of
-  luck!
-date: '2017-07-09T11:31:02.121Z'
+  luck!"
+date: '2017-07-09'

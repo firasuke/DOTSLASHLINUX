@@ -1,8 +1,7 @@
 order: 10
 replying_to: '9'
 name: DOTSLASHLINUX
-comment: >-
-  @Michael Mounteney, thanks for visiting the website. After reading through the
+comment: "@Michael Mounteney, thanks for visiting the website. After reading through the
   log files you provided, it seems that bbswitch doesn't want to switch the
   nvidia card OFF leaving the card always ON (in D0 power state). I'm not sure I
   fully understood the problem you're going through. Is it related to bumblebee
@@ -13,5 +12,5 @@ comment: >-
   noticed that you enabled both uxa and sna USE flags on xf86-video-intel. It'd
   be better if you disabled the uxa USE flag and check if you're using sna as your
   acceleration method as it may have something to do with your problem. Thanks for 
-  passing by! Have a great day!
-date: '2017-07-23T15:21:11.030Z'
+  passing by! Have a great day!"
+date: '2017-07-23'
