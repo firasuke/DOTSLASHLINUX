@@ -14,18 +14,24 @@ In this article I'll show you how to get your urxvt daemon up and running, and g
 <h3 id="Installation">1- Installation</h3>
 <br/>
 Gentoo Linux:
-{{< highlight bash >}}emerge --ask --update --newuse x11-terms/rxvt-unicode{{< /highlight >}}
+```none
+emerge --ask --update --newuse x11-terms/rxvt-unicode
+```
 Void Linux:
-{{< highlight bash >}}xbps-install -S rxvt-unicode{{< /highlight >}}
+```none
+xbps-install -S rxvt-unicode
+```
 Arch Linux:
-{{< highlight bash >}}pacman -Syu rxvt-unicode{{< /highlight >}}
+```none
+pacman -Syu rxvt-unicode
+```
 <hr/>
 <h3 id="Starting_the_urxvt_daemon">2- Starting the urxvt daemon</h3>
 <br/>
-Once urxvt is installed, we should enable and start its daemon.
-
-Assuming you've read our xinit configuration guide, paste the following line of span in your ~/.xinitrc just before your dwm or openbox session:
-{{< highlight bash >}}urxvtd --quiet --opendisplay --fork &{{< /highlight >}}
+Once urxvt is installed, we should enable and start its daemon.Assuming you've read our xinit configuration guide, paste the following line of span in your ~/.xinitrc just before your dwm or openbox session:
+```none
+urxvtd --quiet --opendisplay --fork &
+```
 This will start the urxvt daemon every time the X server is started via startx.
 <hr/>
 <h3 id="Configuring_urxvtc">3- Configuring urxvtc</h3>
@@ -34,7 +40,9 @@ Let's face it, urxvt looks hideous out of the box with that super small font and
 
 Here's this useful piece of code:
 <br/>
-{{< highlight bash >}}urxvtc -bg black -fg white -sr -fn "xft:DejaVu Sans Mono:pixelsize=15,style=Book"{{< /highlight >}}
+```bash
+urxvtc -bg black -fg white -sr -fn "xft:DejaVu Sans Mono:pixelsize=15,style=Book"
+```
 This will start the urxvt client(s), with the following options (black background color, white text color, scrollbar to the right side, DejaVu Sans Book font with a size of 15 pixels).
 <br/>
 <br/>
@@ -43,7 +51,8 @@ You need to have dejavu fonts installed in order for this to work. You can alway
 Now keep in mind that whenever you need to launch urxvtc you need to use these options, so it's highly recommended that you map them to your prefered shortcut keys.
 
 Another configuration made especially for use in dwm on gentoo (paste it in your ~/.Xresources):
-{{< highlight vim "linenos=inline">}}urxvt*font:                  xft:Terminus:size=10
+```none,line-numbers
+urxvt*font:                  xft:Terminus:size=10
 urxvt*termName:              rxvt
 urxvt*background:            #33393b
 urxvt*foreground:            white
@@ -86,17 +95,23 @@ URxvt*color12:     	        #4186be
 URxvt*color13:     	        #cf9ebe
 URxvt*color14:     	        #71bebe
 URxvt*color15:     	        #ffffff
-{{< /highlight >}}
+```
 <br/>
 If these settings aren't being loaded (or are reset), then add the following to your .xinitrc file:
-{{< highlight vim >}}[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources{{< /highlight >}}
+```none
+[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+```
 <hr/>
 <h3 id="Mapping_urxvtc_to_a_shortcut_key_on_dwm">(Optional) Mapping urxvtc to a shortcut key on dwm</h3>
 <br/>
 Let's start by adding this to the commands section:
-{{< highlight c "linenos=inline" >}}/* commands */
-static const char *termcmd[]  = { "urxvtc", NULL};{{< /highlight >}}
+```c,line-numbers
+/* commands */
+static const char *termcmd[]  = { "urxvtc", NULL};
+```
 <br/>
 Then let's add this entry to the modifiers section (In our case the shortcut keys will be ALT + x):
-{{< highlight c "linenos=inline" >}}/* modifier                     key        function        argument */
-{ MODKEY,	                XK_x, 	   spawn,          {.v = termcmd } },{{< /highlight >}}
+```c,line-numbers
+/* modifier                     key        function        argument */
+{ MODKEY,	                XK_x, 	   spawn,          {.v = termcmd } },
+```

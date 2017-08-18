@@ -30,7 +30,6 @@ paginatePath =                "page"
 pluralizeListTitles =         true
 preserveTaxonomyNames =       false
 publishdir =                  "public"
-pygmentsUseClasses =          true
 staticDir =                   "static"
 stepAnalysis =                false
 title =                       "Are You Ready? (Y/Y)"
