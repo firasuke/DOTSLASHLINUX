@@ -65,36 +65,36 @@ urxvt*matcher.button:        1
 Xft*dpi:                     96
 Xft*antialias:               true
 Xft*hinting:                 true
-Xft*hintstyle:		hintfull
-Xft*rgba:		        rgb
+Xft*hintstyle:               hintfull
+Xft*rgba:                    rgb
 
-URxvt.transparent:   	false
-URxvt.tintColor:     	#54487a
-URxvt.shading:       	100
+URxvt.transparent:           false
+URxvt.tintColor:             #54487a
+URxvt.shading:               100
 URxvt.inheritPixmap:         false
-URxvt.fading:   	        100
-URxvt.saveLines: 	        50000
+URxvt.fading:                100
+URxvt.saveLines:             50000
 
-URxvt*scrollTtyOutput: 	false
+URxvt*scrollTtyOutput:       false
 URxvt*scrollWithBuffer:      true
 URxvt*scrollTtyKeypress:     true
 
-URxvt*color0:      	        #000000
-URxvt*color1:       	        #9e1828
-URxvt*color2:      	        #aece92
-URxvt*color3:      	        #968a38
-URxvt*color4:      	        #414171
-URxvt*color5:      	        #963c59
-URxvt*color6:      	        #418179
-URxvt*color7:      	        #bebebe
-URxvt*color8:      	        #666666
-URxvt*color9:      	        #cf6171
-URxvt*color10:     	        #c5f779
-URxvt*color11:     	        #fff796
-URxvt*color12:     	        #4186be
-URxvt*color13:     	        #cf9ebe
-URxvt*color14:     	        #71bebe
-URxvt*color15:     	        #ffffff
+URxvt*color0:      	         #000000
+URxvt*color1:                #9e1828
+URxvt*color2:      	         #aece92
+URxvt*color3:      	         #968a38
+URxvt*color4:      	         #414171
+URxvt*color5:      	         #963c59
+URxvt*color6:      	         #418179
+URxvt*color7:      	         #bebebe
+URxvt*color8:      	         #666666
+URxvt*color9:      	         #cf6171
+URxvt*color10:     	         #c5f779
+URxvt*color11:     	         #fff796
+URxvt*color12:     	         #4186be
+URxvt*color13:     	         #cf9ebe
+URxvt*color14:     	         #71bebe
+URxvt*color15:     	         #ffffff
 ```
 <br/>
 If these settings aren't being loaded (or are reset), then add the following to your .xinitrc file:
