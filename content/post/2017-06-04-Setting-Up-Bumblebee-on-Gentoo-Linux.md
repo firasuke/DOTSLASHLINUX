@@ -21,7 +21,6 @@ When we talk bumblebee, several things should come to one's mind:
 <li>Your user must be added to the following groups <mark>video</mark> and <mark>bumblebee</mark>.</li>
 <li>You should enable the service <mark>bumblebee</mark>.</li>
 </ol>
-
 On Gentoo, extra steps are required to get bumblebee working, but guess what, you won't be going back to Arch Linux ever again because bumblebee on Gentoo is hard to setup.
 <br/>
 <br/>
@@ -31,18 +30,20 @@ Before we get started, I want to point out that bumblebee is a fairly old projec
 <br/>
 This is pretty much straightforward. If you have an intel processor (2nd Gen +) and a NVIDIA gpu, then you probably have optimus on your laptop. For those who want to check fire up your favorite terminal and run:
 
-{{< highlight bash >}}lspci -k{{< /highlight >}}
-{{< highlight bash "linenos=inline,hl_lines= 2 5" >}}...
+```none
+lspci -k
+```
+```none
+...
 00:02.0 VGA compatible controller: Intel Corporation 4th Gen Core Processor Integrated Graphics Controller (rev 06)
 	Subsystem: Toshiba America Info Systems 4th Gen Core Processor Integrated Graphics Controller
 	Kernel driver in use: i915
 01:00.0 3D controller: NVIDIA Corporation GK208M [GeForce GT 740M] (rev ff)
 ...
-{{< /highlight >}}
+```
 <br/>
 In my case I'm using an <mark>Intel HD4600</mark> (cpu is 4th Gen Core i7 4700MQ) as my iGPU and my dGPU is a <mark>NVIDIA GT740M</mark>.
 <br/>
-
 Don't worry if your drivers in use (for now) are different, in my case I have built-in modules and my NVIDIA card is OFF (NVIDIA driver isn't loaded at boot which means bumblebee is working perfectly).
 <br/>
 <br/>
@@ -63,19 +64,27 @@ Make sure that <mark>CONFIG_MODULES=y</mark> and <mark>CONFIG_MODULE_UNLOAD=y</m
 <br/>
 Now make sure that you have the following in your <mark>/etc/portage/make.conf</mark>:
 <br/>
-{{< highlight bash >}}vim /etc/portage/make.conf{{< /highlight >}}
-{{< highlight properties "linenos=inline,hl_lines=2" >}}...
+```none
+vim /etc/portage/make.conf
+```
+```none
+...
 VIDEO_CARDS="intel i965 nvidia"
-...{{< /highlight >}}
+...
+```
 <br/>
 In most cases using <mark>i965</mark> should be fine, however if you were using an older card then please check the following <a href="https://wiki.gentoo.org/wiki/Intel#Feature_support" target="_blank">Intel Feature Support on Gentoo Linux</a>.
 <br/>
 <br/>
 Now sync and update your system:
-{{< highlight bash >}}emerge --sync && emerge -avuDN @world{{< /highlight >}}
+```none
+emerge --sync && emerge -avuDN @world
+```
 <br/>
 Now simply reboot your system, and continue this article.
-{{< highlight bash >}}shutdown -r now{{< /highlight >}}
+```bash
+shutdown -r now
+```
 <hr/>
 <h3>4- Installation</h3>
 <br/>
@@ -83,17 +92,23 @@ For the installation part, we need 3 packages, <mark>bumblebee</mark>,<mark>prim
 <br/>
 <br/>
 Fire up your favorite text editor, and make sure your <mark>/etc/portage/package.accept_keywords</mark> -(which in my case is a single file and not a directory)- contains the following:
-{{< highlight vim >}}=sys-power/bbswitch-9999 **
+```none,line-numbers
+=sys-power/bbswitch-9999 **
 =x11-misc/bumblebee-9999 **
-=x11-misc/primus-0.2 ~amd64 {{< /highlight >}}
+=x11-misc/primus-0.2 ~amd64
+```
 <br/>
 Now simply run:
-{{< highlight bash >}}emerge -av bbswitch primus bumblebee{{< /highlight >}}
+```none
+emerge -av bbswitch primus bumblebee
+```
 <hr/>
 <h3>5- Adding Your User to the Groups video and bumblebee</h3>
 <br/>
 After installing the previous packages, add your <mark>USER</mark> to the groups <mark>video</mark> and <mark>bumblebee</mark>:
-{{< highlight bash >}}gpasswd -a USER video && gpasswd -a USER bumblebee{{< /highlight >}}
+```none
+gpasswd -a USER video && gpasswd -a USER bumblebee
+```
 <br/>
 Don't forget to replace <mark>USER</mark> with your real username.
 <br/>
@@ -110,8 +125,11 @@ You see it depends on xdm to make sure that bumblebee isn't started if there's n
 <br/>
 Open a terminal emulator and edit <mark>/etc/init.d/bumblebee</mark> with your favorite editor (vim is my favorite editor now), and delete the first 5 lines (or their equivalent; the depend() part) as shown below:
 <br/>
-{{< highlight bash >}}vim /etc/init.d/bumblebee{{< /highlight >}}
-{{< highlight bash "linenos=inline,hl_lines= 1 2 3 4 5" >}}depend() {
+```none
+vim /etc/init.d/bumblebee
+```
+```none,line-numbers
+depend() {
     need xdm
     need vgl
 	after sshd
@@ -124,30 +142,32 @@ start() {
 }
 
 stop() {
-
 	ebegin "Stopping BumbleBee Daemon"
 		start-stop-daemon -K -p "${PIDFILE}" -R SIGTERM/10
 	eend $?
-}{{< /highlight >}}
+}
+```
 <br/>
 So your file should look like this:
-{{< highlight bash "linenos=inline" >}}start() {
+```none,line-numbers
+start() {
 	ebegin "Starting BumbleBee Daemon"
 		start-stop-daemon -S -p "${PIDFILE}" -x /usr/sbin/bumblebeed -- -D ${BUMBLEBEE_EXTRA_OPTS} --pidfile "${PIDFILE}"
 	eend $?
 }
 
 stop() {
-
 	ebegin "Stopping BumbleBee Daemon"
 		start-stop-daemon -K -p "${PIDFILE}" -R SIGTERM/10
 	eend $?
-}{{< /highlight >}}
+}
+```
 <hr/>
 <h3>7- Modifying /etc/bumblebee/bumblebee.conf</h3>
 <br/>
 We need to change some of the default settings that bumblebee uses, start that terminal emulator and with your favorite editor (vim), edit the file <mark>/etc/bumblebee/bumblebee.conf</mark>:
-{{< highlight properties "linenos=inline,hl_lines=10 22 30 33 55 56" >}}# Configuration file for Bumblebee. Values should **not** be put between quotes
+```none,line-numbers
+# Configuration file for Bumblebee. Values should **not** be put between quotes
 
 ## Server options. Any change made in this section will need a server restart
 # to take effect.
@@ -209,9 +229,9 @@ LibraryPath=/usr/lib64/opengl/nvidia/lib:/usr/lib/opengl/nvidia/lib
 # default Xorg modules path
 XorgModulePath=/usr/lib64/opengl/nvidia/lib,/usr/lib64/opengl/nvidia/extensions,/usr/lib64/xorg/modules/drivers,/usr/lib64/xorg/modules
 XorgConfFile=/etc/bumblebee/xorg.conf.nvidia
-{{< /highlight >}}
+```
 <br/>
-I've highlited the lines that you should check, just make sure that:
+I've highlighted the lines that you should check, just make sure that:
 	<br/>
 	<br/>
 	KeepUnusedXServer=false
@@ -230,10 +250,14 @@ I've highlited the lines that you should check, just make sure that:
 <h3>8- Enabling and Starting bumblebee Service</h3>
 <br/>
 Simply add the service <mark>bumblebee</mark> to the runlevel <mark>default</mark>:
-{{< highlight bash >}}rc-update add bumblebee default{{< /highlight >}}
+```none
+rc-update add bumblebee default
+```
 <br/>
 Now simply reboot and you should be good to go!
-{{< highlight bash >}}shutdown -r now{{< /highlight >}}
+```bash
+shutdown -r now
+```
 <hr/>
 <h3>(Optional) Checking if bumblebee is Working</h3>
 <br/>
@@ -241,17 +265,26 @@ If you've followed along with this article then your bumblebee setup should be w
 <br/>
 <br/>
 To test our bumblebee configuration, install the package <mark>mesa-progs</mark>:
-{{< highlight bash >}}emerge -av mesa-progs{{< /highlight >}}
+```none
+emerge -av mesa-progs
+```
 <br/>
 Now before testing anything the NVIDIA card should be OFF, and the nvidia module shouldn't be loaded, instead the module bbswitch should be loaded. To double check fire up that terminal emulator and run:
-{{< highlight bash >}}lsmod{{< /highlight >}}
-{{< highlight bash "hl_lines=2" >}}Module                  Size  Used by
+```bash
+lsmod
+```
+```bash
+Module                  Size  Used by
 bbswitch                5461  0
-{{< /highlight >}}
+```
 <br/>
 then run:
-{{< highlight bash >}}cat /proc/acpi/bbswitch{{< /highlight >}}
-{{< highlight vim >}}0000:01:00.0 OFF{{< /highlight >}}
+```bash
+cat /proc/acpi/bbswitch
+```
+```none
+0000:01:00.0 OFF
+```
 <br/>
 As you can see:
 <br/>
@@ -266,30 +299,45 @@ Now let's check if the NVIDIA card will be switched ON and the nvidia module wil
 <br/>
 <br/>
 Inside your terminal emulator (and while you're running in a Xorg session... obviously...) run:
-{{< highlight bash >}}optirun glxgears{{< /highlight >}}
+```none
+optirun glxgears
+```
 <br/>
 or (but not both):
-{{< highlight bash >}}primusrun glxgears{{< /highlight >}}
+```none
+primusrun glxgears
+```
 <br/>
 A window showing glxgears should open. While it's running check the following:
-{{< highlight bash >}}lsmod{{< /highlight >}}
-{{< highlight bash "hl_lines= 2 3" >}}Module                  Size  Used by
+```none
+ilsmod
+```
+```none
+Module                  Size  Used by
 nvidia              10652360  51
 bbswitch                5461  0
-{{< /highlight >}}
+```
 <br/>
 and:
-{{< highlight bash >}}cat /proc/acpi/bbswitch{{< /highlight >}}
-{{< highlight vim >}}0000:01:00.0 ON{{< /highlight >}}
+```bash
+cat /proc/acpi/bbswitch
+```
+```none
+0000:01:00.0 ON
+```
 <br/>
 Notice how the nvidia module got loaded and the card switched on. Now end the running glxgears and do a simple check, the card should be OFF and the nvidia module should be unloaded and bbswitch will stay loaded.
 <br/>
 <br/>
 Some of you may say that using vgl gets me more fps when running glxgears or any benchmark application. That is simply not the case as vgl doesn't adjust itself to the screen's refresh rate like primus does. Try running the following and see how primus crushes vgl:
-{{< highlight bash >}}vblank_mode=0 primusrun glxgears{{< /highlight >}}
+```none
+vblank_mode=0 primusrun glxgears
+```
 <br/>
 If your card was refusing to turn OFF and the nvidia module is still loaded upon finishing the execution, then run the following:
-{{< highlight bash >}}rmmod nvidia && echo "OFF" >> /proc/acpi/bbswitch{{< /highlight >}}
+```bash
+rmmod nvidia && echo "OFF" >> /proc/acpi/bbswitch
+```
 <hr/>
 <h3>(Optional) USE Flags</h3>
 <br/>
@@ -297,7 +345,11 @@ For those of you that are wondering what USE flags I'm using for my packages:
 <br/>
 <br/>
 For <mark>nvidia-drivers</mark>(notice how I disabled <mark>uvm</mark> and <mark>kms</mark> USE flags, as they can lead to errors when unloading the nvidia module unless you're using a patched version of bumblebee):
-{{< highlight properties "linenos=inline,hl_lines=3 4 5 6 7 11" >}} * Found these USE flags for x11-drivers/nvidia-drivers-381.22:
+```none
+equery u nvidia-drivers
+```
+```none
+* Found these USE flags for x11-drivers/nvidia-drivers-381.22:
  U I
  + + X           : Install the X.org driver, OpenGL libraries, XvMC libraries, and VDPAU libraries
  + + acpi        : Add support for Advanced Configuration and Power Interface
@@ -310,10 +362,14 @@ For <mark>nvidia-drivers</mark>(notice how I disabled <mark>uvm</mark> and <mark
  + + tools       : Install additional tools such as nvidia-settings
  - - uvm         : Install the Unified Memory kernel module (nvidia-uvm) for sharing memory between CPU and GPU in CUDA programs
  - - wayland     : Enable dev-libs/wayland backend
-{{< /highlight >}}
+```
 <br/>
 For <mark>xf86-video-intel</mark>:
-{{< highlight properties "linenos=inline,hl_lines=5 6 8 10" >}} * Found these USE flags for x11-drivers/xf86-video-intel-2.99.917_p20170313:
+```none
+equery u xf86-video-intel
+```
+```none
+* Found these USE flags for x11-drivers/xf86-video-intel-2.99.917_p20170313:
  U I
  - - debug : Enable extra debug codepaths, like asserts and extra output. If you want to get meaningful backtraces see
              https://wiki.gentoo.org/wiki/Project:Quality_Assurance/Backtraces
@@ -325,15 +381,19 @@ For <mark>xf86-video-intel</mark>:
  + + udev  : Enable virtual/udev integration (device discovery, power and storage device support, etc)
  - - uxa   : Enable UMA Acceleration Architecture
  + + xvmc  : Enables X-Video Motion Compensation support
-{{< /highlight >}}
+```
 <br/>
 For <mark>bumblebee</mark>:
-{{< highlight properties "linenos=inline,hl_lines=3 5" >}} * Found these USE flags for x11-misc/bumblebee-3.2.1:
+```none
+equery u bumblebee
+```
+```none
+* Found these USE flags for x11-misc/bumblebee-3.2.1:
  U I
  + + bbswitch            : Add dependency on sys-power/bbswitch for PM feature
  - - video_cards_nouveau : VIDEO_CARDS setting to build reverse-engineered driver for nvidia cards
  + + video_cards_nvidia  : VIDEO_CARDS setting to build driver for nvidia video cards
-{{< /highlight >}}
+```
 <hr/>
 <h3>Conclusion</h3>
 <br/>
