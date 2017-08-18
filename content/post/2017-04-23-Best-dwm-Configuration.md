@@ -129,44 +129,44 @@ static const char *brtupcmd[]  = { "xbacklight","+10", NULL};
 
 /* shortcut keys */
 static Key keys[] = {
-	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,	                	XK_x, 	   spawn,          {.v = termcmd } },
-	{ MODKEY,	       	       		XK_w,      spawn,          {.v = webcmd } },
-    { MODKEY,                       XK_e,	   spawn,          {.v = filecmd } },
-    { 0,                            0x1008ff03,         spawn,          {.v = brtdwncmd } },
-    { 0,                            0x1008ff02,         spawn,          {.v = brtupcmd } },
-    { 0,                            0x1008ff11,	   		spawn,          {.v = voldwcmd } },
-    { 0,             	        	0x1008ff13,	   		spawn,          {.v = volupcmd } },
-    { 0,                            0x1008ff12,	   		spawn,          {.v = volmcmd } },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_p,      incnmaster,     {.i = -1 } },
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY,                       XK_Return, zoom,           {0} },
-	{ MODKEY,                       XK_Tab,    view,           {0} },
+	/* modifier                     key             function        argument */
+	{ MODKEY,                       XK_d,           spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_x, 	        spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_w,           spawn,          {.v = webcmd } },
+    { MODKEY,                       XK_e,	        spawn,          {.v = filecmd } },
+    { 0,                            0x1008ff03,     spawn,          {.v = brtdwncmd } },
+    { 0,                            0x1008ff02,     spawn,          {.v = brtupcmd } },
+    { 0,                            0x1008ff11,	    spawn,          {.v = voldwcmd } },
+    { 0,             	        	0x1008ff13,	   	spawn,          {.v = volupcmd } },
+    { 0,                            0x1008ff12,	    spawn,          {.v = volmcmd } },
+	{ MODKEY,                       XK_b,           togglebar,      {0} },
+	{ MODKEY,                       XK_j,           focusstack,     {.i = +1 } },
+	{ MODKEY,                       XK_k,           focusstack,     {.i = -1 } },
+	{ MODKEY,                       XK_i,           incnmaster,     {.i = +1 } },
+	{ MODKEY,                       XK_p,           incnmaster,     {.i = -1 } },
+	{ MODKEY,                       XK_h,           setmfact,       {.f = -0.05} },
+	{ MODKEY,                       XK_l,           setmfact,       {.f = +0.05} },
+	{ MODKEY,                       XK_Return,      zoom,           {0} },
+	{ MODKEY,                       XK_Tab,         view,           {0} },
 	/* Since I use Shift+Alt to switch keyboard layouts I've changed ShiftMask to ControlMask */
 	/* If you wanted to revert to the default configuration use this instead: */
-	/* { MODKEY|ShiftMask,           			XK_c,      killclient,     {0} }, */
-	{ MODKEY,           			XK_c,      killclient,     {0} },
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_space,  setlayout,      {0} },
-	{ MODKEY|ControlMask,           XK_space,  togglefloating, {0} },
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-	{ MODKEY|ControlMask,           XK_0,      tag,            {.ui = ~0 } },
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY|ControlMask,           XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|ControlMask,           XK_period, tagmon,         {.i = +1 } },
+	/* { MODKEY|ShiftMask,          XK_c,           killclient,     {0} }, */
+	{ MODKEY,           			XK_c,           killclient,     {0} },
+	{ MODKEY,                       XK_t,           setlayout,      {.v = &layouts[0]} },
+	{ MODKEY,                       XK_f,           setlayout,      {.v = &layouts[1]} },
+	{ MODKEY,                       XK_m,           setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_space,       setlayout,      {0} },
+	{ MODKEY|ControlMask,           XK_space,       togglefloating, {0} },
+	{ MODKEY,                       XK_0,           view,           {.ui = ~0 } },
+	{ MODKEY|ControlMask,           XK_0,           tag,            {.ui = ~0 } },
+	{ MODKEY,                       XK_comma,       focusmon,       {.i = -1 } },
+	{ MODKEY,                       XK_period,      focusmon,       {.i = +1 } },
+	{ MODKEY|ControlMask,           XK_comma,       tagmon,         {.i = -1 } },
+	{ MODKEY|ControlMask,           XK_period,      tagmon,         {.i = +1 } },
 	/* Since I use Shift+Alt to switch keyboard layouts I've changed ShiftMask to ControlMask */
 	/* If you wanted to revert to the default configuration use this instead: */
-	/* { MODKEY|ShiftMask,           XK_q,      quit,           {0} } */
-	{ MODKEY|ControlMask,           XK_q,      quit,           {0} }
+	/* { MODKEY|ShiftMask,          XK_q,           quit,           {0} } */
+	{ MODKEY|ControlMask,           XK_q,           quit,           {0} }
 };
 
 /* button definitions */
