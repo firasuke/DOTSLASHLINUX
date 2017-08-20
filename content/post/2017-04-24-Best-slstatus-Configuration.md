@@ -93,7 +93,7 @@ static const struct arg args[] = {
         for me it's BAT0 and it'll automatically read the capacity file */
         { battery_perc, "[BAT %s] ",      "BAT0"},
         /* Displays IPv4 address for the given network interface (which in my case is wlp3s0) in your local network */
-        { ip,           "[IP %s] ",       "wlp3s0"},
+        { ipv4,           "[IP %s] ",       "wlp3s0"},
         { datetime,     "[%s]",           "%F %r" }
 };
 ```
