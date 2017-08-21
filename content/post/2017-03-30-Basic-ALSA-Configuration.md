@@ -85,7 +85,7 @@ These are (alsa-restore, alsa-state, alsasound... etc). In most distros, these s
 <br/>
 Gentoo Linux (start and enable)
 ```bash
-service alsasound start
+rc-service alsasound start
 rc-update add alsasound boot
 ```
 <br/>
