@@ -135,6 +135,8 @@ depend() {
 	after sshd
 }
 
+PIDFILE="${PIDFILE:-/var/run/bumblebee.pid}"
+
 start() {
 	ebegin "Starting BumbleBee Daemon"
 		start-stop-daemon -S -p "${PIDFILE}" -x /usr/sbin/bumblebeed -- -D ${BUMBLEBEE_EXTRA_OPTS} --pidfile "${PIDFILE}"
@@ -150,6 +152,8 @@ stop() {
 <br/>
 So your file should look like this:
 ```none,line-numbers
+PIDFILE="${PIDFILE:-/var/run/bumblebee.pid}"
+
 start() {
 	ebegin "Starting BumbleBee Daemon"
 		start-stop-daemon -S -p "${PIDFILE}" -x /usr/sbin/bumblebeed -- -D ${BUMBLEBEE_EXTRA_OPTS} --pidfile "${PIDFILE}"
