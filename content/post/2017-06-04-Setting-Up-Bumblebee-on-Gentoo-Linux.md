@@ -314,7 +314,7 @@ primusrun glxgears
 <br/>
 A window showing glxgears should open. While it's running check the following:
 ```none
-ilsmod
+lsmod
 ```
 ```none
 Module                  Size  Used by
