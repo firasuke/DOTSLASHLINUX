@@ -99,7 +99,7 @@ static const struct arg args[] = {
 	{ vol_perc, "[VOL %s%] ", "/dev/mixer1" },
 	{ battery_perc, "[BAT %s%] ", "BAT0" },
 	{ ipv4, "[IP %s] ", "wlp3s0" },
-	{ datetime, "[%s]", "%F %r" }
+	{ datetime, "[%s]", "%F %r" },
 }
 ```
 <br/>
