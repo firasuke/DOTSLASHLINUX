@@ -34,7 +34,7 @@ cd ~/slstatus
 <br/>
 Now edit the file config.h with your beloved editor:
 ```none
-vim ~/slstatus/config.h
+vim ~/slstatus/config.def.h
 ```
 <br/>
 Due to lack of documentation available, you may find it hard to get everything working the way you like it, but I've been lucky enough to get mine working after the 20th try or so (not kidding :P). Here's my configuration file:
@@ -50,7 +50,7 @@ static const char unknown_str[] = "n/a";
 
 /* maximum output string length */
 /* default is 2048 */
-#define MAXLEN 96
+#define MAXLEN 256
 
 /*
  * function             description                     argument
