@@ -1,11 +1,11 @@
 +++
 title = "Configuring rxvt-unicode (urxvt)"
 slug = "configuring rxvt-unicode rxvt"
-nick = "urxvtc"
+nick = "urxvt"
 date = "2017-03-30"
 author = "Firas Khalil Khana"
-imgsrc = "/img/urxvtc.png"
-imgalt = "urxvtc"
+imgsrc = "/img/urxvt.png"
+imgalt = "urxvt"
 +++
 In this article I'll show you how to get your urxvt daemon up and running, and give you a nice configuration file for urxvtc to use!
 <br/>
