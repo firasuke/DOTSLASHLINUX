@@ -142,6 +142,10 @@ p {
   padding-bottom: 10px;
 }
 
+.map a {
+  text-decoration: underline;
+}
+
 .first h2,
 .deck h2,
 .popular h2,

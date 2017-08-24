@@ -37,7 +37,7 @@ But don't worry, looking back at my previous articles I've noticed that a lot of
 <h3>Target Audience</h3>
 Every single son of a tux out there who's interested in messing with the internals of his/her system. Anyone who wants to customize their kernel for maximum throughput, performance, (minimum)latency, gaming, streaming, music production, video editing, embedded systems etc...<br/>
 <br/>
-Some of you may wonder, how on earth will I be able to provide proper configuration to all those audiences. Well I won't... I'll be posting results achieved on my end (my <a href="/about" target="_blank">Toshiba L50-A664</a>) and I have a ton, and if any of you wanted to contribute or improve on something I said or even correct a misconception I had regarding anything then feel free to drop a comment below or email me with what you have in mind.
+Some of you may wonder, how on earth will I be able to provide proper configuration to all those audiences. Well I won't... I'll be posting results achieved on my end (my <a href="/about/" target="_blank">Toshiba L50-A664</a>) and I have a ton, and if any of you wanted to contribute or improve on something I said or even correct a misconception I had regarding anything then feel free to drop a comment below or email me with what you have in mind.
 <br/>
 <br/>
 With my findings and with your help, let's try to make this series the one and only stop for all those who want to configure their kernels.
@@ -65,7 +65,7 @@ As long as it needs to be, and that actually depends on how many configuration o
 <br/>
 <hr/>
 <h3>That's it?</h3>
-This article is only an intro to the series. And no that doesn't mean that you have to wait a couple of months before reading part 2. You can trust me on this as I'm determined to finish this series as fast and as precise as a human being possibly could, so stay tuned (for those who want to support me, my paypal email is firasuke@gmail.com.
+This article is only an intro to the series. And no that doesn't mean that you have to wait a couple of months before reading part 2. You can trust me on this as I'm determined to finish this series as fast and as precise as a human being possibly could, so stay tuned (for those who want to support me kindly click here <a href="https://www.paypal.me/DOTSLASHLINUX/5" target="_blank">Support DOTSLASHLINUX on PayPal</a>.
 <br/>
 <br/>
 Part 2 will probably be released tomorrow. Until then have a great day!
