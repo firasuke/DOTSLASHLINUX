@@ -51,4 +51,16 @@ type = "page"
 <hr/>
 <h3>The Linux Kernel Configuration Guide</h3>
 <a href="/dotfiles/kernel/DOTSLASHLINUX.config" target="_blank" download>/usr/src/linux/DOTSLASHLINUX.config</a>
+<hr/>
+<h3>Portage</h3>
+<a href="/dotfiles/portage/make.conf" target="_blank" download>/etc/portage/make.conf</a>
+<br/>
+<br/>
+<a href="/dotfiles/portage/package.use" target="_blank" download>/etc/portage/package.use</a>
+<br/>
+<br/>
+<a href="/dotfiles/portage/package.accept_keywords" target="_blank" download>/etc/portage/package.accept_keywords</a>
+<br/>
+<br/>
+<a href="/dotfiles/portage/package.license" target="_blank" download>/etc/portage/package.license</a>
 </div>
