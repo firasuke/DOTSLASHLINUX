@@ -14,10 +14,6 @@ body {
   color: #dadada;
 }
 
-p {
-  color: #dadada;
-}
-
 a {
   text-decoration: none;
   color: #dadada;
@@ -46,6 +42,7 @@ textarea,
 button {
   box-sizing: border-box;
   padding: 7px;
+  margin: 5px;
   background-color: #232323;
   border: 1px solid #232323;
   outline: none;
