@@ -100,7 +100,7 @@ static const struct arg args[] = {
   /* Displays the temperature read from the file /sys/class/thermal/thermal_zone0/temp , you can change that file
      to any other file that displays the temperature of certain components, you can even list multiple
      temperatures by duplicating it */ 
-  { temp, "[TEMP %sC] ", "/sys/class/thermal/thermal_zone0/temp" },
+    { temp, "[TEMP %sC] ", "/sys/class/thermal/thermal_zone0/temp" },
 	{ cpu_perc, "[CPU %s%] ", NULL },
 	{ ram_perc, "[RAM %s%] ", NULL },
   /* If you have two sound cards (like me PCH/HDMI) then you may need to use /dev/mixer1 instead of /dev/mixer to get vol_perc working*/
