@@ -32,5 +32,7 @@ type = "page"
 <a href="/dotfiles/dwm/dwm-6.1-r1.h" target="_blank" download>/etc/portage/savedconfig/x11-wm/dwm-6.1-r1.h</a>
 <hr/>
 <h3>Best slstatus Configuration</h3>
-<a href="/dotfiles/slstatus
+<a href="/dotfiles/slstatus/config.h" target="_blank" download>~/slstatus/config.h</a>
+<br/>
+<br/>
 </div>
