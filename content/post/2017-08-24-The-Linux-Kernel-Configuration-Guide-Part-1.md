@@ -25,7 +25,7 @@ But hang on, that wasn't the tough part. You have to compile your kernel after t
 <br/>
 This is a simple example of what you might face when configuring your kernel. I once had to recompile my whole gentoo system, because I thought that the kernel can't boot without an initrd on a xfs filesystem until I remembered that I'd forgotten to include support for xfs in my kernel (that caused this article to get delayed for 3 days so yeah... a real life example of what you might experience).
 <hr/>
-<h3>What to expect</h3>
+<h3>Expectations</h3>
 I'm no expert and I don't claim to be one. I'm a mere enthusiast that happens to have a proper time schedule and thus more time for testing and experimenting with what I love.
 <br/>
 <br/>
@@ -35,15 +35,22 @@ I've spent around 2 months experimenting with my kernel configuration, until I g
 But don't worry, looking back at my previous articles I've noticed that a lot of you found them helpful, so I have high hopes for this series.
 <hr/>
 <h3>Target Audience</h3>
-Every single son of a tux out there who's interested in messing with the internals of his/her system. Anyone who wants to customize their kernel for maximum throughput, performance, (minimum)latency, gaming, streaming, music production, video editing, embedded systems etc...<br/>
+Every single son of a tux out there who's interested in messing with the internals of his/her system. Anyone who wants to customize their kernel for maximum throughput, performance, (minimum)latency, gaming, streaming, music production, video editing, embedded systems etc...
+<br/>
+<br/>
+Basically, we'll keep it as minimal and as simple as possible, choosing options that provide the highest performance possible alongside a proper latency level that won't lag your system when emerging or compiling or whatever task that makes use of cpu resources.
+<br/>
 <br/>
 Some of you may wonder, how on earth will I be able to provide proper configuration to all those audiences. Well I won't... I'll be posting results achieved on my end (my <a href="/about/" target="_blank">Toshiba L50-A664</a>) and I have a ton, and if any of you wanted to contribute or improve on something I said or even correct a misconception I had regarding anything then feel free to drop a comment below or email me with what you have in mind.
 <br/>
 <br/>
 With my findings and with your help, let's try to make this series the one and only stop for all those who want to configure their kernels.
 <hr/>
-<h3>So what will I do</h3>
-I'll go through every kernel configuration option out there, and include a simple definition of it from kernel.org and similar websites, then my understanding on it and the option I went with. For those who want my kernel .config (and I don't recommend that since I extremely configured it to work on my end and it probably will result in several kernel panics before you get your kernel booting on your end), I'll be making a new section on this website called "DotFiles" in which you'll find every single configuration file I've used on this website up until now.
+<h3>Description</h3>
+I'll go through every kernel configuration option out there, and include a simple definition of it from kernel.org and similar websites, then my understanding on it and the option I went with. 
+<br/>
+<br/>
+For those who want my kernel .config (and I don't recommend that since I extremely configured it to work on my end and it probably will result in several kernel panics before you get your kernel booting on your end) you can download it from <a href="/dotfiles/" target="_blank">DOTSLASHLINUX DOTFILES</a> (The file is named DOTSLASHLINUX.config, just be sure to change it to .config and run <mark>make oldconfig && make prepare</mark> before using it.
 <br/>
 <br/>
 As for those who're willing to go through this with me, to make things less confusing, I'll be using a template like this:
@@ -51,21 +58,18 @@ As for those who're willing to go through this with me, to make things less conf
 KERNEL_CONFIGURATION_OPTION_NAME
 --------------------------------
 
-Simple Defintion : 
+Defintion : 
 
 Explanation :
 
-What to choose :
+Choice :
 ```
 <br/>
 Not only that will make it easier for you(and me as well), it'll make it much easier for those who want to contribute to this series as well. Say you have an option from a different patchset and wanted to include it in the series, just send me the option using the template above, and the name of the patchset if any and I'll attribute everyone who contributes and list their names/blogs upon request.
 <hr/>
-<h3>How long will this series be</h3>
-As long as it needs to be, and that actually depends on how many configuration options there are.
+<h3>Time</h3>
+This series will be as long as it needs to be, and that actually depends on how many configuration options there are.
 <br/>
 <hr/>
-<h3>That's it?</h3>
+<h3>Conclusion</h3>
 This article is only an intro to the series. And no that doesn't mean that you have to wait a couple of months before reading part 2. You can trust me on this as I'm determined to finish this series as fast and as precise as a human being possibly could, so stay tuned (for those who want to support me kindly click here <a href="https://www.paypal.me/DOTSLASHLINUX/5" target="_blank">Support DOTSLASHLINUX on PayPal</a>.
-<br/>
-<br/>
-Part 2 will probably be released tomorrow. Until then have a great day!

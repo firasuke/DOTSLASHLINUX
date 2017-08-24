@@ -6,6 +6,7 @@ date = "2017-06-04"
 author = "Firas Khalil Khana"
 imgsrc = "/img/bumblebee.png"
 imgalt = "bumblebee"
+categories = [ "popular" ]
 +++
 Optimus support on a GNU/Linux distro has always been a hassle thanks to NVIDIA... Therefore projects were created to compensate for this powersaving feature. Enter bumblebee a project aimed to replicate NVIDIA's optimus function on GNU/Linux!.
 <br/>
