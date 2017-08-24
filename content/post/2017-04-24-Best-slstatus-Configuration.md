@@ -32,9 +32,14 @@ Navigate to your freshly cloned directory:
 cd ~/slstatus
 ```
 <br/>
+Now we'll create a symlink just like we did with the dwm configuration file:
+```bash
+ln -s ~/slstatus/config.def.h ~/slstatus/config.h
+```
+<br/>
 Now edit the file config.h with your beloved editor:
 ```none
-vim ~/slstatus/config.def.h
+vim ~/slstatus/config.h
 ```
 <br/>
 Due to lack of documentation available, you may find it hard to get everything working the way you like it, but I've been lucky enough to get mine working after the 20th try or so (not kidding :P). Here's my configuration file:
