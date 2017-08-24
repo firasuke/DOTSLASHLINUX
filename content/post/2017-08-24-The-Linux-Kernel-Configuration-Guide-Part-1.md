@@ -61,7 +61,7 @@ What to choose :
 Not only that will make it easier for you(and me as well), it'll make it much easier for those who want to contribute to this series as well. Say you have an option from a different patchset and wanted to include it in the series, just send me the option using the template above, and the name of the patchset if any and I'll attribute everyone who contributes and list their names/blogs upon request.
 <hr/>
 <h3>How long will this series be</h3>
-As long as it needs to be, and that actually depends on how many configuration options are there.
+As long as it needs to be, and that actually depends on how many configuration options there are.
 <br/>
 <hr/>
 <h3>That's it?</h3>

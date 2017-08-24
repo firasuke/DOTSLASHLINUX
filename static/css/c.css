@@ -10,9 +10,17 @@ body {
   color: #eaeaea;
 }
 
+h1, h2, h3 {
+  font-weight: 100;
+}
+
 a {
   text-decoration: none;
   color: #eaeaea;
+}
+
+.cur a {
+  color: #232323 !important; 
 }
 
 hr {
@@ -22,10 +30,6 @@ hr {
 mark {
   background-color: #232323;
   color: #eaeaea;
-}
-
-.cur a {
-  color: #232323 !important; 
 }
 
 input {
@@ -94,6 +98,7 @@ img:hover {
 .deck,
 .popular,
 .map,
+.dotfiles,
 .about,
 #search-results {
   padding: 10px;
@@ -103,6 +108,7 @@ img:hover {
 }
 
 .first,
+.dotfiles,
 .about,
 #search-results {
   margin-top: 0;
@@ -150,6 +156,7 @@ p {
 .deck h2,
 .popular h2,
 .map h2,
+.dotfiles h2,
 .about h2,
 #search-results h2 {
   padding: 10px;

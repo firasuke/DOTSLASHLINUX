@@ -23,6 +23,7 @@
           <nav>
             <ul>
               <li class="{{ if .IsHome }}cur{{ end }}"><a href="/">HOME</a></li>
+              <li class="{{ if eq (relURL .URL) ("/dotfiles/" | safeHTML) }}cur{{ end }}"><a href="/dotfiles/">DOTFILES</a></li>
               <li class="{{ if eq (relURL .URL) ("/about/" | safeHTML) }}cur{{ end }}"><a href="/about/">ABOUT</a></li>
               <li><a href="/index.xml">RSS</a></li>
             </ul>
