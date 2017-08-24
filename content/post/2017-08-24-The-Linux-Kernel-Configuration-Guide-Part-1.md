@@ -11,7 +11,7 @@ imgalt = "kernel1"
 Finally, it's here... The series you've all been waiting for. I want to apologize for making you wait a lot before starting this series. The truth is that I've redesigned the website from scratch which took some time. It's much lighter now and fully supports https and it works well in a terminal web browser! I've also added an <a href="/index.xml" target="_blank">RSS</a> feed so don't forgot to subscribe.
 <br/>
 <br/>
-I've also updated several articles, and have migrated to the unstable branch of Gentoo (aka ~arch) based on the request of several of our readers, and hopefully will update all sections where configuring something using the unstable branch is a tiny bit different than in the stable one.
+I've also updated several articles, and have migrated to the unstable branch of Gentoo (aka ~arch) based on the request of several of our readers, and hopefully will update all sections where configuring something using the unstable branch is a tiny bit different than in the stable one. And after the release of 4.12, and the introduction of several new schedulers and the turbo boost 3.0 feature, and having moved to 4.12.8 using ck patchset, I knew I had to do a lot of testing before starting this series.
 <br/>
 <br/>
 Enough talking, let's begin with the real thing. Configuring the linux kernel is regarded as one of the most tedious tasks a gnu/linux enthusiast might ever do. It's not that hard but it sure is time consuming. The amount of options that's available is nerve-racking. For enthusiasts who like to customize everything in their distro, it's like going to the heaven of customization.
