@@ -3,7 +3,7 @@ title = "About"
 type = "page"
 +++
 <div class="box about">
-<h2>About</h2>
+<h2>ABOUT</h2>
 DOTSLASHLINUX is a GNU/Linux enthusiasts' hub, featuring configuration guides for the linux kernel and several lightweight open source and free software.
 <br/>
 <br/>
