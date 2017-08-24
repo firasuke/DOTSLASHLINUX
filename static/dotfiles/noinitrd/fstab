@@ -1,0 +1,2 @@
+# (fs)			(mountpoint)	(type)		(opts)		(dump/pass)
+/dev/sda1		/		         ext4		 noatime		0 1

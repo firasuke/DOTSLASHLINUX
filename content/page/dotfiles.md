@@ -1,5 +1,5 @@
 +++
-title = "DotFiles"
+title = "DOTFILES"
 type = "page"
 +++
 <div class="box dotfiles">
@@ -33,6 +33,22 @@ type = "page"
 <hr/>
 <h3>Best slstatus Configuration</h3>
 <a href="/dotfiles/slstatus/config.h" target="_blank" download>~/slstatus/config.h</a>
+<hr/>
+<h3>Booting the Linux Kernel Without an initrd/initramfs</h3>
+<a href="/dotfiles/noinitrd/lilo.conf" target="_blank" download>/etc/lilo.conf</a>
 <br/>
 <br/>
+<a href="/dotfiles/noinitrd/grub" target="_blank" download>/etc/default/grub</a>
+<br/>
+<br/>
+<a href="/dotfiles/noinitrd/fstab" target="_blank" download>/etc/fstab</a>
+<hr/>
+<h3>Setting Up Bumblebee on Gentoo Linux</h3>
+<a href="/dotfiles/bumblebee/bumblebee.conf" target="_blank" download>/etc/bumblebee/bumblebee.conf</a>
+<br/>
+<br/>
+<a href="/dotfiles/bumblebee/bumblebee" target="_blank" download>/etc/init.d/bumblebee</a>
+<hr/>
+<h3>The Linux Kernel Configuration Guide</h3>
+<a href="/dotfiles/kernel/DOTSLASHLINUX.config" target="_blank" download>/usr/src/linux/DOTSLASHLINUX.config</a>
 </div>
