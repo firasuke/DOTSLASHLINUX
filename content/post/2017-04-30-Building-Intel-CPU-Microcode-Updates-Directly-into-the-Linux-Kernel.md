@@ -201,7 +201,7 @@ xbps-install -S dmidecode
 ```
 <br/>
 Arch Linux:
-```
+```none
 pacman -Syu dmidecode
 ```
 <br/>
