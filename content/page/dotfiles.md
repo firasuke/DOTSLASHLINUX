@@ -5,22 +5,22 @@ type = "page"
 <div class="box dotfiles">
 <h2>DOTFILES</h2>
 <h3>Starting Xorg Server using xinit</h3>
-<a href="/dotfiles/xinit/.xinitrc" target="_blank" download>~/.xinitrc</a>
+<a href="/dotfiles/xinit/xinitrc" target="_blank" download=".xinitrc">~/.xinitrc</a>
 <br/>
 <br/>
-<a href="/dotfiles/xinit/.xserverrc" target="_blank" download>~/.xserverrc</a>
+<a href="/dotfiles/xinit/xserverrc" target="_blank" download=".xserverrc">~/.xserverrc</a>
 <br/>
 <br/>
 <a href="/dotfiles/xinit/startx" target="_blank" download>/usr/bin/startx</a>
 <br/>
 <br/>
-<a href="/dotfiles/xinit/.bash_profile" target="_blank" download>~/.bash_profile</a>
+<a href="/dotfiles/xinit/bash_profile" target="_blank" download=".bash_profile">~/.bash_profile</a>
 <hr/>
 <h3>Configuring rxvt unicode (urxvt)</h3>
-<a href="/dotfiles/urxvt/.Xresources" target="_blank" download>~/.Xresources</a>
+<a href="/dotfiles/urxvt/Xresources" target="_blank" download=".Xresources">~/.Xresources</a>
 <hr/>
 <h3>Basic ALSA Configuration</h3>
-<a href="/dotfiles/alsa/.asoundrc" target="_blank" download>~/.asoundrc</a>
+<a href="/dotfiles/alsa/asoundrc" target="_blank" download=".asoundrc">~/.asoundrc</a>
 <hr/>
 <h3>Optimal mpv Configuration</h3>
 <a href="/dotfiles/mpv/mpv.conf" target="_blank" download>~/.config/mpv/mpv.conf</a>
