@@ -8,7 +8,7 @@ imgsrc = "/img/kernel2.png"
 imgalt = "kernel2"
 +++
 <h3>Prerequisites</h3>
-It's preferrable if you were using a gnu/linux distro of any kind and have the ncurses library installed. I urge you to use one of the recommended distros and Gentoo is favored among others.
+It's preferrable if you were using a gnu/linux distro of any kind and have the ncurses library and make installed. I urge you to use one of the recommended distros and Gentoo is favored among others.
 <br/>
 <br/>
 I highly recommend that you stick with the ncurses version <mark>make menuconfig</mark>, since it's much better than the regular <mark>make config</mark>, as you can save your progress, go back and forth with options, can be opened in any terminal emulator with a proper size (when ncurses in installed) as well as on ttys and that's extremely helpful when rescuing your system since you'll be looking at the same interface wherever you go and whatever you choose.

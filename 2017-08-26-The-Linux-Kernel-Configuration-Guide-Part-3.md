@@ -48,5 +48,8 @@ Help:       Same as running 'make CROSS_COMPILE=prefix-' but stored for
 
 Type:       string
 
-Choice:     excluded
+Choice:     excluded ()
+
+Reason:     The kernel will be used directly on my laptop. Unless you're planning
+            to buid this kernel for another 
 ```
