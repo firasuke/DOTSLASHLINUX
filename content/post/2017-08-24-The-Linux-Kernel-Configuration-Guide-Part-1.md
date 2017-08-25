@@ -29,7 +29,10 @@ This is a simple example of what you might face when configuring your kernel. I 
 I'm no expert and I don't claim to be one. I'm a mere enthusiast that happens to have a proper time schedule and thus more time for testing and experimenting with what I love.
 <br/>
 <br/>
-I've spent around 2 months experimenting with my kernel configuration, until I got mine fully working the way I wanted it to. Therefore all the results and speculations that I have come to know may differ or not even be applicable on your end. I'm not responsible for you breaking your system or losing important data because I've already experienced a lot (one of my suicidal builds was a ext4 with no journal -aka ext2 by some fellow gnu/linux users- and when using MuQSS from the ck-patchset along with BFQ I/O scheduler and setting my timer frequency to 1000hz, my laptop froze when emerging chromium -it was 80% done though- and boom my filesystem got corrupted and I had to reinstall gentoo).
+I've spent around 2 months experimenting with my kernel configuration, until I got mine fully working the way I wanted it to. Therefore all the results and speculations that I have come to know may differ or not even be applicable on your end.
+<br/>
+<br/>
+I'm not responsible for you breaking your system or losing important data because I've already experienced a lot (one of my suicidal builds was a ext4 with no journal -aka ext2 by some fellow gnu/linux users- and when using MuQSS from the ck-patchset along with BFQ I/O scheduler and setting my timer frequency to 1000hz, my laptop froze when emerging chromium -it was 80% done though- and boom my filesystem got corrupted and I had to reinstall gentoo).
 <br/>
 <br/>
 But don't worry, looking back at my previous articles I've noticed that a lot of you found them helpful, so I have high hopes for this series.
@@ -47,11 +50,13 @@ Some of you may wonder, how on earth will I be able to provide proper configurat
 With my findings and with your help, let's try to make this series the one and only stop for all those who want to configure their kernels.
 <hr/>
 <h3>Description</h3>
-I'll go through every kernel configuration option out there, and include a simple definition of it from kernel.org and similar websites, then my understanding on it and the option I went with. 
+I'll go through every kernel configuration option out there, and include a simple definition of it from kernel.org and similar trusted official resources, then my understanding on it and the choice I went with. 
 <br/>
 <br/>
-For those who want my kernel .config (and I don't recommend that since I extremely configured it to work on my end and it probably will result in several kernel panics before you get your kernel booting on your end) you can download it from <a href="/dotfiles/" target="_blank">DOTSLASHLINUX DOTFILES</a> (The file is named DOTSLASHLINUX.config, just be sure to change it to .config and run <mark>make oldconfig && make prepare</mark> before using it.
-<br/>
+For those who want my kernel .config (and I don't recommend that since I extremely configured it to work on my end and it probably will result in several kernel panics before you get your kernel booting on your end) you can download it from <a href="/dotfiles/" target="_blank">DOTSLASHLINUX DOTFILES</a> (The file is named DOTSLASHLINUX.config, just be sure to change it to .config and run these commands beforehand:
+```bash
+make oldconfig && make prepare
+```
 <br/>
 As for those who're willing to go through this with me, to make things less confusing, I'll be using a template like this:
 ```none
