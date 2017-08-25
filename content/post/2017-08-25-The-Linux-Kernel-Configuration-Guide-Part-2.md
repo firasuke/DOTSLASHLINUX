@@ -25,9 +25,12 @@ The <mark>/</mark> button can be used to search the available symbols. In order 
 Symbol: CONFIG_MODULES
 Name: Enable loadable modules support
 ```
+The <mark>spacebar</mark> button can be used to include options in the kernel either as built-in [*] or as modules [M] or exclude them [ ].
+<br/>
+<br/>
 The <mark>&#9166;</mark> (enter/return) button can be used to access the available nested child options for any single parent option.
 <hr/>
-<h3>(Gentoo Specific Options) 1- Gentoo Linux</h3>
+<h3>(Gentoo Specific Options) 1- Gentoo Linux  ---></h3>
 The first section you'll see in the menu options when using Gentoo Linux, will be the Gentoo Linux section (that was predictable =D). Select that option and you'll see the following:
 ```none
 [*] Gentoo Linux support
@@ -35,8 +38,7 @@ The first section you'll see in the menu options when using Gentoo Linux, will b
 [*]   Select options required by Portage features
     Support for init systems, system and service managers  --->
 ```
-Available options:
-<h3>Gentoo Linux support</h3>
+<h3>[*] Gentoo Linux support</h3>
 ```none
 Symbol:     CONFIG_GENTOO_LINUX
 
@@ -47,11 +49,11 @@ Help:       In order to boot Gentoo Linux a minimal set of config settings needs
 
             See the settings that become available for more details and fine-tuning.
 
-Type:       Boolean
+Type:       boolean
 
-Choice:     Enabled [*]
+Choice:     built-in [*]
 ```
-<h3>Linux dynamic and persistent device naming (userspace devfs) support</h3>
+<h3>[*] Linux dynamic and persistent device naming (userspace devfs) support</h3>
 ```none
 Symbol:     CONFIG_GENTOO_LINUX_UDEV
 
@@ -70,7 +72,66 @@ Help:       In order to boot Gentoo Linux a minimal set of config settings needs
             To ensure Gentoo Linux boots, it is best to leave this setting enabled;
             if you run a custom setup, you could consider whether to disable this.
 
-Type:       Boolean
+Type:       boolean
 
-Choice:     Enabled [*]
+Choice:     built-in [*]
+```
+<h3>[*] Select options required by Portage features</h3>
+```none
+Symbol:     CONFIG_GENTOO_LINUX_PORTAGE
+
+Help:       This enables options required by various Portage FEATURES.
+            Currently this selects:
+
+            CGROUPS     (required for FEATURES=cgroup)
+            IPC_NS	(required for FEATURES=ipc-sandbox)
+            NET_NS	(required for FEATURES=network-sandbox)
+            SYSVIPC     (required by IPC_NS)
+
+            It is highly recommended that you leave this enabled as these FEATURES
+            are, or will soon be, enabled by default.
+
+Type:       boolean
+
+Choice:     built-in [*]
+```
+<h3>Support for init systems, system and service managers  ---></h3>
+<h3>[*] OpenRC, runit and other script based systems and managers</h3>
+```none
+Symbol:     CONFIG_GENTOO_LINUX_INIT_SCRIPT
+
+Help:       The init system is the first thing that loads after the kernel booted.
+            
+            These config settings allow you to select which init systems to support;
+            instead of having to select all the individual settings all over the
+            place, these settings allows you to select all the settings at once.
+            
+            This particular setting enables all the known requirements for OpenRC,
+            runit and similar script based systems and managers.
+            
+            If you are unsure about this, it is best to leave this setting enabled.
+
+Type:       boolean
+
+Choice:     built-in [*]
+```
+<h3>[ ] systemd</h3>
+```none
+Symbol:     CONFIG_GENTOO_LINUX_INIT_SYSTEMD
+
+Help:       The init system is the first thing that loads after the kernel booted.
+            
+            These config settings allow you to select which init systems to support;
+            instead of having to select all the individual settings all over the
+            place, these settings allows you to select all the settings at once.
+            
+            This particular setting enables all the known requirements for systemd;
+            it also enables suggested optional settings, as the package suggests to.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     I'm currently using OpenRC to manage my boot scripts and as my service manager
+            and have no need for systemd.
 ```
