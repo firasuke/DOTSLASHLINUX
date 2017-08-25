@@ -50,6 +50,27 @@ Type:       string
 
 Choice:     excluded ()
 
-Reason:     The kernel will be used directly on my laptop. Unless you're planning
-            to buid this kernel for another 
+Reason:     The kernel will be used directly on my laptop and won't be built for another
+            machine.
+```
+<h3>(-DOTSLASHLINUX) Local version - append to kernel release</h3>
+```none
+Symbol:     CONFIG_LOCALVERSION
+
+Help:       Append an extra string to the end of your kernel version.
+            This will show up when you type uname, for example.
+            The string you set here will be appended after the contents of
+            any files with a filename matching localversion* in your
+            object and source tree, in that order.  Your total string can
+            be a maximum of 64 characters.
+
+Type:       string
+
+Choice:     -DOTSLASHLINUX
+
+Reason:     In order not to lose track of the custom kernels I build, I like to append
+            extra strings to the end of my kernel's version.
+```
+<h3></h3>
+```none
 ```
