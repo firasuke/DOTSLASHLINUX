@@ -50,7 +50,7 @@ Some of you may wonder, how on earth will I be able to provide proper configurat
 With my findings and with your help, let's try to make this series the one and only stop for all those who want to configure their kernels.
 <hr/>
 <h3>Description</h3>
-I'll go through every kernel configuration option out there, and include the help summary provided with it, then a simple explanation of it (unless it was self explanatory), its type and the choice I went with.
+I'll go through every kernel configuration option out there, and include the help summary provided with it, then a simple explanation of it (unless it was self explanatory), its type and the choice I went with and the reason why.
 <br/>
 <br/>
 For those who want my kernel .config (and I don't recommend that since I extremely configured it to work on my end and it probably will result in several kernel panics before you get your kernel booting on your end) you can download it from <a href="/dotfiles/" target="_blank">DOTSLASHLINUX DOTFILES</a> (The file is named DOTSLASHLINUX.config, just be sure to change it to .config and run these commands beforehand:
@@ -69,6 +69,8 @@ Help:
 Type:
 
 Choice:
+
+Reason:
 ```
 In order not to create a state of confusion, I'll be using the word symbol for the capitalized underscore-separated version of the name. For example:
 ```none

@@ -38,8 +38,7 @@ The first section you'll see in the menu options when using Gentoo Linux, will b
 Available options:
 <h3>Gentoo Linux support</h3>
 ```none
-Symbol: CONFIG_GENTOO_LINUX
----------------------------
+Symbol:     CONFIG_GENTOO_LINUX
 
 Help:       In order to boot Gentoo Linux a minimal set of config settings needs to
             be enabled in the kernel; to avoid the users from having to enable them 
@@ -48,11 +47,30 @@ Help:       In order to boot Gentoo Linux a minimal set of config settings needs
 
             See the settings that become available for more details and fine-tuning.
 
-Choice: Enabled, [*]
+Type:       Boolean
+
+Choice:     Enabled [*]
 ```
 <h3>Linux dynamic and persistent device naming (userspace devfs) support</h3>
 ```none
-Symbol: CONFIG_GENTOO_LINUX_UDEV
---------------------------------
+Symbol:     CONFIG_GENTOO_LINUX_UDEV
 
-Definition:
+Help:       In order to boot Gentoo Linux a minimal set of config settings needs to
+            be enabled in the kernel; to avoid the users from having to enable them
+            manually as part of a Gentoo Linux installation or a new clean config,
+            we enable these config settings by default for convenience.
+            
+            Currently this only selects TMPFS, DEVTMPFS and their dependencies.
+            TMPFS is enabled to maintain a tmpfs file system at /dev/shm, /run and
+            /sys/fs/cgroup; DEVTMPFS to maintain a devtmpfs file system at /dev.
+
+            Some of these are critical files that need to be available early in the
+            boot process; if not available, it causes sysfs and udev to malfunction.
+
+            To ensure Gentoo Linux boots, it is best to leave this setting enabled;
+            if you run a custom setup, you could consider whether to disable this.
+
+Type:       Boolean
+
+Choice:     Enabled [*]
+```
