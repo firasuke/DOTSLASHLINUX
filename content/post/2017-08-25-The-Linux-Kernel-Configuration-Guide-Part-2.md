@@ -12,6 +12,9 @@ It's preferrable if you were using a gnu/linux distro of any kind and have the n
 <br/>
 <br/>
 I highly recommend that you stick with the ncurses version <mark>make menuconfig</mark>, since it's much better than the regular <mark>make config</mark>, as you can save your progress, go back and forth with options, can be opened in any terminal emulator with a proper size (when ncurses in installed) as well as on ttys and that's extremely helpful when rescuing your system since you'll be looking at the same interface wherever you go and whatever you choose.
+<br/>
+<br/>
+I'll also be using the latest kernel version provided on the unstable branch on gentoo with the ck patchset (4.12.8-ck).
 <hr/>
 <h3>Basic Controls</h3>
 The <mark>&uarr;</mark> and the <mark>&darr;</mark> arrows can be used to move between the configuration options shown.
@@ -30,7 +33,7 @@ The <mark>spacebar</mark> button can be used to include options in the kernel ei
 <br/>
 The <mark>&#9166;</mark> (enter/return) button can be used to access the available nested child options for any single parent option.
 <hr/>
-<h3>(Gentoo Specific Options) 1- Gentoo Linux  ---></h3>
+<h3>(Gentoo Specific Options) Gentoo Linux  ---></h3>
 The first section you'll see in the menu options when using Gentoo Linux, will be the Gentoo Linux section (that was predictable =D). Select that option and you'll see the following:
 ```none
 [*] Gentoo Linux support
