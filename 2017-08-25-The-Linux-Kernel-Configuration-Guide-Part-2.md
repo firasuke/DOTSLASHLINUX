@@ -27,7 +27,7 @@ Name: Enable loadable modules support
 ```
 The <mark>&#9166;</mark> (enter/return) button can be used to access the available nested child options for any single parent option.
 <hr/>
-<h3>(Gentoo Specific Option) 1- Gentoo Linux</h3>
+<h3>(Gentoo Specific Options) 1- Gentoo Linux</h3>
 The first section you'll see in the menu options when using Gentoo Linux, will be the Gentoo Linux section (that was predictable =D). Select that option and you'll see the following:
 ```none
 [*] Gentoo Linux support
