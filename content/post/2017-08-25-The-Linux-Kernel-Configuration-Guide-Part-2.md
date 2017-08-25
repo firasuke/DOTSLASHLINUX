@@ -28,7 +28,10 @@ The <mark>/</mark> button can be used to search the available symbols. In order 
 Symbol: CONFIG_MODULES
 Name: Enable loadable modules support
 ```
-The <mark>spacebar</mark> button can be used to include options in the kernel either as built-in [*] or as modules [M] or exclude them [ ].
+The <mark>spacebar</mark> button can be used to include options in the kernel either as built-in [&ast;] or as modules [M] or exclude them [ ].
+<br/>
+<br/>
+Similarly the <mark>y</mark> key can be used to include options [&ast;], and the <mark>n</mark> key can be used for excluding options [ ].
 <br/>
 <br/>
 The <mark>&#9166;</mark> (enter/return) button can be used to access the available nested child options for any single parent option.
