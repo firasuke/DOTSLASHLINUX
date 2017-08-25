@@ -35,6 +35,9 @@ Similarly the <mark>y</mark> key can be used to include options [&ast;], and the
 <br/>
 <br/>
 The <mark>&#9166;</mark> (enter/return) button can be used to access the available nested child options for any single parent option.
+<br/>
+<br/>
+Some options may be included or excluded by other options. <mark>-&ast;-</mark> refers to these included options and you can't exclude them unless you exclude all the options that included it.
 <hr/>
 <h3>(Gentoo Specific Options) Gentoo Linux  ---></h3>
 The first section you'll see in the menu options when using Gentoo Linux, will be the Gentoo Linux section (that was predictable =D). Select that option and you'll see the following:
