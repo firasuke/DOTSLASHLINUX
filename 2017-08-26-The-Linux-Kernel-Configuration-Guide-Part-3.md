@@ -51,7 +51,7 @@ Type:       string
 Choice:     excluded ()
 
 Reason:     The kernel will be used directly on my laptop and won't be built for another
-            machine.
+            system (an ARM system for example).
 ```
 <h3>(-DOTSLASHLINUX) Local version - append to kernel release</h3>
 ```none
@@ -99,17 +99,17 @@ Choice:     excluded [ ]
 Reason:     CONFIG_LOCALVERSION is enough for me. You can leave this empty
             like I did.
 ```
-<h3>Kernel compression mode (LZ4)</h3>
+<h3>Kernel compression mode (LZ4)  ---></h3>
 Make sure you have <mark>app-arch/lz4</mark> installed before compiling your kernel.
 ```none
 Symbol:     CONFIG_KERNEL_LZ4
 
-Help:       LZ4 is an LZ77-type compressor with a fixed, byte-oriented encoding
-            A preliminary version of LZ4 de/compression tool is available 
+Help:       LZ4 is an LZ77-type compressor with a fixed, byte-oriented encoding.
+            A preliminary version of LZ4 de/compression tool is available at
             <https://code.google.com/p/lz4>.
             
-            Its compression ratio is worse than LZO. The size of the 
-            is about 8% bigger than LZO. But the decompression speed 
+            Its compression ratio is worse than LZO. The size of the kernel
+            is about 8% bigger than LZO. But the decompression speed is
             faster than LZO.
 
 Type:       boolean
@@ -138,9 +138,9 @@ Reason:     I'm basically against compressing your kernel on setups that
 ```none
 Symbol:     CONFIG_DEFAULT_HOSTNAME
 
-Help:       This option determines the default system hostname before
-            calls sethostname(2). The kernel traditionally uses "(none)" here
-            but you may wish to use a different default here to make a 
+Help:       This option determines the default system hostname before userspace
+            calls sethostname(2). The kernel traditionally uses "(none)" here,
+            but you may wish to use a different default here to make a minimal
             system more usable with less configuration.
 
 Type:       string
@@ -160,9 +160,9 @@ Reason:     Since this kernel is being built for my laptop, I'd prefer if my sys
 ```none
 Symbol:     CONFIG_SWAP
 
-Help:       This option allows you to choose whether you want to have
-            for so called swap devices or swap files in your kernel that
-            used to provide more virtual memory than the actual RAM
+Help:       This option allows you to choose whether you want to have support
+            for so called swap devices or swap files in your kernel that are
+            used to provide more virtual memory than the actual RAM present
             in your computer.  If unsure say Y.
 
 Type:       boolean
@@ -176,8 +176,8 @@ Reason:     My system has 7.7 GiB of ram and I idle at ~60MiB of ram on dwm so
             I had 9 jobs running, and was trying to build chromium from source, 
             while browsing the web on my seamonkey web browser. Suddenly my system 
             lagged horribly (I had my customization set to maximum throughput) and
-            chromium stopped at about 60% saying it ran out of memory. So yeah I had
-            to reinstall gentoo to get my swap space up and running.
+            chromium stopped at about 60% saying it ran out of memory (virtual memory). 
+            So yeah I had to reinstall gentoo to get my swap space up and running.
 
             After I learned my lesson the hard way, I'm now convinced that you have to
             have a swap partition on your system. 
@@ -187,3 +187,284 @@ Reason:     My system has 7.7 GiB of ram and I idle at ~60MiB of ram on dwm so
             notice that my system is running 9 jobs building something).
 ```
 <h3>-*- System V IPC</h3>
+```none
+Symbol:     CONFIG_SYSVIPC
+
+Help:       Inter Process Communication is a suite of library functions and
+            system calls which let processes (running programs) synchronize and
+            exchange information. It is generally considered to be a good thing,
+            and some programs won't run unless you say Y here. In particular, if
+            you want to run the DOS emulator dosemu under Linux (read the
+            DOSEMU-HOWTO, available from <http://www.tldp.org/docs.html#howto>),
+            you'll need to say Y here
+            
+            You can find documentation about IPC with "info ipc" and also in
+            section 6.4 of the Linux Programmer's Guide, available from
+            <http://www.tldp.org/guides.html>.
+
+Type:       boolean
+
+Choice:     built-in -*-
+
+Reason:     Well it's forcefully included by CONFIG_GENTOO_LINUX and 
+            CONFIG_GENTOO_LINUX_PORTAGE so there's nothing I can do =D.
+
+            This is one of those options you have to enable.
+```
+<h3>[ ] POSIX Message Queues</h3>
+```none
+Symbol:     CONFIG_POSIX_MQUEUE
+
+Help:       POSIX variant of message queues is a part of IPC. In POSIX message
+            queues every message has a priority which decides about succession
+            of receiving it by a process. If you want to compile and run
+            programs written e.g. for Solaris with use of its POSIX message
+            queues (functions mq_*) say Y here.
+            
+            POSIX message queues are visible as a filesystem called 'mqueue'
+            and can be mounted somewhere if you want to do filesystem
+            operations on message queues
+            
+            If unsure, say Y.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     I won't be compiling and running programs written for Solaris that
+            make use of its POSIX queues so I excluded this option.
+```
+<h3>[*] Enable process_vm_readv/writev syscalls</h3>
+```none
+Symbol:     CONFIG_CROSS_MEMORY_ATTACH
+
+Help:       Enabling this option adds the system calls process_vm_readv and
+            process_vm_writev which allow a process with the correct privileges 
+            to directly read from or write to another process' address space.
+            See the man page for more details.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     It didn't break my system and everything worked fine after excluding
+            it.
+
+            If you have a reason why I shouldn't exclude this please post a comment
+            below or send me an email explaining why.
+```
+<h3>[*] open by fhandle syscalls</h3>
+```none
+Symbol:     CONFIG_FHANDLE
+
+Help:       If you say Y here, a user level program will be able to map
+            file names to handle and then later use the handle for
+            different file system operations. This is useful in implementing
+            userspace file servers, which now track files using handles instead
+            of names. The handle would remain the same even if file names
+            get renamed. Enables open_by_handle_at(2) and name_to_handle_at(2)
+            syscalls.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     This option once caused me headaches trying to determine which option
+            was causing my boot process to fail, until I read that it is required by 
+            CONFIG_GENTOO_LINUX and CONFIG_GENTOO_LINUX_UDEV. 
+```
+<h3>[ ] uselib syscall</h3>
+```none
+Symbol:     CONFIG_USELIB
+
+Help:       This option enables the uselib syscall, a system call used in the
+            dynamic linker from libc5 and earlier.  glibc does not use this
+            system call.  If you intend to run programs built on libc5 or
+            earlier, you may need to enable this syscall.  Current systems
+            running glibc can safely disable this.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     I'm using a "current" system running on glibc and I can safely
+            disable this =D.
+```
+<h3>[ ] Auditing support</h3>
+```none
+Symbol:     CONFIG_AUDIT
+
+Help:       Enable auditing infrastructure that can be used with another
+            kernel subsystem, such as SELinux (which requires this for
+            logging of avc messages output).  System call auditing is included
+            on architectures which support it.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     I disabled auditing support as I don't need it and I'm not running SELinux
+            or any kernel subsystem that use it.
+```
+<h3>IRQ subsystem   ---></h3>
+<h3>[ ] Expose hardware/virtual IRQ mapping via debugfs</h3>
+```none
+Symbol:     CONFIG_IRQ_DOMAIN_DEBUG
+
+Help:       This option will show the mapping relationship between hardware irq
+            numbers and Linux irq numbers. The mapping is exposed via debugfs
+            in the file "irq_domain_mapping".
+            
+            If you don't know what this means you don't need it.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     I don't know what it means =D. Nah just kidding, most of the times
+            when you see the word debug, you'd want to exclude its option.
+```
+<h3>[*] Make IRQ threading compulsory</h3>
+```none
+Symbol:     CONFIG_FORCE_IRQ_THREADING
+
+Help:       Make IRQ threading mandatory for any IRQ handlers that support it
+            instead of being optional and requiring the threadirqs kernel
+            parameter. Instead they can be optionally disabled with the
+            nothreadirqs kernel parameter.
+            
+            Enable if you are building for a desktop or low latency system,
+            otherwise say N.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     I'm building a low latency system so I'll include this option.
+```
+<h3>Timers subsystem  ---></h3>
+<h3>Timer tick handling (Periodic timer ticks (constant rate, no dynticks))  ---></h3>
+```none
+Symbol:     CONFIG_HZ_PERIODIC
+
+Help:       This option keeps the tick running periodically at a constant
+            rate, even when the CPU doesn't need it.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     I included this option in order to achieve lower latencies on my
+            Gentoo installation. Exclude this, and include CONFIG_NO_HZ and 
+            CONFIG_NO_HZ_IDLE instead if you wanted more throughput (performance).
+```
+<h3>[ ] Old Idle dynticks config</h3>
+```none
+Symbol:     CONFIG_NO_HZ
+
+Help:       This is the old config entry that enables dynticks idle.
+            We keep it around for a little while to enforce backward
+            compatibility with older config files.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     I already chose CONFIG_HZ_PERIODIC and prioritized latency over throughput.
+            You can include this alongside CONFIG_NO_HZ_IDLE and exclude CONFIG_HZ_PERIODIC
+            if you wanted more throughput (performance).
+```
+<h3>-*- High Resolution Timer Support</h3>
+```none
+Symbol:     CONFIG_HIGH_RES_TIMERS
+
+Help:       This option enables high resolution timer support. If your
+            hardware is not capable then this option only increases
+            the size of the kernel image.
+
+Type:       boolean
+
+Choice:     built-in -*-
+
+Reason:     Forcefully included by SCHED_MUQSS. Generally, you want to include this option.
+```
+<h3>CPU/Task time and stats accounting  ---></h3>
+<h3>Cputime accounting (Simple tick based cputime accounting)  ---></h3>
+```none
+Symbol:     CONFIG_TICK_CPU_ACCOUNTING
+
+Help:       This is the basic tick based cputime accounting that maintains
+            statistics about user, system and idle time spent on per jiffies
+            granularity.
+            
+            If unsure, say Y.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     The other option CONFIG_VIRT_CPU_ACCOUNTING_GEN is only useful at the moment
+            for those who are working on the full dynticks subsystem development, which leaves
+            this option to choose.
+```
+<h3>[ ] Fine granularity task level IRQ time accounting</h3>
+```none
+Symbol:     CONFIG_IRQ_TIME_ACCOUNTING
+
+Help:       Select this option to enable fine granularity task irq time
+            accounting. This is done by reading a timestamp on each
+            transitions between softirq and hardirq state, so there can be a
+            small performance impact.
+
+            If in doubt, say N here.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     Impacts performance and makes me in doubt so I excluded it =D.
+```
+<h3>[ ] BSD Process Accounting</h3>
+```none
+Symbol:     CONFIG_BSD_PROCESS_ACCT
+
+Help:       If you say Y here, a user level program will be able to instruct the
+            kernel (via a special system call) to write process accounting
+            information to a file: whenever a process exits, information about
+            that process will be appended to the file by the kernel.  The
+            information includes things such as creation time, owning user,
+            command name, memory usage, controlling terminal etc. (the complete
+            list is in the struct acct in <file:include/linux/acct.h>).  It is
+            up to the user level program to do useful things with this
+            information.  This is generally a good idea, so say Y.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     I excluded it to lower overhead, you may want to enable it if you're using
+            sys-process/htop on Gentoo Linux, since htop may use this information.
+```
+<h3>[ ] Export task/process statistics through netlink</h3>
+```none
+Symbol:     CONFIG_TASKSTATS
+
+Help:       Export selected statistics for tasks/processes through the
+            generic netlink interface. Unlike BSD process accounting, the
+            statistics are available during the lifetime of tasks/processes as
+            responses to commands. Like BSD accounting, they are sent to user
+            space on task exit.
+            
+            Say N if unsure.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     I excluded it to lower overhead, you may want to enable it if you're using
+            sys-process/htop on Gentoo Linux, since htop may use this information.
+```
+<h3>RCU Subsystem  ---></h3>
+```none
+
+```
