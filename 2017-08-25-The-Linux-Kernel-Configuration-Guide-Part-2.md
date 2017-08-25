@@ -40,10 +40,19 @@ Available options:
 ```none
 Symbol: CONFIG_GENTOO_LINUX
 ---------------------------
-Definition: In order to boot Gentoo Linux a minimal set of config settings needs to
+
+Help:       In order to boot Gentoo Linux a minimal set of config settings needs to
             be enabled in the kernel; to avoid the users from having to enable them 
             manually as part of a Gentoo Linux installation or a new clean config,
             we enable these config settings by default for convenience.
 
             See the settings that become available for more details and fine-tuning.
+
+Choice: Enabled, [*]
 ```
+<h3>Linux dynamic and persistent device naming (userspace devfs) support</h3>
+```none
+Symbol: CONFIG_GENTOO_LINUX_UDEV
+--------------------------------
+
+Definition:
