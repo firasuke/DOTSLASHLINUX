@@ -28,6 +28,11 @@ hr {
   border-color: #232323;
 }
 
+pre,
+mark {
+  font-family: monospace !important;
+}
+
 mark {
   background-color: #232323;
   color: #dadada;

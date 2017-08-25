@@ -60,21 +60,24 @@ make oldconfig && make prepare
 <br/>
 As for those who're willing to go through this with me, to make things less confusing, I'll be using a template like this:
 ```none
-KERNEL_CONFIGURATION_OPTION_NAME
+Symbol: KERNEL_OPTION_SYMBOL
 --------------------------------
 
 Defintion : 
 
-Explanation :
+(Explanation :)
 
 Choice :
 ```
-<br/>
+In order not to create a state of confusion, I'll be using the word symbol for the capitalized underscore-separated version of the name. For example:
+```none
+Symbol: CONFIG_MODULES
+Name: Enable loadable modules support
+```
 Not only that will make it easier for you(and me as well), it'll make it much easier for those who want to contribute to this series as well. Say you have an option from a different patchset and wanted to include it in the series, just send me the option using the template above, and the name of the patchset if any and I'll attribute everyone who contributes and list their names/blogs upon request.
 <hr/>
 <h3>Time</h3>
 This series will be as long as it needs to be, and that actually depends on how many configuration options there are.
-<br/>
 <hr/>
 <h3>Conclusion</h3>
 This article is only an intro to the series. And no that doesn't mean that you have to wait a couple of months before reading part 2. You can trust me on this as I'm determined to finish this series as fast and as precise as a human being possibly could, so stay tuned (for those who want to support me kindly click here <a href="https://www.paypal.me/DOTSLASHLINUX/5" target="_blank">Support DOTSLASHLINUX on PayPal</a>.

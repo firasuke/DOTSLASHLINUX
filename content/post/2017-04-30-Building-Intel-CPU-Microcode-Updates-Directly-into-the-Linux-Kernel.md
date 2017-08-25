@@ -151,7 +151,7 @@ As you can see my CPUID signature is <mark>0x000306c3</mark>. If that didn't wor
 <br/>
 <br/>
  You can do your research and find your CPUID signature. For example, my CPU is a <em>4th Gen. Intel Core i7 4700MQ</em>, a little googling and I found this on cpu-world.com :
-<img src="/img/cpuid.png" alt="cpuid">
+<div class="frame"><img src="/img/cpuid.png" alt="cpuid"></div>
 <br/>
 Another way to do this is to install <mark>cpuid</mark>:
 ```none
