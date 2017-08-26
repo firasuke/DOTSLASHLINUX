@@ -1835,7 +1835,12 @@ Type:     boolean
 
 Choice:   excluded [ ]
 
-Reason:   
+Reason:   I excluded this option for a more minimal kernel and for lesser
+          system overhead. You should include it if you want a more secure
+          kernel.
+          
+          If you think I shouldn't be doing this please post a comment below
+          or send me an email explaining why.
 ```
 <h3>GCOV-based kernel profiling  ---></h3>
 <h3>[ ] Enable gcov-based kernel profiling</h3>
@@ -1871,4 +1876,6 @@ Help:     This option enables gcov-based code profiling (e.g. for code coverage
 Type:     boolean
 
 Choice:   excluded [ ]
+
+Reason:   I excluded it because I don't want profiling support on my system.
 ```
