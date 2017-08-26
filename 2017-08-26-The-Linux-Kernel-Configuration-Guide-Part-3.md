@@ -211,7 +211,7 @@ Type:       boolean
 
 Choice:     built-in -*-
 
-Reason:     Well it's forcefully included by CONFIG_GENTOO_LINUX and 
+Reason:     Well it's forcibly included by CONFIG_GENTOO_LINUX and 
             CONFIG_GENTOO_LINUX_PORTAGE so there's nothing I can do =D.
 
             This is one of those options you have to enable.
@@ -836,4 +836,136 @@ Reason:     I'm on a 4th gen mobile core i7 4700MQ, and it supports NUMA (1 node
             You can disable this if you're sure that your system doesn't support
             NUMA.
 ```
-<h3></h3>
+<h3>[*]   Automatically enable NUMA aware memory/task placement</h3>
+```none
+Symbol:     CONFIG_NUMA_BALANCING_DEFAULT_ENABLED
+
+Help:       If set, automatic NUMA balancing will be enabled if running on a NUMA
+            machine.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     I'm on a 4th gen mobile core i7 4700MQ, and it supports NUMA (1 node);
+            therefore, I included numa options in my kernel configuration.
+
+            You can disable this if you're sure that your system doesn't support
+            NUMA.
+```
+<h3>-*- Control Group support  ---></h3>
+```none
+Symbol:     CONFIG_CGROUPS
+
+Help:       This option adds support for grouping sets of processes together, for
+            use with process control subsystems such as Cpusets, CFS, memory
+            controls or device isolation.
+            See
+                  - Documentation/scheduler/sched-design-CFS.txt   (CFS)
+                  - Documentation/cgroup-v1/ (features for grouping, isolation
+                                            and resource control)
+
+            Say N if unsure.
+
+Type:       boolean
+
+Choice:     built-in -*-
+
+Reason:     This option is forcibly included by CONFIG_GENTOO_LINUX,
+            CONFIG_GENTOO_LINUX_UDEV, CONFIG_GENTOO_LINUX_INIT_SYSTEMD
+            and CONFIG_GENTOO_LINUX_PORTAGE.
+
+            It's advised to include this when using systemd.
+            
+            Unfortunately, it's a hassle to remove this feature on 
+            gentoo-sources, so if you can exclude it go ahead!
+
+            If it was forcibly included in your configuration as well
+            make sure that CONFIG_SCHED_AUTOGROUP is excluded. If it 
+            was still included, then exclude all the controllers inside
+            it and put up with it.
+```
+<h3>[ ] Checkpoint/restore support</h3>
+```none
+Symbol:     CONFIG_CHECKPOINT_RESTORE
+
+Help:       Enables additional kernel features in a sake of checkpoint/restore.
+            In particular it adds auxiliary prctl codes to setup process text,
+            data and heap segment sizes, and a few additional /proc filesystem
+            entries.
+
+            If unsure, say N here.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     I excluded checkpoint/restore support on my system as I don't
+            need it. If you want to be able to suspend/hibernate your system
+            then include this option.
+```
+<h3>-*- Namespaces support  ---></h3>
+```none
+Symbol:     CONFIG_NAMESPACES
+
+Help:       Provides the way to make tasks work with different objects using
+            the same id. For example same IPC id may refer to different objects
+            or same user id or pid may refer to different tasks when used in
+            different namespaces.
+
+Type:       boolean
+
+Choice:     built-in -*-
+
+Reason:     This option is forcibly included on my system by CONFIG_GENTOO_LINUX
+            and CONFIG_GENTOO_LINUX_PORTAGE.
+
+            It's generally a good idea to include this option as several applications
+            and features rely on it.
+```
+<h3>[*]   UTS namespace</h3>
+```none
+Symbol:     CONFIG_UTS_NS
+
+Help:       In this namespace tasks see different info provided with the
+            uname() system call
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     If you were using uname() system call to display info in your lightweight
+            status bar, or for normal use then include this feature.
+```
+<h3>-*-   IPC namespace</h3>
+```none
+Symbol:     CONFIG_IPC_NS
+
+Help:       In this namespace tasks work with IPC ids which correspond to
+            different IPC objects in different namespaces.
+
+Type:       boolean
+
+Choice:     built-in -*-
+
+Reason:     Forcibly included by CONFIG_GENTOO_LINUX and CONFIG_GENTOO_LINUX_PORTAGE.
+```
+<h3>[ ]   PID Namespaces</h3>
+```none
+Symbol:     CONFIG_PID_NS
+
+Help:       Support process id namespaces.  This allows having multiple
+            processes with the same pid as long as they are in different
+            pid namespaces.  This is a building block of containers.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     I chose to exclude this option in my kernel configuration. If you think
+            I shouldn't be doing that please post a comment below or send me an email
+            explaining why.
+```
+<h3> </h3>
+```none
+```
