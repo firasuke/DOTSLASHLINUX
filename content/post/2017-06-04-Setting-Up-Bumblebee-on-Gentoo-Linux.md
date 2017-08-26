@@ -412,3 +412,8 @@ Another important thing to keep note of is that whenever you do a major change i
 <br/>
 <br/>
 Thanks for reading the article! Have a great day!
+<h3>Chinese Translation</h3>
+One of DOTSLASHLINUX's followers from china 杨鑫 (Yang Mame), provided chinese translation of this guide on his blog.
+<br/>
+<br/>
+To read this guide in chinese <a href="https://blog.yangmame.top/2017/08/23/gentoo%E5%8F%8C%E6%98%BE%E5%8D%A1%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" target="_blank">click here</a>.
