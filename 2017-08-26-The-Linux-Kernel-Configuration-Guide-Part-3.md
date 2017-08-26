@@ -8,7 +8,7 @@ imgsrc = "/img/kernel3.png"
 imgalt = "kernel3"
 +++
 Before starting with the <mark>General setup</mark> section, there's this important option just before it:
-<h3>[*] 64-bit kernel</h3>
+<h3>[&ast;] 64-bit kernel</h3>
 ```none
 Symbol:     CONFIG_64BIT
 
@@ -161,7 +161,7 @@ Reason:     Since this kernel is being built for my laptop, I'd prefer if my sys
 
             Change this value to whatever you want your hostname to be.
 ```
-<h3>[*] Support for paging of anonymous memory (swap)</h3>
+<h3>[&ast;] Support for paging of anonymous memory (swap)</h3>
 ```none
 Symbol:     CONFIG_SWAP
 
@@ -191,7 +191,7 @@ Reason:     My system has 7.7 GiB of ram and I idle at ~60MiB of ram on dwm so
             compiling (thanks to my highly responsive/minimal latency build I barely
             notice that my system is running 9 jobs building something).
 ```
-<h3>-*- System V IPC</h3>
+<h3>-&ast;- System V IPC</h3>
 ```none
 Symbol:     CONFIG_SYSVIPC
 
@@ -239,7 +239,7 @@ Choice:     excluded [ ]
 Reason:     I won't be compiling and running programs written for Solaris that
             make use of its POSIX queues so I excluded this option.
 ```
-<h3>[*] Enable process_vm_readv/writev syscalls</h3>
+<h3>[&ast;] Enable process_vm_readv/writev syscalls</h3>
 ```none
 Symbol:     CONFIG_CROSS_MEMORY_ATTACH
 
@@ -258,7 +258,7 @@ Reason:     It didn't break my system and everything worked fine after excluding
             If you have a reason why I shouldn't exclude this please post a comment
             below or send me an email explaining why.
 ```
-<h3>[*] open by fhandle syscalls</h3>
+<h3>[&ast;] open by fhandle syscalls</h3>
 ```none
 Symbol:     CONFIG_FHANDLE
 
@@ -329,24 +329,6 @@ Choice:     excluded [ ]
 Reason:     I don't know what it means =D. Nah just kidding, most of the times
             when you see the word debug, you'd want to exclude its option.
 ```
-<h3>[*] Make IRQ threading compulsory</h3>
-```none
-Symbol:     CONFIG_FORCE_IRQ_THREADING
-
-Help:       Make IRQ threading mandatory for any IRQ handlers that support it
-            instead of being optional and requiring the threadirqs kernel
-            parameter. Instead they can be optionally disabled with the
-            nothreadirqs kernel parameter.
-            
-            Enable if you are building for a desktop or low latency system,
-            otherwise say N.
-
-Type:       boolean
-
-Choice:     built-in [*]
-
-Reason:     I'm building a low latency system so I'll include this option.
-```
 <h3>Timers subsystem  ---></h3>
 <h3>Timer tick handling (Periodic timer ticks (constant rate, no dynticks))  ---></h3>
 ```none
@@ -379,7 +361,7 @@ Reason:     I already chose CONFIG_HZ_PERIODIC and prioritized latency over thro
             You can include this alongside CONFIG_NO_HZ_IDLE and exclude CONFIG_HZ_PERIODIC
             if you wanted more throughput (performance).
 ```
-<h3>-*- High Resolution Timer Support</h3>
+<h3>-&ast;- High Resolution Timer Support</h3>
 ```none
 Symbol:     CONFIG_HIGH_RES_TIMERS
 
@@ -470,7 +452,7 @@ Reason:     I excluded it to lower overhead, you may want to enable it if you're
             sys-process/htop on Gentoo Linux, since htop may use this information.
 ```
 <h3>RCU Subsystem  ---></h3>
-<h3>[*] Make expert-level adjustments to RCU configuration</h3>
+<h3>[&ast;] Make expert-level adjustments to RCU configuration</h3>
 ```none
 Symbol:     CONFIG_RCU_EXPERT
 
@@ -581,7 +563,7 @@ Choice:     default (16)
 Reason:     I went with the default value which is 16 on my system as I'm not
             testing RCU.
 ```
-<h3>[*] Enable RCU priority boosting</h3>
+<h3>[&ast;] Enable RCU priority boosting</h3>
 ```none
 Symbol:     CONFIG_RCU_BOOST
 
@@ -654,7 +636,7 @@ Reason:     The default value was 500, but I prefer to make to use the lowest
             If you think I shouldn't be doing this please post a comment below
             or send me an email explaining why.
 ```
-<h3>[*] Offload RCU callback processing from boot-selected CPUs</h3>
+<h3>[&ast;] Offload RCU callback processing from boot-selected CPUs</h3>
 ```none
 Symbol:     CONFIG_RCU_NOCB_CPU
 
@@ -816,7 +798,7 @@ Reason:     I generally prefer to use the lowest available values for
             logs. This will result in a smaller kernel; thus, reducing
             boot time.
 ```
-<h3>[*] Memory placement aware NUMA scheduler</h3>
+<h3>[&ast;] Memory placement aware NUMA scheduler</h3>
 ```none
 Symbol:     CONFIG_NUMA_BALANCING
 
@@ -836,7 +818,7 @@ Reason:     I'm on a 4th gen mobile core i7 4700MQ, and it supports NUMA (1 node
             You can disable this if you're sure that your system doesn't support
             NUMA.
 ```
-<h3>[*]   Automatically enable NUMA aware memory/task placement</h3>
+<h3>[&ast;]   Automatically enable NUMA aware memory/task placement</h3>
 ```none
 Symbol:     CONFIG_NUMA_BALANCING_DEFAULT_ENABLED
 
@@ -853,7 +835,7 @@ Reason:     I'm on a 4th gen mobile core i7 4700MQ, and it supports NUMA (1 node
             You can disable this if you're sure that your system doesn't support
             NUMA.
 ```
-<h3>-*- Control Group support  ---></h3>
+<h3>-&ast;- Control Group support  ---></h3>
 ```none
 Symbol:     CONFIG_CGROUPS
 
@@ -904,7 +886,7 @@ Reason:     I excluded checkpoint/restore support on my system as I don't
             need it. If you want to be able to suspend/hibernate your system
             then include this option.
 ```
-<h3>-*- Namespaces support  ---></h3>
+<h3>-&ast;- Namespaces support  ---></h3>
 ```none
 Symbol:     CONFIG_NAMESPACES
 
@@ -923,7 +905,7 @@ Reason:     This option is forcibly included on my system by CONFIG_GENTOO_LINUX
             It's generally a good idea to include this option as several applications
             and features rely on it.
 ```
-<h3>[*]   UTS namespace</h3>
+<h3>[&ast;]   UTS namespace</h3>
 ```none
 Symbol:     CONFIG_UTS_NS
 
@@ -937,7 +919,7 @@ Choice:     built-in [*]
 Reason:     If you were using uname() system call to display info in your lightweight
             status bar, or for normal use then include this feature.
 ```
-<h3>-*-   IPC namespace</h3>
+<h3>-&ast;-   IPC namespace</h3>
 ```none
 Symbol:     CONFIG_IPC_NS
 
@@ -966,6 +948,557 @@ Reason:     I chose to exclude this option in my kernel configuration. If you th
             I shouldn't be doing that please post a comment below or send me an email
             explaining why.
 ```
-<h3> </h3>
+<h3>-&ast;-   Network namespace</h3>
 ```none
+Symbol:     CONFIG_NET_NS
+
+Help:       Allow user space to create what appear to be multiple instances
+            of the network stack.
+
+Type:       boolean
+
+Choice:     built-in -*-
+
+Reason:     Forcibly included by CONFIG_GENTOO_LINUX, CONFIG_GENTOO_LINUX_UDEV and
+            CONFIG_GENTOO_LINUX_PORTAGE.
+```
+<h3>[ ] Automatic process group scheduling</h3>
+```none
+Symbol:     CONFIG_SCHED_AUTOGROUP
+
+Help:       This option optimizes the scheduler for common desktop workloads by
+            automatically creating and populating task groups.  This separation
+            of workloads isolates aggressive CPU burners (like build jobs) from
+            desktop applications.  Task group autogeneration is currently based
+            upon task session.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     If you can exclude both this option and CONFIG_CGROUPS then you should
+            be grateful...
+```
+<h3>[ ] Enable deprecated sysfs features to support old userspace tools</h3>
+```none
+Symbol:     CONFIG_SYSFS_DEPRECATED
+
+Help:       This option adds code that switches the layout of the "block" class
+            devices, to not show up in /sys/class/block/, but only in
+            /sys/block/.
+
+            This switch is only active when the sysfs.deprecated=1 boot option is
+            passed or the SYSFS_DEPRECATED_V2 option is set.
+
+            This option allows new kernels to run on old distributions and tools,
+            which might get confused by /sys/class/block/. Since 2007/2008 all
+            major distributions and tools handle this just fine.
+
+            Recent distributions and userspace tools after 2009/2010 depend on
+            the existence of /sys/class/block/, and will not work with this
+            option enabled.
+
+            Only if you are using a new kernel on an old distribution, you might
+            need to say Y here.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     I'm running a rolling release distribution and using a new kernel, so
+            I excluded this option.
+
+            (This isn't the case for every deprecated option out there, I remember once
+            spending the whole day trying to debug my boot failure, to find out I needed
+            to include a deprecated option, just saying).
+```
+<h3>-&ast;- Kernel->user space relay support (formerly relayfs)</h3>
+```none
+Symbol:     CONFIG_RELAY
+
+Help:       This option enables support for relay interface support in
+            certain file systems (such as debugfs).
+            It is designed to provide an efficient mechanism for tools and
+            facilities to relay large amounts of data from kernel space to
+            user space.
+            
+            If unsure, say N.
+
+Type:       boolean
+
+Choice:     built-in -*-
+
+Reason:     Forcibly selected by a ton of other important options (CONFIG_WLAN,
+            CONFIG_ATH9K, CONFIG_PCI, CONFIG_DRM_I915 and many many more...)
+```
+<h3>[ ] Initial RAM filesystem and RAM disk (initramfs/initrd) support</h3>
+Kindly check this: <a href="https://www.dotslashlinux.com/2017/04/29/booting-the-linux-kernel-without-an-initrd-initramfs/" target="_blank">Booting the Linux Kernel Without an initrd/initramfs</a>
+<br/>
+<br/>
+and this: <a href="https://www.dotslashlinux.com/2017/04/30/building-intel-cpu-microcode-updates-directly-into-the-linux-kernel/" target="_blank">Building Intel CPU Microcode Updates Directly into the Linux Kernel</a>
+```none
+Symbol:     CONFIG_BLK_DEV_INITRD
+
+Help:       The initial RAM filesystem is a ramfs which is loaded by the
+            boot loader (loadlin or lilo) and that is mounted as root
+            before the normal boot procedure. It is typically used to
+            load modules needed to mount the "real" root file system,
+            etc. See <file:Documentation/admin-guide/initrd.rst> for details.
+
+            If RAM disk support (BLK_DEV_RAM) is also included, this
+            also enables initial RAM disk (initrd) support and adds
+            15 Kbytes (more on some other architectures) to the kernel size.
+
+            If unsure say Y.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     I don't use an initrd/initramfs. I've already posted guides on 
+            DOTSLASHLINUX on how to boot the linux kernel without using an 
+            initrd/initramfs and how to build microcode update files directly 
+            into the linux kernel without using an initrd/initramfs.
+```
+<h3>Compiler optimization level (Optimize for performance)  ---></h3>
+```none
+Symbol:     CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
+
+Help:       This is the default optimization level for the kernel, building
+            with the "-O2" compiler flag for best performance and most
+            helpful compile-time warnings.
+
+Type:       boolean
+
+Choice:     (Optimize for performance)
+
+Reason:     Both slow and fast storage systems should choose optimize for performance
+            unless limited by storage space. 
+
+            Optimize for size won't make much difference when using LZ4 neither
+            on slow storage systems (like me), and on fast SSDs (negligible).
+```
+<h3>[&ast;] Configure standard kernel features (expert users)  ---></h3>
+```none
+Symbol:     CONFIG_EXPERT
+
+Help:       This option allows certain base kernel options and settings
+            to be disabled or tweaked. This is for specialized
+            environments which can tolerate a "non-standard" kernel.
+            Only use this if you really know what you are doing.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     I'll be excluding some options. Some are obsolete and some
+            aren't needed by my system.
+```
+<h3>[ ]   Enable 16-bit UID system calls</h3>
+```none
+Symbol:     CONFIG_UID16
+
+Help:       This option allows certain base kernel options and settings
+            to be disabled or tweaked. This is for specialized
+            environments which can tolerate a "non-standard" kernel.
+            Only use this if you really know what you are doing.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     Let's see, 12 years ago this was also being used for backwards
+            compabtibility for apis using old system calls (wow this really
+            is old).
+
+            I excluded it because I noticed no harm being done to my system.
+
+            Only exclude if no harm is being done to your system. 
+```
+<h3>[&ast;]   Multiple users, groups and capabilities support</h3>
+```none
+Symbol:     CONFIG_MULTIUSER
+
+Help:       This option enables support for non-root users, groups and
+            capabilities.
+
+            If you say N here, all processes will run with UID 0, GID 0, and all
+            possible capabilities.  Saying N here also compiles out support for
+            system calls related to UIDs, GIDs, and capabilities, such as setuid,
+            setgid, and capset.
+
+            If unsure, say Y here.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     I need support for non-root users, groups and capabilities; therefore,
+            I inluded this.
+
+            I don't see any sane reason in excluding it.
+```
+<h3>[ ]   sgetmask/ssetmask syscalls support</h3>
+```none
+Symbol:     CONFIG_SGETMASK_SYSCALL
+
+Help:       sys_sgetmask and sys_ssetmask are obsolete system calls
+            no longer supported in libc but still enabled by default in some
+            architectures.
+
+            If unsure, leave the default option here.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     Obsolete system calls that didn't break my system when excluded.
+```
+<h3>[ ]   Sysfs syscall support</h3>
+```none
+Symbol:     CONFIG_SYSFS_SYSCALL
+
+Help:       sys_sysfs is an obsolete system call no longer supported in libc.
+            Note that disabling this option is more secure but might break
+            compatibility with some systems.
+
+            If unsure say Y here.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     I excluded this option safely, and my system didn't break, and I didn't
+            recieve ACPI warnings.
+
+            If you think I shouldn't be disabling this please post a comment
+            or send me an email explaining why.
+```
+<h3>[ ]   Sysctl syscall support</h3>
+```none
+Symbol:     CONFIG_SYSCTL_SYSCALL
+
+Help:       sys_sysctl uses binary paths that have been found challenging
+            to properly maintain and use.  The interface in /proc/sys
+            using paths with ascii names is now the primary path to this
+            information.
+
+            Almost nothing using the binary sysctl interface so if you are
+            trying to save some space it is probably safe to disable this,
+            making your kernel marginally smaller.
+
+            If unsure say N here.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     I excluded this option safely, and my system didn't break, and I didn't
+            recieve ACPI warnings.
+
+            If you think I shouldn't be disabling this please post a comment
+            or send me an email explaining why.
+```
+<h3>[&ast;]   Posix Clocks & timers</h3>
+```none
+Symbol:     CONFIG_POSIX_TIMERS
+
+Help:       This includes native support for POSIX timers to the kernel.
+            Some embedded systems have no use for them and therefore they
+            can be configured out to reduce the size of the kernel image.
+
+            When this option is disabled, the following syscalls won't be
+            available: timer_create, timer_gettime: timer_getoverrun,
+            timer_settime, timer_delete, clock_adjtime, getitimer,
+            setitimer, alarm. Furthermore, the clock_settime, clock_gettime,
+            clock_getres and clock_nanosleep syscalls will be limited to
+            CLOCK_REALTIME, CLOCK_MONOTONIC and CLOCK_BOOTTIME only.
+
+            If unsure say y.
+
+Type:       boolean
+
+Choice:     boolean
+
+Reason:     I included this option because one of my applications required it.
+            
+            You can exclude it if you're sure that no application is using it.
+```
+<h3>[ ]   Load all symbols for debugging/ksymoops</h3>
+```none
+Symbol:     CONFIG_KALLSYMS
+
+Help:       Say Y here to let the kernel print out symbolic crash information and
+            symbolic stack backtraces. This increases the size of the kernel
+            somewhat, as all symbols have to be loaded into the kernel image.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     I'm a simple man. I see the word debug, I exclude. (most of the times =D).
+```
+<h3>[&ast;]   Enable support for printk</h3>
+```none
+Symbol:     CONFIG_PRINTK
+
+Help:       This option enables normal printk support. Removing it
+            eliminates most of the message strings from the kernel image
+            and makes the kernel more or less silent. As this makes it
+            very difficult to diagnose system problems, saying N here is
+            strongly discouraged.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     It's highly recommended to include this option (to enable dmesg and printk
+            support).
+```
+<h3>[&ast;]   BUG() support</h3>
+```none
+Symbol:     CONFIG_BUG
+
+Help:       Disabling this option eliminates support for BUG and WARN, reducing
+            the size of your kernel image and potentially quietly ignoring
+            numerous fatal conditions. You should only consider disabling this
+            option for embedded systems with no facilities for reporting errors.
+            Just say Y.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     It's highly recommended that you include this option as it's useful
+            for reporting several fatal conditions on your system.
+
+            Exclude if space restricted on embedded systems.
+```
+<h3>[ ]   Enable PC-Speaker support</h3>
+```none
+Symbol:   CONFIG_PCSPKR_PLATFORM
+
+Help:     This option allows to disable the internal PC-Speaker
+          support, saving some memory.
+
+Type:     boolean
+
+Choice:   excluded [ ]
+
+Reason:   This will only disable beeping on your system, and won't affect normal
+          sound in any way.
+
+          Exclude only if you want to disable beeping from the kernel (as you can
+          do that from userspace).
+```
+<h3>[&ast;]   Enable full-sized data structures for core</h3>
+```none
+Symbol:   CONFIG_BASE_FULL
+
+Help:     Disabling this option reduces the size of miscellaneous core
+          kernel data structures. This saves memory on small machines,
+          but may reduce performance.
+
+Type:     boolean
+
+Choice:   built-in [*]
+
+Reason:   I'm not memory restricted and I don't want to reduce performance; therefore,
+          I included this option.
+```
+<h3>[&ast;]   Enable futex support</h3>
+```none
+Symbol:   CONFIG_FUTEX
+
+Help:     Disabling this option will cause the kernel to be built without
+          support for "fast userspace mutexes".  The resulting kernel may not
+          run glibc-based applications correctly.
+
+Type:     boolean
+
+Choice:   built-in [*]
+
+Reason:   Many parts of my system and most of my applications are glibc-based; therefore,
+          I included this option.
+```
+<h3>[&ast;]   Enable eventpoll support[*]</h3>
+```none
+Symbol:   CONFIG_EPOLL
+
+Help:     Disabling this option will cause the kernel to be built without
+          support for epoll family of system calls.
+
+Type:     boolean
+
+Choice:   built-in [*]
+
+Reason:   I included this option, as it's required by CONFIG_GENTOO_LINUX and
+          CONFIG_GENTOO_LINUX_UDEV.
+```
+<h3>[&ast;]   Enable signalfd() system call</h3>
+```none
+Symbol:   CONFIG_SIGNALFD
+
+Help:     Enable the signalfd() system call that allows to receive signals
+          on a file descriptor.
+          
+          If unsure, say Y.
+
+Type:     boolean
+
+Choice:   built-in [*]
+
+Reason:   I included this option, as it's required by CONFIG_GENTOO_LINUX and
+          CONFIG_GENTOO_LINUX_UDEV.
+```
+<h3>[&ast;]   Enable timerfd() system call</h3>
+```none
+Symbol:   CONFIG_TIMERFD
+
+Help:     Enable the timerfd() system call that allows to receive timer
+          events on a file descriptor.
+
+          If unsure, say Y. 
+
+Type:     boolean
+
+Choice:   built-in [*]
+
+Reason:   I included this option, as it's required by CONFIG_GENTOO_LINUX and
+          CONFIG_GENTOO_LINUX_UDEV.
+```
+<h3>[&ast;]   Enable eventfd() system call</h3>
+```none
+Symbol:   CONFIG_EVENTFD
+
+Help:     Enable the eventfd() system call that allows to receive both
+          kernel notification (ie. KAIO) or userspace notifications.
+          
+          If unsure, say Y.
+
+Type:     boolean
+
+Choice:   built-in [*]
+
+Reason:   I included this option, as it's required by CONFIG_GENTOO_LINUX and
+          CONFIG_GENTOO_LINUX_UDEV.
+```
+<h3>[ ] Enable bpf() system call</h3>
+```none
+Symbol:   CONFIG_BPF_SYSCALL
+
+Help:     Enable the bpf() system call that allows to manipulate eBPF
+          programs and maps via file descriptors.
+
+Type:     boolean
+
+Choice:   excluded [ ]
+
+Reason:   I'm not using any eBPF program; therefore, I excluded this option
+
+          If you think I shouldn't be excluding this option, please post a comment
+          below or send me an email explaining why.
+```
+<h3>-&ast;- Use full shmem filesystem</h3>
+```none
+Symbol:   CONFIG_SHMEM
+
+Help:     The shmem is an internal filesystem used to manage shared memory.
+          It is backed by swap and manages resource limits. It is also exported
+          to userspace as tmpfs if TMPFS is enabled. Disabling this
+          option replaces shmem and tmpfs with the much simpler ramfs code,
+          which may be appropriate on small systems without swap.
+
+Type:     boolean
+
+Choice:   built-in -*-
+
+Reason:   This option is forcibly included as it's already required by 
+          CONFIG_GENTOO_LINUX, CONFIG_GENTOO_LINUX_UDEV, DRM_I915 and 
+          many more options. Another reason is that I'm using swap as well.
+```
+<h3>[ ] Enable AIO support</h3>
+```none
+Symbol:   CONFIG_AIO
+
+Help:     This option enables POSIX asynchronous I/O which may by used
+          by some high performance threaded applications. Disabling
+          this option saves about 7k.
+
+Type:     boolean
+
+Choice:   excluded [ ]
+
+Reason:   I've read a lot of bad things about this and my system didn't
+          break when I excluded it.
+
+          If you think  I shouldn't be excluding this option, kindly
+          post a comment below or send me an email explaining why.
+```
+<h3>[*] Enable madvise/fadvise syscalls</h3>
+```none
+Symbol:   CONFIG_ADVISE_SYSCALLS
+
+Help:     This option enables the madvise and fadvise syscalls, used by
+          applications to advise the kernel about their future memory or file
+          usage, improving performance. If building an embedded system where no
+          applications use these syscalls, you can disable this option to save
+          space.
+
+Type:     boolean
+
+Choice:   built-in [*]
+
+Reason:   I included this option because it improves performance and I'm not building
+          an embedded system. Another reason is that some applications on my system
+          needed it.
+```
+<h3>[ ] Enable userfaultfd() system call</h3>
+```none
+Symbol:   CONFIG_USERFAULTD
+
+Help:     Enable the userfaultfd() system call that allows to intercept and
+          handle page faults in userland.
+
+Type:     boolean
+
+Choice:   excluded [ ]
+
+Reason:   I excluded this option as it neither broke my system nor it was required
+          by any other option or application.
+
+          If you think  I shouldn't be excluding this option, kindly
+          post a comment below or send me an email explaining why.
+```
+<h3>[*] Enable PCI quirk workarounds</h3>
+```none
+Symbol:   CONFIG_PCI_QUIRKS
+
+Help:     This enables workarounds for various PCI chipset
+          bugs/quirks. Disable this only if your target machine is
+          unaffected by PCI quirks.
+
+Type:     boolean
+
+Choice:   built-in [*]
+
+Reason:   I included this option as it's very useful.
+```
+<h3>[*] Enable membarrier() system call</h3>
+```none
+Symbol:   CONFIG_MEMBARRIER
+
+Help:     Enable the membarrier() system call that allows issuing memory
+          barriers across all running threads, which can be used to distribute
+          the cost of user-space memory barriers asymmetrically by transforming
+          pairs of memory barriers into pairs consisting of membarrier() and a
+          compiler barrier.
+
+          If unsure, say Y.
+
+Type:     boolean
+
+Choice:   built-in [*]
+
+Reason:   
 ```
