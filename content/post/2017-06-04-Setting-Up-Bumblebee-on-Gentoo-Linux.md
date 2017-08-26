@@ -412,6 +412,7 @@ Another important thing to keep note of is that whenever you do a major change i
 <br/>
 <br/>
 Thanks for reading the article! Have a great day!
+<hr/>
 <h3>Chinese Translation</h3>
 One of DOTSLASHLINUX's followers from china 杨鑫 (Yang Mame), provided chinese translation of this guide on his blog.
 <br/>
