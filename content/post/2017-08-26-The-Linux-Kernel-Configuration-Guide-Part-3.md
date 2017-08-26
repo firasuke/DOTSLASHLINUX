@@ -1435,7 +1435,7 @@ Reason:   I've read a lot of bad things about this and my system didn't
           If you think  I shouldn't be excluding this option, kindly
           post a comment below or send me an email explaining why.
 ```
-<h3>[*] Enable madvise/fadvise syscalls</h3>
+<h3>[&ast;] Enable madvise/fadvise syscalls</h3>
 ```none
 Symbol:   CONFIG_ADVISE_SYSCALLS
 
@@ -1470,7 +1470,7 @@ Reason:   I excluded this option as it neither broke my system nor it was requir
           If you think  I shouldn't be excluding this option, kindly
           post a comment below or send me an email explaining why.
 ```
-<h3>[*] Enable PCI quirk workarounds</h3>
+<h3>[&ast;] Enable PCI quirk workarounds</h3>
 ```none
 Symbol:   CONFIG_PCI_QUIRKS
 
@@ -1484,7 +1484,7 @@ Choice:   built-in [*]
 
 Reason:   I included this option as it's very useful.
 ```
-<h3>[*] Enable membarrier() system call</h3>
+<h3>[ ] Enable membarrier() system call</h3>
 ```none
 Symbol:   CONFIG_MEMBARRIER
 
@@ -1498,7 +1498,371 @@ Help:     Enable the membarrier() system call that allows issuing memory
 
 Type:     boolean
 
+Choice:   excluded [ ]
+
+Reason:   I excluded this option as it neither broke my system nor was needed
+          by any application.
+          
+          If you think  I shouldn't be excluding this option, kindly
+          post a comment below or send me an email explaining why.
+```
+<h3>[ ] Embedded system</h3>
+```none
+Symbol:   CONFIG_EMBEDDED
+
+Help:     This option should be enabled if compiling the kernel for
+          an embedded system so certain expert options are available
+          for configuration.
+
+Type:     boolean
+
+Choice:   excluded [ ]
+
+Reason:   I excluded this option as I'm not cross compiling this kernel for
+          an embedded system and I'm planning on using it on my laptop.
+```
+<h3>[ ] PC/104 support</h3>
+```none
+Symbol:   CONFIG_PC104
+
+Help:     Expose PC/104 form factor device drivers and options available for
+          selection and configuration. Enable this option if your target
+          machine has a PC/104 bus.
+
+Type:     boolean
+
+Choice:   excluded [ ]
+
+Reason:   I excluded this option since my target machine doesn't have a PC/104 bus.
+          (This is mainly for embedded applications).
+```
+<h3>Kernel Performance Events And Counters  ---></h3>
+<h3>-&ast;- Kernel performance events and counters</h3>
+```none
+Symbol:   CONFIG_PERF_EVENTS
+
+Help:     Enable kernel support for various performance events provided
+          by software and hardware.
+
+          Software events are supported either built-in or via the
+          use of generic tracepoints.
+
+          Most modern CPUs support performance events via performance
+          counter registers. These registers count the number of certain
+          types of hw events: such as instructions executed, cachemisses
+          suffered, or branches mis-predicted - without slowing down the
+          kernel or applications. These registers can also trigger interrupts
+          when a threshold number of events have passed - and can thus be
+          used to profile the code that runs on that CPU.
+
+          The Linux Performance Event subsystem provides an abstraction of
+          these software and hardware event capabilities, available via a
+          system call and used by the "perf" utility in tools/perf/. It
+          provides per task and per CPU counters, and it provides event
+          capabilities on top of those.
+          
+          Say Y if unsure.
+
+Type:     boolean
+
+Choice:   built-in -*-
+
+Reason:   Forcibly included by many important options.
+```
+<h3>[ ]   Debug: use vmalloc to back perf mmap() buffers</h3>
+```none
+Symbol:   CONFIG_DEBUG_PERF_USE_VMALLOC
+
+Help:     Use vmalloc memory to back perf mmap() buffers.
+
+          Mostly useful for debugging the vmalloc code on platforms
+          that don't require it.
+
+          Say N if unsure.
+
+Type:     boolean
+
+Choice:   excluded [ ]
+
+Reason:   I excluded this option as it's used for debugging purposes.
+```
+<h3>[&ast;] Enable VM event counters for /proc/vmstat</h3>
+```none
+Symbol:   CONFIG_VM_EVENT_COUNTERS
+
+Help:     VM event counters are needed for event counts to be shown.
+          This option allows the disabling of the VM event counters
+          on EXPERT systems.  /proc/vmstat will only show page counts
+          if VM event counters are disabled.
+
+Type:     boolean
+
 Choice:   built-in [*]
 
 Reason:   
+```
+<h3>[ ] Enable SLUB debugging support</h3>
+```none
+Symbol:   CONFIG_SLUB_DEBUG
+
+Help:     SLUB has extensive debug support features. Disabling these can
+          result in significant savings in code size. This also disables
+          SLUB sysfs support. /sys/slab will not exist and there will be
+          no support for cache validation etc.
+
+Type:     boolean
+
+Choice:   excluded [ ]
+
+Reason:   I excluded this as it's useful for debugging support for lesser
+          overhead.
+```
+<h3>[&ast;] Disable heap randomization</h3>
+```none
+Symbol:   CONFIG_COMPAT_BRK
+
+Help:     Randomizing heap placement makes heap exploits harder, but it
+          also breaks ancient binaries (including anything libc5 based).
+          This option changes the bootup default to heap randomization
+          disabled, and can be overridden at runtime by setting
+          /proc/sys/kernel/randomize_va_space to 2.
+
+          On non-ancient distros (post-2000 ones) N is usually a safe choice. 
+
+Type:     boolean
+
+Choice:   built-in [*]
+
+Reason:   This time including an option disables a feature for lesser overhead.
+```
+<h3>Choose SLAB allocator (SLUB (Unqueued Allocator))  ---></h3>
+```none
+Symbol:   CONFIG_SLUB
+
+Help:     SLUB is a slab allocator that minimizes cache line usage
+          instead of managing queues of cached objects (SLAB approach).
+          Per cpu caching is realized using slabs of objects instead
+          of queues of objects. SLUB can use memory efficiently
+          and has enhanced diagnostics. SLUB is the default choice for
+          a slab allocator.
+
+Type:     boolean
+
+Choice:   built-in [*]
+
+Reason:   CONFIG_SLAB is super old and irrelevant nowadays and CONFIG_SLOB
+          is for embedded systems with limited memory and storage space 
+          (and will perform really bad when used on a regular desktop/laptop
+          as it may take hours extracting a package), which leaves CONFIG_SLUB
+          and it performs perfectly.
+```
+<h3>[ ] SLAB freelist randomization</h3>
+```none
+Symbol:   CONFIG_SLAB_FREELIST_RANDOM
+
+Help:     Randomizes the freelist order used on creating new pages. This
+          security feature reduces the predictability of the kernel slab
+          allocator against heap overflows.
+
+Type:     boolean
+
+Choice:   excluded [ ]
+
+Reason:   I excluded this option because it's SLAB related.
+```
+<h3>[ ] SLUB per cpu partial cache</h3>
+```none
+Symbol:   CONFIG_SLUB_CPU_PARTIAL
+
+Help:     Per cpu partial caches accellerate objects allocation and freeing
+          that is local to a processor at the price of more indeterminism
+          in the latency of the free. On overflow these caches will be cleared
+          which requires the taking of locks that may cause latency spikes.
+          Typically one would choose no for a realtime system.
+
+Type:     boolean
+
+Choice:   excluded [ ]
+
+Reason:   I excluded this option because I need a low-latency system.
+```
+<h3>[ ] Profiling support</h3>
+```none
+Symbol:   CONFIG_PROFILING
+
+Help:     Say Y here to enable the extended profiling support mechanisms used
+          by profilers such as OProfile.
+
+Type:     boolean
+
+Choice:   excluded [ ]
+
+Reason:   I excluded profiling support for a more minimal kernel and for lesser
+          overhead.
+```
+<h3>[ ] Kprobes</h3>
+```none
+Symbol:   CONFIG_KPROBES
+
+Help:     Kprobes allows you to trap at almost any kernel address and
+          execute a callback function.  register_kprobe() establishes
+          a probepoint and specifies the callback.  Kprobes is useful
+          for kernel debugging, non-intrusive instrumentation and testing.
+          If in doubt, say "N".
+
+Type:     boolean
+
+Choice:   excluded [ ]
+
+Reason:   I excluded this option as it's used for debugging-testing the kernel
+          for lesser system overhead.
+```
+<h3>[ ] Optimize very unlikely/likely branches</h3>
+```none
+Symbol:   CONFIG_JUMP_LABEL
+
+Help:     This option enables a transparent branch optimization that
+          makes certain almost-always-true or almost-always-false branch
+          conditions even cheaper to execute within the kernel.
+
+          Certain performance-sensitive kernel code, such as trace points,
+          scheduler functionality, networking code and KVM have such
+          branches and include support for this optimization technique.
+
+          If it is detected that the compiler has support for "asm goto",
+          the kernel will compile such branches with just a nop
+          instruction. When the condition flag is toggled to true, the
+          nop will be converted to a jump instruction to execute the
+          conditional block of instructions.
+
+          This technique lowers overhead and stress on the branch prediction
+          of the processor and generally makes the kernel faster. The update
+          of the condition is slower, but those are always very rare.
+
+          ( On 32-bit x86, the necessary options added to the compiler
+            flags may increase the size of the kernel slightly. )
+
+Type:     boolean
+
+Choice:   excluded [ ]
+
+Reason:   I excluded this option as I didn't see any real advantage from it
+          and it didn't break my system.
+
+          If you think I shouldn't be doing this please post a comment below
+          or send me an email explaining why.
+```
+<h3>[ ] GCC plugins  ----</h3>
+```none
+Symbol:   CONFIG_GCC_PLUGINS
+
+Help:     GCC plugins are loadable modules that provide extra features to the
+          compiler. They are useful for runtime instrumentation and static analysis.
+
+          See Documentation/gcc-plugins.txt for details.
+
+Type:     boolean
+
+Choice:   excluded [ ]
+
+Reason:   I excluded this option because I don't have any need for extra loadable modules
+          as my goal is a minimal kernel with lesser system overhead and low latency.
+          
+          If you think I shouldn't be doing this please post a comment below
+          or send me an email explaining why.
+```
+<h3>Stack Protector buffer overflow detection (None)  ---></h3>
+```none
+Symbol:   CONFIG_CC_STACKPROTECTOR_NONE
+
+Help:     Disable "stack-protector" GCC feature.
+
+Type:     boolean
+
+Choice:   built-in [*]
+
+Reason:   I excluded stack-protector gcc feature because it adds some system overhead.
+          
+          If you wanted a more secure kernel, you should look into including it.
+```
+<h3>(28) Number of bits to use for ASLR of mmap base address</h3>
+```none
+Symbol:   CONFIG_ARCH_MMAP_RND_BITS
+
+Help:     This value can be used to select the number of bits to use to
+          determine the random offset to the base address of vma regions
+          resulting from mmap allocations. This value will be bounded
+          by the architecture's minimum and maximum supported values.
+
+          This value can be changed after boot using the
+          /proc/sys/vm/mmap_rnd_bits tunable 
+
+Type:     integer
+
+Choice:   default (28)
+```
+<h3>(8) Number of bits to use for ASLR of mmap base address for compatible applications</h3>
+```none
+Symbol:   CONFIG_ARCH_MMAP_RND_COMPAT_BITS
+
+Help:     This value can be used to select the number of bits to use to
+          determine the random offset to the base address of vma regions
+          resulting from mmap allocations for compatible applications This
+          value will be bounded by the architecture's minimum and maximum
+          supported values.
+
+          This value can be changed after boot using the
+          /proc/sys/vm/mmap_rnd_compat_bits tunable
+
+Type:     integer
+
+Choice:   default (8)
+```
+<h3>[ ] Use a virtually-mapped stack</h3>
+```none
+Symbol:   CONFIG_VMAP_STACK
+
+Help:     Enable this if you want the use virtually-mapped kernel stacks
+          with guard pages.  This causes kernel stack overflows to be
+          caught immediately rather than causing difficult-to-diagnose
+          corruption.
+
+          This is presently incompatible with KASAN because KASAN expects
+          the stack to map directly to the KASAN shadow map using a formula
+          that is incorrect if the stack is in vmalloc space.
+
+Type:     boolean
+
+Choice:   excluded [ ]
+
+Reason:   
+```
+<h3>GCOV-based kernel profiling  ---></h3>
+<h3>[ ] Enable gcov-based kernel profiling</h3>
+```none
+Symbol:   CONFIG_GCOV_KERNEL
+
+Help:     This option enables gcov-based code profiling (e.g. for code coverage
+measurements).
+If unsure, say N.
+Additionally specify CONFIG_GCOV_PROFILE_ALL=y to get profiling data
+for the entire kernel. To enable profiling for specific files or
+directories, add a line similar to the following to the respective
+Makefile:
+For a single file (e.g. main.o):
+        GCOV_PROFILE_main.o := y
+For all files in one directory:
+        GCOV_PROFILE := y
+To exclude files from being profiled even when CONFIG_GCOV_PROFILE_ALL
+is specified, use:
+
+        GCOV_PROFILE_main.o := n
+ and:
+        GCOV_PROFILE := n
+Note that the debugfs filesystem has to be mounted to access
+profiling data.
+
+Type:     boolean
+
+Choice:   excluded [ ]
 ```
