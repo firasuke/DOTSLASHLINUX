@@ -1843,24 +1843,30 @@ Reason:
 Symbol:   CONFIG_GCOV_KERNEL
 
 Help:     This option enables gcov-based code profiling (e.g. for code coverage
-measurements).
-If unsure, say N.
-Additionally specify CONFIG_GCOV_PROFILE_ALL=y to get profiling data
-for the entire kernel. To enable profiling for specific files or
-directories, add a line similar to the following to the respective
-Makefile:
-For a single file (e.g. main.o):
-        GCOV_PROFILE_main.o := y
-For all files in one directory:
-        GCOV_PROFILE := y
-To exclude files from being profiled even when CONFIG_GCOV_PROFILE_ALL
-is specified, use:
+          measurements).
 
-        GCOV_PROFILE_main.o := n
- and:
-        GCOV_PROFILE := n
-Note that the debugfs filesystem has to be mounted to access
-profiling data.
+          If unsure, say N.
+
+          Additionally specify CONFIG_GCOV_PROFILE_ALL=y to get profiling data
+          for the entire kernel. To enable profiling for specific files or
+          directories, add a line similar to the following to the respective
+          Makefile:
+
+          For a single file (e.g. main.o):
+                  GCOV_PROFILE_main.o := y
+
+          For all files in one directory:
+                  GCOV_PROFILE := y
+
+          To exclude files from being profiled even when CONFIG_GCOV_PROFILE_ALL
+          is specified, use:
+
+                  GCOV_PROFILE_main.o := n
+          and:
+                  GCOV_PROFILE := n
+
+          Note that the debugfs filesystem has to be mounted to access
+          profiling data.
 
 Type:     boolean
 
