@@ -1,5 +1,5 @@
 order: 17
-replying_to: ''
-name: VICTORGUERRAVELOSO
-comment: "@DOTSLASHLINUX Thanks for the Tutorial. Finally i can use Gentoo on my notebook. I`ve been stuck on Arch since the last year cause i couldn't figure out what i was doing wrong. I followed your steps exactly as you said, and it's working!"
-date: '2017-08-19'
+replying_to: '15'
+name: peedub
+comment: "@DOTSLASHLINUX after removing the drivers from /lib/modules I now have for the most part everything working as expected. One exception is is with blender, blender loads the nvidia_uvm module and it does not seam that primusrun is able to unload nvidia drivers after nvidia_uvm has been loaded. My /etc/modprobe.d/nvidia-rmmod.conf file has \"remove nvidia modprobe -r --ignore-remove nvidia-drm nvidia-modeset nvidia-uvm nvidia\" so im kinda at a loss as to why it isn't able to unload uvm. Other than that, seams to be working for most other stuff, glxgears tests are as expected. Cheers"
+date: '2017-08-25'
