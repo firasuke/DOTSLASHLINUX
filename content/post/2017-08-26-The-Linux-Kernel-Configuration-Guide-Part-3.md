@@ -1586,7 +1586,7 @@ Choice:     excluded [ ]
 
 Reason:     I excluded this option as it's used for debugging purposes.
 ```
-<h3>[&ast;] Enable VM event counters for /proc/vmstat</h3>
+<h3>[ ] Enable VM event counters for /proc/vmstat</h3>
 ```none
 Symbol:     CONFIG_VM_EVENT_COUNTERS
 
@@ -1597,7 +1597,13 @@ Help:       VM event counters are needed for event counts to be shown.
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     excluded [ ]
+
+Reason:     I excluded this option for a more minimal kernel and for lesser
+            system overhead.
+          
+            If you think I shouldn't be doing this please post a comment below
+            or send me an email explaining why.
 ```
 <h3>[ ] Enable SLUB debugging support</h3>
 ```none
