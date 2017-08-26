@@ -1276,330 +1276,328 @@ Reason:     It's highly recommended that you include this option as it's useful
 ```
 <h3>[ ]   Enable PC-Speaker support</h3>
 ```none
-Symbol:   CONFIG_PCSPKR_PLATFORM
+Symbol:     CONFIG_PCSPKR_PLATFORM
 
-Help:     This option allows to disable the internal PC-Speaker
-          support, saving some memory.
+Help:       This option allows to disable the internal PC-Speaker
+            support, saving some memory.
 
-Type:     boolean
+Type:       boolean
 
-Choice:   excluded [ ]
+Choice:     excluded [ ]
 
-Reason:   This will only disable beeping on your system, and won't affect normal
-          sound in any way.
+Reason:     This will only disable beeping on your system, and won't affect normal
+            sound in any way.
 
-          Exclude only if you want to disable beeping from the kernel (as you can
-          do that from userspace).
+            Exclude only if you want to disable beeping from the kernel (as you can
+            do that from userspace).
 ```
 <h3>[&ast;]   Enable full-sized data structures for core</h3>
 ```none
-Symbol:   CONFIG_BASE_FULL
+Symbol:     CONFIG_BASE_FULL
 
-Help:     Disabling this option reduces the size of miscellaneous core
-          kernel data structures. This saves memory on small machines,
-          but may reduce performance.
+Help:       Disabling this option reduces the size of miscellaneous core
+            kernel data structures. This saves memory on small machines,
+            but may reduce performance.
 
-Type:     boolean
+Type:       boolean
 
-Choice:   built-in [*]
+Choice:     built-in [*]
 
-Reason:   I'm not memory restricted and I don't want to reduce performance; therefore,
-          I included this option.
+Reason:     I'm not memory restricted and I don't want to reduce performance; therefore,
+            I included this option.
 ```
 <h3>[&ast;]   Enable futex support</h3>
 ```none
-Symbol:   CONFIG_FUTEX
+Symbol:     CONFIG_FUTEX
 
-Help:     Disabling this option will cause the kernel to be built without
-          support for "fast userspace mutexes".  The resulting kernel may not
-          run glibc-based applications correctly.
+Help:       Disabling this option will cause the kernel to be built without
+            support for "fast userspace mutexes".  The resulting kernel may not
+            run glibc-based applications correctly.
 
-Type:     boolean
+Type:       boolean
 
-Choice:   built-in [*]
+Choice:     built-in [*]
 
-Reason:   Many parts of my system and most of my applications are glibc-based; therefore,
-          I included this option.
+Reason:     Many parts of my system and most of my applications are glibc-based; therefore,
+            I included this option.
 ```
 <h3>[&ast;]   Enable eventpoll support[*]</h3>
 ```none
-Symbol:   CONFIG_EPOLL
+Symbol:     CONFIG_EPOLL
 
-Help:     Disabling this option will cause the kernel to be built without
-          support for epoll family of system calls.
+Help:       Disabling this option will cause the kernel to be built without
+            support for epoll family of system calls.
 
-Type:     boolean
+Type:       boolean
 
-Choice:   built-in [*]
+Choice:     built-in [*]
 
-Reason:   I included this option, as it's required by CONFIG_GENTOO_LINUX and
-          CONFIG_GENTOO_LINUX_UDEV.
+Reason:     I included this option, as it's required by CONFIG_GENTOO_LINUX and
+            CONFIG_GENTOO_LINUX_UDEV.
 ```
 <h3>[&ast;]   Enable signalfd() system call</h3>
 ```none
-Symbol:   CONFIG_SIGNALFD
+Symbol:     CONFIG_SIGNALFD
 
-Help:     Enable the signalfd() system call that allows to receive signals
-          on a file descriptor.
+Help:       Enable the signalfd() system call that allows to receive signals
+            on a file descriptor.
           
-          If unsure, say Y.
+            If unsure, say Y.
 
-Type:     boolean
+Type:       boolean
 
-Choice:   built-in [*]
+Choice:     built-in [*]
 
-Reason:   I included this option, as it's required by CONFIG_GENTOO_LINUX and
-          CONFIG_GENTOO_LINUX_UDEV.
+Reason:     I included this option, as it's required by CONFIG_GENTOO_LINUX and
+            CONFIG_GENTOO_LINUX_UDEV.
 ```
 <h3>[&ast;]   Enable timerfd() system call</h3>
 ```none
-Symbol:   CONFIG_TIMERFD
+Symbol:     CONFIG_TIMERFD
 
-Help:     Enable the timerfd() system call that allows to receive timer
-          events on a file descriptor.
+Help:       Enable the timerfd() system call that allows to receive timer
+            events on a file descriptor.
 
-          If unsure, say Y. 
+            If unsure, say Y. 
 
-Type:     boolean
+Type:       boolean
 
-Choice:   built-in [*]
+Choice:     built-in [*]
 
-Reason:   I included this option, as it's required by CONFIG_GENTOO_LINUX and
-          CONFIG_GENTOO_LINUX_UDEV.
+Reason:     I included this option, as it's required by CONFIG_GENTOO_LINUX and
+            CONFIG_GENTOO_LINUX_UDEV.
 ```
 <h3>[&ast;]   Enable eventfd() system call</h3>
 ```none
-Symbol:   CONFIG_EVENTFD
+Symbol:     CONFIG_EVENTFD
 
-Help:     Enable the eventfd() system call that allows to receive both
-          kernel notification (ie. KAIO) or userspace notifications.
+Help:       Enable the eventfd() system call that allows to receive both
+            kernel notification (ie. KAIO) or userspace notifications.
           
-          If unsure, say Y.
+            If unsure, say Y.
 
-Type:     boolean
+Type:       boolean
 
-Choice:   built-in [*]
+Choice:     built-in [*]
 
-Reason:   I included this option, as it's required by CONFIG_GENTOO_LINUX and
-          CONFIG_GENTOO_LINUX_UDEV.
+Reason:     I included this option, as it's required by CONFIG_GENTOO_LINUX and
+            CONFIG_GENTOO_LINUX_UDEV.
 ```
 <h3>[ ] Enable bpf() system call</h3>
 ```none
-Symbol:   CONFIG_BPF_SYSCALL
+Symbol:     CONFIG_BPF_SYSCALL
 
-Help:     Enable the bpf() system call that allows to manipulate eBPF
-          programs and maps via file descriptors.
+Help:       Enable the bpf() system call that allows to manipulate eBPF
+            programs and maps via file descriptors.
 
-Type:     boolean
+Type:       boolean
 
-Choice:   excluded [ ]
+Choice:     excluded [ ]
 
-Reason:   I'm not using any eBPF program; therefore, I excluded this option
+Reason:     I'm not using any eBPF program; therefore, I excluded this option
 
-          If you think I shouldn't be excluding this option, please post a comment
-          below or send me an email explaining why.
+            If you think I shouldn't be excluding this option, please post a comment
+            below or send me an email explaining why.
 ```
 <h3>-&ast;- Use full shmem filesystem</h3>
 ```none
-Symbol:   CONFIG_SHMEM
+Symbol:     CONFIG_SHMEM
 
-Help:     The shmem is an internal filesystem used to manage shared memory.
-          It is backed by swap and manages resource limits. It is also exported
-          to userspace as tmpfs if TMPFS is enabled. Disabling this
-          option replaces shmem and tmpfs with the much simpler ramfs code,
-          which may be appropriate on small systems without swap.
+Help:       The shmem is an internal filesystem used to manage shared memory.
+            It is backed by swap and manages resource limits. It is also exported
+            to userspace as tmpfs if TMPFS is enabled. Disabling this
+            option replaces shmem and tmpfs with the much simpler ramfs code,
+            which may be appropriate on small systems without swap.
 
-Type:     boolean
+Type:       boolean
 
-Choice:   built-in -*-
+Choice:     built-in -*-
 
-Reason:   This option is forcibly included as it's already required by 
-          CONFIG_GENTOO_LINUX, CONFIG_GENTOO_LINUX_UDEV, DRM_I915 and 
-          many more options. Another reason is that I'm using swap as well.
+Reason:     This option is forcibly included as it's already required by 
+            CONFIG_GENTOO_LINUX, CONFIG_GENTOO_LINUX_UDEV, DRM_I915 and 
+            many more options. Another reason is that I'm using swap as well.
 ```
 <h3>[ ] Enable AIO support</h3>
 ```none
-Symbol:   CONFIG_AIO
+Symbol:     CONFIG_AIO
 
-Help:     This option enables POSIX asynchronous I/O which may by used
-          by some high performance threaded applications. Disabling
-          this option saves about 7k.
+Help:       This option enables POSIX asynchronous I/O which may by used
+            by some high performance threaded applications. Disabling
+            this option saves about 7k.
 
-Type:     boolean
+Type:       boolean
 
-Choice:   excluded [ ]
+Choice:     excluded [ ]
 
-Reason:   I've read a lot of bad things about this and my system didn't
-          break when I excluded it.
+Reason:     I've read a lot of bad things about this and my system didn't
+            break when I excluded it.
 
-          If you think  I shouldn't be excluding this option, kindly
-          post a comment below or send me an email explaining why.
+            If you think  I shouldn't be excluding this option, kindly
+            post a comment below or send me an email explaining why.
 ```
 <h3>[&ast;] Enable madvise/fadvise syscalls</h3>
 ```none
-Symbol:   CONFIG_ADVISE_SYSCALLS
+Symbol:     CONFIG_ADVISE_SYSCALLS
 
-Help:     This option enables the madvise and fadvise syscalls, used by
-          applications to advise the kernel about their future memory or file
-          usage, improving performance. If building an embedded system where no
-          applications use these syscalls, you can disable this option to save
-          space.
+Help:       This option enables the madvise and fadvise syscalls, used by
+            applications to advise the kernel about their future memory or file
+            usage, improving performance. If building an embedded system where no
+            applications use these syscalls, you can disable this option to save
+            space.
 
-Type:     boolean
+Type:       boolean
 
-Choice:   built-in [*]
+Choice:     built-in [*]
 
-Reason:   I included this option because it improves performance and I'm not building
-          an embedded system. Another reason is that some applications on my system
-          needed it.
+Reason:     I included this option because it improves performance and I'm not building
+            an embedded system. Another reason is that some applications on my system
+            needed it.
 ```
 <h3>[ ] Enable userfaultfd() system call</h3>
 ```none
-Symbol:   CONFIG_USERFAULTD
+Symbol:     CONFIG_USERFAULTD
 
-Help:     Enable the userfaultfd() system call that allows to intercept and
-          handle page faults in userland.
+Help:       Enable the userfaultfd() system call that allows to intercept and
+            handle page faults in userland.
 
-Type:     boolean
+Type:       boolean
 
-Choice:   excluded [ ]
+Choice:     excluded [ ]
 
-Reason:   I excluded this option as it neither broke my system nor it was required
-          by any other option or application.
+Reason:     I excluded this option as it neither broke my system nor it was required
+            by any other option or application.
 
-          If you think  I shouldn't be excluding this option, kindly
-          post a comment below or send me an email explaining why.
+            If you think  I shouldn't be excluding this option, kindly
+            post a comment below or send me an email explaining why.
 ```
 <h3>[&ast;] Enable PCI quirk workarounds</h3>
 ```none
-Symbol:   CONFIG_PCI_QUIRKS
+Symbol:     CONFIG_PCI_QUIRKS
 
-Help:     This enables workarounds for various PCI chipset
-          bugs/quirks. Disable this only if your target machine is
-          unaffected by PCI quirks.
+Help:       This enables workarounds for various PCI chipset
+            bugs/quirks. Disable this only if your target machine is
+            unaffected by PCI quirks.
 
-Type:     boolean
+Type:       boolean
 
-Choice:   built-in [*]
+Choice:     built-in [*]
 
-Reason:   I included this option as it's very useful.
+Reason:     I included this option as it's very useful.
 ```
 <h3>[ ] Enable membarrier() system call</h3>
 ```none
-Symbol:   CONFIG_MEMBARRIER
+Symbol:     CONFIG_MEMBARRIER
 
-Help:     Enable the membarrier() system call that allows issuing memory
-          barriers across all running threads, which can be used to distribute
-          the cost of user-space memory barriers asymmetrically by transforming
-          pairs of memory barriers into pairs consisting of membarrier() and a
-          compiler barrier.
+Help:       Enable the membarrier() system call that allows issuing memory
+            barriers across all running threads, which can be used to distribute
+            the cost of user-space memory barriers asymmetrically by transforming
+            pairs of memory barriers into pairs consisting of membarrier() and a
+            compiler barrier.
 
-          If unsure, say Y.
+            If unsure, say Y.
 
-Type:     boolean
+Type:       boolean
 
-Choice:   excluded [ ]
+Choice:     excluded [ ]
 
-Reason:   I excluded this option as it neither broke my system nor was needed
-          by any application.
+Reason:     I excluded this option as it neither broke my system nor was needed
+            by any application.
           
-          If you think  I shouldn't be excluding this option, kindly
-          post a comment below or send me an email explaining why.
+            If you think  I shouldn't be excluding this option, kindly
+            post a comment below or send me an email explaining why.
 ```
 <h3>[ ] Embedded system</h3>
 ```none
-Symbol:   CONFIG_EMBEDDED
+Symbol:     CONFIG_EMBEDDED
 
-Help:     This option should be enabled if compiling the kernel for
-          an embedded system so certain expert options are available
-          for configuration.
+Help:       This option should be enabled if compiling the kernel for
+            an embedded system so certain expert options are available
+            for configuration.
 
-Type:     boolean
+Type:       boolean
 
-Choice:   excluded [ ]
+Choice:     excluded [ ]
 
-Reason:   I excluded this option as I'm not cross compiling this kernel for
-          an embedded system and I'm planning on using it on my laptop.
+Reason:     I excluded this option as I'm not cross compiling this kernel for
+            an embedded system and I'm planning on using it on my laptop.
 ```
 <h3>[ ] PC/104 support</h3>
 ```none
-Symbol:   CONFIG_PC104
+Symbol:     CONFIG_PC104
 
-Help:     Expose PC/104 form factor device drivers and options available for
-          selection and configuration. Enable this option if your target
-          machine has a PC/104 bus.
+Help:       Expose PC/104 form factor device drivers and options available for
+            selection and configuration. Enable this option if your target
+            machine has a PC/104 bus.
 
-Type:     boolean
+Type:       boolean
 
-Choice:   excluded [ ]
+Choice:     excluded [ ]
 
-Reason:   I excluded this option since my target machine doesn't have a PC/104 bus.
-          (This is mainly for embedded applications).
+Reason:     I excluded this option since my target machine doesn't have a PC/104 bus.
+            (This is mainly for embedded applications).
 ```
 <h3>Kernel Performance Events And Counters  ---></h3>
 <h3>-&ast;- Kernel performance events and counters</h3>
 ```none
-Symbol:   CONFIG_PERF_EVENTS
+Symbol:     CONFIG_PERF_EVENTS
 
-Help:     Enable kernel support for various performance events provided
-          by software and hardware.
+Help:       Enable kernel support for various performance events provided
+            by software and hardware.
 
-          Software events are supported either built-in or via the
-          use of generic tracepoints.
+            Software events are supported either built-in or via the
+            use of generic tracepoints.
 
-          Most modern CPUs support performance events via performance
-          counter registers. These registers count the number of certain
-          types of hw events: such as instructions executed, cachemisses
-          suffered, or branches mis-predicted - without slowing down the
-          kernel or applications. These registers can also trigger interrupts
-          when a threshold number of events have passed - and can thus be
-          used to profile the code that runs on that CPU.
+            Most modern CPUs support performance events via performance
+            counter registers. These registers count the number of certain
+            types of hw events: such as instructions executed, cachemisses
+            suffered, or branches mis-predicted - without slowing down the
+            kernel or applications. These registers can also trigger interrupts
+            when a threshold number of events have passed - and can thus be
+            used to profile the code that runs on that CPU.
 
-          The Linux Performance Event subsystem provides an abstraction of
-          these software and hardware event capabilities, available via a
-          system call and used by the "perf" utility in tools/perf/. It
-          provides per task and per CPU counters, and it provides event
-          capabilities on top of those.
+            The Linux Performance Event subsystem provides an abstraction of
+            these software and hardware event capabilities, available via a
+            system call and used by the "perf" utility in tools/perf/. It
+            provides per task and per CPU counters, and it provides event
+            capabilities on top of those.
           
-          Say Y if unsure.
+            Say Y if unsure.
 
-Type:     boolean
+Type:       boolean
 
-Choice:   built-in -*-
+Choice:     built-in -*-
 
-Reason:   Forcibly included by many important options.
+Reason:     Forcibly included by many important options.
 ```
 <h3>[ ]   Debug: use vmalloc to back perf mmap() buffers</h3>
 ```none
-Symbol:   CONFIG_DEBUG_PERF_USE_VMALLOC
+Symbol:     CONFIG_DEBUG_PERF_USE_VMALLOC
 
-Help:     Use vmalloc memory to back perf mmap() buffers.
+Help:       Use vmalloc memory to back perf mmap() buffers.
 
-          Mostly useful for debugging the vmalloc code on platforms
-          that don't require it.
+            Mostly useful for debugging the vmalloc code on platforms
+            that don't require it.
 
-          Say N if unsure.
+            Say N if unsure.
 
-Type:     boolean
+Type:       boolean
 
-Choice:   excluded [ ]
+Choice:     excluded [ ]
 
-Reason:   I excluded this option as it's used for debugging purposes.
+Reason:     I excluded this option as it's used for debugging purposes.
 ```
 <h3>[&ast;] Enable VM event counters for /proc/vmstat</h3>
 ```none
-Symbol:   CONFIG_VM_EVENT_COUNTERS
+Symbol:     CONFIG_VM_EVENT_COUNTERS
 
-Help:     VM event counters are needed for event counts to be shown.
-          This option allows the disabling of the VM event counters
-          on EXPERT systems.  /proc/vmstat will only show page counts
-          if VM event counters are disabled.
+Help:       VM event counters are needed for event counts to be shown.
+            This option allows the disabling of the VM event counters
+            on EXPERT systems.  /proc/vmstat will only show page counts
+            if VM event counters are disabled.
 
-Type:     boolean
+Type:       boolean
 
-Choice:   built-in [*]
-
-Reason:   
+Choice:     built-in [*]
 ```
 <h3>[ ] Enable SLUB debugging support</h3>
 ```none
