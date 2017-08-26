@@ -1,5 +1,5 @@
 order: 18
 replying_to: '15'
 name: DOTSLASHLINUX
-comment: "@peedub, well if it was working for the rest of your system as expected, then you can put up with turning it manually when uvm is being loaded when using blender. It's related to CUDA and your blender USE flags, so I'll double check these if I were you. Glad that it worked for everything else though!"
+comment: "@peedub, well if it was working for the rest of your system as expected, then you can put up with turning it manually when uvm is being loaded when using blender. The correct order is to unload <mark>nvidia-uvm</mark> first then <mark>nvidia</mark>: <mark>modprobe -r nvidia-uvm nvidia</mark>. It's related to CUDA and your blender USE flags, so I'll double check these if I were you. Glad that it worked for everything else though!"
 date: '2017-08-25'
