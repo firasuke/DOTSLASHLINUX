@@ -7,7 +7,7 @@ author = "Firas Khalil Khana"
 imgsrc = "/img/kernel4.png"
 imgalt = "kernel4"
 +++
-<h3>2- [*] Enable loadable module support  ---></h3>
+<h3>2- [&ast;] Enable loadable module support  ---></h3>
 <h3>--- Enable loadable module support</h3>
 ```none
 Symbol:     CONFIG_MODULES
@@ -59,7 +59,7 @@ Choice:     excluded [ ]
 Reason:     I excluded this option as forcing modules to load is dangerous and not
             recommended at all.
 ```
-<h3>[*]   Module unloading</h3>
+<h3>[&ast;]   Module unloading</h3>
 ```none
 Symbol:     CONFIG_MODULE_UNLOAD
 

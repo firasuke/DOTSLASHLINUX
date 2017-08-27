@@ -14,7 +14,7 @@ It's preferrable if you were using a gnu/linux distro of any kind and have the n
 I highly recommend that you stick with the ncurses version <mark>make menuconfig</mark>, since it's much better than the regular <mark>make config</mark>, as you can save your progress, go back and forth with options, can be opened in any terminal emulator with a proper size (when ncurses in installed) as well as on ttys and that's extremely helpful when rescuing your system since you'll be looking at the same interface wherever you go and whatever you choose.
 <br/>
 <br/>
-I'll also be using the latest kernel version provided on the unstable branch on gentoo (gentoo-sources 4.12.8). You might have noticed that I switched from (ck-sources) because MuQSS was causing me a lot of boot time failures and many rcu stalls (basically a lot of headache) so I had to revert to CFS and CFQ.
+I'll also be using the latest kernel version provided on the unstable branch on gentoo (gentoo-sources 4.12.9). You might have noticed that I switched from (ck-sources) because MuQSS was causing me a lot of boot time failures and many rcu stalls (basically a lot of headache) so I had to revert to CFS and CFQ.
 <hr/>
 <h3>Basic Controls</h3>
 The <mark>&uarr;</mark> and the <mark>&darr;</mark> arrows can be used to move between the configuration options shown.
