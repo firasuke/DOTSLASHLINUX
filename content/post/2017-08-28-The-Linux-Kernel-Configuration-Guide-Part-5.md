@@ -306,4 +306,6 @@ Reason:     Wow this is going to cause a lot of flame wars. CFQ is my all
 
             For normal desktop/laptop users, CFQ is the best I/O scheduler and it
             shines alongside CFS on systems with more than 2 cores.
+
+            Include CONFIG_IOSCHED_CFQ and exclude everything else.
 ```
