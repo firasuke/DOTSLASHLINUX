@@ -302,7 +302,7 @@ Reason:     Wow this is going to cause a lot of flame wars. CFQ is my all
             only the emerge job was running. And it froze at 80%. So I returned
             to CFQ with 1000hz timer frequency and couldn't be any happier!
 
-            No matter how many chances I give to BFQ, it just keeps failing on me.
+            No matter how many chances I give BFQ, it just keeps failing on me.
 
             For normal desktop/laptop users, CFQ is the best I/O scheduler and it
             shines alongside CFS on systems with more than 2 cores.
