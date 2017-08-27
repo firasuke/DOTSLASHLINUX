@@ -144,3 +144,9 @@ Choice:     excluded [ ]
 Reason:     I'm currently using OpenRC to manage my boot scripts and as my service manager
             and have no need for systemd.
 ```
+<hr/>
+<h3>Chinese Translation</h3>
+One of DOTSLASHLINUX's followers from china 杨鑫 (Yang Mame), decided to follow up with the series and provide chinese translation of the kernel configuration guides on his blog.
+<br/>
+<br/>
+To read this guide in chinese <a href="https://blog.yangmame.top/2017/08/27/%E7%BF%BB%E8%AF%91%EF%BC%9Alinux%E5%86%85%E6%A0%B8%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97%EF%BC%882%EF%BC%89/" target="_blank">click here</a>.
