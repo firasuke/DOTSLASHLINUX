@@ -9,7 +9,7 @@ code[class*="language-"], pre[class*="language-"] { color: #f8f8f2; background: 
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: monospace !important;
   background-color: #333333;
   color: #dadada;
 }
@@ -52,7 +52,6 @@ button {
   border: 1px solid #232323;
   outline: none;
   color: #dadada !important;
-  font-family: sans;
 }
 
 .header,
@@ -181,10 +180,6 @@ p {
 
 .info {
   text-align: center;
-}
-
-#comments {
-  font-family: monospace;
 }
 
 #comments h3 {
