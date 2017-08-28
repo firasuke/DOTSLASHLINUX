@@ -87,7 +87,7 @@ Once ALSA is installed, we need to unmute the master channel for our sound card.
 │                                                                                                                                                                        │
 └────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
-If you can't record sound using your internal micrphone make suure that the Mic channel is unmuted and that the Capture channel is unmuted (pressing the <mark>spacebar</mark> key should switch from ------- to L R CAPTURE, this is necessary for the recording microphone to work).
+If you can't record sound using your internal microphone make sure that the Mic and Capture channels are unmuted (pressing the <mark>spacebar</mark> key on the Capture channel should switch from ------- to L R CAPTURE, this is necessary for the microphone to work).
 <hr/>
 <h3 id="ALSA_Services">3- ALSA Services</h3>
 <br/>
