@@ -1,0 +1,5 @@
+order: 21
+replying_to: ''
+name: HerrSchafer
+comment: "Thanks for sharing!\r\nApplications must be started with \"optirun app\" in order to use Nvidia card? Switch it ON and OFF should be automatic, as far as I understand the goal of bumblebee. By the way, how will the program knows when to use or not the dGPU?"
+date: '2017-08-28'
