@@ -183,6 +183,10 @@ p {
   text-align: center;
 }
 
+#comments {
+  font-family: monospace;
+}
+
 #comments h3 {
   text-align: center;
 }

@@ -10,6 +10,7 @@
   <div class="{{ if eq .replying_to "" }}main-comment{{ else }}reply{{ end }}">
     <p><strong>{{ .name }}</strong></p>
     <p>{{ dateFormat "02/01/2006" .date }}</p>
+    <hr/>
     <p>{{ .comment | markdownify }}</p>
   </div>{{ $.Scratch.Add "counter" 1 }}{{ end }}{{ end }}
   <div id="leavecomment">
