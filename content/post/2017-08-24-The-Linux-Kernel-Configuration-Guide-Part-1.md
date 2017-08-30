@@ -6,6 +6,7 @@ date = "2017-08-24"
 author = "Firas Khalil Khana"
 imgsrc = "/img/kernel1.png"
 imgalt = "kernel1"
+categories = [ "kernel" ]
 +++
 <h3>Intro</h3>
 Finally, it's here... The series you've all been waiting for. I want to apologize for making you wait a lot before starting this series. The truth is that I've redesigned the website from scratch which took some time. It's much lighter now and fully supports https and it works well in a terminal web browser! I've also added an <a href="/index.xml" target="_blank">RSS</a> feed so don't forgot to subscribe.

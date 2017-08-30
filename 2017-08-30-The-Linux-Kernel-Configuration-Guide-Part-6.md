@@ -6,6 +6,7 @@ date = "2017-08-30"
 author = "Firas Khalil Khana"
 imgsrc = "/img/kernel6.png"
 imgalt = "kernel6"
+categories = [ "kernel" ]
 +++
 The choice of my options will be heavily affected by the cpu my laptop uses (an <a href="http://ark.intel.com/products/75117/Intel-Core-i7-4700MQ-Processor-6M-Cache-up-to-3_40-GHz" target="_blank">Intel Core i7 4700MQ</a>
 <h3>Processor type and features  ---></h3>
@@ -136,7 +137,26 @@ Type:       boolean
 Choice:     excluded [ ]
 
 Reason:     You can safely exclude this option if you have a standard pc
-            platform like I did.
+            platform.
+```
+<h3>[ ] Intel Low Power Subsystem Support</h3>
+```none
+Symbol:     CONFIG_X86_INTEL_LPSS
+
+Help:       Select to build support for Intel Low Power Subsystem such as
+            found on Intel Lynxpoint PCH. Selecting this option enables
+            things like clock tree (common clock framework) and pincontrol
+            which are needed by the LPSS peripheral drivers.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     Some say this feature is for intel chipsets starting from haswell
+            others say starting from skylake.
+
+            Due to confusion I decided to exclude this option for now until
+            I 
 ```
 <h3>[ ] AMD ACPI2Platform devices support</h3>
 ```none
@@ -153,6 +173,7 @@ Choice:     excluded [ ]
 
 Reason:     I don't have such chipsets; therefore, I excluded this option.
 ```
-<h3> </h3>
+<h3>-*- Intel SoC IOSF Sideband support for SoC platforms</h3>
 ```none
+Symbol:     
 ```

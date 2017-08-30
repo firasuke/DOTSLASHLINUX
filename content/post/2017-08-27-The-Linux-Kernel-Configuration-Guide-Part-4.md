@@ -6,6 +6,7 @@ date = "2017-08-27"
 author = "Firas Khalil Khana"
 imgsrc = "/img/kernel4.png"
 imgalt = "kernel4"
+categories = [ "kernel" ]
 +++
 <h3>2- [&ast;] Enable loadable module support  ---></h3>
 <h3>--- Enable loadable module support</h3>

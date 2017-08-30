@@ -6,6 +6,7 @@ date = "2017-08-28"
 author = "Firas Khalil Khana"
 imgsrc = "/img/kernel5.png"
 imgalt = "kernel5"
+categories = [ "kernel" ]
 +++
 <h3>[&ast;] Enable the block layer  ---></h3>
 <h3>--- Enable the block layer</h3>

@@ -6,6 +6,7 @@ date = "2017-08-25"
 author = "Firas Khalil Khana"
 imgsrc = "/img/kernel2.png"
 imgalt = "kernel2"
+categories = [ "kernel" ]
 +++
 <h3>Prerequisites</h3>
 It's preferrable if you were using a gnu/linux distro of any kind and have the ncurses library and make installed. I urge you to use one of the recommended distros and Gentoo is favored among others.
@@ -47,7 +48,7 @@ The first section you'll see in the menu options when using Gentoo Linux, will b
 [*]   Select options required by Portage features
     Support for init systems, system and service managers  --->
 ```
-<h3>[*] Gentoo Linux support</h3>
+<h3>[&ast;] Gentoo Linux support</h3>
 ```none
 Symbol:     CONFIG_GENTOO_LINUX
 
@@ -61,8 +62,11 @@ Help:       In order to boot Gentoo Linux a minimal set of config settings needs
 Type:       boolean
 
 Choice:     built-in [*]
+
+Reason:     If you're on Gentoo Linux (or managed to get a copy of gentoo-sources),
+            then it's quite obvious that this option should be built in.
 ```
-<h3>[*] Linux dynamic and persistent device naming (userspace devfs) support</h3>
+<h3>[&ast;] Linux dynamic and persistent device naming (userspace devfs) support</h3>
 ```none
 Symbol:     CONFIG_GENTOO_LINUX_UDEV
 
@@ -84,8 +88,10 @@ Help:       In order to boot Gentoo Linux a minimal set of config settings needs
 Type:       boolean
 
 Choice:     built-in [*]
+
+Reason:     Include this option in for a bootable gentoo installation =D.
 ```
-<h3>[*] Select options required by Portage features</h3>
+<h3>[&ast;] Select options required by Portage features</h3>
 ```none
 Symbol:     CONFIG_GENTOO_LINUX_PORTAGE
 
@@ -103,6 +109,8 @@ Help:       This enables options required by various Portage FEATURES.
 Type:       boolean
 
 Choice:     built-in [*]
+
+Reason:     You hea
 ```
 <h3>Support for init systems, system and service managers  ---></h3>
 <h3>[*] OpenRC, runit and other script based systems and managers</h3>

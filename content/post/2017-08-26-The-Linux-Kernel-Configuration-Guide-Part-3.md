@@ -6,6 +6,7 @@ date = "2017-08-26"
 author = "Firas Khalil Khana"
 imgsrc = "/img/kernel3.png"
 imgalt = "kernel3"
+categories = [ "kernel" ]
 +++
 Before starting with the <mark>General setup</mark> section, there's this important option just before it:
 <h3>[&ast;] 64-bit kernel</h3>

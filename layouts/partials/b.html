@@ -13,6 +13,20 @@
     {{ end }}
   </div>
 </div>{{ end }}
+<div class="box kernel">
+  <h2>The Linux Kernel Configuration Series</h2>
+  <div class="row">
+    {{ range .Site.Taxonomies.categories.kernel }}
+    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+      <div class="box card">
+        <a href="{{ .Permalink }}">
+          <div class="frame"><img src="{{ .Params.imgsrc }}" alt="{{ .Params.imgalt }}"></div>
+          <h3>{{ .Title }}</h3></a>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</div>
 </div>
 <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 side">
   <div class="box search">
