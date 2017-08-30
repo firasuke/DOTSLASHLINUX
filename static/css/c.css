@@ -125,7 +125,6 @@ img:hover {
 #search-results {
   padding: 10px;
   background-color: #444444;
-  box-shadow: 0 0 10px black;
   margin: 50px 0 50px 0;
 }
 
@@ -252,12 +251,21 @@ p {
   padding: 0;
 }
 
-.search,
 .distros,
 .upcoming,
 .suggestions,
 .donate {
   margin-bottom: 50px;
+}
+
+.search {
+  margin-bottom: 5px;
+}
+
+.search input,
+.search button {
+  margin: 5px 0 5px 0;
+  width: 100%;
 }
 
 .distros a {
