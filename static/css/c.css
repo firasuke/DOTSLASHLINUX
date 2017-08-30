@@ -125,7 +125,7 @@ img:hover {
 #search-results {
   padding: 10px;
   background-color: #444444;
-  margin: 50px 0 50px 0;
+  margin: 30px 0 30px 0;
 }
 
 .first,
@@ -136,7 +136,7 @@ img:hover {
 }
 
 .main {
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 .deck h2 {
@@ -230,7 +230,7 @@ p {
 }
 
 #leavecomment button {
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 .side {
@@ -255,7 +255,7 @@ p {
 .upcoming,
 .suggestions,
 .donate {
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 .search {
@@ -270,7 +270,7 @@ p {
 
 .distros a {
   display: inline-block;
-  padding: 50px;
+  padding: 30px;
   font-size: 1.4em;
 }
 
