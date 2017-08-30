@@ -47,6 +47,10 @@ mark {
   border-radius: 0 !important;
 }
 
+pre,
+code {
+  background-color: #232323 !important;
+}
 mark {
   background-color: #232323;
   color: #dadada;
