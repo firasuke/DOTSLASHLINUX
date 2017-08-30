@@ -28,6 +28,19 @@ hr {
   border-color: #232323;
 }
 
+table {
+  width: 100%;
+}
+
+table,
+tr,
+th,
+td {
+  border: 1px solid #232323;
+  text-align: center;
+  padding: 5px;
+}
+
 pre,
 mark {
   font-family: monospace !important;
