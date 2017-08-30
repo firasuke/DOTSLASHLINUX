@@ -91,7 +91,7 @@ Choice:     built-in [*]
 
 Reason:     Include this option in for a bootable gentoo installation =D.
 ```
-<h3>[&ast;] Select options required by Portage features</h3>
+<h3>[ ] Select options required by Portage features</h3>
 ```none
 Symbol:     CONFIG_GENTOO_LINUX_PORTAGE
 
@@ -108,12 +108,16 @@ Help:       This enables options required by various Portage FEATURES.
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     excluded [ ]
 
-Reason:     You hea
+Reason:     It's highly recommended that you build this set of options in your kernel.
+            
+            Users who want to exclude CONFIG_CGROUPS, may want to exclude this feature
+            and build CONFIG_NAMESPACES, CONFIG_IPC_NS, CONFIG_NET_NS and CONFIG_SYSVIPC
+            into the kernel (which is what I did).
 ```
 <h3>Support for init systems, system and service managers  ---></h3>
-<h3>[*] OpenRC, runit and other script based systems and managers</h3>
+<h3>[&ast;] OpenRC, runit and other script based systems and managers</h3>
 ```none
 Symbol:     CONFIG_GENTOO_LINUX_INIT_SCRIPT
 

@@ -1,4 +1,13 @@
 {{ partial "t" . }}
+{{ if in .Params.categories "kernel" }}
+<div class="box kernelmap">
+  The Linux Kernel Configuration Guides are constantly being updated and will soon be properly maintained.
+  <br/>
+  <br/>
+  <pre><code class="language-none">Sources:    sys-kernel/gentoo-sources
+Version:    4.12.10</code></pre>
+</div>
+{{ end }}
 <div class="box map">
   <h2>{{ .Title }}</h2>
   <div class="frame"><img src="{{ .Params.imgsrc }}" alt="{{ .Params.imgalt }}"></div>
