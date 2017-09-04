@@ -791,7 +791,7 @@ Type:       boolean
 
 Choice:     built-in -*-
 
-Reason:     Forcibly enabled and I don't have a strong reason to disable it =D.
+Reason:     Forcibly included and I don't have a strong reason to disable it =D.
 ```
 <h3>-&ast;-   Page migration</h3>
 ```none
@@ -808,7 +808,8 @@ Type:       boolean
 
 Choice:     built-in -*-
 
-Reason:     
+Reason:     Forcibly included by CONFIG_COMPACTION even though I've excluded both
+            CONFIG_NUMA and huge pages.
 ```
 <h3>[&ast;] Enable bounce buffers</h3>
 ```none
@@ -823,5 +824,9 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     
+Reason:     I included this as I'm using the proprietary nvidia driver and it
+            relies on CONFIG_ZONE_DMA which in turn relies on CONFIG_BOUNCE.
+
+            (When the nvidia attempts a DMA on an unreachable address it creates
+            bounce buffers, or so I understood.)
 ```
