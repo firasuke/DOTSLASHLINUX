@@ -2,3 +2,5 @@
 >=app-arch/rar-5.5.0_p20170811 RAR
 # required by virtualbox-extpack-oracle (argument)
 >=app-emulation/virtualbox-extpack-oracle-5.1.26.117224 PUEL
+# required by genymotion-bin (argument)
+>=app-emulation/genymotion-bin-2.9.0-r1 genymotion

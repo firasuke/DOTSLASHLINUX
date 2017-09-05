@@ -58,7 +58,7 @@ x11-terms/rxvt-unicode blink unicode3
 app-editors/vim python_single_target_python2_7 -python_single_target_python3_4
 sys-devel/clang -llvm_targets_AMDGPU -llvm_targets_BPF
 sys-devel/llvm -llvm_targets_AMDGPU -llvm_targets_BPF
-www-client/seamonkey -calendar -chatzilla -ipc -roaming
+www-client/seamonkey -calendar -chatzilla custom-cflags custom-optimization force-gtk3 ipc minimal -roaming system-harfbuzz system-icu system-jpeg system-libevent system-sqlite
 media-video/mpv bluray cdda dvd
 media-plugins/audacious-plugins cdda ffmpeg flac libsamplerate
 app-emulation/wine-staging d3d9 mp3 osmesa -realtime s3tc -udisks
@@ -133,3 +133,10 @@ x11-proto/videoproto abi_x86_32
 x11-libs/libva drm
 media-video/simplescreenrecorder mp3 theora vorbis x264
 app-mobilephone/heimdall qt5
+app-crypt/gnupg -smartcard
+sys-apps/lshw gtk
+app-emulation/qemu -jpeg -ncurses -png python spice -vnc xfs
+dev-qt/qtcore icu
+www-client/firefox bindist custom-cflags custom-optimization hwaccel minimal system-harfbuzz system-icu system-jpeg system-libevent system-libvpx system-sqlite
+dev-db/sqlite secure-delete
+media-libs/libvpx postproc
