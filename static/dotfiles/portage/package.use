@@ -61,295 +61,75 @@ sys-devel/llvm -llvm_targets_AMDGPU -llvm_targets_BPF
 www-client/seamonkey -calendar -chatzilla -ipc -roaming
 media-video/mpv bluray cdda dvd
 media-plugins/audacious-plugins cdda ffmpeg flac libsamplerate
-app-emulation/wine d3d9 mp3 osmesa -realtime s3tc staging -udisks
-# required by app-emulation/wine-9999::gentoo[opengl]
-# required by wine (argument)
->=virtual/glu-9.0-r1 abi_x86_32
-# required by app-emulation/wine-9999::gentoo[alsa]
-# required by wine (argument)
->=media-libs/alsa-lib-1.1.4.1 abi_x86_32
-# required by x11-libs/libva-1.8.3::gentoo[opengl]
-# required by app-emulation/wine-9999::gentoo[vaapi]
-# required by wine (argument)
->=virtual/opengl-7.0-r1 abi_x86_32
-# required by media-libs/mesa-17.2.0_rc5::gentoo[dri3]
-# required by app-emulation/wine-9999::gentoo[d3d9]
-# required by wine (argument)
->=x11-proto/dri3proto-1.0 abi_x86_32
-# required by media-libs/freetype-2.8::gentoo[bzip2]
-# required by app-emulation/wine-9999::gentoo[truetype]
-# required by wine (argument)
->=app-arch/bzip2-1.0.6-r8 abi_x86_32
-# required by media-libs/mesa-17.2.0_rc5::gentoo
-# required by app-emulation/wine-9999::gentoo[d3d9]
-# required by wine (argument)
->=dev-libs/expat-2.2.4 abi_x86_32
-# required by media-libs/mesa-17.2.0_rc5::gentoo[dri3]
-# required by app-emulation/wine-9999::gentoo[d3d9]
-# required by wine (argument)
->=x11-proto/presentproto-1.1 abi_x86_32
-# required by x11-libs/libXdamage-1.1.4-r1::gentoo
-# required by media-libs/mesa-17.2.0_rc5::gentoo
-# required by app-emulation/wine-9999::gentoo[d3d9]
-# required by wine (argument)
->=x11-proto/damageproto-1.2.1-r1 abi_x86_32
-# required by app-emulation/wine-9999::gentoo[xcomposite]
-# required by wine (argument)
->=x11-libs/libXcomposite-0.4.4-r1 abi_x86_32
-# required by media-libs/mesa-17.2.0_rc5::gentoo
-# required by app-emulation/wine-9999::gentoo[d3d9]
-# required by wine (argument)
->=x11-libs/libdrm-2.4.82 abi_x86_32
-# required by dev-libs/glib-2.52.3::gentoo
-# required by dev-util/pkgconfig-0.29.2::gentoo[-internal-glib]
-# required by virtual/pkgconfig-0-r1::gentoo
-# required by net-libs/gnutls-3.5.14::gentoo
-# required by app-emulation/wine-9999::gentoo[ssl]
-# required by wine (argument)
->=dev-libs/libpcre-8.41 abi_x86_32
-# required by app-emulation/wine-9999::gentoo[lcms]
-# required by wine (argument)
->=media-libs/lcms-2.8-r2 abi_x86_32
-# required by media-libs/mesa-17.2.0_rc5::gentoo[llvm,-opencl]
-# required by app-emulation/wine-9999::gentoo[d3d9]
-# required by wine (argument)
->=sys-devel/llvm-4.0.1 abi_x86_32
-# required by app-emulation/wine-9999::gentoo[X]
-# required by wine (argument)
->=x11-libs/libXcursor-1.1.14 abi_x86_32
-# required by x11-libs/libXrandr-1.5.1::gentoo
-# required by app-emulation/wine-9999::gentoo[X]
-# required by wine (argument)
->=x11-libs/libXrender-0.9.10 abi_x86_32
-# required by virtual/glu-9.0-r1::gentoo
-# required by app-emulation/wine-9999::gentoo[opengl]
-# required by wine (argument)
->=media-libs/glu-9.0.0-r1 abi_x86_32
-# required by virtual/opengl-7.0-r1::gentoo
-# required by app-emulation/wine-9999::gentoo[opengl]
-# required by wine (argument)
->=media-libs/mesa-17.2.0_rc5 abi_x86_32 d3d9 osmesa xvmc
-# required by x11-libs/libXi-1.7.9::gentoo
-# required by app-emulation/wine-9999::gentoo[X]
-# required by wine (argument)
->=x11-libs/libXfixes-5.0.3 abi_x86_32
-# required by app-emulation/wine-9999::gentoo[udisks]
-# required by wine (argument)
->=sys-apps/dbus-1.10.22 abi_x86_32
-# required by dev-util/pkgconfig-0.29.2::gentoo[-internal-glib]
-# required by virtual/pkgconfig-0-r1::gentoo
-# required by net-libs/gnutls-3.5.14::gentoo
-# required by app-emulation/wine-9999::gentoo[ssl]
-# required by wine (argument)
->=dev-libs/glib-2.52.3 abi_x86_32
-# required by media-libs/mesa-17.2.0_rc5::gentoo
-# required by app-emulation/wine-9999::gentoo[d3d9]
-# required by wine (argument)
->=x11-libs/libxshmfence-1.2 abi_x86_32
-# required by media-libs/mesa-17.2.0_rc5::gentoo
-# required by app-emulation/wine-9999::gentoo[d3d9]
-# required by wine (argument)
->=x11-proto/xf86driproto-2.1.1-r1 abi_x86_32
-# required by dev-libs/libxml2-2.9.4-r2::gentoo[icu]
-# required by gnome-extra/yelp-xsl-3.20.1::gentoo
-# required by app-text/yelp-tools-3.18.0::gentoo
-# required by dev-util/gtk-doc-1.25-r1::gentoo
-# required by sys-fs/udisks-2.6.5::gentoo
-# required by app-emulation/wine-9999::gentoo[udisks]
-# required by wine (argument)
->=dev-libs/icu-58.2-r1 abi_x86_32
-# required by app-emulation/wine-9999::gentoo[jpeg]
-# required by wine (argument)
->=virtual/jpeg-0-r2:0 abi_x86_32
-# required by virtual/pkgconfig-0-r1::gentoo
-# required by net-libs/gnutls-3.5.14::gentoo
-# required by app-emulation/wine-9999::gentoo[ssl]
-# required by wine (argument)
->=dev-util/pkgconfig-0.29.2 abi_x86_32
-# required by dev-libs/glib-2.52.3::gentoo[xattr]
-# required by dev-util/pkgconfig-0.29.2::gentoo[-internal-glib]
-# required by virtual/pkgconfig-0-r1::gentoo
-# required by net-libs/gnutls-3.5.14::gentoo
-# required by app-emulation/wine-9999::gentoo[ssl]
-# required by wine (argument)
->=sys-apps/attr-2.4.47-r2 abi_x86_32
-# required by dev-libs/libxslt-1.1.29-r1::gentoo
-# required by app-emulation/wine-9999::gentoo[xml]
-# required by wine (argument)
->=dev-libs/libxml2-2.9.4-r2 abi_x86_32 python
-# required by x11-libs/libva-1.8.3::gentoo[video_cards_i965,video_cards_intel]
-# required by app-emulation/wine-9999::gentoo[vaapi]
-# required by wine (argument)
->=x11-libs/libva-intel-driver-1.8.3 abi_x86_32
-# required by app-emulation/wine-9999::gentoo[X]
-# required by wine (argument)
->=x11-libs/libXrandr-1.5.1 abi_x86_32
-# required by net-libs/gnutls-3.5.14::gentoo
-# required by app-emulation/wine-9999::gentoo[ssl]
-# required by wine (argument)
->=virtual/pkgconfig-0-r1 abi_x86_32
-# required by dev-libs/glib-2.52.3::gentoo
-# required by dev-util/pkgconfig-0.29.2::gentoo[-internal-glib]
-# required by virtual/pkgconfig-0-r1::gentoo
-# required by net-libs/gnutls-3.5.14::gentoo
-# required by app-emulation/wine-9999::gentoo[ssl]
-# required by wine (argument)
->=virtual/libffi-3.0.13-r1 abi_x86_32
-# required by media-libs/mesa-17.2.0_rc5::gentoo
-# required by app-emulation/wine-9999::gentoo[d3d9]
-# required by wine (argument)
->=x11-proto/dri2proto-2.8-r1 abi_x86_32
-# required by media-libs/fontconfig-2.12.4::gentoo
-# required by app-emulation/wine-9999::gentoo[fontconfig]
-# required by wine (argument)
->=media-libs/freetype-2.8 abi_x86_32
-# required by dev-libs/nettle-3.3-r2::gentoo[gmp]
-# required by net-libs/gnutls-3.5.14::gentoo
-# required by app-emulation/wine-9999::gentoo[ssl]
-# required by wine (argument)
->=dev-libs/gmp-6.1.2 abi_x86_32
-# required by media-libs/mesa-17.2.0_rc5::gentoo
-# required by app-emulation/wine-9999::gentoo[d3d9]
-# required by wine (argument)
->=x11-libs/libXxf86vm-1.1.4 abi_x86_32
-# required by media-libs/mesa-17.2.0_rc5::gentoo
-# required by app-emulation/wine-9999::gentoo[d3d9]
-# required by wine (argument)
->=x11-proto/glproto-1.4.17-r1 abi_x86_32
-# required by app-emulation/wine-9999::gentoo[mp3]
-# required by wine (argument)
->=media-sound/mpg123-1.25.6 abi_x86_32
-# required by x11-libs/libXrandr-1.5.1::gentoo
-# required by app-emulation/wine-9999::gentoo[X]
-# required by wine (argument)
->=x11-proto/randrproto-1.5.0 abi_x86_32
-# required by app-emulation/wine-9999::gentoo[xml]
-# required by wine (argument)
->=dev-libs/libxslt-1.1.29-r1 abi_x86_32
-# required by virtual/jpeg-0-r2::gentoo
-# required by app-emulation/wine-9999::gentoo[jpeg]
-# required by wine (argument)
->=media-libs/libjpeg-turbo-1.5.2 abi_x86_32
-# required by x11-libs/libXfixes-5.0.3::gentoo
-# required by x11-libs/libXcursor-1.1.14::gentoo
-# required by app-emulation/wine-9999::gentoo[X]
-# required by wine (argument)
->=x11-proto/fixesproto-5.0-r1 abi_x86_32
-# required by app-emulation/wine-9999::gentoo[png]
-# required by wine (argument)
->=media-libs/libpng-1.6.31 abi_x86_32
-# required by net-libs/gnutls-3.5.14::gentoo
-# required by app-emulation/wine-9999::gentoo[ssl]
-# required by wine (argument)
->=dev-libs/nettle-3.3-r2 abi_x86_32
-# required by media-libs/mesa-17.2.0_rc5::gentoo
-# required by app-emulation/wine-9999::gentoo[d3d9]
-# required by wine (argument)
->=x11-libs/libXdamage-1.1.4-r1 abi_x86_32
-# required by dev-libs/glib-2.52.3::gentoo
-# required by dev-util/pkgconfig-0.29.2::gentoo[-internal-glib]
-# required by virtual/pkgconfig-0-r1::gentoo
-# required by net-libs/gnutls-3.5.14::gentoo
-# required by app-emulation/wine-9999::gentoo[ssl]
-# required by wine (argument)
->=virtual/libintl-0-r2 abi_x86_32
-# required by x11-libs/libva-intel-driver-1.8.3::gentoo
->=x11-libs/libva-1.8.3 abi_x86_32
-# required by net-libs/gnutls-3.5.14::gentoo
-# required by app-emulation/wine-9999::gentoo[ssl]
-# required by wine (argument)
->=dev-libs/libunistring-0.9.7 abi_x86_32
-# required by dev-libs/glib-2.52.3::gentoo
-# required by dev-util/pkgconfig-0.29.2::gentoo[-internal-glib]
-# required by virtual/pkgconfig-0-r1::gentoo
-# required by net-libs/gnutls-3.5.14::gentoo
-# required by app-emulation/wine-9999::gentoo[ssl]
-# required by wine (argument)
->=sys-apps/util-linux-2.30.1 abi_x86_32
-# required by net-libs/gnutls-3.5.14::gentoo[idn]
-# required by app-emulation/wine-9999::gentoo[ssl]
-# required by wine (argument)
->=net-dns/libidn2-2.0.3 abi_x86_32
-# required by app-emulation/wine-9999::gentoo[ssl]
-# required by wine (argument)
->=net-libs/gnutls-3.5.14 abi_x86_32
-# required by sys-auth/polkit-0.113-r4::gentoo[-systemd,-elogind]
-# required by sys-fs/udisks-2.6.5::gentoo
-# required by app-emulation/wine-9999::gentoo[udisks]
-# required by wine (argument)
->=sys-auth/consolekit-1.2.0 policykit
-# required by media-libs/mesa-17.2.0_rc5::gentoo
-# required by app-emulation/wine-9999::gentoo[d3d9]
-# required by wine (argument)
->=x11-proto/xf86vidmodeproto-2.3.1-r1 abi_x86_32
-# required by virtual/libffi-3.0.13-r1::gentoo
-# required by dev-libs/glib-2.52.3::gentoo
-# required by dev-util/pkgconfig-0.29.2::gentoo[-internal-glib]
-# required by virtual/pkgconfig-0-r1::gentoo
-# required by net-libs/gnutls-3.5.14::gentoo
-# required by app-emulation/wine-9999::gentoo[ssl]
-# required by wine (argument)
->=dev-libs/libffi-3.2.1 abi_x86_32
-# required by net-libs/gnutls-3.5.14::gentoo
-# required by app-emulation/wine-9999::gentoo[ssl]
-# required by wine (argument)
->=dev-libs/libtasn1-4.12 abi_x86_32
-# required by app-emulation/wine-9999::gentoo[X]
-# required by wine (argument)
->=x11-libs/libXi-1.7.9 abi_x86_32
-# required by app-emulation/wine-9999::gentoo[fontconfig]
-# required by wine (argument)
->=media-libs/fontconfig-2.12.4 abi_x86_32
-# required by app-emulation/wine-9999::gentoo[ncurses]
-# required by wine (argument)
->=sys-libs/ncurses-6.0-r1 abi_x86_32
-# required by x11-libs/libdrm-2.4.82::gentoo[video_cards_intel]
-# required by x11-libs/libva-intel-driver-1.8.3::gentoo
-# required by x11-libs/libva-1.8.3::gentoo[video_cards_i965,video_cards_intel]
-# required by app-emulation/wine-9999::gentoo[vaapi]
-# required by wine (argument)
->=x11-libs/libpciaccess-0.13.5 abi_x86_32
-# required by x11-libs/libXrandr-1.5.1::gentoo
-# required by app-emulation/wine-9999::gentoo[X]
-# required by wine (argument)
->=x11-proto/renderproto-0.11.1-r1 abi_x86_32
-# required by x11-libs/libXcomposite-0.4.4-r1::gentoo
-# required by app-emulation/wine-9999::gentoo[xcomposite]
-# required by wine (argument)
->=x11-proto/compositeproto-0.4.2-r1 abi_x86_32
-# required by x11-libs/libva-1.8.3::gentoo[video_cards_nvidia,vdpau]
-# required by app-emulation/wine-9999::gentoo[vaapi]
-# required by wine (argument)
->=x11-libs/libva-vdpau-driver-0.7.4-r4 abi_x86_32
-# required by dev-libs/glib-2.52.3::gentoo
-# required by dev-util/pkgconfig-0.29.2::gentoo[-internal-glib]
-# required by virtual/pkgconfig-0-r1::gentoo
-# required by net-libs/gnutls-3.5.14::gentoo
-# required by app-emulation/wine-9999::gentoo[ssl]
-# required by wine (argument)
->=virtual/libiconv-0-r2 abi_x86_32
-# required by app-emulation/wine-9999::gentoo[osmesa]
-# required by wine (argument)
->=media-libs/mesa-17.2.0_rc5 osmesa
-# required by app-emulation/wine-9999::gentoo[s3tc]
-# required by wine (argument)
->=media-libs/libtxc_dxtn-1.0.1-r3 abi_x86_32
-# required by media-libs/mesa-17.2.0_rc5::gentoo[xvmc]
-# required by media-libs/libtxc_dxtn-1.0.1-r3::gentoo
-# required by app-emulation/wine-9999::gentoo[s3tc]
-# required by wine (argument)
->=x11-libs/libXvMC-1.0.10 abi_x86_32
-# required by x11-libs/libXvMC-1.0.10::gentoo
-# required by media-libs/mesa-17.2.0_rc5::gentoo[xvmc]
-# required by media-libs/libtxc_dxtn-1.0.1-r3::gentoo
-# required by app-emulation/wine-9999::gentoo[s3tc]
-# required by wine (argument)
->=x11-libs/libXv-1.0.11 abi_x86_32
-# required by x11-libs/libXvMC-1.0.10::gentoo
-# required by media-libs/mesa-17.2.0_rc5::gentoo[xvmc]
-# required by media-libs/libtxc_dxtn-1.0.1-r3::gentoo
-# required by app-emulation/wine-9999::gentoo[s3tc]
-# required by wine (argument)
->=x11-proto/videoproto-2.3.3 abi_x86_32
+app-emulation/wine-staging d3d9 mp3 osmesa -realtime s3tc -udisks
+app-emulation/wine-gecko abi_x86_32
+virtual/glu abi_x86_32
+media-libs/alsa-lib abi_x86_32
+virtual/opengl abi_x86_32
+x11-proto/dri3proto abi_x86_32
+app-arch/bzip2 abi_x86_32
+dev-libs/expat abi_x86_32
+x11-proto/presentproto abi_x86_32
+x11-proto/damageproto abi_x86_32
+x11-libs/libXcomposite abi_x86_32
+x11-libs/libdrm abi_x86_32
+dev-libs/libpcre abi_x86_32
+media-libs/lcms abi_x86_32
+sys-devel/llvm abi_x86_32
+x11-libs/libXcursor abi_x86_32
+x11-libs/libXrender abi_x86_32
+media-libs/glu abi_x86_32
+media-libs/mesa abi_x86_32 d3d9 osmesa xvmc
+x11-libs/libXfixes abi_x86_32
+sys-apps/dbus abi_x86_32
+dev-libs/glib abi_x86_32
+x11-libs/libxshmfence abi_x86_32
+x11-proto/xf86driproto abi_x86_32
+dev-libs/icu abi_x86_32
+virtual/jpeg abi_x86_32
+dev-util/pkgconfig abi_x86_32
+sys-apps/attr abi_x86_32
+dev-libs/libxml2 abi_x86_32 python
+x11-libs/libva-intel-driver abi_x86_32
+x11-libs/libXrandr abi_x86_32
+virtual/pkgconfig abi_x86_32
+virtual/libffi abi_x86_32
+x11-proto/dri2proto abi_x86_32
+media-libs/freetype abi_x86_32
+dev-libs/gmp abi_x86_32
+x11-libs/libXxf86vm abi_x86_32
+x11-proto/glproto abi_x86_32
+media-sound/mpg123 abi_x86_32
+x11-proto/randrproto abi_x86_32
+dev-libs/libxslt abi_x86_32
+media-libs/libjpeg-turbo abi_x86_32
+x11-proto/fixesproto abi_x86_32
+media-libs/libpng abi_x86_32
+dev-libs/nettle abi_x86_32
+x11-libs/libXdamage abi_x86_32
+virtual/libintl abi_x86_32
+x11-libs/libva abi_x86_32
+dev-libs/libunistring abi_x86_32
+sys-apps/util-linux abi_x86_32
+net-dns/libidn2 abi_x86_32
+net-libs/gnutls abi_x86_32
+sys-auth/consolekit policykit
+x11-proto/xf86vidmodeproto abi_x86_32
+dev-libs/libffi abi_x86_32
+dev-libs/libtasn1 abi_x86_32
+x11-libs/libXi abi_x86_32
+media-libs/fontconfig abi_x86_32
+sys-libs/ncurses abi_x86_32
+x11-libs/libpciaccess abi_x86_32
+x11-proto/renderproto abi_x86_32
+x11-proto/compositeproto abi_x86_32
+x11-libs/libva-vdpau-driver abi_x86_32
+virtual/libiconv abi_x86_32
+media-libs/mesa osmesa
+media-libs/libtxc_dxtn abi_x86_32
+x11-libs/libXvMC abi_x86_32
+x11-libs/libXv abi_x86_32
+x11-proto/videoproto abi_x86_32
 x11-libs/libva drm
 media-video/simplescreenrecorder mp3 theora vorbis x264
+app-mobilephone/heimdall qt5
