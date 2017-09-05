@@ -830,3 +830,998 @@ Reason:     I included this as I'm using the proprietary nvidia driver and it
             (When the nvidia attempts a DMA on an unreachable address it creates
             bounce buffers, or so I understood.)
 ```
+<h3>[&ast;] Enable KSM for page merging</h3>
+```none
+Symbol:     CONFIG_KSM
+
+Help:       Enable Kernel Samepage Merging: KSM periodically scans those areas
+            of an application's address space that an app has advised may be
+            mergeable.  When it finds pages of identical content, it replaces
+            the many instances by a single page with that content, so
+            saving memory until one or another app needs to modify the content.
+            Recommended for use with KVM, or with other duplicative applications.
+            See Documentation/vm/ksm.txt for more information: KSM is inactive
+            until a program has madvised that an area is MADV_MERGEABLE, and
+            root has set /sys/kernel/mm/ksm/run to 1 (if CONFIG_SYSFS is set).
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     KSM is really useful as it saves memory (there's also UKSM which isn't
+            in mainline but performs better than KSM and saves more memory).
+
+            Overall, this is a good feature to include in your kernel.
+```
+<h3>(0) Low address space to protect from user allocation</h3>
+```none
+Symbol:     CONFIG_DEFAULT_MMAP_MIN_ADDR
+
+Help:       This is the portion of low virtual memory which should be protected
+            from userspace allocation.  Keeping a user from writing to low pages
+            can help reduce the impact of kernel NULL pointer bugs.
+
+            For most ia64, ppc64 and x86 users with lots of address space
+            a value of 65536 is reasonable and should cause no problems.
+            On arm and other archs it should not be higher than 32768.
+            Programs which use vm86 functionality or have some need to map
+            this low address space will need CAP_SYS_RAWIO or disable this
+            protection by setting the value to 0.
+
+            This value can be changed after boot using the
+            /proc/sys/vm/mmap_min_addr tunable.
+
+Type:       integer
+
+Choice:     (0) custom
+
+Reason:     Default is (4096), which allows for some protection while allowing
+            emulators and WINE to run. (Many users reported that setting this
+            to 64k has caused problems for WINE and DOSemu.) 
+```
+<h3>[ ] Enable recovery from hardware memory errors</h3>
+```none
+Symbol:     CONFIG_MEMORY_FAILURE
+
+Help:       Enables code to recover from some memory failures on systems
+            with MCA recovery. This allows a system to continue running
+            even when some of its memory has uncorrected errors. This requires
+            special hardware support and typically ECC memory.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     I don't have ECC memory; therefore, I excluded this option.
+            
+            You can check if your memory is ECC or not by running the following:
+              
+              dmidecode -t 17
+
+            "Total Width:" should be 72 bits for ECC memory and 64 bits for non-ECC
+            memory.
+```
+<h3>[ ] Transparent Hugepage Support</h3>
+```none
+Symbol:     CONFIG_TRANSPARENT_HUGEPAGE
+
+Help:       Transparent Hugepages allows the kernel to use huge pages and
+            huge tlb transparently to the applications whenever possible.
+            This feature can improve computing performance to certain
+            applications by speeding up page faults during memory
+            allocation, by reducing the number of tlb misses and by speeding
+            up the pagetable walking.
+
+            If memory constrained on embedded, you may want to say N.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     Well I generally hate hugepages (even though they are useful in
+            some cases).
+
+            Some users reported that they had major delays when running emulation
+            software.
+
+            Since I'm going for a low latency system I excluded this option.
+```
+<h3>[ ] Enable cleancache driver to cache clean pages if tmem is present</h3>
+```none
+Symbol:     CONFIG_CLEANCACHE
+
+Help:       Cleancache can be thought of as a page-granularity victim cache
+            for clean pages that the kernel's pageframe replacement algorithm
+            (PFRA) would like to keep around, but can't since there isn't enough
+            memory.  So when the PFRA "evicts" a page, it first attempts to use
+            cleancache code to put the data contained in that page into
+            "transcendent memory", memory that is not directly accessible or
+            addressable by the kernel and is of unknown and possibly
+            time-varying size.  And when a cleancache-enabled
+            filesystem wishes to access a page in a file on disk, it first
+            checks cleancache to see if it already contains it; if it does,
+            the page is copied into the kernel and a disk access is avoided.
+            When a transcendent memory driver is available (such as zcache or
+            Xen transcendent memory), a significant I/O reduction
+            may be achieved.  When none is available, all cleancache calls
+            are reduced to a single pointer-compare-against-NULL resulting
+            in a negligible performance hit.
+
+            If unsure, say Y to enable cleancache
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     I excluded this option as I don't need it.
+
+            If you want to use multiple VM guests that cache the same data
+            to do that using the same ram you'll need to let the hypervisor
+            to manage the memory (ex. xen tmem) and include this option.
+```
+<h3>[ ] Enable frontswap to cache swap pages if tmem is present</h3>
+```none
+Symbol:     CONFIG_FRONTSWAP
+
+Help:       Frontswap is so named because it can be thought of as the opposite
+            of a "backing" store for a swap device.  The data is stored into
+            "transcendent memory", memory that is not directly accessible or
+            addressable by the kernel and is of unknown and possibly
+            time-varying size.  When space in transcendent memory is available,
+            a significant swap I/O reduction may be achieved.  When none is
+            available, all frontswap calls are reduced to a single pointer-
+            compare-against-NULL resulting in a negligible performance hit
+            and swap data is stored as normal on the matching swap device.
+
+            If unsure, say Y to enable frontswap.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     I excluded this option as I don't need it.
+```
+<h3>[ ] Contiguous Memory Allocator</h3>
+```none
+Symbol:     CONFIG_CMA
+
+Help:       This enables the Contiguous Memory Allocator which allows other
+            subsystems to allocate big physically-contiguous blocks of memory.
+            CMA reserves a region of memory and allows only movable pages to
+            be allocated from it. This way, the kernel can use the memory for
+            pagecache and when a subsystem requests for contiguous area, the
+            allocated pages are migrated away to serve the contiguous request.
+
+            If unsure, say "n".
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     For less system overhead, I went with the default value and I excluded
+            this option.
+```
+<h3>< > Common API for compressed memory storage</h3>
+```none
+Symbol:     CONFIG_ZPOOL
+
+Help:       Compressed memory storage API.  This allows using either zbud or
+            zsmalloc.
+
+Type:       tristate
+
+Choice:     excluded < >
+
+Reason:     I have no need for compressed memory so I excluded this option.
+```
+<h3>< > Low (Up to 2x) density storage for compressed pages</h3>
+```none
+Symbol:     CONFIG_ZBUD
+
+Help:       A special purpose allocator for storing compressed pages.
+            It is designed to store up to two compressed pages per physical
+            page.  While this design limits storage density, it has simple and
+            deterministic reclaim properties that make it preferable to a higher
+            density approach when reclaim will be used.
+
+Type:       tristate
+
+Choice:     excluded < >
+
+Reason:     I'm excluding this option as well as I'm not using compressed pages.
+```
+<h3>< > Memory allocator for compressed pages</h3>
+```none
+Symbol:     CONFIG_ZSMALLOC
+
+Help:       zsmalloc is a slab-based memory allocator designed to store
+            compressed RAM pages.  zsmalloc uses virtual memory mapping
+            in order to reduce fragmentation.  However, this results in a
+            non-standard allocator interface where a handle, not a pointer, is
+            returned by an alloc().  This handle must be mapped in order to
+            access the allocated space.
+
+Type:       tristate
+
+Choice:     excluded < >
+
+Reason:     I'm excluding this option as well as I'm not using compressed pages.
+```
+<h3>[ ] Enable idle page tracking</h3>
+```none
+Symbol:     CONFIG_IDLE_PAGE_TRACKING
+
+Help:       This feature allows to estimate the amount of user pages that have
+            not been touched during a given period of time. This information can
+            be useful to tune memory cgroup limits and/or for job placement
+            within a compute cluster.
+
+            See Documentation/vm/idle_page_tracking.txt for more details.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     I currently have CONFIG_CGROUPS excluded; hence, I have no need
+            for this option.
+```
+<h3>< > Support non-standard NVDIMMs and ADR protected memory</h3>
+```none
+Symbol:     CONFIG_X86_PMEM_LEGACY
+
+Help:       Treat memory marked using the non-standard e820 type of 12 as used
+            by the Intel Sandy Bridge-EP reference BIOS as protected memory.
+            The kernel will offer these regions to the 'pmem' driver so
+            they can be used for persistent storage.
+
+            Say Y if unsure.
+
+Type:       tristate
+
+Choice:     excluded < >
+
+Reason:     I excluded this option as I have no need for it.
+
+            Since I didn't fully understand this option (the output of 
+
+                dmesg | grep e820
+
+            ) seems fine to me and no errors are being reported.
+
+            Perhaps you should include this option if you're receiving e820
+            errors?
+```
+<h3>[ ] Check for low memory corruption</h3>
+```none
+Symbol:     CONFIG_X86_CHECK_BIOS_CORRUPTION
+
+Help:       Periodically check for memory corruption in low memory, which
+            is suspected to be caused by BIOS.  Even when enabled in the
+            configuration, it is disabled at runtime.  Enable it by
+            setting "memory_corruption_check=1" on the kernel command
+            line.  By default it scans the low 64k of memory every 60
+            seconds; see the memory_corruption_check_size and
+            memory_corruption_check_period parameters in
+            Documentation/admin-guide/kernel-parameters.rst to adjust this.
+
+            When enabled with the default parameters, this option has
+            almost no overhead, as it reserves a relatively small amount
+            of memory and scans it infrequently.  It both detects corruption
+            and prevents it from affecting the running system.
+
+            It is, however, intended as a diagnostic tool; if repeatable
+            BIOS-originated corruption always affects the same memory,
+            you can use memmap= to prevent the kernel from using that
+            memory.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     I excluded this option as I have no need for it even though
+            
+            I've never experienced a single BIOS corruption even though
+            I have a pretty buggy bios myself.
+```
+<h3>(4) Amount of low memory, in kilobytes, to reserve for the BIOS</h3>
+```none
+Symbol:     CONFIG_X86_RESERVE_LOW
+
+Help:       Specify the amount of low memory to reserve for the BIOS.
+
+            The first page contains BIOS data structures that the kernel
+            must not use, so that page must always be reserved.
+
+            By default we reserve the first 64K of physical RAM, as a
+            number of BIOSes are known to corrupt that memory range
+            during events such as suspend/resume or monitor cable
+            insertion, so it must not be used by the kernel.
+
+            You can set this to 4 if you are absolutely sure that you
+            trust the BIOS to get all its memory reservations and usages
+            right.  If you know your BIOS have problems beyond the
+            default 64K area, you can set this to 640 to avoid using the
+            entire low memory range.
+
+            If you have doubts about the BIOS (e.g. suspend/resume does
+            not work or there's kernel crashes after certain hardware
+            hotplug events) then you might want to enable
+            X86_CHECK_BIOS_CORRUPTION=y to allow the kernel to check
+            typical corruption patterns.
+
+            Leave this to the default value of 64 if you are unsure.
+
+Type:       integer
+
+Choice:     (4) custom
+
+Reason:     I highly recommend that you use (64) which is the default
+            value (since I have no idea what bios or system you might
+            be using).
+
+            For my system I went with 64 because it works for me.
+```
+<h3>[&ast;] MTRR (Memory Type Range Register) support</h3>
+```none
+Symbol:     CONFIG_MTRR
+
+Help:       On Intel P6 family processors (Pentium Pro, Pentium II and later)
+            the Memory Type Range Registers (MTRRs) may be used to control
+            processor access to memory ranges. This is most useful if you have
+            a video (VGA) card on a PCI or AGP bus. Enabling write-combining
+            allows bus write transfers to be combined into a larger transfer
+            before bursting over the PCI/AGP bus. This can increase performance
+            of image write operations 2.5 times or more. Saying Y here creates a
+            /proc/mtrr file which may be used to manipulate your processor's
+            MTRRs. Typically the X server should use this.
+
+            This code has a reasonably generic interface so that similar
+            control registers on other processors can be easily supported
+            as well:
+
+            The Cyrix 6x86, 6x86MX and M II processors have Address Range
+            Registers (ARRs) which provide a similar functionality to MTRRs. For
+            these, the ARRs are used to emulate the MTRRs.
+            The AMD K6-2 (stepping 8 and above) and K6-3 processors have two
+            MTRRs. The Centaur C6 (WinChip) has 8 MCRs, allowing
+            write-combining. All of these processors are supported by this code
+            and it makes sense to say Y here if you have one of them.
+
+            Saying Y here also fixes a problem with buggy SMP BIOSes which only
+            set the MTRRs for the boot CPU and not for the secondary CPUs. This
+            can lead to all sorts of problems, so it's good to say Y here.
+
+            You can safely say Y even if your machine doesn't have MTRRs, you'll
+            just add about 9 KB to your kernel.
+
+            See <file:Documentation/x86/mtrr.txt> for more information.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     I included this option as my CPU supports MTRR. MTRR is really useful
+            for applications such as the X server as it allows it to control how
+            the CPU caches memory accesses resulting in a read/write boosts to 
+            certain memory ranges.
+            
+            To see the flags that your CPU supports simply run:
+                
+                cat /proc/cpuinfo | grep flags
+
+            And to see what these flags mean check this link:
+
+                https://unix.stackexchange.com/questions/43539/what-do-the-flags-in-proc-cpuinfo-mean
+```
+<h3>[&ast;]   MTRR cleanup support</h3>
+```none
+Symbol:     CONFIG_MTRR_SANITIZER
+
+Help:       Convert MTRR layout from continuous to discrete, so X drivers can
+            add writeback entries.
+
+            Can be disabled with disable_mtrr_cleanup on the kernel command line.
+            The largest mtrr entry size for a continuous block can be set with
+            mtrr_chunk_size.
+
+            If unsure, say Y.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     You should include this option as it fixes most MTRR programming
+            issues in the kernel (if any).
+```
+<h3>(1)     MTRR cleanup enable value (0-1)</h3>
+```none
+Symbol:     CONFIG_MTRR_SANITIZER_ENABLE_DEFAULT
+
+Help:       Enable mtrr cleanup default value
+
+Type:       integer
+
+Choice:     (1) custom
+
+Reason:     I highly recommend that you set this value to (1) to enable mtrr
+            cleanup.
+```
+<h3>(1)     MTRR cleanup spare reg num (0-7)</h3>
+```none
+Symbol:     CONFIG_MTRR_SANITIZER_SPARE_REG_NR_DEFAULT
+
+Help:       mtrr cleanup spare entries default, it can be changed via
+            mtrr_spare_reg_nr=N on the kernel command line.
+
+Type:       integer
+
+Choice:     (1) default?
+
+Reason:     I highly recommend that you set this value to (1).
+
+            Some users reported that setting this and the value of
+            CONFIG_MTRR_SANITIZER_ENABLE_DEFAULT to 1 helped them get rid of
+            mtrr errors and type mismatch errors.
+```
+<h3>[&ast;]   x86 PAT support</h3>
+```none
+Symbol:     CONFIG_X86_PAT
+
+Help:       Use PAT attributes to setup page level cache control.
+
+            PATs are the modern equivalents of MTRRs and are much more
+            flexible than MTRRs.
+
+            Say N here if you see bootup problems (boot crash, boot hang,
+            spontaneous reboots) or a non-working video driver.
+
+            If unsure, say Y.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     I included this option as my CPU supports pat.
+```
+<h3>[&ast;] x86 architectural random number generator</h3>
+```none
+Symbol:     CONFIG_ARCH_RANDOM
+
+Help:       Enable the x86 architectural RDRAND instruction
+            (Intel Bull Mountain technology) to generate random numbers.
+            If supported, this is a high bandwidth, cryptographically
+            secure hardware random number generator.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     I included this option as my CPU supports the RDRAND instruction.
+```
+<h3>[ ] Supervisor Mode Access Prevention</h3>
+```none
+Symbol:     CONFIG_X86_SMAP
+
+Help:       Supervisor Mode Access Prevention (SMAP) is a security
+            feature in newer Intel processors.  There is a small
+            performance cost if this enabled and turned on; there is
+            also a small increase in the kernel size if this is enabled.
+
+            If unsure, say Y.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     I excluded this option as my CPU doesn't support SMAP.
+```
+<h3>[ ] Intel MPX (Memory Protection Extensions)</h3>
+```none
+Symbol:     CONFIG_X86_INTEL_MPX
+
+Help:       MPX provides hardware features that can be used in
+            conjunction with compiler-instrumented code to check
+            memory references.  It is designed to detect buffer
+            overflow or underflow bugs.
+
+            This option enables running applications which are
+            instrumented or otherwise use MPX.  It does not use MPX
+            itself inside the kernel or to protect the kernel
+            against bad memory references.
+
+            Enabling this option will make the kernel larger:
+            ~8k of kernel text and 36 bytes of data on a 64-bit
+            defconfig.  It adds a long to the 'mm_struct' which
+            will increase the kernel memory overhead of each
+            process and adds some branches to paths used during
+            exec() and munmap().
+
+            For details, see Documentation/x86/intel_mpx.txt
+
+            If unsure, say N.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     I excluded this option as my CPU doesn't support MPX.
+```
+<h3>[ ] Intel Memory Protection Keys</h3>
+```none
+Symbol:     CONFIG_X86_INTEL_MEMORY_PROTECTION_KEYS
+
+Help:       Memory Protection Keys provides a mechanism for enforcing
+            page-based protections, but without requiring modification of the
+            page tables when an application changes protection domains.
+
+            For details, see Documentation/x86/protection-keys.txt
+
+            If unsure, say y.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     I excluded this option as my CPU doesn't support Memory
+            Protection Keys.
+```
+<h3>[ ] EFI runtime service support</h3>
+```none
+Symbol:     CONFIG_EFI
+
+Help:       This enables the kernel to use EFI runtime services that are
+            available (such as the EFI variable services).
+
+            This option is only useful on systems that have EFI firmware.
+            In addition, you should use the latest ELILO loader available
+            at <http://elilo.sourceforge.net> in order to take advantage
+            of EFI runtime services. However, even with this option, the
+            resultant kernel should continue to boot on existing non-EFI
+            platforms.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     I excluded this option as I'm using MBR (MSDOS partition table)
+            on my HDD.
+
+            The reason I went with MBR is that my laptop is from late 2013 and 
+            laptops (especially Toshiba ones) had buggy UEFI/BIOS implementations.
+
+            The BIOS works fine (although it's buggy) but when using UEFI (which
+            is much buggier) no matter the setup I went with, I receive a 5 sec
+            black screen with white text on it asking me to mount bootable medium
+            as it didn't find any bootable medium, then it proceeds to boot normally,
+            which forced me to stick with MBR.
+```
+<h3>[&ast;] Enable seccomp to safely compute untrusted bytecode</h3>
+```none
+Symbol:     CONFIG_SECCOMP
+
+Help:       This kernel feature is useful for number crunching applications
+            that may need to compute untrusted bytecode during their
+            execution. By using pipes or other transports made available to
+            the process as file descriptors supporting the read/write
+            syscalls, it's possible to isolate those applications in
+            their own address space using seccomp. Once seccomp is
+            enabled via prctl(PR_SET_SECCOMP), it cannot be disabled
+            and the task is only allowed to execute a few safe syscalls
+            defined by each seccomp mode.
+
+            If unsure, say Y. Only embedded should say N here.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     This is an important feature that you should always include
+            in your kernels. The security advantages it offers overweigh
+            the near-minimum gains acheived in excluding it (no gains are
+            gains with a damaged system).
+```
+<h3>Timer frequency (100 HZ)  ---></h3>
+```none
+Help:       Allows the configuration of the timer frequency. It is customary
+            to have the timer interrupt run at 1000 Hz but 100 Hz may be more
+            beneficial for servers and NUMA systems that do not need to have
+            a fast response for user interaction and that may experience bus
+            contention and cacheline bounces as a result of timer interrupts.
+            Note that the timer interrupt occurs on each processor in an SMP
+            environment leading to NR_CPUS * HZ number of timer interrupts
+            per second.
+```
+<h3>(X) 100 HZ</h3>
+```none
+Symbol:     CONFIG_HZ_100_MUQSS
+
+Help:       100 Hz is a suitable choice in combination with MuQSS which does
+            not rely on ticks for rescheduling interrupts, and is not Hz limited
+            for timeouts and sleeps from both the kernel and userspace.
+            This allows us to benefit from the lower overhead and higher
+            throughput of fewer timer ticks.
+
+Type:       boolean
+
+Choice:     built-in (X)
+
+Reason:     In case you didn't notice, I started using ck-sources (MuQSS + BFQ)
+            again. I know... but I decided to give it a third chance maybe
+            it won't freeze on me like it did previously.
+
+            Don't worry it's only a mere 5-10 options different between gentoo-sources
+            and ck-sources, and I've updated previous sections to include ck-sources 
+            options as well.
+
+            Now back to this option, since MuQSS is now tickless, setting this to 1000HZ
+            or to 100HZ won't matter much; thus, I went with what ck recommends
+            and that's 100HZ.
+
+            If you're using gentoo-sources (CFS) and wanted a responsive syste with low latency
+            then go with 1000HZ.
+
+            If you want pure pure performance and throughput then go with 100HZ and I warn
+            you, forget the ability to open the web browser and watch some videos while
+            emerge is compiling chromium. You'll barely be able to see cat output and it
+            won't be fast I can assure you that.
+```
+<h3>[ ] kexec system call</h3>
+```none
+Symbol:     CONFIG_KEXEC
+
+Help:       kexec is a system call that implements the ability to shutdown your
+            current kernel, and to start another kernel.  It is like a reboot
+            but it is independent of the system firmware.   And like a reboot
+            you can start any kernel with it, not just Linux.
+
+            The name comes from the similarity to the exec system call.
+
+            It is an ongoing process to be certain the hardware in a machine
+            is properly shutdown, so do not be surprised if this code does not
+            initially work for you.  As of this writing the exact hardware
+            interface is strongly in flux, so no good recommendation can be
+            made.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     I'm not planning on shutting down my current kernel to execute
+            another kernel; hence, I excluded this option.
+```
+<h3>[ ] kexec file based system call</h3>
+```none
+Symbol:     CONFIG_KEXEC_FILE
+
+Help:       This is new version of kexec system call. This system call is
+            file based and takes file descriptors as system call argument
+            for kernel and initramfs as opposed to list of segments as
+            accepted by previous system call.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     I'm not planning on shutting down my current kernel to execute
+            another kernel; hence, I excluded this option.
+```
+<h3>[ ] kernel crash dumps</h3>
+```none
+Symbol:     CONFIG_CRASH_DUMP
+
+Help:       Generate crash dump after being started by kexec.
+            This should be normally only set in special crash dump kernels
+            which are loaded in the main kernel with kexec-tools into
+            a specially reserved region and then later executed after
+            a crash by kdump/kexec. The crash dump kernel must be compiled
+            to a memory address not used by the main kernel or BIOS using
+            PHYSICAL_START, or it must be built as a relocatable image
+            (CONFIG_RELOCATABLE=y).
+            For more details see Documentation/kdump/kdump.txt
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     I'm not planning on shutting down my current kernel to execute
+            another kernel using kexec; hence, I excluded this option.
+```
+<h3>(0x1000000) Physical address where the kernel is loaded</h3>
+```none
+Symbol:     CONFIG_PHYSICAL_START
+
+Help:       This gives the physical address where the kernel is loaded.
+
+            If kernel is a not relocatable (CONFIG_RELOCATABLE=n) then
+            bzImage will decompress itself to above physical address and
+            run from there. Otherwise, bzImage will run from the address where
+            it has been loaded by the boot loader and will ignore above physical
+            address.
+
+            In normal kdump cases one does not have to set/change this option
+            as now bzImage can be compiled as a completely relocatable image
+            (CONFIG_RELOCATABLE=y) and be used to load and run from a different
+            address. This option is mainly useful for the folks who don't want
+            to use a bzImage for capturing the crash dump and want to use a
+            vmlinux instead. vmlinux is not relocatable hence a kernel needs
+            to be specifically compiled to run from a specific memory area
+            (normally a reserved region) and this option comes handy.
+
+            So if you are using bzImage for capturing the crash dump,
+            leave the value here unchanged to 0x1000000 and set
+            CONFIG_RELOCATABLE=y.  Otherwise if you plan to use vmlinux
+            for capturing the crash dump change this value to start of
+            the reserved region.  In other words, it can be set based on
+            the "X" value as specified in the "crashkernel=YM@XM"
+            command line boot parameter passed to the panic-ed
+            kernel. Please take a look at Documentation/kdump/kdump.txt
+            for more details about crash dumps.
+
+            Usage of bzImage for capturing the crash dump is recommended as
+            one does not have to build two kernels. Same kernel can be used
+            as production kernel and capture kernel. Above option should have
+            gone away after relocatable bzImage support is introduced. But it
+            is present because there are users out there who continue to use
+            vmlinux for dump capture. This option should go away down the
+            line.
+
+            Don't change this unless you know what you are doing.
+
+Type:       hex
+
+Choice:     (0x1000000) default
+
+Reason:     I highly recommend that you leave the default value for this option
+            unles you seriously know what you are doing.
+```
+<h3>[ ] Build a relocatable kernel</h3>
+```none
+Symbol:     CONFIG_RELOCATABLE
+
+Help:       This builds a kernel image that retains relocation information
+            so it can be loaded someplace besides the default 1MB.
+            The relocations tend to make the kernel binary about 10% larger,
+            but are discarded at runtime.
+
+            One use is for the kexec on panic case where the recovery kernel
+            must live at a different physical address than the primary
+            kernel.
+
+            Note: If CONFIG_RELOCATABLE=y, then the kernel runs from the address
+            it has been loaded at and the compile time physical address
+            (CONFIG_PHYSICAL_START) is used as the minimum location.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     I excluded this option as I don't plan on using kexec to execute
+            a recovery kernel.
+
+            This is useful for users who may want to execute a rescue/recovery
+            kernel since it's obvious that the new executed kernel should be
+            placed (should live) in a differnt physical memory address than
+            the primary kernel (with errors).
+```
+<h3>(0x200000) Alignment value to which kernel should be aligned</h3>
+```none
+Symbol:     CONFIG_PHYSICAL_ALIGN
+
+Help:       This value puts the alignment restrictions on physical address
+            where kernel is loaded and run from. Kernel is compiled for an
+            address which meets above alignment restriction.
+
+            If bootloader loads the kernel at a non-aligned address and
+            CONFIG_RELOCATABLE is set, kernel will move itself to nearest
+            address aligned to above value and run from there.
+
+            If bootloader loads the kernel at a non-aligned address and
+            CONFIG_RELOCATABLE is not set, kernel will ignore the run time
+            load address and decompress itself to the address it has been
+            compiled for and run from there. The address for which kernel is
+            compiled already meets above alignment restrictions. Hence the
+            end result is that kernel runs from a physical address meeting
+            above alignment restrictions.
+
+            On 32-bit this value must be a multiple of 0x2000. On 64-bit
+            this value must be a multiple of 0x200000.
+
+            Don't change this unless you know what you are doing.
+
+Type:       hex
+
+Choice:     (0x200000) default
+
+Reason:     I highly recommend that you stick with the default value for
+            this option as well.
+```
+<h3>[&ast;] Support for hot-pluggable CPUs</h3>
+```none
+Symbol:     CONFIG_HOTPLUG_CPU
+
+Help:       Say Y here to allow turning CPUs off and on. CPUs can be
+            controlled through /sys/devices/system/cpu.
+            ( Note: power management support will enable this option
+              automatically on SMP systems. )
+            Say N if you want to disable CPU hotplug.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     I included this option for powersaving reasons. You should
+            include this option if you want suspend/resume support.
+```
+<h3>[ ]   Set default setting of cpu0_hotpluggable (NEW)</h3>
+```none
+Symbol:     CONFIG_BOOTPARAM_HOTPLUG_CPU0
+
+Help:       Set whether default state of cpu0_hotpluggable is on or off.
+
+            Say Y here to enable CPU0 hotplug by default. If this switch
+            is turned on, there is no need to give cpu0_hotplug kernel
+            parameter and the CPU0 hotplug feature is enabled by default.
+
+            Please note: there are two known CPU0 dependencies if you want
+            to enable the CPU0 hotplug feature either by this switch or by
+            cpu0_hotplug kernel parameter.
+
+            First, resume from hibernate or suspend always starts from CPU0.
+            So hibernate and suspend are prevented if CPU0 is offline.
+
+            Second dependency is PIC interrupts always go to CPU0. CPU0 can not
+            offline if any interrupt can not migrate out of CPU0. There may
+            be other CPU0 dependencies.
+
+            Please make sure the dependencies are under your control before
+            you enable this feature.
+
+            Say N if you don't want to enable CPU0 hotplug feature by default.
+            You still can enable the CPU0 hotplug feature at boot by kernel
+            parameter cpu0_hotplug.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     I excluded this option as it affects performance, so include it
+            only when needed.
+```
+<h3>[ ]   Debug CPU0 hotplug (NEW)</h3>
+```none
+Symbol:     CONFIG_DEBUG_HOTPLUG_CPU0
+
+Help:       Enabling this option offlines CPU0 (if CPU0 can be offlined) as
+            soon as possible and boots up userspace with CPU0 offlined. User
+            can online CPU0 back after boot time.
+
+            To debug CPU0 hotplug, you need to enable CPU0 offline/online
+            feature by either turning on CONFIG_BOOTPARAM_HOTPLUG_CPU0 during
+            compilation or giving cpu0_hotplug kernel parameter at boot.
+
+            If unsure, say N.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     I excluded this option as I have no need for this debugging feature.
+```
+<h3>[ ] Disable the 32-bit vDSO (needed for glibc 2.3.3)</h3>
+```none
+Symbol:     CONFIG_COMPAT_VDSO
+
+Help:       Certain buggy versions of glibc will crash if they are
+            presented with a 32-bit vDSO that is not mapped at the address
+            indicated in its segment table.
+
+            The bug was introduced by f866314b89d56845f55e6f365e18b31ec978ec3a
+            and fixed by 3b3ddb4f7db98ec9e912ccdf54d35df4aa30e04a and
+            49ad572a70b8aeb91e57483a11dd1b77e31c4468.  Glibc 2.3.3 is
+            the only released version with the bug, but OpenSUSE 9
+            contains a buggy "glibc 2.3.2".
+
+            The symptom of the bug is that everything crashes on startup, saying:
+            dl_main: Assertion `(void *) ph->p_vaddr == _rtld_local._dl_sysinfo_dso' failed!
+
+            Saying Y here changes the default value of the vdso32 boot
+            option from 1 to 0, which turns off the 32-bit vDSO entirely.
+            This works around the glibc bug but hurts performance.
+
+            If unsure, say N: if you are compiling your own kernel, you
+            are unlikely to be using a buggy version of glibc.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     We're compiling our own kernel aren't we =D
+
+            This option is a performance hurter and I'm using a much newer version
+            of glibc so I safely excluded it.
+
+            You may want to double check your glibc version and settings and see
+            if you need this option or not.
+```
+<h3>vsyscall table for legacy applications (None)  ---></h3>
+```none
+Help:       Legacy user code that does not know how to find the vDSO expects
+            to be able to issue three syscalls by calling fixed addresses in
+            kernel space. Since this location is not randomized with ASLR,
+            it can be used to assist security vulnerability exploitation.
+
+            This setting can be changed at boot time via the kernel command
+            line parameter vsyscall=[native|emulate|none].
+
+            On a system with recent enough glibc (2.14 or newer) and no
+            static binaries, you can say None without a performance penalty
+            to improve security.
+
+            If unsure, select "Emulate".
+```
+<h3>(X) None</h3>
+```none
+Symbol:     CONFIG_LEGACY_VSYSCALL_NONE
+
+Help:       There will be no vsyscall mapping at all. This will
+            eliminate any risk of ASLR bypass due to the vsyscall
+            fixed address mapping. Attempts to use the vsyscalls
+            will be reported to dmesg, so that either old or
+            malicious userspace programs can be identified.
+
+Type:       boolean
+
+Choice:     built-in (X)
+
+Reason:     I'm using a recent glibc version so I safely included this option.
+```
+<h3>[ ] Built-in kernel command line</h3>
+```none
+Symbol:     CONFIG_CMDLINE_BOOL
+
+Help:       Allow for specifying boot arguments to the kernel at
+            build time.  On some systems (e.g. embedded ones), it is
+            necessary or convenient to provide some or all of the
+            kernel boot arguments with the kernel itself (that is,
+            to not rely on the boot loader to provide them.)
+
+            To compile command line arguments into the kernel,
+            set this option to 'Y', then fill in the
+            boot arguments in CONFIG_CMDLINE.
+
+            Systems with fully functional boot loaders (i.e. non-embedded)
+            should leave this option set to 'N'.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     I'm using a fully functional boot loader and the kernel isn't
+            being built for an embedded system; hence, I excluded this option.
+```
+<h3>[ ] Enable the LDT (local descriptor table)</h3>
+```none
+Symbol:     CONFIG_MODIFY_LDT_SYSCALL
+
+Help:       Linux can allow user programs to install a per-process x86
+            Local Descriptor Table (LDT) using the modify_ldt(2) system
+            call.  This is required to run 16-bit or segmented code such as
+            DOSEMU or some Wine programs.  It is also used by some very old
+            threading libraries.
+
+            Enabling this feature adds a small amount of overhead to
+            context switches and increases the low-level kernel attack
+            surface.  Disabling it removes the modify_ldt(2) system call.
+
+            Saying 'N' here may make sense for embedded or server kernels.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     I'm a basic WINE user, and most of my apps work without the need
+            to modify anything kernel wise.
+
+            If you stumbled upon a WINE program that requires this option then
+            include it, otherwise exclude it.
+```

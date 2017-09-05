@@ -705,7 +705,7 @@ Choice:     excluded < >
 Reason:     I already know my kernel configuration options and have no need to read
             them from /proc/config.gz.
 ```
-<h3>(12) Kernel log buffer size (16 => 64KB, 17 => 128KB)</h3>
+<h3>(14) Kernel log buffer size (16 => 64KB, 17 => 128KB)</h3>
 ```none
 Symbol:     CONFIG_LOG_BUF_SHIFT
 
@@ -724,13 +724,17 @@ Help:       Select the minimal kernel log buffer size as a power of 2.
 
 Type:       integer
 
-Choice:     custom (12)
+Choice:     (14) custom
 
 Reason:     I generally prefer to use the lowest available value for
             logs. This will result in a smaller kernel; thus, reducing
             boot time.
+
+            14 is a good value, any value less than that and the kernel
+            ring buffer would start to fill really fast (so fast you won't
+            be able to read the whole dmesg log after a clean reboot!)
 ```
-<h3>(12) CPU kernel log buffer size contribution (13 => 8 KB, 17 => 128KB)</h3>
+<h3>(14) CPU kernel log buffer size contribution (13 => 8 KB, 17 => 128KB)</h3>
 ```none
 Symbol:     CONFIG_LOG_CPU_MAX_BUF_SHIFT
 
@@ -763,11 +767,15 @@ Help:       This option allows to increase the default ring buffer size
 
 Type:       integer
 
-Choice:     custom (12)
+Choice:     (14) custom
 
 Reason:     I generally prefer to use the lowest available values for
             logs. This will result in a smaller kernel; thus, reducing
             boot time.
+            
+            14 is a good value, any value less than that and the kernel
+            ring buffer would start to fill really fast (so fast you won't
+            be able to read the whole dmesg log after a clean reboot!)
 ```
 <h3>(12) Temporary per-CPU printk log buffer size (12 => 4KB, 13 => 8KB)</h3>
 ```none
