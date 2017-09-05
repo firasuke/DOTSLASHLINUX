@@ -1,7 +1,7 @@
 +++
 title = "The Linux Kernel Configuration Guide Part 7"
 slug = "the linux kernel configuration guide part 7"
-nick = "kernel6"
+nick = "kernel7"
 date = "2017-09-06"
 author = "Firas Khalil Khana"
 imgsrc = "/img/kernel7.png"
