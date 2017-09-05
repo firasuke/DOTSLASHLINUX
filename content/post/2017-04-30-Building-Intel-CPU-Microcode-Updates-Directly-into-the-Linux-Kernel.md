@@ -288,6 +288,7 @@ This is quite simple, just run:
 dmesg | grep microcode
 ```
 ```none
+[    0.000000] microcode: microcode updated early to revision 0x22, date = 2017-01-27
 [    0.795219] microcode: sig=0x306c3, pf=0x10, revision=0x22
 [    0.795433] microcode: Microcode Update Driver: v2.01 <tigran@aivazian.fsnet.co.uk>, Peter Oruba
 ```
