@@ -240,7 +240,7 @@ Choice:     excluded [ ]
 Reason:     I won't be compiling and running programs written for Solaris that
             make use of its POSIX queues so I excluded this option.
 ```
-<h3>[&ast;] Enable process_vm_readv/writev syscalls</h3>
+<h3>[ ] Enable process_vm_readv/writev syscalls</h3>
 ```none
 Symbol:     CONFIG_CROSS_MEMORY_ATTACH
 
