@@ -1,6 +1,6 @@
 +++
 title = "Configuring rxvt-unicode (urxvt)"
-slug = "configuring rxvt-unicode rxvt"
+slug = "configuring rxvt-unicode urxvt"
 nick = "urxvt"
 date = "2017-03-30"
 author = "Firas Khalil Khana"
