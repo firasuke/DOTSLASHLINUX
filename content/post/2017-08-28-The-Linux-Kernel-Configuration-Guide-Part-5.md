@@ -263,20 +263,43 @@ Reason:     I excluded every other partition table except mbr(msdos).
             normally.
 ```
 <h3>IO Schedulers  ---></h3>
-<h3><&ast;> CFQ I/O scheduler</h3>
+<h3>Default I/O scheduler (BFQ)  ---></h3>
 ```none
-Symbol:     CONFIG_IOSCHED_CFQ
+Help:       Select the I/O scheduler which will be used by default for all
+            block devices.
+```
+<h3>(X) BFQ</h3>
+```none
+Symbol:     DEFAULT_BFQ
 
-Help:       The CFQ I/O scheduler tries to distribute bandwidth equally
-            among all processes in the system. It should provide a fair
-            and low latency working environment, suitable for both desktop
-            and server systems.
-
-            This is the default I/O scheduler.
+Help:       There is no help available for this option.
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in (X)
+
+Reason:     If low latency and maximum responsiveness is what you want
+            go for MuQSS/BFQ.
+
+            If you want maximum throughput (performance) and you're on a 
+            multicore (or maybe multicpu system) then CFS/CFQ is what you
+            need.
+```
+<h3><*> BFQ I/O scheduler</h3>
+```none
+Symbol:     CONFIG_IOSCHED_BFQ
+
+Help:       
+            BFQ I/O scheduler for BLK-MQ. BFQ distributes the bandwidth of
+            of the device among all processes according to their weights,
+            regardless of the device parameters and with any workload. It
+            also guarantees a low latency to interactive and soft
+            real-time applications.  Details in
+            Documentation/block/bfq-iosched.txt 
+
+Type:       tristate
+
+Choice:     built-in <*>
 
 Reason:     Wow this is going to cause a lot of flame wars. CFQ is my all 
             time favorite I/O scheduler. It steadily holds its place amongst
@@ -303,10 +326,16 @@ Reason:     Wow this is going to cause a lot of flame wars. CFQ is my all
             only the emerge job was running. And it froze at 80%. So I returned
             to CFQ with 1000hz timer frequency and couldn't be any happier!
 
-            No matter how many chances I give BFQ, it just keeps failing on me.
-
+            But recently I switched again to MuQSS/BFQ with 100Hz timer frequency
+            and things are going pretty well latency wise. I can browse the web
+            with ease and do another tasks while waiting for my 9 job emerge to
+            finish.
+            
             For normal desktop/laptop users, CFQ is the best I/O scheduler and it
-            shines alongside CFS on systems with more than 2 cores.
+            shines alongside CFS on systems with more than 2 cores; therefore, include 
+            CONFIG_IOSCHED_CFQ and exclude everything else.
 
-            Include CONFIG_IOSCHED_CFQ and exclude everything else.
+            However, if you're on a system like gentoo and you do a lot of compiling
+            then responsiveness is a must and BFQ works perfectly for that. So simply
+            include CONFIG_IOSCHED_BFQ and exclude everything else.
 ```
