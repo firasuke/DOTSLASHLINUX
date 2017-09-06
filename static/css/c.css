@@ -24,12 +24,12 @@ a:hover {
   color: #232323 !important; 
 }
 
-hr {
-  border-color: #232323;
+ul {
+  padding: 0;
 }
 
-table {
-  width: 100%;
+li {
+  list-style-type: none;
 }
 
 table,
@@ -39,6 +39,14 @@ td {
   border: 1px solid #232323;
   text-align: center;
   padding: 5px;
+}
+
+table {
+  width: 100%;
+}
+
+hr {
+  border-color: #232323;
 }
 
 pre,
@@ -51,13 +59,10 @@ pre,
 code {
   background-color: #232323 !important;
 }
+
 mark {
   background-color: #232323;
   color: #dadada;
-}
-
-input {
-  margin-top: 0 !important;
 }
 
 input,
@@ -70,6 +75,22 @@ button {
   border: 1px solid #232323;
   outline: none;
   color: #dadada !important;
+}
+
+input {
+  margin-top: 0 !important;
+}
+
+img {
+  vertical-align: middle;
+  width: 100%;
+  height: auto;
+  transition: all 0.2s;
+}
+
+img:hover {
+  transform: scale(1.2);
+  opacity: 0.9;
 }
 
 .header,
@@ -85,13 +106,6 @@ button {
   border-bottom: 1px solid #232323;
 }
 
-ul {
-  padding: 0;
-}
-
-li {
-  list-style-type: none;
-}
 
 .header a,
 .footer a {
@@ -107,16 +121,6 @@ nav li {
   overflow: hidden;
 }
 
-img {
-  vertical-align: middle;
-  width: 100%;
-  height: auto;
-  transition: all 0.2s;
-}
-
-img:hover {
-  transform: scale(1.2);
-}
 
 .first,
 .deck,
@@ -152,8 +156,7 @@ img:hover {
   margin: 0 0 20px 0;
 }
 
-.card:hover,
-img:hover {
+.card:hover {
   opacity: 0.9;
 }
 
@@ -162,10 +165,6 @@ img:hover {
   padding-top: 10px;
   text-align: center;
   color: #dadada;
-}
-
-p {
-  font-size:1.1em;
 }
 
 .map,
