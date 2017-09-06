@@ -42,7 +42,7 @@ The first section you'll see in the menu options when using Gentoo Linux, will b
 ```none
 [*] Gentoo Linux support
 [*]   Linux dynamic and persistent device naming (userspace devfs) support
-[*]   Select options required by Portage features
+[ ]   Select options required by Portage features
     Support for init systems, system and service managers  --->
 ```
 <h3>[&ast;] Gentoo Linux support</h3>

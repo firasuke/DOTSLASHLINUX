@@ -48,7 +48,7 @@ Due to lack of documentation available, you may find it hard to get everything w
 
 /* interval between updates (in ms) */
 /* default is 1000 */
-static const int interval = 100;
+static const int interval = 1000;
 
 /* text to show if no value can be retrieved */
 static const char unknown_str[] = "n/a";
