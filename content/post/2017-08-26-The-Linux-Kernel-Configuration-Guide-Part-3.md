@@ -549,7 +549,7 @@ Help:       This option controls the fanout of hierarchical implementations
 
 Tyoe:       integer
 
-Choice:     default (64)
+Choice:     (64) default
 
 Reason:     I went with the default value which is 64 on my system as I'm not
             testing RCU.
@@ -586,7 +586,7 @@ Help:       This option controls the leaf-level fanout of hierarchical
 
 Type:       integer
 
-Choice:     default (16)
+Choice:     (16) default
 
 Reason:     I went with the default value which is 16 on my system as I'm not
             testing RCU.
@@ -639,7 +639,7 @@ Help:       This option specifies the SCHED_FIFO priority value that will be
 
 Type:       boolean
 
-Choice:     default (1)
+Choice:     (1) default
 
 Reason:     I went with the default value for this option.
 ```
@@ -656,7 +656,7 @@ Help:       This option specifies the time to wait after the beginning of
 
 Type:       integer
 
-Choice:     custom (0)
+Choice:     (0) custom
 
 Reason:     The default value was 500, but I prefer to make to use the lowest
             value for all delay options.
@@ -828,7 +828,7 @@ Help:       Select the size of an alternate printk per-CPU buffer where messages
 
 Type:       integer
 
-Choice:     custom (12)
+Choice:     (12) custom
 
 Reason:     I generally prefer to use the lowest available values for
             logs. This will result in a smaller kernel; thus, reducing
@@ -1839,7 +1839,7 @@ Help:       This value can be used to select the number of bits to use to
 
 Type:       integer
 
-Choice:     default (28)
+Choice:     (28) default
 ```
 <h3>(8) Number of bits to use for ASLR of mmap base address for compatible applications</h3>
 ```none
@@ -1856,7 +1856,7 @@ Help:       This value can be used to select the number of bits to use to
 
 Type:       integer
 
-Choice:     default (8)
+Choice:     (8) default
 ```
 <h3>[ ] Use a virtually-mapped stack</h3>
 ```none
