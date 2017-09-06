@@ -9,10 +9,10 @@ imgalt = "kernel1"
 categories = [ "kernel" ]
 +++
 <h3>Intro</h3>
-Finally, it's here... The series you've all been waiting for. I want to apologize for making you wait a lot before starting this series. The truth is that I've redesigned the website from scratch which took some time. It's much lighter now and fully supports https and it works well in a terminal web browser! I've also added an <a href="/index.xml" target="_blank">RSS</a> feed so don't forgot to subscribe.
+Finally, it's here... The series you've all been waiting for. I want to apologize for making you wait a lot before starting this series. The truth is that I've redesigned the website from scratch which took some time. It's much lighter now and fully supports SSL (https and it works well in a terminal web browser! I've also added an <a href="/index.xml" target="_blank">RSS</a> feed so don't forgot to subscribe.
 <br/>
 <br/>
-I've also updated several articles, and have migrated to the unstable branch of Gentoo (aka ~arch) based on the request of several of our readers, and hopefully will update all sections where configuring something using the unstable branch is a tiny bit different than in the stable one. And after the release of 4.12, and the introduction of several new schedulers and the turbo boost 3.0 feature, and having moved to 4.12.8 using ck patchset, I knew I had to do a lot of testing before starting this series.
+I've also updated several articles, and have migrated to the unstable branch of Gentoo (aka ~arch) based on the request of several DOTSLASHLINUX followers, and hopefully will update all sections where configuring something using the unstable branch is a tiny bit different than in the stable one. And after the release of 4.12, and the introduction of several new schedulers and the turbo boost 3.0 feature, and having moved to 4.12.8 using ck patchset, I knew I had to do a lot of testing before starting this series.
 <br/>
 <br/>
 Enough talking, let's begin with the real thing. Configuring the linux kernel is regarded as one of the most tedious tasks a gnu/linux enthusiast might ever do. It's not that hard but it sure is time consuming. The amount of options that's available is nerve-racking. For enthusiasts who like to customize everything in their distro, it's like going to the heaven of customization.
@@ -48,7 +48,7 @@ Basically, we'll keep it as minimal and as simple as possible, choosing options 
 Some of you may wonder, how on earth will I be able to provide proper configuration to all those audiences. Well I won't... I'll be posting results achieved on my end (my <a href="/about/" target="_blank">Toshiba L50-A664</a>) and I have a ton, and if any of you wanted to contribute or improve on something I said or even correct a misconception I had regarding anything then feel free to drop a comment below or email me with what you have in mind.
 <br/>
 <br/>
-With my findings and with your help, let's try to make this series the one and only stop for all those who want to configure their kernels.
+With my findings and your help, let's try to make this series a good well established starting point (or even a reference) for all those who want to configure their kernels.
 <hr/>
 <h3>Description</h3>
 I'll go through every kernel configuration option out there, and include the help summary provided with it, then a simple explanation of it (unless it was self explanatory), its type and the choice I went with and the reason why (unless it was obvious).
