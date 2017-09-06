@@ -48,7 +48,7 @@ Basically, we'll keep it as minimal and as simple as possible, choosing options 
 Some of you may wonder, how on earth will I be able to provide proper configuration to all those audiences. Well I won't... I'll be posting results achieved on my end (my <a href="/about/" target="_blank">Toshiba L50-A664</a>) and I have a ton, and if any of you wanted to contribute or improve on something I said or even correct a misconception I had regarding anything then feel free to drop a comment below or email me with what you have in mind.
 <br/>
 <br/>
-With my findings and your help, let's try to make this series a good well established starting point (or even a reference) for all those who want to configure their kernels.
+With my findings and your help, let's try to make this series a well established starting point (or even a reference) for all those who want to configure their kernels.
 <hr/>
 <h3>Description</h3>
 I'll go through every kernel configuration option out there, and include the help summary provided with it, then a simple explanation of it (unless it was self explanatory), its type and the choice I went with and the reason why (unless it was obvious).
