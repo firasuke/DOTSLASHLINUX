@@ -270,7 +270,7 @@ Help:       Select the I/O scheduler which will be used by default for all
 ```
 <h3>(X) BFQ</h3>
 ```none
-Symbol:     DEFAULT_BFQ
+Symbol:     CONFIG_DEFAULT_BFQ
 
 Help:       There is no help available for this option.
 
@@ -280,6 +280,14 @@ Choice:     built-in (X)
 
 Reason:     If low latency and maximum responsiveness is what you want
             go for MuQSS/BFQ.
+            
+            However, that's not enought to enable BFQ, you need to include
+            CONFIG_SCSI_MQ_DEFAULT (that is if it wasn't already forcibly
+            included by CONFIG_DEFAULT_BFQ) and you need to add this UDEV
+            rule in order to pick BFQ at boot time (otherwise it'll default
+            to none if all other schedulers are excluded). Simply run:
+                
+                echo 'ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/scheduler}="bfq"' > /etc/udev/rules.d/20-block.rules
 
             If you want maximum throughput (performance) and you're on a 
             multicore (or maybe multicpu system) then CFS/CFQ is what you
