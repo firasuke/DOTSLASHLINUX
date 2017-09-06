@@ -132,6 +132,11 @@ Help:       The init system is the first thing that loads after the kernel boote
 Type:       boolean
 
 Choice:     built-in [*]
+
+Reason:     Include this option if you're using OpenRC or runit as your init system.
+
+            Exclude this option and include CONFIG_GENTOO_LINUX_INIT_SYSTEMD if you're
+            using systemd instead.
 ```
 <h3>[ ] systemd</h3>
 ```none
@@ -150,8 +155,10 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I'm currently using OpenRC to manage my boot scripts and as my service manager
-            and have no need for systemd.
+Reason:     Include this option only if you're using systemd as your init system.
+
+            Exclude this option and include CONFIG_GENTOO_LINUX_INIT_SCRIPT if you're
+            using OpenRC or runit instead.
 ```
 <hr/>
 <h3>Chinese Translation</h3>
