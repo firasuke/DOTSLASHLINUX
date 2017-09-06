@@ -22,6 +22,28 @@ Choice:     built-in [*]
 ```
 <hr/>
 <h3>1- General setup</h3>
+<h3>[&ast;] MuQSS cpu scheduler</h3>
+```none
+Symbol:     CONFIG_SCHED_MUQSS
+
+Help:       The Multiple Queue Skiplist Scheduler for excellent interactivity and
+            responsiveness on the desktop and highly scalable deterministic
+            low latency on any hardware.
+
+            Say Y here.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     Obviously the reason behind choosing ck-sources over gentoo-sources was
+            to pick MuQSS/BFQ instead of CFS/CFQ to get better responsiveness. Using
+            this combination you can easily browse the web or play a light game until
+            emerge finishes compiling a large package.
+
+            You shouldn't worry if this option isn't available in your configuration
+            as it's specific to the ck-sources.
+```
 <h3>() Cross-compiler tool prefix</h3>
 ```none
 Symbol:     CONFIG_CROSS_COMPILE
@@ -35,8 +57,10 @@ Type:       string
 
 Choice:     excluded ()
 
-Reason:     The kernel will be used directly on my laptop and won't be built for another
-            system (an ARM system for example).
+Reason:     Include this option if you're building the kernel for another 
+            machine (an ARM device perhaps).
+
+            You can safely exclude this option.
 ```
 <h3>[ ] Compile also drivers which will not load</h3>
 ```none
@@ -56,8 +80,10 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     This kernel will be built for my laptop so I have no need to compile drivers
-            that will run on different platforms as I'm neither a developer nor a tester.
+Reason:     This option is generally for developers who want to build drivers
+            for different architectures in their kernel.
+
+            You can safely exclude this option.
 ```
 <h3>(-DOTSLASHLINUX) Local version - append to kernel release</h3>
 ```none
@@ -123,8 +149,8 @@ Type:       boolean
 Choice:     built-in [*]
 
 Reason:     I'm basically against compressing your kernel on setups that 
-            use fast storage solutions, but since I'm on a slow 5400rpm HDD.
-            Therefore,I had to go with LZ4 compression method as it's decompression
+            use fast storage solutions, but since I'm on a slow 5400rpm HDD
+            I had to go with LZ4 compression method as its decompression
             speed is the fastest, and decompression speed is what matters when 
             measuring boot times.
 
@@ -175,7 +201,7 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     My system has 7.7 GiB of ram and I idle at ~60MiB of ram on dwm so
+Reason:     My system has 7.7 GiB of ram and idles at ~60MiB of ram on dwm so
             basically why use swap? It was until recently that I was forced to
             add swap space after running swapless builds for 2 years now.
 
@@ -237,8 +263,9 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I won't be compiling and running programs written for Solaris that
-            make use of its POSIX queues so I excluded this option.
+Reason:     You can safely exclude this option if you won't be compiling and 
+            running programs written for Solaris that make use of its POSIX 
+            queues.
 ```
 <h3>[ ] Enable process_vm_readv/writev syscalls</h3>
 ```none
@@ -253,7 +280,7 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     It didn't break my system and everything worked fine after excluding
+Reason:     It didn't break my system and everything works fine after excluding
             it.
 
             If you have a reason why I shouldn't exclude this please post a comment

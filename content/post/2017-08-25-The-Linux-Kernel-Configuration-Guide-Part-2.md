@@ -60,8 +60,9 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     If you're on Gentoo Linux (or managed to get a copy of gentoo-sources),
-            then it's quite obvious that this option should be built in.
+Reason:     If you're on Gentoo Linux (or managed to get a copy of one of the sources
+            available in the gentoo repos), then it's quite obvious that this option 
+            should be built in.
 ```
 <h3>[&ast;] Linux dynamic and persistent device naming (userspace devfs) support</h3>
 ```none
