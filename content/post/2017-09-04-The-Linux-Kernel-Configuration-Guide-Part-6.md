@@ -668,7 +668,15 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     
+Reason:     I included this option as my CPU supports MSR.
+            
+            To see the flags that your CPU supports simply run:
+                
+                cat /proc/cpuinfo | grep flags
+
+            And to see what these flags mean check this link:
+
+                https://unix.stackexchange.com/questions/43539/what-do-the-flags-in-proc-cpuinfo-mean
 ```
 <h3><&ast;> /dev/cpu/*/cpuid - CPU information support</h3>
 ```none
@@ -683,7 +691,15 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     
+Reason:     I included this option as my CPU supports CPUID.
+            
+            To see the flags that your CPU supports simply run:
+                
+                cat /proc/cpuinfo | grep flags
+
+            And to see what these flags mean check this link:
+
+                https://unix.stackexchange.com/questions/43539/what-do-the-flags-in-proc-cpuinfo-mean
 ```
 <h3>[ ] Numa Memory Allocation and Scheduler Support</h3>
 ```none
