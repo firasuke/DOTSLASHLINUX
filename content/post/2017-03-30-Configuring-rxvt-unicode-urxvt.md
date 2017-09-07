@@ -107,6 +107,9 @@ URxvt*color7:      	        #bebebe
 URxvt*color15:     	        #ffffff
 ```
 <br/>
+Don't forget that <mark>URxvt.urlLauncher</mark> is deprecated, use <mark>URxvt.url-launcher</mark> instead.
+<br/>
+<br/>
 If these settings aren't being loaded (or are reset), then add the following to your .xinitrc file:
 ```none
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
