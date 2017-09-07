@@ -2,7 +2,7 @@
 title = "The Linux Kernel Configuration Guide Part 8"
 slug = "the linux kernel configuration guide part 8"
 nick = "kernel8"
-date = "2017-09-08"
+date = "2017-09-07"
 author = "Firas Khalil Khana"
 imgsrc = "/img/kernel8.png"
 imgalt = "kernel8"
