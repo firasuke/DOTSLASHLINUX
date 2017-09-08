@@ -23,7 +23,7 @@ Now you may have noticed that some of the options I included may not necessarly 
 Okay enough talking, let's get this thing started!
 <hr/>
 <h3>How do I know what options I need to include in my kernel configuration?</h3>
-The question that tired a lot of people especially kernel newbies. The thing you're not going to find what your system supports if you're going to boot a kernel that you've made (unless you've enabled everything which is really a tedious and error prone process).
+The question that tired a lot of people especially kernel newbies. The ugly truth is that you're not going to find what your system supports if you're going to boot a kernel that you've made (unless you've enabled everything which is really a tedious and error prone process).
 <br/>
 <br/>
 So the best solution is to grab a bootable ISO from a distribution well-known for its compatibility and performance. Luckily, we have two options to choose from.
@@ -118,3 +118,6 @@ Hope this small sub-guide helped you out! Now back to the main guide!
 <hr/>
 <h3>Device Drivers  ---></h3>
 The following section will be posted on 11/09/2017. I just wanted to post this part as many users have asked me how can they know what option they need to include or not. Stay tuned!
+<br/>
+<br/>
+Starting from this section, I won't be listing all options. I'
