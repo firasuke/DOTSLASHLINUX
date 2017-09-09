@@ -120,4 +120,4 @@ Hope this small sub-guide helped you out! Now back to the main guide!
 The following section will be posted on 11/09/2017. I just wanted to post this part as many users have asked me how can they know what option they need to include or not. Stay tuned!
 <br/>
 <br/>
-Starting from this section, I won't be listing all options. I'
+Starting from this section, I'll only be listing the options that are required for my drivers to work. Not much explanation is need in the drivers section as the reason of excluding other options would simply be because I don't have such parts in my system.
