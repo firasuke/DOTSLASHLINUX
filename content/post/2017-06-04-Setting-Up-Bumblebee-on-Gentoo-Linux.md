@@ -399,6 +399,10 @@ equery u bumblebee
  - - video_cards_nouveau : VIDEO_CARDS setting to build reverse-engineered driver for nvidia cards
  + + video_cards_nvidia  : VIDEO_CARDS setting to build driver for nvidia video cards
 ```
+If bbswitch was unable to switch the ACPI state of the dGPU then you might want to double check your <mark>nvidia-drivers</mark> USE flags and make sure that only <mark>nvidia</mark> is being loaded and both <mark>uvm</mark> and <mark>kms</mark> are disabled.
+<br/>
+<br/>
+If bbswitch is still refusing to turn off the card (which is unlikely if you followed what I mentioned earlier) try adding <mark>acpi_osi="!Windows 2013"</mark> to your kernel command-line (this has worked for a couple of users, especially those with Thinkpads and Lenovo laptops).
 <hr/>
 <h3>Conclusion</h3>
 <br/>
