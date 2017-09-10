@@ -123,5 +123,98 @@ One last thing, starting from this part, I'll only be listing the options that a
 <h3>Generic Driver Options  ---></h3>
 <h3>-&ast;- Maintain a devtmpfs filesystem to mount at /dev</h3>
 ```none
-Symbol:     
+Symbol:     CONFIG_DEVTMPFS
+
+Help:       This creates a tmpfs/ramfs filesystem instance early at bootup.
+            In this filesystem, the kernel driver core maintains device
+            nodes with their default names and permissions for all
+            registered devices with an assigned major/minor number.
+            Userspace can modify the filesystem content as needed, add
+            symlinks, and apply needed permissions.
+            It provides a fully functional /dev directory, where usually
+            udev runs on top, managing permissions and adding meaningful
+            symlinks.
+            In very limited environments, it may provide a sufficient
+            functional /dev without any further help. It also allows simple
+            rescue systems, and reliably handles dynamic major/minor numbers.
+
+            Notice: if CONFIG_TMPFS isn't enabled, the simpler ramfs
+            file system will be used instead.
+
+Type:       boolean
+
+Choice:     built-in -*-
+
+Reason:     It's highly recommended that you include this option in your kernel
+            (that is if it wasn't already forcibly included by CONFIG_GENTOO_LINUX
+            and CONFIG_GENTOO_LINUX_UDEV).
+```
+<h3>[&ast;]   Automount devtmpfs at /dev, after the kernel mounted the rootfs</h3>
+```none
+Symbol:     CONFIG_DEVTMPFS_MOUNT
+
+Help:       This will instruct the kernel to automatically mount the
+            devtmpfs filesystem at /dev, directly after the kernel has
+            mounted the root filesystem. The behavior can be overridden
+            with the commandline parameter: devtmpfs.mount=0|1.
+            This option does not affect initramfs based booting, here
+            the devtmpfs filesystem always needs to be mounted manually
+            after the rootfs is mounted.
+            With this option enabled, it allows to bring up a system in
+            rescue mode with init=/bin/sh, even when the /dev directory
+            on the rootfs is completely empty.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     It's recommended that you include this option in your kernel as it's
+            useful when attempting a system rescue.
+```
+<h3>-&ast;- Userspace firmware loading support</h3>
+```none
+Symbol:     CONFIG_FW_LOADER
+
+Help:       This option is provided for the case where none of the in-tree modules
+            require userspace firmware loading support, but a module built
+            out-of-tree does.
+
+Type:       tristate
+
+Choice:     built-in -*-
+
+Reason:     It's highly recommended that you include this option as well if you want
+            to load modules (the list of options and drivers that require this option
+            is endless so it's a good idea to include it).
+```
+<h3>[&ast;]   Include in-kernel firmware blobs in kernel binary</h3>
+```none
+Symbol:     CONFIG_FIRMARE_IN_KERNEL
+
+Help:       The kernel source tree includes a number of firmware 'blobs'
+            that are used by various drivers. The recommended way to
+            use these is to run "make firmware_install", which, after
+            converting ihex files to binary, copies all of the needed
+            binary files in firmware/ to /lib/firmware/ on your system so
+            that they can be loaded by userspace helpers on request.
+
+            Enabling this option will build each required firmware blob
+            into the kernel directly, where request_firmware() will find
+            them without having to call out to userspace. This may be
+            useful if your root file system requires a device that uses
+            such firmware and do not wish to use an initrd.
+
+            This single option controls the inclusion of firmware for
+            every driver that uses request_firmware() and ships its
+            firmware in the kernel source tree, which avoids a
+            proliferation of 'Include firmware for xxx device' options.
+
+            Say 'N' and let firmware be loaded from userspace.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     It's recommended that you include this option in your kernel as it's
+            required for building microcode updates directly into the linux kernel.
 ```

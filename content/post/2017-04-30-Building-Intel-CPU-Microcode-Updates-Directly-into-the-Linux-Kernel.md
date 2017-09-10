@@ -250,7 +250,7 @@ make menuconfig
 Navigate to <mark>Device Drivers</mark> then to <mark>Generic Driver Options</mark>.
 <br/>
 <br/>
-Now change the values of <mark>CONFIG_EXTRA_FIRMWARE</mark> and <mark>CONFIG_EXTRA_FIRMWARE_DIR</mark> similarly to the ones shown below:
+Now include <mark>CONFIG_FIRMWARE_IN_KERNEL</mark>,<mark>CONFIG_EXTRA_FIRMWARE</mark> and <mark>CONFIG_EXTRA_FIRMWARE_DIR</mark> similarly to the ones shown below:
 ```none
   [ ] Support for uevent helper
   -*- Maintain a devtmpfs filesystem to mount at /dev
@@ -258,7 +258,7 @@ Now change the values of <mark>CONFIG_EXTRA_FIRMWARE</mark> and <mark>CONFIG_EXT
   [ ] Select only drivers that don't need compile-time external firmware
   [ ] Prevent firmware from being built
   -*- Userspace firmware loading support
-  [ ]   Include in-kernel firmware blobs in kernel binary
+  [*]   Include in-kernel firmware blobs in kernel binary
   (intel-ucode/06-3c-03) External firmware blobs to build into the kernel binary
   (/lib/firmware) Firmware blobs root directory
   [ ] Fallback user-helper invocation for firmware loading
