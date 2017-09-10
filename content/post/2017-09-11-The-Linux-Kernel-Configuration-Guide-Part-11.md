@@ -217,4 +217,73 @@ Choice:     built-in [*]
 
 Reason:     It's recommended that you include this option in your kernel as it's
             required for building microcode updates directly into the linux kernel.
+
+            DOTSLASHLINUX has a detailed guide on how to build microcode updates
+            directly into the linux kernel, kindly check the link below:
+
+                https://www.dotslashlinux.com/2017/04/30/building-intel-cpu-microcode-updates-directly-into-the-linux-kernel/
+```
+<h3>(intel-ucode/06-3c-03) External firmware blobs to build into the kernel binary</h3>
+```none
+Symbol:     CONFIG_EXTRA_FIRMWARE
+
+Help:       This option allows firmware to be built into the kernel for the case
+            where the user either cannot or doesn't want to provide it from
+            userspace at runtime (for example, when the firmware in question is
+            required for accessing the boot device, and the user doesn't want to
+            use an initrd).
+
+            This option is a string and takes the (space-separated) names of the
+            firmware files -- the same names that appear in MODULE_FIRMWARE()
+            and request_firmware() in the source. These files should exist under
+            the directory specified by the EXTRA_FIRMWARE_DIR option, which is
+            by default the firmware subdirectory of the kernel source tree.
+
+            For example, you might set CONFIG_EXTRA_FIRMWARE="usb8388.bin", copy
+            the usb8388.bin file into the firmware directory, and build the kernel.
+            Then any request_firmware("usb8388.bin") will be satisfied internally
+            without needing to call out to userspace.
+
+            WARNING: If you include additional firmware files into your binary
+            kernel image that are not available under the terms of the GPL,
+            then it may be a violation of the GPL to distribute the resulting
+            image since it combines both GPL and non-GPL work. You should
+            consult a lawyer of your own before distributing such an image.
+
+Type:       string
+
+Choice:     (intel-ucode/06-3c-03) custom
+
+Reason:     You may need to change this value if you're using a different processor.
+            Check the link below for more information.
+            
+            It's recommended that you include this option in your kernel as it's
+            required for building microcode updates directly into the linux kernel.
+
+            DOTSLASHLINUX has a detailed guide on how to build microcode updates
+            directly into the linux kernel, kindly check the link below:
+
+                https://www.dotslashlinux.com/2017/04/30/building-intel-cpu-microcode-updates-directly-into-the-linux-kernel/
+```
+<h3>(/lib/firmware) Firmware blobs root directory</h3>
+```none
+Symbol:     CONFIG_EXTRA_FIRMWARE_DIR
+
+Help:       This option controls the directory in which the kernel build system
+            looks for the firmware files listed in the EXTRA_FIRMWARE option.
+            The default is firmware/ in the kernel source tree, but by changing
+            this option you can point it elsewhere, such as /lib/firmware/ or
+            some other directory containing the firmware files.
+
+Type:       string
+
+Choice:     (/lib/firmware) custom
+
+Reason:     It's recommended that you include this option in your kernel as it's
+            required for building microcode updates directly into the linux kernel.
+
+            DOTSLASHLINUX has a detailed guide on how to build microcode updates
+            directly into the linux kernel, kindly check the link below:
+
+                https://www.dotslashlinux.com/2017/04/30/building-intel-cpu-microcode-updates-directly-into-the-linux-kernel/
 ```
