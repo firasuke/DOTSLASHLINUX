@@ -250,7 +250,7 @@ make menuconfig
 Navigate to <mark>Device Drivers</mark> then to <mark>Generic Driver Options</mark>.
 <br/>
 <br/>
-Now include <mark>CONFIG_FIRMWARE_IN_KERNEL</mark>,<mark>CONFIG_EXTRA_FIRMWARE</mark> and <mark>CONFIG_EXTRA_FIRMWARE_DIR</mark> similarly to the ones shown below:
+Now include <mark>CONFIG_FIRMWARE_IN_KERNEL</mark>,<mark>CONFIG_EXTRA_FIRMWARE</mark> and <mark>CONFIG_EXTRA_FIRMWARE_DIR</mark> as shown below:
 ```none
   [ ] Support for uevent helper
   -*- Maintain a devtmpfs filesystem to mount at /dev
