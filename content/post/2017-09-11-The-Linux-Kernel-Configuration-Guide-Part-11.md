@@ -115,9 +115,13 @@ You can also use <mark>treeproc.txt</mark>, <mark>treesys.txt</mark> and <mark>t
 <br/>
 <br/>
 Hope this small sub-guide helped you out! Now back to the main guide!
+<br/>
+<br/>
+One last thing, starting from this part, I'll only be listing the options that are required for my drivers to work. Not much explanation is needed as the reason for excluding other options would simply be because I don't have such parts in my system.
 <hr/>
 <h3>Device Drivers  ---></h3>
-The following section will be posted on 11/09/2017. I just wanted to post this part as many users have asked me how can they know what option they need to include or not. Stay tuned!
-<br/>
-<br/>
-Starting from this section, I'll only be listing the options that are required for my drivers to work. Not much explanation is need in the drivers section as the reason of excluding other options would simply be because I don't have such parts in my system.
+<h3>Generic Driver Options  ---></h3>
+<h3>-&ast;- Maintain a devtmpfs filesystem to mount at /dev</h3>
+```none
+Symbol:     
+```
