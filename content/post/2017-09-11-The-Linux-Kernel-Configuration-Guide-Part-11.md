@@ -70,15 +70,21 @@ cd /mnt/mountedblock/home/$USER/SystemRescueCd
 ```
 Now we're going to grab the output of several useful tools and we'll be using those files later on the pick the right options for our kernel:
 ```bash
+lshw -short > /mnt/mountedblock/home/$USER/SystemRescueCd/lshwshort.txt
+lshw > /mnt/mountedblock/home/$USER/SystemRescueCd/lshw.txt
+
 lspci -kk > /mnt/mountedblock/home/$USER/SystemRescueCd/lspcikk.txt
-lspci -nnkvv > /mnt/mountedblock/home/$USER/SystemRescueCd/lspcinnkvv.txt
+lspci -nnkkvvv > /mnt/mountedblock/home/$USER/SystemRescueCd/lspcinnkkvvv.txt
+
 lsusb > /mnt/mountedblock/home/$USER/SystemRescueCd/lsusb.txt
 lsusb -v > /mnt/mountedblock/home/$USER/SystemRescueCd/lsusbv.txt
+
 lsmod > /mnt/mountedblock/home/$USER/SystemRescueCd/lsmod.txt
 
 dmesg > /mnt/mountedblock/home/$USER/SystemRescueCd/dmesg.txt
 
 cat /proc/cpuinfo > /mnt/mountedblock/home/$USER/SystemRescueCd/cpuinfo.txt
+
 zcat /proc/config.gz > /mnt/mountedblock/home/$USER/SystemRescueCd/SysRescueCdKernel.config
 
 tree /proc > /mnt/mountedblock/home/$USER/SystemRescueCd/treeproc.txt
@@ -93,7 +99,7 @@ Congratulations, you've just grabbed a ton of information about your system. Now
 In most cases you'll be grepping certain keywords from these files. These keywords will be related to a kernel option one way or another.
 <br/>
 <br/>
-I recommend that you start by reading <mark>lspcikk.txt</mark> and including the drivers your system supports. Once you're done you can start with <mark>lsusb.txt</mark>.
+I recommend that you start by reading <mark>lspcikk.txt</mark> and including the drivers your system supports. Once you're done you can start with <mark>lsusb.txt</mark>. Moving on with <mark>lshwshort.txt</mark>
 <br/>
 <br/>
 That should be enough to get your system booting (assuming you've included support for your partition table, filesystem and block device).
@@ -105,7 +111,7 @@ Now you can continue with <mark>cpuinfo.txt</mark> and see what flags and instru
 Now you can read <mark>dmesg.txt</mark> and understand what is being loaded and what's not, check if there are any ACPI warnings, conflicts or errors. In some cases it might even tell you if one of your drivers is old and there's a newer and in most cases better versions of it available (for example, synaptics PS/2 and RMI4/SMBUS).
 <br/>
 <br/>
-You should have a solid base to stand on right now. You can continue fine-tuning your kernel by reading <mark>lspcinnkvvv.txt</mark> and <mark>lsusbv.txt</mark> and see if there are any extra features your hardware supports that you didn't include yet (ASPM being an example, you can do a simple <mark>cat lspcinnkvvv.txt | grep ASPM</mark> and find out whether ASPM is supported or not. You can keep doing this over and over with every other option out there).
+You should have a solid base to stand on right now. You can continue fine-tuning your kernel by reading <mark>lspcinnkkvvv.txt</mark>, <mark>lsusbv.txt</mark> and <mark>lshw.txt</mark> and see if there are any extra features your hardware supports that you didn't include yet (ASPM being an example, you can do a simple <mark>cat lspcinnkkvvv.txt | grep ASPM</mark> and find out whether ASPM is supported or not. You can keep doing this over and over with every other option out there).
 <br/>
 <br/>
 Now you should be probably finished. Whenever, you feel stuck or extremely confused by an option, you can check this guide for further information or politely ask in IRC channels. You can also check <mark>SysRescueCdKernel.config</mark> and see whether they included this option or not (beware you shouldn't be copy pasting everything you see included in <mark>SysRescueCdKernel.config</mark> as you'll be back to square one with a bloated kernel that's suited for a couple of million systems and not fine-tuned to run on your system).
