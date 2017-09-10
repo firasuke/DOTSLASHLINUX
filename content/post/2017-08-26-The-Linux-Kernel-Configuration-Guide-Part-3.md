@@ -1919,6 +1919,7 @@ Choice:     excluded [ ]
 
 Reason:     I excluded it because I don't want profiling support on my system.
 ```
+<hr/>
 <h3>Chinese Translation</h3>
 One of DOTSLASHLINUX's followers from china 杨鑫 (Yang Mame), decided to follow up with the series and provide chinese translation of the kernel configuration guides on his blog.
 <br/>
