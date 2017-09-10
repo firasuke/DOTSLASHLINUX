@@ -287,3 +287,203 @@ Reason:     It's recommended that you include this option in your kernel as it's
 
                 https://www.dotslashlinux.com/2017/04/30/building-intel-cpu-microcode-updates-directly-into-the-linux-kernel/
 ```
+<h3>-&ast;- Plug and Play support  ---></h3>
+```none
+Symbol:     CONFIG_PNP
+
+Help:       Plug and Play (PnP) is a standard for peripherals which allows those
+            peripherals to be configured by software, e.g. assign IRQ's or other
+            parameters. No jumpers on the cards are needed, instead the values
+            are provided to the cards from the BIOS, from the operating system,
+            or using a user-space utility.
+
+            Say Y here if you would like Linux to configure your Plug and Play
+            devices. You should then also say Y to all of the protocols below.
+            Alternatively, you can say N here and configure your PnP devices
+            using user space utilities such as the isapnptools package.
+
+            If unsure, say Y.
+
+Type:       boolean
+
+Choice:     built-in -*-
+
+Reason:     It's highly recommended that you include this option in your kernel
+            (that is if it isn't already included by CONFIG_PCI, CONFIG_ACPI and
+            CONFIG_X86).
+```
+<h3>[&ast;]   PNP debugging messages</h3>
+```none
+Symbol:     CONFIG_PNP_DEBUG_MESSAGES
+
+Help:       Say Y here if you want the PNP layer to be able to produce debugging
+            messages if needed.  The messages can be enabled at boot-time with
+            the pnp.debug kernel parameter.
+
+            This option allows you to save a bit of space if you do not want
+            the messages to even be built into the kernel.
+
+            If you have any doubts about this, say Y here.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     It's recommended that you include this option in your kernel as
+            it provides really helpful information about PnP devices.
+```
+<h3>[&ast;] Block devices  ---></h3>
+```none
+Symbol:     CONFIG_BLK_DEV
+
+Help:       Say Y here to get to see options for various different block device
+            drivers. This option alone does not add any kernel code.
+
+            If you say N, all options in this submenu will be skipped and disabled;
+            only do this if you know what you are doing.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     It's recommended that you include this option in your kernel.
+```
+<h3><&ast;>   Loopback device support</h3>
+```none
+Symbol:     CONFIG_BLK_DEV_LOOP
+
+Help:       Saying Y here will allow you to use a regular file as a block
+            device; you can then create a file system on that block device and
+            mount it just as you would mount other block devices such as hard
+            drive partitions, CD-ROM drives or floppy drives. The loop devices
+            are block special device files with major number 7 and typically
+            called /dev/loop0, /dev/loop1 etc.
+
+            This is useful if you want to check an ISO 9660 file system before
+            burning the CD, or if you want to use floppy images without first
+            writing them to floppy. Furthermore, some Linux distributions avoid
+            the need for a dedicated Linux partition by keeping their complete
+            root file system inside a DOS FAT file using this loop device
+            driver.
+
+            To use the loop device, you need the losetup utility, found in the
+            util-linux package, see
+            <https://www.kernel.org/pub/linux/utils/util-linux/>.
+
+            The loop device driver can also be used to "hide" a file system in
+            a disk partition, floppy, or regular file, either using encryption
+            (scrambling the data) or steganography (hiding the data in the low
+            bits of, say, a sound file). This is also safe if the file resides
+            on a remote file server.
+
+            There are several ways of encrypting disks. Some of these require
+            kernel patches. The vanilla kernel offers the cryptoloop option
+            and a Device Mapper target (which is superior, as it supports all
+            file systems). If you want to use the cryptoloop, say Y to both
+            LOOP and CRYPTOLOOP, and make sure you have a recent (version 2.12
+            or later) version of util-linux. Additionally, be aware that
+            the cryptoloop is not safe for storing journaled filesystems.
+
+            Note that this loop device has nothing to do with the loopback
+            device used for network connections from the machine to itself.
+
+            To compile this driver as a module, choose M here: the
+            module will be called loop.
+
+            Most users will answer N here.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     It's highly recommended that you include this option in your kernel
+            as it allows you to mount images (files with .img, .iso ...etc extensions)
+            as if they were devices.
+```
+<h3>(0)     Number of loop devices to pre-create at init time</h3>
+```none
+Symbol:     CONFIG_BLK_DEV_LOOP_MIN_COUNT
+
+Help:       Static number of loop devices to be unconditionally pre-created
+            at init time.
+
+            This default value can be overwritten on the kernel command
+            line or with module-parameter loop.max_loop.
+
+            The historic default is 8. If a late 2011 version of losetup(8)
+            is used, it can be set to 0, since needed loop devices can be
+            dynamically allocated with the /dev/loop-control interface.
+
+Type:       integer
+
+Choice:     (0) custom
+
+Reason:     It's highly recommended that you set the value of this option to 0
+            as loop devices should be created on-demand and not precreated (unless
+            neccessary).
+```
+<h3>Misc devices  ---></h3>
+<h3>-&ast;- Intel Management Engine Interface</h3>
+```none
+Symbol:     CONFIG_INTEL_MEI
+
+Help:       The Intel Management Engine (Intel ME) provides Manageability,
+            Security and Media services for system containing Intel chipsets.
+            if selected /dev/mei misc device will be created.
+
+            For more information see
+            <http://software.intel.com/en-us/manageability/>
+
+Type:       tristate
+
+Choice:     built-in -*-
+
+Reason:     It's recommended that you include this option if you're using a system
+            with modern intel chipsets.
+
+            If you've followed the guide above, then a simple:
+
+                cat lspcikk.txt | grep mei
+
+            should tell you whether you need this option or not.
+```
+<h3><&ast;> ME Enabled Intel Chipsets</h3>
+```none
+Symbol:     CONFIG_INTEL_MEI_ME
+
+Help:       MEI support for ME Enabled Intel chipsets.
+
+            Supported Chipsets are:
+            7 Series Chipset Family
+            6 Series Chipset Family
+            5 Series Chipset Family
+            4 Series Chipset Family
+            Mobile 4 Series Chipset Family
+            ICH9
+            82946GZ/GL
+            82G35 Express
+            82Q963/Q965
+            82P965/G965
+            Mobile PM965/GM965
+            Mobile GME965/GLE960
+            82Q35 Express
+            82G33/G31/P35/P31 Express
+            82Q33 Express
+            82X38/X48 Express
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     It's recommended that you include this option if you're using a system
+            with modern intel chipsets.
+
+            If you've followed the guide above, then a simple:
+
+                cat lspcikk.txt | grep mei
+
+            should tell you whether you need this option or not.
+```
+<h3>SCSI device support  ---></h3>
+```none
+```
