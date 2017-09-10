@@ -666,3 +666,69 @@ Reason:     It's highly recommended that you include this option in your kernel
             if you've already included CONFIG_ATA as it may boost performance
             and power saving features of ATA devices.
 ```
+<h3>[&ast;]     SATA Zero Power Optical Disc Drive (ZPODD) support</h3>
+```none
+Symbol:     CONFIG_SATA_ZPODD
+
+Help:       This option adds support for SATA Zero Power Optical Disc
+            Drive (ZPODD). It requires both the ODD and the platform
+            support, and if enabled, will automatically power on/off the
+            ODD when certain condition is satisfied. This does not impact
+            end user's experience of the ODD, only power is saved when
+            the ODD is not in use (i.e. no disc inside).
+
+            If unsure, say N.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     It's recommended that you include this option in your kernel if you
+            have a SCSI CD/DVD drive as it'll help save energy when the drive
+            isn't in use.
+```
+<h3><&ast;>   AHCI SATA support</h3>
+```none
+Symbol:     CONFIG_SATA_AHCI
+
+Help:       This option enables support for AHCI Serial ATA.
+            If unsure, say N.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     It's highly recommended that you include this option in your kernel
+            as it's basically the driver that'll be used for your SATA controller.
+
+            If you've followed the guide above, then a simple:
+
+                cat lspcikk.txt | grep ahci
+
+            should tell you whether you need this option or not.
+```
+<h3>[&ast;] Network device support  ---></h3>
+```none
+Symbol:     CONFIG_NETDEVICES
+
+Help:       You can say N here if you don't intend to connect your Linux box to
+            any other computer at all.
+
+            You'll have to say Y if your computer contains a network card that
+            you want to use under Linux. If you are going to run SLIP or PPP over
+            telephone line or null modem cable you need say Y here. Connecting
+            two machines with parallel ports using PLIP needs this, as well as
+            AX.25/KISS for sending Internet traffic over amateur radio links.
+
+            See also "The Linux Network Administrator's Guide" by Olaf Kirch and
+            Terry Dawson. Available at <http://www.tldp.org/guides.html>.
+
+            If unsure, say Y.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     It's highly recommended that you include this option in your kernel
+            to access the network devices' drivers section.
+```
