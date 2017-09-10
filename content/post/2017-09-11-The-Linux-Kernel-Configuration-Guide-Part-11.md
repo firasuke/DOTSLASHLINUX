@@ -43,7 +43,7 @@ The process is pretty much straight forward (and off-topic but meh...), the only
 <br/>
 <h3>SystemRescueCd</h3>
 So basically you create a temporary directory, and mount the bootable ISO with the options <mark>-o loop,exec</mark>, then you plug in the USB stick you intend to boot from, and memorize its path. Then simply change your directory to where you mounted the ISO and run <mark>usb_inst.sh</mark>. When it's done, you <mark>cd</mark> your way out and unmount the ISO.
-```none
+```bash
 mkdir -p /tmp/cdrom
 mount -o loop,exec systemrescuecd-x86-5.1.0.iso /tmp/cdrom
 cd /tmp/cdrom
@@ -53,7 +53,7 @@ umount /tmp/cdrom
 ```
 <h3>Arch Linux</h3>
 Remember to change <mark>/dev/sdX</mark> to the real path of your USB stick.
-```none
+```bash
 dd if=PathToISO.iso of=/dev/sdX status=progress
 ```
 <hr/>
@@ -62,14 +62,14 @@ If everything is working as expected you should be live booting the ISO now on y
 <br/>
 <br/>
 Ok now mount your HDD or SDD partition on where you have Gentoo or your linux distribution installed (SystemRescueCd already has a <mark>/mnt/gentoo</mark> directory which is suitable in this case). Now it's preferrable that you create a directory in your <mark>/home/$USER</mark> and output everything into it.
-```none
+```bash
 mkdir /mnt/mountedblock
 mount /dev/sdXY /mnt/mountedblock
 mkdir /mnt/mountedblock/home/$USER/SystemRescueCd
 cd /mnt/mountedblock/home/$USER/SystemRescueCd
 ```
 Now we're going to grab the output of several useful tools and we'll be using those files later on the pick the right options for our kernel:
-```none
+```bash
 lspci -kk > /mnt/mountedblock/home/$USER/SystemRescueCd/lspcikk.txt
 lspci -nnkvv > /mnt/mountedblock/home/$USER/SystemRescueCd/lspcinnkvv.txt
 lsusb > /mnt/mountedblock/home/$USER/SystemRescueCd/lsusb.txt
