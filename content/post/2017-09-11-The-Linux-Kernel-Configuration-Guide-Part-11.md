@@ -485,5 +485,136 @@ Reason:     It's recommended that you include this option if you're using a syst
             should tell you whether you need this option or not.
 ```
 <h3>SCSI device support  ---></h3>
+<h3>-&ast;- SCSI device support</h3>
 ```none
+Symbol:     CONFIG_SCSI
+
+Help:       If you want to use a SCSI hard disk, SCSI tape drive, SCSI CD-ROM or
+            any other SCSI device under Linux, say Y and make sure that you know
+            the name of your SCSI host adapter (the card inside your computer
+            that "speaks" the SCSI protocol, also called SCSI controller),
+            because you will be asked for it.
+
+            You also need to say Y here if you have a device which speaks
+            the SCSI protocol.  Examples of this include the parallel port
+            version of the IOMEGA ZIP drive, USB storage devices, Fibre
+            Channel, and FireWire storage.
+
+            To compile this driver as a module, choose M here and read
+            <file:Documentation/scsi/scsi.txt>.
+            The module will be called scsi_mod.
+
+            However, do not compile this as a module if your root file system
+            (the one containing the directory /) is located on a SCSI device.
+
+Type:       tristate
+
+Choice:     built-in -*-
+
+Reason:     It's highly recommended that you include this option in your kernel if
+            you're using one of the SCSI devices mentioned above (mainly a SCSI
+            hard drive and CD-ROM).
+```
+<h3>-&ast;- SCSI: use blk-mq I/O path by default</h3>
+```none
+Symbol:     CONFIG_SCSI_MQ_DEFAULT
+
+Help:       This option enables the new blk-mq based I/O path for SCSI
+            devices by default.  With the option the scsi_mod.use_blk_mq
+            module/boot option defaults to Y, without it to N, but it can
+            still be overridden either way.
+
+            If unsure say N.
+
+Type:       boolean
+
+Choice:     built-in -*-
+
+Reason:     If you've checked the list of priorities listed at the top of this
+            page, you'll see "low-latency" listed as one of the top priorities.
+
+            To achieve that, you can use ck-sources (MuQSS + BFQ), and 
+            CONFIG_DEFAULT_BFQ requires this option to work.
+```
+<h3><&ast;> SCSI disk support</h3>
+```none
+Symbol:     CONFIG_BLK_DEV_SD
+
+Help:       If you want to use SCSI hard disks, Fibre Channel disks,
+            Serial ATA (SATA) or Parallel ATA (PATA) hard disks,
+            USB storage or the SCSI or parallel port version of
+            the IOMEGA ZIP drive, say Y and read the SCSI-HOWTO,
+            the Disk-HOWTO and the Multi-Disk-HOWTO, available from
+            <http://www.tldp.org/docs.html#howto>. This is NOT for SCSI
+            CD-ROMs.
+
+            To compile this driver as a module, choose M here and read
+            <file:Documentation/scsi/scsi.txt>.
+            The module will be called sd_mod.
+
+            Do not compile this driver as a module if your root file system
+            (the one containing the directory /) is located on a SCSI disk.
+            In this case, do not compile the driver for your SCSI host adapter
+            (below) as a module either.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     It's highly recommended that you include this option in your kernel
+            if you're using a SCSI hard disk.
+
+            When booting without an initrd:
+                
+                https://www.dotslashlinux.com/2017/04/29/booting-the-linux-kernel-without-an-initrd-initramfs/
+
+            you shouldn't compile this option as a module as it'll result in an
+            unbootable system.
+```
+<h3><&ast;> SCSI CDROM support</h3>
+```none
+Symbol:     CONFIG_BLK_DEV_SR
+
+Help:       If you want to use a CD or DVD drive attached to your computer
+            by SCSI, FireWire, USB or ATAPI, say Y and read the SCSI-HOWTO
+            and the CDROM-HOWTO at <http://www.tldp.org/docs.html#howto>.
+
+            Make sure to say Y or M to "ISO 9660 CD-ROM file system support".
+
+            To compile this driver as a module, choose M here and read
+            <file:Documentation/scsi/scsi.txt>.
+            The module will be called sr_mod.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     It's highly recommended that you include this option in your kernel
+            if you're using a SCSI CD/DVD drive.
+```
+<h3>[&ast;] Asynchronous SCSI scanning</h3>
+```none
+Symbol:     CONFIG_SCSI_SCAN_ASYNC
+
+Help:       The SCSI subsystem can probe for devices while the rest of the
+            system continues booting, and even probe devices on different
+            busses in parallel, leading to a significant speed-up.
+
+            You can override this choice by specifying "scsi_mod.scan=sync"
+            or async on the kernel's command line.
+
+            Note that this setting also affects whether resuming from
+            system suspend will be performed asynchronously.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     It's highly recommended that you include this option in your kerenl
+            as it speeds up boot time.
+
+            In extrememly rare cases, this option may cause an incorrect naming
+            of your root device. Although unlikely, if that was your case then
+            you can safely exclude this option (you might experience some
+            increase in boot time though).
 ```
