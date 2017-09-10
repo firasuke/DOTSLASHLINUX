@@ -624,6 +624,45 @@ Reason:     It's highly recommended that you include this option in your kerenl
             you can safely exclude this option (you might experience some
             increase in boot time though).
 ```
-<h3></h3>
+<h3><&ast;> Serial ATA and Parallel ATA drivers (libata)  ---></h3>
 ```none
+Symbol:     CONFIG_ATA
+
+Help:       If you want to use an ATA hard disk, ATA tape drive, ATA CD-ROM or
+            any other ATA device under Linux, say Y and make sure that you know
+            the name of your ATA host adapter (the card inside your computer
+            that "speaks" the ATA protocol, also called ATA controller),
+            because you will be asked for it.
+
+            NOTE: ATA enables basic SCSI support; *however*,
+            'SCSI disk support', 'SCSI tape support', or
+            'SCSI CDROM support' may also be needed,
+            depending on your hardware configuration.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     It's highly recommended that you include this option if you're
+            using a SCSI hard disk drive and a SCSI CD/DVD drive.
+```
+<h3>[&ast;]   ATA ACPI Support</h3>
+```none
+Symbol:     CONFIG_ATA_ACPI
+
+Help:       This option adds support for ATA-related ACPI objects.
+            These ACPI objects add the ability to retrieve taskfiles
+            from the ACPI BIOS and write them to the disk controller.
+            These objects may be related to performance, security,
+            power management, or other areas.
+            You can disable this at kernel boot time by using the
+            option libata.noacpi=1
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     It's highly recommended that you include this option in your kernel
+            if you've already included CONFIG_ATA as it may boost performance
+            and power saving features of ATA devices.
 ```
