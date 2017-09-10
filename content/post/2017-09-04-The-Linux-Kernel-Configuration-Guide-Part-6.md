@@ -1139,7 +1139,7 @@ Reason:     I excluded this option as I have no need for it even though
             I've never experienced a single BIOS corruption even though
             I have a pretty buggy bios myself.
 ```
-<h3>(4) Amount of low memory, in kilobytes, to reserve for the BIOS</h3>
+<h3>(64) Amount of low memory, in kilobytes, to reserve for the BIOS</h3>
 ```none
 Symbol:     CONFIG_X86_RESERVE_LOW
 
@@ -1169,13 +1169,16 @@ Help:       Specify the amount of low memory to reserve for the BIOS.
 
 Type:       integer
 
-Choice:     (4) custom
+Choice:     (64) default
 
-Reason:     I highly recommend that you use (64) which is the default
-            value (since I have no idea what bios or system you might
-            be using).
+Reason:     It's highly recommend that you set the value of this option to (64)
+            which is the default value.
 
-            For my system I went with 64 because it works for me.
+            You can run:
+
+                lshw -short | grep BIOS
+
+            and see what value is printed next to your BIOS.
 ```
 <h3>[&ast;] MTRR (Memory Type Range Register) support</h3>
 ```none
