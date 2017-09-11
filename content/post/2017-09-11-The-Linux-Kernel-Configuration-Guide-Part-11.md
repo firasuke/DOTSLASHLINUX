@@ -909,18 +909,17 @@ Reason:     It's highly recommended that you include this option in your kernel 
             wireless cards may be blocked by the RF-Kill switch and you may have to
             unblock them).
 ```
-<h3>[&ast;]       Channel Context support</h3>
+<h3>[&ast;]       Atheros ath9k support for PC OEM cards</h3>
 ```none
-Symbol:     CONFIG_ATH9K_CHANNEL_CONTEXT
+Symbol:     CONFIG_ATH9K_PCOEM
 
-Help:       This option enables channel context support in ath9k, which is needed
-            for multi-channel concurrency. Enable this if P2P PowerSave support
-            is required.
+Help:       There is no help available for this option.
 
 Type:       boolean
 
 Choice:     built-in [*]
 
 Reason:     It's highly recommended that you include this option in your kernel if
-            you're using ath9k as it's very useful for
+            you're using ath9k as it's required on some systems for the detection
+            of the wireless network adapter.
 ```
