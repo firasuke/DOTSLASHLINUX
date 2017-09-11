@@ -744,6 +744,12 @@ Choice:     built-in [*]
 
 Reason:     It's highly recommended that you include this option if you wanted
             your ethernet adapter to work.
+ 
+            If you've followed the guide above, then a simple:
+
+                cat lspcikk.txt | grep Ethernet
+
+            should tell you whether you need this option or not.
 ```
 <h3>[&ast;]   Atheros devices</h3>
 ```none
@@ -762,12 +768,6 @@ Choice:     built-in [*]
 
 Reason:     It's highly recommended that you include this option if you're using
             an atheros ethernet controller.
-            
-            If you've followed the guide above, then a simple:
-
-                cat lspcikk.txt | grep Ethernet
-
-            should tell you whether you need this option or not.
 ```
 <h3><&ast;>     Qualcomm Atheros AR816x/AR817x support</h3>
 ```none
@@ -788,7 +788,8 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     
+Reason:     It's highly recommended that you include this option if you're using
+            a Qualcomm Atheros L1F ethernet adapter.
 ```
 <h3>[&ast;]   Wireless LAN  ---></h3>
 ```none
@@ -806,4 +807,35 @@ Choice:     built-in [*]
 
 Reason:     It's highly recommended that you include this option if you wanted
             your wireless network adapter to work.
+            
+            If you've followed the guide above, then a simple:
+
+                cat lspcikk.txt | grep Wireless
+
+            should tell you whether you need this option or not.
+```
+<h3>[&ast;]   Atheros/Qualcomm devices</h3>
+```none
+Symbol:     CONFIG_WLAN_VENDOR_ATH
+
+Help:       If you have a wireless card belonging to this class, say Y.
+
+            Note that the answer to this question doesn't directly affect the
+            kernel: saying N will just cause the configurator to skip all
+            the questions about  cards. If you say Y, you will be asked for
+            your specific card in the following questions.
+
+            For more information and documentation on this module you can visit:
+
+            http://wireless.kernel.org/en/users/Drivers/ath
+
+            For information on all Atheros wireless drivers visit:
+
+            http://wireless.kernel.org/en/users/Drivers/Atheros 
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
 ```
