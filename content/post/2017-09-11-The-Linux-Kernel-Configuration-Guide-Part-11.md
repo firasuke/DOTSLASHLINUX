@@ -732,3 +732,78 @@ Choice:     built-in [*]
 Reason:     It's highly recommended that you include this option in your kernel
             to access the network devices' drivers section.
 ```
+<h3>[&ast;]   Ethernet driver support  ---></h3>
+```none
+Symbol:     CONFIG_ETHERNET
+
+Help:       This section contains all the Ethernet device drivers.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     It's highly recommended that you include this option if you wanted
+            your ethernet adapter to work.
+```
+<h3>[&ast;]   Atheros devices</h3>
+```none
+Symbol:     CONFIG_NET_VENDOR_ATHEROS
+
+Help:       If you have a network (Ethernet) card belonging to this class, say Y.
+
+            Note that the answer to this question doesn't directly affect the
+            kernel: saying N will just cause the configurator to skip all
+            the questions about Atheros devices. If you say Y, you will be asked
+            for your specific card in the following questions.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     It's highly recommended that you include this option if you're using
+            an atheros ethernet controller.
+            
+            If you've followed the guide above, then a simple:
+
+                cat lspcikk.txt | grep Ethernet
+
+            should tell you whether you need this option or not.
+```
+<h3><&ast;>     Qualcomm Atheros AR816x/AR817x support</h3>
+```none
+Symbol:     CONFIG_ALX
+
+Help:       This driver supports the Qualcomm Atheros L1F ethernet adapter,
+            i.e. the following chipsets:
+
+            1969:1091 - AR8161 Gigabit Ethernet
+            1969:1090 - AR8162 Fast Ethernet
+            1969:10A1 - AR8171 Gigabit Ethernet
+            1969:10A0 - AR8172 Fast Ethernet
+
+            To compile this driver as a module, choose M here.  The module
+            will be called alx.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3>[&ast;]   Wireless LAN  ---></h3>
+```none
+Symbol:     CONFIG_WLAN
+
+Help:       This section contains all the pre 802.11 and 802.11 wireless
+            device drivers. For a complete list of drivers and documentation
+            on them refer to the wireless wiki:
+
+            http://wireless.kernel.org/en/users/Drivers 
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     It's highly recommended that you include this option if you wanted
+            your wireless network adapter to work.
+```
