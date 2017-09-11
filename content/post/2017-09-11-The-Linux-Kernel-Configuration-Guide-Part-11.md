@@ -1336,3 +1336,29 @@ Reason:     It's highly recommended that you included this option in your kernel
             (that is if it weren't already forcibly included by several important
             options).
 ```
+<h3><&ast;> Raw access to serio ports</h3>
+```none
+Symbol:     CONFIG_SERIO_RAW
+
+Help:       Say Y here if you want to have raw access to serio ports, such as
+            AUX ports on i8042 keyboard controller. Each serio port that is
+            bound to this driver will be accessible via a char device with
+            major 10 and dynamically allocated minor. The driver will try
+            allocating minor 1 (that historically corresponds to /dev/psaux)
+            first. To bind this driver to a serio port use sysfs interface:
+
+                echo -n "serio_raw" > /sys/bus/serio/devices/serioX/drvctl
+
+            To compile this driver as a module, choose M here: the
+            module will be called serio_raw.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     You can safely exclude this option if your Synaptics PS/2
+            or RMI4 SMBus Touchpad is already working.
+
+            In some cases including this option might fix an undetectable
+            Synpatics touchpad.
+```
