@@ -1084,3 +1084,255 @@ Reason:     It's highly recommended that you include this option in your kernel 
 
             should tell you whether you need this option or not.
 ```
+<h3>[&ast;]   Mice  ---></h3>
+```none
+Symbol:     CONFIG_INPUT_MOUSE
+
+Help:       Say Y here, and a list of supported mice will be displayed.
+            This option doesn't affect the kernel.
+
+            If unsure, say Y.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     It's highly recommended that you include this option in your kernel
+            in order for your mouse and touchpad to work.
+```
+<h3><&ast;>   PS/2 mouse</h3>
+```none
+Symbol:     CONFIG_MOUSE_PS2
+
+Help:       Say Y here if you have a PS/2 mouse connected to your system. This
+            includes the standard 2 or 3-button PS/2 mouse, as well as PS/2
+            mice with wheels and extra buttons, Microsoft, Logitech or Genius
+            compatible.
+
+            Synaptics, ALPS or Elantech TouchPad users might be interested
+            in a specialized Xorg/XFree86 driver at:
+                  <http://w1.894.telia.com/~u89404340/touchpad/index.html>
+            and a new version of GPM at:
+                  <http://www.geocities.com/dt_or/gpm/gpm.html>
+                  <http://xorg.freedesktop.org/archive/individual/driver/>
+            to take advantage of the advanced features of the touchpad.
+
+            If unsure, say Y.
+
+            To compile this driver as a module, choose M here: the
+            module will be called psmouse.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     It's highly recommended that you include this option in your kernel
+            in order for your PS/2 mouse and PS/2 touchpad to work.
+            
+            If you've followed the guide above, then a simple:
+
+                cat dmesg.txt | grep psmouse
+
+            should tell you whether you need this option or not.
+```
+<h3>[&ast;]     Synaptics PS/2 mouse protocol extension</h3>
+```none
+Symbol:     CONFIG_MOUSE_PS2_SYNAPTICS
+
+Help:       Say Y here if you have a Synaptics PS/2 TouchPad connected to
+            your system.
+
+            If unsure, say Y.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     It's highly recommended that you include this option in your kernel
+            in order for your Synaptics Touchpad to be enumerated through
+            PS/2.
+```
+<h3>[&ast;]     Synaptics PS/2 SMbus companion</h3>
+```none
+Symbol:     CONFIG_MOUSE_PS2_SYNAPTICS_SMBUS
+
+Help:       Say Y here if you have a Synaptics RMI4 touchpad connected to
+            to an SMBus, but enumerated through PS/2.
+
+            If unsure, say Y.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     It's highly recommended that you include this option in your kernel
+            in order for your Synaptics RMI4 SMBus touchpad to work properly.
+
+            Keep in mind that using this option alone without CONFIG_MOUSE_PS2_SYNPATICS
+            will result in a terrible touchpad experience, therefore you have
+            to include CONFIG_MOUSE_PS2_SYNAPTICS as well.
+
+            This option is new, and it was included according to dmesg suggestion:
+            
+            "Your touchpad (PNP: TOS1150 TOS0310 PNP0f13) says it can support a different bus. If i2c-hid and hid-rmi are not used, you might want to try setting psmouse.synaptics_intertouch to 1 and report this to linux-input@vger.kernel.org"
+```
+<h3>-&ast;-   Synaptics RMI4 bus support</h3>
+```none
+Symbol:     CONFIG_RMI4_CORE
+
+Help:       Say Y here if you want to support the Synaptics RMI4 bus.  This is
+            required for all RMI4 device support.
+
+            If unsure, say Y.
+
+Type:       tristate
+
+Choice:     built-in -*-
+
+Reason:     It's highly recommended that you include this option in your kernel
+            in order for your Synaptics RMI4 SMBus touchpad to work properly.
+```
+<h3><&ast;>     RMI4 SMB Support</h3>
+```none
+Symbol:     CONFIG_RMI4_SMB
+
+Help:       Say Y here if you want to support RMI4 devices connected to an SMB
+            bus.
+
+            If unsure, say N.
+
+            To compile this driver as a module, choose M here: the module will be
+            called rmi_smbus.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     It's highly recommended that you include this option in your kernel
+            in order for your Synaptics RMI4 SMBus touchpad to work properly.
+```
+<h3>-&ast;-     RMI4 Function 03 (PS2 Guest)</h3>
+```none
+Symbol:     CONFIG_RMI4_F03
+
+Help:       Say Y here if you want to add support for RMI4 function 03.
+
+            Function 03 provides PS2 guest support for RMI4 devices. This
+            includes support for TrackPoints on TouchPads.
+
+Type:       boolean
+
+Choice:     built-in -*-
+
+Reason:     Forcibly included by CONFIG_HID_RMI.
+```
+<h3>-&ast;-     RMI4 Function 11 (2D pointing)</h3>
+```none
+Symbol:     CONFIG_RMI4_F11
+
+Help:       Say Y here if you want to add support for RMI4 function 11.
+
+            Function 11 provides 2D multifinger pointing for touchscreens and
+            touchpads. For sensors that support relative pointing, F11 also
+            provides mouse input.
+
+Type:       boolean
+
+Choice:     built-in -*-
+
+Reason:     Forcibly included by CONFIG_HID_RMI.
+```
+<h3>-&ast;-     RMI4 Function 12 (2D pointing)</h3>
+```none
+Symbol:     CONFIG_RMI4_F12
+
+Help:       Say Y here if you want to add support for RMI4 function 12.
+
+            Function 12 provides 2D multifinger pointing for touchscreens and
+            touchpads. For sensors that support relative pointing, F12 also
+            provides mouse input.
+
+Type:       boolean
+
+Choice:     built-in -*-
+
+Reason:     Forcibly included by CONFIG_HID_RMI.
+```
+<h3>-&ast;-     RMI4 Function 30 (GPIO LED)</h3>
+```none
+Symbol:     CONFIG_RMI4_F30
+
+Help:       Say Y here if you want to add support for RMI4 function 30.
+
+            Function 30 provides GPIO and LED support for RMI4 devices. This
+            includes support for buttons on TouchPads and ClickPads.
+
+Type:       boolean
+
+Choice:     built-in -*-
+
+Reason:     Forcibly included by CONFIG_HID_RMI.
+```
+<h3>Hardware I/O ports  ---></h3>
+<h3>-&ast;- Serial I/O support</h3>
+```none
+Symbol:     CONFIG_SERIO
+
+Help:       Say Yes here if you have any input device that uses serial I/O to
+            communicate with the system. This includes the
+                          * standard AT keyboard and PS/2 mouse *
+            as well as serial mice, Sun keyboards, some joysticks and 6dof
+            devices and more.
+
+            If unsure, say Y.
+
+            To compile this driver as a module, choose M here: the
+            module will be called serio.
+
+Type:       tristate
+
+Choice:     built-in -*-
+
+Reason:     It's highly recommended that you included this option in your kernel
+            (that is if it weren't already forcibly included by several important
+            options).
+```
+<h3>-&ast;- i8042 PC Keyboard controller</h3>
+```none
+Symbol:     CONFIG_SERIO_I8042
+
+Help:       i8042 is the chip over which the standard AT keyboard and PS/2
+            mouse are connected to the computer. If you use these devices,
+            you'll need to say Y here.
+
+            If unsure, say Y.
+
+            To compile this driver as a module, choose M here: the
+            module will be called i8042.
+
+Type:       tristate
+
+Choice:     built-in -*-
+
+Reason:     It's highly recommended that you included this option in your kernel
+            (that is if it weren't already forcibly included by several important
+            options).
+```
+<h3>-&ast;- PS/2 driver library</h3>
+```none
+Symbol:     CONFIG_SERIO_LIBPS2
+
+Help:       Say Y here if you are using a driver for device connected
+            to a PS/2 port, such as PS/2 mouse or standard AT keyboard.
+
+            To compile this driver as a module, choose M here: the
+            module will be called libps2.
+
+Type:       tristate
+
+Choice:     built-in -*-
+
+Reason:     It's highly recommended that you included this option in your kernel
+            (that is if it weren't already forcibly included by several important
+            options).
+```
