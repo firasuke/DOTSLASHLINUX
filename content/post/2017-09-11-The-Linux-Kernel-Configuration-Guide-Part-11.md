@@ -921,5 +921,6 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel if
+            you're using ath9k as it's very useful for
 ```
