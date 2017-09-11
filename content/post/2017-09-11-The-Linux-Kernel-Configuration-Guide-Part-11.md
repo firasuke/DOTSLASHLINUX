@@ -923,3 +923,164 @@ Reason:     It's highly recommended that you include this option in your kernel 
             you're using ath9k as it's required on some systems for the detection
             of the wireless network adapter.
 ```
+<h3>Input device support  ---></h3>
+<h3>-&ast;- Generic input layer (needed for keyboard, mouse, ...)</h3>
+```none
+Symbol:     CONFIG_INPUT
+
+Help:       Say Y here if you have any input device (mouse, keyboard, tablet,
+            joystick, steering wheel ...) connected to your system and want
+            it to be available to applications. This includes standard PS/2
+            keyboard and mouse.
+
+            Say N here if you have a headless (no monitor, no keyboard) system.
+
+            More information is available: <file:Documentation/input/input.txt>
+
+            If unsure, say Y.
+
+            To compile this driver as a module, choose M here: the
+            module will be called input.
+
+Type:       tristate
+
+Choice:     built-in -*-
+
+Reason:     It's highly recommended that you include this option in your kernel
+            if you want to use your mouse and keyboard.
+```
+<h3>-&ast;-   Sparse keymap support library</h3>
+```none
+Symbol:     CONFIG_INPUT_SPARSEKMAP
+
+Help:       Say Y here if you are using a driver for an input
+            device that uses sparse keymap. This option is only
+            useful for out-of-tree drivers since in-tree drivers
+            select it automatically.
+
+            If unsure, say N.
+
+            To compile this driver as a module, choose M here: the
+            module will be called sparse-keymap.
+
+Type:       tristate
+
+Choice:     built-in -*-
+
+Reason:     You can safely exclude this option unless it was forcibly included
+            by other options related to out-of-tree drivers.
+```
+<h3><&ast;>   Mouse interface</h3>
+```none
+Symbol:     CONFIG_INPUT_MOUSEDEV
+
+Help:       Say Y here if you want your mouse to be accessible as char devices
+            13:32+ - /dev/input/mouseX and 13:63 - /dev/input/mice as an
+            emulated IntelliMouse Explorer PS/2 mouse. That way, all user space
+            programs (including SVGAlib, GPM and X) will be able to use your
+            mouse.
+
+            If unsure, say Y.
+
+            To compile this driver as a module, choose M here: the
+            module will be called mousedev.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     It's highly recommended that you include this option in your kernel in
+            order for your mouse to work.
+```
+<h3>(1024)  Horizontal screen resolution</h3>
+```none
+Symbol:     CONFIG_INPUT_MOUSEDEV_SCREEN_X
+
+Help:       If you're using a digitizer, or a graphic tablet, and want to use
+            it as a mouse then the mousedev driver needs to know the X window
+            screen resolution you are using to correctly scale the data. If
+            you're not using a digitizer, this value is ignored.
+
+Type:       integer
+
+Choice:     (1024) default
+
+Reason:     You can safely leave the value of this option to its default value
+            of (1024) if you're not using a digitizer or tablet pointing devices.
+```
+<h3>(768)   Vertical screen resolution</h3>
+```none
+Symbol:     CONFIG_INPUT_MOUSEDEV_SCREEN_Y
+
+Help:       If you're using a digitizer, or a graphic tablet, and want to use
+            it as a mouse then the mousedev driver needs to know the X window
+            screen resolution you are using to correctly scale the data. If
+            you're not using a digitizer, this value is ignored.
+
+Type:       integer
+
+Choice:     (768) default
+
+Reason:     You can safely leave the value of this option to its default value
+            of (768) if you're not using a digitizer or tablet pointing devices.
+```
+<h3><&ast;>   Event interface</h3>
+```none
+Symbol:     CONFIG_INPUT_EVDEV
+
+Help:       Say Y here if you want your input device events be accessible
+            under char device 13:64+ - /dev/input/eventX in a generic way.
+
+            To compile this driver as a module, choose M here: the
+            module will be called evdev.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     It's highly recommended that you include this option in your kernel
+            as it's required by Xorg input drivers (evdev, libinput ...etc).
+```
+<h3>[&ast;]   Keyboards  ---></h3>
+```none
+Symbol:     CONFIG_INPUT_KEYBOARD
+
+Help:       Say Y here, and a list of supported keyboards will be displayed.
+            This option doesn't affect the kernel.
+
+            If unsure, say Y.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     It's highly recommended that you include this option in your kernel
+            in order for your keyboard to work.
+```
+<h3><&ast;>   AT keyboard</h3>
+```none
+Symbol:     CONFIG_KEYBOARD_ATKBD
+
+Help:       Say Y here if you want to use a standard AT or PS/2 keyboard. Usually
+            you'll need this, unless you have a different type keyboard (USB, ADB
+            or other). This also works for AT and PS/2 keyboards connected over a
+            PS/2 to serial converter.
+
+            If unsure, say Y.
+
+            To compile this driver as a module, choose M here: the
+            module will be called atkbd.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     It's highly recommended that you include this option in your kernel as
+            in order for your AT or PS/2 keyboard to work.
+            
+            If you've followed the guide above, then a simple:
+
+                cat dmesg.txt | grep keyboard
+
+            should tell you whether you need this option or not.
+```
