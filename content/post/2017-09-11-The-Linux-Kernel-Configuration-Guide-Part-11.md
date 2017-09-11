@@ -444,12 +444,12 @@ Type:       tristate
 
 Choice:     built-in -*-
 
-Reason:     It's recommended that you include this option if you're using a system
-            with modern intel chipsets.
+Reason:     It's recommended that you include this option in your kernel if you're
+            using a system with a modern intel chipset.
 
             If you've followed the guide above, then a simple:
 
-                cat lspcikk.txt | grep mei
+                cat lspcikk.txt | grep mei -A2
 
             should tell you whether you need this option or not.
 ```
@@ -481,12 +481,12 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     It's recommended that you include this option if you're using a system
-            with modern intel chipsets.
+Reason:     It's recommended that you include this option in your kernel if you're
+            using a system with a modern intel chipset.
 
             If you've followed the guide above, then a simple:
 
-                cat lspcikk.txt | grep mei
+                cat lspcikk.txt | grep mei -A2
 
             should tell you whether you need this option or not.
 ```
@@ -574,7 +574,7 @@ Reason:     It's highly recommended that you include this option in your kernel
                 
                 https://www.dotslashlinux.com/2017/04/29/booting-the-linux-kernel-without-an-initrd-initramfs/
 
-            you shouldn't compile this option as a module as it'll result in an
+            you shouldn't compile this option as a module as it may result in an
             unbootable system.
 ```
 <h3><&ast;> SCSI CDROM support</h3>
@@ -643,8 +643,8 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     It's highly recommended that you include this option if you're
-            using a SCSI hard disk drive and a SCSI CD/DVD drive.
+Reason:     It's highly recommended that you include this option in your kernel if
+            you're using a SCSI hard disk drive and a SCSI CD/DVD drive.
 ```
 <h3>[&ast;]   ATA ACPI Support</h3>
 ```none
@@ -703,7 +703,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 
             If you've followed the guide above, then a simple:
 
-                cat lspcikk.txt | grep ahci
+                cat lspcikk.txt | grep ahci -B2
 
             should tell you whether you need this option or not.
 ```
@@ -742,12 +742,12 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     It's highly recommended that you include this option if you wanted
-            your ethernet adapter to work.
+Reason:     It's highly recommended that you include this option in your kernel 
+            if you wanted your ethernet adapter to work.
  
             If you've followed the guide above, then a simple:
 
-                cat lspcikk.txt | grep Ethernet
+                cat lspcikk.txt | grep Ethernet -A2
 
             should tell you whether you need this option or not.
 ```
@@ -766,8 +766,8 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     It's highly recommended that you include this option if you're using
-            an atheros ethernet controller.
+Reason:     It's highly recommended that you include this option in your kernel if
+            you're using an atheros ethernet controller.
 ```
 <h3><&ast;>     Qualcomm Atheros AR816x/AR817x support</h3>
 ```none
@@ -788,8 +788,8 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     It's highly recommended that you include this option if you're using
-            a Qualcomm Atheros L1F ethernet adapter.
+Reason:     It's highly recommended that you include this option in your kernel if
+            you're using a Qualcomm Atheros L1F ethernet adapter.
 ```
 <h3>[&ast;]   Wireless LAN  ---></h3>
 ```none
@@ -805,12 +805,12 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     It's highly recommended that you include this option if you wanted
-            your wireless network adapter to work.
+Reason:     It's highly recommended that you include this option in your kernel if
+            you wanted your wireless network adapter to work.
             
             If you've followed the guide above, then a simple:
 
-                cat lspcikk.txt | grep Wireless
+                cat lspcikk.txt | grep Wireless -A2
 
             should tell you whether you need this option or not.
 ```
@@ -832,6 +832,90 @@ Help:       If you have a wireless card belonging to this class, say Y.
             For information on all Atheros wireless drivers visit:
 
             http://wireless.kernel.org/en/users/Drivers/Atheros 
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     It's highly recommended that you include this option in your kernel if
+            you're using a Qualcomm Atheros wireless network adapter.
+```
+<h3>[&ast;]     Atheros bluetooth coexistence support</h3>
+```none
+Symbol:     CONFIG_ATH9K_BTCOEX_SUPPORT
+
+Help:       Say Y, if you want to use the ath9k/ath9k_htc radios together with
+            Bluetooth modules in the same system.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     It's highly recommended that you include this option in your kernel if
+            you're using ath9k in order to get bluetooth working.
+```
+<h3><&ast;>     Atheros 802.11n wireless cards support</h3>
+```none
+Symbol:     CONFIG_ATH9K
+
+Help:       This module adds support for wireless adapters based on
+            Atheros IEEE 802.11n AR5008, AR9001 and AR9002 family
+            of chipsets. For a specific list of supported external
+            cards, laptops that already ship with these cards and
+            APs that come with these cards refer to ath9k wiki
+            products page:
+
+            http://wireless.kernel.org/en/users/Drivers/ath9k/products
+
+            If you choose to build a module, it'll be called ath9k.
+
+Type:       tristate
+
+Choice:     <*>
+
+Reason:     It's highly recommended that you include this option in your kernel if
+            you're using a Qualcomm Atheros 802.11n wireless network adapter.
+```
+<h3>[&ast;]       Atheros ath9k PCI/PCIe bus support</h3>
+```none
+Symbol:     CONFIG_ATH9K_PCI
+
+Help:       This option enables the PCI bus support in ath9k.
+
+            Say Y, if you have a compatible PCI/PCIe wireless card.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     It's highly recommended that you include this option in your kernel if
+            you're using a Qualcomm Atheros PCI/PCIe compatible wireless network card.
+```
+<h3>[&ast;]       Atheros ath9k rfkill support</h3>
+```none
+Symbol:     CONFIG_ATH9K_RFKILL
+
+Help:       Say Y to have ath9k poll the RF-Kill GPIO every couple of
+            seconds. Turn off to save power, but enable it if you have
+            a platform that can toggle the RF-Kill GPIO.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     It's highly recommended that you include this option in your kernel if
+            your Qualcomm Atheros wireless network adapter has a RF-Kill switch, as
+            it'll be necessary on some systems to get Wi-Fi working (since some
+            wireless cards may be blocked by the RF-Kill switch and you may have to
+            unblock them).
+```
+<h3>[&ast;]       Channel Context support</h3>
+```none
+Symbol:     CONFIG_ATH9K_CHANNEL_CONTEXT
+
+Help:       This option enables channel context support in ath9k, which is needed
+            for multi-channel concurrency. Enable this if P2P PowerSave support
+            is required.
 
 Type:       boolean
 
