@@ -167,3 +167,6 @@ Reason:     You can safely exclude this option as it's highly unlikely for
             Google on one of their proprietary servers.
 ```
 <h3>Tegra firmware driver  ----</h3>
+```none
+Choice:     excluded ----
+```
