@@ -574,7 +574,7 @@ Type:       tristate
 Choice:     built-in -*-
 
 Reason:     It's highly recommended that you include this option in your kernel
-            as it's required for several filesystems to work properly.
+            as it's required for several filesystems (mainly FAT) to work properly.
 ```
 <h3>(utf8) Default NLS Option</h3>
 ```none
@@ -601,6 +601,8 @@ Choice:     (utf8) custom
 
 Reason:     It's highly recommended that you set the value of this option to
             (utf8) as it's more suited for multilanguage environments.
+
+            It's also recommended by the Gentoo wiki.
 ```
 <h3><&ast;>   Codepage 437 (United States, Canada)</h3>
 ```none
@@ -619,21 +621,11 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     
-```
-<h3><&ast;>   ASCII (United States)</h3>
-```none
-Symbol:     CONFIG_NLS_ASCII
-
-Help:       An ASCII NLS module is needed if you want to override the
-            DEFAULT NLS with this very basic charset and don't want any
-            non-ASCII characters to be translated.
-
-Type:       tristate
-
-Choice:     built-in <*>
-
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            as it's required to read and write filenames using native language
+            character sets on DOS/Windows partitions.
+            
+            It's also recommended by the Gentoo wiki.
 ```
 <h3><&ast;>   NLS ISO 8859-1  (Latin 1; Western European Languages)</h3>
 ```none
@@ -652,7 +644,11 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            as it's required to read and write filenames with native language
+            characters on FAT and JOLIET filesystems.
+            
+            It's also recommended by the Gentoo wiki.
 ```
 <h3><&ast;>   NLS UTF-8</h3>
 ```none
@@ -668,5 +664,9 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            as it's required to read and write filenames with native language
+            characters on FAT and JOLIET filesystems.
+            
+            It's also recommended by the Gentoo wiki.
 ```
