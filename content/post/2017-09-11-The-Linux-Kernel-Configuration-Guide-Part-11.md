@@ -87,6 +87,10 @@ cat /proc/cpuinfo > /mnt/mountedblock/home/$USER/SystemRescueCd/cpuinfo.txt
 
 zcat /proc/config.gz > /mnt/mountedblock/home/$USER/SystemRescueCd/SysRescueCdKernel.config
 
+dmidecode > /mnt/mountedblock/home/$USER/SystemRescueCd/dmidecode.txt
+
+sensors > /mnt/mountedblock/home/$USER/SystemRescueCd/sensors.txt
+
 tree /proc > /mnt/mountedblock/home/$USER/SystemRescueCd/treeproc.txt
 tree /sys > /mnt/mountedblock/home/$USER/SystemRescueCd/treesys.txt
 tree /dev > /mnt/mountedblock/home/$USER/SystemRescueCd/treedev.txt
