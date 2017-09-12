@@ -399,10 +399,29 @@ equery u bumblebee
  - - video_cards_nouveau : VIDEO_CARDS setting to build reverse-engineered driver for nvidia cards
  + + video_cards_nvidia  : VIDEO_CARDS setting to build driver for nvidia video cards
 ```
-If bbswitch was unable to switch the ACPI state of the dGPU then you might want to double check your <mark>nvidia-drivers</mark> USE flags and make sure that only <mark>nvidia</mark> is being loaded and both <mark>uvm</mark> and <mark>kms</mark> are disabled.
+<hr/>
+<h3>Workarounds</h3>
+If bbswitch was unable to switch the ACPI state of the dGPU then you might want to double check your <mark>nvidia-drivers</mark> USE flags and make sure that only <mark>nvidia</mark> is being loaded and both <mark>uvm</mark> and <mark>kms</mark> are disabled. Make sure that no other power management services are running (as they may interfere with bbswitch and prevent it from turning the card off). These include <mark>tlp</mark>, <mark>powertop</mark> and <mark>laptop-mode-tools</mark> (either disable these services or uninstall them completely).
 <br/>
 <br/>
-If bbswitch is still refusing to turn off the card (which is unlikely if you followed what I mentioned earlier) try adding <mark>acpi_osi="!Windows 2013"</mark> to your kernel command-line (this has worked for a couple of users, especially those with Thinkpads and Lenovo laptops).
+If bbswitch is still refusing to turn off the card (which is unlikely if you followed what I mentioned earlier) try adding
+```none
+"acpi_osi=!Windows\x202013" acpi_osi=Linux nogpumanager i915.enable_hd_vgaarb=1 enable_hd_vgaarb=1
+```
+<br/>
+to your kernel command-line (this has worked for a couple of users, especially those with Thinkpads and Lenovo laptops).
+<br/>
+<br/>
+Some users were receiving vgaarb errors (in dmesg):
+```none
+vgaarb: this pci device is not a vga device
+vgaarb: this pci device is not a vga device
+```
+<br/>
+Make sure that <mark>CONFIG_VGA_ARB=y</mark> and <mark>CONFIG_VGA_ARB_MAX_GPUS=2</mark>. If you're still seeing this error (even though it was fixed in 3.10 according to this <a href="https://bugzilla.kernel.org/show_bug.cgi?id=63641" target="_blank">Bugzilla Kernel 63641</a> and <a href="https://github.com/Bumblebee-Project/Bumblebee/issues/159" target="_blank">Bumblebee Github Issue #159</a>), you can try to patch your kernel with this <a href="https://pastebin.com/wpmFi38k" target="_blank">vgaarb patch</a> by running this (after downloading the patch file of course):
+```none
+patch -Np1 -i patch_file.patch
+```
 <hr/>
 <h3>Conclusion</h3>
 <br/>
