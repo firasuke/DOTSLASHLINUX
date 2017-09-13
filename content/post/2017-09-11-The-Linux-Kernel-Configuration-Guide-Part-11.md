@@ -1366,3 +1366,285 @@ Reason:     You can safely exclude this option if your Synaptics PS/2
             In some cases including this option might fix an undetectable
             Synpatics touchpad.
 ```
+<h3>Character devices  ---></h3>
+<h3>[&ast;] Enable TTY</h3>
+```none
+Symbol:     CONFIG_TTY
+
+Help:       Allows you to remove TTY support which can save space, and
+            blocks features that require TTY from inclusion in the kernel.
+            TTY is required for any text terminals or serial port
+            communication. Most users should leave this enabled.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3>[&ast;]   Virtual terminal</h3>
+```none
+Symbol:     CONFIG_VT
+
+Help:       If you say Y here, you will get support for terminal devices with
+            display and keyboard devices. These are called "virtual" because you
+            can run several virtual terminals (also called virtual consoles) on
+            one physical terminal. This is rather useful, for example one
+            virtual terminal can collect system messages and warnings, another
+            one can be used for a text-mode user session, and a third could run
+            an X session, all in parallel. Switching between virtual terminals
+            is done with certain key combinations, usually Alt-<function key>.
+
+            The setterm command ("man setterm") can be used to change the
+            properties (such as colors or beeping) of a virtual terminal. The
+            man page console_codes(4) ("man console_codes") contains the special
+            character sequences that can be used to change those properties
+            directly. The fonts used on virtual terminals can be changed with
+            the setfont ("man setfont") command and the key bindings are defined
+            with the loadkeys ("man loadkeys") command.
+
+            You need at least one virtual terminal device in order to make use
+            of your keyboard and monitor. Therefore, only people configuring an
+            embedded system would want to say N here in order to save some
+            memory; the only way to log into such a system is then via a serial
+            or network connection.
+
+            If unsure, say Y, or else you won't be able to do much with your new
+            shiny Linux system :-)
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3>[&ast;]     Support for console on virtual terminal</h3>
+```none
+Symbol:     CONFIG_VT_CONSOLE
+
+Help:       The system console is the device which receives all kernel messages
+            and warnings and which allows logins in single user mode. If you
+            answer Y here, a virtual terminal (the device used to interact with
+            a physical terminal) can be used as system console. This is the most
+            common mode of operations, so you should say Y here unless you want
+            the kernel messages be output only to a serial port (in which case
+            you should say Y to "Console on serial port", below).
+
+            If you do say Y here, by default the currently visible virtual
+            terminal (/dev/tty0) will be used as system console. You can change
+            that with a kernel command line option such as "console=tty3" which
+            would use the third virtual terminal as system console. (Try "man
+            bootparam" or see the documentation of your boot loader (lilo or
+            loadlin) about how to pass options to the kernel at boot time.)
+
+            If unsure, say Y.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3>-&ast;-     Support for binding and unbinding console drivers</h3>
+```none
+Symbol:     CONFIG_VT_HW_CONSOLE_BINDING
+
+Help:       The virtual terminal is the device that interacts with the physical
+            terminal through console drivers. On these systems, at least one
+            console driver is loaded. In other configurations, additional console
+            drivers may be enabled, such as the framebuffer console. If more than
+            1 console driver is enabled, setting this to 'y' will allow you to
+            select the console driver that will serve as the backend for the
+            virtual terminals.
+
+            See <file:Documentation/console/console.txt> for more
+            information. For framebuffer console users, please refer to
+            <file:Documentation/fb/fbcon.txt>.
+
+Type:       boolean
+
+Choice:     built-in -*-
+
+Reason:     
+```
+<h3>[&ast;]   Unix98 PTY support</h3>
+```none
+Symbol:     CONFIG_UNIX98_PTYS
+
+Help:       A pseudo terminal (PTY) is a software device consisting of two
+            halves: a master and a slave. The slave device behaves identical to
+            a physical terminal; the master device is used by a process to
+            read data from and write data to the slave, thereby emulating a
+            terminal. Typical programs for the master side are telnet servers
+            and xterms.
+
+            Linux has traditionally used the BSD-like names /dev/ptyxx for
+            masters and /dev/ttyxx for slaves of pseudo terminals. This scheme
+            has a number of problems. The GNU C library glibc 2.1 and later,
+            however, supports the Unix98 naming standard: in order to acquire a
+            pseudo terminal, a process opens /dev/ptmx; the number of the pseudo
+            terminal is then made available to the process and the pseudo
+            terminal slave can be accessed as /dev/pts/<number>. What was
+            traditionally /dev/ttyp2 will then be /dev/pts/2, for example.
+
+            All modern Linux systems use the Unix98 ptys.  Say Y unless
+            you're on an embedded system and want to conserve memory.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3><&ast;> Hardware Random Number Generator Core support  ---></h3>
+```none
+Symbol:     CONFIG_HW_RANDOM
+
+Help:       Hardware Random Number Generator Core infrastructure.
+
+            To compile this driver as a module, choose M here: the
+            module will be called rng-core.  This provides a device
+            that's usually called /dev/hwrng, and which exposes one
+            of possibly several hardware random number generators.
+
+            These hardware random number generators do not feed directly
+            into the kernel's random number generator.  That is usually
+            handled by the "rngd" daemon.  Documentation/hw_random.txt
+            has more information.
+
+            If unsure, say Y.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3><&ast;>   Intel HW Random Number Generator support (NEW)</h3>
+```none
+Symbol:     CONFIG_HW_RANDOM_INTEL
+
+Help:       This driver provides kernel-side support for the Random Number
+            Generator hardware found on Intel i8xx-based motherboards.
+
+            To compile this driver as a module, choose M here: the
+            module will be called intel-rng.
+
+            If unsure, say Y.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3>[&ast;] HPET - High Precision Event Timer</h3>
+```none
+Symbol:     CONFIG_HPET
+
+Help:       If you say Y here, you will have a miscdevice named "/dev/hpet/".  Each
+            open selects one of the timers supported by the HPET.  The timers are
+            non-periodic and/or periodic.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3>[&ast;]   Allow mmap of HPET</h3>
+```none
+Symbol:     CONFIG_HPET_MMAP
+
+Help:       If you say Y here, user applications will be able to mmap
+            the HPET registers.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3>[&ast;]     Enable HPET MMAP access by default</h3>
+```none
+Symbol:     CONFIG_HPET_MMAP_DEFAULT
+
+Help:       In some hardware implementations, the page containing HPET
+            registers may also contain other things that shouldn't be
+            exposed to the user.  This option selects the default (if
+            kernel parameter hpet_mmap is not set) user access to the
+            registers for applications that require it.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3><&ast;> TPM Hardware Support  ---></h3>
+```none
+Symbol:     CONFIG_TCG_TPM
+
+Help:       If you have a TPM security chip in your system, which
+            implements the Trusted Computing Group's specification,
+            say Yes and it will be accessible from within Linux.  For
+            more information see <http://www.trustedcomputinggroup.org>.
+            An implementation of the Trusted Software Stack (TSS), the
+            userspace enablement piece of the specification, can be
+            obtained at: <http://sourceforge.net/projects/trousers>.  To
+            compile this driver as a module, choose M here; the module
+            will be called tpm. If unsure, say N.
+            Notes:
+            1) For more TPM drivers enable CONFIG_PNP, CONFIG_ACPI
+            and CONFIG_PNPACPI.
+            2) Without ACPI enabled, the BIOS event log won't be accessible,
+            which is required to validate the PCR 0-7 values.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3><&ast;>   TPM Interface Specification 1.2 Interface / TPM 2.0 FIFO Interface</h3>
+```none
+Symbol:     CONFIG_TCG_TIS
+
+Help:       If you have a TPM security chip that is compliant with the
+            TCG TIS 1.2 TPM specification (TPM1.2) or the TCG PTP FIFO
+            specification (TPM2.0) say Yes and it will be accessible from
+            within Linux. To compile this driver as a module, choose  M here;
+            the module will be called tpm_tis.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3>I2C support  ---></h3>
+<h3>-&ast;- I2C support</h3>
+```none
+Symbol:     CONFIG_I2C
+
+Help:       I2C (pronounce: I-squared-C) is a slow serial bus protocol used in
+            many micro controller applications and developed by Philips.  SMBus,
+            or System Management Bus is a subset of the I2C protocol.  More
+            information is contained in the directory <file:Documentation/i2c/>,
+            especially in the file called "summary" there.
+
+            Both I2C and SMBus are supported here. You will need this for
+            hardware sensors support, and also for Video For Linux support.
+
+            If you want I2C support, you should say Y here and also to the
+            specific driver for your bus adapter(s) below.
+
+            This I2C support can also be built as a module.  If so, the module
+            will be called i2c-core.
+
+Type:       tristate
+
+Choice:     built-in -*-
+
+Reason:     
+```
