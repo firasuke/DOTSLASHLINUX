@@ -236,8 +236,6 @@ Help:       If a given RCU grace period extends more than the specified
 Type:       integer
 
 Choice:     (3) custom
-
-Reason:     
 ```
 <h3>IO delay type (no port-IO delay)  ---></h3>
 <h3>(X) no port-IO delay</h3>
