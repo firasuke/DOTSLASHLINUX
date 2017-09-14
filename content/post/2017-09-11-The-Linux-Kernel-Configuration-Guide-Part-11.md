@@ -2739,6 +2739,214 @@ Choice:     built-in [*]
 
 Reason:     
 ```
-<h3></h3>
+<h3><&ast;>   HR-timer backend support</h3>
 ```none
+Symbol:     CONFIG_SND_HRTIMER
+
+Help:       Say Y here to enable HR-timer backend for ALSA timer.  ALSA uses
+            the hrtimer as a precise timing source. The ALSA sequencer code
+            also can use this timing source.
+
+            To compile this driver as a module, choose M here: the module
+            will be called snd-hrtimer.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3>[&ast;]     Use HR-timer as default sequencer timer</h3>
+```none
+Symbol:     CONFIG_SND_SEQ_HRTIMER_DEFAULT
+
+Help:       Say Y here to use the HR-timer backend as the default sequencer
+            timer.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3>[&ast;]   Dynamic device file minor numbers</h3>
+```none
+Symbol:     CONFIG_SND_DYNAMIC_MINORS
+
+Help:       If you say Y here, the minor numbers of ALSA device files in
+            /dev/snd/ are allocated dynamically.  This allows you to have
+            more than 8 sound cards, but requires a dynamic device file
+            system like udev.
+
+            If you are unsure about this, say N here.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3>(4)     Max number of sound cards</h3>
+```none
+Symbol:     CONFIG_SND_MAX_CARDS
+
+Help:       Specify the max number of sound cards that can be assigned
+            on a single machine.
+
+Type:       integer
+
+Choice:     (4) custom
+
+Reason:     
+```
+<h3>[&ast;]   PCI sound devices  ---></h3>
+```none
+Symbol:     CONFIG_SND_PCI
+
+Help:       Support for sound devices connected via the PCI bus.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3>HD-Audio  ---></h3>
+<h3><&ast;> HD Audio PCI</h3>
+```none
+Symbol:     CONFIG_SND_HDA_INTEL
+
+Help:       Say Y here to include support for Intel "High Definition
+            Audio" (Azalia) and its compatible devices.
+
+            This option enables the HD-audio controller.  Don't forget
+            to choose the appropriate codec options below.
+
+            To compile this driver as a module, choose M here: the module
+            will be called snd-hda-intel.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3>[&ast;] Build hwdep interface for HD-audio driver</h3>
+```none
+Symbol:     CONFIG_SND_HDA_HWDEP
+
+Help:       Say Y here to build a hwdep interface for HD-audio driver.
+            This interface can be used for out-of-band communication
+            with codecs for debugging purposes.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3>-&ast;- Allow dynamic codec reconfiguration</h3>
+```none
+Symbol:     CONFIG_SND_HDA_RECONFIG
+
+Help:       Say Y here to enable the HD-audio codec re-configuration feature.
+            It allows user to clear the whole codec configuration, change the
+            codec setup, add extra verbs, and re-configure the codec dynamically.
+
+            Note that this item alone doesn't provide the sysfs interface, but
+            enables the feature just for the patch loader below.
+            If you need the traditional sysfs entries for the manual interaction,
+            turn on CONFIG_SND_HDA_HWDEP as well.
+
+Type:       boolean
+
+Choice:     built-in -*-
+
+Reason:     
+```
+<h3>[&ast;] Support initialization patch loading for HD-audio</h3>
+```none
+Symbol:     CONFIG_SND_HDA_PATCH_LOADER
+
+Help:       Say Y here to allow the HD-audio driver to load a pseudo
+            firmware file ("patch") for overriding the BIOS setup at
+            start up.  The "patch" file can be specified via patch module
+            option, such as patch=hda-init.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3><&ast;> Build IDT/Sigmatel HD-audio codec support</h3>
+```none
+Symbol:     CONFIG_SND_HDA_CODEC_SIGMATEL
+
+Help:       Say Y or M here to include IDT (Sigmatel) HD-audio codec support in
+            snd-hda-intel driver, such as STAC9200.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3><&ast;> Build HDMI/DisplayPort HD-audio codec support</h3>
+```none
+Symbol:     CONFIG_SND_HDA_CODEC_HDMI
+
+Help:       Say Y or M here to include HDMI and DisplayPort HD-audio codec
+            support in snd-hda-intel driver.  This includes all AMD/ATI,
+            Intel and Nvidia HDMI/DisplayPort codecs.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3>-&ast;- Enable generic HD-audio codec parser</h3>
+```none
+Symbol:     CONFIG_SND_HDA_GENERIC
+
+Help:       Say Y or M here to enable the generic HD-audio codec parser
+            in snd-hda-intel driver.
+
+Type:       tristate
+
+Choice:     built-in -*-
+
+Reason:     
+```
+<h3>(1) Default time-out for HD-audio power-save mode</h3>
+```none
+Symbol:     CONFIG_SND_HDA_POWER_SAVE_DEFAULT
+
+Help:       The default time-out value in seconds for HD-audio automatic
+            power-save mode.  0 means to disable the power-save mode.
+
+Type:       integer
+
+Choice:     (1) custom
+
+Reason:     
+```
+<h3>(64)  Pre-allocated buffer size for HD-audio driver</h3>
+```none
+Symbol:     CONFIG_SND_HDA_PREALLOC_SIZE
+
+Help:       Specifies the default pre-allocated buffer-size in kB for the
+            HD-audio driver.  A larger buffer (e.g. 2048) is preferred
+            for systems using PulseAudio.  The default 64 is chosen just
+            for compatibility reasons.
+
+            Note that the pre-allocation size can be changed dynamically
+            via a proc file (/proc/asound/card*/pcm*/sub*/prealloc), too.
+
+Type:       integer
+
+Choice:     (64) default
+
+Reason:     
 ```
