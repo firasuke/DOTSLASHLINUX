@@ -357,6 +357,25 @@ Choice:     excluded [ ]
 Reason:     I don't know what it means =D. Nah just kidding, most of the times
             when you see the word debug, you'd want to exclude its option.
 ```
+<h3>[&ast;] Make IRQ threading compulsory</h3>
+```none
+Symbol:     CONFIG_FORCE_IRQ_THREADING
+
+Help:       Make IRQ threading mandatory for any IRQ handlers that support it
+            instead of being optional and requiring the threadirqs kernel
+            parameter. Instead they can be optionally disabled with the
+            nothreadirqs kernel parameter.
+
+            Enable if you are building for a desktop or low latency system,
+            otherwise say N.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     It's highly recommended that you include this option in your kernel
+            for a low latency system.
+```
 <h3>Timers subsystem  ---></h3>
 <h3>Timer tick handling (Periodic timer ticks (constant rate, no dynticks))  ---></h3>
 ```none

@@ -1648,9 +1648,354 @@ Choice:     built-in -*-
 
 Reason:     
 ```
-<h3>[&ast;]   ACPI I2C Operation region support</h3>
+<h3><&ast;>   I2C device interface</h3>
 ```none
-Symbol:     CONFIG_ACPI_I2C_OPERATION
+Symbol:     CONFIG_I2C_CHARDEV
 
-Help:       
+Help:       Say Y here to use i2c-* device files, usually found in the /dev
+            directory on your system.  They make it possible to have user-space
+            programs use the I2C bus.  Information on how to do this is
+            contained in the file <file:Documentation/i2c/dev-interface>.
+
+            This support is also available as a module.  If so, the module
+            will be called i2c-dev.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3>-&ast;-   I2C bus multiplexing support</h3>
+```none
+Symbol:     CONFIG_I2C_MUX
+
+Help:       Say Y here if you want the I2C core to support the ability to
+            handle multiplexed I2C bus topologies, by presenting each
+            multiplexed segment as a I2C adapter.
+
+            This support is also available as a module.  If so, the module
+            will be called i2c-mux.
+
+Type:       tristate
+
+Choice:     built-in -*-
+
+Reason:     
+```
+<h3>[&ast;]   Autoselect pertinent helper modules</h3>
+```none
+Symbol:     CONFIG_I2C_HELPER_AUTO
+
+Help:       Some I2C bus drivers require so-called "I2C algorithm" modules
+            to work. These are basically software-only abstractions of generic
+            I2C interfaces. This option will autoselect them so that you don't
+            have to care.
+
+            Unselect this only if you need to enable additional helper
+            modules, for example for use with external I2C bus drivers.
+
+            In doubt, say Y.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3>I2C Hardware Bus support  ---></h3>
+<h3><&ast;> Intel 82801 (ICH/PCH)</h3>
+```none
+Symbol:     CONFIG_I2C_I801
+
+Help:       If you say yes to this option, support will be included for the Intel
+            801 family of mainboard I2C interfaces.  Specifically, the following
+            versions of the chipset are supported:
+              82801AA
+              82801AB
+              82801BA
+              82801CA/CAM
+              82801DB
+              82801EB/ER (ICH5/ICH5R)
+              6300ESB
+              ICH6
+              ICH7
+              ESB2
+              ICH8
+              ICH9
+              EP80579 (Tolapai)
+              ICH10
+              5/3400 Series (PCH)
+              6 Series (PCH)
+              Patsburg (PCH)
+              DH89xxCC (PCH)
+              Panther Point (PCH)
+              Lynx Point (PCH)
+              Lynx Point-LP (PCH)
+              Avoton (SOC)
+              Wellsburg (PCH)
+              Coleto Creek (PCH)
+              Wildcat Point (PCH)
+              Wildcat Point-LP (PCH)
+              BayTrail (SOC)
+              Sunrise Point-H (PCH)
+              Sunrise Point-LP (PCH)
+              DNV (SOC)
+              Broxton (SOC)
+              Lewisburg (PCH)
+              Gemini Lake (SOC)
+
+            This driver can also be built as a module.  If so, the module
+            will be called i2c-i801.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3>[&ast;] GPIO Support  ---></h3>
+```none
+Symbol:     CONFIG_GPIOLIB
+
+Help:       This enables GPIO support through the generic GPIO library.
+            You only need to enable this, if you also want to enable
+            one or more of the GPIO drivers below.
+
+            If unsure, say N.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3>Memory mapped GPIO drivers  ---></h3>
+<h3><&ast;> Intel ICH GPIO</h3>
+```none
+Symbol:     CONFIG_GPIO_ICH
+
+Help:       Say yes here to support the GPIO functionality of a number of Intel
+            ICH-based chipsets.  Currently supported devices: ICH6, ICH7, ICH8
+            ICH9, ICH10, Series 5/3400 (eg Ibex Peak), Series 6/C200 (eg
+            Cougar Point), NM10 (Tiger Point), and 3100 (Whitmore Lake).
+
+            If unsure, say N.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3><&ast;> Intel Lynxpoint GPIO support</h3>
+```none
+Symbol:     CONFIG_GPIO_LYNXPOINT
+
+Help:       driver for GPIO functionality on Intel Lynxpoint PCH chipset
+            Requires ACPI device enumeration code to set up a platform device.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3>-&ast;- Power supply class support  ---></h3>
+```none
+Symbol:     CONFIG_POWER_SUPPLY
+
+Help:       Say Y here to enable power supply class support. This allows
+            power supply (batteries, AC, USB) monitoring by userspace
+            via sysfs and uevent (if available) and/or APM kernel interface
+            (if selected below).
+
+Type:       boolean
+
+Choice:     built-in -*-
+
+Reason:     
+```
+<h3><&ast;> Hardware Monitoring support  ---></h3>
+```none
+Symbol:     CONFIG_HWMON
+
+Help:       Hardware monitoring devices let you monitor the hardware health
+            of a system. Most modern motherboards include such a device. It
+            can include temperature sensors, voltage sensors, fan speed
+            sensors and various additional features such as the ability to
+            control the speed of the fans.  If you want this support you
+            should say Y here and also to the specific driver(s) for your
+            sensors chip(s) below.
+
+            To find out which specific driver(s) you need, use the
+            sensors-detect script from the lm_sensors package.  Read
+            <file:Documentation/hwmon/userspace-tools> for details.
+
+            This support can also be built as a module.  If so, the module
+            will be called hwmon.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3><&ast;>   Intel Core/Core2/Atom temperature sensor</h3>
+```none
+Symbol:     CONFIG_SENSORS_CORETEMP
+
+Help:       If you say yes here you get support for the temperature
+            sensor inside your CPU. Most of the family 6 CPUs
+            are supported. Check Documentation/hwmon/coretemp for details.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3>-&ast;- Generic Thermal sysfs driver  ---></h3>
+```none
+Symbol:     CONFIG_THERMAL
+
+Help:       Generic Thermal Sysfs driver offers a generic mechanism for
+            thermal management. Usually it's made up of one or more thermal
+            zone and cooling device.
+            Each thermal zone contains its own temperature, trip points,
+            cooling devices.
+            All platforms with ACPI thermal support can use this driver.
+            If you want this support, you should say Y or M here.
+
+Type:       tristate
+
+Choice:     built-in -*-
+
+Reason:     
+```
+<h3>(0)   Emergency poweroff delay in milli-seconds</h3>
+```none
+Symbol:     CONFIG_THERMAL_EMERGENCY_POWEROFF_DELAY_MS
+
+Help:       Thermal subsystem will issue a graceful shutdown when
+            critical temperatures are reached using orderly_poweroff(). In
+            case of failure of an orderly_poweroff(), the thermal emergency
+            poweroff kicks in after a delay has elapsed and shuts down the system.
+            This config is number of milliseconds to delay before emergency
+            poweroff kicks in. Similarly to the critical trip point,
+            the delay should be carefully profiled so as to give adequate
+            time for orderly_poweroff() to finish on regular execution.
+            If set to 0 emergency poweroff will not be supported.
+
+            In doubt, leave as 0.
+
+Type:       integer
+
+Choice:     (0) custom
+
+Reason:     
+```
+<h3>-&ast;-   Enable writable trip points</h3>
+```none
+Symbol:     CONFIG_THERMAL_WRITABLE_TRIPS
+
+Help:       This option allows the system integrator to choose whether
+            trip temperatures can be changed from userspace. The
+            writable trips need to be specified when setting up the
+            thermal zone but the choice here takes precedence.
+
+            Say 'Y' here if you would like to allow userspace tools to
+            change trip temperatures.
+
+Type:       boolean
+
+Choice:     built-in -*-
+
+Reason:     
+```
+<h3>Default Thermal governor (step_wise)  ---></h3>
+```none
+Help:       This option sets which thermal governor shall be loaded at
+            startup. If in doubt, select 'step_wise'.
+```
+<h3>(X) step_wise</h3>
+```none
+Symbol:     CONFIG_THERMAL_DEFAULT_GOV_STEP_WISE
+
+Help:       Use the step_wise governor as default. This throttles the
+            devices one step at a time.
+
+Type:       boolean
+
+Choice:     built-in (X)
+
+Reason:     
+```
+<h3>-&ast;-   Step_wise thermal governor</h3>
+```none
+Symbol:     CONFIG_THERMAL_GOV_STEP_WISE
+
+Help:       Enable this to manage platform thermals using a simple linear
+            governor.
+
+Type:       boolean
+
+Choice:     built-in -*-
+
+Reason:     
+```
+<h3>-&ast;-   User_space thermal governor</h3>
+```none
+Symbol:     CONFIG_THERMAL_GOV_USER_SPACE
+
+Help:       Enable this to let the user space manage the platform thermals.
+
+Type:       boolean
+
+Choice:     built-in -*-
+
+Reason:     
+```
+<h3><&ast;>   Intel PowerClamp idle injection driver</h3>
+```none
+Symbol:     CONFIG_INTEL_POWERCLAMP
+
+Help:       Enable this to enable Intel PowerClamp idle injection driver. This
+            enforce idle time which results in more package C-state residency. The
+            user interface is exposed via generic thermal framework.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3><&ast;>   X86 package temperature thermal driver</h3>
+```none
+Symbol:     CONFIG_X86_PKG_TEMP_THERMAL
+
+Help:       Enable this to register CPU digital sensor for package temperature as
+            thermal zone. Each package will have its own thermal zone. There are
+            two trip points which can be set by user to get notifications via thermal
+            notification methods.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3><&ast;>   Intel PCH Thermal Reporting Driver</h3>
+```none
+Symbol:     CONFIG_INTEL_PCH_THERMAL
+
+Help:       Enable this to support thermal reporting on certain intel PCHs.
+            Thermal reporting device will provide temperature reading,
+            programmable trip points and other information.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
 ```
