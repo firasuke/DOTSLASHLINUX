@@ -1648,3 +1648,9 @@ Choice:     built-in -*-
 
 Reason:     
 ```
+<h3>[&ast;]   ACPI I2C Operation region support</h3>
+```none
+Symbol:     CONFIG_ACPI_I2C_OPERATION
+
+Help:       
+```
