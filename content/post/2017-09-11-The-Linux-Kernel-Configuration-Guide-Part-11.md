@@ -2636,3 +2636,109 @@ Choice:     built-in <*>
 
 Reason:     
 ```
+<h3><&ast;>   Sequencer support</h3>
+```none
+Symbol:     CONFIG_SND_SEQUENCER
+
+Help:       Say Y or M to enable MIDI sequencer and router support.  This
+            feature allows routing and enqueueing of MIDI events.  Events
+            can be processed at a given time.
+
+            Many programs require this feature, so you should enable it
+            unless you know what you're doing.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3><&ast;>   OSS Mixer API</h3>
+```none
+Symbol:     CONFIG_SND_MIXER_OSS
+
+Help:       To enable OSS mixer API emulation (/dev/mixer*), say Y here
+            and read <file:Documentation/sound/alsa/OSS-Emulation.txt>.
+
+            Many programs still use the OSS API, so say Y.
+
+            To compile this driver as a module, choose M here: the module
+            will be called snd-mixer-oss.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3><&ast;>   OSS PCM (digital audio) API</h3>
+```none
+Symbol:     CONFIG_SND_PCM_OSS
+
+Help:       To enable OSS digital audio (PCM) emulation (/dev/dsp*), say Y
+            here and read <file:Documentation/sound/alsa/OSS-Emulation.txt>.
+
+            Many programs still use the OSS API, so say Y.
+
+            To compile this driver as a module, choose M here: the module
+            will be called snd-pcm-oss.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3>[&ast;]     OSS PCM (digital audio) API - Include plugin system</h3>
+```none
+Symbol:     CONFIG_SND_PCM_OSS_PLUGINS
+
+Help:       If you disable this option, the ALSA's OSS PCM API will not
+            support conversion of channels, formats and rates. It will
+            behave like most of new OSS/Free drivers in 2.4/2.6 kernels.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3>[&ast;]   PCM timer interface</h3>
+```none
+Symbol:     CONFIG_SND_PCM_TIMER
+
+Help:       If you disable this option, pcm timer will be unavailable, so
+            those stubs that use pcm timer (e.g. dmix, dsnoop & co) may work
+            incorrectlly.
+
+            For some embedded devices, we may disable it to reduce memory
+            footprint, about 20KB on x86_64 platform.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3>[&ast;]   OSS Sequencer API</h3>
+```none
+Symbol:     CONFIG_SND_SEQUENCER_OSS
+
+Help:       Say Y here to enable OSS sequencer emulation (both
+            /dev/sequencer and /dev/music interfaces).
+
+            Many programs still use the OSS API, so say Y.
+
+            If you choose M in "Sequencer support" (SND_SEQUENCER),
+            this will be compiled as a module. The module will be called
+            snd-seq-oss.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3></h3>
+```none
+```
