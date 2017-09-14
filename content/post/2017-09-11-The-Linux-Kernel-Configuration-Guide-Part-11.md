@@ -2101,3 +2101,538 @@ Choice:     built-in <*>
 
 Reason:     
 ```
+<h3>[&ast;]   Cameras/video grabbers support</h3>
+```none
+Symbol:     CONFIG_MEDIA_CAMERA_SUPPORT
+
+Help:       Enable support for webcams and video grabbers.
+            
+            Say Y when you have a webcam or a video capture grabber board.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3>[&ast;]   Media USB Adapters  ---></h3>
+```none
+Symbol:     CONFIG_MEDIA_USB_SUPPORT
+
+Help:       Enable media drivers for USB bus.
+            If you have such devices, say Y.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3><&ast;>   USB Video Class (UVC)</h3>
+```none
+Symbol:     CONFIG_USB_VIDEO_CLASS
+
+Help:       Support for the USB Video Class (UVC).  Currently only video
+            input devices, such as webcams, are supported.
+
+            For more information see: <http://linux-uvc.berlios.de/>
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3>[&ast;]     UVC input events device support</h3>
+```none
+Symbol:     CONFIG_USB_VIDEO_CLASS_INPUT_EVDEV
+
+Help:       This option makes USB Video Class devices register an input device
+            to report button events.
+
+            If you are in doubt, say Y.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3>[&ast;]   Autoselect ancillary drivers (tuners, sensors, i2c, spi, frontends)</h3>
+```none
+Symbol:     CONFIG_MEDIA_SUBDRV_AUTOSELECT
+
+Help:       By default, a media driver auto-selects all possible ancillary
+            devices such as tuners, sensors, video encoders/decoders and
+            frontends, that are used by any of the supported devices.
+
+            This is generally the right thing to do, except when there
+            are strict constraints with regards to the kernel size,
+            like on embedded systems.
+
+            Use this option with care, as deselecting ancillary drivers which
+            are, in fact, necessary will result in the lack of the needed
+            functionality for your device (it may not tune or may not have
+            the needed demodulators).
+
+            If unsure say Y.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3>Graphics support  ---></h3>
+You may want to check <a href="https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/" target="_blank">Setting up Bumblebee on Gentoo Linux | DOTSLASHLINUX</a>.
+<h3><&ast;> /dev/agpgart (AGP Support)  ---></h3>
+```none
+Symbol:     CONFIG_AGP
+
+Help:       AGP (Accelerated Graphics Port) is a bus system mainly used to
+            connect graphics cards to the rest of the system.
+
+            If you have an AGP system and you say Y here, it will be possible to
+            use the AGP features of your 3D rendering video card. This code acts
+            as a sort of "AGP driver" for the motherboard's chipset.
+
+            If you need more texture memory than you can get with the AGP GART
+            (theoretically up to 256 MB, but in practice usually 64 or 128 MB
+            due to kernel allocation issues), you could use PCI accesses
+            and have up to a couple gigs of texture space.
+
+            Note that this is the only means to have X/GLX use
+            write-combining with MTRR support on the AGP bus. Without it, OpenGL
+            direct rendering will be a lot slower but still faster than PIO.
+
+            To compile this driver as a module, choose M here: the
+            module will be called agpgart.
+
+            You should say Y here if you want to use GLX or DRI.
+
+            If unsure, say N.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3><&ast;>   Intel 440LX/BX/GX, I8xx and E7x05 chipset support</h3>
+```none
+Symbol:     CONFIG_AGP_INTEL
+
+Help:       This option gives you AGP support for the GLX component of X
+            on Intel 440LX/BX/GX, 815, 820, 830, 840, 845, 850, 860, 875,
+            E7205 and E7505 chipsets and full support for the 810, 815, 830M,
+            845G, 852GM, 855GM, 865G and I915 integrated graphics chipsets.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3>[&ast;] VGA Arbitration</h3>
+```none
+Symbol:     CONFIG_VGA_ARB
+
+Help:       Some "legacy" VGA devices implemented on PCI typically have the same
+            hard-decoded addresses as they did on ISA. When multiple PCI devices
+            are accessed at same time they need some kind of coordination. Please
+            see Documentation/vgaarbiter.txt for more details. Select this to
+            enable VGA arbiter.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3>(2)   Maximum number of GPUs</h3>
+```none
+Symbol:     CONFIG_VGA_ARB_MAX_GPUS
+
+Help:       Reserves space in the kernel to maintain resource locking for
+            multiple GPUS.  The overhead for each GPU is very small.
+
+Type:       integer
+
+Choice:     (2) custom
+
+Reason:     
+```
+<h3><&ast;> Direct Rendering Manager (XFree86 4.1.0 and higher DRI support)  ---></h3>
+```none
+Symbol:     CONFIG_DRM
+
+Help:       Kernel-level support for the Direct Rendering Infrastructure (DRI)
+            introduced in XFree86 4.0. If you say Y here, you need to select
+            the module that's right for your graphics card from the list below.
+            These modules provide support for synchronization, security, and
+            DMA transfers. Please see <http://dri.sourceforge.net/> for more
+            details.  You should also select and configure AGP
+            (/dev/agpgart) support if it is available for your platform.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3>[&ast;]   Enable legacy fbdev support for your modesetting driver</h3>
+```none
+Symbol:     CONFIG_DRM_FBDEV_EMULATION
+
+Help:       Choose this option if you have a need for the legacy fbdev
+            support. Note that this support also provides the linux console
+            support on top of your modesetting driver.
+
+            If in doubt, say "Y".
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3>(300)   Overallocation of the fbdev buffer</h3>
+```none
+Symbol:     CONFIG_DRM_FBDEV_OVERALLOC
+
+Help:       Defines the fbdev buffer overallocation in percent. Default
+            is 100. Typical values for double buffering will be 200,
+            triple buffering 300.
+
+Type:       integer
+
+Choice:     (300) custom
+
+Reason:     
+```
+<h3><&ast;> Intel 8xx/9xx/G3x/G4x/HD Graphics</h3>
+```none
+Symbol:     CONFIG_DRM_I915
+
+Help:       Choose this option if you have a system that has "Intel Graphics
+            Media Accelerator" or "HD Graphics" integrated graphics,
+            including 830M, 845G, 852GM, 855GM, 865G, 915G, 945G, 965G,
+            G35, G41, G43, G45 chipsets and Celeron, Pentium, Core i3,
+            Core i5, Core i7 as well as Atom CPUs with integrated graphics.
+
+            This driver is used by the Intel driver in X.org 6.8 and
+            XFree86 4.4 and above. It replaces the older i830 module that
+            supported a subset of the hardware in older X.org releases.
+
+            Note that the older i810/i815 chipsets require the use of the
+            i810 driver instead, and the Atom z5xx series has an entirely
+            different implementation.
+
+            If "M" is selected, the module will be called i915.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3>[&ast;]   Enable alpha quality support for new Intel hardware by default</h3>
+```none
+Symbol:     CONFIG_DRM_I915_ALPHA_SUPPORT
+
+Help:       Choose this option if you have new Intel hardware and want to enable
+            the alpha quality i915 driver support for the hardware in this kernel
+            version. You can also enable the support at runtime using the module
+            parameter i915.alpha_support=1; this option changes the default for
+            that module parameter.
+
+            It is recommended to upgrade to a kernel version with proper support
+            as soon as it is available. Generally fixes for platforms with alpha
+            support are not backported to older kernels.
+
+            If in doubt, say "N".
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3>[&ast;]   Always enable userptr support</h3>
+```none
+Symbol:     CONFIG_DRM_I915_USERPTR
+
+Help:       This option selects CONFIG_MMU_NOTIFIER if it isn't already
+            selected to enabled full userptr support.
+
+            If in doubt, say "Y".
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3>Frame buffer Devices  ---></h3>
+<h3>-&ast;- Support for frame buffer devices  ---></h3>
+```none
+Symbol:     CONFIG_FB
+
+Help:       The frame buffer device provides an abstraction for the graphics
+            hardware. It represents the frame buffer of some video hardware and
+            allows application software to access the graphics hardware through
+            a well-defined interface, so the software doesn't need to know
+            anything about the low-level (hardware register) stuff.
+
+            Frame buffer devices work identically across the different
+            architectures supported by Linux and make the implementation of
+            application programs easier and more portable; at this point, an X
+            server exists which uses the frame buffer device exclusively.
+            On several non-X86 architectures, the frame buffer device is the
+            only way to use the graphics hardware.
+
+            The device is accessed through special device nodes, usually located
+            in the /dev directory, i.e. /dev/fb*.
+
+            You need an utility program called fbset to make full use of frame
+            buffer devices. Please read <file:Documentation/fb/framebuffer.txt>
+            and the Framebuffer-HOWTO at
+            <http://www.munted.org.uk/programming/Framebuffer-HOWTO-1.3.html> for more
+            information.
+
+            Say Y here and to the driver for your graphics board below if you
+            are compiling a kernel for a non-x86 architecture.
+
+            If you are compiling for the x86 architecture, you can say Y if you
+            want to play with it, but it is not essential. Please note that
+            running graphical applications that directly touch the hardware
+            (e.g. an accelerated X server) and that are not frame buffer
+            device-aware may cause unexpected results. If unsure, say N.
+
+Type:       tristate
+
+Choice:     built-in -*-
+
+Reason:     
+```
+<h3>-&ast;- Backlight & LCD device support  ---></h3>
+```none
+Symbol:     CONFIG_BACKLIGH_LCD_SUPPORT
+
+Help:       Enable this to be able to choose the drivers for controlling the
+            backlight and the LCD panel on some platforms, for example on PDAs.
+
+Type:       boolean
+
+Choice:     built-in -*-
+
+Reason:     
+```
+<h3>-&ast;-   Lowlevel Backlight controls</h3>
+```none
+Symbol:     CONFIG_BACKLIGHT_CLASS_DEVICE
+
+Help:       This framework adds support for low-level control of the LCD
+            backlight. This includes support for brightness and power.
+
+            To have support for your specific LCD panel you will have to
+            select the proper drivers which depend on this option.
+
+Type:       tristate
+
+Choice:     built-in -*-
+
+Reason:     
+```
+<h3>Console display driver support  ---></h3>
+<h3>[&ast;] VGA text console</h3>
+```none
+Symbol:     CONFIG_VGA_CONSOLE
+
+Help:       Saying Y here will allow you to use Linux in text mode through a
+            display that complies with the generic VGA standard. Virtually
+            everyone wants that.
+
+            The program SVGATextMode can be used to utilize SVGA video cards to
+            their full potential in text mode. Download it from
+            <ftp://ibiblio.org/pub/Linux/utils/console/>.
+
+            Say Y.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3>[&ast;]   Enable Scrollback Buffer in System RAM</h3>
+```none
+Symbol:     CONFIG_VGACON_SOFT_SCROLLBACK
+
+Help:       The scrollback buffer of the standard VGA console is located in
+            the VGA RAM.  The size of this RAM is fixed and is quite small.
+            If you require a larger scrollback buffer, this can be placed in
+            System RAM which is dynamically allocated during initialization.
+            Placing the scrollback buffer in System RAM will slightly slow
+            down the console.
+
+            If you want this feature, say 'Y' here and enter the amount of
+            RAM to allocate for this buffer.  If unsure, say 'N'.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3>(64)    Scrollback Buffer Size (in KB)</h3>
+```none
+Symbol:     CONFIG_VGACON_SOFT_SCROLLBACK_SIZE
+
+Help:       Enter the amount of System RAM to allocate for scrollback
+            buffers of VGA consoles. Each 64KB will give you approximately
+            16 80x25 screenfuls of scrollback buffer.
+
+Type:       integer
+
+Choice:     (64) default
+
+Reason:     
+```
+<h3>(80) Initial number of console screen columns</h3>
+```none
+Symbol:     CONFIG_DUMMY_CONSOLE_COLUMNS
+
+Help:       On PA-RISC, the default value is 160, which should fit a 1280x1024
+            monitor.
+            Select 80 if you use a 640x480 resolution by default.
+
+Type:       integer
+
+Choice:     (80) default
+
+Reason:     
+```
+<h3>(25) Initial number of console screen rows</h3>
+```none
+Symbol:     CONFIG_DUMMY_CONSOLE_ROWS
+
+Help:       On PA-RISC, the default value is 64, which should fit a 1280x1024
+            monitor.
+            Select 25 if you use a 640x480 resolution by default.
+
+Type:       integer
+
+Choice:     (25) default
+
+Reason:     
+```
+<h3><&ast;> Framebuffer Console support</h3>
+```none
+Symbol:     CONFIG_FRAMEBUFFER_CONSOLE
+
+Help:       Low-level framebuffer-based console driver.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3>-&ast;-   Map the console to the primary display device</h3>
+```none
+Symbol:     CONFIG_FRAMEBUFFER_CONSOLE_DETECT_PRIMARY
+
+Help:       If this option is selected, the framebuffer console will
+            automatically select the primary display device (if the architecture
+            supports this feature).  Otherwise, the framebuffer console will
+            always select the first framebuffer driver that is loaded. The latter
+            is the default behavior.
+
+            You can always override the automatic selection of the primary device
+            by using the fbcon=map: boot option.
+
+            If unsure, select n.
+
+Type:       boolean
+
+Choice:     built-in -*-
+
+Reason:     
+```
+<h3><&ast;> Sound card support  ---></h3>
+```none
+Symbol:     CONFIG_SOUND
+
+Help:       If you have a sound card in your computer, i.e. if it can say more
+            than an occasional beep, say Y.  Be sure to have all the information
+            about your sound card and its configuration down (I/O port,
+            interrupt and DMA channel), because you will be asked for it.
+
+            You want to read the Sound-HOWTO, available from
+            <http://www.tldp.org/docs.html#howto>. General information about
+            the modular sound system is contained in the files
+            <file:Documentation/sound/oss/Introduction>.  The file
+            <file:Documentation/sound/oss/README.OSS> contains some slightly
+            outdated but still useful information as well.  Newer sound
+            driver documentation is found in <file:Documentation/sound/alsa/*>.
+
+            If you have a PnP sound card and you want to configure it at boot
+            time using the ISA PnP tools (read
+            <http://www.roestock.demon.co.uk/isapnptools/>), then you need to
+            compile the sound card support as a module and load that module
+            after the PnP configuration is finished.  To do this, choose M here
+            and read <file:Documentation/sound/oss/README.modules>; the module
+            will be called soundcore.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3>[&ast;]   Preclaim OSS device numbers</h3>
+```none
+Symbol:     CONFIG_SOUND_OSS_CORE_PRECLAIM
+
+Help:       With this option enabled, the kernel will claim all OSS device
+            numbers if any OSS support (native or emulation) is enabled
+            whether the respective module is loaded or not and try to load the
+            appropriate module using sound-slot/service-* and char-major-*
+            module aliases when one of the device numbers is opened.  With
+            this option disabled, kernel will only claim actually in-use
+            device numbers and opening a missing device will generate only the
+            standard char-major-* aliases.
+
+            The only visible difference is use of additional module aliases
+            and whether OSS sound devices appear multiple times in
+            /proc/devices.  sound-slot/service-* module aliases are scheduled
+            to be removed (ie. PRECLAIM won't be available) and this option is
+            to make the transition easier.  This option can be overridden
+            during boot using the kernel parameter soundcore.preclaim_oss.
+
+            Disabling this allows alternative OSS implementations.
+
+            If unsure, say Y.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3><&ast;>   Advanced Linux Sound Architecture  ---></h3>
+```none
+Symbol:     CONFIG_SND
+
+Help:       Say 'Y' or 'M' to enable ALSA (Advanced Linux Sound Architecture),
+            the new base sound system.
+
+            For more information, see <http://www.alsa-project.org/>
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
