@@ -141,3 +141,25 @@ Choice:     built-in -*-
 Reason:     Forcibly included as it's required by CONFIG_PCI, CONFIG_NET and
             a lot of important options.
 ```
+<h3><&ast;> XZ decompression support</h3>
+```none
+Symbol:     CONFIG_XZ_DEC
+
+Help:       LZMA2 compression algorithm and BCJ filters are supported using
+            the .xz file format as the container. For integrity checking,
+            CRC32 is supported. See Documentation/xz.txt for more information.
+
+Type:       tristate
+
+Choice:     built-in <*>
+```
+<h3>[&ast;]   x86 BCJ filter decoder</h3>
+```none
+Symbol:     CONFIG_XZ_DEC_X86
+
+Help:       There is no help available for this option.
+
+Type:       boolean
+
+Choice:     built-in [*]
+```
