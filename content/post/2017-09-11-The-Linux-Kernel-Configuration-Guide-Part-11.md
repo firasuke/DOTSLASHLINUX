@@ -2950,3 +2950,130 @@ Choice:     (64) default
 
 Reason:     
 ```
+<h3>HID support  ---></h3>
+<h3>-&ast;- HID bus support</h3>
+```none
+Symbol:     CONFIG_HID
+
+Help:       A human interface device (HID) is a type of computer device that
+            interacts directly with and takes input from humans. The term "HID"
+            most commonly used to refer to the USB-HID specification, but other
+            devices (such as, but not strictly limited to, Bluetooth) are
+            designed using HID specification (this involves certain keyboards,
+            mice, tablets, etc). This option adds the HID bus to the kernel,
+            together with generic HID layer code. The HID devices are added and
+            removed from the HID bus by the transport-layer drivers, such as
+            usbhid (USB_HID) and hidp (BT_HIDP).
+
+            For docs and specs, see http://www.usb.org/developers/hidpage/
+
+            If unsure, say Y.
+
+Type:       tristate
+
+Choice:     built-in -*-
+
+Reason:     
+```
+<h3>[&ast;]   /dev/hidraw raw HID device support</h3>
+```none
+Symbol:     CONFIG_HIDRAW
+
+Help:       Say Y here if you want to support HID devices (from the USB
+            specification standpoint) that aren't strictly user interface
+            devices, like monitor controls and Uninterruptable Power Supplies.
+
+            This module supports these devices separately using a separate
+            event interface on /dev/hidraw.
+
+            There is also a /dev/hiddev configuration option in the USB HID
+            configuration menu. In comparison to hiddev, this device does not process
+            the hid events at all (no parsing, no lookups). This lets applications
+            to work on raw hid events when they want to, and avoid using transport-specific
+            userspace libhid/libusb libraries.
+
+            If unsure, say Y.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3><&ast;>   Generic HID driver</h3>
+```none
+Symbol:     CONFIG_HID_GENERIC
+
+Help:       Support for generic devices on the HID bus. This includes most
+            keyboards and mice, joysticks, tablets and digitizers.
+
+            To compile this driver as a module, choose M here: the module
+            will be called hid-generic.
+
+            If unsure, say Y.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3>Special HID drivers  ---></h3>
+<h3><&ast;> Synaptics RMI4 device support</h3>
+```none
+Symbol:     CONFIG_HID_RMI
+
+Help:       Support for Synaptics RMI4 touchpads.
+            Say Y here if you have a Synaptics RMI4 touchpads over i2c-hid or usbhid
+            and want support for its special functionalities.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3>USB HID support  ---></h3>
+<h3><&ast;> USB HID transport layer</h3>
+```none
+Symbol:     CONFIG_USB_HID
+
+Help:       Say Y here if you want to connect USB keyboards,
+            mice, joysticks, graphic tablets, or any other HID based devices
+            to your computer via USB, as well as Uninterruptible Power Supply
+            (UPS) and monitor control devices.
+
+            You can't use this driver and the HIDBP (Boot Protocol) keyboard
+            and mouse drivers at the same time. More information is available:
+            <file:Documentation/input/input.txt>.
+
+            If unsure, say Y.
+
+            To compile this driver as a module, choose M here: the
+            module will be called usbhid.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3>I2C HID support  ---></h3>
+<h3><&ast;> HID over I2C transport layer</h3>
+```none
+Symbol:     CONFIG_I2C_HID
+
+Help:       Say Y here if you use a keyboard, a touchpad, a touchscreen, or any
+            other HID based devices which is connected to your computer via I2C.
+
+            If unsure, say N.
+
+            This support is also available as a module.  If so, the module
+            will be called i2c-hid.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
