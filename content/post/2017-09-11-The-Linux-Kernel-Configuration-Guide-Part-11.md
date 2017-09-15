@@ -3131,6 +3131,616 @@ Choice:     built-in <*>
 
 Reason:     
 ```
-<h3></h3>
+<h3>[&ast;]   USB announce new devices</h3>
 ```none
+Symbol:     CONFIG_USB_ANNOUNCE_NEW_DEVICES
+
+Help:       Say Y here if you want the USB core to always announce the
+            idVendor, idProduct, Manufacturer, Product, and SerialNumber
+            strings for every new USB device to the syslog.  This option is
+            usually used by distro vendors to help with debugging and to
+            let users know what specific device was added to the machine
+            in what location.
+
+            If you do not want this kind of information sent to the system
+            log, or have any doubts about this, say N here.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3>[&ast;]   Enable USB persist by default</h3>
+```none
+Symbol:     CONFIG_USB_DEFAULT_PERSIST
+
+Help:       Say N here if you don't want USB power session persistence
+            enabled by default.  If you say N it will make suspended USB
+            devices that lose power get reenumerated as if they had been
+            unplugged, causing any mounted filesystems to be lost.  The
+            persist feature can still be enabled for individual devices
+            through the power/persist sysfs node. See
+            Documentation/driver-api/usb/persist.rst for more info.
+
+            If you have any questions about this, say Y here, only say N
+            if you know exactly what you are doing.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3><&ast;>   USB Monitor</h3>
+```none
+Symbol:     CONFIG_USB_MON
+
+Help:       If you select this option, a component which captures the USB traffic
+            between peripheral-specific drivers and HC drivers will be built.
+            For more information, see <file:Documentation/usb/usbmon.txt>.
+
+            If unsure, say Y, if allowed, otherwise M.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3><&ast;>   xHCI HCD (USB 3.0) support</h3>
+```none
+Symbol:     CONFIG_USB_XHCI_HCD
+
+Help:       The eXtensible Host Controller Interface (xHCI) is standard for USB 3.0
+            "SuperSpeed" host controller hardware.
+
+            To compile this driver as a module, choose M here: the
+            module will be called xhci-hcd.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3><&ast;>   EHCI HCD (USB 2.0) support</h3>
+```none
+Symbol:     CONFIG_USB_EHCI_HCD
+
+Help:       The Enhanced Host Controller Interface (EHCI) is standard for USB 2.0
+            "high speed" (480 Mbit/sec, 60 Mbyte/sec) host controller hardware.
+            If your USB host controller supports USB 2.0, you will likely want to
+            configure this Host Controller Driver.
+
+            EHCI controllers are packaged with "companion" host controllers (OHCI
+            or UHCI) to handle USB 1.1 devices connected to root hub ports.  Ports
+            will connect to EHCI if the device is high speed, otherwise they
+            connect to a companion controller.  If you configure EHCI, you should
+            probably configure the OHCI (for NEC and some other vendors) USB Host
+            Controller Driver or UHCI (for Via motherboards) Host Controller
+            Driver too.
+
+            You may want to read <file:Documentation/usb/ehci.txt>.
+
+            To compile this driver as a module, choose M here: the
+            module will be called ehci-hcd.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3>[&ast;]     Improved Transaction Translator scheduling</h3>
+```none
+Symbol:     CONFIG_USB_EHCI_IT_NEWSCHED
+
+Help:       This changes the periodic scheduling code to fill more of the low
+            and full speed bandwidth available from the Transaction Translator
+            (TT) in USB 2.0 hubs.  Without this, only one transfer will be
+            issued in each microframe, significantly reducing the number of
+            periodic low/fullspeed transfers possible.
+
+            If you have multiple periodic low/fullspeed devices connected to a
+            highspeed USB hub which is connected to a highspeed USB Host
+            Controller, and some of those devices will not work correctly
+            (possibly due to "ENOSPC" or "-28" errors), say Y.  Conversely, if
+            you have only one such device and it doesn't work, you could try
+            saying N.
+
+            If unsure, say Y.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3><&ast;>   OHCI HCD (USB 1.1) support</h3>
+```none
+Symbol:     CONFIG_USB_OCHI_HCD
+
+Help:       The Open Host Controller Interface (OHCI) is a standard for accessing
+            USB 1.1 host controller hardware.  It does more in hardware than Intel's
+            UHCI specification.  If your USB host controller follows the OHCI spec,
+            say Y.  On most non-x86 systems, and on x86 hardware that's not using a
+            USB controller from Intel or VIA, this is appropriate.  If your host
+            controller doesn't use PCI, this is probably appropriate.  For a PCI
+            based system where you're not sure, the "lspci -v" entry will list the
+            right "prog-if" for your USB controller(s):  EHCI, OHCI, or UHCI.
+
+            To compile this driver as a module, choose M here: the
+            module will be called ohci-hcd.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3><&ast;>   USB Mass Storage support</h3>
+```none
+Symbol:     CONFIG_USB_STORAGE
+
+Help:       Say Y here if you want to connect USB mass storage devices to your
+            computer's USB port. This is the driver you need for USB
+            floppy drives, USB hard disks, USB tape drives, USB CD-ROMs,
+            USB flash devices, and memory sticks, along with
+            similar devices. This driver may also be used for some cameras
+            and card readers.
+
+            This option depends on 'SCSI' support being enabled, but you
+            probably also need 'SCSI device support: SCSI disk support'
+            (BLK_DEV_SD) for most USB storage devices.
+
+            To compile this driver as a module, choose M here: the
+            module will be called usb-storage.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3><&ast;> MMC/SD/SDIO card support  ---></h3>
+```none
+Symbol:     CONFIG_MMC
+
+Help:       This selects MultiMediaCard, Secure Digital and Secure
+            Digital I/O support.
+
+            If you want MMC/SD/SDIO support, you should say Y here and
+            also to your specific host controller driver.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3><&ast;>   MMC block device driver</h3>
+```none
+Symbol:     CONFIG_MMC_BLOCK
+
+Help:       Say Y here to enable the MMC block device driver support.
+            This provides a block device driver, which you can use to
+            mount the filesystem. Almost everyone wishing MMC support
+            should say Y or M here.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3>(8)     Number of minors per block device</h3>
+```none
+Symbol:     CONFIG_MMC_BLOCK_MINORS
+
+Help:       Number of minors per block device. One is needed for every
+            partition on the disk (plus one for the whole disk).
+
+            Number of total MMC minors available is 256, so your number
+            of supported block devices will be limited to 256 divided
+            by this number.
+
+            Default is 8 to be backwards compatible with previous
+            hardwired device numbering.
+
+            If unsure, say 8 here.
+
+Type:       integer
+
+Choice:     (8) default
+
+Reason:     
+```
+<h3>[&ast;]     Use bounce buffer for simple hosts</h3>
+```none
+Symbol:     CONFIG_MMC_BLOCK_BOUNCE
+
+Help:       SD/MMC is a high latency protocol where it is crucial to
+            send large requests in order to get high performance. Many
+            controllers, however, are restricted to continuous memory
+            (i.e. they can't do scatter-gather), something the kernel
+            rarely can provide.
+
+            Say Y here to help these restricted hosts by bouncing
+            requests back and forth from a large buffer. You will get
+            a big performance gain at the cost of up to 64 KiB of
+            physical memory.
+
+            If unsure, say Y here.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3>-&ast;- LED Support  ---></h3>
+```none
+Symbol:     CONFIG_NEW_LEDS
+
+Help:       Say Y to enable Linux LED support.  This allows control of supported
+            LEDs from both userspace and optionally, by kernel events (triggers).
+
+Type:       boolean
+
+Choice:     built-in -*-
+
+Reason:     
+```
+<h3>-&ast;-   LED Class Support</h3>
+```none
+Symbol:     CONFIG_LEDS_CLASS
+
+Help:       This option enables the led sysfs class in /sys/class/leds.  You'll
+            need this to do anything useful with LEDs.  If unsure, say N.
+
+Type:       tristate
+
+Choice:     built-in -*-
+
+Reason:     
+```
+<h3>-&ast;-   LED Trigger support  ---></h3>
+```none
+Symbol:     CONFIG_LEDS_TRIGGERS
+
+Help:       This option enables trigger support for the leds class.
+            These triggers allow kernel events to drive the LEDs and can
+            be configured via sysfs. If unsure, say Y.
+
+Type:       boolean
+
+Choice:     built-in -*-
+
+Reason:     
+```
+<h3><&ast;> EDAC (Error Detection And Correction) reporting  ---></h3>
+```none
+Symbol:     CONFIG_EDAC
+
+Help:       EDAC is a subsystem along with hardware-specific drivers designed to
+            report hardware errors. These are low-level errors that are reported
+            in the CPU or supporting chipset or other subsystems:
+            memory errors, cache errors, PCI errors, thermal throttling, etc..
+            If unsure, select 'Y'.
+
+            The mailing list for the EDAC project is linux-edac@vger.kernel.org.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3><&ast;>   Intel e312xx</h3>
+```none
+Symbol:     CONFIG_EDAC_IE31200
+
+Help:       Support for error detection and correction on the Intel
+            E3-1200 based DRAM controllers.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3><&ast;>   Intel i7 Core (Nehalem) processors</h3>
+```none
+Symbol:     CONFIG_EDAC_I7CORE
+
+Help:       Support for error detection and correction the Intel
+            i7 Core (Nehalem) Integrated Memory Controller that exists on
+            newer processors like i7 Core, i7 Core Extreme, Xeon 35xx
+            and Xeon 55xx processors.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3><&ast;>   Intel Sandy-Bridge/Ivy-Bridge/Haswell Integrated MC</h3>
+```none
+Symbol:     CONFIG_EDAC_SBRIDGE
+
+Help:       Support for error detection and correction the Intel
+            Sandy Bridge, Ivy Bridge and Haswell Integrated Memory Controllers.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3>[&ast;] Real Time Clock  ---></h3>
+```none
+Symbol:     CONFIG_RTC_CLASS
+
+Help:       Generic RTC class support. If you say yes here, you will
+            be allowed to plug one or more RTCs to your system. You will
+            probably want to enable one or more of the interfaces below.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3>[&ast;]   Set system time from RTC on startup and resume</h3>
+```none
+Symbol:     CONFIG_RTC_HCTOSYS
+
+Help:       If you say yes here, the system time (wall clock) will be set using
+            the value read from a specified RTC device. This is useful to avoid
+            unnecessary fsck runs at boot time, and to network better.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3>(rtc0)  RTC used to set the system time</h3>
+```none
+Symbol:     CONFIG_RTC_HCTOSYS_DEVICE
+
+Help:       The RTC device that will be used to (re)initialize the system
+            clock, usually rtc0. Initialization is done when the system
+            starts up, and when it resumes from a low power state. This
+            device should record time in UTC, since the kernel won't do
+            timezone correction.
+
+            The driver for this RTC device must be loaded before late_initcall
+            functions run, so it must usually be statically linked.
+
+            This clock should be battery-backed, so that it reads the correct
+            time when the system boots from a power-off state. Otherwise, your
+            system will need an external clock source (like an NTP server).
+
+            If the clock you specify here is not battery backed, it may still
+            be useful to reinitialize system time when resuming from system
+            sleep states. Do not specify an RTC here unless it stays powered
+            during all this system's supported sleep states.
+
+Type:       string
+
+Choice:     (rtc0) default
+
+Reason:     
+```
+<h3>[&ast;]   /sys/class/rtc/rtcN (sysfs)</h3>
+```none
+Symbol:     CONFIG_RTC_INTF_SYSFS
+
+Help:       Say yes here if you want to use your RTCs using sysfs interfaces,
+            /sys/class/rtc/rtc0 through /sys/.../rtcN.
+
+            If unsure, say Y.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3>[&ast;]   /proc/driver/rtc (procfs for rtcN)</h3>
+```none
+Symbol:     CONFIG_RTC_INTF_PROC
+
+Help:       Say yes here if you want to use your system clock RTC through
+            the proc interface, /proc/driver/rtc.
+            Other RTCs will not be available through that API.
+            If there is no RTC for the system clock, then the first RTC(rtc0)
+            is used by default.
+
+            If unsure, say Y.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3>[&ast;]   /dev/rtcN (character devices)</h3>
+```none
+Symbol:     CONFIG_RTC_INTF_DEV
+
+Help:       Say yes here if you want to use your RTCs using the /dev
+            interfaces, which "udev" sets up as /dev/rtc0 through
+            /dev/rtcN.
+
+            You may want to set up a symbolic link so one of these
+            can be accessed as /dev/rtc, which is a name
+            expected by "hwclock" and some other programs. Recent
+            versions of "udev" are known to set up the symlink for you.
+
+            If unsure, say Y.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3><&ast;>   PC-style 'CMOS'</h3>
+```none
+Symbol:     CONFIG_RTC_DRV_CMOS
+
+Help:       Say "yes" here to get direct support for the real time clock
+            found in every PC or ACPI-based system, and some other boards.
+            Specifically the original MC146818, compatibles like those in
+            PC south bridges, the DS12887 or M48T86, some multifunction
+            or LPC bus chips, and so on.
+
+            Your system will need to define the platform device used by
+            this driver, otherwise it won't be accessible. This means
+            you can safely enable this driver if you don't know whether
+            or not your board has this kind of hardware.
+
+            This driver can also be built as a module. If so, the module
+            will be called rtc-cmos.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3>DMABUF options  ---></h3>
+<h3>-&ast;- Explicit Synchronization Framework</h3>
+```none
+Symbol:     CONFIG_SYNC_FILE
+
+Help:       The Sync File Framework adds explicit syncronization via
+            userspace. It enables send/receive 'struct dma_fence' objects to/from
+            userspace via Sync File fds for synchronization between drivers via
+            userspace components. It has been ported from Android.
+
+            The first and main user for this is graphics in which a fence is
+            associated with a buffer. When a job is submitted to the GPU a fence
+            is attached to the buffer and is transferred via userspace, using Sync
+            Files fds, to the DRM driver for example. More details at
+            Documentation/sync_file.txt.
+
+Type:       boolean
+
+Choice:     built-in -*-
+
+Reason:     
+```
+<h3>[&ast;] X86 Platform Specific Device Drivers  ---></h3>
+```none
+Symbol:     CONFIG_X86_PLATFORM_DEVICES
+
+Help:       Say Y here to get to see options for device drivers for various
+            x86 platforms, including vendor-specific laptop extension drivers.
+            This option alone does not add any kernel code.
+
+            If you say N, all options in this submenu will be skipped and disabled.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3><&ast;>   WMI</h3>
+```none
+Symbol:     CONFIG_ACPI_WMI
+
+Help:       This driver adds support for the ACPI-WMI (Windows Management
+            Instrumentation) mapper device (PNP0C14) found on some systems.
+
+            ACPI-WMI is a proprietary extension to ACPI to expose parts of the
+            ACPI firmware to userspace - this is done through various vendor
+            defined methods and data blocks in a PNP0C14 device, which are then
+            made available for userspace to call.
+
+            The implementation of this in Linux currently only exposes this to
+            other kernel space drivers.
+
+            This driver is a required dependency to build the firmware specific
+            drivers needed on many machines, including Acer and HP laptops.
+
+            It is safe to enable this driver even if your DSDT doesn't define
+            any ACPI-WMI devices.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3><&ast;>   Toshiba Bluetooth RFKill switch support</h3>
+```none
+Symbol:     CONFIG_TOSHIBA_BT_RFKILL
+
+Help:       This driver adds support for Bluetooth events for the RFKill
+            switch on modern Toshiba laptops with full ACPI support and
+            an RFKill switch.
+
+            This driver handles RFKill events for the TOS6205 Bluetooth,
+            and re-enables it when the switch is set back to the 'on'
+            position.
+
+            If you have a modern Toshiba laptop with a Bluetooth and an
+            RFKill switch (such as the Portege R500), say Y.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3><&ast;>   Toshiba HDD Active Protection Sensor</h3>
+```none
+Symbol:     CONFIG_TOSHIBA_HAPS
+
+Help:       This driver adds support for the built-in accelerometer
+            found on recent Toshiba laptops equipped with HID TOS620A
+            device.
+
+            This driver receives ACPI notify events 0x80 when the sensor
+            detects a sudden move or a harsh vibration, as well as an
+            ACPI notify event 0x81 whenever the movement or vibration has
+            been stabilized.
+
+            Also provides sysfs entries to get/set the desired protection
+            level and resetting the HDD protection interface.
+
+            If you have a recent Toshiba laptop with a built-in accelerometer
+            device, say Y.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3><&ast;>   Toshiba WMI Hotkeys Driver (EXPERIMENTAL)</h3>
+```none
+Symbol:     CONFIG_TOSHIBA_WMI
+
+Help:       This driver adds hotkey monitoring support to some Toshiba models
+            that manage the hotkeys via WMI events.
+
+            WARNING: This driver is incomplete as it lacks a proper keymap and the
+            *notify function only prints the ACPI event type value. Be warned that
+            you will need to provide some information if you have a Toshiba model
+            with WMI event hotkeys and want to help with the develpment of this
+            driver.
+
+            If you have a WMI-based hotkeys Toshiba laptop, say Y or M here.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
 ```
