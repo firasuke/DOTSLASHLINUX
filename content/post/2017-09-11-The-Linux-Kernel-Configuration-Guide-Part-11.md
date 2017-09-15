@@ -3744,3 +3744,141 @@ Choice:     built-in <*>
 
 Reason:     
 ```
+<h3><&ast;>   WMI support for MXM Laptop Graphics</h3>
+```none
+Symbol:     CONFIG_MXM_WMI
+
+Help:       MXM is a standard for laptop graphics cards, the WMI interface
+            is required for switchable nvidia graphics machines
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3><&ast;>   Intel Rapid Start Technology Driver</h3>
+```none
+Symbol:     CONFIG_INTEL_RST
+
+Help:       This driver provides support for modifying paramaters on systems
+            equipped with Intel's Rapid Start Technology. When put in an ACPI
+            sleep state, these devices will wake after either a configured
+            timeout or when the system battery reaches a critical state,
+            automatically copying memory contents to disk. On resume, the
+            firmware will copy the memory contents back to RAM and resume the OS
+            as usual.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3><&ast;> Industrial I/O support  ---></h3>
+```none
+Symbol:     CONFIG_IIO
+
+Help:       The industrial I/O subsystem provides a unified framework for
+            drivers for many different types of embedded sensors using a
+            number of different physical interfaces (i2c, spi, etc).
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3>PHY Subsystem  ---></h3>
+<h3>[&ast;] PHY Core</h3>
+```none
+Symbol:     CONFIG_GENERIC_PHY
+
+Help:       Generic PHY support.
+
+            This framework is designed to provide a generic interface for PHY
+            devices present in the kernel. This layer will have the generic
+            API by which phy drivers can create PHY using the phy framework and
+            phy users can obtain reference to the PHY. All the users of this
+            framework should select this config.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3>[&ast;] Generic powercap sysfs driver  ---></h3>
+```none
+Symbol:     CONFIG_POWERCAP
+
+Help:       The power capping sysfs interface allows kernel subsystems to expose power
+            capping settings to user space in a consistent way.  Usually, it consists
+            of multiple control types that determine which settings may be exposed and
+            power zones representing parts of the system that can be subject to power
+            capping.
+
+            If you want this code to be compiled in, say Y here.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3><&ast;>   Intel RAPL Support</h3>
+```none
+Symbol:     CONFIG_INTEL_RAPL
+
+Help:       This enables support for the Intel Running Average Power Limit (RAPL)
+            technology which allows power limits to be enforced and monitored on
+            modern Intel processors (Sandy Bridge and later).
+
+            In RAPL, the platform level settings are divided into domains for
+            fine grained control. These domains include processor package, DRAM
+            controller, CPU core (Power Plance 0), graphics uncore (Power Plane
+            1), etc.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3>[&ast;] Reliability, Availability and Serviceability (RAS) features  ----</h3>
+```none
+Symbol:     CONFIG_RAS
+
+Help:       Reliability, availability and serviceability (RAS) is a computer
+            hardware engineering term. Computers designed with higher levels
+            of RAS have a multitude of features that protect data integrity
+            and help them stay available for long periods of time without
+            failure.
+
+            Reliability can be defined as the probability that the system will
+            produce correct outputs up to some given time. Reliability is
+            enhanced by features that help to avoid, detect and repair hardware
+            faults.
+
+            Availability is the probability a system is operational at a given
+            time, i.e. the amount of time a device is actually operating as the
+            percentage of total time it should be operating.
+
+            Serviceability or maintainability is the simplicity and speed with
+            which a system can be repaired or maintained; if the time to repair
+            a failed system increases, then availability will decrease.
+
+            Note that Reliability and Availability are distinct concepts:
+            Reliability is a measure of the ability of a system to function
+            correctly, including avoiding data corruption, whereas Availability
+            measures how often it is available for use, even though it may not
+            be functioning correctly. For example, a server may run forever and
+            so have ideal availability, but may be unreliable, with frequent
+            data corruption.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
