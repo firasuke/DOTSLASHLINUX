@@ -88,7 +88,6 @@ img {
 
 img:hover {
   transform: scale(1.1);
-  opacity: 0.9;
 }
 
 .header,
@@ -148,10 +147,6 @@ nav li {
 
 .card {
   margin: 0 0 20px 0;
-}
-
-.card:hover {
-  opacity: 0.9;
 }
 
 .card h3 {
