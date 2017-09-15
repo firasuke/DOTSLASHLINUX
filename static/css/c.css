@@ -324,9 +324,13 @@ nav li {
     width: 970px;
   }
 }
+@media (max-width: 1023px) {
+  .side {
+    padding: 0;
+  }
+}
 @media (min-width: 1200px) {
   .container {
     width: 1170px;
   }
 }
-

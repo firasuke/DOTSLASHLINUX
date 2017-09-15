@@ -3077,3 +3077,60 @@ Choice:     built-in <*>
 
 Reason:     
 ```
+<h3>[&ast] USB support  ---></h3>
+```none
+Symbol:     CONFIG_USB_SUPPORT
+
+Help:       This option adds core support for Universal Serial Bus (USB).
+            You will also need drivers from the following menu to make use of it.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     
+```
+<h3><&ast;>   Support for Host-side USB</h3>
+```none
+Symbol:     CONFIG_USB
+
+Help:       Universal Serial Bus (USB) is a specification for a serial bus
+            subsystem which offers higher speeds and more features than the
+            traditional PC serial port.  The bus supplies power to peripherals
+            and allows for hot swapping.  Up to 127 USB peripherals can be
+            connected to a single USB host in a tree structure.
+
+            The USB host is the root of the tree, the peripherals are the
+            leaves and the inner nodes are special USB devices called hubs.
+            Most PCs now have USB host ports, used to connect peripherals
+            such as scanners, keyboards, mice, modems, cameras, disks,
+            flash memory, network links, and printers to the PC.
+
+            Say Y here if your computer has a host-side USB port and you want
+            to use USB devices.  You then need to say Y to at least one of the
+            Host Controller Driver (HCD) options below.  Choose a USB 1.1
+            controller, such as "UHCI HCD support" or "OHCI HCD support",
+            and "EHCI HCD (USB 2.0) support" except for older systems that
+            do not have USB 2.0 support.  It doesn't normally hurt to select
+            them all if you are not certain.
+
+            If your system has a device-side USB port, used in the peripheral
+            side of the USB protocol, see the "USB Gadget" framework instead.
+
+            After choosing your HCD, then select drivers for the USB peripherals
+            you'll be using.  You may want to check out the information provided
+            in <file:Documentation/usb/> and especially the links given in
+            <file:Documentation/usb/usb-help.txt>.
+
+            To compile this driver as a module, choose M here: the
+            module will be called usbcore.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     
+```
+<h3></h3>
+```none
+```
