@@ -1844,3 +1844,9 @@ Reason:     I'm a basic WINE user, and most of my apps work without the need
             If you stumbled upon a WINE program that requires this option then
             include it, otherwise exclude it.
 ```
+<hr/>
+<h3>Chinese Translation</h3>
+One of DOTSLASHLINUX's followers from china 杨鑫 (Yang Mame), decided to follow up with the series and provide chinese translation of the kernel configuration guides on his blog.
+<br/>
+<br/>
+To read this guide in chinese <a href="https://blog.yangmame.top/2017/09/14/linux%e5%86%85%e6%a0%b8%e9%85%8d%e7%bd%ae%e6%8c%87%e5%8d%97-processor-type-and-features/" target="_blank">click here</a>.

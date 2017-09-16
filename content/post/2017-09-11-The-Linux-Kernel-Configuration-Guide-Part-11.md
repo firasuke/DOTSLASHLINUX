@@ -1380,7 +1380,8 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            in order for text terminals to work.
 ```
 <h3>[&ast;]   Virtual terminal</h3>
 ```none
@@ -1416,7 +1417,8 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            in order for virtual terminals to work.
 ```
 <h3>[&ast;]     Support for console on virtual terminal</h3>
 ```none

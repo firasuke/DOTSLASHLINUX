@@ -216,3 +216,9 @@ Reason:     I was tempted to include this option, but then I read that the
             nvidia.ko module is considered out-of-tree module and decided
             to exclude this option.
 ```
+<hr/>
+<h3>Chinese Translation</h3>
+One of DOTSLASHLINUX's followers from china 杨鑫 (Yang Mame), decided to follow up with the series and provide chinese translation of the kernel configuration guides on his blog.
+<br/>
+<br/>
+To read this guide in chinese <a href="https://blog.yangmame.top/2017/09/14/linux%e5%86%85%e6%a0%b8%e9%85%8d%e7%bd%ae%e6%8c%87%e5%8d%97-enable-loadable-module-support/" target="_blank">click here</a>.
