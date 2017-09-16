@@ -418,7 +418,7 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     It's recommended that you include this option as the other one
+Reason:     It's recommended that you include this option as
             CONFIG_VIRT_CPU_ACCOUNTING_GEN is only useful at the moment
             for those who are working on the full dynticks subsystem development.
 ```
@@ -437,7 +437,7 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     Impacts performance and makes me in doubt so I excluded it =D.
+Reason:     You can safely exclude this option as it impacts performance.
 ```
 <h3>[ ] BSD Process Accounting</h3>
 ```none
@@ -457,8 +457,9 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded it to lower overhead, you may want to enable it if you're using
-            sys-process/htop on Gentoo Linux, since htop may use this information.
+Reason:     You can safely exclude this option to lower system overhead.
+
+            sys-process/htop might complain, but it's totally harmless.
 ```
 <h3>[ ] Export task/process statistics through netlink</h3>
 ```none
@@ -476,8 +477,9 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded it to lower overhead, you may want to enable it if you're using
-            sys-process/htop on Gentoo Linux, since htop may use this information.
+Reason:     You can safely exclude this option to lower system overhead.
+
+            sys-process/htop might complain, but it's totally harmless.
 ```
 <h3>RCU Subsystem  ---></h3>
 <h3>[&ast;] Make expert-level adjustments to RCU configuration</h3>
