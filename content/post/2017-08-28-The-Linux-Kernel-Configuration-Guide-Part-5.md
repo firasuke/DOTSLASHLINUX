@@ -140,7 +140,7 @@ Choice:     excluded [ ]
 Reason:     Again I've excluded this option as I'm not building the kernel for an
             embedded device.
 ```
-<h3>[&ast;]   Enable support for block device writeback throttling</h3>
+<h3>[ ]   Enable support for block device writeback throttling</h3>
 ```none
 Symbol:     CONFIG_BLK_WBT
 
@@ -152,42 +152,14 @@ Help:       Enabling this option enables the block layer to throttle buffered
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     excluded [ ]
 
-Reason:     I can't stress enough how important this feature is. Ever noticed 
-            your system suddenly lagged when doing extreme read/write operations
-            (copying big files for example) and the mouse cursor started lagging,
-            well include this option and CONFIG_BLK_WBT_SQ and CONFIG_BLK_WBT_MQ
-            and hopefully your system won't lag when heavy I/O operations are
-            running.
-```
-<h3>[&ast;]     Single queue writeback throttling</h3>
-```none
-Symbol:     CONFIG_BLK_WBT_SQ
+Reason:     You can safely exclude this option as it can impact the performance
+            of your storage disks.
 
-Help:       Enable writeback throttling by default on legacy single queue devices
-
-Type:       boolean
-
-Choice:     built-in [*]
-
-Reason:     I included this option because it's useful with CONFIG_BLK_WBT_MQ
-            to prevent lagging when heavy I/O operations are running.
-```
-<h3>[&ast;]     Multiqueue writeback throttling (NEW)</h3>
-```none
-Symbol:     CONFIG_BLK_WBT_MQ
-
-Help:       Enable writeback throttling by default on multiqueue devices.
-            Multiqueue currently doesn't have support for IO scheduling,
-            enabling this option is recommended.
-
-Type:       boolean
-
-Choice:     built-in [*]
-
-Reason:     I included this option because it's useful with CONFIG_BLK_WBT_SQ
-            to prevent lagging when heavy I/O operations are running.
+            Include this option along with CONFIG_BLK_WBT_SQ and CONFIG_BLK_WBT_MQ
+            if you want to lower your system's latency and prevent lags when heavy
+            IO operations are being performed.
 ```
 <h3>[ ]   Block layer debugging information in debugfs</h3>
 ```none
