@@ -482,7 +482,7 @@ Reason:     You can safely exclude this option to lower system overhead.
             sys-process/htop might complain, but it's totally harmless.
 ```
 <h3>RCU Subsystem  ---></h3>
-<h3>[&ast;] Make expert-level adjustments to RCU configuration</h3>
+<h3>[ ] Make expert-level adjustments to RCU configuration</h3>
 ```none
 Symbol:     CONFIG_RCU_EXPERT
 
@@ -499,220 +499,13 @@ Help:       This option needs to be enabled if you wish to make
 
 Type:       boolean
 
-Choice:     built-in [*]
-
-Reason:     There are some nice options here to reduce latency so I'll include this
-            option. You can exclude this option and its child options as well and settle
-            with the default value if throughput (performance) is what you need.
-```
-<h3>[ ] Use v4.11 classic SRCU implementation</h3>
-```none
-Symbol:     CONFIG_CLASSIC_SRCU
-
-Help:       This option selects the traditional well-tested classic SRCU
-            implementation from v4.11, as might be desired for enterprise
-            Linux distributions.  Without this option, the shiny new
-            Tiny SRCU and Tree SRCU implementations are used instead.
-            At some point, it is hoped that Tiny SRCU and Tree SRCU
-            will accumulate enough test time and confidence to allow
-            Classic SRCU to be dropped entirely.
-            
-            Say Y if you need a rock-solid SRCU.
-            
-            Say N if you would like help test Tree SRCU.
-
-Tyoe:       boolean
-
 Choice:     excluded [ ]
 
-Reason:     I want to use the shiny new Tiny SRCU and Tree SRCU implementations
-            (because they sound cool, just kidding =D). Basically any feature
-            that'll be dropped, deprecated or obsolete in the future should be 
-            excluded, at least that's how I like to configure my kernel.
+Reason:     You can safely exclude this option as it's mostly for testing
+            purposes (especially for larger systems).
 
-            You can include this option if you want a rock-solid stable SRCU.
-```
-<h3>(64) Tree-based hierarchical RCU fanout value</h3>
-```none
-Symbol:     CONFIG_RCU_FANOUT
-
-Help:       This option controls the fanout of hierarchical implementations
-            of RCU, allowing RCU to work efficiently on machines with
-            large numbers of CPUs.  This value must be at least the fourth
-            root of NR_CPUS, which allows NR_CPUS to be insanely large.
-            The default value of RCU_FANOUT should be used for production
-            systems, but if you are stress-testing the RCU implementation
-            itself, small RCU_FANOUT values allow you to test large-system
-            code paths on small(er) systems.
-            
-            Select a specific number if testing RCU itself.
-            
-            Take the default if unsure.
-
-Tyoe:       integer
-
-Choice:     (64) default
-
-Reason:     I went with the default value which is 64 on my system as I'm not
-            testing RCU.
-```
-<h3>(16) Tree-based hierarchical RCU leaf-level fanout value</h3>
-```none
-Symbol:     CONFIG_RCU_FANOUT_LEAF
-
-Help:       This option controls the leaf-level fanout of hierarchical
-            implementations of RCU, and allows trading off cache misses
-            against lock contention.  Systems that synchronize their
-            scheduling-clock interrupts for energy-efficiency reasons will
-            want the default because the smaller leaf-level fanout keeps
-            lock contention levels acceptably low.  Very large systems
-            (hundreds or thousands of CPUs) will instead want to set this
-            value to the maximum value possible in order to reduce the
-            number of cache misses incurred during RCU's grace-period
-            initialization.  These systems tend to run CPU-bound, and thus
-            are not helped by synchronized interrupts, and thus tend to
-            skew them, which reduces lock contention enough that large
-            leaf-level fanouts work well.  That said, setting leaf-level
-            fanout to a large number will likely cause problematic
-            lock contention on the leaf-level rcu_node structures unless
-            you boot with the skew_tick kernel parameter.
-            
-            Select a specific number if testing RCU itself.
-            
-            Select the maximum permissible value for large systems, but
-            please understand that you may also need to set the skew_tick
-            kernel boot parameter to avoid contention on the rcu_node
-            structure's locks.
-            
-            Take the default if unsure.
-
-Type:       integer
-
-Choice:     (16) default
-
-Reason:     I went with the default value which is 16 on my system as I'm not
-            testing RCU.
-```
-<h3>[&ast;] Enable RCU priority boosting</h3>
-```none
-Symbol:     CONFIG_RCU_BOOST
-
-Help:       This option boosts the priority of preempted RCU readers that
-            block the current preemptible RCU grace period for too long.
-            This option also prevents heavy loads from blocking RCU
-            callback invocation for all flavors of RCU.
-            
-            Say Y here if you are working with real-time apps or heavy loads
-            Say N here if you are unsure.
-
-Type:       boolean
-
-Choice:     built-in [*]
-
-Reason:     Including this option helps reduce latency especially on systems with
-            heavy loads.
-```
-<h3>(1) Real-time priority to use for RCU worker threads</h3>
-```none
-Symbol:     CONFIG_RCU_KTHREAD_PRIO
-
-Help:       This option specifies the SCHED_FIFO priority value that will be
-            assigned to the rcuc/n and rcub/n threads and is also the value
-            used for RCU_BOOST (if enabled). If you are working with a
-            real-time application that has one or more CPU-bound threads
-            running at a real-time priority level, you should set
-            RCU_KTHREAD_PRIO to a priority higher than the highest-priority
-            real-time CPU-bound application thread.  The default RCU_KTHREAD_PRIO
-            value of 1 is appropriate in the common case, which is real-time
-            applications that do not have any CPU-bound threads.
-
-            Some real-time applications might not have a single real-time
-            thread that saturates a given CPU, but instead might have
-            multiple real-time threads that, taken together, fully utilize
-            that CPU.  In this case, you should set RCU_KTHREAD_PRIO to
-            a priority higher than the lowest-priority thread that is
-            conspiring to prevent the CPU from running any non-real-time
-            tasks.  For example, if one thread at priority 10 and another
-            thread at priority 5 are between themselves fully consuming
-            the CPU time on a given CPU, then RCU_KTHREAD_PRIO should be
-            set to priority 6 or higher.
-            
-            Specify the real-time priority, or take the default if unsure.
-
-Type:       boolean
-
-Choice:     (1) default
-
-Reason:     I went with the default value for this option.
-```
-<h3>(0) Milliseconds to delay boosting after RCU grace-period start</h3>
-```none
-Symbol:     CONFIG_RCU_BOOST_DELAY
-
-Help:       This option specifies the time to wait after the beginning of
-            a given grace period before priority-boosting preempted RCU
-            readers blocking that grace period.  Note that any RCU reader
-            blocking an expedited RCU grace period is boosted immediately.
-            
-            Accept the default if unsure.
-
-Type:       integer
-
-Choice:     (0) custom
-
-Reason:     The default value was 500, but I prefer to make to use the lowest
-            value for all delay options.
-
-            If you think I shouldn't be doing this please post a comment below
-            or send me an email explaining why.
-```
-<h3>[&ast;] Offload RCU callback processing from boot-selected CPUs</h3>
-```none
-Symbol:     CONFIG_RCU_NOCB_CPU
-
-Help:       Use this option to reduce OS jitter for aggressive HPC or
-            real-time workloads.   It can also be used to offload RCU
-            callback invocation to energy-efficient CPUs in battery-powered
-            asymmetric multiprocessors.
-
-            This option offloads callback invocation from the set of
-            CPUs specified at boot time by the rcu_nocbs parameter.
-            For each such CPU, a kthread ("rcuox/N") will be created to
-            invoke callbacks, where the "N" is the CPU being offloaded,
-            and where the "x" is "b" for RCU-bh, "p" for RCU-preempt, and
-            "s" for RCU-sched.  Nothing prevents this kthread from running
-            on the specified CPUs, but (1) the kthreads may be preempted
-            between each callback, and (2) affinity or cgroups can be used
-            to force the kthreads to run on whatever set of CPUs is desired.
-
-            Say Y here if you want to help to debug reduced OS jitter.
-            Say N here if you are unsure.
-Type:       boolean
-
-Choice:     built-in [*]
-
-Reason:     This is also an option that helps reduce latency.
-```
-<h3>Build-forced no-CBs CPUs (All CPUs are build_forced no-CBs CPUs)  ---></h3>
-```none
-Symbol:     CONFIG_RCU_NOCB_CPU_ALL
-
-Help:       This option forces all CPUs to be no-CBs CPUs.  The rcu_nocbs=
-            boot parameter will be ignored.  All CPUs' RCU callbacks will
-            be executed in the context of per-CPU rcuo kthreads created for
-            this purpose.  Assuming that the kthreads whose names start with
-            "rcuo" are bound to "housekeeping" CPUs, this reduces OS jitter
-            on the remaining CPUs, but might decrease memory locality during
-            RCU-callback invocation, thus potentially degrading throughput.
-            
-            Select this if all CPUs need to be no-CBs CPUs for real-time
-            or energy-efficiency reasons. 
-
-Type:       boolean
-
-Choice:     built-in [*]
-
-Reason:     The other options are intended for testing purposes.
+            Some of the sub options that show up when including this option
+            may help lower latency at the cost of slight system overhead.
 ```
 <h3>< > Kernel .config support</h3>
 ```none
@@ -731,8 +524,11 @@ Type:       tristate
 
 Choice:     excluded < >
 
-Reason:     I already know my kernel configuration options and have no need to read
-            them from /proc/config.gz.
+Reason:     You can safely exclude this option if you already know what options
+            you've enabled in your kernel.
+
+            Instead of including this option, you can backup your kernel's .config
+            file and check that file for certain option whenever needed.
 ```
 <h3>(14) Kernel log buffer size (16 => 64KB, 17 => 128KB)</h3>
 ```none
@@ -755,13 +551,12 @@ Type:       integer
 
 Choice:     (14) custom
 
-Reason:     I generally prefer to use the lowest available value for
-            logs. This will result in a smaller kernel; thus, reducing
-            boot time.
+Reason:     You can safely set the value of this option to (14).
 
-            14 is a good value, any value less than that and the kernel
-            ring buffer would start to fill really fast (so fast you won't
-            be able to read the whole dmesg log after a clean reboot!)
+            The value (14) is the lowest possible (while staying convenient)
+            value that provides good balance between keeping your kernel
+            ring buffer from being overwrited constantly while keeping your
+            kernel's size to a minimum.
 ```
 <h3>(14) CPU kernel log buffer size contribution (13 => 8 KB, 17 => 128KB)</h3>
 ```none
@@ -798,13 +593,12 @@ Type:       integer
 
 Choice:     (14) custom
 
-Reason:     I generally prefer to use the lowest available values for
-            logs. This will result in a smaller kernel; thus, reducing
-            boot time.
-            
-            14 is a good value, any value less than that and the kernel
-            ring buffer would start to fill really fast (so fast you won't
-            be able to read the whole dmesg log after a clean reboot!)
+Reason:     You can safely set the value of this option to (14).
+
+            The value (14) is the lowest possible (while staying convenient)
+            value that provides good balance between keeping your kernel
+            ring buffer from being overwrited constantly while keeping your
+            kernel's size to a minimum.
 ```
 <h3>(12) Temporary per-CPU printk log buffer size (12 => 4KB, 13 => 8KB)</h3>
 ```none
