@@ -1901,6 +1901,26 @@ Reason:     I excluded this option for a more minimal kernel and for lesser
             If you think I shouldn't be doing this please post a comment below
             or send me an email explaining why.
 ```
+<h3>[ ] Perform full reference count validation at the expense of speed</h3>
+```none
+Symbol:     CONFIG_REFCOUNT_FULL
+
+Help:       Enabling this switches the refcounting infrastructure from a fast
+            unchecked atomic_t implementation to a fully state checked
+            implementation, which can be (slightly) slower but provides protections
+            against various use-after-free conditions that can be used in
+            security flaw exploits.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     You can safely exclude this option as it adds a slight overhead to your
+            system.
+
+            Include this option if you want more security against similar security
+            flaw exploits.
+```
 <h3>GCOV-based kernel profiling  ---></h3>
 <h3>[ ] Enable gcov-based kernel profiling</h3>
 ```none
