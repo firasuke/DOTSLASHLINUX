@@ -687,7 +687,7 @@ Choice:     excluded [ ]
 Reason:     You can safely exclude this option if you don't plan on using suspend
             and hibernate.
 ```
-<h3>-&ast;- Namespaces support  ---></h3>
+<h3>[ ] Namespaces support  ---></h3>
 ```none
 Symbol:     CONFIG_NAMESPACES
 
@@ -698,70 +698,16 @@ Help:       Provides the way to make tasks work with different objects using
 
 Type:       boolean
 
-Choice:     built-in -*-
-
-Reason:     This option is forcibly included on my system by CONFIG_GENTOO_LINUX
-            and CONFIG_GENTOO_LINUX_PORTAGE.
-
-            It's generally a good idea to include this option as several applications
-            and features rely on it.
-```
-<h3>[&ast;]   UTS namespace</h3>
-```none
-Symbol:     CONFIG_UTS_NS
-
-Help:       In this namespace tasks see different info provided with the
-            uname() system call
-
-Type:       boolean
-
-Choice:     built-in [*]
-
-Reason:     If you were using uname() system call to display info in your lightweight
-            status bar, or for normal use then include this feature.
-```
-<h3>-&ast;-   IPC namespace</h3>
-```none
-Symbol:     CONFIG_IPC_NS
-
-Help:       In this namespace tasks work with IPC ids which correspond to
-            different IPC objects in different namespaces.
-
-Type:       boolean
-
-Choice:     built-in -*-
-
-Reason:     Forcibly included by CONFIG_GENTOO_LINUX and CONFIG_GENTOO_LINUX_PORTAGE.
-```
-<h3>[ ]   PID Namespaces</h3>
-```none
-Symbol:     CONFIG_PID_NS
-
-Help:       Support process id namespaces.  This allows having multiple
-            processes with the same pid as long as they are in different
-            pid namespaces.  This is a building block of containers.
-
-Type:       boolean
-
 Choice:     excluded [ ]
 
-Reason:     I chose to exclude this option in my kernel configuration. If you think
-            I shouldn't be doing that please post a comment below or send me an email
-            explaining why.
-```
-<h3>-&ast;-   Network namespace</h3>
-```none
-Symbol:     CONFIG_NET_NS
+Reason:     You can safely exclude this option if you're not using Gentoo Linux.
 
-Help:       Allow user space to create what appear to be multiple instances
-            of the network stack.
-
-Type:       boolean
-
-Choice:     built-in -*-
-
-Reason:     Forcibly included by CONFIG_GENTOO_LINUX, CONFIG_GENTOO_LINUX_UDEV and
-            CONFIG_GENTOO_LINUX_PORTAGE.
+            If you're on Gentoo Linux, some applications may require this option
+            and some of the nested options inside it (mainly CONFIG_UTS_NS and
+            CONFIG_IPC_NS and sometimes CONFIG_NET_NS for systemd).
+            
+            Include if you're planning to use LXC (Linux Containers) or if an
+            application requires it (and any of the nested options inside it).
 ```
 <h3>[ ] Automatic process group scheduling</h3>
 ```none
