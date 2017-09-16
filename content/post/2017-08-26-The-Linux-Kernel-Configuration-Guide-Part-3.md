@@ -642,44 +642,7 @@ Reason:     You can safely set the value of this option to (14).
             If the output of dmesg is still being truncated (which is highly
             unlikely) then consider increasing the value of this option.
 ```
-<h3>[&ast;] Memory placement aware NUMA scheduler</h3>
-```none
-Symbol:     CONFIG_NUMA_BALANCING
-
-Help:       This option adds support for automatic NUMA aware memory/task placement.
-            The mechanism is quite primitive and is based on migrating memory when
-            it has references to the node the task is running on.
-            
-            This system will be inactive on UMA systems.
-
-Type:       boolean
-
-Choice:     built-in [*]
-
-Reason:     I'm on a 4th gen mobile core i7 4700MQ, and it supports NUMA (1 node);
-            therefore, I included numa options in my kernel configuration.
-
-            You can disable this if you're sure that your system doesn't support
-            NUMA.
-```
-<h3>[&ast;]   Automatically enable NUMA aware memory/task placement</h3>
-```none
-Symbol:     CONFIG_NUMA_BALANCING_DEFAULT_ENABLED
-
-Help:       If set, automatic NUMA balancing will be enabled if running on a NUMA
-            machine.
-
-Type:       boolean
-
-Choice:     built-in [*]
-
-Reason:     I'm on a 4th gen mobile core i7 4700MQ, and it supports NUMA (1 node);
-            therefore, I included numa options in my kernel configuration.
-
-            You can disable this if you're sure that your system doesn't support
-            NUMA.
-```
-<h3>-&ast;- Control Group support  ---></h3>
+<h3>[ ] Control Group support  ---></h3>
 ```none
 Symbol:     CONFIG_CGROUPS
 
@@ -695,21 +658,16 @@ Help:       This option adds support for grouping sets of processes together, fo
 
 Type:       boolean
 
-Choice:     built-in -*-
+Choice:     excluded [ ]
 
-Reason:     This option is forcibly included by CONFIG_GENTOO_LINUX,
-            CONFIG_GENTOO_LINUX_UDEV, CONFIG_GENTOO_LINUX_INIT_SYSTEMD
-            and CONFIG_GENTOO_LINUX_PORTAGE.
+Reason:     You can safely exclude this option if you're not using Gentoo Linux
+            as CGROUPS are considered evil by many users.
 
-            It's advised to include this when using systemd.
-            
-            Unfortunately, it's a hassle to remove this feature on 
-            gentoo-sources, so if you can exclude it go ahead!
+            If you're on Gentoo Linux, you'll have to first exclude
+            CONFIG_GENTOO_LINUX_PORTAGE.
 
-            If it was forcibly included in your configuration as well
-            make sure that CONFIG_SCHED_AUTOGROUP is excluded. If it 
-            was still included, then exclude all the controllers inside
-            it and put up with it.
+            Include this option only if your system is reporting a missing
+            /sys/fs/cgroup directory.
 ```
 <h3>[ ] Checkpoint/restore support</h3>
 ```none
@@ -726,9 +684,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded checkpoint/restore support on my system as I don't
-            need it. If you want to be able to suspend/hibernate your system
-            then include this option.
+Reason:     You can safely exclude this option if you don't plan on using suspend
+            and hibernate.
 ```
 <h3>-&ast;- Namespaces support  ---></h3>
 ```none
