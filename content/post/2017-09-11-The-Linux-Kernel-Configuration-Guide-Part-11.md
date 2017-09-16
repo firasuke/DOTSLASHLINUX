@@ -1552,49 +1552,6 @@ Reason:     If you've followed the guide above, then a simple:
 
             should tell you whether you need this option or not.
 ```
-<h3>[&ast;] HPET - High Precision Event Timer</h3>
-```none
-Symbol:     CONFIG_HPET
-
-Help:       If you say Y here, you will have a miscdevice named "/dev/hpet/".  Each
-            open selects one of the timers supported by the HPET.  The timers are
-            non-periodic and/or periodic.
-
-Type:       boolean
-
-Choice:     built-in [*]
-
-Reason:     
-```
-<h3>[&ast;]   Allow mmap of HPET</h3>
-```none
-Symbol:     CONFIG_HPET_MMAP
-
-Help:       If you say Y here, user applications will be able to mmap
-            the HPET registers.
-
-Type:       boolean
-
-Choice:     built-in [*]
-
-Reason:     
-```
-<h3>[&ast;]     Enable HPET MMAP access by default</h3>
-```none
-Symbol:     CONFIG_HPET_MMAP_DEFAULT
-
-Help:       In some hardware implementations, the page containing HPET
-            registers may also contain other things that shouldn't be
-            exposed to the user.  This option selects the default (if
-            kernel parameter hpet_mmap is not set) user access to the
-            registers for applications that require it.
-
-Type:       boolean
-
-Choice:     built-in [*]
-
-Reason:     
-```
 <h3><&ast;> TPM Hardware Support  ---></h3>
 ```none
 Symbol:     CONFIG_TCG_TPM
