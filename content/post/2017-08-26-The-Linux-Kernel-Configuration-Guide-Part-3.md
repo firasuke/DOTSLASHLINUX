@@ -723,8 +723,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     If you can exclude both this option and CONFIG_CGROUPS then you should
-            be grateful...
+Reason:     You can safely exclude this option if you've already excluded
+            CONFIG_CGROUPS.
 ```
 <h3>[ ] Enable deprecated sysfs features to support old userspace tools</h3>
 ```none
@@ -752,12 +752,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I'm running a rolling release distribution and using a new kernel, so
-            I excluded this option.
-
-            (This isn't the case for every deprecated option out there, I remember once
-            spending the whole day trying to debug my boot failure, to find out I needed
-            to include a deprecated option, just saying).
+Reason:     You can safely exclude this option if you're using a modern up-to-date
+            (rolling-release) distribution.
 ```
 <h3>-&ast;- Kernel->user space relay support (formerly relayfs)</h3>
 ```none
@@ -775,8 +771,9 @@ Type:       boolean
 
 Choice:     built-in -*-
 
-Reason:     Forcibly selected by a ton of other important options (CONFIG_WLAN,
-            CONFIG_ATH9K, CONFIG_PCI, CONFIG_DRM_I915 and many many more...)
+Reason:     It's highly recommended that you include this option in your kernel
+            that is if it isn't already forcibly included by CONFIG_PCI,
+            CONFIG_DRM_I915, CONFIG_WLAN and a lot of important options. 
 ```
 <h3>[ ] Initial RAM filesystem and RAM disk (initramfs/initrd) support</h3>
 Kindly check this: <a href="https://www.dotslashlinux.com/2017/04/29/booting-the-linux-kernel-without-an-initrd-initramfs/" target="_blank">Booting the Linux Kernel Without an initrd/initramfs</a>
@@ -802,12 +799,13 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I don't use an initrd/initramfs. I've already posted guides on 
-            DOTSLASHLINUX on how to boot the linux kernel without using an 
-            initrd/initramfs and how to build microcode update files directly 
-            into the linux kernel without using an initrd/initramfs.
+Reason:     You can safely exclude this option if you're not using an initrd/initramfs
+            to boot your system.
+
+            DOTSLASHLINUX has guides on how to eliminate the need for an initrd/initramfs.
 ```
 <h3>Compiler optimization level (Optimize for performance)  ---></h3>
+<h3>(X) Optimize for performance</h3>
 ```none
 Symbol:     CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
 
@@ -817,13 +815,10 @@ Help:       This is the default optimization level for the kernel, building
 
 Type:       boolean
 
-Choice:     (Optimize for performance)
+Choice:     built-in (X)
 
-Reason:     Both slow and fast storage systems should choose optimize for performance
-            unless limited by storage space. 
-
-            Optimize for size won't make much difference when using LZ4 neither
-            on slow storage systems (like me), and on fast SSDs (negligible).
+Reason:     It's highly recommended that you include this option in your kernel
+            unless you're extremely space constrained on an embedded system.
 ```
 <h3>[&ast;] Configure standard kernel features (expert users)  ---></h3>
 ```none
@@ -838,8 +833,9 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     I'll be excluding some options. Some are obsolete and some
-            aren't needed by my system.
+Reason:     It's recommended that you include this option in your kernel
+            to access its sub menu and exclude some options that won't
+            be needed on your system.
 ```
 <h3>[ ]   Enable 16-bit UID system calls</h3>
 ```none
@@ -854,13 +850,9 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     Let's see, 12 years ago this was also being used for backwards
-            compabtibility for apis using old system calls (wow this really
-            is old).
-
-            I excluded it because I noticed no harm being done to my system.
-
-            Only exclude if no harm is being done to your system. 
+Reason:     You can safely exclude this option as it was used 12 years ago to
+            provide backwards compabtibility for apis using old system calls
+            (yes, that's how old this thing is).
 ```
 <h3>[&ast;]   Multiple users, groups and capabilities support</h3>
 ```none
@@ -880,10 +872,8 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     I need support for non-root users, groups and capabilities; therefore,
-            I inluded this.
-
-            I don't see any sane reason in excluding it.
+Reason:     It's highly recommended that you include this option in your kernel
+            if you wanted to use a non-root user.
 ```
 <h3>[ ]   sgetmask/ssetmask syscalls support</h3>
 ```none
@@ -899,7 +889,7 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     Obsolete system calls that didn't break my system when excluded.
+Reason:     You can safely exclude this option as these system calls are obsolete.
 ```
 <h3>[ ]   Sysfs syscall support</h3>
 ```none
@@ -917,9 +907,6 @@ Choice:     excluded [ ]
 
 Reason:     I excluded this option safely, and my system didn't break, and I didn't
             recieve ACPI warnings.
-
-            If you think I shouldn't be disabling this please post a comment
-            or send me an email explaining why.
 ```
 <h3>[ ]   Sysctl syscall support</h3>
 ```none
