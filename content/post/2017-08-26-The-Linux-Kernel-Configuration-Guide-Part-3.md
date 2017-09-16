@@ -22,28 +22,6 @@ Choice:     built-in [*]
 ```
 <hr/>
 <h3>1- General setup</h3>
-<h3>[&ast;] MuQSS cpu scheduler</h3>
-```none
-Symbol:     CONFIG_SCHED_MUQSS
-
-Help:       The Multiple Queue Skiplist Scheduler for excellent interactivity and
-            responsiveness on the desktop and highly scalable deterministic
-            low latency on any hardware.
-
-            Say Y here.
-
-Type:       boolean
-
-Choice:     built-in [*]
-
-Reason:     Obviously the reason behind choosing ck-sources over gentoo-sources was
-            to pick MuQSS/BFQ instead of CFS/CFQ to get better responsiveness. Using
-            this combination you can easily browse the web or play a light game until
-            emerge finishes compiling a large package.
-
-            You shouldn't worry if this option isn't available in your configuration
-            as it's specific to the ck-sources.
-```
 <h3>() Cross-compiler tool prefix</h3>
 ```none
 Symbol:     CONFIG_CROSS_COMPILE
@@ -100,9 +78,10 @@ Type:       string
 
 Choice:     -DOTSLASHLINUX
 
-Reason:     In order not to lose track of the custom kernels I build, I like to append
-            extra strings to the end of my kernel's version. You can leave it empty
-            if you want.
+Reason:     In order not to lose track of the custom built kernels you can append
+            extra strings to the end of the kernel's version.
+            
+            You can also leave this empty if you want.
 ```
 <h3>[ ] Automatically append version information to the version string</h3>
 ```none
@@ -128,8 +107,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     CONFIG_LOCALVERSION is enough for me. You can leave this empty
-            like I did.
+Reason:     You can safely exclude this option as CONFIG_LOCALVERSION should be
+            sufficient.
 ```
 <h3>Kernel compression mode (LZ4)  ---></h3>
 Make sure you have <mark>app-arch/lz4</mark> installed before compiling your kernel.
@@ -154,14 +133,14 @@ Reason:     I'm basically against compressing your kernel on setups that
             speed is the fastest, and decompression speed is what matters when 
             measuring boot times.
 
-            In my case using an uncompressed kernel slowed boot time down 
+            In some case using an uncompressed kernel slowed boot time down 
             by 300-500ms, so I had to go with LZ4. If your storage is extremely
             fast then I suggest you use an uncompressed kernel (you can find 
             several patches online for building an uncompressed kernel, I'll be 
             talking about applying patches to the kernel once I'm done with this 
             series, until then you can experiment on your own =D).
 
-            Every other compression method is unset. If you wanted your built 
+            Eexclude every other compression method. If you want your built 
             kernel to have the smallest size possible then use the XZ compression
             method. Just make sure that you have the proper tools for compression
             to prevent errors from popping up.
@@ -179,14 +158,12 @@ Type:       string
 
 Choice:     DOTSLASHLINUX
 
-Reason:     Since this kernel is being built for my laptop, I'd prefer if my system's
-            default hostname was set here rather than having to call the hostname service
-            at boot time.
+Reason:     It's recommended if your system's default hostname was set here (rather than
+            relying on the hostname boot service) if you're building this kernel for your
+            current system.
 
             You know what they say the less services you have at boot time, the faster your
             system boots.
-
-            Change this value to whatever you want your hostname to be.
 ```
 <h3>[&ast;] Support for paging of anonymous memory (swap)</h3>
 ```none
@@ -201,7 +178,10 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     My system has 7.7 GiB of ram and idles at ~60MiB of ram on dwm so
+Reason:     It's highly recommended that you include this option in your kernel
+            as swap is a must have feature on all systems.
+
+            My system has 7.7 GiB of ram and idles at ~60MiB of ram on dwm so
             basically why use swap? It was until recently that I was forced to
             add swap space after running swapless builds for 2 years now.
 
@@ -238,10 +218,9 @@ Type:       boolean
 
 Choice:     built-in -*-
 
-Reason:     Well it's forcibly included by CONFIG_GENTOO_LINUX and 
-            CONFIG_GENTOO_LINUX_PORTAGE so there's nothing I can do =D.
-
-            This is one of those options you have to enable.
+Reason:     It's highly recommended that you include this option in your kernel
+            (that is if it isn't already forcibly included by CONFIG_GENTOO_LINUX
+            and CONFIG_GENTOO_LINUX_PORTAGE).
 ```
 <h3>[ ] POSIX Message Queues</h3>
 ```none
@@ -280,11 +259,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     It didn't break my system and everything works fine after excluding
-            it.
-
-            If you have a reason why I shouldn't exclude this please post a comment
-            below or send me an email explaining why.
+Reason:     You can safely exclude this option if you're sure that no application
+            uses these system calls.
 ```
 <h3>[&ast;] open by fhandle syscalls</h3>
 ```none
@@ -302,9 +278,13 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     This option once caused me headaches trying to determine which option
-            was causing my boot process to fail, until I read that it is required by 
-            CONFIG_GENTOO_LINUX and CONFIG_GENTOO_LINUX_UDEV. 
+Reason:     It's highly recommended that you include this option in your kernel
+            (that is if it isn't already forcibly included by CONFIG_GENTOO_LINUX,
+            CONFIG_GENTOO_LINUX_UDEV and CONFIG_GENTOO_LINUX_INIT_SYSTEMD).
+
+            It's one of those options that causes headaches when excluded, as you'll
+            probably overlook it when trying to determine the real cause behind your
+            boot failure.
 ```
 <h3>[ ] uselib syscall</h3>
 ```none
@@ -320,8 +300,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I'm using a "current" system running on glibc and I can safely
-            disable this =D.
+Reason:     You can safely exclude this option if you're on a modern system running
+            a modern version of glibc.
 ```
 <h3>[ ] Auditing support</h3>
 ```none
@@ -336,8 +316,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I disabled auditing support as I don't need it and I'm not running SELinux
-            or any kernel subsystem that use it.
+Reason:     You can safely exclude this option if you don't plan to use SELinux
+            and/or other security measures.
 ```
 <h3>IRQ subsystem   ---></h3>
 <h3>[ ] Expose hardware/virtual IRQ mapping via debugfs</h3>
@@ -354,27 +334,24 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I don't know what it means =D. Nah just kidding, most of the times
-            when you see the word debug, you'd want to exclude its option.
+Reason:     You can safely exclude this option as it's intended for debugging
+            purposes.
 ```
-<h3>[&ast;] Make IRQ threading compulsory</h3>
+<h3>[ ] Expose irq internals in debugfs</h3>
 ```none
-Symbol:     CONFIG_FORCE_IRQ_THREADING
+Symbol:     CONFIG_GENERIC_IRQ_DEBUGFS
 
-Help:       Make IRQ threading mandatory for any IRQ handlers that support it
-            instead of being optional and requiring the threadirqs kernel
-            parameter. Instead they can be optionally disabled with the
-            nothreadirqs kernel parameter.
+Help:       Exposes internal state information through debugfs. Mostly for
+            developers and debugging of hard to diagnose interrupt problems.
 
-            Enable if you are building for a desktop or low latency system,
-            otherwise say N.
+            If you don't know what to do here, say N.
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     excluded [ ]
 
-Reason:     It's highly recommended that you include this option in your kernel
-            for a low latency system.
+Reason:     You can safely exclude this option as it's intended for developing
+            and debugging purposes.
 ```
 <h3>Timers subsystem  ---></h3>
 <h3>Timer tick handling (Periodic timer ticks (constant rate, no dynticks))  ---></h3>

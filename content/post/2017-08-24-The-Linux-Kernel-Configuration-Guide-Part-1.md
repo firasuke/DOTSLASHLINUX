@@ -51,7 +51,7 @@ Some of you may wonder, how on earth will I be able to provide proper configurat
 With my findings and your help, let's try to make this series a well established starting point (or even a reference) for all those who want to configure their kernels.
 <hr/>
 <h3>Description</h3>
-I'll go through every kernel configuration option out there, and include the help summary provided with it, then a simple explanation of it (unless it was self explanatory), its type and the choice I went with and the reason why (unless it was obvious).
+I'll go through every kernel configuration option out there, and include the help summary provided with it, its type and the choice I went with and the reason why (unless it was obvious).
 <br/>
 <br/>
 For those who want my kernel .config (and I don't recommend that since I extremely configured it to work on my end and it probably will result in several kernel panics before you get your kernel booting on your end) you can download it from <a href="/dotfiles/" target="_blank">DOTSLASHLINUX DOTFILES</a> (The file is named DOTSLASHLINUX.config, just be sure to change it to .config and run these commands beforehand:
@@ -64,8 +64,6 @@ As for those who're willing to go through this with me, to make things less conf
 Symbol:
 
 Help: 
-
-(Explanation:)
 
 Type:
 
