@@ -17,11 +17,11 @@ Priorities:           1- high performance
 
 Configuration File:   https://www.dotslashlinux.com/dotfiles/kernel/DOTSLASHLINUX.config
 
-Total Options:        2974
+Total Options:        2974 (grep -c 'CONFIG_' DOTSLASHLINUX.config)
 
-Included Options:     795
+Included Options:     795 (grep -c '=y' DOTSLASHLINUX.config)
 
-Excluded Options:     2109
+Excluded Options:     2109 (grep -c 'is not set' DOTSLASHLINUX.config)
 
 Final Size (LZ4):     6,156,240 Bytes
 
