@@ -1445,7 +1445,8 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            in order for virtual terminals to work as system consoles as well.
 ```
 <h3>-&ast;-     Support for binding and unbinding console drivers</h3>
 ```none
@@ -1467,7 +1468,9 @@ Type:       boolean
 
 Choice:     built-in -*-
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            if you've already included CONFIG_VT (that is if it isn't already 
+            forcibly included by CONFIG_VT, CONFIG_FB and CONFIG_HAS_IOMEM).
 ```
 <h3>[&ast;]   Unix98 PTY support</h3>
 ```none
@@ -1496,7 +1499,8 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            as it's required by telnet servers, xterms and SSH.
 ```
 <h3><&ast;> Hardware Random Number Generator Core support  ---></h3>
 ```none
@@ -1520,7 +1524,11 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     
+Reason:     If you've followed the guide above, then a simple:
+
+                cat cpuinfo.txt | grep rdrand
+
+            should tell you whether you need this option or not.
 ```
 <h3><&ast;>   Intel HW Random Number Generator support (NEW)</h3>
 ```none
@@ -1538,7 +1546,11 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     
+Reason:     If you've followed the guide above, then a simple:
+
+                cat cpuinfo.txt | grep rdrand
+
+            should tell you whether you need this option or not.
 ```
 <h3>[&ast;] HPET - High Precision Event Timer</h3>
 ```none
