@@ -557,6 +557,9 @@ Reason:     You can safely set the value of this option to (14).
             value that provides good balance between keeping your kernel
             ring buffer from being overwrited constantly while keeping your
             kernel's size to a minimum.
+            
+            If the output of dmesg is still being truncated (which is highly
+            unlikely) then consider increasing the value of this option.
 ```
 <h3>(14) CPU kernel log buffer size contribution (13 => 8 KB, 17 => 128KB)</h3>
 ```none
@@ -599,6 +602,9 @@ Reason:     You can safely set the value of this option to (14).
             value that provides good balance between keeping your kernel
             ring buffer from being overwrited constantly while keeping your
             kernel's size to a minimum.
+
+            If the output of dmesg is still being truncated (which is highly
+            unlikely) then consider increasing the value of this option.
 ```
 <h3>(12) Temporary per-CPU printk log buffer size (12 => 4KB, 13 => 8KB)</h3>
 ```none
@@ -626,9 +632,15 @@ Type:       integer
 
 Choice:     (12) custom
 
-Reason:     I generally prefer to use the lowest available values for
-            logs. This will result in a smaller kernel; thus, reducing
-            boot time.
+Reason:     You can safely set the value of this option to (14).
+
+            The value (12) is the lowest possible (while staying convenient)
+            value that provides good balance between keeping your kernel
+            ring buffer from being overwrited constantly while keeping your
+            kernel's size to a minimum.
+
+            If the output of dmesg is still being truncated (which is highly
+            unlikely) then consider increasing the value of this option.
 ```
 <h3>[&ast;] Memory placement aware NUMA scheduler</h3>
 ```none
