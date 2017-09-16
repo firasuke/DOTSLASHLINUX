@@ -355,6 +355,7 @@ Reason:     You can safely exclude this option as it's intended for developing
 ```
 <h3>Timers subsystem  ---></h3>
 <h3>Timer tick handling (Periodic timer ticks (constant rate, no dynticks))  ---></h3>
+<h3>(X) Periodic timer ticks (constant rate, no dynticks)</h3>
 ```none
 Symbol:     CONFIG_HZ_PERIODIC
 
@@ -363,11 +364,12 @@ Help:       This option keeps the tick running periodically at a constant
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in (X)
 
-Reason:     I included this option in order to achieve lower latencies on my
-            Gentoo installation. Exclude this, and include CONFIG_NO_HZ and 
-            CONFIG_NO_HZ_IDLE instead if you wanted more throughput (performance).
+Reason:     It's highly recommended that you include this option in your kernel
+            as it adds a sligh performance boost while lowering latency.
+
+            Exclude this option if power saving is one of your concerns.
 ```
 <h3>[ ] Old Idle dynticks config</h3>
 ```none
@@ -381,11 +383,10 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I already chose CONFIG_HZ_PERIODIC and prioritized latency over throughput.
-            You can include this alongside CONFIG_NO_HZ_IDLE and exclude CONFIG_HZ_PERIODIC
-            if you wanted more throughput (performance).
+Reason:     You can safely exclude this option if you've already included
+            CONFIG_HZ_PERIODIC.
 ```
-<h3>-&ast;- High Resolution Timer Support</h3>
+<h3>[ ] High Resolution Timer Support</h3>
 ```none
 Symbol:     CONFIG_HIGH_RES_TIMERS
 
@@ -395,9 +396,12 @@ Help:       This option enables high resolution timer support. If your
 
 Type:       boolean
 
-Choice:     built-in -*-
+Choice:     excluded [ ]
 
-Reason:     Forcefully included by SCHED_MUQSS. Generally, you want to include this option.
+Reason:     You can safely exclude this option if you're sure that no
+            application requires it.
+
+            Include this option if power saving is one of your concerns.
 ```
 <h3>CPU/Task time and stats accounting  ---></h3>
 <h3>Cputime accounting (Simple tick based cputime accounting)  ---></h3>
@@ -414,9 +418,9 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     The other option CONFIG_VIRT_CPU_ACCOUNTING_GEN is only useful at the moment
-            for those who are working on the full dynticks subsystem development, which leaves
-            this option to choose.
+Reason:     It's recommended that you include this option as the other one
+            CONFIG_VIRT_CPU_ACCOUNTING_GEN is only useful at the moment
+            for those who are working on the full dynticks subsystem development.
 ```
 <h3>[ ] Fine granularity task level IRQ time accounting</h3>
 ```none
