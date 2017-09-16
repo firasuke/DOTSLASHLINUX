@@ -1552,47 +1552,6 @@ Reason:     If you've followed the guide above, then a simple:
 
             should tell you whether you need this option or not.
 ```
-<h3><&ast;> TPM Hardware Support  ---></h3>
-```none
-Symbol:     CONFIG_TCG_TPM
-
-Help:       If you have a TPM security chip in your system, which
-            implements the Trusted Computing Group's specification,
-            say Yes and it will be accessible from within Linux.  For
-            more information see <http://www.trustedcomputinggroup.org>.
-            An implementation of the Trusted Software Stack (TSS), the
-            userspace enablement piece of the specification, can be
-            obtained at: <http://sourceforge.net/projects/trousers>.  To
-            compile this driver as a module, choose M here; the module
-            will be called tpm. If unsure, say N.
-            Notes:
-            1) For more TPM drivers enable CONFIG_PNP, CONFIG_ACPI
-            and CONFIG_PNPACPI.
-            2) Without ACPI enabled, the BIOS event log won't be accessible,
-            which is required to validate the PCR 0-7 values.
-
-Type:       tristate
-
-Choice:     built-in <*>
-
-Reason:     
-```
-<h3><&ast;>   TPM Interface Specification 1.2 Interface / TPM 2.0 FIFO Interface</h3>
-```none
-Symbol:     CONFIG_TCG_TIS
-
-Help:       If you have a TPM security chip that is compliant with the
-            TCG TIS 1.2 TPM specification (TPM1.2) or the TCG PTP FIFO
-            specification (TPM2.0) say Yes and it will be accessible from
-            within Linux. To compile this driver as a module, choose  M here;
-            the module will be called tpm_tis.
-
-Type:       tristate
-
-Choice:     built-in <*>
-
-Reason:     
-```
 <h3>I2C support  ---></h3>
 <h3>-&ast;- I2C support</h3>
 ```none
