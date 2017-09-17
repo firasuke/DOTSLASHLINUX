@@ -905,8 +905,7 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this option safely, and my system didn't break, and I didn't
-            recieve ACPI warnings.
+Reason:     
 ```
 <h3>[ ]   Sysctl syscall support</h3>
 ```none

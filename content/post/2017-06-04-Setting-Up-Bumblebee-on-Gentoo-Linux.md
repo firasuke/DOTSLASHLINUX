@@ -264,6 +264,26 @@ Now simply reboot and you should be good to go!
 shutdown -r now
 ```
 <hr/>
+<h3>9- Modifying /etc/modprobe.d/nvidia-rmmod.conf</h3>
+<br/>
+In order for bbswitch to work properly, the nvidia module should be removed with ease without spitting any problems. Therfore, we've disable the <mark>kms</mark> and <mark>uvm</mark> USE flags of <mark>nvidia-drivers</mark>.
+<br/>
+<br/>
+Now we should only have the <mark>nvidia</mark> module, no <mark>nvidia-uvm</mark>, no <mark>nvidia-drm</mark>, no <mark>nvidia-modeset</mark>. We need to instruct <mark>modprobe -r nvidia </mark> to remove only <mark>nvidia</mark> and nothing else (as there's nothing else to be removed). So fire up your favorite editor and edit <mark>/etc/modprobe.d/nvidia-rmmod.conf</mark> and run:
+```none
+vim /etc/modprobe.d/nvidia-rmmod.conf
+```
+```none
+# Nvidia UVM support
+
+remove nvidia modprobe -r --ignore-remove nvidia-drm nvidia-modeset nvidia-uvm nvidia
+```
+<br/>
+and remove every other module except for <mark>nvidia</mark> so the end file should look like this:
+```none
+remove nvidia modprobe -r --ignore-remove nvidia
+```
+<hr/>
 <h3>(Optional) Checking if bumblebee is Working</h3>
 <br/>
 If you've followed along with this article then your bumblebee setup should be working 100%. I recommend using <mark>primusrun</mark> instead of <mark>optirun</mark> since optirun tends to spit out more errors than primusrun (but after our configuration they should both be using the primus bridge and provide similar performance.
