@@ -83,7 +83,11 @@ lsmod > /mnt/mountedblock/home/$USER/SystemRescueCd/lsmod.txt
 
 dmesg > /mnt/mountedblock/home/$USER/SystemRescueCd/dmesg.txt
 
+lscpu > /mnt/mountedblock/home/$USER/SystemRescueCd/lscpu.txt
 cat /proc/cpuinfo > /mnt/mountedblock/home/$USER/SystemRescueCd/cpuinfo.txt
+
+cpuinfo2cpuflags-x86 > /mnt/mountedblock/home/$USER/SystemRescueCd/cpuinfo2cpuflags.txt
+cpuif2cpuflags > /mnt/mountedblock/home/$USER/SystemRescueCd/cpuid2cpuflags.txt
 
 zcat /proc/config.gz > /mnt/mountedblock/home/$USER/SystemRescueCd/SysRescueCdKernel.config
 
