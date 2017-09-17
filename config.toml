@@ -13,7 +13,7 @@ disableLiveReload =           false
 enableGitInfo =               false
 enableRobotsTXT =             false
 disableHugoGeneratorInject =  false
-disableKinds = ["sitemap", "robotsTXT"]
+disableKinds = ["robotsTXT"]
 disablePathToLower =          false
 enableEmoji =                 false
 enableMissingTranslationPlaceholders = false
@@ -41,3 +41,6 @@ watch =                       true
 [Permalinks]
   page = "/:filename/"
   post = "/:year/:month/:day/:slug/"
+
+[sitemap]
+  changefreq = "always"
