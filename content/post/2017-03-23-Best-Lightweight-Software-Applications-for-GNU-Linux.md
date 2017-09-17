@@ -149,7 +149,7 @@ Recordmydesktop is slightly lighter than simplescreenrecorder but doesn't have a
 Available for CLI usage and has two GUI flavors (GTK & QT), transmission is a lightweight bittorrent client available for GNU/Linux.
 <br/>
 <hr/>
-<h3>22- Archive Manager: <a href="xarchiver.sourceforge.net/" target="_blank">xarchiver</a></h3>
+<h3>22- Archive Manager: <a href="http://xarchiver.sourceforge.net/" target="_blank">xarchiver</a></h3>
 Xarchiver supports <mark>7-zip, arj, bzip2, gzip, rar, lha, lzma, lzop, deb, rpm, tar and zip</mark>.
 <br/>
 <hr/>
@@ -165,7 +165,7 @@ If you're in a terminal emulator or in a tty use irssi, otherwise use xchat. The
 True lighttpd is the lightest available http server out there for GNU/Linux, but nginx outperforms it under heavy load.
 <br/>
 <hr/>
-<h3>26- FTP Server: <a href="vsftpd.beasts.org/" target="_blank">vsftpd</a></h3>
+<h3>26- FTP Server: <a href="https://security.appspot.com/vsftpd.html" target="_blank">vsftpd</a></h3>
 Very Secure FTP Daemon (or vsftpd for short) is a tiny, stable and secure FTP daemon for GNU/Linux. It has a simple configuration file and is super fast.
 <br/>
 <hr/>

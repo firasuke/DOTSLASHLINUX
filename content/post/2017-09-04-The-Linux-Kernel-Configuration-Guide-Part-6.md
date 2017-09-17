@@ -593,7 +593,7 @@ Reason:     I excluded this option as I'm not building the kernel for an old Del
 Don't forget to check DOTSLASHLINUX's guide on building microcode updates directly into the linux kernel to eliminate the need of using a detached initrd (if space constrained on embedded perhaps):
 <br/>
 <br/>
-<a href="https://www.dotslashlinux.com/2017/04/30/building-intel-cpu-microcode-directly-into-the-linux-kernel" target="_blank">Building Intel CPU Microcode Updates Directly into the Linux Kernel</a>
+<a href="https://www.dotslashlinux.com/2017/04/30/building-intel-cpu-microcode-updates-directly-into-the-linux-kernel/" target="_blank">Building Intel CPU Microcode Updates Directly into the Linux Kernel</a>
 ```none
 Symbol:     CONFIG_MICROCODE
 
