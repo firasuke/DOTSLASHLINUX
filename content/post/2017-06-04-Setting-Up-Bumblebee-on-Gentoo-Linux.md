@@ -273,7 +273,7 @@ Now we should only have the <mark>nvidia</mark> module, no <mark>nvidia-uvm</mar
 ```none
 vim /etc/modprobe.d/nvidia-rmmod.conf
 ```
-```none
+```bash
 # Nvidia UVM support
 
 remove nvidia modprobe -r --ignore-remove nvidia-drm nvidia-modeset nvidia-uvm nvidia
@@ -285,17 +285,6 @@ remove nvidia modprobe -r --ignore-remove nvidia
 ```
 <br/>
 This is an extremely important step as attempting to remove the nvidia module without it will result in errors.
-<hr/>
-<h3>(Optional) Checking if bumblebee is Working</h3>
-<br/>
-If you've followed along with this article then your bumblebee setup should be working 100%. I recommend using <mark>primusrun</mark> instead of <mark>optirun</mark> since optirun tends to spit out more errors than primusrun (but after our configuration they should both be using the primus bridge and provide similar performance.
-<br/>
-<br/>
-To test our bumblebee configuration, install the package <mark>mesa-progs</mark>:
-```none
-emerge -av mesa-progs
-```
-<br/>
 <hr/>
 <h3>(Optional) Checking if bumblebee is Working</h3>
 <br/>
