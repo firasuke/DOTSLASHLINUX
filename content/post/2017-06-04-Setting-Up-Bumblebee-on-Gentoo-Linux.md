@@ -266,10 +266,10 @@ shutdown -r now
 <hr/>
 <h3>9- Modifying /etc/modprobe.d/nvidia-rmmod.conf</h3>
 <br/>
-In order for bbswitch to work properly, the nvidia module should be removed with ease without spitting any problems. Therfore, we've disable the <mark>kms</mark> and <mark>uvm</mark> USE flags of <mark>nvidia-drivers</mark>.
+In order for bbswitch to work properly, the nvidia module should be removed with ease without spitting any errors. Therefore, we've disable the <mark>kms</mark> and <mark>uvm</mark> USE flags of <mark>nvidia-drivers</mark>.
 <br/>
 <br/>
-Now we should only have the <mark>nvidia</mark> module, no <mark>nvidia-uvm</mark>, no <mark>nvidia-drm</mark>, no <mark>nvidia-modeset</mark>. We need to instruct <mark>modprobe -r nvidia </mark> to remove only <mark>nvidia</mark> and nothing else (as there's nothing else to be removed). So fire up your favorite editor and edit <mark>/etc/modprobe.d/nvidia-rmmod.conf</mark> and run:
+Now we should only have the <mark>nvidia</mark> module, no <mark>nvidia-uvm</mark>, no <mark>nvidia-drm</mark>, no <mark>nvidia-modeset</mark>. We need to instruct <mark>modprobe -r nvidia </mark> to remove only <mark>nvidia</mark> and nothing else (as there's nothing else to be removed). So fire up your favorite editor and edit <mark>/etc/modprobe.d/nvidia-rmmod.conf</mark>:
 ```none
 vim /etc/modprobe.d/nvidia-rmmod.conf
 ```
@@ -283,6 +283,19 @@ and remove every other module except for <mark>nvidia</mark> so the end file sho
 ```none
 remove nvidia modprobe -r --ignore-remove nvidia
 ```
+<br/>
+This is an extremely important step as attempting to remove the nvidia module without it will result in errors.
+<hr/>
+<h3>(Optional) Checking if bumblebee is Working</h3>
+<br/>
+If you've followed along with this article then your bumblebee setup should be working 100%. I recommend using <mark>primusrun</mark> instead of <mark>optirun</mark> since optirun tends to spit out more errors than primusrun (but after our configuration they should both be using the primus bridge and provide similar performance.
+<br/>
+<br/>
+To test our bumblebee configuration, install the package <mark>mesa-progs</mark>:
+```none
+emerge -av mesa-progs
+```
+<br/>
 <hr/>
 <h3>(Optional) Checking if bumblebee is Working</h3>
 <br/>
@@ -445,24 +458,4 @@ vgaarb: this pci device is not a vga device
 <br/>
 Make sure that <mark>CONFIG_VGA_ARB=y</mark> and <mark>CONFIG_VGA_ARB_MAX_GPUS=2</mark>. If you're still seeing this error (even though it was fixed in 3.10 according to this <a href="https://bugzilla.kernel.org/show_bug.cgi?id=63641" target="_blank">Bugzilla Kernel 63641</a> and <a href="https://github.com/Bumblebee-Project/Bumblebee/issues/159" target="_blank">Bumblebee Github Issue #159</a>), you can try to patch your kernel with this <a href="https://pastebin.com/wpmFi38k" target="_blank">vgaarb patch</a> by running this (after downloading the patch file of course):
 ```none
-patch -Np1 -i patch_file.patch
-```
-<hr/>
-<h3>Conclusion</h3>
-<br/>
-Congratulations! No need to go back to Arch Linux now! You have a working bumblebee configuration on Gentoo Linux. One important thing to note though is that you may get some errors regarding the secondary gpu not starting or some segfaults, simply wait a few seconds and rerun what you're executing and it'll run.
-<br/>
-<br/>
-Just keep in mind that since the card is being turned ON and OFF, you may want to wait a few seconds before and after the execution of any code using bumblebee to prevent errors from popping up.
-<br/>
-<br/>
-Another important thing to keep note of is that whenever you do a major change in your kernel configuration remember to recompile the nvidia-drivers (and the kernel OFC :P), otherwise expect a ton of errors.
-<br/>
-<br/>
-Thanks for reading the article! Have a great day!
-<hr/>
-<h3>Chinese Translation</h3>
-One of DOTSLASHLINUX's followers from china 杨鑫 (Yang Mame), provided chinese translation of this guide on his blog.
-<br/>
-<br/>
 To read this guide in chinese <a href="https://blog.yangmame.top/2017/08/23/gentoo%E5%8F%8C%E6%98%BE%E5%8D%A1%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" target="_blank">click here</a>.
