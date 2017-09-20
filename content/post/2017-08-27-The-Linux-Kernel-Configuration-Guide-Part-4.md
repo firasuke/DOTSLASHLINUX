@@ -34,16 +34,15 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     I recommend that you build [*] all your necessary modules into the kernel
-            (if not all of them), I included loadable modules support as it's
-            required to set up a working bumblebee configuration (which I made
-            a guide on as well). I needed them as well for virtualbox-modules.
+Reason:     It's highly recommended that you include this option in your kernel
+            in order to get a working bumblebee setup on an optimus based laptop.
 
-            If you had a lot of modules (you're compiling a kernel to boot on
-            several devices, or live booting perhaps), then keeping them as loadable
-            modules [M] is better than building them in [*] as this will help
-            reduce the kernel size a lot, and will cause lesser overhead as
-            only modules for the detected devices will be loaded.
+            DOTSLASHLINUX has a guide on how to setup bumblebee on Gentoo Linux:
+
+                https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/
+
+            You can safely exclude this option if you're not on a optimus based laptop
+            and have built all modules directly into your kernel.
 ```
 <h3>[ ]   Forced module loading</h3>
 ```none
@@ -57,8 +56,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this option as forcing modules to load is dangerous and not
-            recommended at all.
+Reason:     You can safely exclude this option as forcing modules to load is dangerous
+            and not recommended at all.
 ```
 <h3>[&ast;]   Module unloading</h3>
 ```none
@@ -73,13 +72,15 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     I had to include this option in order for bumblebee to work. Not being
-            able to unload the nvidia.ko module will keep the card ON all time and
-            will increase your system's temperature by at least 10-15C.
+Reason:     It's highly recommended that you include this option in your kernel
+            in order to get a working bumblebee setup on an optimus based laptop.
 
-            If your system is relatively simple (you don't have many modules), 
-            and you have no need for loading and unloading modules, then you can
-            disable the entire loadable modules option and build all modules into the kernel.
+            DOTSLASHLINUX has a guide on how to setup bumblebee on Gentoo Linux:
+
+                https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/
+
+            You can safely exclude this option if you're not on a optimus based laptop
+            and have built all modules directly into your kernel.
 ```
 <h3>[ ]     Forced module unloading</h3>
 ```none
@@ -96,10 +97,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     This is even more dangerous than CONFIG_MODULE_FORCE_LOAD that is if you
-            don't know what you are doing.
-
-            Exclude this option unless you're a kernel developer.
+Reason:     You can safely exclude this option as it's even more dangerous than
+            CONFIG_MODULE_FORCE_LOAD, and it's intended for developing purposes.
 ```
 <h3>[ ]   Module versioning support</h3>
 ```none
@@ -116,9 +115,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I'll be using the latest modules provided by my kernel's edition
-            and have no need for previous module versions; therefore, I excluded
-            this option.
+Reason:     You can safely exclude this option as it's intended for testing
+            and debugging purposes.
 ```
 <h3>[ ]   Source checksum for all modules</h3>
 ```none
@@ -136,8 +134,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I didn't need this option so I excluded it. I tend to keep my modules
-            and their related options simple as I don't have that many to begin with.
+Reason:     You can safely exclude this option as it's intended for maintaining
+            purposes.
 ```
 <h3>[ ]   Module signature verification</h3>
 ```none
@@ -160,8 +158,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I didn't need this option so I excluded it. I tend to keep my modules
-            and their related options simple as I don't have that many to begin with.
+Reason:     You can safely exclude this option as it's intended for maintaining
+            purposes.
 ```
 <h3>[ ]   Compress modules on installation</h3>
 ```none
@@ -186,11 +184,10 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this option as decompressing the kernel modules will slow
-            down boot time (yes I know it's almost negligible but it's in the ms
-            range).
+Reason:     You can safely exclude this option as compressing your loadable
+            kernel modules will slightly increase your boot time.
 
-            Include this option if you're space restricted.
+            Include this option only if you're space restricted.
 ```
 <h3>[ ]   Trim unused exported kernel symbols</h3>
 ```none
@@ -212,9 +209,16 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I was tempted to include this option, but then I read that the
-            nvidia.ko module is considered out-of-tree module and decided
-            to exclude this option.
+Reason:     You can safely exclude this option as nvidia.ko kernel module requires
+            these symbols in order to get a working bumblebee setup on an optimus
+            based laptop.
+
+            DOTSLASHLINUX has a guide on how to setup bumblebee on Gentoo Linux:
+
+                https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/
+            
+            It's not recommended that you include this option, but you can try
+            and see if it works for you.
 ```
 <hr/>
 <h3>Chinese Translation</h3>
