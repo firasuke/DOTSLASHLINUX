@@ -1198,7 +1198,7 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     You can safely exclude this option.
+Reason:     You can safely exclude this option to lower system overhead.
 ```
 <h3>[ ] Enable PCI quirk workarounds</h3>
 ```none
@@ -1234,7 +1234,7 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     You can safely exclude this option.
+Reason:     You can safely exclude this option to lower system overhead.
 ```
 <h3>[ ] Embedded system</h3>
 ```none
@@ -1263,8 +1263,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this option since my target machine doesn't have a PC/104 bus.
-            (This is mainly for embedded applications).
+Reason:     You can safely exclude this option if you're not building this kernel
+            for an embedded system with a PC/104 bus.
 ```
 <h3>Kernel Performance Events And Counters  ---></h3>
 <h3>-&ast;- Kernel performance events and counters</h3>
@@ -1297,7 +1297,9 @@ Type:       boolean
 
 Choice:     built-in -*-
 
-Reason:     Forcibly included by many important options.
+Reason:     It's highly recommended that you include this option in your kernel
+            (that is if it isn't already forcibly included by CONFIG_X86, CONFIG_NET
+            and CONFIG_MULTIUSER).
 ```
 <h3>[ ]   Debug: use vmalloc to back perf mmap() buffers</h3>
 ```none
@@ -1314,7 +1316,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this option as it's used for debugging purposes.
+Reason:     You can safely exclude this option as it's intended for debugging
+            purposes.
 ```
 <h3>[ ] Enable VM event counters for /proc/vmstat</h3>
 ```none
@@ -1329,11 +1332,7 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this option for a more minimal kernel and for lesser
-            system overhead.
-          
-            If you think I shouldn't be doing this please post a comment below
-            or send me an email explaining why.
+Reason:     You can safely exclude this option to lower system overhead.
 ```
 <h3>[ ] Enable SLUB debugging support</h3>
 ```none
@@ -1348,8 +1347,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this as it's useful for debugging support for lesser
-            overhead.
+Reason:     You can safely exclude this option as it's intended for debugging
+            purposes.
 ```
 <h3>[&ast;] Disable heap randomization</h3>
 ```none
@@ -1367,9 +1366,10 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     This time including an option disables a feature for lesser overhead.
+Reason:     You can safely include this option in your kernel to lower system overhead.
 ```
 <h3>Choose SLAB allocator (SLUB (Unqueued Allocator))  ---></h3>
+<h3>(X) SLUB (Unqueued Allocator)</h3>
 ```none
 Symbol:     CONFIG_SLUB
 
@@ -1382,13 +1382,13 @@ Help:       SLUB is a slab allocator that minimizes cache line usage
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in (X)
 
-Reason:     CONFIG_SLAB is super old and irrelevant nowadays and CONFIG_SLOB
+Reason:     It's highly recommended that you include this option in your kernel
+            as CONFIG_SLAB is super old and irrelevant nowadays and CONFIG_SLOB
             is for embedded systems with limited memory and storage space 
             (and will perform really bad when used on a regular desktop/laptop
-            as it may take hours extracting a package), which leaves CONFIG_SLUB
-            and it performs perfectly.
+            as it may take hours to extract a big package).
 ```
 <h3>[ ] SLAB freelist randomization</h3>
 ```none
@@ -1402,9 +1402,9 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this option because it's SLAB related.
+Reason:     You can safely exclude this option as it's related to CONFIG_SLAB.
 ```
-<h3>[ ] SLUB per cpu partial cache</h3>
+<h3>[&ast;] SLUB per cpu partial cache</h3>
 ```none
 Symbol:     CONFIG_SLUB_CPU_PARTIAL
 
@@ -1416,9 +1416,12 @@ Help:       Per cpu partial caches accellerate objects allocation and freeing
 
 Type:       boolean
 
-Choice:     excluded [ ]
+Choice:     built-in [*]
 
-Reason:     I excluded this option because I need a low-latency system.
+Reason:     It's recommended that you include this option as it adds a performance
+            boost and speeds up object allocation and freeing.
+
+            Exclude only if you're concerned about latency.
 ```
 <h3>[ ] Profiling support</h3>
 ```none
@@ -1431,8 +1434,7 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded profiling support for a more minimal kernel and for lesser
-            overhead.
+Reason:     You can safely exclude this option to lower system overhead.
 ```
 <h3>[ ] Kprobes</h3>
 ```none
@@ -1448,8 +1450,7 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this option as it's used for debugging-testing the kernel
-            for lesser system overhead.
+Reason:     You can safely exclude this option to lower system overhead.
 ```
 <h3>[ ] Optimize very unlikely/likely branches</h3>
 ```none
@@ -1480,11 +1481,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this option as I didn't see any real advantage from it
-            and it didn't break my system.
-
-            If you think I shouldn't be doing this please post a comment below
-            or send me an email explaining why.
+Reason:     You can safely exclude this option as it's intended for debugging
+            purposes.
 ```
 <h3>[ ] GCC plugins  ----</h3>
 ```none
@@ -1499,11 +1497,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this option because I don't have any need for extra loadable modules
-            as my goal is a minimal kernel with lesser system overhead and low latency.
-          
-            If you think I shouldn't be doing this please post a comment below
-            or send me an email explaining why.
+Reason:     You can safely exclude this option as you probably won't need those extra
+            modules provided.
 ```
 <h3>Stack Protector buffer overflow detection (None)  ---></h3>
 ```none
@@ -1515,9 +1510,7 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     I excluded stack-protector gcc feature because it adds some system overhead.
-          
-            If you wanted a more secure kernel, you should look into including it.
+Reason:     You can safely exclude this option to lower system overhead.
 ```
 <h3>(28) Number of bits to use for ASLR of mmap base address</h3>
 ```none
@@ -1534,6 +1527,9 @@ Help:       This value can be used to select the number of bits to use to
 Type:       integer
 
 Choice:     (28) default
+
+Reason:     You can safely leave the value of this option to its default value
+            of (28).
 ```
 <h3>(8) Number of bits to use for ASLR of mmap base address for compatible applications</h3>
 ```none
@@ -1551,6 +1547,9 @@ Help:       This value can be used to select the number of bits to use to
 Type:       integer
 
 Choice:     (8) default
+
+Reason:     You can safely leave the value of this option to its default value
+            of (8).
 ```
 <h3>[ ] Use a virtually-mapped stack</h3>
 ```none
@@ -1569,12 +1568,7 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this option for a more minimal kernel and for lesser
-            system overhead. You should include it if you want a more secure
-            kernel.
-          
-            If you think I shouldn't be doing this please post a comment below
-            or send me an email explaining why.
+Reason:     You can safely exclude this option to lower system overhead.
 ```
 <h3>[ ] Perform full reference count validation at the expense of speed</h3>
 ```none
@@ -1590,11 +1584,7 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     You can safely exclude this option as it adds a slight overhead to your
-            system.
-
-            Include this option if you want more security against similar security
-            flaw exploits.
+Reason:     You can safely exclude this option to lower system overhead.
 ```
 <h3>GCOV-based kernel profiling  ---></h3>
 <h3>[ ] Enable gcov-based kernel profiling</h3>
@@ -1631,7 +1621,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded it because I don't want profiling support on my system.
+Reason:     You can safely exclude this option if you've already excluded
+            CONFIG_PROFILING to lower system overhead.
 ```
 <hr/>
 <h3>Chinese Translation</h3>
