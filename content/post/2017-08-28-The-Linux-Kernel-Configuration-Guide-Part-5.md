@@ -32,15 +32,13 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     This option is mandatory for using block devices. You won't be able
+Reason:     It's highly recommended that you include this option in your kernel
+            since it's mandatory for using block devices as you won't be able
             to mount (or even use) your disks or any type of SCSI/USB storage and
             some filesystems will become unavailable as well.
 
             It's also required by CONFIG_GENTOO_LINUX, CONFIG_GENTOO_LINUX_UDEV
             and CONFIG_GENTOO_LINUX_INIT_SYSTEMD.
-
-            You almost always have to include this option in your kernel unless
-            you're building it for a custom embedded device.
 ```
 <h3>[&ast;]   Block layer SG support v4</h3>
 ```none
@@ -64,11 +62,9 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     It's required by CONFIG_BLOCK, CONFIG_GENTOO_LINUX, 
+Reason:     It's highly recommended that you include this option in your kernel
+            as it's required by CONFIG_BLOCK, CONFIG_GENTOO_LINUX, 
             CONFIG_GENTOO_LINUX_UDEV and CONFIG_GENTOO_LINUX_INIT_SYSTEMD.
-
-            Generally, you'd want to include this option if CONFIG_BLOCK is
-            included as well.
 ```
 <h3>[ ]   Block layer SG support v4 helper lib</h3>
 ```none
@@ -83,7 +79,7 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this option because I don't need it.
+Reason:     You can safely exclude this option to lower system overhead.
 ```
 <h3>[ ]   Block layer data integrity support</h3>
 ```none
@@ -102,10 +98,10 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this option as well because I don't need it.
+Reason:     You can safely exclude this option to lower system overhead.
 
-            You can include this for better protected data and a more
-            secure system.
+            Include only if you have such storage devices for security
+            purposes.
 ```
 <h3>[ ]   Zoned block device support</h3>
 ```none
@@ -120,7 +116,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this option as I don't have a ZAC or ZBC storage device.
+Reason:     You can safely exclude this option if you don't have a ZAC or
+            ZBC storage device.
 ```
 <h3>[ ]   Block device command line partition parser</h3>
 ```none
@@ -137,8 +134,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     Again I've excluded this option as I'm not building the kernel for an
-            embedded device.
+Reason:     You can safely exclude this option to lower system overhead as it's
+            intended for embedded devices.
 ```
 <h3>[ ]   Enable support for block device writeback throttling</h3>
 ```none
@@ -176,8 +173,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this option because it's a debugging option that I didn't
-            need.
+Reason:     You can safely exclude this option as it's intended for debugging
+            purposes.
 ```
 <h3>[ ]   Logic for interfacing with Opal enabled SEDs</h3>
 ```none
@@ -191,7 +188,7 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this option as my hard drive doesn't support Opal.
+Reason:     You can safely exclude this option if your hard drive doesn't support Opal.
             
             You can check for opal support using sys-block/sedutil.
 ```
@@ -214,8 +211,8 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     Include this if you want to user mbr (msdos) or gpt partition
-            or any other listed partition table.
+Reason:     It's highly recommended that you include this if you want to use mbr (msdos)
+            or gpt partition or any other listed partition table.
 ```
 <h3>[&ast;]   PC BIOS (MSDOS partition tables) support</h3>
 ```none
@@ -227,63 +224,42 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     I excluded every other partition table except mbr(msdos).
-            
-            Since my laptop is from late 2013, my motherboard's has bios
-            support and basic efi support. The efi is really buggy on my 
-            laptop as it gives me a 5 sec "medium not found" until it boots
-            normally.
+Reason:     It's highly recommended that you include this option if your system has
+            a BIOS and UEFI, and your UEFI implementation was buggy (especially on
+            laptops from late 2013).
+
+            You can safely exclude this option and include CONFIG_EFI_PARTITION instead
+            if your system's UEFI implementation was working properly.
 ```
 <h3>IO Schedulers  ---></h3>
-<h3>Default I/O scheduler (BFQ)  ---></h3>
+<h3>Default I/O scheduler (CFQ)  ---></h3>
 ```none
 Help:       Select the I/O scheduler which will be used by default for all
             block devices.
 ```
-<h3>(X) BFQ</h3>
+<h3><&ast;> CFQ I/O scheduler</h3>
 ```none
-Symbol:     CONFIG_DEFAULT_BFQ
+Symbol:     CONFIG_IOSCHED_CFQ
 
-Help:       There is no help available for this option.
+Help:       The CFQ I/O scheduler tries to distribute bandwidth equally
+            among all processes in the system. It should provide a fair
+            and low latency working environment, suitable for both desktop
+            and server systems.
 
-Type:       boolean
-
-Choice:     built-in (X)
-
-Reason:     If low latency and maximum responsiveness is what you want
-            go for MuQSS/BFQ.
-            
-            However, that's not enought to enable BFQ, you need to include
-            CONFIG_SCSI_MQ_DEFAULT (that is if it wasn't already forcibly
-            included by CONFIG_DEFAULT_BFQ) and you need to add this UDEV
-            rule in order to pick BFQ at boot time (otherwise it'll default
-            to none if all other schedulers are excluded). Simply run:
-                
-                echo 'ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/scheduler}="bfq"' > /etc/udev/rules.d/20-block.rules
-
-            If you want maximum throughput (performance) and you're on a 
-            multicore (or maybe multicpu system) then CFS/CFQ is what you
-            need.
-```
-<h3><*> BFQ I/O scheduler</h3>
-```none
-Symbol:     CONFIG_IOSCHED_BFQ
-
-Help:       
-            BFQ I/O scheduler for BLK-MQ. BFQ distributes the bandwidth of
-            of the device among all processes according to their weights,
-            regardless of the device parameters and with any workload. It
-            also guarantees a low latency to interactive and soft
-            real-time applications.  Details in
-            Documentation/block/bfq-iosched.txt 
+            This is the default I/O scheduler.
 
 Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     Wow this is going to cause a lot of flame wars. CFQ is my all 
+Reason:     It's highly recommended that you include this option in your kernel
+            as CFQ is the best I/O scheduler for throughput and performance
+            (especially on HDDs and alongside CFS on systems with a CPU that has
+            more than 2 cores).
+            
+            This sure is going to cause a lot of flame wars. CFQ is my all 
             time favorite I/O scheduler. It steadily holds its place amongst
-            other I/O schedulers including the new kyber and mq-deadline
+            other I/O schedulers including the newly added BFQ, kyber and mq-deadline
             schedulers.
 
             When I started with gentoo, my goal was primarly throughput,
@@ -304,20 +280,26 @@ Reason:     Wow this is going to cause a lot of flame wars. CFQ is my all
             60%. I was thinking that was because I had my other web browser open
             while emerging, so I tried emerging chromium again and went afk so
             only the emerge job was running. And it froze at 80%. So I returned
-            to CFQ with 1000hz timer frequency and couldn't be any happier!
-
-            But recently I switched again to MuQSS/BFQ with 100Hz timer frequency
-            and things are going pretty well latency wise. I can browse the web
-            with ease and do another tasks while waiting for my 9 job emerge to
-            finish.
+            to CFQ with 100hz timer frequency and couldn't be any happier!
             
             For normal desktop/laptop users, CFQ is the best I/O scheduler and it
             shines alongside CFS on systems with more than 2 cores; therefore, include 
             CONFIG_IOSCHED_CFQ and exclude everything else.
+```
+<h3>(X) CFQ</h3>
+```none
+Symbol:     CONFIG_DEFAULT_CFQ
 
-            However, if you're on a system like gentoo and you do a lot of compiling
-            then responsiveness is a must and BFQ works perfectly for that. So simply
-            include CONFIG_IOSCHED_BFQ and exclude everything else.
+Help:       There is no help available for this option.
+
+Type:       boolean
+
+Choice:     built-in (X)
+
+Reason:     It's highly recommended that you include this option in your kernel
+            as CFQ is the best I/O scheduler for throughput and performance
+            (especially on HDDs and alongside CFS on systems with a CPU that has
+            more than 2 cores).
 ```
 <hr/>
 <h3>Chinese Translation</h3>
