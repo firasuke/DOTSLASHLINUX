@@ -159,7 +159,7 @@ Choice:     excluded [ ]
 Reason:     You can safely exclude this option if you're using OpenRC or runit as your
             init system.
             
-            Include this option only if you're using systemd as your init system.
+            Include this option only if you're using systemd instead.
 ```
 <hr/>
 <h3>Chinese Translation</h3>

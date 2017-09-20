@@ -126,23 +126,27 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     I'm basically against compressing your kernel on setups that 
-            use fast storage solutions, but since I'm on a slow 5400rpm HDD
-            I had to go with LZ4 compression method as its decompression
-            speed is the fastest, and decompression speed is what matters when 
-            measuring boot times.
+Reason:     It's highly recommended that you include this option in your
+            kernel as LZ4 provides the fastest decompression speed out of
+            all compression methods and decompression speed is what matters
+            when measuring boot times.
 
-            In some case using an uncompressed kernel slowed boot time down 
-            by 300-500ms, so I had to go with LZ4. If your storage is extremely
-            fast then I suggest you use an uncompressed kernel (you can find 
-            several patches online for building an uncompressed kernel, I'll be 
-            talking about applying patches to the kernel once I'm done with this 
-            series, until then you can experiment on your own =D).
+            Include this option if you're on a slow storage system (a 5400rpm
+            HDD for example).
 
-            Eexclude every other compression method. If you want your built 
-            kernel to have the smallest size possible then use the XZ compression
-            method. Just make sure that you have the proper tools for compression
-            to prevent errors from popping up.
+            If you're using an extremely fast storage system then you may tru
+            CONFIG_KERNEL_XZ as it provides the smallest kernel size out of all
+            compression methods and it may (although rarely) speed up boot time
+            compared to LZ4 by an extremely small amount of time (less than 100ms).
+
+            Furthermore, in some case using an uncompressed kernel slowed boot time down 
+            by 300-500ms. Again if your storage is extremely fast then I suggest you use
+            an uncompressed kernel (you can find several patches online for building an
+            uncompressed kernel and I'll be talking about applying patches to the linux kernel
+            really soon).
+
+            Exclude every other compression method and make sure that you have the
+            proper tools for compression to prevent errors from popping up.
 ```
 <h3>(DOTSLASHLINUX) Default hostname</h3>
 ```none
