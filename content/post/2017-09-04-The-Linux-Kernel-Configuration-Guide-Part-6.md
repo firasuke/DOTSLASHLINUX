@@ -24,9 +24,15 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     Recent systems (mainly post 2012) have almost no devices with less than
-            32-bit addressing; however, this option is required by x11-drivers/nvidia-drivers
-            so I included it.
+Reason:     It's highly recommended that you include this option as it's required by
+            x11-drivers/nvidia-drivers in order to get a working bumblebee setup on
+            an optimus based laptop.
+
+            DOTSLASHLINUX has a guide on how to setup bumblebee on Gentoo Linux:
+
+                https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/
+
+            You can safely exclude this option if you're not on a optimus based laptop.
 ```
 <h3>[&ast;] Symmetric multi-processing support</h3>
 ```none
@@ -61,27 +67,10 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     My cpu has 4 cores and 8 threads, but it's basically a single cpu so
-            I should exclude this option right? WRONG... The documentation actually 
-            meant cores,so if you had for example a single cpu with 1 core and 2 
-            threads you should enable this as 1*2 is 2 logical cores, otherwise
-            only 1 core will be detected.
-```
-<h3>[&ast;] Support x2apic</h3>
-```none
-Symbol:     CONFIG_X86_X2APIC
-
-Help:       This enables x2apic support on CPUs that have this feature.
-            This allows 32-bit apic IDs (so it can support very large systems),
-            and accesses the local apic via MSRs not via mmio.
-
-            If you don't know what to do here, say N.
-
-Type:       boolean
-
-Choice:     built-in [*]
-
-Reason:     My cpu supports x2apic, so I included this feature.
+Reason:     It's highly recommended that you include this option in your kernel as
+            The Help that came with this option actually meant cores, so if you had
+            for example a single cpu with 1 core and 2 threads you should enable this
+            as 1*2 is 2 logical cores, otherwise only 1 core will be detected.
 ```
 <h3>[ ] Enable MPS table</h3>
 ```none
@@ -94,7 +83,7 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     My system isn't that old (late 2013) so I safely excluded this option.
+Reason:     You can safely exclude this option if you're using a modern system.
 ```
 <h3>[ ] Intel Resource Director Technology Allocation support</h3>
 ```none
