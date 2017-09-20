@@ -663,7 +663,7 @@ Type:       boolean
 Choice:     excluded [ ]
 
 Reason:     You can safely exclude this option if you're not using Gentoo Linux
-            as CGROUPS are considered evil by many users.
+            as CGROUPS are considered 'evil' by many users.
 
             If you're on Gentoo Linux, you'll have to first exclude
             CONFIG_GENTOO_LINUX_PORTAGE.
@@ -755,7 +755,7 @@ Type:       boolean
 Choice:     excluded [ ]
 
 Reason:     You can safely exclude this option if you're using a modern up-to-date
-            (rolling-release) distribution.
+            (possibly a rolling-release) distribution.
 ```
 <h3>-&ast;- Kernel->user space relay support (formerly relayfs)</h3>
 ```none
@@ -778,10 +778,6 @@ Reason:     It's highly recommended that you include this option in your kernel
             CONFIG_DRM_I915, CONFIG_WLAN and a lot of important options. 
 ```
 <h3>[ ] Initial RAM filesystem and RAM disk (initramfs/initrd) support</h3>
-Kindly check this: <a href="https://www.dotslashlinux.com/2017/04/29/booting-the-linux-kernel-without-an-initrd-initramfs/" target="_blank">Booting the Linux Kernel Without an initrd/initramfs</a>
-<br/>
-<br/>
-and this: <a href="https://www.dotslashlinux.com/2017/04/30/building-intel-cpu-microcode-updates-directly-into-the-linux-kernel/" target="_blank">Building Intel CPU Microcode Updates Directly into the Linux Kernel</a>
 ```none
 Symbol:     CONFIG_BLK_DEV_INITRD
 
@@ -805,6 +801,14 @@ Reason:     You can safely exclude this option if you're not using an initrd/ini
             to boot your system.
 
             DOTSLASHLINUX has guides on how to eliminate the need for an initrd/initramfs.
+            
+            Kindly check this:
+            
+                https://www.dotslashlinux.com/2017/04/29/booting-the-linux-kernel-without-an-initrd-initramfs/
+
+            and this:
+            
+                https://www.dotslashlinux.com/2017/04/30/building-intel-cpu-microcode-updates-directly-into-the-linux-kernel/
 ```
 <h3>Compiler optimization level (Optimize for performance)  ---></h3>
 <h3>(X) Optimize for performance</h3>
@@ -907,7 +911,7 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     
+Reason:     You can safely exclude this option as this system call is obsolete.
 ```
 <h3>[ ]   Sysctl syscall support</h3>
 ```none
@@ -928,13 +932,9 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this option safely, and my system didn't break, and I didn't
-            recieve ACPI warnings.
-
-            If you think I shouldn't be disabling this please post a comment
-            or send me an email explaining why.
+Reason:     You can safely exclude this option as this system call is obsolete.
 ```
-<h3>[&ast;]   Posix Clocks & timers</h3>
+<h3>[ ]   Posix Clocks & timers</h3>
 ```none
 Symbol:     CONFIG_POSIX_TIMERS
 
@@ -953,11 +953,10 @@ Help:       This includes native support for POSIX timers to the kernel.
 
 Type:       boolean
 
-Choice:     boolean
+Choice:     excluded [ ]
 
-Reason:     I included this option because one of my applications required it.
-            
-            You can exclude it if you're sure that no application is using it.
+Reason:     You can safely exclude this option if you're sure that no application
+            uses it.
 ```
 <h3>[ ]   Load all symbols for debugging/ksymoops</h3>
 ```none
@@ -971,7 +970,7 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I'm a simple man. I see the word debug, I exclude. (most of the times =D).
+Reason:     You can safely exclude this option as it's intended for debugging purposes.
 ```
 <h3>[&ast;]   Enable support for printk</h3>
 ```none
@@ -987,10 +986,10 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     It's highly recommended to include this option (to enable dmesg and printk
-            support).
+Reason:     It's highly recommended to include this option in your kernel
+            to enable dmesg and printk support.
 ```
-<h3>[&ast;]   BUG() support</h3>
+<h3>[ ]   BUG() support</h3>
 ```none
 Symbol:     CONFIG_BUG
 
@@ -1002,14 +1001,14 @@ Help:       Disabling this option eliminates support for BUG and WARN, reducing
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     excluded [ ]
 
 Reason:     It's highly recommended that you include this option as it's useful
             for reporting several fatal conditions on your system.
 
-            Exclude if space restricted on embedded systems.
+            You can safely exclude this option if you had no need for it.
 ```
-<h3>[ ]   Enable PC-Speaker support</h3>
+<h3>[&ast;]   Enable PC-Speaker support</h3>
 ```none
 Symbol:     CONFIG_PCSPKR_PLATFORM
 
@@ -1018,13 +1017,10 @@ Help:       This option allows to disable the internal PC-Speaker
 
 Type:       boolean
 
-Choice:     excluded [ ]
+Choice:     built-in [*]
 
-Reason:     This will only disable beeping on your system, and won't affect normal
-            sound in any way.
-
-            Exclude only if you want to disable beeping from the kernel (as you can
-            do that from userspace).
+Reason:     You can safely exclude this option if you don't want to hear
+            beeps anymore and it won't affect your normal sound experience.
 ```
 <h3>[&ast;]   Enable full-sized data structures for core</h3>
 ```none
@@ -1038,8 +1034,8 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     I'm not memory restricted and I don't want to reduce performance; therefore,
-            I included this option.
+Reason:     It's highly recommended that you include this option in your kernel
+            as it adds a slight performance boost.
 ```
 <h3>[&ast;]   Enable futex support</h3>
 ```none
@@ -1053,8 +1049,8 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     Many parts of my system and most of my applications are glibc-based; therefore,
-            I included this option.
+Reason:     It's highly recommended that you include this option in your kernel
+            as it's required by all glibc-based applications.
 ```
 <h3>[&ast;]   Enable eventpoll support[*]</h3>
 ```none
@@ -1067,8 +1063,9 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     I included this option, as it's required by CONFIG_GENTOO_LINUX and
-            CONFIG_GENTOO_LINUX_UDEV.
+Reason:     It's highly recommended that you include this option in your kernel
+            as it's required by CONFIG_GENTOO_LINUX, CONFIG_GENTOO_LINUX_UDEV and
+            CONFIG_GENTOO_LINUX_INIT_SYSTEMD.
 ```
 <h3>[&ast;]   Enable signalfd() system call</h3>
 ```none
@@ -1083,8 +1080,9 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     I included this option, as it's required by CONFIG_GENTOO_LINUX and
-            CONFIG_GENTOO_LINUX_UDEV.
+Reason:     It's highly recommended that you include this option in your kernel
+            as it's required by CONFIG_GENTOO_LINUX, CONFIG_GENTOO_LINUX_UDEV and
+            CONFIG_GENTOO_LINUX_INIT_SYSTEMD.
 ```
 <h3>[&ast;]   Enable timerfd() system call</h3>
 ```none
@@ -1099,8 +1097,9 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     I included this option, as it's required by CONFIG_GENTOO_LINUX and
-            CONFIG_GENTOO_LINUX_UDEV.
+Reason:     It's highly recommended that you include this option in your kernel
+            as it's required by CONFIG_GENTOO_LINUX, CONFIG_GENTOO_LINUX_UDEV and
+            CONFIG_GENTOO_LINUX_INIT_SYSTEMD.
 ```
 <h3>[&ast;]   Enable eventfd() system call</h3>
 ```none
@@ -1115,8 +1114,9 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     I included this option, as it's required by CONFIG_GENTOO_LINUX and
-            CONFIG_GENTOO_LINUX_UDEV.
+Reason:     It's highly recommended that you include this option in your kernel
+            as it's required by CONFIG_GENTOO_LINUX, CONFIG_GENTOO_LINUX_UDEV and
+            CONFIG_GENTOO_LINUX_INIT_SYSTEMD.
 ```
 <h3>[ ] Enable bpf() system call</h3>
 ```none
@@ -1129,10 +1129,7 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I'm not using any eBPF program; therefore, I excluded this option
-
-            If you think I shouldn't be excluding this option, please post a comment
-            below or send me an email explaining why.
+Reason:     You can safely exclude this option if you're not using eBPF programs.
 ```
 <h3>-&ast;- Use full shmem filesystem</h3>
 ```none
@@ -1148,9 +1145,12 @@ Type:       boolean
 
 Choice:     built-in -*-
 
-Reason:     This option is forcibly included as it's already required by 
-            CONFIG_GENTOO_LINUX, CONFIG_GENTOO_LINUX_UDEV, DRM_I915 and 
-            many more options. Another reason is that I'm using swap as well.
+Reason:     It's highly recommended that you include this option in your kernel
+            (that is if it isn't already forcibly included by CONFIG_GENTOO_LINUX,
+            CONFIG_GENTOO_LINUX_UDEV, DRM_I915 and a lot of important options).
+
+            It's also recommended that you include this option as well if you're using
+            a swap partition.
 ```
 <h3>[ ] Enable AIO support</h3>
 ```none
@@ -1164,13 +1164,10 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I've read a lot of bad things about this and my system didn't
-            break when I excluded it.
-
-            If you think  I shouldn't be excluding this option, kindly
-            post a comment below or send me an email explaining why.
+Reason:     You can safely exclude this option as some users reported that it does
+            'bad' things on their respective systems.
 ```
-<h3>[&ast;] Enable madvise/fadvise syscalls</h3>
+<h3>[ ] Enable madvise/fadvise syscalls</h3>
 ```none
 Symbol:     CONFIG_ADVISE_SYSCALLS
 
@@ -1182,11 +1179,13 @@ Help:       This option enables the madvise and fadvise syscalls, used by
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     excluded [ ]
 
-Reason:     I included this option because it improves performance and I'm not building
-            an embedded system. Another reason is that some applications on my system
-            needed it.
+Reason:     It's highly recommended that you include this option especially if you're
+            using www-client/chromium as it's required by chromium's renderer.
+
+            You can safely exclude this option if it isn't required by any of your
+            applications.
 ```
 <h3>[ ] Enable userfaultfd() system call</h3>
 ```none
@@ -1199,13 +1198,9 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this option as it neither broke my system nor it was required
-            by any other option or application.
-
-            If you think  I shouldn't be excluding this option, kindly
-            post a comment below or send me an email explaining why.
+Reason:     You can safely exclude this option.
 ```
-<h3>[&ast;] Enable PCI quirk workarounds</h3>
+<h3>[ ] Enable PCI quirk workarounds</h3>
 ```none
 Symbol:     CONFIG_PCI_QUIRKS
 
@@ -1217,7 +1212,11 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     I included this option as it's very useful.
+Reason:     You can safely exclude this option if you're machine is unaffected
+            by PCI quirks.
+
+            It's generally a good idea to include this option on systems with a 
+            buggy bios.
 ```
 <h3>[ ] Enable membarrier() system call</h3>
 ```none
@@ -1235,11 +1234,7 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this option as it neither broke my system nor was needed
-            by any application.
-          
-            If you think  I shouldn't be excluding this option, kindly
-            post a comment below or send me an email explaining why.
+Reason:     You can safely exclude this option.
 ```
 <h3>[ ] Embedded system</h3>
 ```none
@@ -1253,8 +1248,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this option as I'm not cross compiling this kernel for
-            an embedded system and I'm planning on using it on my laptop.
+Reason:     You can safely exclude this option if you're not building this kernel
+            for an embedded system.
 ```
 <h3>[ ] PC/104 support</h3>
 ```none
