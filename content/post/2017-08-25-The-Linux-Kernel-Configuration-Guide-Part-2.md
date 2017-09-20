@@ -134,10 +134,10 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     Include this option if you're using OpenRC or runit as your init system.
+Reason:     It's highly recommended that you include this option in your kernel if
+            you're using OpenRC or runit as your init system.
 
-            Exclude this option and include CONFIG_GENTOO_LINUX_INIT_SYSTEMD if you're
-            using systemd instead.
+            You can safely exclude this option only if you're using systemd instead.
 ```
 <h3>[ ] systemd</h3>
 ```none
@@ -156,10 +156,10 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     Include this option only if you're using systemd as your init system.
-
-            Exclude this option and include CONFIG_GENTOO_LINUX_INIT_SCRIPT if you're
-            using OpenRC or runit instead.
+Reason:     You can safely exclude this option if you're using OpenRC or runit as your
+            init system.
+            
+            Include this option only if you're using systemd as your init system.
 ```
 <hr/>
 <h3>Chinese Translation</h3>

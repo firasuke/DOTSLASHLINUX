@@ -19,6 +19,9 @@ Help:       Say yes to build a 64-bit kernel - formerly known as x86_64
 Type:       boolean
 
 Choice:     built-in [*]
+
+Reason:     It's highly recommended that you include this option if you plan to
+            use the custom built kernel on a 64-bit system.
 ```
 <hr/>
 <h3>1- General setup</h3>
@@ -35,10 +38,8 @@ Type:       string
 
 Choice:     excluded ()
 
-Reason:     Include this option if you're building the kernel for another 
-            machine (an ARM device perhaps).
-
-            You can safely exclude this option.
+Reason:     You can safely exclude this option if you're not building this kernel
+            for another machine (an ARM device perhaps).
 ```
 <h3>[ ] Compile also drivers which will not load</h3>
 ```none
@@ -58,12 +59,10 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     This option is generally for developers who want to build drivers
-            for different architectures in their kernel.
-
-            You can safely exclude this option.
+Reason:     You can safely leave the value of this option empty if you don't plan
+            to build drivers for different architectures as it's for developing purposes.
 ```
-<h3>(-DOTSLASHLINUX) Local version - append to kernel release</h3>
+<h3>() Local version - append to kernel release</h3>
 ```none
 Symbol:     CONFIG_LOCALVERSION
 
@@ -76,12 +75,11 @@ Help:       Append an extra string to the end of your kernel version.
 
 Type:       string
 
-Choice:     -DOTSLASHLINUX
+Choice:     excluded ()
 
-Reason:     In order not to lose track of the custom built kernels you can append
-            extra strings to the end of the kernel's version.
-            
-            You can also leave this empty if you want.
+Reason:     You can safely leave the value of this option empty as it's only needed
+            for those who build custom kernels and don't want to lose track of their
+            kernels by appending extra strings to the end of the kernel's version.
 ```
 <h3>[ ] Automatically append version information to the version string</h3>
 ```none
@@ -108,7 +106,8 @@ Type:       boolean
 Choice:     excluded [ ]
 
 Reason:     You can safely exclude this option as CONFIG_LOCALVERSION should be
-            sufficient.
+            sufficient for those who don't want to lose track of their custom
+            built kernels.
 ```
 <h3>Kernel compression mode (LZ4)  ---></h3>
 Make sure you have <mark>app-arch/lz4</mark> installed before compiling your kernel.
