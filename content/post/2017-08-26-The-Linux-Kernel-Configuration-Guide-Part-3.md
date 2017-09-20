@@ -194,12 +194,11 @@ Reason:     It's highly recommended that you include this option in your kernel
             chromium stopped at about 60% saying it ran out of memory (virtual memory). 
             So yeah I had to reinstall gentoo to get my swap space up and running.
 
-            After I learned my lesson the hard way, I'm now convinced that you have to
-            have a swap partition on your system. 
+            After I learned my lesson the hard way, I'm now convinced that all systems
+            need a swap partition.
 
             I went with 15.4 GiB of swap space since I tend to open lots of apps when
-            compiling (thanks to my highly responsive/minimal latency build I barely
-            notice that my system is running 9 jobs building something).
+            compiling.
 ```
 <h3>-&ast;- System V IPC</h3>
 ```none
@@ -370,7 +369,7 @@ Type:       boolean
 Choice:     built-in (X)
 
 Reason:     It's highly recommended that you include this option in your kernel
-            as it adds a sligh performance boost while lowering latency.
+            as it adds a slight performance boost while lowering latency.
 
             Exclude this option if power saving is one of your concerns.
 ```
@@ -635,7 +634,7 @@ Type:       integer
 
 Choice:     (12) custom
 
-Reason:     You can safely set the value of this option to (14).
+Reason:     You can safely set the value of this option to (12).
 
             The value (12) is the lowest possible (while staying convenient)
             value that provides good balance between keeping your kernel
