@@ -1580,7 +1580,15 @@ Type:       tristate
 
 Choice:     built-in -*-
 
-Reason:     
+Reason:     If you've followed the guide above, then a simple:
+
+                cat lsmod.txt | grep i2c
+
+            and:
+
+                cat lspcikk.txt | grep i2c -B3
+
+            should tell you whether you need this option or not.
 ```
 <h3><&ast;>   I2C device interface</h3>
 ```none
@@ -1598,7 +1606,9 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            if you've already included CONFIG_I2C (it's also recommended by the
+            Gentoo Wiki).
 ```
 <h3>-&ast;-   I2C bus multiplexing support</h3>
 ```none
@@ -1615,7 +1625,8 @@ Type:       tristate
 
 Choice:     built-in -*-
 
-Reason:     
+Reason:     You can safely exclude this option unless it was forcibly included
+            by some other important options.
 ```
 <h3>[&ast;]   Autoselect pertinent helper modules</h3>
 ```none
@@ -1635,7 +1646,9 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            if you've already included CONFIG_I2C (it's also recommended by the
+            Gentoo Wiki).
 ```
 <h3>I2C Hardware Bus support  ---></h3>
 <h3><&ast;> Intel 82801 (ICH/PCH)</h3>
@@ -1686,54 +1699,11 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     
-```
-<h3>[&ast;] GPIO Support  ---></h3>
-```none
-Symbol:     CONFIG_GPIOLIB
+Reason:     If you've followed the guide above, then a simple:
 
-Help:       This enables GPIO support through the generic GPIO library.
-            You only need to enable this, if you also want to enable
-            one or more of the GPIO drivers below.
+                cat lspcikk.txt | grep i2c_i801 -B3
 
-            If unsure, say N.
-
-Type:       boolean
-
-Choice:     built-in [*]
-
-Reason:     
-```
-<h3>Memory mapped GPIO drivers  ---></h3>
-<h3><&ast;> Intel ICH GPIO</h3>
-```none
-Symbol:     CONFIG_GPIO_ICH
-
-Help:       Say yes here to support the GPIO functionality of a number of Intel
-            ICH-based chipsets.  Currently supported devices: ICH6, ICH7, ICH8
-            ICH9, ICH10, Series 5/3400 (eg Ibex Peak), Series 6/C200 (eg
-            Cougar Point), NM10 (Tiger Point), and 3100 (Whitmore Lake).
-
-            If unsure, say N.
-
-Type:       tristate
-
-Choice:     built-in <*>
-
-Reason:     
-```
-<h3><&ast;> Intel Lynxpoint GPIO support</h3>
-```none
-Symbol:     CONFIG_GPIO_LYNXPOINT
-
-Help:       driver for GPIO functionality on Intel Lynxpoint PCH chipset
-            Requires ACPI device enumeration code to set up a platform device.
-
-Type:       tristate
-
-Choice:     built-in <*>
-
-Reason:     
+            should tell you whether you need this option or not.
 ```
 <h3>-&ast;- Power supply class support  ---></h3>
 ```none
@@ -1748,7 +1718,10 @@ Type:       boolean
 
 Choice:     built-in -*-
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            (that is if it isn't already forcibly included by CONFIG_ACPI,
+            CONFIG_ACPI_AC, CONFIG_X86, CONFIG_INPUT, CONFIG_RFKILL and a lot
+            of important options).
 ```
 <h3><&ast;> Hardware Monitoring support  ---></h3>
 ```none
