@@ -99,7 +99,7 @@ Reason:     It's recommended that you include this option in your kernel as it
             provides important information about your hardware. This option is
             also necessary if you want to use dmidecode.
 ```
-<h3><&ast;> DMI table support in sysfs</h3>
+<h3>< > DMI table support in sysfs</h3>
 ```none
 Symbol:     CONFIG_DMI_SYSFS
 
@@ -111,11 +111,11 @@ Help:       Say Y or M here to enable the exporting of the raw DMI table
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     excluded < >
 
 Reason:     You can safely exclude this option as some may say it's dangerous.
             
-            Only include it when needed.
+            Include this option only when needed.
 ```
 <h3>[ ] iSCSI Boot Firmware Table Attributes</h3>
 ```none
@@ -148,7 +148,7 @@ Choice:     excluded < >
 
 Reason:     You can safely exclude this option.
 
-            Only include it if required by some QEMU setups.
+            Include this option only if it's required by some QEMU setups.
 ```
 <h3>[ ] Google Firmware Drivers  ----</h3>
 ```none
