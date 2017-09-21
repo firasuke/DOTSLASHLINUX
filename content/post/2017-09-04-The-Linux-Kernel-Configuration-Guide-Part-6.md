@@ -100,9 +100,9 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     A new feature provided by intel in late 2016, due to the lack of
-            information and a proper list of supported cpus, and since my cpu
-            probably won't be on that list I decided to exclude it.
+Reason:     You can safely exclude this option due to the lack of information
+            and a proper list of intel CPUs that support this new feature
+            that intel released in late 2016.
 ```
 <h3>[ ] Support for extended (non-PC) x86 platforms</h3>
 ```none
@@ -141,11 +141,9 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     Some say this feature is for intel chipsets starting from haswell
-            others say starting from skylake.
-
-            Due to confusion I decided to exclude this option for now until
-            I 
+Reason:     You can safely exclude this option if you're using an Intel CPU
+            that uses an older microarchitecture than Skylake (some users
+            say that Haswell CPUs are also supported).
 ```
 <h3>[ ] AMD ACPI2Platform devices support</h3>
 ```none
@@ -160,7 +158,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I don't have such chipsets; therefore, I excluded this option.
+Reason:     You can safely exclude this option if you're not using these AMD
+            chipsets.
 ```
 <h3>-&ast;- Intel SoC IOSF Sideband support for SoC platforms</h3>
 ```none
@@ -183,15 +182,14 @@ Type:       tristate
 
 Choice:     built-in -*-
 
-Reason:     This option was previously excluded in my configuration, however a 
-            recent commit (thanks to grknight for providing the link)
+Reason:     You can safely exclude this option if you're not using an Intel SoC
+            product.
+            
+            However, in a recent commit:
 
               https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=264ec1a8221c60f9ccf13f58ac597da21235132d
 
-            forcibly included it, due to I915 wake up related problems.
-
-            You can safely exclude this option if you're not using an Intel SoC
-            product.
+            it was forcibly included it, due to I915 wake up related problems.
 ```
 <h3>[&ast;] Single-depth WCHAN output</h3>
 ```none
@@ -208,8 +206,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     Include this option to get simple wchan values as this will lower
-            scheduling overhead.
+Reason:     It's highly recommended that you include this option in your kernel
+            to get simple wchan values as this will lower scheduling overhead.
 ```
 <h3>[ ] Linux guest support  ----</h3>
 ```none
@@ -226,10 +224,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     The kernel will be built for a host system.
-
-            If you're building the kernel for a linux guest system then include
-            this option.
+Reason:     You can safely exclude this option if you're planning to use your
+            custom built kernel on a host system.
 ```
 <h3>Processor family (Core 2/newer Xeon)  ---></h3>
 ```none
@@ -244,9 +240,10 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     I included this option because the kernel is being built for a core i7 
-            intel cpu system.
-
+Reason:     It's highly recommended that you include this option if you're using
+            an Intel CPU newer that Core 2 (for example, Core i3, Core i5, Core i7
+            and all new Intel CPUs).
+            
             If you wanted your kernel to work on all X86_64 systems then include
             CONFIG_GENERIC_CPU.
 ```
@@ -261,10 +258,10 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     It's really important that you tell the kernel what type of cpu
-            it's supposed to run on.
+Reason:     It's highly recommended that you tell the kernel what type of CPU
+            your system is using.
 
-            In some cases, not doing that may result in an unbootable system.
+            In some cases, not doing so may result in an unbootable system.
 ```
 <h3>Support Intel processors</h3>
 ```none
@@ -283,9 +280,10 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     I included this option since I'm building the kernel for an intel cpu.
+Reason:     It's highly recommended that you include this option in your kernel
+            if you're using an Intel CPU.
 ```
-<h3>[ ] Enable DMI scanning</h3>
+<h3>[&ast;] Enable DMI scanning</h3>
 ```none
 Symbol:     CONFIG_DMI
 
@@ -296,11 +294,14 @@ Help:       Enabled scanning of DMI to identify machine quirks. Say Y
 
 Type:       boolean
 
-Choice:     excluded [ ]
+Choice:     built-in [*]
 
-Reason:     I read that this option is related to CONFIG_EMBEDDED and since
-            kernel isn't being built for an embedded system I decided to 
-            exclude this option.
+Reason:     It's highly recommended that you include this option in your kernel
+            as it's required by newer versions of udev to detect many of your 
+            system's components (especially input devices such as the Synaptics
+            PS/2 and SMBus touchpad).
+
+            Excluding this option may result in an undetectable touchpad.
 ```
 <h3>[ ] IBM Calgary IOMMU support</h3>
 ```none
@@ -323,9 +324,11 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     The cpu I'm building the kernel for is an intel core i7 4700MQ
-            which supports only VT-x and not VT-d (IOMMU), so I excluded
-            every feature relating to IOMMU in that regard.
+Reason:     You can safely exclude this option if your CPU doesn't support IOMMU.
+            
+            This includes Intel CPUs that support VT-x only and not VT-d, and AMD
+            CPUs that don't support AMD-V.
+            
 ```
 <h3>(8) Maximum number of CPUs</h3>
 ```none
@@ -343,10 +346,11 @@ Type:       integer
 
 Choice:     (8) custom
 
-Reason:     Set this value equal to the maximum number of cores (and multiply
-            it by 2 if it supports hyperthreading).
+Reason:     It's highly recommended that you set the value of this option equal to
+            the maximum number of cores (and multiply it by 2 if it supports Hyper-Threading).
 
-            In my case 4*2=8 so yeah...
+            For example, an Intel 4700MQ CPU, has 4 physical cores and supports Hyper-Threading
+            so 4 * 2 = 8 which is the value I went with for this option.
 ```
 <h3>[&ast;] SMT (Hyperthreading) scheduler support</h3>
 ```none
@@ -361,7 +365,8 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     I included this option because my cpu supports hyperthreading.
+Reason:     It's highly recommended that you include this option in your kernel
+            if your CPU supports Hyper-Threading.
 ```
 <h3>[ ] Multi-core scheduler support</h3>
 ```none
@@ -375,38 +380,33 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     It's recommended that you exclude this option if your cpu supports
-            hyperthreading and include CONFIG_SCHED_SMT instead.
-
-            Including this option alongside CONFIG_SCHED_SMT may result in a
-            noticable reduce in performance.
+Reason:     You can safely exclude this option as many users reported that it
+            reduced performance by 3-10%.
 ```
-<h3>Preemption Model (Preemptible Kernel (Low-Latency Desktop))  ---></h3>
+<h3>Preemption Model (No Forced Preemption (Server))  ---></h3>
+<h3>(X) No Forced Preemption (Server)</h3>
 ```none
-Symbol:     CONFIG_PREEMPT
+Symbol:     CONFIG_PREEMPT_NONE
 
-Help:       This option reduces the latency of the kernel by making
-            all kernel code (that is not executing in a critical section)
-            preemptible.  This allows reaction to interactive events by
-            permitting a low priority process to be preempted involuntarily
-            even if it is in kernel mode executing a system call and would
-            otherwise not be about to reach a natural preemption point.
-            This allows applications to run more 'smoothly' even when the
-            system is under load, at the cost of slightly lower throughput
-            and a slight runtime overhead to kernel code.
+Help:       This is the traditional Linux preemption model, geared towards
+            throughput. It will still provide good latencies most of the
+            time, but there are no guarantees and occasional longer delays
+            are possible.
 
-            Select this if you are building a kernel for a desktop or
-            embedded system with latency requirements in the milliseconds
-            range.
+            Select this option if you are building a kernel for a server or
+            scientific/computation system, or if you want to maximize the
+            raw processing power of the kernel, irrespective of scheduling
+            latencies.
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in (X)
 
-Reason:     I included this option as I'm building a low latency system.
+Reason:     It's highly recommended that you include this option in your kernel
+            for maximum throughput and performance.
 
-            If you wanted maximum performance (throughput) but minimum
-            responsiveness then you should include CONFIG_PREEMPT_NONE.
+            If latency is what matters most to you, you can include CONFIG_PREEMPT
+            instead.
 ```
 <h3>[ ] Reroute for broken boot IRQs</h3>
 ```none
@@ -435,9 +435,7 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     Exclude this option only if it's not needed on your modern system.
-            
-            You should include this option if you're receiving:
+Reason:     You can safely exclude this option if you're not receiving:
                 
                 irq X: nobody cared (try booting with "irqpoll" option)
 ```
@@ -454,8 +452,9 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     Including this option is a must as it reports overheating
-            and other problems (mostly hardware issues) to the kernel.
+Reason:     It's hihgly recommended that you include this option in your kernel
+            as it reports overheating and other problems (mostly hardware issues)
+            to the kernel.
 ```
 <h3>[ ]   Support for deprecated /dev/mcelog character device</h3>
 ```none
@@ -469,7 +468,7 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I'm not using mcelog so I excluded this option.
+Reason:     You can safely exclude this option if you're not using app-admin/mcelog.
 ```
 <h3>[&ast;]   Intel MCE features</h3>
 ```none
@@ -482,8 +481,8 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     If you've included CONFIG_X86_MCE and have an intel cpu then
-            you should include this option as well.
+Reason:     It's highly recommended that you include this option in your kernel
+            if you've already included CONFIG_X86_MCE and have an Intel CPU.
 ```
 <h3>Performance monitoring  ---></h3>
 <h3><&ast;> Intel uncore performance events</h3>
@@ -497,8 +496,9 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     It's a good idea to include performance and cpu power monitors like 
-            (rapl, uncore and cstate) for your intel cpu.
+Reason:     It's highly recommended that you include this option in your kernel
+            if you're using an Intel CPU as performance and CPU power monitors
+            are mandatory.
 ```
 <h3><&ast;> Intel rapl performance events</h3>
 ```none
@@ -511,8 +511,9 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     It's a good idea to include performance and cpu power monitors like 
-            (rapl, uncore and cstate) for your intel cpu.
+Reason:     It's highly recommended that you include this option in your kernel
+            if you're using an Intel CPU as performance and CPU power monitors
+            are mandatory.
 ```
 <h3><&ast;> Intel cstate performance events</h3>
 ```none
@@ -525,8 +526,9 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     It's a good idea to include performance and cpu power monitors like 
-            (rapl, uncore and cstate) for your intel cpu.
+Reason:     It's highly recommended that you include this option in your kernel
+            if you're using an Intel CPU as performance and CPU power monitors
+            are mandatory.
 ```
 <h3>[ ] Enable vsyscall emulation</h3>
 ```none
@@ -549,12 +551,13 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     VSYSCALLS are now disabled on most recent linux distros mainly for
-            security reasons (it's almost deprecated now). However, this may break
-            some old applications that may rely on this syscall.
+Reason:     You can safely exclude this option as VSYSCALLS are now disabled on
+            most GNU/Linux distros mainly for security reasons (it's almost deprecated
+            now).
+            
+            However, this may break some old applications that may rely on this syscall.
 
-            If you happen to see attempted vsyscalls in dmesg, then include this
-            vsyscall emulation option.
+            Include this option only if you happen to see attempted vsyscalls in dmesg.
 ```
 <h3>< > Dell i8k legacy laptop support</h3>
 ```none
@@ -575,14 +578,9 @@ Type:       tristate
 
 Choice:     excluded < >
 
-Reason:     I excluded this option as I'm not building the kernel for an old Dell
-            laptop.
+Reason:     You can safely exclude this option if you're not using an old Dell laptop.
 ```
 <h3>[&ast;] CPU microcode loading support</h3>
-Don't forget to check DOTSLASHLINUX's guide on building microcode updates directly into the linux kernel to eliminate the need of using a detached initrd (if space constrained on embedded perhaps):
-<br/>
-<br/>
-<a href="https://www.dotslashlinux.com/2017/04/30/building-intel-cpu-microcode-updates-directly-into-the-linux-kernel/" target="_blank">Building Intel CPU Microcode Updates Directly into the Linux Kernel</a>
 ```none
 Symbol:     CONFIG_MICROCODE
 
@@ -606,12 +604,14 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     It's highly recommended that you update the microcode on your respective
-            cpu as many of these updates improve the security and the performance
-            of your cpu.
+Reason:     It's highly recommended that you include this option in your kernel
+            as updating the microcode on your respective CPU improves the performance
+            (and in some cases the security) of your CPU.
 
-            I also recommend that you build the microcode into the kernel to eliminate
-            the need of using a detached initrd.
+            DOTSLASHLINUX has a guide on building microcode updates directly into the Linux
+            kernel to eliminate the need of using a detached initrd:
+                
+                https://www.dotslashlinux.com/2017/04/30/building-intel-cpu-microcode-updates-directly-into-the-linux-kernel/
 ```
 <h3>[&ast;]   Intel microcode loading support</h3>
 ```none
