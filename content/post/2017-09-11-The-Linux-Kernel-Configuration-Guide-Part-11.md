@@ -1528,7 +1528,10 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     If you've followed the guide above, then a simple:
+Reason:     It's highly recommended that you include this option in your kernel
+            if your CPU supports the RDRAND instruction.
+            
+            If you've followed the guide above, then a simple:
 
                 cat cpuinfo.txt | grep rdrand
 
@@ -1550,7 +1553,10 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     If you've followed the guide above, then a simple:
+Reason:     It's highly recommended that you include this option in your kernel
+            if your CPU supports the RDRAND instruction.
+            
+            If you've followed the guide above, then a simple:
 
                 cat cpuinfo.txt | grep rdrand
 
@@ -1746,7 +1752,8 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            as it's required by sensors found on almost all modern motherboards.
 ```
 <h3><&ast;>   Intel Core/Core2/Atom temperature sensor</h3>
 ```none
@@ -1760,7 +1767,17 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     
+Reason:     If you've followed the guide above, then a simple:
+
+                cat lsmod.txt | grep coretemp
+
+            and:
+
+                cat sensors.txt | grep coretemp
+
+            should tell you whether you need this option or not.
+
+            It's also recommended by the Gentoo Wiki.
 ```
 <h3>-&ast;- Generic Thermal sysfs driver  ---></h3>
 ```none
@@ -1778,7 +1795,10 @@ Type:       tristate
 
 Choice:     built-in -*-
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            (that is if it isn't already forcibly included by CONFIG_X86, CONFIG_ACPI,
+            CONFIG_ACPI_VIDEO, CONFIG_INPUT, CONFIG_PCI, CONFIG_DRM and a lot of 
+            important options).
 ```
 <h3>(0)   Emergency poweroff delay in milli-seconds</h3>
 ```none
@@ -1798,27 +1818,10 @@ Help:       Thermal subsystem will issue a graceful shutdown when
 
 Type:       integer
 
-Choice:     (0) custom
+Choice:     (0) default
 
-Reason:     
-```
-<h3>-&ast;-   Enable writable trip points</h3>
-```none
-Symbol:     CONFIG_THERMAL_WRITABLE_TRIPS
-
-Help:       This option allows the system integrator to choose whether
-            trip temperatures can be changed from userspace. The
-            writable trips need to be specified when setting up the
-            thermal zone but the choice here takes precedence.
-
-            Say 'Y' here if you would like to allow userspace tools to
-            change trip temperatures.
-
-Type:       boolean
-
-Choice:     built-in -*-
-
-Reason:     
+Reason:     It's highly recommended that you leave the value of this option set to
+            the default value of (0).
 ```
 <h3>Default Thermal governor (step_wise)  ---></h3>
 ```none
@@ -1836,7 +1839,8 @@ Type:       boolean
 
 Choice:     built-in (X)
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            as step_wise is the best thermal governor.
 ```
 <h3>-&ast;-   Step_wise thermal governor</h3>
 ```none
@@ -1849,149 +1853,8 @@ Type:       boolean
 
 Choice:     built-in -*-
 
-Reason:     
-```
-<h3>-&ast;-   User_space thermal governor</h3>
-```none
-Symbol:     CONFIG_THERMAL_GOV_USER_SPACE
-
-Help:       Enable this to let the user space manage the platform thermals.
-
-Type:       boolean
-
-Choice:     built-in -*-
-
-Reason:     
-```
-<h3><&ast;>   Intel PowerClamp idle injection driver</h3>
-```none
-Symbol:     CONFIG_INTEL_POWERCLAMP
-
-Help:       Enable this to enable Intel PowerClamp idle injection driver. This
-            enforce idle time which results in more package C-state residency. The
-            user interface is exposed via generic thermal framework.
-
-Type:       tristate
-
-Choice:     built-in <*>
-
-Reason:     
-```
-<h3><&ast;>   X86 package temperature thermal driver</h3>
-```none
-Symbol:     CONFIG_X86_PKG_TEMP_THERMAL
-
-Help:       Enable this to register CPU digital sensor for package temperature as
-            thermal zone. Each package will have its own thermal zone. There are
-            two trip points which can be set by user to get notifications via thermal
-            notification methods.
-
-Type:       tristate
-
-Choice:     built-in <*>
-
-Reason:     
-```
-<h3><&ast;>   Intel PCH Thermal Reporting Driver</h3>
-```none
-Symbol:     CONFIG_INTEL_PCH_THERMAL
-
-Help:       Enable this to support thermal reporting on certain intel PCHs.
-            Thermal reporting device will provide temperature reading,
-            programmable trip points and other information.
-
-Type:       tristate
-
-Choice:     built-in <*>
-
-Reason:     
-```
-<h3>[&ast;] Watchdog Timer Support  ---></h3>
-```none
-Symbol:     CONFIG_WATCHDOG
-
-Help:       If you say Y here (and to one of the following options) and create a
-            character special file /dev/watchdog with major number 10 and minor
-            number 130 using mknod ("man mknod"), you will get a watchdog, i.e.:
-            subsequently opening the file and then failing to write to it for
-            longer than 1 minute will result in rebooting the machine. This
-            could be useful for a networked machine that needs to come back
-            on-line as fast as possible after a lock-up. There's both a watchdog
-            implementation entirely in software (which can sometimes fail to
-            reboot the machine) and a driver for hardware watchdog boards, which
-            are more robust and can also keep track of the temperature inside
-            your computer. For details, read
-            <file:Documentation/watchdog/watchdog-api.txt> in the kernel source.
-
-            The watchdog is usually used together with the watchdog daemon
-            which is available from
-            <ftp://ibiblio.org/pub/Linux/system/daemons/watchdog/>. This daemon can
-            also monitor NFS connections and can reboot the machine when the process
-            table is full.
-
-            If unsure, say N.
-
-Type:       boolean
-
-Choice:     built-in [*]
-
-Reason:     
-```
-<h3>-&ast;-   WatchDog Timer Driver Core</h3>
-```none
-Symbol:     CONFIG_WATCHDOG_CORE
-
-Help:       Say Y here if you want to use the new watchdog timer driver core.
-            This driver provides a framework for all watchdog timer drivers
-            and gives them the /dev/watchdog interface (and later also the
-            sysfs interface).
-
-Type:       boolean
-
-Choice:     built-in -*-
-
-Reason:     
-```
-<h3><&ast;>   Intel TCO Timer/Watchdog</h3>
-```none
-Symbol:     CONFIG_ITCO_WDT
-
-Help:       Hardware driver for the intel TCO timer based watchdog devices.
-            These drivers are included in the Intel 82801 I/O Controller
-            Hub family (from ICH0 up to ICH10) and in the Intel 63xxESB
-            controller hub.
-
-            The TCO (Total Cost of Ownership) timer is a watchdog timer
-            that will reboot the machine after its second expiration. The
-            expiration time can be configured with the "heartbeat" parameter.
-
-            On some motherboards the driver may fail to reset the chipset's
-            NO_REBOOT flag which prevents the watchdog from rebooting the
-            machine. If this is the case you will get a kernel message like
-            "failed to reset NO_REBOOT flag, reboot disabled by hardware".
-
-            To compile this driver as a module, choose M here: the
-            module will be called iTCO_wdt.
-
-Type:       tristate
-
-Choice:     built-in <*>
-
-Reason:     
-```
-<h3>[&ast;]     Intel TCO Timer/Watchdog Specific Vendor Support</h3>
-```none
-Symbol:     CONFIG_ITCO_VENDOR_SUPPORT
-
-Help:       Add vendor specific support to the intel TCO timer based watchdog
-            devices. At this moment we only have additional support for some
-            SuperMicro Inc. motherboards.
-
-Type:       boolean
-
-Choice:     built-in [*]
-
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            as step_wise is the best thermal governor.
 ```
 <h3><&ast;> Multimedia support  ---></h3>
 ```none
@@ -2006,7 +1869,8 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            if you wanted your Webcam device to work.
 ```
 <h3>[&ast;]   Cameras/video grabbers support</h3>
 ```none
@@ -2020,7 +1884,8 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            if you wanted your Webcam device to work.
 ```
 <h3>[&ast;]   Media USB Adapters  ---></h3>
 ```none
