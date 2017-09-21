@@ -37,11 +37,9 @@ Type:       boolean
 
 Choice:     built-in -*-
 
-Reason:     ELF is the binary format used on linux systems.
-            
-            You must include this option in your linux kernel (that is if it isn't
-            already forcibly included by a couple of important options such as 
-            CONFIG_X86_64 and CONFIG_IA32_EMULATION).
+Reason:     It's highly recommended that you include this option in your kernel
+            as ELF is the binary format used on linux systems (that is if it isn't
+            already forcibly included by CONFIG_X86_64 and CONFIG_IA32_EMULATION.
 ```
 <h3>-&ast;- Kernel support for scripts starting with #!</h3>
 ```none
@@ -61,9 +59,9 @@ Type:       tristate
 
 Choice:     built-in -*-
 
-Reason:     You must include this option in your kernel as it's required to execute
-            scripts and binaries that need an interpreter (and these include Java,
-            Python2, Python3, .NET, DOS executables ...etc).
+Reason:     It's highly recommended that you include this option in your kernel
+            as it's required to execute scripts and binaries that need an interpreter
+            (and these include Java, Python2, Python3, .NET, DOS executables ...etc).
 
             This is also required by many init scripts as well and is used on countless
             distributions (CONFIG_GENTOO_LINUX and CONFIG_GENTOO_LINUX_INIT_SCRIPT).
@@ -129,12 +127,10 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     You must include this option in your kernel if you want to run 32-bit
-            programs.
-
-            I highly recommend that you include this option as you never know when 
-            you'll need support for 32-bit programs. The price of not doing so on Gentoo 
-            Linux and running a pure 64-bit system is costly as you'll have to rebuild 
+Reason:     It's highly recommended that you include this option in your kernel
+            if you want to run 32-bit programs as you never know when you'll need
+            support for 32-bit programs. The price of not doing so on Gentoo Linux
+            and running a pure 64-bit system is costly as you'll have to rebuild 
             the whole system to get 32-bit support working.
 ```
 <h3>< >   IA32 a.out support</h3>
@@ -170,12 +166,6 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     You can safely exclude this option if you don't need it.
-
-            This option is quite controversial as many suggest including, while
-            others are against that as they see no point in running 32-bit
-            programs anyways.
-
-            I recommend that you include this option if you're planning on running
-            32-bit programs.
+Reason:     It's highly recommended that you include this option in your kernel
+            if you're planning on running 32-bit programs.
 ```
