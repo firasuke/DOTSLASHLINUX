@@ -628,7 +628,14 @@ Type:       boolean
 
 Choice:     built [*]
 
-Reason:     Include this option to allow microcode loading for intel cpus.
+Reason:     It's highly recommended that you include this option in your kernel
+            as updating the microcode on your respective CPU improves the performance
+            (and in some cases the security) of your CPU.
+
+            DOTSLASHLINUX has a guide on building Intel CPU microcode updates directly into
+            the Linux kernel to eliminate the need of using a detached initrd:
+                
+                https://www.dotslashlinux.com/2017/04/30/building-intel-cpu-microcode-updates-directly-into-the-linux-kernel/
 ```
 <h3>[ ]   AMD microcode loading support</h3>
 ```none
@@ -641,7 +648,7 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this option as I'm building the kernel for an intel cpu.
+Reason:     You can safely exclude this option if you're not using an AMD CPU.
 ```
 <h3><&ast;> /dev/cpu/*/msr - Model-specific register support</h3>
 ```none
@@ -657,7 +664,12 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     I included this option as my CPU supports MSR.
+Reason:     It's highly recommended that you include this option in your kernel
+            if your CPU supports it.
+
+            Please refer to part 11, and check the guide at the top to understand
+            how to find what features your system supports and what options to
+            include.
             
             To see the flags that your CPU supports simply run:
                 
@@ -666,6 +678,10 @@ Reason:     I included this option as my CPU supports MSR.
             And to see what these flags mean check this link:
 
                 https://unix.stackexchange.com/questions/43539/what-do-the-flags-in-proc-cpuinfo-mean
+
+            To check for MSR support, simply run:
+                
+                cat /proc/cpuinfo | grep msr
 ```
 <h3><&ast;> /dev/cpu/*/cpuid - CPU information support</h3>
 ```none
@@ -680,7 +696,12 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     I included this option as my CPU supports CPUID.
+Reason:     It's highly recommended that you include this option in your kernel
+            if your CPU supports it.
+
+            Please refer to part 11, and check the guide at the top to understand
+            how to find what features your system supports and what options to
+            include.
             
             To see the flags that your CPU supports simply run:
                 
@@ -689,6 +710,10 @@ Reason:     I included this option as my CPU supports CPUID.
             And to see what these flags mean check this link:
 
                 https://unix.stackexchange.com/questions/43539/what-do-the-flags-in-proc-cpuinfo-mean
+
+            To check for CPUID support, simply run:
+                
+                cat /proc/cpuinfo | grep cpuid
 ```
 <h3>[ ] Numa Memory Allocation and Scheduler Support</h3>
 ```none
@@ -712,17 +737,13 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     Systems with multiple physical processors (multiple sockets) will 
-            benefit from NUMA.
-            
-            However, systems with a single physical cpu (even if it had multiple
-            cores, since all the cores share the same memory bus) won't see any
+Reason:     You can safely exclude this option as it's only useful for systems
+            with multiple physical processors (multiple sockets).
+
+            Systems with a single physical cpu (even if it had multiple
+            cores, as all these cores share the same memory bus) won't see any
             benefit at all from NUMA and in some cases it may cause more harm
             than good.
-
-            Since most i7s are single cpus and cores share the same memory bus,
-            (I'll only be getting a single node in numa) I decided to exclude
-            this feature.
 ```
 <h3>Memory model (Sparse Memory)  ---></h3>
 <h3>(X) Sparse Memory</h3>
