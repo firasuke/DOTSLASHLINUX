@@ -765,9 +765,9 @@ Type:       boolean
 
 Choice:     built-in (X)
 
-Reason:     This is the only option available on my system so I included it.
-
-            If you had a 32-bit cpu then you should include Flat Memory instead.
+Reason:     It's highly recommended that you include this option in your kernel
+            (that is if it isn't already forcibly included as it's the only
+            available option on many systems).
 ```
 <h3>[&ast;] Sparse Memory virtual memmap</h3>
 ```none
@@ -781,8 +781,8 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     It's highly recommendded that you include this option (if you've
-            chosen CONFIG_SPARSEMEM_MANUAL) since it boosts performance.
+Reason:     It's highly recommendded that you include this option in your kernel
+            if you've already included CONFIG_SPARSEMEM_MANUAL since it boosts performance.
 ```
 <h3>[ ] Allow for memory hot-add</h3>
 ```none
@@ -794,11 +794,9 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     This option allows you to hotplug memory mainly for your virtual
-            guests without down time (which is really helpful if you're upgrading
-            your host server).
-
-            I excluded this option as I have no use for it on my system.
+Reason:     You can safely exclude this option as it's only useful for some certain
+            cloud hosting services, that want to perform live system upgrades without
+            experiencing any down time.
 ```
 <h3>-&ast;- Allow for memory compaction</h3>
 ```none
@@ -817,7 +815,8 @@ Type:       boolean
 
 Choice:     built-in -*-
 
-Reason:     Forcibly included and I don't have a strong reason to disable it =D.
+Reason:     It's highly recommended that you include this option in your kernel
+            as it speeds up your system at the cost of some latency.
 ```
 <h3>-&ast;-   Page migration</h3>
 ```none
@@ -834,8 +833,8 @@ Type:       boolean
 
 Choice:     built-in -*-
 
-Reason:     Forcibly included by CONFIG_COMPACTION even though I've excluded both
-            CONFIG_NUMA and huge pages.
+Reason:     It's highly recommended that you include this option in your kernel
+            (that is if it isn't already forcibly included by CONFIG_COMPACTION).
 ```
 <h3>[&ast;] Enable bounce buffers</h3>
 ```none
@@ -850,11 +849,10 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     I included this as I'm using the proprietary nvidia driver and it
-            relies on CONFIG_ZONE_DMA which in turn relies on CONFIG_BOUNCE.
-
-            (When the nvidia attempts a DMA on an unreachable address it creates
-            bounce buffers, or so I understood.)
+Reason:     It's highly recommended that you include this option in your kernel
+            if you've already included CONFIG_ZONE_DMA (if you have an NVIDIA GPU
+            for example, as the nvidia module creates bounce buffers when attempting
+            a DMA on an unreachable address.
 ```
 <h3>[&ast;] Enable KSM for page merging</h3>
 ```none
@@ -874,10 +872,11 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     KSM is really useful as it saves memory (there's also UKSM which isn't
-            in mainline but performs better than KSM and saves more memory).
+Reason:     It's highly recommended that you include this option in your kernel
+            as KSM helps save a lot of memory.
 
-            Overall, this is a good feature to include in your kernel.
+            You should also look into using UKSM which saves more memory than
+            KSM, but isn't in mainline.
 ```
 <h3>(0) Low address space to protect from user allocation</h3>
 ```none
@@ -901,7 +900,10 @@ Type:       integer
 
 Choice:     (0) custom
 
-Reason:     Default is (4096), which allows for some protection while allowing
+Reason:     You can safely set the value of this option to (0) to disable this
+            protection feature and lower system overhead.
+
+            The default value is (4096), which allows for some protection while allowing
             emulators and WINE to run. (Many users reported that setting this
             to 64k has caused problems for WINE and DOSemu.) 
 ```
@@ -918,11 +920,11 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I don't have ECC memory; therefore, I excluded this option.
+Reason:     You can safely exclude this option if you don't have ECC memory.
             
-            You can check if your memory is ECC or not by running the following:
+            You can check if you have ECC memory by running:
               
-              dmidecode -t 17
+                dmidecode -t 17
 
             "Total Width:" should be 72 bits for ECC memory and 64 bits for non-ECC
             memory.
