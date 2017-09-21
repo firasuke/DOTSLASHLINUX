@@ -1419,7 +1419,8 @@ Type:       boolean
 Choice:     built-in [*]
 
 Reason:     It's recommended that you include this option as it adds a performance
-            boost and speeds up object allocation and freeing.
+            boost and speeds up object allocation and freeing at the cost of a 
+            slight increase in memory footprint.
 
             Exclude only if you're concerned about latency.
 ```

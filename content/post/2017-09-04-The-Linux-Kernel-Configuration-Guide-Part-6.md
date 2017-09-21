@@ -667,9 +667,12 @@ Choice:     built-in <*>
 Reason:     It's highly recommended that you include this option in your kernel
             if your CPU supports it.
 
-            Please refer to part 11, and check the guide at the top to understand
-            how to find what features your system supports and what options to
-            include.
+            Please refer to part 11:
+            
+                https://www.dotslashlinux.com/2017/09/11/the-linux-kernel-configuration-guide-part-11/
+
+            and check the guide at the top to understand how to find what features
+            your system supports and what options to include in your kernel.
             
             To see the flags that your CPU supports simply run:
                 
@@ -699,9 +702,12 @@ Choice:     built-in <*>
 Reason:     It's highly recommended that you include this option in your kernel
             if your CPU supports it.
 
-            Please refer to part 11, and check the guide at the top to understand
-            how to find what features your system supports and what options to
-            include.
+            Please refer to part 11:
+            
+                https://www.dotslashlinux.com/2017/09/11/the-linux-kernel-configuration-guide-part-11/
+
+            and check the guide at the top to understand how to find what features
+            your system supports and what options to include in your kernel.
             
             To see the flags that your CPU supports simply run:
                 
@@ -946,13 +952,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     Well I generally hate hugepages (even though they are useful in
-            some cases).
-
-            Some users reported that they had major delays when running emulation
-            software.
-
-            Since I'm going for a low latency system I excluded this option.
+Reason:     You can safely exclude this option as it's only useful for
+            virtualization purposes with KVM.
 ```
 <h3>[ ] Enable cleancache driver to cache clean pages if tmem is present</h3>
 ```none
@@ -981,11 +982,12 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this option as I don't need it.
-
-            If you want to use multiple VM guests that cache the same data
-            to do that using the same ram you'll need to let the hypervisor
-            to manage the memory (ex. xen tmem) and include this option.
+Reason:     You can safely exclude this option if you're not running multiple
+            VM guests that cache the same data (identical VM guests).
+            
+            Include this option only if you want multiple VM guests that cache
+            the same data to do that using the same RAM. You'll also need to let
+            the hypervisor manage the memory (ex. xen tmem).
 ```
 <h3>[ ] Enable frontswap to cache swap pages if tmem is present</h3>
 ```none
@@ -1007,7 +1009,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this option as I don't need it.
+Reason:     You can safely exclude this option as caching swap pages will increase
+            your system's overhead.
 ```
 <h3>[ ] Contiguous Memory Allocator</h3>
 ```none
@@ -1026,8 +1029,7 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     For less system overhead, I went with the default value and I excluded
-            this option.
+Reason:     You can safely exclude this option to lower system overhead.
 ```
 <h3>< > Common API for compressed memory storage</h3>
 ```none
@@ -1040,7 +1042,8 @@ Type:       tristate
 
 Choice:     excluded < >
 
-Reason:     I have no need for compressed memory so I excluded this option.
+Reason:     You can safely exclude this option if you're not using compressed
+            memory.
 ```
 <h3>< > Low (Up to 2x) density storage for compressed pages</h3>
 ```none
@@ -1056,7 +1059,8 @@ Type:       tristate
 
 Choice:     excluded < >
 
-Reason:     I'm excluding this option as well as I'm not using compressed pages.
+Reason:     You can safely exclude this option if you're not using compressed
+            memory pages.
 ```
 <h3>< > Memory allocator for compressed pages</h3>
 ```none
@@ -1073,7 +1077,8 @@ Type:       tristate
 
 Choice:     excluded < >
 
-Reason:     I'm excluding this option as well as I'm not using compressed pages.
+Reason:     You can safely exclude this option if you're not using compressed
+            memory pages.
 ```
 <h3>[ ] Enable idle page tracking</h3>
 ```none
@@ -1090,8 +1095,7 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I currently have CONFIG_CGROUPS excluded; hence, I have no need
-            for this option.
+Reason:     You can safely exclude this option if you've already excluded CONFIG_CGROUPS.
 ```
 <h3>< > Support non-standard NVDIMMs and ADR protected memory</h3>
 ```none
@@ -1108,16 +1112,9 @@ Type:       tristate
 
 Choice:     excluded < >
 
-Reason:     I excluded this option as I have no need for it.
-
-            Since I didn't fully understand this option (the output of 
-
+Reason:     You can safely exclude this option if you're not seeing errors when running:
+                
                 dmesg | grep e820
-
-            ) seems fine to me and no errors are being reported.
-
-            Perhaps you should include this option if you're receiving e820
-            errors?
 ```
 <h3>[ ] Check for low memory corruption</h3>
 ```none
@@ -1146,10 +1143,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this option as I have no need for it even though
-            
-            I've never experienced a single BIOS corruption even though
-            I have a pretty buggy bios myself.
+Reason:     You can safely exclude this option as BIOS corruptions are extremely
+            rare even on buggy BIOSes like mine.            
 ```
 <h3>(64) Amount of low memory, in kilobytes, to reserve for the BIOS</h3>
 ```none
@@ -1231,10 +1226,17 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     I included this option as my CPU supports MTRR. MTRR is really useful
-            for applications such as the X server as it allows it to control how
-            the CPU caches memory accesses resulting in a read/write boosts to 
-            certain memory ranges.
+Reason:     It's highly recommended that you include this option in your kernel
+            if your CPU supports it, as MTRR is really useful for applications such
+            as the X server as it allows it to control how the CPU caches memory
+            accesses resulting in a read/write boosts to certain memory ranges.
+
+            Please refer to part 11:
+            
+                https://www.dotslashlinux.com/2017/09/11/the-linux-kernel-configuration-guide-part-11/
+
+            and check the guide at the top to understand how to find what features
+            your system supports and what options to include in your kernel.
             
             To see the flags that your CPU supports simply run:
                 
@@ -1243,6 +1245,10 @@ Reason:     I included this option as my CPU supports MTRR. MTRR is really usefu
             And to see what these flags mean check this link:
 
                 https://unix.stackexchange.com/questions/43539/what-do-the-flags-in-proc-cpuinfo-mean
+
+            To check for MTRR support, simply run:
+                
+                cat /proc/cpuinfo | grep mtrr
 ```
 <h3>[&ast;]   MTRR cleanup support</h3>
 ```none
@@ -1261,8 +1267,8 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     You should include this option as it fixes most MTRR programming
-            issues in the kernel (if any).
+Reason:     It's highly recommended that you include this option in your kernel
+            as it fixes most MTRR programming issues in the kernel.
 ```
 <h3>(1)     MTRR cleanup enable value (0-1)</h3>
 ```none
@@ -1274,8 +1280,8 @@ Type:       integer
 
 Choice:     (1) custom
 
-Reason:     I highly recommend that you set this value to (1) to enable mtrr
-            cleanup.
+Reason:     It's highly recommended that you set the value of this option to (1)
+            to enable mtrr cleanup.
 ```
 <h3>(1)     MTRR cleanup spare reg num (0-7)</h3>
 ```none
@@ -1288,11 +1294,11 @@ Type:       integer
 
 Choice:     (1) default?
 
-Reason:     I highly recommend that you set this value to (1).
+Reason:     It's highly recommended that you set the value of this option to (1).
 
             Some users reported that setting this and the value of
             CONFIG_MTRR_SANITIZER_ENABLE_DEFAULT to 1 helped them get rid of
-            mtrr errors and type mismatch errors.
+            MTRR errors and type mismatch errors.
 ```
 <h3>[&ast;]   x86 PAT support</h3>
 ```none
@@ -1312,7 +1318,27 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     I included this option as my CPU supports pat.
+Reason:     It's highly recommended that you include this option in your kernel
+            if your CPU supports it.
+
+            Please refer to part 11:
+            
+                https://www.dotslashlinux.com/2017/09/11/the-linux-kernel-configuration-guide-part-11/
+
+            and check the guide at the top to understand how to find what features
+            your system supports and what options to include in your kernel.
+            
+            To see the flags that your CPU supports simply run:
+                
+                cat /proc/cpuinfo | grep flags
+
+            And to see what these flags mean check this link:
+
+                https://unix.stackexchange.com/questions/43539/what-do-the-flags-in-proc-cpuinfo-mean
+
+            To check for PAT support, simply run:
+                
+                cat /proc/cpuinfo | grep pat
 ```
 <h3>[&ast;] x86 architectural random number generator</h3>
 ```none
@@ -1327,7 +1353,27 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     I included this option as my CPU supports the RDRAND instruction.
+Reason:     It's highly recommended that you include this option in your kernel
+            if your CPU supports it.
+
+            Please refer to part 11:
+            
+                https://www.dotslashlinux.com/2017/09/11/the-linux-kernel-configuration-guide-part-11/
+
+            and check the guide at the top to understand how to find what features
+            your system supports and what options to include in your kernel.
+            
+            To see the flags that your CPU supports simply run:
+                
+                cat /proc/cpuinfo | grep flags
+
+            And to see what these flags mean check this link:
+
+                https://unix.stackexchange.com/questions/43539/what-do-the-flags-in-proc-cpuinfo-mean
+
+            To check for RDRAND support, simply run:
+                
+                cat /proc/cpuinfo | grep rdrand
 ```
 <h3>[ ] Supervisor Mode Access Prevention</h3>
 ```none
@@ -1344,7 +1390,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this option as my CPU doesn't support SMAP.
+Reason:     You can safely exclude this option if your CPU doesn't support SMAP,
+            as it increases security at the cost of performance.
 ```
 <h3>[ ] Intel MPX (Memory Protection Extensions)</h3>
 ```none
@@ -1375,7 +1422,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this option as my CPU doesn't support MPX.
+Reason:     You can safely exclude this option if your CPU doesn't support MPX,
+            as it increases security at the cost of performance.
 ```
 <h3>[ ] Intel Memory Protection Keys</h3>
 ```none
@@ -1393,8 +1441,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this option as my CPU doesn't support Memory
-            Protection Keys.
+Reason:     You can safely exclude this option if your CPU doesn't support Memory
+            Protection Keys as it increases security at the cost of performance.
 ```
 <h3>[ ] EFI runtime service support</h3>
 ```none
@@ -1414,17 +1462,16 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this option as I'm using MBR (MSDOS partition table)
-            on my HDD.
+Reason:     You can safely exclude this option if you're using MBR (MSDOS partition table)
+            on your storage device.
 
-            The reason I went with MBR is that my laptop is from late 2013 and 
-            laptops (especially Toshiba ones) had buggy UEFI/BIOS implementations.
-
-            The BIOS works fine (although it's buggy) but when using UEFI (which
-            is much buggier) no matter the setup I went with, I receive a 5 sec
-            black screen with white text on it asking me to mount bootable medium
-            as it didn't find any bootable medium, then it proceeds to boot normally,
-            which forced me to stick with MBR.
+            On some laptops (especially Toshiba laptops from late 2013), UEFI
+            implementations are pretty buggy. These laptops usually come with both
+            a BIOS and a UEFI implementation. Usually the BIOS is pretty buggy and the
+            UEFI implementation rarely works (even if it did work, you may see
+            error messages like unable to detect a bootable medium, or please insert
+            a bootable medium, for like 5 seconds before the system starts booting
+            normally).
 ```
 <h3>[&ast;] Enable seccomp to safely compute untrusted bytecode</h3>
 ```none
@@ -1446,10 +1493,9 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     This is an important feature that you should always include
-            in your kernels. The security advantages it offers overweigh
-            the near-minimum gains acheived in excluding it (no gains are
-            gains with a damaged system).
+Reason:     It's highly recommended that you include this option in your kernel
+            as the security advantages it offers overweigh the near-minimum gains
+            acheived by excluding it (no gains are gains with a damaged system).
 ```
 <h3>Timer frequency (100 HZ)  ---></h3>
 ```none
@@ -1476,25 +1522,9 @@ Type:       boolean
 
 Choice:     built-in (X)
 
-Reason:     In case you didn't notice, I started using ck-sources (MuQSS + BFQ)
-            again. I know... but I decided to give it a third chance maybe
-            it won't freeze on me like it did previously.
-
-            Don't worry it's only a mere 5-10 options different between gentoo-sources
-            and ck-sources, and I've updated previous sections to include ck-sources 
-            options as well.
-
-            Now back to this option, since MuQSS is now tickless, setting this to 1000HZ
-            or to 100HZ won't matter much; thus, I went with what ck recommends
-            and that's 100HZ.
-
-            If you're using gentoo-sources (CFS) and wanted a responsive syste with low latency
-            then go with 1000HZ.
-
-            If you want pure pure performance and throughput then go with 100HZ and I warn
-            you, forget the ability to open the web browser and watch some videos while
-            emerge is compiling chromium. You'll barely be able to see cat output and it
-            won't be fast I can assure you that.
+Reason:     It's highly recommended that you include this option in your kernel
+            if you've already included CONFIG_PREEMPT_NONE, as it boosts
+            performance considerably at the cost of some latency.
 ```
 <h3>[ ] kexec system call</h3>
 ```none
@@ -1517,8 +1547,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I'm not planning on shutting down my current kernel to execute
-            another kernel; hence, I excluded this option.
+Reason:     You can safely exclude this option if you're not planning on shutting
+            down your current kernel to execute another kernel.
 ```
 <h3>[ ] kexec file based system call</h3>
 ```none
@@ -1533,8 +1563,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I'm not planning on shutting down my current kernel to execute
-            another kernel; hence, I excluded this option.
+Reason:     You can safely exclude this option if you're not planning on shutting
+            down your current kernel to execute another kernel.
 ```
 <h3>[ ] kernel crash dumps</h3>
 ```none
@@ -1554,8 +1584,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I'm not planning on shutting down my current kernel to execute
-            another kernel using kexec; hence, I excluded this option.
+Reason:     You can safely exclude this option if you're not planning on shutting
+            down your current kernel to execute another kernel.
 ```
 <h3>(0x1000000) Physical address where the kernel is loaded</h3>
 ```none
@@ -1602,8 +1632,9 @@ Type:       hex
 
 Choice:     (0x1000000) default
 
-Reason:     I highly recommend that you leave the default value for this option
-            unles you seriously know what you are doing.
+Reason:     It's highly recommended that you leave the value of this option set
+            to its default value of (0x1000000) unles you seriously know what you're
+            doing.
 ```
 <h3>[ ] Build a relocatable kernel</h3>
 ```none
@@ -1626,13 +1657,13 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this option as I don't plan on using kexec to execute
-            a recovery kernel.
+Reason:     You can safely exclude this option if you don't plan on using kexec to
+            execute a recovery kernel.
 
             This is useful for users who may want to execute a rescue/recovery
             kernel since it's obvious that the new executed kernel should be
             placed (should live) in a differnt physical memory address than
-            the primary kernel (with errors).
+            the primary kernel (the one with errors).
 ```
 <h3>(0x200000) Alignment value to which kernel should be aligned</h3>
 ```none
@@ -1663,10 +1694,11 @@ Type:       hex
 
 Choice:     (0x200000) default
 
-Reason:     I highly recommend that you stick with the default value for
-            this option as well.
+Reason:     It's highly recommended that you leave the value of this option set
+            to its default value of (0x1000000) unles you seriously know what you're
+            doing.
 ```
-<h3>[&ast;] Support for hot-pluggable CPUs</h3>
+<h3>[ ] Support for hot-pluggable CPUs</h3>
 ```none
 Symbol:     CONFIG_HOTPLUG_CPU
 
@@ -1678,65 +1710,12 @@ Help:       Say Y here to allow turning CPUs off and on. CPUs can be
 
 Type:       boolean
 
-Choice:     built-in [*]
-
-Reason:     I included this option for powersaving reasons. You should
-            include this option if you want suspend/resume support.
-```
-<h3>[ ]   Set default setting of cpu0_hotpluggable (NEW)</h3>
-```none
-Symbol:     CONFIG_BOOTPARAM_HOTPLUG_CPU0
-
-Help:       Set whether default state of cpu0_hotpluggable is on or off.
-
-            Say Y here to enable CPU0 hotplug by default. If this switch
-            is turned on, there is no need to give cpu0_hotplug kernel
-            parameter and the CPU0 hotplug feature is enabled by default.
-
-            Please note: there are two known CPU0 dependencies if you want
-            to enable the CPU0 hotplug feature either by this switch or by
-            cpu0_hotplug kernel parameter.
-
-            First, resume from hibernate or suspend always starts from CPU0.
-            So hibernate and suspend are prevented if CPU0 is offline.
-
-            Second dependency is PIC interrupts always go to CPU0. CPU0 can not
-            offline if any interrupt can not migrate out of CPU0. There may
-            be other CPU0 dependencies.
-
-            Please make sure the dependencies are under your control before
-            you enable this feature.
-
-            Say N if you don't want to enable CPU0 hotplug feature by default.
-            You still can enable the CPU0 hotplug feature at boot by kernel
-            parameter cpu0_hotplug.
-
-Type:       boolean
-
 Choice:     excluded [ ]
 
-Reason:     I excluded this option as it affects performance, so include it
-            only when needed.
-```
-<h3>[ ]   Debug CPU0 hotplug (NEW)</h3>
-```none
-Symbol:     CONFIG_DEBUG_HOTPLUG_CPU0
+Reason:     You can safely exclude this option as it'll be forcibly included
+            by some power saving options.
 
-Help:       Enabling this option offlines CPU0 (if CPU0 can be offlined) as
-            soon as possible and boots up userspace with CPU0 offlined. User
-            can online CPU0 back after boot time.
-
-            To debug CPU0 hotplug, you need to enable CPU0 offline/online
-            feature by either turning on CONFIG_BOOTPARAM_HOTPLUG_CPU0 during
-            compilation or giving cpu0_hotplug kernel parameter at boot.
-
-            If unsure, say N.
-
-Type:       boolean
-
-Choice:     excluded [ ]
-
-Reason:     I excluded this option as I have no need for this debugging feature.
+            Include this option only if you want suspend/resume support.
 ```
 <h3>[ ] Disable the 32-bit vDSO (needed for glibc 2.3.3)</h3>
 ```none
@@ -1766,13 +1745,11 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     We're compiling our own kernel aren't we =D
+Reason:     You can safely exclude this option if you're using newer versions
+            of glibc as it hurts performance.
 
-            This option is a performance hurter and I'm using a much newer version
-            of glibc so I safely excluded it.
-
-            You may want to double check your glibc version and settings and see
-            if you need this option or not.
+            Include this option only if you're sure that your glibc version and
+            settings require it (which is highly unlikely).
 ```
 <h3>vsyscall table for legacy applications (None)  ---></h3>
 ```none
@@ -1804,7 +1781,8 @@ Type:       boolean
 
 Choice:     built-in (X)
 
-Reason:     I'm using a recent glibc version so I safely included this option.
+Reason:     You can safely exclude this option if you're using a recent version
+            of glibc.
 ```
 <h3>[ ] Built-in kernel command line</h3>
 ```none
@@ -1827,8 +1805,9 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I'm using a fully functional boot loader and the kernel isn't
-            being built for an embedded system; hence, I excluded this option.
+Reason:     You can safely exclude this option if you're using a fully functional
+            boot loader (LILO, Syslinux, GRUB....etc) and the kernel isn't
+            being built for an embedded system.
 ```
 <h3>[ ] Enable the LDT (local descriptor table)</h3>
 ```none
@@ -1850,11 +1829,12 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I'm a basic WINE user, and most of my apps work without the need
-            to modify anything kernel wise.
+Reason:     You can safely exclude this option if you're a basic WINE user,
+            and if most of your apps work without the need to modify anything
+            kernel wise.
 
-            If you stumbled upon a WINE program that requires this option then
-            include it, otherwise exclude it.
+            Include this option only if you stumbled upon a WINE program that
+            requires it.
 ```
 <hr/>
 <h3>Chinese Translation</h3>
