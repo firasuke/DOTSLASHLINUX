@@ -54,24 +54,6 @@ Choice:     built-in [*]
 Reason:     It's highly recommended that you include this option in your kernel
             as excluding it may result in a read-only root partition.
 ```
-<h3>[&ast;] Dnotify support</h3>
-```none
-Symbol:     CONFIG_DNOTIFY
-
-Help:       Dnotify is a directory-based per-fd file change notification system
-            that uses signals to communicate events to user-space.  There exist
-            superior alternatives, but some applications may still rely on
-            dnotify.
-
-            If unsure, say Y.
-
-Type:       boolean
-
-Choice:     built-in [*]
-
-Reason:     It's highly recommended that you include this option in your kernel
-            as it's required by several applications.
-```
 <h3>[&ast;] Inotify support for userspace</h3>
 ```none
 Symbol:     CONFIG_INOTIFY_USER
@@ -85,27 +67,6 @@ Help:       Say Y here to enable inotify support for userspace, including the
             unmount notification.
 
             For more information, see <file:Documentation/filesystems/inotify.txt>
-
-            If unsure, say Y.
-
-Type:       boolean
-
-Choice:     built-in [*]
-
-Reason:     It's highly recommended that you include this option in your kernel
-            as it's required by several important options including CONFIG_GENTOO_LINUX,
-            CONFIG_GENTOO_LINUX_UDEV and CONFIG_GENTOO_LINUX_INIT_SYSTEMD.
-
-            It's also required by several applications.
-```
-<h3>[&ast;] Filesystem wide access notification</h3>
-```none
-Symbol:     CONFIG_FANOTIFY
-
-Help:       Say Y here to enable fanotify support.  fanotify is a file access
-            notification system which differs from inotify in that it sends
-            an open file descriptor to the userspace listener along with
-            the event.
 
             If unsure, say Y.
 
@@ -171,7 +132,7 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     It's recommended that you include this option in your kernel as it's
+Reason:     It's highly recommended that you include this option in your kernel as it's
             required to read and write on the majority of optical discs and it's 
             recommended as well by the Gentoo Wiki.
 ```
@@ -190,7 +151,7 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     It's recommended that you include this option in your kernel as it's
+Reason:     It's highly recommended that you include this option in your kernel as it's
             required to read and write on optical discs with long filenames and it's 
             recommended as well by the Gentoo Wiki.
 ```
@@ -209,7 +170,7 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     It's recommended that you include this option in your kernel as it's
+Reason:     It's highly recommended that you include this option in your kernel as it's
             wanted to store more data on your discs via compression and it's 
             recommended as well by the Gentoo Wiki.
 ```
@@ -233,7 +194,7 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     It's recommended that you include this option in your kernel as it's
+Reason:     It's highly recommended that you include this option in your kernel as it's
             required to read and write on rewritable optical discs and it's 
             recommended as well by the Gentoo Wiki.
 
@@ -450,27 +411,6 @@ Reason:     It's highly recommended that you include this option in your kernel 
             CONFIG_GENTOO_LINUX_UDEV and CONFIG_GENTOO_LINUX_INIT_SYSTEMD and by
             several drivers as well.
 ```
-<h3>[&ast;]   /proc/kcore support</h3>
-```none
-Symbol:     CONFIG_PROC_KCORE
-
-Help:       Provides a virtual ELF core file of the live kernel.  This can
-            be read with gdb and other ELF tools.  No modifications can be
-            made using this mechanism.
-
-Type:       boolean
-
-Choice:     built-in [*]
-
-Reason:     It's highly recommended that you include this option in your kernel as
-            it represents an entrance to your phyiscal memory. Moreover, reading from 
-            /proc/kcore is similar to reading from your physical memory.
-
-            Since /proc is a virtual file system, you can safely ignore the size of
-            /proc/kcore as it doesn't represent a physical value. Its size is even
-            128 TeraBytes on 64-bit systems which represents the maximum limit of
-            memory the system can allocate.
-```
 <h3>[&ast;]   Sysctl support (/proc/sys)</h3>
 ```none
 Symbol:     CONFIG_PROC_SYSCTL
@@ -492,7 +432,7 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     It's recommended that you include this option in your kernel as
+Reason:     It's highly recommended that you include this option in your kernel as
             it may be used by some other options like I915 and SCSI.
 ```
 <h3>[&ast;] sysfs file system support</h3>
