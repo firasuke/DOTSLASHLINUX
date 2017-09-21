@@ -2725,21 +2725,8 @@ Choice:     built-in <*>
 
 Reason:     It's highly recommended that you include this option in your kernel
             as it's required for USB keyboards and mice to work properly.
-```
-<h3>Special HID drivers  ---></h3>
-<h3><&ast;> Synaptics RMI4 device support</h3>
-```none
-Symbol:     CONFIG_HID_RMI
-
-Help:       Support for Synaptics RMI4 touchpads.
-            Say Y here if you have a Synaptics RMI4 touchpads over i2c-hid or usbhid
-            and want support for its special functionalities.
-
-Type:       tristate
-
-Choice:     built-in <*>
-
-Reason:     
+            
+            It's also recommended by the Gentoo Wiki.
 ```
 <h3>USB HID support  ---></h3>
 <h3><&ast;> USB HID transport layer</h3>
@@ -2764,26 +2751,10 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     
-```
-<h3>I2C HID support  ---></h3>
-<h3><&ast;> HID over I2C transport layer</h3>
-```none
-Symbol:     CONFIG_I2C_HID
-
-Help:       Say Y here if you use a keyboard, a touchpad, a touchscreen, or any
-            other HID based devices which is connected to your computer via I2C.
-
-            If unsure, say N.
-
-            This support is also available as a module.  If so, the module
-            will be called i2c-hid.
-
-Type:       tristate
-
-Choice:     built-in <*>
-
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            as it's required for USB keyboards and mice to work properly.
+            
+            It's also recommended by the Gentoo Wiki.
 ```
 <h3>[&ast] USB support  ---></h3>
 ```none
