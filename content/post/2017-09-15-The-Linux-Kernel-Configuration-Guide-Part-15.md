@@ -16,24 +16,6 @@ You know what they say "There isn't a 100% secure system". You have to find the 
 <br/>
 I'd recommend (at least as a starting point) that you leave all options in this section excluded (or only include those required by other options).
 <hr/>
-<h3>-&ast;- Enable the securityfs filesystem</h3>
-```none
-Symbol:     CONFIG_SECURITYFS
-
-Help:       This will build the securityfs filesystem.  It is currently used by
-            the TPM bios character driver and IMA, an integrity provider.  It is
-            not used by SELinux or SMACK.
-
-            If you are unsure how to answer this question, answer N.
-
-Type:       boolean
-
-Choice:     built-in -*-
-
-Reason:     You can exclude this option if it wasn't required by any other option.
-
-            (In my case it was required by CONFIG_TCG_TPM)
-```
 <h3>Default security module (Unix Discretionary Access Controls)  ---></h3>
 ```none
 Help:       Select the security module that will be used by default if the
@@ -49,5 +31,7 @@ Type:       boolean
 
 Choice:     built-in (X)
 
-Reason:     Only option left =D
+Reason:     It's highly recommended that you include this option in your kernel
+            (that is if it isn't already forcibly included as it's the only
+            option available on many systems).
 ```

@@ -84,80 +84,6 @@ Reason:     It's recommended that you set the value of this option to a value
             option and CONFIG_CONSOLE_LOGLEVEL_DEFAULT to a high enough value
             to get enough information.
 ```
-<h3>[&ast;] Enable dynamic printk() support</h3>
-```none
-Symbol:     CONFIG_DYNAMIC_DEBUG
-
-Help:       Compiles debug level messages into the kernel, which would not
-            otherwise be available at runtime. These messages can then be
-            enabled/disabled based on various levels of scope - per source file,
-            function, module, format string, and line number. This mechanism
-            implicitly compiles in all pr_debug() and dev_dbg() calls, which
-            enlarges the kernel text size by about 2%.
-
-            If a source file is compiled with DEBUG flag set, any
-            pr_debug() calls in it are enabled by default, but can be
-            disabled at runtime as below.  Note that DEBUG flag is
-            turned on by many CONFIG_*DEBUG* options.
-            
-            Usage:
-
-            Dynamic debugging is controlled via the 'dynamic_debug/control' file,
-            which is contained in the 'debugfs' filesystem. Thus, the debugfs
-            filesystem must first be mounted before making use of this feature.
-            We refer the control file as: <debugfs>/dynamic_debug/control. This
-            file contains a list of the debug statements that can be enabled. The
-            format for each line of the file is:
-
-                  filename:lineno [module]function flags format
-
-            filename : source file of the debug statement
-            lineno : line number of the debug statement
-            module : module that contains the debug statement
-            function : function that contains the debug statement
-            flags : '=p' means the line is turned 'on' for printing
-            format : the format used for the debug statement
-
-            From a live system:
-       
-                  nullarbor:~ # cat <debugfs>/dynamic_debug/control
-                  # filename:lineno [module]function flags format
-                  fs/aio.c:222 [aio]__put_ioctx =_ "__put_ioctx:\040freeing\040%p\012"
-                  fs/aio.c:248 [aio]ioctx_alloc =_ "ENOMEM:\040nr_events\040too\040high\012"
-                  fs/aio.c:1770 [aio]sys_io_cancel =_ "calling\040cancel\012"
-
-            Example usage:
-      
-                  // enable the message at line 1603 of file svcsock.c
-                  nullarbor:~ # echo -n 'file svcsock.c line 1603 +>
-                                                  <debugfs>/dynamic_debug/control
-      
-                  // enable all the messages in file svcsock.c
-                  nullarbor:~ # echo -n 'file svcsock.c +p' >
-                                                  <debugfs>/dynamic_debug/control
-      
-                  // enable all the messages in the NFS server module
-                  nullarbor:~ # echo -n 'module nfsd +p' >
-                                                  <debugfs>/dynamic_debug/control
-      
-                  // enable all 12 messages in the function svc_process()
-                  nullarbor:~ # echo -n 'func svc_process +p' >
-                                                  <debugfs>/dynamic_debug/control
-      
-                  // disable all 12 messages in the function svc_process()
-                  nullarbor:~ # echo -n 'func svc_process -p' >
-                                                  <debugfs>/dynamic_debug/control
-
-            See Documentation/admin-guide/dynamic-debug-howto.rst for additional
-            information.
-
-Type:       boolean
-
-Choice:     built-in [*]
-
-Reason:     You can safely exclude this option along with CONFIG_DEBUG_FS if you
-            have no need for dynamic kernel debugging.
-```
 <h3>Compile-time checks and compiler options  ---></h3>
 <h3>(0) Warn for stack frames larger than (needs gcc 4.4)</h3>
 ```none
@@ -174,26 +100,6 @@ Choice:     (0) custom
 
 Reason:     If you can live with the warnings then don't disable this option.
 ```
-<h3>[&ast;] Debug Filesystem</h3>
-```none
-Symbol:     CONFIG_DEBUG_FS
-
-Help:       debugfs is a virtual file system that kernel developers use to put
-            debugging files into.  Enable this option to be able to read and
-            write to these files.
-
-            For detailed documentation on the debugfs API, see
-            Documentation/DocBook/filesystems.
-
-            If unsure, say N.
-
-Type:       boolean
-
-Choice:     built-in [*]
-
-Reason:     It's required that you include this option if you plan on using
-            dynamic kernel debugging (forcibly included by CONFIG_DYNAMIC_DEBUG).
-```
 <h3>-&ast;- Kernel debugging</h3>
 ```none
 Symbol:     CONFIG_DEBUG_KERNEL
@@ -205,7 +111,7 @@ Type:       boolean
 
 Choice:     built-in -*-
 
-Reason:     This option is forcibly included by CONFIG_EXPERT.
+Reason:     Forcibly included by CONFIG_EXPERT.
 ```
 <h3>(0) panic timeout</h3>
 ```none
@@ -249,6 +155,6 @@ Type:       boolean
 
 Choice:     built-in (X)
 
-Reason:     It's recommended that you include this option if you're on a modern
-            system.
+Reason:     It's highly recommended that you include this option in your kernel
+            if you're on a modern system.
 ```

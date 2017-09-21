@@ -54,6 +54,20 @@ Choice:     built-in -*-
 
 Reason:     Forcibly included as it's required by a lot of important options.
 ```
+<h3>[&ast;]   Disable run-time self tests</h3>
+```none
+Symbol:     CONFIG_CRYPTO_MANAGER_DISABLE_TESTS
+
+Help:       Disable run-time self tests that normally take place at
+            algorithm registration.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     It's highly recommended that you include this option in your kernel
+            as it speeds up boot time.
+```
 <h3>-&ast;-   GF(2^128) multiplication functions</h3>
 ```none
 Symbol:     CONFIG_CRYPTO_GF128MUL
@@ -81,6 +95,21 @@ Type:       tristate
 Choice:     built-in -*-
 
 Reason:     Forcibly included as it's required by a lot of important options.
+```
+<h3>-&ast;-   Software async crypto daemon</h3>
+```none
+Symbol:     CONFIG_CRYPTO_CRYPTD
+
+Help:       This is a generic software asynchronous crypto daemon that
+            converts an arbitrary synchronous software crypto algorithm
+            into an asynchronous algorithm that executes in a kernel thread.
+
+Type:       tristate
+
+Choice:     built-in -*-
+
+Reason:     Forcibly included as it's required by CONFIG_X86, CONFIG_64BIT,
+            CONFIG_CRYPTO and a lot of important options.
 ```
 <h3>-&ast;-   CCM support</h3>
 ```none
@@ -382,6 +411,16 @@ Choice:     built-in -*-
 Reason:     Forcibly included as it's required by CONFIG_PCI, CONFIG_NET,
             CONFIG_MAC80211, CONFIG_CFG80211, CONFIG_WIRELESS, CONFIG_RFKILL
             and some other important options.
+```
+<h3><&ast;>   LZO compression algorithm</h3>
+```none
+Symbol:     CONFIG_CRYPTO_LZO
+
+Help:       This is the LZO algorithm.
+
+Type:       tristate
+
+Choice:     built-in <*>
 ```
 <h3><&ast;>   LZ4 compression algorithm</h3>
 ```none
