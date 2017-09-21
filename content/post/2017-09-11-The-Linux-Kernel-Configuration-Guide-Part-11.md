@@ -2701,32 +2701,11 @@ Type:       tristate
 
 Choice:     built-in -*-
 
-Reason:     
-```
-<h3>[&ast;]   /dev/hidraw raw HID device support</h3>
-```none
-Symbol:     CONFIG_HIDRAW
+Reason:     It's highly recommended that you include this option in your kernel
+            (that is if it isn't already forcibly included by CONFIG_X86_64, CONFIG_NET,
+            CONFIG_INPUT, CONFIG_USB, CONFIG_USB_HID, CONFIG_I2C and CONFIG_PCI).
 
-Help:       Say Y here if you want to support HID devices (from the USB
-            specification standpoint) that aren't strictly user interface
-            devices, like monitor controls and Uninterruptable Power Supplies.
-
-            This module supports these devices separately using a separate
-            event interface on /dev/hidraw.
-
-            There is also a /dev/hiddev configuration option in the USB HID
-            configuration menu. In comparison to hiddev, this device does not process
-            the hid events at all (no parsing, no lookups). This lets applications
-            to work on raw hid events when they want to, and avoid using transport-specific
-            userspace libhid/libusb libraries.
-
-            If unsure, say Y.
-
-Type:       boolean
-
-Choice:     built-in [*]
-
-Reason:     
+            It's also recommended by the Gentoo Wiki.
 ```
 <h3><&ast;>   Generic HID driver</h3>
 ```none
@@ -2744,7 +2723,8 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            as it's required for USB keyboards and mice to work properly.
 ```
 <h3>Special HID drivers  ---></h3>
 <h3><&ast;> Synaptics RMI4 device support</h3>
