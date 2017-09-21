@@ -1856,115 +1856,6 @@ Choice:     built-in -*-
 Reason:     It's highly recommended that you include this option in your kernel
             as step_wise is the best thermal governor.
 ```
-<h3><&ast;> Multimedia support  ---></h3>
-```none
-Symbol:     CONFIG_MEDIA_SUPPORT
-
-Help:       If you want to use Webcams, Video grabber devices and/or TV devices
-            enable this option and other options below.
-            Additional info and docs are available on the web at
-            <https://linuxtv.org>
-
-Type:       tristate
-
-Choice:     built-in <*>
-
-Reason:     It's highly recommended that you include this option in your kernel
-            if you wanted your Webcam device to work.
-```
-<h3>[&ast;]   Cameras/video grabbers support</h3>
-```none
-Symbol:     CONFIG_MEDIA_CAMERA_SUPPORT
-
-Help:       Enable support for webcams and video grabbers.
-            
-            Say Y when you have a webcam or a video capture grabber board.
-
-Type:       boolean
-
-Choice:     built-in [*]
-
-Reason:     It's highly recommended that you include this option in your kernel
-            if you wanted your Webcam device to work.
-```
-<h3>[&ast;]   Media USB Adapters  ---></h3>
-```none
-Symbol:     CONFIG_MEDIA_USB_SUPPORT
-
-Help:       Enable media drivers for USB bus.
-            If you have such devices, say Y.
-
-Type:       boolean
-
-Choice:     built-in [*]
-
-Reason:     It's highly recommended that you include this option in your kernel
-            if you wanted your Webcam device to work.
-```
-<h3><&ast;>   USB Video Class (UVC)</h3>
-```none
-Symbol:     CONFIG_USB_VIDEO_CLASS
-
-Help:       Support for the USB Video Class (UVC).  Currently only video
-            input devices, such as webcams, are supported.
-
-            For more information see: <http://linux-uvc.berlios.de/>
-
-Type:       tristate
-
-Choice:     built-in <*>
-
-Reason:     It's highly recommended that you include this option in your kernel
-            if you wanted your Webcam device to work.
-            
-            If you've followed the guide above, then a simple:
-
-                cat lsusbv.txt | grep UVC
-
-            should tell you whether you need this option or not.
-```
-<h3>[&ast;]     UVC input events device support</h3>
-```none
-Symbol:     CONFIG_USB_VIDEO_CLASS_INPUT_EVDEV
-
-Help:       This option makes USB Video Class devices register an input device
-            to report button events.
-
-            If you are in doubt, say Y.
-
-Type:       boolean
-
-Choice:     built-in [*]
-
-Reason:     It's highly recommended that you include this option in your kernel
-            if you've already included CONFIG_USB_VIDEO_CLASS.
-```
-<h3>[&ast;]   Autoselect ancillary drivers (tuners, sensors, i2c, spi, frontends)</h3>
-```none
-Symbol:     CONFIG_MEDIA_SUBDRV_AUTOSELECT
-
-Help:       By default, a media driver auto-selects all possible ancillary
-            devices such as tuners, sensors, video encoders/decoders and
-            frontends, that are used by any of the supported devices.
-
-            This is generally the right thing to do, except when there
-            are strict constraints with regards to the kernel size,
-            like on embedded systems.
-
-            Use this option with care, as deselecting ancillary drivers which
-            are, in fact, necessary will result in the lack of the needed
-            functionality for your device (it may not tune or may not have
-            the needed demodulators).
-
-            If unsure say Y.
-
-Type:       boolean
-
-Choice:     built-in [*]
-
-Reason:     It's highly recommended that you include this option in your kernel
-            if you've already included CONFIG_MEDIA_SUPPORT.
-```
 <h3>Graphics support  ---></h3>
 You may want to check <a href="https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/" target="_blank">Setting up Bumblebee on Gentoo Linux | DOTSLASHLINUX</a>.
 <h3><&ast;> /dev/agpgart (AGP Support)  ---></h3>
@@ -2767,7 +2658,10 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            if you wanted USB support to work.
+
+            It's also recommended by the Gentoo Wiki.
 ```
 <h3><&ast;>   Support for Host-side USB</h3>
 ```none
@@ -2808,27 +2702,28 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            if you wanted USB support to work.
+
+            It's also recommended by the Gentoo Wiki.
 ```
-<h3>[&ast;]   USB announce new devices</h3>
+<h3>[&ast;]   PCI based USB host interface</h3>
 ```none
-Symbol:     CONFIG_USB_ANNOUNCE_NEW_DEVICES
+Symbol:     CONFIG_USB_PCI
 
-Help:       Say Y here if you want the USB core to always announce the
-            idVendor, idProduct, Manufacturer, Product, and SerialNumber
-            strings for every new USB device to the syslog.  This option is
-            usually used by distro vendors to help with debugging and to
-            let users know what specific device was added to the machine
-            in what location.
+Help:       A lot of embeded system SOC (e.g. freescale T2080) have both
+            PCI and USB modules. But USB module is controlled by registers
+            directly, it have no relationship with PCI module.
 
-            If you do not want this kind of information sent to the system
-            log, or have any doubts about this, say N here.
+            When say N here it will not build PCI related code in USB driver.
 
 Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            as it solves the problem of undetectable mice and keyboards as reported
+            by many users.
 ```
 <h3>[&ast;]   Enable USB persist by default</h3>
 ```none
@@ -2849,23 +2744,10 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     
-```
-<h3><&ast;>   USB Monitor</h3>
-```none
-Symbol:     CONFIG_USB_MON
+Reason:     It's highly recommended that you include this option in your kernel
+            if you wanted USB support to work.
 
-Help:       If you select this option, a component which captures the USB traffic
-            between peripheral-specific drivers and HC drivers will be built.
-            For more information, see <file:Documentation/usb/usbmon.txt>.
-
-            If unsure, say Y, if allowed, otherwise M.
-
-Type:       tristate
-
-Choice:     built-in <*>
-
-Reason:     
+            It's also recommended by the Gentoo Wiki.
 ```
 <h3><&ast;>   xHCI HCD (USB 3.0) support</h3>
 ```none
@@ -2881,7 +2763,24 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            if you wanted USB 3.0 support to work.
+
+            If you've followed the guide above, then a simple:
+
+                cat lspcikk.txt | grep xhci
+            
+            and:
+
+                cat dmesg.txt | grep xhci
+
+            and:
+
+                cat lsusb.txt | grep 3.0
+
+            should tell you whether you need this option or not.
+            
+            It's also recommended by the Gentoo Wiki.
 ```
 <h3><&ast;>   EHCI HCD (USB 2.0) support</h3>
 ```none
@@ -2909,7 +2808,24 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            if you wanted USB 2.0 support to work.
+
+            If you've followed the guide above, then a simple:
+
+                cat lspcikk.txt | grep ehci
+            
+            and:
+                
+                cat dmesg.txt | grep ehci
+
+            and:
+
+                cat lsusb.txt | grep 2.0
+
+            should tell you whether you need this option or not.
+            
+            It's also recommended by the Gentoo Wiki.
 ```
 <h3>[&ast;]     Improved Transaction Translator scheduling</h3>
 ```none
@@ -2934,29 +2850,11 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     
-```
-<h3><&ast;>   OHCI HCD (USB 1.1) support</h3>
-```none
-Symbol:     CONFIG_USB_OCHI_HCD
-
-Help:       The Open Host Controller Interface (OHCI) is a standard for accessing
-            USB 1.1 host controller hardware.  It does more in hardware than Intel's
-            UHCI specification.  If your USB host controller follows the OHCI spec,
-            say Y.  On most non-x86 systems, and on x86 hardware that's not using a
-            USB controller from Intel or VIA, this is appropriate.  If your host
-            controller doesn't use PCI, this is probably appropriate.  For a PCI
-            based system where you're not sure, the "lspci -v" entry will list the
-            right "prog-if" for your USB controller(s):  EHCI, OHCI, or UHCI.
-
-            To compile this driver as a module, choose M here: the
-            module will be called ohci-hcd.
-
-Type:       tristate
-
-Choice:     built-in <*>
-
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            if you've already included CONFIG_USB_EHCI_HCD as it speeds up USB
+            transfers.
+            
+            It's also recommended by the Gentoo Wiki.
 ```
 <h3><&ast;>   USB Mass Storage support</h3>
 ```none
@@ -2980,83 +2878,9 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     
-```
-<h3><&ast;> MMC/SD/SDIO card support  ---></h3>
-```none
-Symbol:     CONFIG_MMC
-
-Help:       This selects MultiMediaCard, Secure Digital and Secure
-            Digital I/O support.
-
-            If you want MMC/SD/SDIO support, you should say Y here and
-            also to your specific host controller driver.
-
-Type:       tristate
-
-Choice:     built-in <*>
-
-Reason:     
-```
-<h3><&ast;>   MMC block device driver</h3>
-```none
-Symbol:     CONFIG_MMC_BLOCK
-
-Help:       Say Y here to enable the MMC block device driver support.
-            This provides a block device driver, which you can use to
-            mount the filesystem. Almost everyone wishing MMC support
-            should say Y or M here.
-
-Type:       tristate
-
-Choice:     built-in <*>
-
-Reason:     
-```
-<h3>(8)     Number of minors per block device</h3>
-```none
-Symbol:     CONFIG_MMC_BLOCK_MINORS
-
-Help:       Number of minors per block device. One is needed for every
-            partition on the disk (plus one for the whole disk).
-
-            Number of total MMC minors available is 256, so your number
-            of supported block devices will be limited to 256 divided
-            by this number.
-
-            Default is 8 to be backwards compatible with previous
-            hardwired device numbering.
-
-            If unsure, say 8 here.
-
-Type:       integer
-
-Choice:     (8) default
-
-Reason:     
-```
-<h3>[&ast;]     Use bounce buffer for simple hosts</h3>
-```none
-Symbol:     CONFIG_MMC_BLOCK_BOUNCE
-
-Help:       SD/MMC is a high latency protocol where it is crucial to
-            send large requests in order to get high performance. Many
-            controllers, however, are restricted to continuous memory
-            (i.e. they can't do scatter-gather), something the kernel
-            rarely can provide.
-
-            Say Y here to help these restricted hosts by bouncing
-            requests back and forth from a large buffer. You will get
-            a big performance gain at the cost of up to 64 KiB of
-            physical memory.
-
-            If unsure, say Y here.
-
-Type:       boolean
-
-Choice:     built-in [*]
-
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            if you've already included CONFIG_USB_SUPPORT.
+            
 ```
 <h3>-&ast;- LED Support  ---></h3>
 ```none
@@ -3069,7 +2893,10 @@ Type:       boolean
 
 Choice:     built-in -*-
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            (that is if it isn't already forcibly included by CONFIG_PCI, CONFIG_I2C,
+            CONFIG_X86, CONFIG_ACPI, CONFIG_ACPI_VIDEO, CONFIG_RFKILL, CONFIG_INPUT
+            and a lot of important options).
 ```
 <h3>-&ast;-   LED Class Support</h3>
 ```none
@@ -3082,7 +2909,10 @@ Type:       tristate
 
 Choice:     built-in -*-
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            (that is if it isn't already forcibly included by CONFIG_PCI, CONFIG_I2C,
+            CONFIG_X86, CONFIG_ACPI, CONFIG_ACPI_VIDEO, CONFIG_RFKILL, CONFIG_INPUT
+            and a lot of important options).
 ```
 <h3>-&ast;-   LED Trigger support  ---></h3>
 ```none
@@ -3096,7 +2926,9 @@ Type:       boolean
 
 Choice:     built-in -*-
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            (that is if it isn't already forcibly included by CONFIG_NET, CONFIG_WLAN,
+            CONFIG_HID and CONFIG_INPUT).
 ```
 <h3>[&ast;] Real Time Clock  ---></h3>
 ```none
