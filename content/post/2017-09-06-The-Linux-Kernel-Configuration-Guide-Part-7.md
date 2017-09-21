@@ -21,7 +21,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this option as I never use suspend to RAM.
+Reason:     You can safely exclude this option if you don't plan on using suspend
+            to RAM.
 ```
 <h3>[ ] Hibernation (aka 'suspend to disk')</h3>
 ```none
@@ -68,8 +69,10 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this option as I never use hibernation.
+Reason:     You can safely exclude this option if you don't plan on using suspend
+            to disk.
 
+            Include this option only if power saving was a concern to you as
             CONFIG_HIBERNATION or suspend to disk saves all data in the memory to
             the disk allowing the device to power off completely.
 ```
@@ -91,8 +94,9 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     I (and the Gentoo Wiki) highly recommend that you include this option
-            in your kernel if powersaving is one of your concerns.
+Reason:     It's highly recommended that you include this option in your kernel
+            as it's required for enabling the power saving functionality of I/O
+            devices and it's also recommended by the Gentoo Wiki.
 ```
 <h3>[ ]   Power Management Debug Support</h3>
 ```none
@@ -106,10 +110,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I have no use for this debugging option; thus, I excluded it.
-
-            If you're facing trouble getting your suspend suppor to work then
-            including this option might help you debug the problem.
+Reason:     You can safely exclude this option as it's intended for debugging
+            purposes.
 ```
 <h3>[ ] Enable workqueue power-efficient mode by default</h3>
 ```none
@@ -134,9 +136,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this option as it reduces performance (by a tiny bit).
-            
-            You should include this option is powersaving is one of your concerns.
+Reason:     You can safely exclude this option as it slightly improves power
+            saving at the cost of performance.
 ```
 <h3>[&ast;] ACPI (Advanced Configuration and Power Interface) Support  ---></h3>
 ```none
@@ -176,15 +177,15 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     ACPI enforces strict guidelines on devices to significantly increase
+Reason:     It's highly recommended that you include this option in your kernel
+            as many systems won't boot without ACPI support.
+            
+            ACPI enforces strict guidelines on devices to significantly increase
             powersaving.
 
             Not all devices follow or abide by these guidelines which may lead to
-            several warnings,errors and conflicts. (Most of the times they can be
-            safely ignored.)
-
-            I included this option as my laptop heavily relies on ACPI (even though
-            I get a ton of harmless warnings in my dmesg output).
+            several warnings, errors and conflicts (most of the times they can be
+            safely ignored).
 ```
 <h3>[ ]   AML debugger interface</h3>
 ```none
@@ -199,7 +200,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this option as I have no need for this debugging option.
+Reason:     You can safely exclude this option as it's intended for debugging
+            purposes.
 ```
 <h3>[ ]   Deprecated power /proc/acpi directories</h3>
 ```none
@@ -222,11 +224,11 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I normally tend to exclude deprecated options (unless really needed).
+Reason:     You can safely exclude this option as it's deprecated.
 
-            If your reporting tools rely on this option and/or you were receiving 
-            some ACPI warnings/errors on your system, then including this option 
-            may help solve it.
+            Include this option only if your power reporting tools rely on
+            it option and/or if you're receiving some ACPI warnings/errors
+            on your system.
 ```
 <h3>[ ]   Allow supported ACPI revision to be overridden</h3>
 ```none
@@ -251,7 +253,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this option as I have no need for it on my system.
+Reason:     You can safely exclude this option if you have no need for this DMI-based
+            quirk.
 ```
 <h3>< >   EC read/write access through /sys/kernel/debug/ec</h3>
 ```none
@@ -275,11 +278,8 @@ Type:       tristate
 
 Choice:     excluded < >
 
-Reason:     Usually ECs are found in laptops to read info provided by sensors,
-            this option allows the linux kernel to access the EC through ACPI
-
-            However, when using this option, the kernel can access the EC without
-            ACPI which sounded problematic to me, so I excluded it.
+Reason:     You can safely exclude this option as providing the kernel direct access
+            to the EC without ACPI sounds problematic.
 ```
 <h3><&ast;>   AC Adapter</h3>
 ```none
@@ -296,8 +296,9 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     I'm building the kernel for my laptop which switches between A/C and battery
-            so yeah I need this option.
+Reason:     It's highly recommended that you include this option in your kernel
+            if you're building the kernel for a laptop which switches between A/C
+            and battery.
 
             You can safely exclude this option along with CONFIG_ACPI_BATTERY if
             you're building the kernel for a desktop.
@@ -317,11 +318,12 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     I'm building the kernel for my laptop which switches between A/C and battery
-            so I included this option.
+Reason:     It's highly recommended that you include this option in your kernel
+            if you're building the kernel for a laptop which switches between A/C
+            and battery.
 
-            You can safely exclude this option along with CONFIG_ACPI_AC if you're
-            building the kernel for a desktop.
+            You can safely exclude this option along with CONFIG_ACPI_AC if
+            you're building the kernel for a desktop.
 ```
 <h3>-&ast;-   Button</h3>
 ```none
@@ -339,9 +341,9 @@ Type:       tristate
 
 Choice:     built-in -*-
 
-Reason:     Forcibly included on my system as it's required by some important options.
-            
-            It's generally a good idea to include this option in your kernel.
+Reason:     It's highly recommended that you include this option in your kernel
+            (that is if it isn't already forcibly included by CONFIG_X86, CONFIG_PCI
+            CONFIG_DRM, and CONFIG_DRM_I915).
 ```
 <h3>-&ast;-   Video</h3>
 ```none
@@ -360,9 +362,10 @@ Type:       tristate
 
 Choice:     built-in -*-
 
-Reason:     Forcibly included on my system as it's required by a ton of other options.
-
-            It's generally a good idea to include this option in your kernel.
+Reason:     It's highly recommended that you include this option in your kernel
+            (that is if it isn't already forcibly included by CONFIG_X86, CONFIG_PCI
+            CONFIG_DRM, CONFIG_DRM_I915, CONFIG_INPUT, CONFIG_RFKILL and a lot of
+            important options).
 ```
 <h3><&ast;>   Fan</h3>
 ```none
@@ -378,7 +381,8 @@ Type:       tristate
 
 Choice:     built-in -*-
 
-Reason:     It's highly recommended that you include this option in your kernel.
+Reason:     It's highly recommended that you include this option in your kernel
+            to allow ACPI fan control.
 ```
 <h3>[ ]   Dock</h3>
 ```none
@@ -391,8 +395,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this option as my laptop doesn't have dock or a removable
-            drive bay.
+Reason:     You can safely exclude this option if your system doesn't have a docking
+            station and/or a removable drive bay.
 ```
 <h3>-&ast;-   Processor</h3>
 ```none
@@ -409,9 +413,8 @@ Type:       tristate
 
 Choice:     built-in -*-
 
-Reason:     A must have option for cpu frequency scaling.
-
-            Intel P-State the relatively new cpu frequency scaling driver requires it.
+Reason:     It's highly recommended that you include this option in your kernel
+            if you're using Intel P-State as your CPU frequency scaling driver.
 ```
 <h3><&ast;>   Processor Aggregator</h3>
 ```none
@@ -427,8 +430,8 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     Allows the kernel to let the CPUs enter idle state, which is a good
-            idea; hence, I included this option.
+Reason:     It's highly recommended that you include this option in your kernel
+            as it allows the kernel to let the CPUs enter idle state.
 ```
 <h3><&ast;>   Thermal Zone</h3>
 ```none
@@ -444,12 +447,13 @@ Help:       This driver supports ACPI thermal zones.  Most mobile and
 
 Type:       tristate
 
-Choice:     Wow... processors may be damaged without it... wondering why this
-            option isn't forcibly included but anyways you must include this
-            option in your kernel.
+Choice:     It's highly recommended that you include this option in your kernel
+            if you don't want your CPUs to get damaged as it allows the kernel
+            along with CONFIG_ACPI_FAN to manage the fan's speed; thus, lowering 
+            the system's temperature.
 
-            It allows the kernel along with CONFIG_ACPI_FAN to manage the fan's
-            speed; thus, lowering the system's temperature.
+            This makes me wonder why this option isn't already forcibly included
+            if it's that much important.
 ```
 <h3>()    Custom DSDT Table file to include</h3>
 ```none
@@ -467,9 +471,11 @@ Type:       string
 
 Choice:     () default
 
-Reason:     I went with the default value for this option as this option is mostly
-            for developers or users who are willing to use a custom DSDT table mainly
-            for fixing some ACPI errors (this is really an advanced complex process).
+Reason:     You can safely leave the value of this option set to the default value
+            of () as this option is mostly for developers or advanced users who are
+            willing to use a custom DSDT table mainly for fixing some ACPI errors
+            (this is really an advanced complex process).
+            
             For more info:
                 
                 https://forums.gentoo.org/viewtopic.php?t=122145
@@ -490,10 +496,10 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this option as I've fixed most ACPI errors on my system (still
-            getting some harmless warnings though).
+Reason:     You can safely exclude this option if you're receiving enough information
+            about your ACPI errors.
 
-            Include this option if you want to debug ACPI errors.
+            Include this option only if you want to debug ACPI errors.
 ```
 <h3>[ ]   PCI slot detection driver</h3>
 ```none
@@ -508,10 +514,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I went with the default value as well for this option.
-
-            Some applications may complain about this missing option. If that
-            ever happens include this option.
+Reason:     You can safely exclude this option if you're sure that your applications
+            don't require it.
 ```
 <h3>[&ast;]   Power Management Timer Support</h3>
 ```none
@@ -532,9 +536,10 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     It's highly recommended that you include this option in your kernel.
+Reason:     It's highly recommended that you include this option in your kernel
+            as many modern systems rely on its functionality.
 ```
-<h3>-&ast;-   Container and Module Devices</h3>
+<h3>[ ]   Container and Module Devices</h3>
 ```none
 Symbol:     CONFIG_ACPI_CONTAINER
 
@@ -548,11 +553,15 @@ Help:       This driver supports ACPI Container and Module devices (IDs
 
 Type:       boolean
 
-Choice:     built-in -*-
+Choice:     excluded [ ]
 
-Reason:     Forcibly included as it's required by several important options.
+Reason:     You can safely exclude this option if you've already excluded
+            CONFIG_HOTPLUG_CPU.
+
+            Include this option only if you want suspend to RAM support,
+            and if you've already included CONFIG_HOTPLUG_CPU.
 ```
-<h3><&ast;>   Smart Battery System</h3>
+<h3>< >   Smart Battery System</h3>
 ```none
 Symbol:     CONFIG_ACPI_SBS
 
@@ -566,8 +575,21 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     Although I suspect the existence of a smart battery system on my system
-            I included this option. (I'll update this option once I have more info)
+Reason:     You can safely exclude this option if you don't have a laptop
+            with a smart battery system.
+            
+            Please refer to part 11:
+            
+                https://www.dotslashlinux.com/2017/09/11/the-linux-kernel-configuration-guide-part-11/
+
+            and check the guide at the top to understand how to find what features
+            your system supports and what options to include in your kernel.
+            
+            If you've followed the guide in part 11, you can simply run:
+                
+                cat lsmod.txt | grep sbs
+
+            to see if your laptop has this system or not.
 ```
 <h3>< >   Hardware Error Device</h3>
 ```none
@@ -581,10 +603,11 @@ Type:       tristate
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this option as I don't have a (PNP0C33) hardware error device.
+Reason:     You can safely exclude this option if you don't have a (PNP0C33)
+            hardware error device.
 
-            Even for users that have this hardware error device, the reports are mostly
-            about corrected errors only and not all errors.
+            Even for users that have this hardware error device, the reports
+            are mostly about corrected errors only and not all errors.
 ```
 <h3>[ ]   Hardware-reduced ACPI support only</h3>
 ```none
@@ -602,8 +625,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     This option is mostly for SoC and arm based devices; therefore, I 
-            excluded it.
+Reason:     You can safely exclude this option as it's mostly for SoC and arm
+            based devices; therefore.
 ```
 <h3>< >   ACPI NVDIMM Firmware Interface Table (NFIT)</h3>
 ```none
@@ -621,8 +644,8 @@ Type:       tristate
 
 Choice:     excluded < >
 
-Reason:     I excluded this option as I don't have NVDIMMs installed in my 
-            system.
+Reason:     You can safely exclude this option if you don't have NVDIMMs installed 
+            in your system.
 ```
 <h3>[ ]   ACPI Platform Error Interface (APEI)</h3>
 ```none
@@ -637,11 +660,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this option as I saw no need for it on my system.
-
-            If you think I should include this option in my kernel then
-            kindly post a comment below or send me an email explaining
-            why.
+Reason:     You can safely exclude this option as it's highly unlikely that you'll
+            need it.
 ```
 <h3>< >   DPTF Platform Power Participant</h3>
 ```none
@@ -663,7 +683,8 @@ Type:       tristate
 
 Choice:     excluded < >
 
-Reason:     I excluded this option as my system doesn't need it.
+Reason:     You can safely exclude this option if you don't have a DPTF (INT3407)
+            device installed in your system.
 ```
 <h3>< >   Extended Error Log support</h3>
 ```none
@@ -688,10 +709,10 @@ Type:       tristate
 
 Choice:     excluded < >
 
-Reason:     I excluded this option as I have no need for the extended log information.
+Reason:     You can safely exclude this option as you'll rarely need this extended
+            information.
 
-            If you're suffering from such complicated errors as described in Help then
-            include this option, otherwise safely exclude it.
+            Include this option only if you're suffering from such complicated errors.
 ```
 <h3>[ ]   PMIC (Power Management Integrated Circuit) operation region support  ----</h3>
 ```none
@@ -706,7 +727,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this option as I don't have a PMIC chip in my system.
+Reason:     You can safely exclude this option if you don't have a PMIC chip installed
+            in your system.
 ```
 <h3>< >   ACPI configfs support</h3>
 ```none
@@ -720,7 +742,7 @@ Type:       tristate
 
 Choice:     excluded < >
 
-Reason:     I excluded this option as I have no need for it.
+Reason:     
 ```
 <h3>[ ] SFI (Simple Firmware Interface) Support  ----</h3>
 ```none
@@ -741,8 +763,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     This option is intended for small and low speced devices (mobile
-            devices); therefore, I excluded it.
+Reason:     You can safely exclude this option as it's intended for small and low
+            speced devices (some smart phones).
 ```
 <h3>CPU Frequency scaling  ---></h3>
 <h3>[&ast;] CPU Frequency scaling</h3>
@@ -765,9 +787,10 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     Another important option that should be included (especially if
-            you're on a laptop or want to conserve power) as it'll scale down
-            your CPU's clock speed when it's not being use to conserve power.
+Reason:     It's highly recommended that you include this option in your kernel
+            especially if you're on a laptop and want to conserve power as it'll
+            scale down your CPU's clock speed when it's not being use to conserve
+            power.
 ```
 <h3>[ ]   CPU frequency transition statistics</h3>
 ```none
@@ -781,15 +804,33 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this option as I have no need for the statistical information
-            it provides for less system overhead.
+Reason:     You can safely exclude this option to lower system overheadm as you'll
+            rarely need this statistical information.
 ```
-<h3>Default CPUFreq governor (ondemand)  ---></h3>
+<h3>Default CPUFreq governor (performance)  ---></h3>
 ```none
 Help:       This option sets which CPUFreq governor shall be loaded at
             startup. If in doubt, select 'performance'.
 ```
-<h3>(X) ondemand</h3>
+<h3>(X) performance</h3>
+```none
+Symbol:     CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
+
+Help:       Use the CPUFreq governor 'performance' as default. This sets
+            the frequency statically to the highest frequency supported by
+            the CPU.
+
+Type:       boolean
+
+Choice:     built-in (X)
+
+Reason:     It's highly recommended that you include this option in your kernel
+            as it ensures your CPU delivers high performance all the time.
+
+            Exclude this option and include CONFIG_CPU_FREQ_DEFAULT_GOV_ONDEMAND
+            only if pwoer saving was a major concern to you.
+```
+<h3>( ) ondemand</h3>
 ```none
 Symbol:     CONFIG_CPU_FREQ_DEFAULT_GOV_ONDEMAND
 
@@ -802,24 +843,27 @@ Help:       Use the CPUFreq governor 'ondemand' as default. This allows
 
 Type:       boolean
 
-Choice:     built-in (X)
+Choice:     excluded ( )
 
-Reason:     Using a modern intel CPU (mine is from gen. 4), and in order to enable
-            proper CPU scaling, you need to use CONFIG_X86_INTEL_PSTATE.
+Reason:     It's recommended that you include this option in your kernel
+            if you're using a modern intel CPU, and in order to enable
+            proper CPU scaling, you need to also include CONFIG_X86_INTEL_PSTATE.
 
             However, the wiki says that when you're using the Intel P State frequency
             scaling driver you have to use the 'performance' governor. The result is
-            that your CPUs will be always running at maximum frequency even on idle
-            and will consume more energy and increase temperatures (when it's not needed).
+            that your CPUs will be always running at maximum frequency and will consume
+            more energy and result in high temperatures (in some cases), but you'll get
+            the most performance out of your CPU.
 
-            The correct way would be to use 'ondemand' as the default governor, while
-            enabling both 'performance' and 'powersave' and use Intel P State as the 
-            CPU frequency driver and exclude every other governor and CPU frequency
-            scaling driver in order to get proper CPU scaling working.
+            The correct way to scale the frequency down with Intel P-State CPU frequencu
+            scaling driver would be to use 'ondemand' as the default governor, while
+            enabling both 'performance' and 'powersave' and exclude every other governor
+            and CPU frequency.
 
             This way your CPUs will clock down to their minimum frequency when idle and
             not in use, and will max their frequency when on load which allows for
-            reducing temperatures and conserving power while maintaining high performance.
+            reducing temperatures and conserving power while maintaining high performance
+            when needed.
 ```
 <h3>-&ast;-   'performance' governor</h3>
 ```none
@@ -837,8 +881,8 @@ Type:       tristate
 
 Choice:     built-in -*-
 
-Reason:     Required to get the Intel P State CPU frequency scaling driver to work
-            correctly.
+Reason:     It's highly recommended that you include this option in your kernel
+            as it's required by CONFIG_X86_INTEL_PSTATE.
 ```
 <h3><&ast;>   'powersave' governor</h3>
 ```none
@@ -856,11 +900,10 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     Required to allow the 'ondemand' governor when using the Intel P State
-            CPU frequency driver to clock down the CPU's frequency to the lowest
-            available frequency to conserve energy when in idle state.
+Reason:     It's highly recommended that you include this option in your kernel
+            as it's required by CONFIG_X86_INTEL_PSTATE.
 ```
-<h3>-&ast;-   'ondemand' cpufreq policy governor</h3>
+<h3>[ ]   'ondemand' cpufreq policy governor</h3>
 ```none
 Symbol:     CONFIG_CPU_FREQ_GOV_ONDEMAND
 
@@ -880,9 +923,11 @@ Help:       'ondemand' - This driver adds a dynamic cpufreq policy governor.
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     excluded [ ]
 
-Reason:     The correct governor that should be used with Intel P State.
+Reason:     It's recommended that you include this option in your kernel
+            as it's the correct governor that should be used with Intel P State
+            to allow your CPU's frequency to scale down.
 
             Remember that you need to choose 'ondemand' as the default governor 
             while enabling 'performance' and 'powersave' in order for Intel P State 
@@ -909,8 +954,8 @@ Type:       boolean
 
 Choice:     built-in
 
-Reason:     If you're using a gen 2+ intel cpu then you definitely want this
-            CPU frequency driver included.
+Reason:     It's highly recommended that you include this option in your kernel
+            if you're using a gen 2+ Intel CPU.
 
             Dont' forget to include CONFIG_CPU_FREQ_GOV_ONDEMAND as your default
             governor and enable both CONFIG_CPU_FREQ_GOV_PERFORMANCE and
@@ -932,8 +977,8 @@ Type:       boolean
 
 Choice:     built-in -*-
 
-Reason:     I highly recommend that you include this option as it allows your CPU
-            to enter idle state when not in use to conserve energy.
+Reason:     It's highly recommended that you include this option in your kernel
+            as it allows your CPU to enter idle state when not in use to conserve energy.
 ```
 <h3>-&ast;-   Ladder governor (for periodic timer tick)</h3>
 ```none
@@ -945,10 +990,8 @@ Type:       boolean
 
 Choice:     built-in -*-
 
-Reason:     Forcibly included as I have CONFIG_HZ_PERIODIC included as well.
-            
-            Exclude this option if you've included CONFIG_NO_HZ and
-            CONFIG_NO_HZ_FULL.
+Reason:     It's highly recommended that you include this option in your kernel
+            that is if it isn't already forcibly included by CONFIG_HZ_PERIODIC.
 ```
 <h3>[ ]   Menu governor (for tickless system)</h3>
 ```none
@@ -960,11 +1003,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     I excluded this option as I have CONFIG_HZ_PERIODIC.
-
-            Include this option if you've included CONFIG_NO_HZ and
-            CONFIG_NO_HZ_FULL (that is if this option isn't forcibly
-            included already).
+Reason:     You can safely exclude this option if you've already included CONFIG_HZ_PERIODIC
+            and CONFIG_CPU_IDLE_GOV_LADDER.
 ```
 <h3>[&ast;] Cpuidle Driver for Intel Processors</h3>
 ```none
@@ -979,9 +1019,9 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     If you're using an intel cpu, you'd want to include this option
-            in your kernel along with CONFIG_CPU_IDLE as it's much more
-            compatible with your intel cpu and should facilitate the process
+Reason:     It's highly recommended that you include this option in your kernel
+            if you're using an Intel CPU along with CONFIG_CPU_IDLE as it's much
+            more compatible with your Intel CPU and should facilitate the process
             of idling.
 ```
 <hr/>
