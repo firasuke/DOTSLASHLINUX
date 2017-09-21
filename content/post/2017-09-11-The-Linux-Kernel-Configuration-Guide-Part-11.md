@@ -2287,40 +2287,6 @@ Reason:     It's highly recommended that you include this option in your kernel
 
                 https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/
 ```
-<h3>[&ast;]   Enable Scrollback Buffer in System RAM</h3>
-```none
-Symbol:     CONFIG_VGACON_SOFT_SCROLLBACK
-
-Help:       The scrollback buffer of the standard VGA console is located in
-            the VGA RAM.  The size of this RAM is fixed and is quite small.
-            If you require a larger scrollback buffer, this can be placed in
-            System RAM which is dynamically allocated during initialization.
-            Placing the scrollback buffer in System RAM will slightly slow
-            down the console.
-
-            If you want this feature, say 'Y' here and enter the amount of
-            RAM to allocate for this buffer.  If unsure, say 'N'.
-
-Type:       boolean
-
-Choice:     built-in [*]
-
-Reason:     
-```
-<h3>(64)    Scrollback Buffer Size (in KB)</h3>
-```none
-Symbol:     CONFIG_VGACON_SOFT_SCROLLBACK_SIZE
-
-Help:       Enter the amount of System RAM to allocate for scrollback
-            buffers of VGA consoles. Each 64KB will give you approximately
-            16 80x25 screenfuls of scrollback buffer.
-
-Type:       integer
-
-Choice:     (64) default
-
-Reason:     
-```
 <h3>(80) Initial number of console screen columns</h3>
 ```none
 Symbol:     CONFIG_DUMMY_CONSOLE_COLUMNS
@@ -2333,7 +2299,8 @@ Type:       integer
 
 Choice:     (80) default
 
-Reason:     
+Reason:     You can safely leave the value of this option set to its default value
+            of (80) as it's for dummy consoles.
 ```
 <h3>(25) Initial number of console screen rows</h3>
 ```none
@@ -2347,7 +2314,8 @@ Type:       integer
 
 Choice:     (25) default
 
-Reason:     
+Reason:     You can safely leave the value of this option set to its default value
+            of (25) as it's for dummy consoles.
 ```
 <h3><&ast;> Framebuffer Console support</h3>
 ```none
@@ -2385,7 +2353,9 @@ Type:       boolean
 
 Choice:     built-in -*-
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            (that is if it isn't already forcibly included by CONFIG_HAS_IOMEM
+            and CONFIG_FRAMEBUFFER_CONSOLE).
 ```
 <h3><&ast;> Sound card support  ---></h3>
 ```none
@@ -2416,7 +2386,8 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            in order for sound to work.
 ```
 <h3>[&ast;]   Preclaim OSS device numbers</h3>
 ```none
@@ -2446,7 +2417,9 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            as many applications (especially lightweight status bars such as slstatus
+            rely on the existence of /dev/mixer).
 ```
 <h3><&ast;>   Advanced Linux Sound Architecture  ---></h3>
 ```none
@@ -2461,24 +2434,9 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     
-```
-<h3><&ast;>   Sequencer support</h3>
-```none
-Symbol:     CONFIG_SND_SEQUENCER
-
-Help:       Say Y or M to enable MIDI sequencer and router support.  This
-            feature allows routing and enqueueing of MIDI events.  Events
-            can be processed at a given time.
-
-            Many programs require this feature, so you should enable it
-            unless you know what you're doing.
-
-Type:       tristate
-
-Choice:     built-in <*>
-
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            in order for sound to work.
+            
 ```
 <h3><&ast;>   OSS Mixer API</h3>
 ```none
@@ -2496,7 +2454,9 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            as many applications (especially lightweight status bars such as slstatus
+            rely on the existence of /dev/mixer).
 ```
 <h3><&ast;>   OSS PCM (digital audio) API</h3>
 ```none
@@ -2514,21 +2474,9 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     
-```
-<h3>[&ast;]     OSS PCM (digital audio) API - Include plugin system</h3>
-```none
-Symbol:     CONFIG_SND_PCM_OSS_PLUGINS
-
-Help:       If you disable this option, the ALSA's OSS PCM API will not
-            support conversion of channels, formats and rates. It will
-            behave like most of new OSS/Free drivers in 2.4/2.6 kernels.
-
-Type:       boolean
-
-Choice:     built-in [*]
-
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            as many applications (especially lightweight status bars such as slstatus
+            rely on the existence of /dev/mixer).
 ```
 <h3>[&ast;]   PCM timer interface</h3>
 ```none
@@ -2545,56 +2493,16 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     
-```
-<h3>[&ast;]   OSS Sequencer API</h3>
-```none
-Symbol:     CONFIG_SND_SEQUENCER_OSS
+Reason:     It's highly recommended that you include this option in your kernel
+            in order for dmix which is required for allowing sound output from
+            multiple applications at the same time on systems that don't use
+            PulseAudio to work properly.
 
-Help:       Say Y here to enable OSS sequencer emulation (both
-            /dev/sequencer and /dev/music interfaces).
+            DOTSLASHLINUX has a guide on how to setup a basic ALSA configuration
+            with dmix to allow sound from multiple applications without using
+            PulseAudio, kindly check:
 
-            Many programs still use the OSS API, so say Y.
-
-            If you choose M in "Sequencer support" (SND_SEQUENCER),
-            this will be compiled as a module. The module will be called
-            snd-seq-oss.
-
-Type:       boolean
-
-Choice:     built-in [*]
-
-Reason:     
-```
-<h3><&ast;>   HR-timer backend support</h3>
-```none
-Symbol:     CONFIG_SND_HRTIMER
-
-Help:       Say Y here to enable HR-timer backend for ALSA timer.  ALSA uses
-            the hrtimer as a precise timing source. The ALSA sequencer code
-            also can use this timing source.
-
-            To compile this driver as a module, choose M here: the module
-            will be called snd-hrtimer.
-
-Type:       tristate
-
-Choice:     built-in <*>
-
-Reason:     
-```
-<h3>[&ast;]     Use HR-timer as default sequencer timer</h3>
-```none
-Symbol:     CONFIG_SND_SEQ_HRTIMER_DEFAULT
-
-Help:       Say Y here to use the HR-timer backend as the default sequencer
-            timer.
-
-Type:       boolean
-
-Choice:     built-in [*]
-
-Reason:     
+                https://www.dotslashlinux.com/2017/03/30/basic-alsa-configuration/
 ```
 <h3>[&ast;]   Dynamic device file minor numbers</h3>
 ```none
@@ -2611,7 +2519,9 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            if you're receving dmesg errors indicating that you should include
+            this option.
 ```
 <h3>(4)     Max number of sound cards</h3>
 ```none
@@ -2624,7 +2534,9 @@ Type:       integer
 
 Choice:     (4) custom
 
-Reason:     
+Reason:     You can safely set the value of this option equal to (4)
+            as on most systems you won't be using more than 1 or 2
+            sound cards.
 ```
 <h3>[&ast;]   PCI sound devices  ---></h3>
 ```none
@@ -2636,7 +2548,8 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            in order for Intel High Definition Audio to work properly.
 ```
 <h3>HD-Audio  ---></h3>
 <h3><&ast;> HD Audio PCI</h3>
@@ -2656,21 +2569,14 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     
-```
-<h3>[&ast;] Build hwdep interface for HD-audio driver</h3>
-```none
-Symbol:     CONFIG_SND_HDA_HWDEP
+Reason:     It's highly recommended that you include this option in your kernel
+            in order for Intel High Definition Audio to work properly.
+            
+            If you've followed the guide above, then a simple:
 
-Help:       Say Y here to build a hwdep interface for HD-audio driver.
-            This interface can be used for out-of-band communication
-            with codecs for debugging purposes.
+                cat dmesg.txt | grep snd_hda_intel
 
-Type:       boolean
-
-Choice:     built-in [*]
-
-Reason:     
+            should tell you whether you need this option or not.
 ```
 <h3>-&ast;- Allow dynamic codec reconfiguration</h3>
 ```none
@@ -2689,22 +2595,13 @@ Type:       boolean
 
 Choice:     built-in -*-
 
-Reason:     
-```
-<h3>[&ast;] Support initialization patch loading for HD-audio</h3>
-```none
-Symbol:     CONFIG_SND_HDA_PATCH_LOADER
+Reason:     It's highly recommended that you include this option in your kernel.
+            
+            If you've followed the guide above, then a simple:
 
-Help:       Say Y here to allow the HD-audio driver to load a pseudo
-            firmware file ("patch") for overriding the BIOS setup at
-            start up.  The "patch" file can be specified via patch module
-            option, such as patch=hda-init.
+                cat dmesg.txt | grep snd_hda_codec
 
-Type:       boolean
-
-Choice:     built-in [*]
-
-Reason:     
+            should tell you whether you need this option or not.
 ```
 <h3><&ast;> Build IDT/Sigmatel HD-audio codec support</h3>
 ```none
@@ -3459,7 +3356,9 @@ Type:       boolean
 
 Choice:     built-in -*-
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            (that is if it isn't already forcibly included by CONFIG_X86, CONFIG_PCI,
+            CONFIG_AGP, CONFIG_DRM, CONFIG_DRM_I915 and CONFIG_MMU).
 ```
 <h3>[&ast;] X86 Platform Specific Device Drivers  ---></h3>
 ```none
@@ -3602,39 +3501,6 @@ Choice:     built-in <*>
 
 Reason:     
 ```
-<h3><&ast;> Industrial I/O support  ---></h3>
-```none
-Symbol:     CONFIG_IIO
-
-Help:       The industrial I/O subsystem provides a unified framework for
-            drivers for many different types of embedded sensors using a
-            number of different physical interfaces (i2c, spi, etc).
-
-Type:       tristate
-
-Choice:     built-in <*>
-
-Reason:     
-```
-<h3>PHY Subsystem  ---></h3>
-<h3>[&ast;] PHY Core</h3>
-```none
-Symbol:     CONFIG_GENERIC_PHY
-
-Help:       Generic PHY support.
-
-            This framework is designed to provide a generic interface for PHY
-            devices present in the kernel. This layer will have the generic
-            API by which phy drivers can create PHY using the phy framework and
-            phy users can obtain reference to the PHY. All the users of this
-            framework should select this config.
-
-Type:       boolean
-
-Choice:     built-in [*]
-
-Reason:     
-```
 <h3>[&ast;] Generic powercap sysfs driver  ---></h3>
 ```none
 Symbol:     CONFIG_POWERCAP
@@ -3709,3 +3575,9 @@ Choice:     built-in [*]
 
 Reason:     
 ```
+<hr/>
+<h3>Chinese Translation</h3>
+One of DOTSLASHLINUX's followers from china 杨鑫 (Yang Mame), decided to follow up with the series and provide chinese translation of the kernel configuration guides on his blog.
+<br/>
+<br/>
+To read this guide in chinese <a href="https://blog.yangmame.top/2017/09/21/linux%e5%86%85%e6%a0%b8%e9%85%8d%e7%bd%ae%e6%8c%87%e5%8d%97-device-drivers/" target="_blank">click here</a>.
