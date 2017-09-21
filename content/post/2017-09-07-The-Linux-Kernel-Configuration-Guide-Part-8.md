@@ -30,9 +30,21 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     Include this feature if your motherboard supports PCI. In most cases
-            you'll have to include this option in your kernel (AFAIK almost all
-            graphic cards use PCI or PCIe).
+Reason:     It's highly recommended that you include this option in your kernel
+            if your motherboard supports PCI (almost all graphic cards use PCI or PCIe).
+            
+            Please refer to part 11:
+            
+                https://www.dotslashlinux.com/2017/09/11/the-linux-kernel-configuration-guide-part-11/
+
+            and check the guide at the top to understand how to find what features
+            your system supports and what options to include in your kernel.
+
+            If you've followed the guide in part 11, you can simply run:
+                
+                cat lspcikk.txt | grep PCI
+
+            to see if your system has PCI or not.
 ```
 <h3>[&ast;]   Support mmconfig PCI config space access</h3>
 ```none
@@ -44,7 +56,8 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     This is required to read extended information of PCI devices, as it
+Reason:     It's highly recommended that you include this option in your kernel
+            as it's required to read extended information of PCI devices and
             grants access to drivers polling for extra information.
 ```
 <h3>[ ]   Read CNB20LE Host Bridge Windows</h3>
@@ -64,11 +77,20 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     A simple "lspci -k" will show you if you have a CNB20LE host bridge
-            or not.
+Reason:     You can safely exclude this option if you don't have a CNB20LE host bridge.
 
-            In most cases you won't have this host bridge so you can safely
-            exclude this option.
+            Please refer to part 11:
+            
+                https://www.dotslashlinux.com/2017/09/11/the-linux-kernel-configuration-guide-part-11/
+
+            and check the guide at the top to understand how to find what features
+            your system supports and what options to include in your kernel.
+
+            If you've followed the guide in part 11, you can simply run:
+                
+                cat lspcikk.txt | grep CNB20LE
+
+            to see if your system has CNB20LE or not.
 ```
 <h3>[&ast;]   PCI Express Port Bus support</h3>
 ```none
@@ -83,10 +105,22 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     PCIe is an improved version of PCI designed to replace old buses. You
+Reason:     It's highly recommended that you include this option in your kernel
+            if you have PCIe ports (PCIe is an improved version of PCI designed
+            to replace old buses).
             
-            Again with a simple "lspci -k" you can see if you have PCI Express Ports,
-            which in most cases you'll have so include this option.
+            Please refer to part 11:
+            
+                https://www.dotslashlinux.com/2017/09/11/the-linux-kernel-configuration-guide-part-11/
+
+            and check the guide at the top to understand how to find what features
+            your system supports and what options to include in your kernel.
+
+            If you've followed the guide in part 11, you can simply run:
+                
+                cat lspcikk.txt | grep 'PCI Express'
+
+            to see if your system has PCIe or not.
 ```
 <h3>[ ]     PCI Express Hotplug driver</h3>
 ```none
@@ -103,9 +137,9 @@ Choice:     excluded [ ]
 
 Reason:     To see this option you need to include CONFIG_HOTPLUG_PCI.
 
-            USB Type-C, Thunderbolt, ExpressCard, XQD card and M-PCIE (mobile) are an
-            example of PCIe ports/cards that require PCI Express Native Hotplug so include 
-            this option if you have such ports or cards on your motherboard.
+            You can safely exclude this option if your motherboard doesn't support
+            PCIe Native Hotplug (examples include USB Type-C, Thunderbolt, ExpressCard,
+            XQD card and M-PCIE (mobile)).
 ```
 <h3>[ ]     Root Port Advanced Error Reporting support</h3>
 ```none
@@ -119,8 +153,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     Exclude this option if you have no need for its error reporting
-            feature.
+Reason:     You can safely exclude this option as it's intended mostly for 
+            developing purposes.
 
             For example, if you're a developer working on a custom PCIe interface
             then the AER driver might fill your /var/log/messages with a ton of
@@ -153,12 +187,8 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     PCIe ASPM is really an important feature that allows your PCIe devices
-            to enter an idle state.
-
-            It's highly recommended that you include this feature in your kernel,
-            especially if you're on a laptop and want some power saving on your
-            PCIe devices.
+Reason:     It's highly recommended that you include PCIe ASPM as it's really an important
+            feature that allows your PCIe devices to enter an idle state when not in use.
 ```
 <h3>[ ]       Debug PCI Express ASPM (NEW)</h3>
 ```none
@@ -171,35 +201,41 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     Exclude this option if you don't need it's debugging features like I
-            did, for less system overhead.
+Reason:     You can safely exclude this option as it's intended for debugging purposes.
 ```
-<h3>Default ASPM policy (BIOS default)  ---></h3>
-<h3>(X) BIOS default</h3>
+<h3>Default ASPM policy (Performance)  ---></h3>
+<h3>(X) Performance</h3>
 ```none
-Symbol:     CONFIG_PCIEASPM_DEFAULT
+Symbol:     CONFIG_PCIEASPM_PERFORMANCE
 
-Help:       Use the BIOS defaults for PCI Express ASPM.
+Help:       Disable PCI Express ASPM L0s and L1, even if the BIOS enabled them.
 
 Type:       boolean
 
 Choice:     built-in (X)
 
-Reason:     It's better to choose the BIOS defaults for ASPM.
+Reason:     It's highly recommended that you include this option in your kernel
+            as it adds a slight performance boost.
+            
+            In some cases it's better to choose the BIOS defaults for ASPM and
+            include CONFIG_PCIEASPM_DEFAULT, especially if you're receiving errors.
 
             Remember do not use the "pcie_aspm=force" kernel parameter until
             you check that all your PCIe support ASPM, otherwise your system
             may stop responding.
 
-            You can check for ASPM by simply running:
+            Please refer to part 11:
+            
+                https://www.dotslashlinux.com/2017/09/11/the-linux-kernel-configuration-guide-part-11/
+
+            and check the guide at the top to understand how to find what features
+            your system supports and what options to include in your kernel.
+
+            If you've followed the guide in part 11, you can simply run:
                 
-                lspci -vvv | grep ASPM
+                cat lspcinnkkvvv.txt | grep ASPM
 
-            or you can pipe it to less:
-
-                lspci -vvv | less
-
-            and see what parts support ASPM.
+            to see if your system supports ASPM or not.
 ```
 <h3>[ ]     PCIe Downstream Port Containment support</h3>
 ```none
@@ -266,9 +302,9 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     It's highly recommended that you include this feature as it improves
-            performance. Almost all motherboards support this feature and including
-            it will make it available to wherever it's needed in the system.
+Reason:     It's highly recommended that you include this option in your kernel 
+            as it improves performance. Almost all motherboards support this feature
+            and including it will make it available to wherever it's needed in the system.
 
             Excluding this option, will force the system to use older methods and may
             result in a performance hit.
@@ -287,12 +323,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     The general rule with all debugging options is to exclude them if
-            everything is working as expected and include them to debug the
-            source of the problem until everything works as expected then
-            removing them.
-
-            You can safely exclude this option if you have no need for it.
+Reason:     You can safely exclude this option as it's intended for debugging
+            purposes.
 ```
 <h3>[ ]   Enable PCI resource re-allocation detection</h3>
 ```none
@@ -311,10 +343,11 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     Include this option only if you're unable to enable SR-IOV and you're
-            receiving this error message "not enough MMIO resources for SR-IOV".
+Reason:     You can safely exclude this option, unless you're receiving this error message:
 
-            You can safely exclude this option if you're not receiving that error.
+                "not enough MMIO resources for SR-IOV".
+
+            and you can't enable SR-IOV.
 ```
 <h3>< >   PCI Stub driver</h3>
 ```none
@@ -329,11 +362,8 @@ Type:       tristate
 
 Choice:     excluded < >
 
-Reason:     This option is only useful for those who want to do PCI passthrough
-            (example VGA passthrough) along with CONFIG_IOMMU_SUPPORT (VT-d).
-
-            You can safely exclude this option if your CPU doesn't support IOMMU
-            (aka VT-d) or if you're not planning to do PCI passthrough.
+Reason:     You can safely exclude this option if your CPU doesn't support IOMMU
+            (aka VT-d for Intel CPUs and AMD-V for AMD CPUs).
 ```
 <h3>[&ast;]   Interrupts on hypertransport devices</h3>
 ```none
@@ -347,7 +377,8 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            as it boosts performance.
 ```
 <h3>[ ] PCI IOV support</h3>
 ```none
@@ -363,8 +394,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     You can safely exclude this option if your CPU doesn't support IOMMU (VT-d)
-            or if you're not planning to use it.
+Reason:     You can safely exclude this option if your CPU doesn't support IOMMU
+            (aka VT-d for Intel CPUs and AMD-V for AMD CPUs).
 ```
 <h3>[ ] PCI PRI support</h3>
 ```none
@@ -379,8 +410,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     You can safely exclude this option if your CPU doesn't support IOMMU (VT-d)
-            or if you're not planning to use it.
+Reason:     You can safely exclude this option if your CPU doesn't support IOMMU
+            (aka VT-d for Intel CPUs and AMD-V for AMD CPUs).
 ```
 <h3>[ ] PCI PASID support</h3>
 ```none
@@ -398,8 +429,8 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     You can safely exclude this option if your CPU doesn't support IOMMU (VT-d)
-            or if you're not planning to use it.
+Reason:     You can safely exclude this option if your CPU doesn't support IOMMU
+            (aka VT-d for Intel CPUs and AMD-V for AMD CPUs).
 ```
 <h3>[*] Support for PCI Hotplug  ---></h3>
 ```none
@@ -413,16 +444,14 @@ Help:       Say Y here if you have a motherboard with a PCI Hotplug controller.
 
 Type:       boolean
 
-Choice:     excluded [ ]
+Choice:     built-in [*]
 
-Reason:     If you have USB Type-C, Thunderbolt, ExpressCard, XQD card or M-PCIE (mobile)
-            then you should include this option along with CONFIG_HOTPLUG_PCI_PCIE to get
-            them working.
+Reason:     It's highly recommended that you include this option in your kernel
+            if your motherboard has USB Type-C, Thunderbolt, ExpressCard, XQD card or
+            M-PCIE (mobile) along with CONFIG_HOTPLUG_PCI_PCIE to get them working.
 
             You should also include this option if you have a motherboard with a Hotplug
-            controller (in my case I have a SHPC PCI Hotplug controller or shpchp).
-
-            Otherwise, you can safely exclude this option.
+            controller (for example a SHPC PCI Hotplug controller).
 ```
 <h3><&ast;>   SHPC PCI Hotplug driver</h3>
 ```none
@@ -440,10 +469,21 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     I included this option as it was supported on my motherboard.
+Reason:     It's highly recommended that you include this option in your kernel
+            if your motherboard has a SHPC PCI Hotplug controller.
             
-            In fact, it was the only reason I included the whole PCI
-            Hotplug option.
+            Please refer to part 11:
+            
+                https://www.dotslashlinux.com/2017/09/11/the-linux-kernel-configuration-guide-part-11/
+
+            and check the guide at the top to understand how to find what features
+            your system supports and what options to include in your kernel.
+
+            If you've followed the guide in part 11, you can simply run:
+                
+                cat lspcikk.txt | grep shpchp -B2
+
+            to see if your motherboard has a SHPC PCI Hotplug controller or not.
 ```
 <h3>DesignWare PCI Core Support  ---></h3>
 <h3>[ ] Platform bus based DesignWare PCIe Controller</h3>
@@ -504,11 +544,21 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     You can check for PCI endpoint support by simply running:
-                
-                lspci -nnkvvv | grep Endpoint
+Reason:     It's highly recommended that you include this option in your kernel
+            if your motherboard has a SHPC PCI Hotplug controller.
+            
+            Please refer to part 11:
+            
+                https://www.dotslashlinux.com/2017/09/11/the-linux-kernel-configuration-guide-part-11/
 
-            If no output is printed, you can safely exclude this option.
+            and check the guide at the top to understand how to find what features
+            your system supports and what options to include in your kernel.
+
+            If you've followed the guide in part 11, you can simply run:
+                
+                cat lspcinnkkvvv.txt | grep Endpoint
+
+            to see if you have a device that can operate in endpoint mode.
 ```
 <h3>[ ]   PCI Endpoint Configfs Support</h3>
 ```none
@@ -522,8 +572,8 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     You can safely exclude this option as most of the times you
-            won't need it.
+Reason:     You can safely exclude this option if you've already included
+            CONFIG_PCI_ENDPOINT as you won't need it.
 ```
 <h3>< >   PCI Endpoint Test driver (NEW)</h3>
 ```none
@@ -538,7 +588,7 @@ Type:       tristate
 
 Choice:     excluded < >
 
-Reason:     You can safely exclude this option as it's for testing purposes.
+Reason:     You can safely exclude this option as it's intended for testing purposes.
 ```
 <h3>PCI switch controller drivers  ---></h3>
 <h3>< > MicroSemi Switchtec PCIe Switch Management Driver</h3>
