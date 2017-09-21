@@ -1898,7 +1898,8 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            if you wanted your Webcam device to work.
 ```
 <h3><&ast;>   USB Video Class (UVC)</h3>
 ```none
@@ -1913,7 +1914,14 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            if you wanted your Webcam device to work.
+            
+            If you've followed the guide above, then a simple:
+
+                cat lsusbv.txt | grep UVC
+
+            should tell you whether you need this option or not.
 ```
 <h3>[&ast;]     UVC input events device support</h3>
 ```none
@@ -1928,7 +1936,8 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            if you've already included CONFIG_USB_VIDEO_CLASS.
 ```
 <h3>[&ast;]   Autoselect ancillary drivers (tuners, sensors, i2c, spi, frontends)</h3>
 ```none
@@ -1953,7 +1962,8 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            if you've already included CONFIG_MEDIA_SUPPORT.
 ```
 <h3>Graphics support  ---></h3>
 You may want to check <a href="https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/" target="_blank">Setting up Bumblebee on Gentoo Linux | DOTSLASHLINUX</a>.
@@ -1988,7 +1998,12 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            in order to get a working bumblebee setup on an optimus based laptop.
+
+            DOTSLASHLINUX has a guide on how to setup bumblebee on Gentoo Linux:
+
+                https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/
 ```
 <h3><&ast;>   Intel 440LX/BX/GX, I8xx and E7x05 chipset support</h3>
 ```none
@@ -2003,7 +2018,12 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            in order to get a working bumblebee setup on an optimus based laptop.
+
+            DOTSLASHLINUX has a guide on how to setup bumblebee on Gentoo Linux:
+
+                https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/
 ```
 <h3>[&ast;] VGA Arbitration</h3>
 ```none
@@ -2019,7 +2039,12 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            in order to get a working bumblebee setup on an optimus based laptop.
+
+            DOTSLASHLINUX has a guide on how to setup bumblebee on Gentoo Linux:
+
+                https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/
 ```
 <h3>(2)   Maximum number of GPUs</h3>
 ```none
@@ -2032,7 +2057,16 @@ Type:       integer
 
 Choice:     (2) custom
 
-Reason:     
+Reason:     It's highly recommended that you set the value of this option to (2)
+            as the default value of (16) is an overkill for a system with 2 GPUs
+            (an iGPU and a dGPU) which is the case on almost all optimus based
+            laptops.
+
+            in order to get a working bumblebee setup on an optimus based laptop.
+
+            DOTSLASHLINUX has a guide on how to setup bumblebee on Gentoo Linux:
+
+                https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/
 ```
 <h3><&ast;> Direct Rendering Manager (XFree86 4.1.0 and higher DRI support)  ---></h3>
 ```none
@@ -2050,7 +2084,12 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            in order to get a working bumblebee setup on an optimus based laptop.
+
+            DOTSLASHLINUX has a guide on how to setup bumblebee on Gentoo Linux:
+
+                https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/
 ```
 <h3>[&ast;]   Enable legacy fbdev support for your modesetting driver</h3>
 ```none
@@ -2066,7 +2105,12 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            in order to get a working bumblebee setup on an optimus based laptop.
+
+            DOTSLASHLINUX has a guide on how to setup bumblebee on Gentoo Linux:
+
+                https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/
 ```
 <h3>(300)   Overallocation of the fbdev buffer</h3>
 ```none
@@ -2080,7 +2124,14 @@ Type:       integer
 
 Choice:     (300) custom
 
-Reason:     
+Reason:     It's highly recommended that you set the value of this option to (300)
+            to enable triple buffering.
+
+            in order to get a working bumblebee setup on an optimus based laptop.
+
+            DOTSLASHLINUX has a guide on how to setup bumblebee on Gentoo Linux:
+
+                https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/
 ```
 <h3><&ast;> Intel 8xx/9xx/G3x/G4x/HD Graphics</h3>
 ```none
@@ -2106,29 +2157,12 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     
-```
-<h3>[&ast;]   Enable alpha quality support for new Intel hardware by default</h3>
-```none
-Symbol:     CONFIG_DRM_I915_ALPHA_SUPPORT
+Reason:     It's highly recommended that you include this option in your kernel
+            in order to get a working bumblebee setup on an optimus based laptop.
 
-Help:       Choose this option if you have new Intel hardware and want to enable
-            the alpha quality i915 driver support for the hardware in this kernel
-            version. You can also enable the support at runtime using the module
-            parameter i915.alpha_support=1; this option changes the default for
-            that module parameter.
+            DOTSLASHLINUX has a guide on how to setup bumblebee on Gentoo Linux:
 
-            It is recommended to upgrade to a kernel version with proper support
-            as soon as it is available. Generally fixes for platforms with alpha
-            support are not backported to older kernels.
-
-            If in doubt, say "N".
-
-Type:       boolean
-
-Choice:     built-in [*]
-
-Reason:     
+                https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/
 ```
 <h3>[&ast;]   Always enable userptr support</h3>
 ```none
@@ -2143,7 +2177,12 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            in order to get a working bumblebee setup on an optimus based laptop.
+
+            DOTSLASHLINUX has a guide on how to setup bumblebee on Gentoo Linux:
+
+                https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/
 ```
 <h3>Frame buffer Devices  ---></h3>
 <h3>-&ast;- Support for frame buffer devices  ---></h3>
@@ -2185,7 +2224,9 @@ Type:       tristate
 
 Choice:     built-in -*-
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            (that is if it isn't already forcibly included by CONFIG_X86, CONFIG_PCI,
+            CONFIG_DRM, CONFIG_MMU and CONFIG_HAS_IOMEM).
 ```
 <h3>-&ast;- Backlight & LCD device support  ---></h3>
 ```none
@@ -2198,7 +2239,9 @@ Type:       boolean
 
 Choice:     built-in -*-
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            (that is if it isn't already forcibly included by CONFIG_X86, CONFIG_PCI,
+            CONFIG_ACPI, CONFIG_DRM, CONFIG_MMU and CONFIG_HAS_IOMEM).
 ```
 <h3>-&ast;-   Lowlevel Backlight controls</h3>
 ```none
@@ -2214,7 +2257,9 @@ Type:       tristate
 
 Choice:     built-in -*-
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            (that is if it isn't already forcibly included by CONFIG_X86, CONFIG_PCI,
+            CONFIG_ACPI, CONFIG_DRM, CONFIG_MMU and CONFIG_HAS_IOMEM).
 ```
 <h3>Console display driver support  ---></h3>
 <h3>[&ast;] VGA text console</h3>
@@ -2235,7 +2280,12 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            in order to get a working bumblebee setup on an optimus based laptop.
+
+            DOTSLASHLINUX has a guide on how to setup bumblebee on Gentoo Linux:
+
+                https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/
 ```
 <h3>[&ast;]   Enable Scrollback Buffer in System RAM</h3>
 ```none
@@ -2309,7 +2359,12 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            in order to get a working bumblebee setup on an optimus based laptop.
+
+            DOTSLASHLINUX has a guide on how to setup bumblebee on Gentoo Linux:
+
+                https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/
 ```
 <h3>-&ast;-   Map the console to the primary display device</h3>
 ```none
