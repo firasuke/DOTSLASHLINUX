@@ -3098,65 +3098,6 @@ Choice:     built-in -*-
 
 Reason:     
 ```
-<h3><&ast;> EDAC (Error Detection And Correction) reporting  ---></h3>
-```none
-Symbol:     CONFIG_EDAC
-
-Help:       EDAC is a subsystem along with hardware-specific drivers designed to
-            report hardware errors. These are low-level errors that are reported
-            in the CPU or supporting chipset or other subsystems:
-            memory errors, cache errors, PCI errors, thermal throttling, etc..
-            If unsure, select 'Y'.
-
-            The mailing list for the EDAC project is linux-edac@vger.kernel.org.
-
-Type:       tristate
-
-Choice:     built-in <*>
-
-Reason:     
-```
-<h3><&ast;>   Intel e312xx</h3>
-```none
-Symbol:     CONFIG_EDAC_IE31200
-
-Help:       Support for error detection and correction on the Intel
-            E3-1200 based DRAM controllers.
-
-Type:       tristate
-
-Choice:     built-in <*>
-
-Reason:     
-```
-<h3><&ast;>   Intel i7 Core (Nehalem) processors</h3>
-```none
-Symbol:     CONFIG_EDAC_I7CORE
-
-Help:       Support for error detection and correction the Intel
-            i7 Core (Nehalem) Integrated Memory Controller that exists on
-            newer processors like i7 Core, i7 Core Extreme, Xeon 35xx
-            and Xeon 55xx processors.
-
-Type:       tristate
-
-Choice:     built-in <*>
-
-Reason:     
-```
-<h3><&ast;>   Intel Sandy-Bridge/Ivy-Bridge/Haswell Integrated MC</h3>
-```none
-Symbol:     CONFIG_EDAC_SBRIDGE
-
-Help:       Support for error detection and correction the Intel
-            Sandy Bridge, Ivy Bridge and Haswell Integrated Memory Controllers.
-
-Type:       tristate
-
-Choice:     built-in <*>
-
-Reason:     
-```
 <h3>[&ast;] Real Time Clock  ---></h3>
 ```none
 Symbol:     CONFIG_RTC_CLASS
@@ -3490,43 +3431,6 @@ Help:       This enables support for the Intel Running Average Power Limit (RAPL
 Type:       tristate
 
 Choice:     built-in <*>
-
-Reason:     
-```
-<h3>[&ast;] Reliability, Availability and Serviceability (RAS) features  ----</h3>
-```none
-Symbol:     CONFIG_RAS
-
-Help:       Reliability, availability and serviceability (RAS) is a computer
-            hardware engineering term. Computers designed with higher levels
-            of RAS have a multitude of features that protect data integrity
-            and help them stay available for long periods of time without
-            failure.
-
-            Reliability can be defined as the probability that the system will
-            produce correct outputs up to some given time. Reliability is
-            enhanced by features that help to avoid, detect and repair hardware
-            faults.
-
-            Availability is the probability a system is operational at a given
-            time, i.e. the amount of time a device is actually operating as the
-            percentage of total time it should be operating.
-
-            Serviceability or maintainability is the simplicity and speed with
-            which a system can be repaired or maintained; if the time to repair
-            a failed system increases, then availability will decrease.
-
-            Note that Reliability and Availability are distinct concepts:
-            Reliability is a measure of the ability of a system to function
-            correctly, including avoiding data corruption, whereas Availability
-            measures how often it is available for use, even though it may not
-            be functioning correctly. For example, a server may run forever and
-            so have ideal availability, but may be unreliable, with frequent
-            data corruption.
-
-Type:       boolean
-
-Choice:     built-in [*]
 
 Reason:     
 ```
