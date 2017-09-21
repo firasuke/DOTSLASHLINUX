@@ -58,18 +58,17 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     You should include this option if you're planning to use such applications.
+Reason:     It's highly recommended that you include this option in your kernel
+            as it's required by net-wireless/wpa_supplicant.
+
             These include Wireshark, Metasploit, nmap, tcpdump ...etc. Some even say
             that this option may boost performance by allowing applications to directly
             communicate with network services.
 
-            However, I highly recommend that you exclude this option as it was used as
-            a way to exploit the linux kernel (fixed on Mar. 29, 2017), kindly check this link:
+            This option was used as a way to exploit the linux kernel (fixed on Mar. 29, 2017),
+            kindly check this link:
                 
                 https://googleprojectzero.blogspot.com/2017/05/exploiting-linux-kernel-via-packet.html
-            
-            So if you're not planning on using this option, it's better to exclude it (if you're
-            using older versions of the linux kerenl).
 ```
 <h3>-&ast;- Unix domain sockets</h3>
 ```none
@@ -125,8 +124,8 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     It's highly recommended that you include this option in your kernel.
-            As the help says, it's required by the Xorg server (although I doubt
+Reason:     It's highly recommended that you include this option in your kernel
+            as some say it's required by the Xorg server (although I doubt
             that).
 
             Exclude every other option listed beneath this option as you won't need
@@ -250,9 +249,10 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     You should include this option if your device supports bluetooth.
+Reason:     It's highly recommended that you include this option in your kernel
+            if your device supports bluetooth.
 ```
-<h3><&ast;>     RFCOMM protocol support</h3>
+<h3>< >     RFCOMM protocol support</h3>
 ```none
 Symbol:     CONFIG_BT_RFCOMM
 
@@ -265,10 +265,10 @@ Help:       RFCOMM provides connection oriented stream transport.  RFCOMM
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     excluded < >
 
-Reason:     You should include this option if your device supports bluetooth
-            as recommended by the Gentoo wiki.
+Reason:     You can safely exclude this option as it's highly unlikely to be needed
+            by users who want basic bluetooth support.
 ```
 <h3>[ ]       RFCOMM TTY support</h3>
 ```none
@@ -301,7 +301,7 @@ Choice:     excluded < >
 Reason:     You can safely exclude this option as it's highly unlikely to be needed
             by users who want basic bluetooth support.
 ```
-<h3><&ast;>     HIDP protocol support</h3>
+<h3>< >     HIDP protocol support</h3>
 ```none
 Symbol:     CONFIG_BT_HDIP
 
@@ -314,10 +314,10 @@ Help:       HIDP (Human Interface Device Protocol) is a transport layer
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     excluded < >
 
-Reason:     You should include this option if your device supports bluetooth
-            as recommended by the Gentoo wiki.
+Reason:     You can safely exclude this option as it's highly unlikely to be needed
+            by users who want basic bluetooth support.
 ```
 <h3>[&ast;]     Bluetooth High Speed (HS) features</h3>
 ```none
@@ -329,9 +329,8 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     You should include this option if your device supports bluetooth
-            as recommended by the Gentoo wiki (plus it's a good option so
-            who wouldn't want it).
+Reason:     It's highly recommended that you include this option in your kernel
+            if your device supports bluetooth as recommended by the Gentoo wiki.
 ```
 <h3>[&ast;]   Bluetooth Low Energy (LE) features</h3>
 ```none
@@ -343,9 +342,8 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     You should include this option if your device supports bluetooth
-            as recommended by the Gentoo wiki (plus it's a good option so
-            who wouldn't want it).
+Reason:     It's highly recommended that you include this option in your kernel
+            if your device supports bluetooth as recommended by the Gentoo wiki.
 ```
 <h3>[ ]   Enable LED triggers</h3>
 ```none
@@ -377,7 +375,7 @@ Type:       boolean
 
 Choice:     excluded [ ]
 
-Reason:     You can safely exclude this option as it's for intended for developers
+Reason:     You can safely exclude this option as it's for intended for developing
             and testing purposes.
 ```
 <h3>Bluetooth device drivers  ---></h3>
@@ -396,10 +394,21 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     A simple "lsmod" will show you whether you needed this driver or not.
-            (the Gentoo wiki recommends that you include it).
+Reason:     It's highly recommended that you include this option in your kernel
+            if you have a Bluetooth device with USB interface.
             
-            See part 11 for more information on how to find what your system supports.
+            Please refer to part 11:
+            
+                https://www.dotslashlinux.com/2017/09/11/the-linux-kernel-configuration-guide-part-11/
+
+            and check the guide at the top to understand how to find what features
+            your system supports and what options to include in your kernel.
+
+            If you've followed the guide in part 11, you can simply run:
+                
+                cat lsmod.txt | grep btusb
+
+            to see if your system has a Bluetooth device with USB interface or not.
 ```
 <h3><&ast;> HCI UART driver</h3>
 ```none
@@ -418,10 +427,21 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     A simple "lsmod" will show you whether you needed this driver or not.
-            (the Gentoo wiki recommends that you include it).
+Reason:     It's highly recommended that you include this option in your kernel
+            if you have a UART based Bluetooth device.
             
-            See part 11 for more information on how to find what your system supports.
+            Please refer to part 11:
+            
+                https://www.dotslashlinux.com/2017/09/11/the-linux-kernel-configuration-guide-part-11/
+
+            and check the guide at the top to understand how to find what features
+            your system supports and what options to include in your kernel.
+
+            If you've followed the guide in part 11, you can simply run:
+                
+                cat lsmod.txt | grep bt
+
+            to see if your system has a UART based Bluetooth device or not.
 ```
 <h3>-&ast;-   UART (H4) protocol support</h3>
 ```none
@@ -437,8 +457,21 @@ Type:       boolean
 
 Choice:     built-in -*-
 
-Reason:     You should include this feature as it's required for most Bluetooth
-            devices.
+Reason:     It's highly recommended that you include this option in your kernel
+            if you have a UART based Bluetooth device.
+            
+            Please refer to part 11:
+            
+                https://www.dotslashlinux.com/2017/09/11/the-linux-kernel-configuration-guide-part-11/
+
+            and check the guide at the top to understand how to find what features
+            your system supports and what options to include in your kernel.
+
+            If you've followed the guide in part 11, you can simply run:
+                
+                cat lsmod.txt | grep bt
+
+            to see if your system has a UART based Bluetooth device or not.
 ```
 <h3>[&ast;]   Atheros AR300x serial support</h3>
 ```none
@@ -456,9 +489,21 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     A simple "lsmod" will show you whether you needed this driver or not.
+Reason:     It's highly recommended that you include this option in your kernel
+            if you have a AR300x Bluetooth device.
             
-            See part 11 for more information on how to find what your system supports.
+            Please refer to part 11:
+            
+                https://www.dotslashlinux.com/2017/09/11/the-linux-kernel-configuration-guide-part-11/
+
+            and check the guide at the top to understand how to find what features
+            your system supports and what options to include in your kernel.
+
+            If you've followed the guide in part 11, you can simply run:
+                
+                cat lsmod.txt | grep ath3k
+
+            to see if your system has a AR300x Bluetooth device or not.
 ```
 <h3><&ast;> Atheros firmware download driver</h3>
 ```none
@@ -475,9 +520,21 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     A simple "lsmod" will show you whether you needed this driver or not.
+Reason:     It's highly recommended that you include this option in your kernel
+            if you have a AR300x Bluetooth device.
             
-            See part 11 for more information on how to find what your system supports.
+            Please refer to part 11:
+            
+                https://www.dotslashlinux.com/2017/09/11/the-linux-kernel-configuration-guide-part-11/
+
+            and check the guide at the top to understand how to find what features
+            your system supports and what options to include in your kernel.
+
+            If you've followed the guide in part 11, you can simply run:
+                
+                cat lsmod.txt | grep ath3k
+
+            to see if your system has a AR300x Bluetooth device or not.
 ```
 <h3>< >   RxRPC session sockets</h3>
 ```none
@@ -526,8 +583,8 @@ Type:       boolean
 
 Choice:     built-in -*-
 
-Reason:     You must include this option if you're on a laptop or any other
-            machine that has a wireless network device.
+Reason:     It's highly recommended that you include this option in your kernel
+            if you're using a laptop or any other system that has a wireless network device.
 ```
 <h3><&ast;>   cfg80211 - wireless configuration API</h3>
 ```none
@@ -648,8 +705,10 @@ Type:       boolean
 
 Choice:     built-in -*-
 
-Reason:     If not already forcibly included then include this option to enable
-            LED triggers when receiving/transmitting packets.
+Reason:     It's highly recommended that you include this option in your kernel
+            to enable LED triggers when receiving/transmitting packets, that is
+            if it isn't already forcibly included by CONFIG_WLAN, CONFIG_PCI,
+            CONFIG_ATH9K and CONFIG_MAC80211).
 ```
 <h3>< >   WiMAX Wireless Broadband support  ----</h3>
 ```none
@@ -673,10 +732,21 @@ Type:       tristate
 
 Choice:     excluded < >
 
-Reason:     A simple "lsmod" will show you whether you needed this driver or not.
-            (the Gentoo wiki recommends that you include it).
+Reason:     It's highly recommended that you include this option in your kernel
+            if you have a device that uses the WiMAX protocol.
             
-            See part 11 for more information on how to find what your system supports.
+            Please refer to part 11:
+            
+                https://www.dotslashlinux.com/2017/09/11/the-linux-kernel-configuration-guide-part-11/
+
+            and check the guide at the top to understand how to find what features
+            your system supports and what options to include in your kernel.
+
+            If you've followed the guide in part 11, you can simply run:
+                
+                cat lspcinnkkvvv.txt | grep WiMAX
+
+            to see if your system has a device that uses the WiMAX protocol or not.
 ```
 <h3><&ast;>   RF switch subsystem support  ---></h3>
 ```none
@@ -692,8 +762,9 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     It's highly recommended that you include this option as RF switches
-            are found in a lot of wireless network devices and bluetooth cards.
+Reason:     It's highly recommended that you include this option in your kernel
+            as RF switches are found in a lot of wireless network devices and
+            bluetooth cards.
 
             Plus if you ever wonder why your wireless or bluetooth cards aren't
             working then you may need rfkill to unblock them in order to use them.
@@ -708,8 +779,8 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     It's recommended that you include this option along with CONFIG_RFKILL
-            to ensure that "rfkill" works properly.
+Reason:     It's recommended that you include this option in your kernel
+            along with CONFIG_RFKILL to ensure that "rfkill" works properly.
 ```
 <h3>< >   Plan 9 Resource Sharing Support (9P2000)  ----</h3>
 ```none
@@ -787,13 +858,22 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     Generally, this option can be safely excluded; however, it was until
-            recently that I found out that it may be required by the "EVIL" Intel
-            Management Engine (MEI) so I included it =D.
+Reason:     It's highly recommended that you include this option in your kernel
+            if you have a NFC device (the 'evil' Intel's Management Engine requires
+            it).
             
-            A simple "lsmod" will show you whether you needed this driver or not.
+            Please refer to part 11:
             
-            See part 11 for more information on how to find what your system supports.
+                https://www.dotslashlinux.com/2017/09/11/the-linux-kernel-configuration-guide-part-11/
+
+            and check the guide at the top to understand how to find what features
+            your system supports and what options to include in your kernel.
+
+            If you've followed the guide in part 11, you can simply run:
+                
+                cat lsmod.txt | grep mei
+
+            to see if your system has a NFC device or not.
 ```
 <h3><&ast;>   NFC HCI implementation</h3>
 ```none
@@ -807,9 +887,22 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     A simple "lsmod" will show you whether you needed this driver or not.
+Reason:     It's highly recommended that you include this option in your kernel
+            if you have a NFC device (the 'evil' Intel's Management Engine requires
+            it).
             
-            See part 11 for more information on how to find what your system supports.
+            Please refer to part 11:
+            
+                https://www.dotslashlinux.com/2017/09/11/the-linux-kernel-configuration-guide-part-11/
+
+            and check the guide at the top to understand how to find what features
+            your system supports and what options to include in your kernel.
+
+            If you've followed the guide in part 11, you can simply run:
+                
+                cat lsmod.txt | grep mei
+
+            to see if your system has a NFC device or not.
 ```
 <h3>Near Field Communication (NFC) devices  ---></h3>
 <h3><&ast;> MEI bus NFC device support</h3>
@@ -826,9 +919,23 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     A simple "lsmod" will show you whether you needed this driver or not.
+Reason:     It's highly recommended that you include this option in your kernel
+            if you have a NFC chip connected behind an Intel's Management Engine
+            chip.
             
-            See part 11 for more information on how to find what your system supports.
+            Please refer to part 11:
+            
+                https://www.dotslashlinux.com/2017/09/11/the-linux-kernel-configuration-guide-part-11/
+
+            and check the guide at the top to understand how to find what features
+            your system supports and what options to include in your kernel.
+
+            If you've followed the guide in part 11, you can simply run:
+                
+                cat lsmod.txt | grep mei
+
+            to see if your system has a NFC chip connected behind ann Intel's 
+            Management Engine chip or not.
 ```
 <h3><&ast;> NXP PN544 device support (MEI)</h3>
 ```none
@@ -845,9 +952,23 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     A simple "lsmod" will show you whether you needed this driver or not.
+Reason:     It's highly recommended that you include this option in your kernel
+            if you have a pn544 chipset handled by Intel's Management Engine
+            Interface.
             
-            See part 11 for more information on how to find what your system supports.
+            Please refer to part 11:
+            
+                https://www.dotslashlinux.com/2017/09/11/the-linux-kernel-configuration-guide-part-11/
+
+            and check the guide at the top to understand how to find what features
+            your system supports and what options to include in your kernel.
+
+            If you've followed the guide in part 11, you can simply run:
+                
+                cat lsmod.txt | grep pn544
+
+            to see if your system has a pn544 chipset handled by Intel's Management
+            Engine Interface or not.
 ```
 <h3>< >   Packet-sampling netlink channel  ----</h3>
 ```none
