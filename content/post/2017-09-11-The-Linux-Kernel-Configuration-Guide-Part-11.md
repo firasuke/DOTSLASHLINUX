@@ -2578,31 +2578,6 @@ Reason:     It's highly recommended that you include this option in your kernel
 
             should tell you whether you need this option or not.
 ```
-<h3>-&ast;- Allow dynamic codec reconfiguration</h3>
-```none
-Symbol:     CONFIG_SND_HDA_RECONFIG
-
-Help:       Say Y here to enable the HD-audio codec re-configuration feature.
-            It allows user to clear the whole codec configuration, change the
-            codec setup, add extra verbs, and re-configure the codec dynamically.
-
-            Note that this item alone doesn't provide the sysfs interface, but
-            enables the feature just for the patch loader below.
-            If you need the traditional sysfs entries for the manual interaction,
-            turn on CONFIG_SND_HDA_HWDEP as well.
-
-Type:       boolean
-
-Choice:     built-in -*-
-
-Reason:     It's highly recommended that you include this option in your kernel.
-            
-            If you've followed the guide above, then a simple:
-
-                cat dmesg.txt | grep snd_hda_codec
-
-            should tell you whether you need this option or not.
-```
 <h3><&ast;> Build IDT/Sigmatel HD-audio codec support</h3>
 ```none
 Symbol:     CONFIG_SND_HDA_CODEC_SIGMATEL
@@ -2614,7 +2589,14 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            in order for IDT codecs to work properly in Intel High Definition Audio driver.
+            
+            If you've followed the guide above, then a simple:
+
+                cat dmesg.txt | grep snd_hda_codec_idt
+
+            should tell you whether you need this option or not.
 ```
 <h3><&ast;> Build HDMI/DisplayPort HD-audio codec support</h3>
 ```none
@@ -2628,7 +2610,14 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            in order for HDMI codecs to work properly in Intel High Definition Audio driver.
+            
+            If you've followed the guide above, then a simple:
+
+                cat dmesg.txt | grep snd_hda_codec
+
+            should tell you whether you need this option or not.
 ```
 <h3>-&ast;- Enable generic HD-audio codec parser</h3>
 ```none
@@ -2641,7 +2630,10 @@ Type:       tristate
 
 Choice:     built-in -*-
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            if you've already included a CODEC option above (that is if it isn't
+            already forcibly included by CONFIG_SND_HDA_CODEC_SIGMATEL and 
+            CONFIG_SND_HDA_CODEC_HDMI).
 ```
 <h3>(1) Default time-out for HD-audio power-save mode</h3>
 ```none
@@ -2654,7 +2646,8 @@ Type:       integer
 
 Choice:     (1) custom
 
-Reason:     
+Reason:     You can safely set the value of this option to (1) to boost power
+            saving on the sound card when not in use.
 ```
 <h3>(64)  Pre-allocated buffer size for HD-audio driver</h3>
 ```none
@@ -2672,7 +2665,18 @@ Type:       integer
 
 Choice:     (64) default
 
-Reason:     
+Reason:     You can safely leave the value of this option set to the default
+            value of (64) as it's enough for systems using ALSA only without
+            PulseAudio.
+
+            DOTSLASHLINUX has a guide on how to setup a basic ALSA configuration
+            with dmix to allow sound from multiple applications without using
+            PulseAudio, kindly check:
+
+                https://www.dotslashlinux.com/2017/03/30/basic-alsa-configuration/
+            
+            Change the value of this option to (2048) if you plan on using
+            PulseAudio.
 ```
 <h3>HID support  ---></h3>
 <h3>-&ast;- HID bus support</h3>
