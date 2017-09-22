@@ -10,7 +10,7 @@ categories = [ "kernel" ]
 +++
 <h3>2- [&ast;] Enable loadable module support  ---></h3>
 <h3>--- Enable loadable module support</h3>
-```none
+```properties
 Symbol:     CONFIG_MODULES
 
 Help:       Kernel modules are small pieces of compiled code which can
@@ -45,7 +45,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             and have built all modules directly into your kernel.
 ```
 <h3>[ ]   Forced module loading</h3>
-```none
+```properties
 Symbol:     CONFIG_MODULE_FORCE_LOAD
 
 Help:       Allow loading of modules without version information (ie. modprobe
@@ -60,7 +60,7 @@ Reason:     You can safely exclude this option as forcing modules to load is dan
             and not recommended at all.
 ```
 <h3>[&ast;]   Module unloading</h3>
-```none
+```properties
 Symbol:     CONFIG_MODULE_UNLOAD
 
 Help:       Without this option you will not be able to unload any
@@ -83,7 +83,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             and have built all modules directly into your kernel.
 ```
 <h3>[ ]     Forced module unloading</h3>
-```none
+```properties
 Symbol:     CONFIG_MODULE_FORCE_UNLOAD
 
 Help:       This option allows you to force a module to unload, even if the
@@ -101,7 +101,7 @@ Reason:     You can safely exclude this option as it's even more dangerous than
             CONFIG_MODULE_FORCE_LOAD, and it's intended for developing purposes.
 ```
 <h3>[ ]   Module versioning support</h3>
-```none
+```properties
 Symbol:     CONFIG_MODVERSIONS
 
 Help:       Usually, you have to use modules compiled with your kernel.
@@ -119,7 +119,7 @@ Reason:     You can safely exclude this option as it's intended for testing
             and debugging purposes.
 ```
 <h3>[ ]   Source checksum for all modules</h3>
-```none
+```properties
 Symbol:     CONFIG_MODULE_SRCVERSION_ALL
 
 Help:       Modules which contain a MODULE_VERSION get an extra "srcversion"
@@ -138,7 +138,7 @@ Reason:     You can safely exclude this option as it's intended for maintaining
             purposes.
 ```
 <h3>[ ]   Module signature verification</h3>
-```none
+```properties
 Symbol:     CONFIG_MODULE_SIG
 
 Help:       Check modules for valid signatures upon load: the signature
@@ -162,7 +162,7 @@ Reason:     You can safely exclude this option as it's intended for maintaining
             purposes.
 ```
 <h3>[ ]   Compress modules on installation</h3>
-```none
+```properties
 Symbol:     CONFIG_MODULES_COMPRESS
 
 Help:       Compresses kernel modules when 'make modules_install' is run; gzip or
@@ -190,7 +190,7 @@ Reason:     You can safely exclude this option as compressing your loadable
             Include this option only if you're space restricted.
 ```
 <h3>[ ]   Trim unused exported kernel symbols</h3>
-```none
+```properties
 Symbol:     CONFIG_TRIM_UNUSED_KSYMS
 
 Help:       The kernel and some modules make many symbols available for

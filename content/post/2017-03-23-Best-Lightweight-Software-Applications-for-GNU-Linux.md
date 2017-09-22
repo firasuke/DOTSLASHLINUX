@@ -134,7 +134,7 @@ e3 is the lightest and is written in assembly. Nano and e3 are for when you're i
 <hr/>
 <h3>19- Screen Capture Tool: <a href="https://github.com/naelstrof/maim" target="_blank">maim</a></h3>
 MAIM or (MAke IMage) is a lightweight screen capture tool that utilizes imlib2 to take screenshots. Just fire up a terminal and type:
-```none
+```properties
 maim imagename.format
 ```
 <br/>

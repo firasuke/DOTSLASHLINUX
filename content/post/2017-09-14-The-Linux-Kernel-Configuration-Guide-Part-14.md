@@ -11,7 +11,7 @@ categories = [ "kernel" ]
 <h3>Kernel hacking  ---></h3>
 <h3>printk and dmesg options  ---></h3>
 <h3>[&ast;] Show timing information on printks</h3>
-```none
+```properties
 Symbol:     CONFIG_PRINTK_TIME
 
 Help:       Selecting this option causes time stamps of the printk()
@@ -33,7 +33,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             as timestamps add another level of precision to your system logs.
 ```
 <h3>(15) Default console loglevel (1-15)</h3>
-```none
+```properties
 Symbol:     CONFIG_CONSOLE_LOGLEVEL_DEFAULT
 
 Help:       Default loglevel to determine what will be printed on the console.
@@ -59,7 +59,7 @@ Reason:     It's recommended that you set the value of this option to a value
             to get enough information.
 ```
 <h3>(7) Default message log level (1-7)</h3>
-```none
+```properties
 Symbol:     CONFIG_MESSAGE_LOGLEVEL_DEFAULT
 
 Help:       Default log level for printk statements with no specified priority.
@@ -86,7 +86,7 @@ Reason:     It's recommended that you set the value of this option to a value
 ```
 <h3>Compile-time checks and compiler options  ---></h3>
 <h3>(0) Warn for stack frames larger than (needs gcc 4.4)</h3>
-```none
+```properties
 Symbol:     CONFIG_FRAME_WARN
 
 Help:       Tell gcc to warn at build time for stack frames larger than this.
@@ -101,7 +101,7 @@ Choice:     (0) custom
 Reason:     If you can live with the warnings then don't disable this option.
 ```
 <h3>-&ast;- Kernel debugging</h3>
-```none
+```properties
 Symbol:     CONFIG_DEBUG_KERNEL
 
 Help:       Say Y here if you are developing drivers or trying to debug and
@@ -114,7 +114,7 @@ Choice:     built-in -*-
 Reason:     Forcibly included by CONFIG_EXPERT.
 ```
 <h3>(0) panic timeout</h3>
-```none
+```properties
 Symbol:     CONFIG_PANIC_TIMEOUT
 
 Help:       Set the timeout value (in seconds) until a reboot occurs when the
@@ -131,7 +131,7 @@ Reason:     Setting the value of this option to (0) will give you all the time
 ```
 <h3>RCU Debugging  ---></h3>
 <h3>(3) RCU CPU stall timeout in seconds</h3>
-```none
+```properties
 Symbol:     CONFIG_RCU_CPU_STALL_TIMEOUT
 
 Help:       If a given RCU grace period extends more than the specified
@@ -145,7 +145,7 @@ Choice:     (3) custom
 ```
 <h3>IO delay type (no port-IO delay)  ---></h3>
 <h3>(X) no port-IO delay</h3>
-```none
+```properties
 Symbol:     CONFIG_IO_DELAY_NONE
 
 Help:       No port-IO delay. Will break on old boxes that require port-IO

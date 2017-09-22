@@ -18,7 +18,7 @@ Thanks for your time! Have fun configuring your kernel!
 <hr/>
 <h3>Bus options (PCI etc.)  ---></h3>
 <h3>[&ast;] PCI support</h3>
-```none
+```properties
 Symbol:     CONFIG_PCI
 
 Help:       Find out whether you have a PCI motherboard. PCI is the name of a
@@ -47,7 +47,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             to see if your system has PCI or not.
 ```
 <h3>[&ast;]   Support mmconfig PCI config space access</h3>
-```none
+```properties
 Symbol:     CONFIG_PCI_MMCONFIG
 
 Help:       There is no help available for this option.
@@ -61,7 +61,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             grants access to drivers polling for extra information.
 ```
 <h3>[ ]   Read CNB20LE Host Bridge Windows</h3>
-```none
+```properties
 Symbol:     CONFIG_PCI_CNB20LE_QUIRK
 
 Help:       Read the PCI windows out of the CNB20LE host bridge. This allows
@@ -93,7 +93,7 @@ Reason:     You can safely exclude this option if you don't have a CNB20LE host 
             to see if your system has CNB20LE or not.
 ```
 <h3>[&ast;]   PCI Express Port Bus support</h3>
-```none
+```properties
 Symbol:     CONFIG_PCIEPORTBUS
 
 Help:       This automatically enables PCI Express Port Bus support. Users can
@@ -123,7 +123,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             to see if your system has PCIe or not.
 ```
 <h3>[ ]     PCI Express Hotplug driver</h3>
-```none
+```properties
 Symbol:     CONFIG_HOTPLUG_PCI_PCIE
 
 Help:       Say Y here if you have a motherboard that supports PCI Express Native
@@ -142,7 +142,7 @@ Reason:     To see this option you need to include CONFIG_HOTPLUG_PCI.
             XQD card and M-PCIE (mobile)).
 ```
 <h3>[ ]     Root Port Advanced Error Reporting support</h3>
-```none
+```properties
 Symbol:     CONFIG_PCIEAER
 
 Help:       This enables PCI Express Root Port Advanced Error Reporting
@@ -167,7 +167,7 @@ Reason:     You can safely exclude this option as it's intended mostly for
             source of these errors.
 ```
 <h3>[*]     PCI Express ASPM control</h3>
-```none
+```properties
 Symbol:     CONFIG_PCIEASPM
 
 Help:       This enables OS control over PCI Express ASPM (Active State
@@ -191,7 +191,7 @@ Reason:     It's highly recommended that you include PCIe ASPM as it's really an
             feature that allows your PCIe devices to enter an idle state when not in use.
 ```
 <h3>[ ]       Debug PCI Express ASPM (NEW)</h3>
-```none
+```properties
 Symbol:     CONFIG_PCIEASPM_DEBUG
 
 Help:       This enables PCI Express ASPM debug support. It will add per-device
@@ -205,7 +205,7 @@ Reason:     You can safely exclude this option as it's intended for debugging pu
 ```
 <h3>Default ASPM policy (Performance)  ---></h3>
 <h3>(X) Performance</h3>
-```none
+```properties
 Symbol:     CONFIG_PCIEASPM_PERFORMANCE
 
 Help:       Disable PCI Express ASPM L0s and L1, even if the BIOS enabled them.
@@ -238,7 +238,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             to see if your system supports ASPM or not.
 ```
 <h3>[ ]     PCIe Downstream Port Containment support</h3>
-```none
+```properties
 Symbol:     CONFIG_PCIE_DPC
 
 Help:       This enables PCI Express Downstream Port Containment (DPC)
@@ -260,7 +260,7 @@ Reason:     You can safely exclude this option if you don't have downstream
             you can include this feature.
 ```
 <h3>[ ]     PCIe Precision Time Measurement support</h3>
-```none
+```properties
 Symbol:     CONFIG_PCIE_PTM
 
 Help:       This enables PCI Express Precision Time Measurement (PTM)
@@ -284,7 +284,7 @@ Reason:     You can safely exclude this option.
                 https://en.wikipedia.org/wiki/Goldmont
 ```
 <h3>[&ast;]   Message Signaled Interrupts (MSI and MSI-X)</h3>
-```none
+```properties
 Symbol:     CONFIG_PCI_MSI
 
 Help:       This allows device drivers to enable MSI (Message Signaled
@@ -310,7 +310,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             result in a performance hit.
 ```
 <h3>[ ]   PCI Debugging</h3>
-```none
+```properties
 Symbol:     CONFIG_PCI_DEBUG
 
 Help:       Say Y here if you want the PCI core to produce a bunch of debug
@@ -327,7 +327,7 @@ Reason:     You can safely exclude this option as it's intended for debugging
             purposes.
 ```
 <h3>[ ]   Enable PCI resource re-allocation detection</h3>
-```none
+```properties
 Symbol:     CONFIG_PCI_REALLOC_ENABLE_AUTO
 
 Help:       Say Y here if you want the PCI core to detect if PCI resource
@@ -350,7 +350,7 @@ Reason:     You can safely exclude this option, unless you're receiving this err
             and you can't enable SR-IOV.
 ```
 <h3>< >   PCI Stub driver</h3>
-```none
+```properties
 Symbol:     CONFIG_PCI_STUB
 
 Help:       Say Y or M here if you want be able to reserve a PCI device
@@ -366,7 +366,7 @@ Reason:     You can safely exclude this option if your CPU doesn't support IOMMU
             (aka VT-d for Intel CPUs and AMD-V for AMD CPUs).
 ```
 <h3>[&ast;]   Interrupts on hypertransport devices</h3>
-```none
+```properties
 Symbol:     CONFIG_HT_IRQ
 
 Help:       This allows native hypertransport devices to use interrupts.
@@ -381,7 +381,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             as it boosts performance.
 ```
 <h3>[ ] PCI IOV support</h3>
-```none
+```properties
 Symbol:     CONFIG_PCI_IOV
 
 Help:       I/O Virtualization is a PCI feature supported by some devices
@@ -398,7 +398,7 @@ Reason:     You can safely exclude this option if your CPU doesn't support IOMMU
             (aka VT-d for Intel CPUs and AMD-V for AMD CPUs).
 ```
 <h3>[ ] PCI PRI support</h3>
-```none
+```properties
 Symbol:     CONFIG_PCI_PRI
 
 Help:       PRI is the PCI Page Request Interface. It allows PCI devices that are
@@ -414,7 +414,7 @@ Reason:     You can safely exclude this option if your CPU doesn't support IOMMU
             (aka VT-d for Intel CPUs and AMD-V for AMD CPUs).
 ```
 <h3>[ ] PCI PASID support</h3>
-```none
+```properties
 Symbol:     CONFIG_PCI_PASID
 
 Help:       Process Address Space Identifiers (PASIDs) can be used by PCI devices
@@ -433,7 +433,7 @@ Reason:     You can safely exclude this option if your CPU doesn't support IOMMU
             (aka VT-d for Intel CPUs and AMD-V for AMD CPUs).
 ```
 <h3>[*] Support for PCI Hotplug  ---></h3>
-```none
+```properties
 Symbol:     CONFIG_HUTPLUG_PCI
 
 Help:       Say Y here if you have a motherboard with a PCI Hotplug controller.
@@ -454,7 +454,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             controller (for example a SHPC PCI Hotplug controller).
 ```
 <h3><&ast;>   SHPC PCI Hotplug driver</h3>
-```none
+```properties
 Symbol:     CONFIG_HOTPLUG_PCI_SHPC
 
 Help:       Say Y here if you have a motherboard with a SHPC PCI Hotplug
@@ -487,7 +487,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 ```
 <h3>DesignWare PCI Core Support  ---></h3>
 <h3>[ ] Platform bus based DesignWare PCIe Controller</h3>
-```none
+```properties
 Symbol:     CONFIG_PCIE_DW_PLAT
 
 Help:       This selects the DesignWare PCIe controller support. Select this if
@@ -505,7 +505,7 @@ Reason:     You can safely exclude this option if you don't have such controller
 ```
 <h3>PCI host controller drivers  ---></h3>
 <h3>< > Intel Volume Management Device Driver</h3>
-```none
+```properties
 Symbol:     CONFIG_VMD
 
 Help:       Adds support for the Intel Volume Management Device (VMD). VMD is a
@@ -527,7 +527,7 @@ Reason:     You can safely exclude this option if you don't have such device.
 ```
 <h3>PCI Endpoint  ---></h3>
 <h3>[&ast;] PCI Endpoint Support</h3>
-```none
+```properties
 Symbol:     CONFIG_PCI_ENDPOINT
 
 Help:       Enable this configuration option to support configurable PCI
@@ -561,7 +561,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             to see if you have a device that can operate in endpoint mode.
 ```
 <h3>[ ]   PCI Endpoint Configfs Support</h3>
-```none
+```properties
 Symbol:     CONFIG_PCI_ENDPOINT_CONFIGFS
 
 Help:       This will enable the configfs entry that can be used to
@@ -576,7 +576,7 @@ Reason:     You can safely exclude this option if you've already included
             CONFIG_PCI_ENDPOINT as you won't need it.
 ```
 <h3>< >   PCI Endpoint Test driver (NEW)</h3>
-```none
+```properties
 Symbol:     CONFIG_PCI_EPF_TEST
 
 Help:       Enable this configuration option to enable the test driver
@@ -592,7 +592,7 @@ Reason:     You can safely exclude this option as it's intended for testing purp
 ```
 <h3>PCI switch controller drivers  ---></h3>
 <h3>< > MicroSemi Switchtec PCIe Switch Management Driver</h3>
-```none
+```properties
 Symbol:     CONFIG_PCI_SW_SWITCHTEC
 
 Help:       Enables support for the management interface for the MicroSemi
@@ -608,7 +608,7 @@ Choice:     excluded [ ]
 Reason:     You can safely exclude this option if you don't have such PCIe switch.
 ```
 <h3>[ ] ISA-style bus support on modern systems</h3>
-```none
+```properties
 Symbol:     CONFIG_ISA_BUS
 
 Help:       Enables ISA-style drivers on modern systems. This is necessary to
@@ -624,7 +624,7 @@ Reason:     You can safely exclude this option as ISA buses were superseded by P
             buses in 1993 so yeah they're that old!
 ```
 <h3>[ ] ISA-style DMA support</h3>
-```none
+```properties
 Symbol:     CONFIG_ISA_DMA_API
 
 Help:       Enables ISA-style DMA support for devices requiring such controllers.
@@ -638,7 +638,7 @@ Reason:     You can safely exclude this option as it's only required for floppy
             support and other outdated drivers.
 ```
 <h3>< > PCCard (PCMCIA/CardBus) support  ----</h3>
-```none
+```properties
 Symbol:     CONFIG_PCCARD
 
 Help:       Say Y here if you want to attach PCMCIA- or PC-cards to your Linux
@@ -657,7 +657,7 @@ Choice:     excluded < >
 Reason:     You can safely exclude this option if you don't have such cards.
 ```
 <h3>< > RapidIO support</h3>
-```none
+```properties
 Symbol:     CONFIG_RAPIDIO
 
 Help:       If enabled this option will include drivers and the core
@@ -670,7 +670,7 @@ Choice:     excluded < >
 Reason:     You can safely exclude this option if you don't have such devices.
 ```
 <h3>[ ] Mark VGA/VBE/EFI FB as generic system framebuffer</h3>
-```none
+```properties
 Symbol:     CONFIG_X86_SYSFB
 
 Help:       Firmwares often provide initial graphics framebuffers so the BIOS,

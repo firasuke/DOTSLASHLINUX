@@ -10,7 +10,7 @@ categories = [ "kernel" ]
 +++
 <h3>[&ast;] Enable the block layer  ---></h3>
 <h3>--- Enable the block layer</h3>
-```none
+```properties
 Symbol:     CONFIG_BLOCK
 
 Help:       Provide block layer support for the kernel.
@@ -41,7 +41,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             and CONFIG_GENTOO_LINUX_INIT_SYSTEMD.
 ```
 <h3>[&ast;]   Block layer SG support v4</h3>
-```none
+```properties
 Symbol:     CONFIG_BLK_DEV_BSG
 
 Help:       Saying Y here will enable generic SG (SCSI generic) v4 support
@@ -67,7 +67,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             CONFIG_GENTOO_LINUX_UDEV and CONFIG_GENTOO_LINUX_INIT_SYSTEMD.
 ```
 <h3>[ ]   Block layer SG support v4 helper lib</h3>
-```none
+```properties
 Symbol:     CONFIG_BLK_DEV_BSGLIB
 
 Help:       Subsystems will normally enable this if needed. Users will not
@@ -82,7 +82,7 @@ Choice:     excluded [ ]
 Reason:     You can safely exclude this option to lower system overhead.
 ```
 <h3>[ ]   Block layer data integrity support</h3>
-```none
+```properties
 Symbol:     CONFIG_BLK_DEV_INTEGRITY
 
 Help:       Some storage devices allow extra information to be
@@ -104,7 +104,7 @@ Reason:     You can safely exclude this option to lower system overhead.
             purposes.
 ```
 <h3>[ ]   Zoned block device support</h3>
-```none
+```properties
 Symbol:     CONFIG_BLK_DEV_ZONED
 
 Help:       Block layer zoned block device support. This option enables
@@ -120,7 +120,7 @@ Reason:     You can safely exclude this option if you don't have a ZAC or
             ZBC storage device.
 ```
 <h3>[ ]   Block device command line partition parser</h3>
-```none
+```properties
 Symbol:     CONFIG_BLK_CMDLINE_PARSER
 
 Help:       Enabling this option allows you to specify the partition layout from
@@ -138,7 +138,7 @@ Reason:     You can safely exclude this option to lower system overhead as it's
             intended for embedded devices.
 ```
 <h3>[ ]   Enable support for block device writeback throttling</h3>
-```none
+```properties
 Symbol:     CONFIG_BLK_WBT
 
 Help:       Enabling this option enables the block layer to throttle buffered
@@ -159,7 +159,7 @@ Reason:     You can safely exclude this option as it can impact the performance
             IO operations are being performed.
 ```
 <h3>[ ]   Block layer debugging information in debugfs</h3>
-```none
+```properties
 Symbol:     CONFIG_BLK_DEBUG_FS
 
 Help:       Include block layer debugging information in debugfs. This information
@@ -177,7 +177,7 @@ Reason:     You can safely exclude this option as it's intended for debugging
             purposes.
 ```
 <h3>[ ]   Logic for interfacing with Opal enabled SEDs</h3>
-```none
+```properties
 Symbol:     CONFIG_BLK_SED_OPAL
 
 Help:       Builds Logic for interfacing with Opal enabled controllers.
@@ -194,7 +194,7 @@ Reason:     You can safely exclude this option if your hard drive doesn't suppor
 ```
 <h3>Partition Types  ---></h3>
 <h3>[&ast;] Advanced partition selection</h3>
-```none
+```properties
 Symbol:     CONFIG_PARTITION_ADVANCED
 
 Help:       Say Y here if you would like to use hard disks under Linux which
@@ -215,7 +215,7 @@ Reason:     It's highly recommended that you include this if you want to use mbr
             or gpt partition or any other listed partition table.
 ```
 <h3>[&ast;]   PC BIOS (MSDOS partition tables) support</h3>
-```none
+```properties
 Symbol:     CONFIG_MSDOS_PARTITION
 
 Help:       Say Y here.
@@ -233,12 +233,12 @@ Reason:     It's highly recommended that you include this option if your system 
 ```
 <h3>IO Schedulers  ---></h3>
 <h3>Default I/O scheduler (CFQ)  ---></h3>
-```none
+```properties
 Help:       Select the I/O scheduler which will be used by default for all
             block devices.
 ```
 <h3><&ast;> CFQ I/O scheduler</h3>
-```none
+```properties
 Symbol:     CONFIG_IOSCHED_CFQ
 
 Help:       The CFQ I/O scheduler tries to distribute bandwidth equally
@@ -287,7 +287,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             CONFIG_IOSCHED_CFQ and exclude everything else.
 ```
 <h3>(X) CFQ</h3>
-```none
+```properties
 Symbol:     CONFIG_DEFAULT_CFQ
 
 Help:       There is no help available for this option.

@@ -17,12 +17,12 @@ You know what they say "There isn't a 100% secure system". You have to find the 
 I'd recommend (at least as a starting point) that you leave all options in this section excluded (or only include those required by other options).
 <hr/>
 <h3>Default security module (Unix Discretionary Access Controls)  ---></h3>
-```none
+```properties
 Help:       Select the security module that will be used by default if the
             kernel parameter security= is not specified.
 ```
 <h3>(X) Unix Discretionary Access Controls</h3>
-```none
+```properties
 Symbol:     CONFIG_DEFAULT_SECURITY_DAC
 
 Help:       There is no help available for this option.

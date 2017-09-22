@@ -22,7 +22,7 @@ The <mark>&rarr;</mark> and the <mark>&larr;</mark> along with the <mark>&#8633;
 <br/>
 <br/>
 The <mark>/</mark> button can be used to search the available symbols. In order not to create a state of confusion, I'll be using the word symbol for the capitalized underscore-separated version of the name. For example:
-```none
+```properties
 Symbol: CONFIG_MODULES
 Name: Enable loadable modules support
 ```
@@ -39,14 +39,14 @@ Some options may be included or excluded by other options. <mark>-&ast;-</mark> 
 <hr/>
 <h3>(Gentoo Specific Options) Gentoo Linux  ---></h3>
 The first section you'll see in the menu options when using Gentoo Linux, will be the Gentoo Linux section (that was predictable =D). Select that option and you'll see the following:
-```none
+```properties
 [*] Gentoo Linux support
 [*]   Linux dynamic and persistent device naming (userspace devfs) support
 [ ]   Select options required by Portage features
     Support for init systems, system and service managers  --->
 ```
 <h3>[&ast;] Gentoo Linux support</h3>
-```none
+```properties
 Symbol:     CONFIG_GENTOO_LINUX
 
 Help:       In order to boot Gentoo Linux a minimal set of config settings needs to
@@ -65,7 +65,7 @@ Reason:     If you're on Gentoo Linux (or managed to get a copy of one of the so
             should be built in.
 ```
 <h3>[&ast;] Linux dynamic and persistent device naming (userspace devfs) support</h3>
-```none
+```properties
 Symbol:     CONFIG_GENTOO_LINUX_UDEV
 
 Help:       In order to boot Gentoo Linux a minimal set of config settings needs to
@@ -90,7 +90,7 @@ Choice:     built-in [*]
 Reason:     Include this option in for a bootable gentoo installation =D.
 ```
 <h3>[ ] Select options required by Portage features</h3>
-```none
+```properties
 Symbol:     CONFIG_GENTOO_LINUX_PORTAGE
 
 Help:       This enables options required by various Portage FEATURES.
@@ -116,7 +116,7 @@ Reason:     It's highly recommended that you build this set of options in your k
 ```
 <h3>Support for init systems, system and service managers  ---></h3>
 <h3>[&ast;] OpenRC, runit and other script based systems and managers</h3>
-```none
+```properties
 Symbol:     CONFIG_GENTOO_LINUX_INIT_SCRIPT
 
 Help:       The init system is the first thing that loads after the kernel booted.
@@ -140,7 +140,7 @@ Reason:     It's highly recommended that you include this option in your kernel 
             You can safely exclude this option only if you're using systemd instead.
 ```
 <h3>[ ] systemd</h3>
-```none
+```properties
 Symbol:     CONFIG_GENTOO_LINUX_INIT_SYSTEMD
 
 Help:       The init system is the first thing that loads after the kernel booted.

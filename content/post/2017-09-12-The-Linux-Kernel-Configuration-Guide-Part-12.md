@@ -10,7 +10,7 @@ categories = [ "kernel" ]
 +++
 <h3>Firmware Drivers  ---></h3>
 <h3>< > BIOS Enhanced Disk Drive calls determine boot disk</h3>
-```none
+```properties
 Symbol:     CONFIG_EDD
 
 Help:       Say Y or M here if you want to enable BIOS Enhanced Disk Drive
@@ -29,7 +29,7 @@ Reason:     You can safely exclude this option as it's experimental and may resu
             in an unbootable system.
 ```
 <h3>[ ] Add firmware-provided memory map to sysfs</h3>
-```none
+```properties
 Symbol:     CONFIG_FIRMWARE_MEMMAP
 
 Help:       Add the firmware-provided (unmodified) memory map to /sys/firmware/memmap.
@@ -46,7 +46,7 @@ Reason:     You can safely exclude this option if you've already excluded CONFIG
             and have no need for its debugging features.
 ```
 <h3>< > BIOS update support for DELL systems via sysfs</h3>
-```none
+```properties
 Symbol:     CONFIG_DELL_RBU
 
 Help:       Say m if you want to have the option of updating the BIOS for your
@@ -62,7 +62,7 @@ Choice:     excluded < >
 Reason:     You can safely exclude this option if you're not using a DELL system.
 ```
 <h3>< > Dell Systems Management Base Driver</h3>
-```none
+```properties
 Symbol:     CONFIG_DCDBAS
 
 Help:       The Dell Systems Management Base Driver provides a sysfs interface
@@ -84,7 +84,7 @@ Choice:     excluded < >
 Reason:     You can safely exclude this option if you're not using a DELL system.
 ```
 <h3>[&ast;] Export DMI identification via sysfs to userspace</h3>
-```none
+```properties
 Symbol:     CONFIG_DMIID
 
 Help:       Say Y here if you want to query SMBIOS/DMI system identification
@@ -100,7 +100,7 @@ Reason:     It's recommended that you include this option in your kernel as it
             also necessary if you want to use dmidecode.
 ```
 <h3>< > DMI table support in sysfs</h3>
-```none
+```properties
 Symbol:     CONFIG_DMI_SYSFS
 
 Help:       Say Y or M here to enable the exporting of the raw DMI table
@@ -118,7 +118,7 @@ Reason:     You can safely exclude this option as some may say it's dangerous.
             Include this option only when needed.
 ```
 <h3>[ ] iSCSI Boot Firmware Table Attributes</h3>
-```none
+```properties
 Symbol:     CONFIG_ISCSI_IBFT_FIND
 
 Help:       This option enables the kernel to find the region of memory
@@ -134,7 +134,7 @@ Reason:     You can safely exclude this option if you've already excluded
             CONFIG_ISCSI_BOOT_SYSFS.
 ```
 <h3>< > QEMU fw_cfg device support in sysfs</h3>
-```none
+```properties
 Symbol:     CONFIG_FW_CFG_SYSFS
 
 Help:       Say Y or M here to enable the exporting of the QEMU firmware
@@ -151,7 +151,7 @@ Reason:     You can safely exclude this option.
             Include this option only if it's required by some QEMU setups.
 ```
 <h3>[ ] Google Firmware Drivers  ----</h3>
-```none
+```properties
 Symbol:     CONFIG_GOOGLE_FIRMWARE
 
 Help:       These firmware drivers are used by Google's servers.  They are
@@ -167,7 +167,7 @@ Reason:     You can safely exclude this option as it's highly unlikely for
             Google on one of their proprietary servers.
 ```
 <h3>Tegra firmware driver  ----</h3>
-```none
+```properties
 Choice:     excluded ----
 ```
 <hr/>

@@ -10,7 +10,7 @@ categories = [ "kernel" ]
 +++
 <h3>File systems  ---></h3>
 <h3><&ast;> XFS filesystem support</h3>
-```none
+```properties
 Symbol:     CONFIG_XFS_FS
 
 Help:       XFS is a high performance journaling filesystem which originated
@@ -40,7 +40,7 @@ Reason:     For a basic system using CONFIG_EXT4_FS is advised; however, if you
             system if you're not using an initrd.
 ```
 <h3>[&ast;] Enable POSIX file locking API</h3>
-```none
+```properties
 Symbol:     CONFIG_FILE_LOCKING
 
 Help:       This option enables standard file locking support, required
@@ -55,7 +55,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             as excluding it may result in a read-only root partition.
 ```
 <h3>[&ast;] Inotify support for userspace</h3>
-```none
+```properties
 Symbol:     CONFIG_INOTIFY_USER
 
 Help:       Say Y here to enable inotify support for userspace, including the
@@ -81,7 +81,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             It's also required by several applications.
 ```
 <h3><&ast;> FUSE (Filesystem in Userspace) support</h3>
-```none
+```properties
 Symbol:     CONFIG_FUSE_FS
 
 Help:       With FUSE it is possible to implement a fully functional filesystem
@@ -112,7 +112,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 ```
 <h3>CD-ROM/DVD Filesystems  ---></h3>
 <h3><&ast;> ISO 9660 CDROM file system support</h3>
-```none
+```properties
 Symbol:     CONFIG_ISO9960_FS
 
 Help:       This is the standard file system used on CD-ROMs.  It was previously
@@ -137,7 +137,7 @@ Reason:     It's highly recommended that you include this option in your kernel 
             recommended as well by the Gentoo Wiki.
 ```
 <h3>[&ast;]   Microsoft Joliet CDROM extensions</h3>
-```none
+```properties
 Symbol:     CONFIG_JOLIET
 
 Help:       Joliet is a Microsoft extension for the ISO 9660 CD-ROM file system
@@ -156,7 +156,7 @@ Reason:     It's highly recommended that you include this option in your kernel 
             recommended as well by the Gentoo Wiki.
 ```
 <h3>[&ast;]   Transparent decompression extension</h3>
-```none
+```properties
 Symbol:     CONFIG_ZISOFS
 
 Help:       This is a Linux-specific extension to RockRidge which lets you store
@@ -175,7 +175,7 @@ Reason:     It's highly recommended that you include this option in your kernel 
             recommended as well by the Gentoo Wiki.
 ```
 <h3><&ast;> UDF file system support</h3>
-```none
+```properties
 Symbol:     CONFIG_UDF_FS
 
 Help:       This is a file system used on some CD-ROMs and DVDs. Since the
@@ -202,7 +202,7 @@ Reason:     It's highly recommended that you include this option in your kernel 
 ```
 <h3>DOS/FAT/NT Filesystems  ---></h3>
 <h3><&ast;> VFAT (Windows-95) fs support </h3>
-```none
+```properties
 Symbol:     CONFIG_VFAT_FS
 
 Help:       This option provides support for normal Windows file systems with
@@ -230,7 +230,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             It's also recommended by the Gentoo wiki.
 ```
 <h3>(437) Default codepage for FAT</h3>
-```none
+```properties
 Symbol:     CONFIG_FAT_DEFAULT_CODEPAGE
 
 Help:       This option should be set to the codepage of your FAT filesystems.
@@ -245,7 +245,7 @@ Reason:     You can safely leave the value of this option set to the default val
             of (437) as recommended by the Gentoo wiki.
 ```
 <h3>(iso8859-1) Default iocharset for FAT</h3>
-```none
+```properties
 Symbol:     CONFIG_FAT_DEFAULT_IOCHARSET
 
 Help:       Set this to the default input/output character set you'd
@@ -268,7 +268,7 @@ Reason:     You can safely leave the value of this option set to the default val
             of (iso8859-1) as recommended by the Gentoo wiki.
 ```
 <h3>[&ast;]   Enable FAT UTF-8 option by default</h3>
-```none
+```properties
 Symbol:     CONFIG_FAT_DEFAULT_UTF8
 
 Help:       Set this if you would like to have "utf8" mount option set
@@ -290,7 +290,7 @@ Reason:     It's highly recommended that you include this option in your kernel 
             you mount a FAT filesystem.
 ```
 <h3><&ast;> NTFS file system support</h3>
-```none
+```properties
 Symbol:     CONFIG_NTFS_FS
 
 Help:       NTFS is the file system of Microsoft Windows NT, 2000, XP and 2003.
@@ -329,7 +329,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             It's also recommended by the Gentoo wiki.
 ```
 <h3>[&ast;]   NTFS write support</h3>
-```none
+```properties
 Symbol:     CONFIG_NTFS_RW
 
 Help:       This enables the partial, but safe, write support in the NTFS driver.
@@ -373,7 +373,7 @@ Reason:     You can safely exclude this option as you probably won't need it,
 ```
 <h3>Pseudo filesystems  ---></h3>
 <h3>[&ast;] /proc file system support</h3>
-```none
+```properties
 Symbol:     CONFIG_PROC_FS
 
 Help:       This is a virtual file system providing information about the status
@@ -412,7 +412,7 @@ Reason:     It's highly recommended that you include this option in your kernel 
             several drivers as well.
 ```
 <h3>[&ast;]   Sysctl support (/proc/sys)</h3>
-```none
+```properties
 Symbol:     CONFIG_PROC_SYSCTL
 
 Help:       The sysctl interface provides a means of dynamically changing
@@ -436,7 +436,7 @@ Reason:     It's highly recommended that you include this option in your kernel 
             it may be used by some other options like I915 and SCSI.
 ```
 <h3>[&ast;] sysfs file system support</h3>
-```none
+```properties
 Symbol:     CONFIG_SYSFS
 
 Help:       The sysfs filesystem is a virtual filesystem that the kernel uses to
@@ -471,7 +471,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             CONFIG_KSM may rely on this option as well.
 ```
 <h3>-&ast;- Tmpfs virtual memory file system support (former shm fs)</h3>
-```none
+```properties
 Symbol:     CONFIG_TMPFS
 
 Help:       Tmpfs is a file system which keeps all files in virtual memory.
@@ -496,7 +496,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             It's also recommended by the Gentoo wiki.
 ```
 <h3>-&ast;- Native language support  ---></h3>
-```none
+```properties
 Symbol:     CONFIG_NLS
 
 Help:       The base Native Language Support. A number of filesystems
@@ -517,7 +517,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             as it's required for several filesystems (mainly FAT) to work properly.
 ```
 <h3>(utf8) Default NLS Option</h3>
-```none
+```properties
 Symbol:     CONFIG_NLS_DEFAULT
 
 Help:       The default NLS used when mounting file system. Note, that this is
@@ -545,7 +545,7 @@ Reason:     It's highly recommended that you set the value of this option to
             It's also recommended by the Gentoo wiki.
 ```
 <h3><&ast;>   Codepage 437 (United States, Canada)</h3>
-```none
+```properties
 Symbol:     CONFIG_NLS_CODEPAGE_437
 
 Help:       The Microsoft FAT file system family can deal with filenames in
@@ -568,7 +568,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             It's also recommended by the Gentoo wiki.
 ```
 <h3><&ast;>   NLS ISO 8859-1  (Latin 1; Western European Languages)</h3>
-```none
+```properties
 Symbol:     CONFIG_NLS_ISO8859_1
 
 Help:       If you want to display filenames with native language characters
@@ -591,7 +591,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             It's also recommended by the Gentoo wiki.
 ```
 <h3><&ast;>   NLS UTF-8</h3>
-```none
+```properties
 Symbol:     CONFIG_NLS_UTF8
 
 Help:       If you want to display filenames with native language characters

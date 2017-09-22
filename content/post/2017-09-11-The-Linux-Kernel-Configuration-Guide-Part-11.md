@@ -136,7 +136,7 @@ One last thing, starting from this part, I'll only be listing the options that a
 <h3>Device Drivers  ---></h3>
 <h3>Generic Driver Options  ---></h3>
 <h3>-&ast;- Maintain a devtmpfs filesystem to mount at /dev</h3>
-```none
+```properties
 Symbol:     CONFIG_DEVTMPFS
 
 Help:       This creates a tmpfs/ramfs filesystem instance early at bootup.
@@ -164,7 +164,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             and CONFIG_GENTOO_LINUX_UDEV).
 ```
 <h3>[&ast;]   Automount devtmpfs at /dev, after the kernel mounted the rootfs</h3>
-```none
+```properties
 Symbol:     CONFIG_DEVTMPFS_MOUNT
 
 Help:       This will instruct the kernel to automatically mount the
@@ -186,7 +186,7 @@ Reason:     It's recommended that you include this option in your kernel as it's
             useful when attempting a system rescue.
 ```
 <h3>-&ast;- Userspace firmware loading support</h3>
-```none
+```properties
 Symbol:     CONFIG_FW_LOADER
 
 Help:       This option is provided for the case where none of the in-tree modules
@@ -202,7 +202,7 @@ Reason:     It's highly recommended that you include this option as well if you 
             is endless so it's a good idea to include it).
 ```
 <h3>[&ast;]   Include in-kernel firmware blobs in kernel binary</h3>
-```none
+```properties
 Symbol:     CONFIG_FIRMARE_IN_KERNEL
 
 Help:       The kernel source tree includes a number of firmware 'blobs'
@@ -238,7 +238,7 @@ Reason:     It's recommended that you include this option in your kernel as it's
                 https://www.dotslashlinux.com/2017/04/30/building-intel-cpu-microcode-updates-directly-into-the-linux-kernel/
 ```
 <h3>(intel-ucode/06-3c-03) External firmware blobs to build into the kernel binary</h3>
-```none
+```properties
 Symbol:     CONFIG_EXTRA_FIRMWARE
 
 Help:       This option allows firmware to be built into the kernel for the case
@@ -280,7 +280,7 @@ Reason:     You may need to change this value if you're using a different proces
                 https://www.dotslashlinux.com/2017/04/30/building-intel-cpu-microcode-updates-directly-into-the-linux-kernel/
 ```
 <h3>(/lib/firmware) Firmware blobs root directory</h3>
-```none
+```properties
 Symbol:     CONFIG_EXTRA_FIRMWARE_DIR
 
 Help:       This option controls the directory in which the kernel build system
@@ -302,7 +302,7 @@ Reason:     It's recommended that you include this option in your kernel as it's
                 https://www.dotslashlinux.com/2017/04/30/building-intel-cpu-microcode-updates-directly-into-the-linux-kernel/
 ```
 <h3>-&ast;- Plug and Play support  ---></h3>
-```none
+```properties
 Symbol:     CONFIG_PNP
 
 Help:       Plug and Play (PnP) is a standard for peripherals which allows those
@@ -327,7 +327,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             CONFIG_X86).
 ```
 <h3>[&ast;]   PNP debugging messages</h3>
-```none
+```properties
 Symbol:     CONFIG_PNP_DEBUG_MESSAGES
 
 Help:       Say Y here if you want the PNP layer to be able to produce debugging
@@ -347,7 +347,7 @@ Reason:     It's recommended that you include this option in your kernel as
             it provides really helpful information about PnP devices.
 ```
 <h3>[&ast;] Block devices  ---></h3>
-```none
+```properties
 Symbol:     CONFIG_BLK_DEV
 
 Help:       Say Y here to get to see options for various different block device
@@ -363,7 +363,7 @@ Choice:     built-in [*]
 Reason:     It's recommended that you include this option in your kernel.
 ```
 <h3><&ast;>   Loopback device support</h3>
-```none
+```properties
 Symbol:     CONFIG_BLK_DEV_LOOP
 
 Help:       Saying Y here will allow you to use a regular file as a block
@@ -415,7 +415,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             as if they were devices.
 ```
 <h3>(0)     Number of loop devices to pre-create at init time</h3>
-```none
+```properties
 Symbol:     CONFIG_BLK_DEV_LOOP_MIN_COUNT
 
 Help:       Static number of loop devices to be unconditionally pre-created
@@ -438,7 +438,7 @@ Reason:     It's highly recommended that you set the value of this option to 0
 ```
 <h3>Misc devices  ---></h3>
 <h3>-&ast;- Intel Management Engine Interface</h3>
-```none
+```properties
 Symbol:     CONFIG_INTEL_MEI
 
 Help:       The Intel Management Engine (Intel ME) provides Manageability,
@@ -462,7 +462,7 @@ Reason:     It's recommended that you include this option in your kernel if you'
             should tell you whether you need this option or not.
 ```
 <h3><&ast;> ME Enabled Intel Chipsets</h3>
-```none
+```properties
 Symbol:     CONFIG_INTEL_MEI_ME
 
 Help:       MEI support for ME Enabled Intel chipsets.
@@ -500,7 +500,7 @@ Reason:     It's recommended that you include this option in your kernel if you'
 ```
 <h3>SCSI device support  ---></h3>
 <h3>-&ast;- SCSI device support</h3>
-```none
+```properties
 Symbol:     CONFIG_SCSI
 
 Help:       If you want to use a SCSI hard disk, SCSI tape drive, SCSI CD-ROM or
@@ -530,7 +530,7 @@ Reason:     It's highly recommended that you include this option in your kernel 
             hard drive and CD-ROM).
 ```
 <h3>-&ast;- SCSI: use blk-mq I/O path by default</h3>
-```none
+```properties
 Symbol:     CONFIG_SCSI_MQ_DEFAULT
 
 Help:       This option enables the new blk-mq based I/O path for SCSI
@@ -551,7 +551,7 @@ Reason:     If you've checked the list of priorities listed at the top of this
             CONFIG_DEFAULT_BFQ requires this option to work.
 ```
 <h3><&ast;> SCSI disk support</h3>
-```none
+```properties
 Symbol:     CONFIG_BLK_DEV_SD
 
 Help:       If you want to use SCSI hard disks, Fibre Channel disks,
@@ -586,7 +586,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             unbootable system.
 ```
 <h3><&ast;> SCSI CDROM support</h3>
-```none
+```properties
 Symbol:     CONFIG_BLK_DEV_SR
 
 Help:       If you want to use a CD or DVD drive attached to your computer
@@ -607,7 +607,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             if you're using a SCSI CD/DVD drive.
 ```
 <h3>[&ast;] Asynchronous SCSI scanning</h3>
-```none
+```properties
 Symbol:     CONFIG_SCSI_SCAN_ASYNC
 
 Help:       The SCSI subsystem can probe for devices while the rest of the
@@ -633,7 +633,7 @@ Reason:     It's highly recommended that you include this option in your kerenl
             increase in boot time though).
 ```
 <h3><&ast;> Serial ATA and Parallel ATA drivers (libata)  ---></h3>
-```none
+```properties
 Symbol:     CONFIG_ATA
 
 Help:       If you want to use an ATA hard disk, ATA tape drive, ATA CD-ROM or
@@ -655,7 +655,7 @@ Reason:     It's highly recommended that you include this option in your kernel 
             you're using a SCSI hard disk drive and a SCSI CD/DVD drive.
 ```
 <h3>[&ast;]   ATA ACPI Support</h3>
-```none
+```properties
 Symbol:     CONFIG_ATA_ACPI
 
 Help:       This option adds support for ATA-related ACPI objects.
@@ -675,7 +675,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             and power saving features of ATA devices.
 ```
 <h3>[&ast;]     SATA Zero Power Optical Disc Drive (ZPODD) support</h3>
-```none
+```properties
 Symbol:     CONFIG_SATA_ZPODD
 
 Help:       This option adds support for SATA Zero Power Optical Disc
@@ -696,7 +696,7 @@ Reason:     It's recommended that you include this option in your kernel if you
             isn't in use.
 ```
 <h3><&ast;>   AHCI SATA support</h3>
-```none
+```properties
 Symbol:     CONFIG_SATA_AHCI
 
 Help:       This option enables support for AHCI Serial ATA.
@@ -716,7 +716,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             should tell you whether you need this option or not.
 ```
 <h3>[&ast;] Network device support  ---></h3>
-```none
+```properties
 Symbol:     CONFIG_NETDEVICES
 
 Help:       You can say N here if you don't intend to connect your Linux box to
@@ -741,7 +741,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             to access the network devices' drivers section.
 ```
 <h3>[&ast;]   Ethernet driver support  ---></h3>
-```none
+```properties
 Symbol:     CONFIG_ETHERNET
 
 Help:       This section contains all the Ethernet device drivers.
@@ -760,7 +760,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             should tell you whether you need this option or not.
 ```
 <h3>[&ast;]   Atheros devices</h3>
-```none
+```properties
 Symbol:     CONFIG_NET_VENDOR_ATHEROS
 
 Help:       If you have a network (Ethernet) card belonging to this class, say Y.
@@ -778,7 +778,7 @@ Reason:     It's highly recommended that you include this option in your kernel 
             you're using an atheros ethernet controller.
 ```
 <h3><&ast;>     Qualcomm Atheros AR816x/AR817x support</h3>
-```none
+```properties
 Symbol:     CONFIG_ALX
 
 Help:       This driver supports the Qualcomm Atheros L1F ethernet adapter,
@@ -800,7 +800,7 @@ Reason:     It's highly recommended that you include this option in your kernel 
             you're using a Qualcomm Atheros L1F ethernet adapter.
 ```
 <h3>[&ast;]   Wireless LAN  ---></h3>
-```none
+```properties
 Symbol:     CONFIG_WLAN
 
 Help:       This section contains all the pre 802.11 and 802.11 wireless
@@ -823,7 +823,7 @@ Reason:     It's highly recommended that you include this option in your kernel 
             should tell you whether you need this option or not.
 ```
 <h3>[&ast;]   Atheros/Qualcomm devices</h3>
-```none
+```properties
 Symbol:     CONFIG_WLAN_VENDOR_ATH
 
 Help:       If you have a wireless card belonging to this class, say Y.
@@ -849,7 +849,7 @@ Reason:     It's highly recommended that you include this option in your kernel 
             you're using a Qualcomm Atheros wireless network adapter.
 ```
 <h3>[&ast;]     Atheros bluetooth coexistence support</h3>
-```none
+```properties
 Symbol:     CONFIG_ATH9K_BTCOEX_SUPPORT
 
 Help:       Say Y, if you want to use the ath9k/ath9k_htc radios together with
@@ -863,7 +863,7 @@ Reason:     It's highly recommended that you include this option in your kernel 
             you're using ath9k in order to get bluetooth working.
 ```
 <h3><&ast;>     Atheros 802.11n wireless cards support</h3>
-```none
+```properties
 Symbol:     CONFIG_ATH9K
 
 Help:       This module adds support for wireless adapters based on
@@ -885,7 +885,7 @@ Reason:     It's highly recommended that you include this option in your kernel 
             you're using a Qualcomm Atheros 802.11n wireless network adapter.
 ```
 <h3>[&ast;]       Atheros ath9k PCI/PCIe bus support</h3>
-```none
+```properties
 Symbol:     CONFIG_ATH9K_PCI
 
 Help:       This option enables the PCI bus support in ath9k.
@@ -900,7 +900,7 @@ Reason:     It's highly recommended that you include this option in your kernel 
             you're using a Qualcomm Atheros PCI/PCIe compatible wireless network card.
 ```
 <h3>[&ast;]       Atheros ath9k rfkill support</h3>
-```none
+```properties
 Symbol:     CONFIG_ATH9K_RFKILL
 
 Help:       Say Y to have ath9k poll the RF-Kill GPIO every couple of
@@ -918,7 +918,7 @@ Reason:     It's highly recommended that you include this option in your kernel 
             unblock them).
 ```
 <h3>[&ast;]       Atheros ath9k support for PC OEM cards</h3>
-```none
+```properties
 Symbol:     CONFIG_ATH9K_PCOEM
 
 Help:       There is no help available for this option.
@@ -933,7 +933,7 @@ Reason:     It's highly recommended that you include this option in your kernel 
 ```
 <h3>Input device support  ---></h3>
 <h3>-&ast;- Generic input layer (needed for keyboard, mouse, ...)</h3>
-```none
+```properties
 Symbol:     CONFIG_INPUT
 
 Help:       Say Y here if you have any input device (mouse, keyboard, tablet,
@@ -958,7 +958,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             if you want to use your mouse and keyboard.
 ```
 <h3>-&ast;-   Sparse keymap support library</h3>
-```none
+```properties
 Symbol:     CONFIG_INPUT_SPARSEKMAP
 
 Help:       Say Y here if you are using a driver for an input
@@ -979,7 +979,7 @@ Reason:     You can safely exclude this option unless it was forcibly included
             by other options related to out-of-tree drivers.
 ```
 <h3><&ast;>   Mouse interface</h3>
-```none
+```properties
 Symbol:     CONFIG_INPUT_MOUSEDEV
 
 Help:       Say Y here if you want your mouse to be accessible as char devices
@@ -1001,7 +1001,7 @@ Reason:     It's highly recommended that you include this option in your kernel 
             order for your mouse to work.
 ```
 <h3>(1024)  Horizontal screen resolution</h3>
-```none
+```properties
 Symbol:     CONFIG_INPUT_MOUSEDEV_SCREEN_X
 
 Help:       If you're using a digitizer, or a graphic tablet, and want to use
@@ -1017,7 +1017,7 @@ Reason:     You can safely leave the value of this option to its default value
             of (1024) if you're not using a digitizer or tablet pointing devices.
 ```
 <h3>(768)   Vertical screen resolution</h3>
-```none
+```properties
 Symbol:     CONFIG_INPUT_MOUSEDEV_SCREEN_Y
 
 Help:       If you're using a digitizer, or a graphic tablet, and want to use
@@ -1033,7 +1033,7 @@ Reason:     You can safely leave the value of this option to its default value
             of (768) if you're not using a digitizer or tablet pointing devices.
 ```
 <h3><&ast;>   Event interface</h3>
-```none
+```properties
 Symbol:     CONFIG_INPUT_EVDEV
 
 Help:       Say Y here if you want your input device events be accessible
@@ -1050,7 +1050,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             as it's required by Xorg input drivers (evdev, libinput ...etc).
 ```
 <h3>[&ast;]   Keyboards  ---></h3>
-```none
+```properties
 Symbol:     CONFIG_INPUT_KEYBOARD
 
 Help:       Say Y here, and a list of supported keyboards will be displayed.
@@ -1066,7 +1066,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             in order for your keyboard to work.
 ```
 <h3><&ast;>   AT keyboard</h3>
-```none
+```properties
 Symbol:     CONFIG_KEYBOARD_ATKBD
 
 Help:       Say Y here if you want to use a standard AT or PS/2 keyboard. Usually
@@ -1093,7 +1093,7 @@ Reason:     It's highly recommended that you include this option in your kernel 
             should tell you whether you need this option or not.
 ```
 <h3>[&ast;]   Mice  ---></h3>
-```none
+```properties
 Symbol:     CONFIG_INPUT_MOUSE
 
 Help:       Say Y here, and a list of supported mice will be displayed.
@@ -1109,7 +1109,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             in order for your mouse and touchpad to work.
 ```
 <h3><&ast;>   PS/2 mouse</h3>
-```none
+```properties
 Symbol:     CONFIG_MOUSE_PS2
 
 Help:       Say Y here if you have a PS/2 mouse connected to your system. This
@@ -1144,7 +1144,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             should tell you whether you need this option or not.
 ```
 <h3>[&ast;]     Synaptics PS/2 mouse protocol extension</h3>
-```none
+```properties
 Symbol:     CONFIG_MOUSE_PS2_SYNAPTICS
 
 Help:       Say Y here if you have a Synaptics PS/2 TouchPad connected to
@@ -1161,7 +1161,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             PS/2.
 ```
 <h3>[&ast;]     Synaptics PS/2 SMbus companion</h3>
-```none
+```properties
 Symbol:     CONFIG_MOUSE_PS2_SYNAPTICS_SMBUS
 
 Help:       Say Y here if you have a Synaptics RMI4 touchpad connected to
@@ -1185,7 +1185,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             "Your touchpad (PNP: TOS1150 TOS0310 PNP0f13) says it can support a different bus. If i2c-hid and hid-rmi are not used, you might want to try setting psmouse.synaptics_intertouch to 1 and report this to linux-input@vger.kernel.org"
 ```
 <h3>-&ast;-   Synaptics RMI4 bus support</h3>
-```none
+```properties
 Symbol:     CONFIG_RMI4_CORE
 
 Help:       Say Y here if you want to support the Synaptics RMI4 bus.  This is
@@ -1201,7 +1201,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             in order for your Synaptics RMI4 SMBus touchpad to work properly.
 ```
 <h3><&ast;>     RMI4 SMB Support</h3>
-```none
+```properties
 Symbol:     CONFIG_RMI4_SMB
 
 Help:       Say Y here if you want to support RMI4 devices connected to an SMB
@@ -1220,7 +1220,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             in order for your Synaptics RMI4 SMBus touchpad to work properly.
 ```
 <h3>-&ast;-     RMI4 Function 03 (PS2 Guest)</h3>
-```none
+```properties
 Symbol:     CONFIG_RMI4_F03
 
 Help:       Say Y here if you want to add support for RMI4 function 03.
@@ -1235,7 +1235,7 @@ Choice:     built-in -*-
 Reason:     Forcibly included by CONFIG_HID_RMI.
 ```
 <h3>-&ast;-     RMI4 Function 11 (2D pointing)</h3>
-```none
+```properties
 Symbol:     CONFIG_RMI4_F11
 
 Help:       Say Y here if you want to add support for RMI4 function 11.
@@ -1251,7 +1251,7 @@ Choice:     built-in -*-
 Reason:     Forcibly included by CONFIG_HID_RMI.
 ```
 <h3>-&ast;-     RMI4 Function 12 (2D pointing)</h3>
-```none
+```properties
 Symbol:     CONFIG_RMI4_F12
 
 Help:       Say Y here if you want to add support for RMI4 function 12.
@@ -1267,7 +1267,7 @@ Choice:     built-in -*-
 Reason:     Forcibly included by CONFIG_HID_RMI.
 ```
 <h3>-&ast;-     RMI4 Function 30 (GPIO LED)</h3>
-```none
+```properties
 Symbol:     CONFIG_RMI4_F30
 
 Help:       Say Y here if you want to add support for RMI4 function 30.
@@ -1283,7 +1283,7 @@ Reason:     Forcibly included by CONFIG_HID_RMI.
 ```
 <h3>Hardware I/O ports  ---></h3>
 <h3>-&ast;- Serial I/O support</h3>
-```none
+```properties
 Symbol:     CONFIG_SERIO
 
 Help:       Say Yes here if you have any input device that uses serial I/O to
@@ -1306,7 +1306,7 @@ Reason:     It's highly recommended that you included this option in your kernel
             options).
 ```
 <h3>-&ast;- i8042 PC Keyboard controller</h3>
-```none
+```properties
 Symbol:     CONFIG_SERIO_I8042
 
 Help:       i8042 is the chip over which the standard AT keyboard and PS/2
@@ -1327,7 +1327,7 @@ Reason:     It's highly recommended that you included this option in your kernel
             options).
 ```
 <h3>-&ast;- PS/2 driver library</h3>
-```none
+```properties
 Symbol:     CONFIG_SERIO_LIBPS2
 
 Help:       Say Y here if you are using a driver for device connected
@@ -1345,7 +1345,7 @@ Reason:     It's highly recommended that you included this option in your kernel
             options).
 ```
 <h3><&ast;> Raw access to serio ports</h3>
-```none
+```properties
 Symbol:     CONFIG_SERIO_RAW
 
 Help:       Say Y here if you want to have raw access to serio ports, such as
@@ -1372,7 +1372,7 @@ Reason:     You can safely exclude this option if your Synaptics PS/2
 ```
 <h3>Character devices  ---></h3>
 <h3>[&ast;] Enable TTY</h3>
-```none
+```properties
 Symbol:     CONFIG_TTY
 
 Help:       Allows you to remove TTY support which can save space, and
@@ -1388,7 +1388,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             in order for text terminals to work.
 ```
 <h3>[&ast;]   Virtual terminal</h3>
-```none
+```properties
 Symbol:     CONFIG_VT
 
 Help:       If you say Y here, you will get support for terminal devices with
@@ -1425,7 +1425,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             in order for virtual terminals to work.
 ```
 <h3>[&ast;]     Support for console on virtual terminal</h3>
-```none
+```properties
 Symbol:     CONFIG_VT_CONSOLE
 
 Help:       The system console is the device which receives all kernel messages
@@ -1453,7 +1453,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             in order for virtual terminals to work as system consoles as well.
 ```
 <h3>-&ast;-     Support for binding and unbinding console drivers</h3>
-```none
+```properties
 Symbol:     CONFIG_VT_HW_CONSOLE_BINDING
 
 Help:       The virtual terminal is the device that interacts with the physical
@@ -1477,7 +1477,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             forcibly included by CONFIG_VT, CONFIG_FB and CONFIG_HAS_IOMEM).
 ```
 <h3>[&ast;]   Unix98 PTY support</h3>
-```none
+```properties
 Symbol:     CONFIG_UNIX98_PTYS
 
 Help:       A pseudo terminal (PTY) is a software device consisting of two
@@ -1507,7 +1507,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             as it's required by telnet servers, xterms and SSH.
 ```
 <h3><&ast;> Hardware Random Number Generator Core support  ---></h3>
-```none
+```properties
 Symbol:     CONFIG_HW_RANDOM
 
 Help:       Hardware Random Number Generator Core infrastructure.
@@ -1538,7 +1538,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             should tell you whether you need this option or not.
 ```
 <h3><&ast;>   Intel HW Random Number Generator support (NEW)</h3>
-```none
+```properties
 Symbol:     CONFIG_HW_RANDOM_INTEL
 
 Help:       This driver provides kernel-side support for the Random Number
@@ -1564,7 +1564,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 ```
 <h3>I2C support  ---></h3>
 <h3>-&ast;- I2C support</h3>
-```none
+```properties
 Symbol:     CONFIG_I2C
 
 Help:       I2C (pronounce: I-squared-C) is a slow serial bus protocol used in
@@ -1597,7 +1597,7 @@ Reason:     If you've followed the guide above, then a simple:
             should tell you whether you need this option or not.
 ```
 <h3><&ast;>   I2C device interface</h3>
-```none
+```properties
 Symbol:     CONFIG_I2C_CHARDEV
 
 Help:       Say Y here to use i2c-* device files, usually found in the /dev
@@ -1617,7 +1617,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             Gentoo Wiki).
 ```
 <h3>-&ast;-   I2C bus multiplexing support</h3>
-```none
+```properties
 Symbol:     CONFIG_I2C_MUX
 
 Help:       Say Y here if you want the I2C core to support the ability to
@@ -1635,7 +1635,7 @@ Reason:     You can safely exclude this option unless it was forcibly included
             by some other important options.
 ```
 <h3>[&ast;]   Autoselect pertinent helper modules</h3>
-```none
+```properties
 Symbol:     CONFIG_I2C_HELPER_AUTO
 
 Help:       Some I2C bus drivers require so-called "I2C algorithm" modules
@@ -1658,7 +1658,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 ```
 <h3>I2C Hardware Bus support  ---></h3>
 <h3><&ast;> Intel 82801 (ICH/PCH)</h3>
-```none
+```properties
 Symbol:     CONFIG_I2C_I801
 
 Help:       If you say yes to this option, support will be included for the Intel
@@ -1712,7 +1712,7 @@ Reason:     If you've followed the guide above, then a simple:
             should tell you whether you need this option or not.
 ```
 <h3>-&ast;- Power supply class support  ---></h3>
-```none
+```properties
 Symbol:     CONFIG_POWER_SUPPLY
 
 Help:       Say Y here to enable power supply class support. This allows
@@ -1730,7 +1730,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             of important options).
 ```
 <h3><&ast;> Hardware Monitoring support  ---></h3>
-```none
+```properties
 Symbol:     CONFIG_HWMON
 
 Help:       Hardware monitoring devices let you monitor the hardware health
@@ -1756,7 +1756,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             as it's required by sensors found on almost all modern motherboards.
 ```
 <h3><&ast;>   Intel Core/Core2/Atom temperature sensor</h3>
-```none
+```properties
 Symbol:     CONFIG_SENSORS_CORETEMP
 
 Help:       If you say yes here you get support for the temperature
@@ -1780,7 +1780,7 @@ Reason:     If you've followed the guide above, then a simple:
             It's also recommended by the Gentoo Wiki.
 ```
 <h3>-&ast;- Generic Thermal sysfs driver  ---></h3>
-```none
+```properties
 Symbol:     CONFIG_THERMAL
 
 Help:       Generic Thermal Sysfs driver offers a generic mechanism for
@@ -1801,7 +1801,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             important options).
 ```
 <h3>(0)   Emergency poweroff delay in milli-seconds</h3>
-```none
+```properties
 Symbol:     CONFIG_THERMAL_EMERGENCY_POWEROFF_DELAY_MS
 
 Help:       Thermal subsystem will issue a graceful shutdown when
@@ -1824,12 +1824,12 @@ Reason:     It's highly recommended that you leave the value of this option set 
             the default value of (0).
 ```
 <h3>Default Thermal governor (step_wise)  ---></h3>
-```none
+```properties
 Help:       This option sets which thermal governor shall be loaded at
             startup. If in doubt, select 'step_wise'.
 ```
 <h3>(X) step_wise</h3>
-```none
+```properties
 Symbol:     CONFIG_THERMAL_DEFAULT_GOV_STEP_WISE
 
 Help:       Use the step_wise governor as default. This throttles the
@@ -1843,7 +1843,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             as step_wise is the best thermal governor.
 ```
 <h3>-&ast;-   Step_wise thermal governor</h3>
-```none
+```properties
 Symbol:     CONFIG_THERMAL_GOV_STEP_WISE
 
 Help:       Enable this to manage platform thermals using a simple linear
@@ -1859,7 +1859,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 <h3>Graphics support  ---></h3>
 You may want to check <a href="https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/" target="_blank">Setting up Bumblebee on Gentoo Linux | DOTSLASHLINUX</a>.
 <h3><&ast;> /dev/agpgart (AGP Support)  ---></h3>
-```none
+```properties
 Symbol:     CONFIG_AGP
 
 Help:       AGP (Accelerated Graphics Port) is a bus system mainly used to
@@ -1897,7 +1897,7 @@ Reason:     It's highly recommended that you include this option in your kernel
                 https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/
 ```
 <h3><&ast;>   Intel 440LX/BX/GX, I8xx and E7x05 chipset support</h3>
-```none
+```properties
 Symbol:     CONFIG_AGP_INTEL
 
 Help:       This option gives you AGP support for the GLX component of X
@@ -1917,7 +1917,7 @@ Reason:     It's highly recommended that you include this option in your kernel
                 https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/
 ```
 <h3>[&ast;] VGA Arbitration</h3>
-```none
+```properties
 Symbol:     CONFIG_VGA_ARB
 
 Help:       Some "legacy" VGA devices implemented on PCI typically have the same
@@ -1938,7 +1938,7 @@ Reason:     It's highly recommended that you include this option in your kernel
                 https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/
 ```
 <h3>(2)   Maximum number of GPUs</h3>
-```none
+```properties
 Symbol:     CONFIG_VGA_ARB_MAX_GPUS
 
 Help:       Reserves space in the kernel to maintain resource locking for
@@ -1960,7 +1960,7 @@ Reason:     It's highly recommended that you set the value of this option to (2)
                 https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/
 ```
 <h3><&ast;> Direct Rendering Manager (XFree86 4.1.0 and higher DRI support)  ---></h3>
-```none
+```properties
 Symbol:     CONFIG_DRM
 
 Help:       Kernel-level support for the Direct Rendering Infrastructure (DRI)
@@ -1983,7 +1983,7 @@ Reason:     It's highly recommended that you include this option in your kernel
                 https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/
 ```
 <h3>[&ast;]   Enable legacy fbdev support for your modesetting driver</h3>
-```none
+```properties
 Symbol:     CONFIG_DRM_FBDEV_EMULATION
 
 Help:       Choose this option if you have a need for the legacy fbdev
@@ -2004,7 +2004,7 @@ Reason:     It's highly recommended that you include this option in your kernel
                 https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/
 ```
 <h3>(300)   Overallocation of the fbdev buffer</h3>
-```none
+```properties
 Symbol:     CONFIG_DRM_FBDEV_OVERALLOC
 
 Help:       Defines the fbdev buffer overallocation in percent. Default
@@ -2025,7 +2025,7 @@ Reason:     It's highly recommended that you set the value of this option to (30
                 https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/
 ```
 <h3><&ast;> Intel 8xx/9xx/G3x/G4x/HD Graphics</h3>
-```none
+```properties
 Symbol:     CONFIG_DRM_I915
 
 Help:       Choose this option if you have a system that has "Intel Graphics
@@ -2056,7 +2056,7 @@ Reason:     It's highly recommended that you include this option in your kernel
                 https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/
 ```
 <h3>[&ast;]   Always enable userptr support</h3>
-```none
+```properties
 Symbol:     CONFIG_DRM_I915_USERPTR
 
 Help:       This option selects CONFIG_MMU_NOTIFIER if it isn't already
@@ -2077,7 +2077,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 ```
 <h3>Frame buffer Devices  ---></h3>
 <h3>-&ast;- Support for frame buffer devices  ---></h3>
-```none
+```properties
 Symbol:     CONFIG_FB
 
 Help:       The frame buffer device provides an abstraction for the graphics
@@ -2120,7 +2120,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             CONFIG_DRM, CONFIG_MMU and CONFIG_HAS_IOMEM).
 ```
 <h3>-&ast;- Backlight & LCD device support  ---></h3>
-```none
+```properties
 Symbol:     CONFIG_BACKLIGH_LCD_SUPPORT
 
 Help:       Enable this to be able to choose the drivers for controlling the
@@ -2135,7 +2135,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             CONFIG_ACPI, CONFIG_DRM, CONFIG_MMU and CONFIG_HAS_IOMEM).
 ```
 <h3>-&ast;-   Lowlevel Backlight controls</h3>
-```none
+```properties
 Symbol:     CONFIG_BACKLIGHT_CLASS_DEVICE
 
 Help:       This framework adds support for low-level control of the LCD
@@ -2154,7 +2154,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 ```
 <h3>Console display driver support  ---></h3>
 <h3>[&ast;] VGA text console</h3>
-```none
+```properties
 Symbol:     CONFIG_VGA_CONSOLE
 
 Help:       Saying Y here will allow you to use Linux in text mode through a
@@ -2179,7 +2179,7 @@ Reason:     It's highly recommended that you include this option in your kernel
                 https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/
 ```
 <h3>(80) Initial number of console screen columns</h3>
-```none
+```properties
 Symbol:     CONFIG_DUMMY_CONSOLE_COLUMNS
 
 Help:       On PA-RISC, the default value is 160, which should fit a 1280x1024
@@ -2194,7 +2194,7 @@ Reason:     You can safely leave the value of this option set to its default val
             of (80) as it's for dummy consoles.
 ```
 <h3>(25) Initial number of console screen rows</h3>
-```none
+```properties
 Symbol:     CONFIG_DUMMY_CONSOLE_ROWS
 
 Help:       On PA-RISC, the default value is 64, which should fit a 1280x1024
@@ -2209,7 +2209,7 @@ Reason:     You can safely leave the value of this option set to its default val
             of (25) as it's for dummy consoles.
 ```
 <h3><&ast;> Framebuffer Console support</h3>
-```none
+```properties
 Symbol:     CONFIG_FRAMEBUFFER_CONSOLE
 
 Help:       Low-level framebuffer-based console driver.
@@ -2226,7 +2226,7 @@ Reason:     It's highly recommended that you include this option in your kernel
                 https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/
 ```
 <h3>-&ast;-   Map the console to the primary display device</h3>
-```none
+```properties
 Symbol:     CONFIG_FRAMEBUFFER_CONSOLE_DETECT_PRIMARY
 
 Help:       If this option is selected, the framebuffer console will
@@ -2249,7 +2249,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             and CONFIG_FRAMEBUFFER_CONSOLE).
 ```
 <h3><&ast;> Sound card support  ---></h3>
-```none
+```properties
 Symbol:     CONFIG_SOUND
 
 Help:       If you have a sound card in your computer, i.e. if it can say more
@@ -2281,7 +2281,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             in order for sound to work.
 ```
 <h3>[&ast;]   Preclaim OSS device numbers</h3>
-```none
+```properties
 Symbol:     CONFIG_SOUND_OSS_CORE_PRECLAIM
 
 Help:       With this option enabled, the kernel will claim all OSS device
@@ -2318,7 +2318,7 @@ Reason:     It's highly recommended that you include this option in your kernel
                 https://www.dotslashlinux.com/2017/04/24/best-slstatus-configuration/
 ```
 <h3><&ast;>   Advanced Linux Sound Architecture  ---></h3>
-```none
+```properties
 Symbol:     CONFIG_SND
 
 Help:       Say 'Y' or 'M' to enable ALSA (Advanced Linux Sound Architecture),
@@ -2334,7 +2334,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             in order for sound to work.
 ```
 <h3><&ast;>   OSS Mixer API</h3>
-```none
+```properties
 Symbol:     CONFIG_SND_MIXER_OSS
 
 Help:       To enable OSS mixer API emulation (/dev/mixer*), say Y here
@@ -2359,7 +2359,7 @@ Reason:     It's highly recommended that you include this option in your kernel
                 https://www.dotslashlinux.com/2017/04/24/best-slstatus-configuration/
 ```
 <h3><&ast;>   OSS PCM (digital audio) API</h3>
-```none
+```properties
 Symbol:     CONFIG_SND_PCM_OSS
 
 Help:       To enable OSS digital audio (PCM) emulation (/dev/dsp*), say Y
@@ -2384,7 +2384,7 @@ Reason:     It's highly recommended that you include this option in your kernel
                 https://www.dotslashlinux.com/2017/04/24/best-slstatus-configuration/
 ```
 <h3>[&ast;]   PCM timer interface</h3>
-```none
+```properties
 Symbol:     CONFIG_SND_PCM_TIMER
 
 Help:       If you disable this option, pcm timer will be unavailable, so
@@ -2410,7 +2410,7 @@ Reason:     It's highly recommended that you include this option in your kernel
                 https://www.dotslashlinux.com/2017/03/30/basic-alsa-configuration/
 ```
 <h3>[&ast;]   Dynamic device file minor numbers</h3>
-```none
+```properties
 Symbol:     CONFIG_SND_DYNAMIC_MINORS
 
 Help:       If you say Y here, the minor numbers of ALSA device files in
@@ -2429,7 +2429,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             this option.
 ```
 <h3>(4)     Max number of sound cards</h3>
-```none
+```properties
 Symbol:     CONFIG_SND_MAX_CARDS
 
 Help:       Specify the max number of sound cards that can be assigned
@@ -2444,7 +2444,7 @@ Reason:     You can safely set the value of this option equal to (4)
             sound cards.
 ```
 <h3>[&ast;]   PCI sound devices  ---></h3>
-```none
+```properties
 Symbol:     CONFIG_SND_PCI
 
 Help:       Support for sound devices connected via the PCI bus.
@@ -2458,7 +2458,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 ```
 <h3>HD-Audio  ---></h3>
 <h3><&ast;> HD Audio PCI</h3>
-```none
+```properties
 Symbol:     CONFIG_SND_HDA_INTEL
 
 Help:       Say Y here to include support for Intel "High Definition
@@ -2484,7 +2484,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             should tell you whether you need this option or not.
 ```
 <h3><&ast;> Build IDT/Sigmatel HD-audio codec support</h3>
-```none
+```properties
 Symbol:     CONFIG_SND_HDA_CODEC_SIGMATEL
 
 Help:       Say Y or M here to include IDT (Sigmatel) HD-audio codec support in
@@ -2504,7 +2504,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             should tell you whether you need this option or not.
 ```
 <h3><&ast;> Build HDMI/DisplayPort HD-audio codec support</h3>
-```none
+```properties
 Symbol:     CONFIG_SND_HDA_CODEC_HDMI
 
 Help:       Say Y or M here to include HDMI and DisplayPort HD-audio codec
@@ -2525,7 +2525,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             should tell you whether you need this option or not.
 ```
 <h3>-&ast;- Enable generic HD-audio codec parser</h3>
-```none
+```properties
 Symbol:     CONFIG_SND_HDA_GENERIC
 
 Help:       Say Y or M here to enable the generic HD-audio codec parser
@@ -2541,7 +2541,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             CONFIG_SND_HDA_CODEC_HDMI).
 ```
 <h3>(1) Default time-out for HD-audio power-save mode</h3>
-```none
+```properties
 Symbol:     CONFIG_SND_HDA_POWER_SAVE_DEFAULT
 
 Help:       The default time-out value in seconds for HD-audio automatic
@@ -2555,7 +2555,7 @@ Reason:     You can safely set the value of this option to (1) to boost power
             saving on the sound card when not in use.
 ```
 <h3>(64)  Pre-allocated buffer size for HD-audio driver</h3>
-```none
+```properties
 Symbol:     CONFIG_SND_HDA_PREALLOC_SIZE
 
 Help:       Specifies the default pre-allocated buffer-size in kB for the
@@ -2585,7 +2585,7 @@ Reason:     You can safely leave the value of this option set to the default
 ```
 <h3>HID support  ---></h3>
 <h3>-&ast;- HID bus support</h3>
-```none
+```properties
 Symbol:     CONFIG_HID
 
 Help:       A human interface device (HID) is a type of computer device that
@@ -2613,7 +2613,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             It's also recommended by the Gentoo Wiki.
 ```
 <h3><&ast;>   Generic HID driver</h3>
-```none
+```properties
 Symbol:     CONFIG_HID_GENERIC
 
 Help:       Support for generic devices on the HID bus. This includes most
@@ -2635,7 +2635,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 ```
 <h3>USB HID support  ---></h3>
 <h3><&ast;> USB HID transport layer</h3>
-```none
+```properties
 Symbol:     CONFIG_USB_HID
 
 Help:       Say Y here if you want to connect USB keyboards,
@@ -2662,7 +2662,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             It's also recommended by the Gentoo Wiki.
 ```
 <h3>[&ast] USB support  ---></h3>
-```none
+```properties
 Symbol:     CONFIG_USB_SUPPORT
 
 Help:       This option adds core support for Universal Serial Bus (USB).
@@ -2678,7 +2678,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             It's also recommended by the Gentoo Wiki.
 ```
 <h3><&ast;>   Support for Host-side USB</h3>
-```none
+```properties
 Symbol:     CONFIG_USB
 
 Help:       Universal Serial Bus (USB) is a specification for a serial bus
@@ -2722,7 +2722,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             It's also recommended by the Gentoo Wiki.
 ```
 <h3>[&ast;]   PCI based USB host interface</h3>
-```none
+```properties
 Symbol:     CONFIG_USB_PCI
 
 Help:       A lot of embeded system SOC (e.g. freescale T2080) have both
@@ -2740,7 +2740,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             by many users.
 ```
 <h3>[&ast;]   Enable USB persist by default</h3>
-```none
+```properties
 Symbol:     CONFIG_USB_DEFAULT_PERSIST
 
 Help:       Say N here if you don't want USB power session persistence
@@ -2764,7 +2764,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             It's also recommended by the Gentoo Wiki.
 ```
 <h3><&ast;>   xHCI HCD (USB 3.0) support</h3>
-```none
+```properties
 Symbol:     CONFIG_USB_XHCI_HCD
 
 Help:       The eXtensible Host Controller Interface (xHCI) is standard for USB 3.0
@@ -2797,7 +2797,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             It's also recommended by the Gentoo Wiki.
 ```
 <h3><&ast;>   EHCI HCD (USB 2.0) support</h3>
-```none
+```properties
 Symbol:     CONFIG_USB_EHCI_HCD
 
 Help:       The Enhanced Host Controller Interface (EHCI) is standard for USB 2.0
@@ -2842,7 +2842,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             It's also recommended by the Gentoo Wiki.
 ```
 <h3>[&ast;]     Improved Transaction Translator scheduling</h3>
-```none
+```properties
 Symbol:     CONFIG_USB_EHCI_IT_NEWSCHED
 
 Help:       This changes the periodic scheduling code to fill more of the low
@@ -2871,7 +2871,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             It's also recommended by the Gentoo Wiki.
 ```
 <h3><&ast;>   USB Mass Storage support</h3>
-```none
+```properties
 Symbol:     CONFIG_USB_STORAGE
 
 Help:       Say Y here if you want to connect USB mass storage devices to your
@@ -2897,7 +2897,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             
 ```
 <h3>-&ast;- LED Support  ---></h3>
-```none
+```properties
 Symbol:     CONFIG_NEW_LEDS
 
 Help:       Say Y to enable Linux LED support.  This allows control of supported
@@ -2913,7 +2913,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             and a lot of important options).
 ```
 <h3>-&ast;-   LED Class Support</h3>
-```none
+```properties
 Symbol:     CONFIG_LEDS_CLASS
 
 Help:       This option enables the led sysfs class in /sys/class/leds.  You'll
@@ -2929,7 +2929,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             and a lot of important options).
 ```
 <h3>-&ast;-   LED Trigger support  ---></h3>
-```none
+```properties
 Symbol:     CONFIG_LEDS_TRIGGERS
 
 Help:       This option enables trigger support for the leds class.
@@ -2945,7 +2945,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             CONFIG_HID and CONFIG_INPUT).
 ```
 <h3>[&ast;] Real Time Clock  ---></h3>
-```none
+```properties
 Symbol:     CONFIG_RTC_CLASS
 
 Help:       Generic RTC class support. If you say yes here, you will
@@ -2962,7 +2962,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             It's also recommended by the Gentoo Wiki.
 ```
 <h3>[&ast;]   Set system time from RTC on startup and resume</h3>
-```none
+```properties
 Symbol:     CONFIG_RTC_HCTOSYS
 
 Help:       If you say yes here, the system time (wall clock) will be set using
@@ -2979,7 +2979,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             It's also recommended by the Gentoo Wiki.
 ```
 <h3>(rtc0)  RTC used to set the system time</h3>
-```none
+```properties
 Symbol:     CONFIG_RTC_HCTOSYS_DEVICE
 
 Help:       The RTC device that will be used to (re)initialize the system
@@ -3008,7 +3008,7 @@ Reason:     You can safely leave the value of this option to the default value
             of (rtc0) as recommended by the Gentoo Wiki.
 ```
 <h3>[&ast;]   /sys/class/rtc/rtcN (sysfs)</h3>
-```none
+```properties
 Symbol:     CONFIG_RTC_INTF_SYSFS
 
 Help:       Say yes here if you want to use your RTCs using sysfs interfaces,
@@ -3026,7 +3026,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             It's also recommended by the Gentoo Wiki.
 ```
 <h3>[&ast;]   /proc/driver/rtc (procfs for rtcN)</h3>
-```none
+```properties
 Symbol:     CONFIG_RTC_INTF_PROC
 
 Help:       Say yes here if you want to use your system clock RTC through
@@ -3047,7 +3047,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             It's also recommended by the Gentoo Wiki.
 ```
 <h3>[&ast;]   /dev/rtcN (character devices)</h3>
-```none
+```properties
 Symbol:     CONFIG_RTC_INTF_DEV
 
 Help:       Say yes here if you want to use your RTCs using the /dev
@@ -3071,7 +3071,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             It's also recommended by the Gentoo Wiki.
 ```
 <h3><&ast;>   PC-style 'CMOS'</h3>
-```none
+```properties
 Symbol:     CONFIG_RTC_DRV_CMOS
 
 Help:       Say "yes" here to get direct support for the real time clock
@@ -3105,7 +3105,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 ```
 <h3>DMABUF options  ---></h3>
 <h3>-&ast;- Explicit Synchronization Framework</h3>
-```none
+```properties
 Symbol:     CONFIG_SYNC_FILE
 
 Help:       The Sync File Framework adds explicit syncronization via
@@ -3128,7 +3128,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             CONFIG_AGP, CONFIG_DRM, CONFIG_DRM_I915 and CONFIG_MMU).
 ```
 <h3>[&ast;] X86 Platform Specific Device Drivers  ---></h3>
-```none
+```properties
 Symbol:     CONFIG_X86_PLATFORM_DEVICES
 
 Help:       Say Y here to get to see options for device drivers for various
@@ -3145,7 +3145,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             if you wanted to include some vendor specific extension drivers.
 ```
 <h3><&ast;>   WMI</h3>
-```none
+```properties
 Symbol:     CONFIG_ACPI_WMI
 
 Help:       This driver adds support for the ACPI-WMI (Windows Management
@@ -3179,7 +3179,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             should tell you whether you need this option or not.
 ```
 <h3><&ast;>   Toshiba Bluetooth RFKill switch support</h3>
-```none
+```properties
 Symbol:     CONFIG_TOSHIBA_BT_RFKILL
 
 Help:       This driver adds support for Bluetooth events for the RFKill
@@ -3207,7 +3207,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             should tell you whether you need this option or not.
 ```
 <h3><&ast;>   Toshiba HDD Active Protection Sensor</h3>
-```none
+```properties
 Symbol:     CONFIG_TOSHIBA_HAPS
 
 Help:       This driver adds support for the built-in accelerometer
@@ -3239,7 +3239,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             should tell you whether you need this option or not.
 ```
 <h3><&ast;>   WMI support for MXM Laptop Graphics</h3>
-```none
+```properties
 Symbol:     CONFIG_MXM_WMI
 
 Help:       MXM is a standard for laptop graphics cards, the WMI interface

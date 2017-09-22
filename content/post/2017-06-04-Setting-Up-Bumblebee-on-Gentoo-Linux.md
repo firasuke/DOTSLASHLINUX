@@ -31,10 +31,10 @@ Before we get started, I want to point out that bumblebee is a fairly old projec
 <br/>
 This is pretty much straightforward. If you have an intel processor (2nd Gen +) and a NVIDIA gpu, then you probably have optimus on your laptop. For those who want to check fire up your favorite terminal and run:
 
-```none
+```properties
 lspci -k
 ```
-```none
+```properties
 ...
 00:02.0 VGA compatible controller: Intel Corporation 4th Gen Core Processor Integrated Graphics Controller (rev 06)
 	Subsystem: Toshiba America Info Systems 4th Gen Core Processor Integrated Graphics Controller
@@ -65,10 +65,10 @@ Make sure that <mark>CONFIG_MODULES=y</mark> and <mark>CONFIG_MODULE_UNLOAD=y</m
 <br/>
 Now make sure that you have the following in your <mark>/etc/portage/make.conf</mark>:
 <br/>
-```none
+```properties
 vim /etc/portage/make.conf
 ```
-```none
+```properties
 ...
 VIDEO_CARDS="intel i965 nvidia"
 ...
@@ -78,7 +78,7 @@ In most cases using <mark>i965</mark> should be fine, however if you were using 
 <br/>
 <br/>
 Now sync and update your system:
-```none
+```properties
 emerge --sync && emerge -avuDN @world
 ```
 <br/>
@@ -93,21 +93,21 @@ For the installation part, we need 3 packages, <mark>bumblebee</mark>,<mark>prim
 <br/>
 <br/>
 Fire up your favorite text editor, and make sure your <mark>/etc/portage/package.accept_keywords</mark> -(which in my case is a single file and not a directory)- contains the following:
-```none,line-numbers
+```properties,line-numbers
 =sys-power/bbswitch-9999 **
 =x11-misc/bumblebee-9999 **
 =x11-misc/primus-0.2 ~amd64
 ```
 <br/>
 Now simply run:
-```none
+```properties
 emerge -av bbswitch primus bumblebee
 ```
 <hr/>
 <h3>5- Adding Your User to the Groups video and bumblebee</h3>
 <br/>
 After installing the previous packages, add your <mark>USER</mark> to the groups <mark>video</mark> and <mark>bumblebee</mark>:
-```none
+```properties
 gpasswd -a USER video && gpasswd -a USER bumblebee
 ```
 <br/>
@@ -126,10 +126,10 @@ You see it depends on xdm to make sure that bumblebee isn't started if there's n
 <br/>
 Open a terminal emulator and edit <mark>/etc/init.d/bumblebee</mark> with your favorite editor (vim is my favorite editor now), and delete the first 5 lines (or their equivalent; the depend() part) as shown below:
 <br/>
-```none
+```properties
 vim /etc/init.d/bumblebee
 ```
-```none,line-numbers
+```properties,line-numbers
 depend() {
     need xdm
     need vgl
@@ -152,7 +152,7 @@ stop() {
 ```
 <br/>
 So your file should look like this:
-```none,line-numbers
+```properties,line-numbers
 PIDFILE="${PIDFILE:-/var/run/bumblebee.pid}"
 
 start() {
@@ -171,7 +171,7 @@ stop() {
 <h3>7- Modifying /etc/bumblebee/bumblebee.conf</h3>
 <br/>
 We need to change some of the default settings that bumblebee uses, start that terminal emulator and with your favorite editor (vim), edit the file <mark>/etc/bumblebee/bumblebee.conf</mark>:
-```none,line-numbers
+```properties,line-numbers
 # Configuration file for Bumblebee. Values should **not** be put between quotes
 
 ## Server options. Any change made in this section will need a server restart
@@ -255,7 +255,7 @@ I've highlighted the lines that you should check, just make sure that:
 <h3>8- Enabling and Starting bumblebee Service</h3>
 <br/>
 Simply add the service <mark>bumblebee</mark> to the runlevel <mark>default</mark>:
-```none
+```properties
 rc-update add bumblebee default
 ```
 <br/>
@@ -270,7 +270,7 @@ In order for bbswitch to work properly, the nvidia module should be removed with
 <br/>
 <br/>
 Now we should only have the <mark>nvidia</mark> module, no <mark>nvidia-uvm</mark>, no <mark>nvidia-drm</mark>, no <mark>nvidia-modeset</mark>. We need to instruct <mark>modprobe -r nvidia </mark> to remove only <mark>nvidia</mark> and nothing else (as there's nothing else to be removed). So fire up your favorite editor and edit <mark>/etc/modprobe.d/nvidia-rmmod.conf</mark>:
-```none
+```properties
 vim /etc/modprobe.d/nvidia-rmmod.conf
 ```
 ```bash
@@ -280,7 +280,7 @@ remove nvidia modprobe -r --ignore-remove nvidia-drm nvidia-modeset nvidia-uvm n
 ```
 <br/>
 and remove every other module except for <mark>nvidia</mark> so the end file should look like this:
-```none
+```properties
 remove nvidia modprobe -r --ignore-remove nvidia
 ```
 <br/>
@@ -292,7 +292,7 @@ If you've followed along with this article then your bumblebee setup should be w
 <br/>
 <br/>
 To test our bumblebee configuration, install the package <mark>mesa-progs</mark>:
-```none
+```properties
 emerge --sync && emerge -av mesa-progs
 ```
 <br/>
@@ -309,7 +309,7 @@ then run:
 ```bash
 cat /proc/acpi/bbswitch
 ```
-```none
+```properties
 0000:01:00.0 OFF
 ```
 <br/>
@@ -326,20 +326,20 @@ Now let's check if the NVIDIA card will be switched ON and the nvidia module wil
 <br/>
 <br/>
 Inside your terminal emulator (and while you're running in a Xorg session... obviously...) run:
-```none
+```properties
 optirun glxgears
 ```
 <br/>
 or (but not both):
-```none
+```properties
 primusrun glxgears
 ```
 <br/>
 A window showing glxgears should open. While it's running check the following:
-```none
+```properties
 lsmod
 ```
-```none
+```properties
 Module                  Size  Used by
 nvidia              10652360  51
 bbswitch                5461  0
@@ -349,7 +349,7 @@ and:
 ```bash
 cat /proc/acpi/bbswitch
 ```
-```none
+```properties
 0000:01:00.0 ON
 ```
 <br/>
@@ -357,7 +357,7 @@ Notice how the nvidia module got loaded and the card switched on. Now end the ru
 <br/>
 <br/>
 Some of you may say that using vgl gets me more fps when running glxgears or any benchmark application. That is simply not the case as vgl doesn't adjust itself to the screen's refresh rate like primus does. Try running the following and see how primus crushes vgl:
-```none
+```properties
 vblank_mode=0 primusrun glxgears
 ```
 <br/>
@@ -372,10 +372,10 @@ For those of you that are wondering what USE flags I'm using for my packages:
 <br/>
 <br/>
 For <mark>nvidia-drivers</mark>(notice how I disabled <mark>uvm</mark> and <mark>kms</mark> USE flags, as they can lead to errors when unloading the nvidia module unless you're using a patched version of bumblebee):
-```none
+```properties
 equery u nvidia-drivers
 ```
-```none
+```properties
 * Found these USE flags for x11-drivers/nvidia-drivers-381.22:
  U I
  + + X           : Install the X.org driver, OpenGL libraries, XvMC libraries, and VDPAU libraries
@@ -392,10 +392,10 @@ equery u nvidia-drivers
 ```
 <br/>
 For <mark>xf86-video-intel</mark>:
-```none
+```properties
 equery u xf86-video-intel
 ```
-```none
+```properties
 * Found these USE flags for x11-drivers/xf86-video-intel-2.99.917_p20170313:
  U I
  - - debug : Enable extra debug codepaths, like asserts and extra output. If you want to get meaningful backtraces see
@@ -411,10 +411,10 @@ equery u xf86-video-intel
 ```
 <br/>
 For <mark>bumblebee</mark>:
-```none
+```properties
 equery u bumblebee
 ```
-```none
+```properties
 * Found these USE flags for x11-misc/bumblebee-3.2.1:
  U I
  + + bbswitch            : Add dependency on sys-power/bbswitch for PM feature
@@ -427,7 +427,7 @@ If bbswitch was unable to switch the ACPI state of the dGPU then you might want 
 <br/>
 <br/>
 If bbswitch is still refusing to turn off the card (which is unlikely if you followed what I mentioned earlier) try adding
-```none
+```properties
 "acpi_osi=!Windows\x202013" acpi_osi=Linux nogpumanager i915.enable_hd_vgaarb=1 enable_hd_vgaarb=1
 ```
 <br/>
@@ -435,10 +435,10 @@ to your kernel command-line (this has worked for a couple of users, especially t
 <br/>
 <br/>
 Some users were receiving vgaarb errors:
-```none
+```properties
 dmesg | grep vgaarb
 ```
-```none
+```properties
 ...
 vgaarb: this pci device is not a vga device
 vgaarb: this pci device is not a vga device
@@ -446,5 +446,5 @@ vgaarb: this pci device is not a vga device
 ```
 <br/>
 Make sure that <mark>CONFIG_VGA_ARB=y</mark> and <mark>CONFIG_VGA_ARB_MAX_GPUS=2</mark>. If you're still seeing this error (even though it was fixed in 3.10 according to this <a href="https://bugzilla.kernel.org/show_bug.cgi?id=63641" target="_blank">Bugzilla Kernel 63641</a> and <a href="https://github.com/Bumblebee-Project/Bumblebee/issues/159" target="_blank">Bumblebee Github Issue #159</a>), you can try to patch your kernel with this <a href="https://pastebin.com/wpmFi38k" target="_blank">vgaarb patch</a> by running this (after downloading the patch file of course):
-```none
+```properties
 To read this guide in chinese <a href="https://blog.yangmame.top/2017/08/23/gentoo%E5%8F%8C%E6%98%BE%E5%8D%A1%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" target="_blank">click here</a>.

@@ -10,7 +10,7 @@ categories = [ "kernel" ]
 +++
 <h3>Executable file formats / Emulations  ---></h3>
 <h3>-&ast;- Kernel support for ELF binaries</h3>
-```none
+```properties
 Symbol:     CONFIG_BINFMT_ELF
 
 Help:       ELF (Executable and Linkable Format) is a format for libraries and
@@ -42,7 +42,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             already forcibly included by CONFIG_X86_64 and CONFIG_IA32_EMULATION.
 ```
 <h3>-&ast;- Kernel support for scripts starting with #!</h3>
-```none
+```properties
 Symbol:     CONFIG_BINFMT_SCRIPT
 
 Help:       Say Y here if you want to execute interpreted scripts starting with
@@ -67,7 +67,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             distributions (CONFIG_GENTOO_LINUX and CONFIG_GENTOO_LINUX_INIT_SCRIPT).
 ```
 <h3><&ast;> Kernel support for MISC binaries</h3>
-```none
+```properties
 Symbol:     CONFIG_BINFMT_MISC
 
 Help:       If you say Y here, it will be possible to plug wrapper-driven binary
@@ -101,7 +101,7 @@ Reason:     It's highly recommended that you include this option in your kernel 
             it's extremely useful when running emulators and virtual machines.
 ```
 <h3>[ ] Enable core dump support</h3>
-```none
+```properties
 Symbol:     CONFIG_COREDUMP
 
 Help:       This option enables support for performing core dumps. You almost
@@ -116,7 +116,7 @@ Reason:     You can safely exclude this option as it's intended for debugging
             purposes.
 ```
 <h3>[&ast;] IA32 Emulation</h3>
-```none
+```properties
 Symbol:     CONFIG_IA32_EMULATION
 
 Help:       Include code to run legacy 32-bit programs under a
@@ -134,7 +134,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             the whole system to get 32-bit support working.
 ```
 <h3>< >   IA32 a.out support</h3>
-```none
+```properties
 Symbol:     CONFIG_IA32_AOUT
 
 Help:       Support old a.out binaries in the 32bit emulation.
@@ -150,7 +150,7 @@ Reason:     You can safely exclude this option as it's not necessary to include
             shared libraries that rely on this format.
 ```
 <h3>[&ast;] x32 ABI for 64-bit mode</h3>
-```none
+```properties
 Symbol:     CONFIG_X86_X32
 
 Help:       Include code to run binaries for the x32 native 32-bit ABI

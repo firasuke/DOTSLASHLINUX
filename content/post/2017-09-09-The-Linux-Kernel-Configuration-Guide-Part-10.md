@@ -9,7 +9,7 @@ imgalt = "kernel10"
 categories = [ "kernel" ]
 +++
 <h3>[&ast;] Networking support  ---></h3>
-```none
+```properties
 Symbol:     CONFIG_NET
 
 Help:       Unless you really know what you are doing, you should say Y here.
@@ -41,7 +41,7 @@ Reason:     It's highly recommended that you include this option in your kernel 
 ```
 <h3>Networking options  ---></h3>
 <h3><&ast;> Packet socket</h3>
-```none
+```properties
 Symbol:     CONFIG_PACKET
 
 Help:       The Packet protocol is used by applications which communicate
@@ -71,7 +71,7 @@ Reason:     It's highly recommended that you include this option in your kernel
                 https://googleprojectzero.blogspot.com/2017/05/exploiting-linux-kernel-via-packet.html
 ```
 <h3>-&ast;- Unix domain sockets</h3>
-```none
+```properties
 Symbol:     CONFIG_UNIX
 
 Help:       If you say Y here, you will include support for Unix domain sockets;
@@ -98,7 +98,7 @@ Reason:     It's highly recommended that you include this option in your kernel 
             forcibly included by CONFIG_GENTOO_LINUX and CONFIG_GENTOO_LINUX_UDEV).
 ```
 <h3>[&ast;] TCP/IP networking</h3>
-```none
+```properties
 Symbol:     CONFIG_INET
 
 Help:       These are the protocols used on the Internet and on most local
@@ -134,7 +134,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             have in virtual machines).
 ```
 <h3>[ ]   Amateur Radio support  ----</h3>
-```none
+```properties
 Symbol:     CONFIG_HAMRADIO
 
 Help:       If you want to connect your Linux box to an amateur radio, answer Y
@@ -154,7 +154,7 @@ Reason:     You can safely exclude this option as it's unlikely that you'll conn
             your linux system to a ham radio.
 ```
 <h3>< >   CAN bus subsystem support  ----</h3>
-```none
+```properties
 Symbol:     CONFIG_CAN
 
 Help:       Controller Area Network (CAN) is a slow (up to 1Mbit/s) serial
@@ -175,7 +175,7 @@ Reason:     You can safely exclude this option as it's highly unlikely that
             a normal user will be using this option.
 ```
 <h3>< >   IrDA (infrared) subsystem support  ----</h3>
-```none
+```properties
 Symbol:     CONFIG_IRDA
 
 Help:       Say Y here if you want to build support for the IrDA (TM) protocols.
@@ -203,7 +203,7 @@ Reason:     You can safely exclude this option as it's highly unlikely that
             your laptop (modern laptops) will use this protocol.
 ```
 <h3><&ast;>   Bluetooth subsystem support  ---></h3>
-```none
+```properties
 Symbol:     CONFIG_BT
 
 Help:       Bluetooth is low-cost, low-power, short-range wireless technology.
@@ -240,7 +240,7 @@ Reason:     You can safely exclude this option if your device doesn't support
             bluetooth or if you don't want bluetooth included at all.
 ```
 <h3>[&ast;]   Bluetooth Classic (BR/EDR) features</h3>
-```none
+```properties
 Symbol:     CONFIG_BT_BREDR
 
 Help:       There is no help available for this option.
@@ -253,7 +253,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             if your device supports bluetooth.
 ```
 <h3>< >     RFCOMM protocol support</h3>
-```none
+```properties
 Symbol:     CONFIG_BT_RFCOMM
 
 Help:       RFCOMM provides connection oriented stream transport.  RFCOMM
@@ -271,7 +271,7 @@ Reason:     You can safely exclude this option as it's highly unlikely to be nee
             by users who want basic bluetooth support.
 ```
 <h3>[ ]       RFCOMM TTY support</h3>
-```none
+```properties
 Symbol:     CONFIG_BT_RFCOMM_TTY
 
 Help:       This option enables TTY emulation support for RFCOMM channels.
@@ -284,7 +284,7 @@ Reason:     You can safely exclude this option as it's highly unlikely to be nee
             by users who want basic bluetooth support.
 ```
 <h3>< >     BNEP protocol support</h3>
-```none
+```properties
 Symbol:     CONFIG_BT_BNEP
 
 Help:       BNEP (Bluetooth Network Encapsulation Protocol) is Ethernet
@@ -302,7 +302,7 @@ Reason:     You can safely exclude this option as it's highly unlikely to be nee
             by users who want basic bluetooth support.
 ```
 <h3>< >     HIDP protocol support</h3>
-```none
+```properties
 Symbol:     CONFIG_BT_HDIP
 
 Help:       HIDP (Human Interface Device Protocol) is a transport layer
@@ -320,7 +320,7 @@ Reason:     You can safely exclude this option as it's highly unlikely to be nee
             by users who want basic bluetooth support.
 ```
 <h3>[&ast;]     Bluetooth High Speed (HS) features</h3>
-```none
+```properties
 Symbol:     CONFIG_BT_HS
 
 Help:       There is no help available for this option.
@@ -333,7 +333,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             if your device supports bluetooth as recommended by the Gentoo wiki.
 ```
 <h3>[&ast;]   Bluetooth Low Energy (LE) features</h3>
-```none
+```properties
 Symbol:     CONFIG_BT_LE
 
 Help:       There is no help available for this option.
@@ -346,7 +346,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             if your device supports bluetooth as recommended by the Gentoo wiki.
 ```
 <h3>[ ]   Enable LED triggers</h3>
-```none
+```properties
 Symbol:     CONFIG_BT_LEDS
 
 Help:       This option selects a few LED triggers for different
@@ -359,7 +359,7 @@ Choice:     excluded [ ]
 Reason:     You can safely exclude this option.
 ```
 <h3>[ ]   Bluetooth self testing support</h3>
-```none
+```properties
 Symbol:     CONFIG_BT_SELFTEST
 
 Help:       Run self tests when initializing the Bluetooth subsystem.  This
@@ -380,7 +380,7 @@ Reason:     You can safely exclude this option as it's for intended for developi
 ```
 <h3>Bluetooth device drivers  ---></h3>
 <h3><&ast;> HCI USB driver</h3>
-```none
+```properties
 Symbol:     CONFIG_BT_HCIBTUSB
 
 Help:       Bluetooth HCI USB driver.
@@ -411,7 +411,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             to see if your system has a Bluetooth device with USB interface or not.
 ```
 <h3><&ast;> HCI UART driver</h3>
-```none
+```properties
 Symbol:     CONFIG_BT_HCIUART
 
 Help:       Bluetooth HCI UART driver.
@@ -444,7 +444,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             to see if your system has a UART based Bluetooth device or not.
 ```
 <h3>-&ast;-   UART (H4) protocol support</h3>
-```none
+```properties
 Symbol:     CONFIG_BT_HCIUART_H4
 
 Help:       UART (H4) is serial protocol for communication between Bluetooth
@@ -474,7 +474,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             to see if your system has a UART based Bluetooth device or not.
 ```
 <h3>[&ast;]   Atheros AR300x serial support</h3>
-```none
+```properties
 Symbol:     CONFIG_BT_HCIUART_ATH3K
 
 Help:       HCIATH3K (HCI Atheros AR300x) is a serial protocol for
@@ -506,7 +506,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             to see if your system has a AR300x Bluetooth device or not.
 ```
 <h3><&ast;> Atheros firmware download driver</h3>
-```none
+```properties
 Symbol:     CONFIG_BT_ATH3K
 
 Help:       Bluetooth firmware download driver.
@@ -537,7 +537,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             to see if your system has a AR300x Bluetooth device or not.
 ```
 <h3>< >   RxRPC session sockets</h3>
-```none
+```properties
 Symbol:     CONFIG_AF_RXRPC
 
 Help:       Say Y or M here to include support for RxRPC session sockets (just
@@ -559,7 +559,7 @@ Reason:     You can safely exclude this option as it's highly unlikely that
             a normal user will be using this option.
 ```
 <h3>< >   KCM sockets</h3>
-```none
+```properties
 Symbol:     CONFIG_AF_KCM
 
 Help:       KCM (Kernel Connection Multiplexor) sockets provide a method
@@ -574,7 +574,7 @@ Reason:     You can safely exclude this option as it's highly unlikely that
             a normal user will be using this option.
 ```
 <h3>-&ast;-   Wireless  ---></h3>
-```none
+```properties
 Symbol:     CONFIG_WIRELESS
 
 Help:       There is no help available for this option.
@@ -587,7 +587,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             if you're using a laptop or any other system that has a wireless network device.
 ```
 <h3><&ast;>   cfg80211 - wireless configuration API</h3>
-```none
+```properties
 Symbol:     CONFIG_CFG80211
 
 Help:       cfg80211 is the Linux wireless LAN (802.11) configuration API.
@@ -610,7 +610,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             "wireless-tools" and "iwconfig".
 ```
 <h3>[&ast;]     enable powersave by default</h3>
-```none
+```properties
 Symbol:     CONFIG_CFG80211_DEFAULT_PS
 
 Help:       This option enables powersave mode by default.
@@ -632,7 +632,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             drivers this may cause some connection problems.
 ```
 <h3><&ast;>   Generic IEEE 802.11 Networking Stack (mac80211)</h3>
-```none
+```properties
 Symbol:     CONFIG_MAC80211
 
 Help:       This option enables the hardware independent IEEE 802.11
@@ -646,7 +646,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             as mentioned in the Gentoo wiki.
 ```
 <h3>[&ast;]   Minstrel</h3>
-```none
+```properties
 Symbol:     CONFIG_MAC80211_RC_MINSTREL
 
 Help:       This option enables the 'minstrel' TX rate control algorithm
@@ -660,7 +660,7 @@ Reason:     It's highly recommended that you include this rate control algorithm
             and precision (and it's recommended by the Gentoo wiki).
 ```
 <h3>[&ast;]     Minstrel 802.11n support</h3>
-```none
+```properties
 Symbol:     CONFIG_MAC80211_RC_MINSTREL_HT
 
 Help:       This option enables the 'minstrel_ht' TX rate control algorithm
@@ -674,14 +674,14 @@ Reason:     It's highly recommended that you include this rate control algorithm
             and precision (and it's recommended by the Gentoo wiki).
 ```
 <h3>Default rate control algorithm (Minstrel)  ---></h3>
-```none
+```properties
 Help:       This option selects the default rate control algorithm
             mac80211 will use. Note that this default can still be
             overridden through the ieee80211_default_rc_algo module
             parameter if different algorithms are available. 
 ```
 <h3>(X) Minstrel</h3>
-```none
+```properties
 Symbol:     CONFIG_MAC80211_RC_DEFAULT_MINSTREL
 
 Help:       Select Minstrel as the default rate control algorithm.
@@ -695,7 +695,7 @@ Reason:     It's highly recommended that you include this rate control algorithm
             and precision (and it's recommended by the Gentoo wiki).
 ```
 <h3>-&ast;-   Enable LED triggers</h3>
-```none
+```properties
 Symbol:     CONFIG_MAC80211_LEDS
 
 Help:       This option enables a few LED triggers for different
@@ -711,7 +711,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             CONFIG_ATH9K and CONFIG_MAC80211).
 ```
 <h3>< >   WiMAX Wireless Broadband support  ----</h3>
-```none
+```properties
 Symbol:     CONFIG_WIMAX
 
 Help:       Select to configure support for devices that provide
@@ -749,7 +749,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             to see if your system has a device that uses the WiMAX protocol or not.
 ```
 <h3><&ast;>   RF switch subsystem support  ---></h3>
-```none
+```properties
 Symbol:     CONFIG_RFKILL
 
 Help:       Say Y here if you want to have control over RF switches
@@ -770,7 +770,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             working then you may need rfkill to unblock them in order to use them.
 ```
 <h3>[&ast;]   RF switch input support</h3>
-```none
+```properties
 Symbol:     CONFIG_RFKILL_INPUT
 
 Help:       There is no help available for this option.
@@ -783,7 +783,7 @@ Reason:     It's recommended that you include this option in your kernel
             along with CONFIG_RFKILL to ensure that "rfkill" works properly.
 ```
 <h3>< >   Plan 9 Resource Sharing Support (9P2000)  ----</h3>
-```none
+```properties
 Symbol:     CONFIG_NET_9P
 
 Help:       If you say Y here, you will get experimental support for
@@ -801,7 +801,7 @@ Reason:     You can safely exclude this option as it's highly unlikely that
             a normal user will be using this option.
 ```
 <h3>< >   CAIF support  ----</h3>
-```none
+```properties
 Symbol:     CONFIG_CAIF
 
 Help:       The "Communication CPU to Application CPU Interface" (CAIF) is a packet
@@ -826,7 +826,7 @@ Reason:     You can safely exclude this option as it's highly unlikely that
             this option will be needed on a laptop or desktop.
 ```
 <h3>< >   Ceph core library</h3>
-```none
+```properties
 Symbol:     CONFIG_CEPH_LIB
 
 Help:       Choose Y or M here to include cephlib, which provides the
@@ -845,7 +845,7 @@ Reason:     You can safely exclude this option as it's highly unlikely that
             a normal user will be using this option.
 ```
 <h3><&ast;>   NFC subsystem support  ---></h3>
-```none
+```properties
 Symbol:     CONFIG_NFC
 
 Help:       Say Y here if you want to build support for NFC (Near field
@@ -876,7 +876,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             to see if your system has a NFC device or not.
 ```
 <h3><&ast;>   NFC HCI implementation</h3>
-```none
+```properties
 Symbol:     CONFIG_NFC_HCI
 
 Help:       Say Y here if you want to build support for a kernel NFC HCI
@@ -906,7 +906,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 ```
 <h3>Near Field Communication (NFC) devices  ---></h3>
 <h3><&ast;> MEI bus NFC device support</h3>
-```none
+```properties
 Symbol:     CONFIG_NFC_MEI_PHY
 
 Help:       This adds support to use an mei bus nfc device. Select this if you
@@ -938,7 +938,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             Management Engine chip or not.
 ```
 <h3><&ast;> NXP PN544 device support (MEI)</h3>
-```none
+```properties
 Symbol:     CONFIG_NFC_PN544_MEI
 
 Help:       This module adds support for the mei interface of adapters using
@@ -971,7 +971,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             Engine Interface or not.
 ```
 <h3>< >   Packet-sampling netlink channel  ----</h3>
-```none
+```properties
 Symbol:     CONFIG_PSAMPLE
 
 Help:       Say Y here to add support for packet-sampling netlink channel
@@ -989,7 +989,7 @@ Reason:     You can safely exclude this option as it's highly unlikely that
             a normal user will be using this option.
 ```
 <h3>< >   Inter-FE based on IETF ForCES InterFE LFB  ----</h3>
-```none
+```properties
 Symbol:     CONFIG_NET_IFE
 
 Help:       Say Y here to add support of IFE encapsulation protocol
@@ -1008,7 +1008,7 @@ Reason:     You can safely exclude this option as it's highly unlikely that
             a normal user will be using this option.
 ```
 <h3>[ ]   Network light weight tunnels</h3>
-```none
+```properties
 Symbol:     CONFIG_LWTUNNEL
 
 Help:       This feature provides an infrastructure to support light weight
@@ -1024,7 +1024,7 @@ Reason:     You can safely exclude this option as it's highly unlikely that
             a normal user will be using this option.
 ```
 <h3>< >   Network physical/parent device Netlink interface</h3>
-```none
+```properties
 Symbol:     CONFIG_NET_DEVLINK
 
 Help:       Network physical/parent device Netlink interface provides

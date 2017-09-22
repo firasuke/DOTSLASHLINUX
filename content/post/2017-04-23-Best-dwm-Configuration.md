@@ -13,17 +13,17 @@ In this article I'll show you how to setup dwm and equip it with a nice basic co
 <h3>1- Installation</h3>
 <br/>
 Gentoo Linux:
-```none
+```properties
 emerge --sync && emerge -av x11-wm/dwm
 ```
 <br/>
 Void Linux:
-```none
+```properties
 xbps-install -Su && xbps-install -S dwm
 ```
 <br/>
 Arch Linux:
-```none
+```properties
 pacman -Syu dwm
 ```
 <hr/>

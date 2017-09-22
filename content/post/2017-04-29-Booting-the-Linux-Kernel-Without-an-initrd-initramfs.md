@@ -60,7 +60,7 @@ make menuconfig
 ```
 <br>
 Now go to <mark>General Setup</mark> then search for <mark>CONFIG_BLK_DEV_INITRD</mark> and disable it:
-```none
+```properties
   RCU Subsystem  --->
   < > Kernel .config support
   (12) Kernel log buffer size (16 => 64KB, 17 => 128KB)
@@ -121,7 +121,7 @@ as a kernel command line parameter or inside your <mark>/etc/fstab</mark>, then 
 <br/>
 <br/>
 For example, I'm using LILO as my bootloader and here's my <mark>/etc/lilo.conf</mark>:
-```none,line-numbers
+```properties,line-numbers
 lba32
 boot=/dev/sda
 default=gentoo
@@ -134,7 +134,7 @@ image=/boot/vmlinuz-4.10.13-gentoo-DOTSLASHLINUX
 ```
 <br/>
 And here's my <mark>/etc/fstab</mark>:
-```none,line-numbers
+```properties,line-numbers
 # (fs)			(mountpoint)	(type)		(opts)		(dump/pass)
 /dev/sda1		/		         ext4		 noatime		0 1
 ```
@@ -144,7 +144,7 @@ And here's my <mark>/etc/fstab</mark>:
 <br/>
 Things may get a little controversial here. I generally recommend building all modules into the linux kernel and disable loadable modules support since my setup doesn't require many modules (I only have support for the basic stuff I use). You can do that by disabling <mark>CONFIG_MODULES</mark>:
 <br/>
-```none
+```properties
   Gentoo Linux  --->
   [*] 64-bit kernel
   General setup  --->
@@ -172,7 +172,7 @@ There are still some necessary modules that need to be build into the linux kern
 <br/>
 <br/>
 If you're using ext4, navigate to <mark>Filesystems</mark> and make sure that <mark>CONFIG_EXT4_FS</mark> is built-in:
-```none
+```properties
   [ ] Second extended fs support
   [ ] The Extended 3 (ext3) filesystem
   [*] The Extended 4 (ext4) filesystem
@@ -214,19 +214,19 @@ If you're using ext4, navigate to <mark>Filesystems</mark> and make sure that <m
 ```
 <br/>
 Now you need to check what block devices are you using (to be more precise, the block device where your root resides on), find out its kernel module and mark it as built-in. This is simple, fire up a terminal emulator and type:
-```none
+```properties
 lspci -kk
 ```
 <br/>
 In my case I'm using a Toshiba MQ01ABD100 which is a SATA HDD that uses the <mark>ahci</mark> kernel module:
-```none
+```properties
 00:1f.2 SATA controller: Intel Corporation 8 Series/C220 Series Chipset Family 6-port SATA Controller 1 [AHCI mode] (rev 04)
 	    Subsystem: Toshiba America Info Systems 8 Series/C220 Series Chipset Family 6-port SATA Controller 1 [AHCI mode]
 	    Kernel driver in use: ahci
 ```
 <br/>
 I navigate to <mark>Device Drivers</mark> then to <mark>Serial ATA and Parallel ATA drivers (libata)</mark> and mark <mark>CONFIG_SATA_AHCI</mark> as built-in:
-```none
+```properties
   --- Serial ATA and Parallel ATA drivers (libata)
   [ ]   Verbose ATA error reporting
   [*]   ATA ACPI Support
@@ -247,10 +247,10 @@ Now we need to tell our bootloader the info that the initrd/initramfs would tell
 <br/>
 <br/>
 If you're using grub, fire up your favorite editor and edit <mark>/etc/default/grub</mark>:
-```none
+```properties
 vim /etc/default/grub
 ```
-```none,line-numbers
+```properties,line-numbers
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 #
@@ -327,7 +327,7 @@ GRUB_CMDLINE_LINUX="root=/dev/sda1 rootfstype=ext4"
 ```
 <br/>
 However, if you're lucky enough to use LILO (like me xD), then the following configuration file will do:
-```none,line-numbers
+```properties,line-numbers
 lba32
 boot=/dev/sda
 default=gentoo
@@ -340,7 +340,7 @@ image=/boot/vmlinuz-4.10.13-gentoo-DOTSLASHLINUX
 ```
 <br/>
 This'll also work as well:
-```none,line-numbers
+```properties,line-numbers
 lba32
 boot=/dev/sda
 default=gentoo

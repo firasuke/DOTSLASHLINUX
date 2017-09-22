@@ -11,7 +11,7 @@ categories = [ "kernel" ]
 The choice of my options will be heavily affected by the cpu my laptop uses (an <a href="http://ark.intel.com/products/75117/Intel-Core-i7-4700MQ-Processor-6M-Cache-up-to-3_40-GHz" target="_blank">Intel Core i7 4700MQ</a>
 <h3>Processor type and features  ---></h3>
 <h3>[&ast;] DMA memory allocation support</h3>
-```none
+```properties
 Symbol:     CONFIG_ZONE_DMA
 
 Help:       DMA memory allocation support allows devices with less than 32-bit
@@ -35,7 +35,7 @@ Reason:     It's highly recommended that you include this option as it's require
             You can safely exclude this option if you're not on a optimus based laptop.
 ```
 <h3>[&ast;] Symmetric multi-processing support</h3>
-```none
+```properties
 Symbol:     CONFIG_SMP
 
 Help:       This enables support for systems with more than one CPU. If you have
@@ -73,7 +73,7 @@ Reason:     It's highly recommended that you include this option in your kernel 
             as 1*2 is 2 logical cores, otherwise only 1 core will be detected.
 ```
 <h3>[ ] Enable MPS table</h3>
-```none
+```properties
 Symbol:     CONFIG_X86_MPPARSE
 
 Help:       For old smp systems that do not have proper acpi support. Newer systems
@@ -86,7 +86,7 @@ Choice:     excluded [ ]
 Reason:     You can safely exclude this option if you're using a modern system.
 ```
 <h3>[ ] Intel Resource Director Technology Allocation support</h3>
-```none
+```properties
 Symbol:     CONFIG_INTEL_RDT_A
 
 Help:       Select to enable resource allocation which is a sub-feature of
@@ -105,7 +105,7 @@ Reason:     You can safely exclude this option due to the lack of information
             that intel released in late 2016.
 ```
 <h3>[ ] Support for extended (non-PC) x86 platforms</h3>
-```none
+```properties
 Symbol:     CONFIG_X86_EXTENDED_PLATFORM
 
 Help:       If you disable this option then the kernel will only support
@@ -129,7 +129,7 @@ Reason:     You can safely exclude this option if you have a standard pc
             platform.
 ```
 <h3>[ ] Intel Low Power Subsystem Support</h3>
-```none
+```properties
 Symbol:     CONFIG_X86_INTEL_LPSS
 
 Help:       Select to build support for Intel Low Power Subsystem such as
@@ -146,7 +146,7 @@ Reason:     You can safely exclude this option if you're using an Intel CPU
             say that Haswell CPUs are also supported).
 ```
 <h3>[ ] AMD ACPI2Platform devices support</h3>
-```none
+```properties
 Symbol:     CONFIG_X86_AMD_PLATFORM_DEVICE
 
 Help:       Select to interpret AMD specific ACPI device to platform device
@@ -162,7 +162,7 @@ Reason:     You can safely exclude this option if you're not using these AMD
             chipsets.
 ```
 <h3>-&ast;- Intel SoC IOSF Sideband support for SoC platforms</h3>
-```none
+```properties
 Symbol:     CONFIG_IOSF_MBI
 
 Help:       This option enables sideband register access support for Intel SoC
@@ -192,7 +192,7 @@ Reason:     You can safely exclude this option if you're not using an Intel SoC
             it was forcibly included it, due to I915 wake up related problems.
 ```
 <h3>[&ast;] Single-depth WCHAN output</h3>
-```none
+```properties
 Symbol:     CONFIG_SCHED_OMIT_FRAME_POINTER
 
 Help:       Calculate simpler /proc/<PID>/wchan values. If this option
@@ -210,7 +210,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             to get simple wchan values as this will lower scheduling overhead.
 ```
 <h3>[ ] Linux guest support  ----</h3>
-```none
+```properties
 Symbol:     CONFIG_HYPERVISOR_GUEST
 
 Help:       Say Y here to enable options for running Linux under various hyper-
@@ -228,7 +228,7 @@ Reason:     You can safely exclude this option if you're planning to use your
             custom built kernel on a host system.
 ```
 <h3>Processor family (Core 2/newer Xeon)  ---></h3>
-```none
+```properties
 Symbol:     CONFIG_MCORE2
 
 Help:       Select this for Intel Core 2 and newer Core 2 Xeons (Xeon 51xx and
@@ -248,7 +248,7 @@ Reason:     It's highly recommended that you include this option if you're using
             CONFIG_GENERIC_CPU.
 ```
 <h3>[&ast;] Supported processor vendors  ---></h3>
-```none
+```properties
 Symbol:     CONFIG_PROCESSOR_SELECT
 
 Help:       This lets you choose what x86 vendor support code your kernel
@@ -264,7 +264,7 @@ Reason:     It's highly recommended that you tell the kernel what type of CPU
             In some cases, not doing so may result in an unbootable system.
 ```
 <h3>Support Intel processors</h3>
-```none
+```properties
 Symbol:     CONFIG_CPU_SUP_INTEL
 
 Help:       This enables detection, tunings and quirks for Intel processors
@@ -284,7 +284,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             if you're using an Intel CPU.
 ```
 <h3>[&ast;] Enable DMI scanning</h3>
-```none
+```properties
 Symbol:     CONFIG_DMI
 
 Help:       Enabled scanning of DMI to identify machine quirks. Say Y
@@ -304,7 +304,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             Excluding this option may result in an undetectable touchpad.
 ```
 <h3>[ ] IBM Calgary IOMMU support</h3>
-```none
+```properties
 Symbol:     CONFIG_CALGARY_IOMMU
 
 Help:       Support for hardware IOMMUs in IBM's xSeries x366 and x460
@@ -331,7 +331,7 @@ Reason:     You can safely exclude this option if your CPU doesn't support IOMMU
             
 ```
 <h3>(8) Maximum number of CPUs</h3>
-```none
+```properties
 Symbol:     CONFIG_NR_CPUS
 
 Help:       This allows you to specify the maximum number of CPUs which this
@@ -353,7 +353,7 @@ Reason:     It's highly recommended that you set the value of this option equal 
             so 4 * 2 = 8 which is the value I went with for this option.
 ```
 <h3>[&ast;] SMT (Hyperthreading) scheduler support</h3>
-```none
+```properties
 Symbol:     CONFIG_SCHED_SMT
 
 Help:       SMT scheduler support improves the CPU scheduler's decision making
@@ -369,7 +369,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             if your CPU supports Hyper-Threading.
 ```
 <h3>[ ] Multi-core scheduler support</h3>
-```none
+```properties
 Symbol:     CONFIG_SCHED_MC
 
 Help:       Multi-core scheduler support improves the CPU scheduler's decision
@@ -385,7 +385,7 @@ Reason:     You can safely exclude this option as many users reported that it
 ```
 <h3>Preemption Model (No Forced Preemption (Server))  ---></h3>
 <h3>(X) No Forced Preemption (Server)</h3>
-```none
+```properties
 Symbol:     CONFIG_PREEMPT_NONE
 
 Help:       This is the traditional Linux preemption model, geared towards
@@ -409,7 +409,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             instead.
 ```
 <h3>[ ] Reroute for broken boot IRQs</h3>
-```none
+```properties
 Symbol:     CONFIG_X86_REROUTE_FOR_BROKEN_BOOT_IRQS
 
 Help:       This option enables a workaround that fixes a source of
@@ -440,7 +440,7 @@ Reason:     You can safely exclude this option if you're not receiving:
                 irq X: nobody cared (try booting with "irqpoll" option)
 ```
 <h3>[&ast;] Machine Check / overheating reporting</h3>
-```none
+```properties
 Symbol:     CONFIG_X86_MCE
 
 Help:       Machine Check support allows the processor to notify the
@@ -457,7 +457,7 @@ Reason:     It's hihgly recommended that you include this option in your kernel
             to the kernel.
 ```
 <h3>[ ]   Support for deprecated /dev/mcelog character device</h3>
-```none
+```properties
 Symbol:     CONFIG_X86_MCELOG_LEGACY
 
 Help:       Enable support for /dev/mcelog which is needed by the old mcelog
@@ -471,7 +471,7 @@ Choice:     excluded [ ]
 Reason:     You can safely exclude this option if you're not using app-admin/mcelog.
 ```
 <h3>[&ast;]   Intel MCE features</h3>
-```none
+```properties
 Symbol:     CONFIG_X86_MCE_INTEL
 
 Help:       Additional support for intel specific MCE features such as
@@ -486,7 +486,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 ```
 <h3>Performance monitoring  ---></h3>
 <h3><&ast;> Intel uncore performance events</h3>
-```none
+```properties
 Symbol:     CONFIG_PERF_EVENTS_INTEL_UNCORE
 
 Help:       Include support for Intel uncore performance events. These are
@@ -501,7 +501,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             are mandatory.
 ```
 <h3><&ast;> Intel rapl performance events</h3>
-```none
+```properties
 Symbol:     CONFIG_PERF_EVENTS_INTEL_RAPL
 
 Help:       Include support for Intel rapl performance events for power
@@ -516,7 +516,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             are mandatory.
 ```
 <h3><&ast;> Intel cstate performance events</h3>
-```none
+```properties
 Symbol:     CONFIG_PERF_EVENTS_INTEL_CSTATE
 
 Help:       Include support for Intel cstate performance events for power
@@ -531,7 +531,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             are mandatory.
 ```
 <h3>[ ] Enable vsyscall emulation</h3>
-```none
+```properties
 Symbol:     CONFIG_X86_VSYSCALL_EMULATION
 
 Help:       This enables emulation of the legacy vsyscall page.  Disabling
@@ -560,7 +560,7 @@ Reason:     You can safely exclude this option as VSYSCALLS are now disabled on
             Include this option only if you happen to see attempted vsyscalls in dmesg.
 ```
 <h3>< > Dell i8k legacy laptop support</h3>
-```none
+```properties
 Symbol:     CONFIG_I8K
 
 Help:       This option enables legacy /proc/i8k userspace interface in hwmon
@@ -581,7 +581,7 @@ Choice:     excluded < >
 Reason:     You can safely exclude this option if you're not using an old Dell laptop.
 ```
 <h3>[&ast;] CPU microcode loading support</h3>
-```none
+```properties
 Symbol:     CONFIG_MICROCODE
 
 Help:       If you say Y here, you will be able to update the microcode on
@@ -614,7 +614,7 @@ Reason:     It's highly recommended that you include this option in your kernel
                 https://www.dotslashlinux.com/2017/04/30/building-intel-cpu-microcode-updates-directly-into-the-linux-kernel/
 ```
 <h3>[&ast;]   Intel microcode loading support</h3>
-```none
+```properties
 Symbol:     CONFIG_MICROCODE_INTEL
 
 Help:       This options enables microcode patch loading support for Intel
@@ -638,7 +638,7 @@ Reason:     It's highly recommended that you include this option in your kernel
                 https://www.dotslashlinux.com/2017/04/30/building-intel-cpu-microcode-updates-directly-into-the-linux-kernel/
 ```
 <h3>[ ]   AMD microcode loading support</h3>
-```none
+```properties
 Symbol:     CONFIG_MICROCODE_AMD
 
 Help:       If you select this option, microcode patch loading support for AMD
@@ -651,7 +651,7 @@ Choice:     excluded [ ]
 Reason:     You can safely exclude this option if you're not using an AMD CPU.
 ```
 <h3><&ast;> /dev/cpu/*/msr - Model-specific register support</h3>
-```none
+```properties
 Symbol:     CONFIG_X86_MSR
 
 Help:       This device gives privileged processes access to the x86
@@ -687,7 +687,7 @@ Reason:     It's highly recommended that you include this option in your kernel
                 cat /proc/cpuinfo | grep msr
 ```
 <h3><&ast;> /dev/cpu/*/cpuid - CPU information support</h3>
-```none
+```properties
 Symbol:     CONFIG_X86_CPUID
 
 Help:       This device gives processes access to the x86 CPUID instruction to
@@ -722,7 +722,7 @@ Reason:     It's highly recommended that you include this option in your kernel
                 cat /proc/cpuinfo | grep cpuid
 ```
 <h3>[ ] Numa Memory Allocation and Scheduler Support</h3>
-```none
+```properties
 Symbol:     CONFIG_NUMA
 
 Help:       Enable NUMA (Non Uniform Memory Access) support.
@@ -753,7 +753,7 @@ Reason:     You can safely exclude this option as it's only useful for systems
 ```
 <h3>Memory model (Sparse Memory)  ---></h3>
 <h3>(X) Sparse Memory</h3>
-```none
+```properties
 Symbol:     CONFIG_SPARSEMEM_MANUAL
 
 Help:       This will be the only option for some systems, including
@@ -776,7 +776,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             available option on many systems).
 ```
 <h3>[&ast;] Sparse Memory virtual memmap</h3>
-```none
+```properties
 Symbol:     CONFIG_SPARSEMEM_VMEMMAP
 
 Help:       SPARSEMEM_VMEMMAP uses a virtually mapped memmap to optimise
@@ -791,7 +791,7 @@ Reason:     It's highly recommendded that you include this option in your kernel
             if you've already included CONFIG_SPARSEMEM_MANUAL since it boosts performance.
 ```
 <h3>[ ] Allow for memory hot-add</h3>
-```none
+```properties
 Symbol:     CONFIG_MEMORY_HOTPLUG
 
 Help:       There is no help available for this option.
@@ -805,7 +805,7 @@ Reason:     You can safely exclude this option as it's only useful for some cert
             experiencing any down time.
 ```
 <h3>-&ast;- Allow for memory compaction</h3>
-```none
+```properties
 Symbol:     CONFIG_COMPACTION
 
 Help:       Compaction is the only memory management component to form
@@ -825,7 +825,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             as it speeds up your system at the cost of some latency.
 ```
 <h3>-&ast;-   Page migration</h3>
-```none
+```properties
 Symbol:     CONFIG_MIGRATION
 
 Help:       Allows the migration of the physical location of pages of processes
@@ -843,7 +843,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             (that is if it isn't already forcibly included by CONFIG_COMPACTION).
 ```
 <h3>[&ast;] Enable bounce buffers</h3>
-```none
+```properties
 Symbol:     CONFIG_BOUNCE
 
 Help:       Enable bounce buffers for devices that cannot access
@@ -861,7 +861,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             a DMA on an unreachable address.
 ```
 <h3>[&ast;] Enable KSM for page merging</h3>
-```none
+```properties
 Symbol:     CONFIG_KSM
 
 Help:       Enable Kernel Samepage Merging: KSM periodically scans those areas
@@ -885,7 +885,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             KSM, but isn't in mainline.
 ```
 <h3>(0) Low address space to protect from user allocation</h3>
-```none
+```properties
 Symbol:     CONFIG_DEFAULT_MMAP_MIN_ADDR
 
 Help:       This is the portion of low virtual memory which should be protected
@@ -914,7 +914,7 @@ Reason:     You can safely set the value of this option to (0) to disable this
             to 64k has caused problems for WINE and DOSemu.) 
 ```
 <h3>[ ] Enable recovery from hardware memory errors</h3>
-```none
+```properties
 Symbol:     CONFIG_MEMORY_FAILURE
 
 Help:       Enables code to recover from some memory failures on systems
@@ -936,7 +936,7 @@ Reason:     You can safely exclude this option if you don't have ECC memory.
             memory.
 ```
 <h3>[ ] Transparent Hugepage Support</h3>
-```none
+```properties
 Symbol:     CONFIG_TRANSPARENT_HUGEPAGE
 
 Help:       Transparent Hugepages allows the kernel to use huge pages and
@@ -956,7 +956,7 @@ Reason:     You can safely exclude this option as it's only useful for
             virtualization purposes with KVM.
 ```
 <h3>[ ] Enable cleancache driver to cache clean pages if tmem is present</h3>
-```none
+```properties
 Symbol:     CONFIG_CLEANCACHE
 
 Help:       Cleancache can be thought of as a page-granularity victim cache
@@ -990,7 +990,7 @@ Reason:     You can safely exclude this option if you're not running multiple
             the hypervisor manage the memory (ex. xen tmem).
 ```
 <h3>[ ] Enable frontswap to cache swap pages if tmem is present</h3>
-```none
+```properties
 Symbol:     CONFIG_FRONTSWAP
 
 Help:       Frontswap is so named because it can be thought of as the opposite
@@ -1013,7 +1013,7 @@ Reason:     You can safely exclude this option as caching swap pages will increa
             your system's overhead.
 ```
 <h3>[ ] Contiguous Memory Allocator</h3>
-```none
+```properties
 Symbol:     CONFIG_CMA
 
 Help:       This enables the Contiguous Memory Allocator which allows other
@@ -1032,7 +1032,7 @@ Choice:     excluded [ ]
 Reason:     You can safely exclude this option to lower system overhead.
 ```
 <h3>< > Common API for compressed memory storage</h3>
-```none
+```properties
 Symbol:     CONFIG_ZPOOL
 
 Help:       Compressed memory storage API.  This allows using either zbud or
@@ -1046,7 +1046,7 @@ Reason:     You can safely exclude this option if you're not using compressed
             memory.
 ```
 <h3>< > Low (Up to 2x) density storage for compressed pages</h3>
-```none
+```properties
 Symbol:     CONFIG_ZBUD
 
 Help:       A special purpose allocator for storing compressed pages.
@@ -1063,7 +1063,7 @@ Reason:     You can safely exclude this option if you're not using compressed
             memory pages.
 ```
 <h3>< > Memory allocator for compressed pages</h3>
-```none
+```properties
 Symbol:     CONFIG_ZSMALLOC
 
 Help:       zsmalloc is a slab-based memory allocator designed to store
@@ -1081,7 +1081,7 @@ Reason:     You can safely exclude this option if you're not using compressed
             memory pages.
 ```
 <h3>[ ] Enable idle page tracking</h3>
-```none
+```properties
 Symbol:     CONFIG_IDLE_PAGE_TRACKING
 
 Help:       This feature allows to estimate the amount of user pages that have
@@ -1098,7 +1098,7 @@ Choice:     excluded [ ]
 Reason:     You can safely exclude this option if you've already excluded CONFIG_CGROUPS.
 ```
 <h3>< > Support non-standard NVDIMMs and ADR protected memory</h3>
-```none
+```properties
 Symbol:     CONFIG_X86_PMEM_LEGACY
 
 Help:       Treat memory marked using the non-standard e820 type of 12 as used
@@ -1117,7 +1117,7 @@ Reason:     You can safely exclude this option if you're not seeing errors when 
                 dmesg | grep e820
 ```
 <h3>[ ] Check for low memory corruption</h3>
-```none
+```properties
 Symbol:     CONFIG_X86_CHECK_BIOS_CORRUPTION
 
 Help:       Periodically check for memory corruption in low memory, which
@@ -1147,7 +1147,7 @@ Reason:     You can safely exclude this option as BIOS corruptions are extremely
             rare even on buggy BIOSes like mine.            
 ```
 <h3>(64) Amount of low memory, in kilobytes, to reserve for the BIOS</h3>
-```none
+```properties
 Symbol:     CONFIG_X86_RESERVE_LOW
 
 Help:       Specify the amount of low memory to reserve for the BIOS.
@@ -1188,7 +1188,7 @@ Reason:     It's highly recommend that you set the value of this option to (64)
             and see what value is printed next to your BIOS.
 ```
 <h3>[&ast;] MTRR (Memory Type Range Register) support</h3>
-```none
+```properties
 Symbol:     CONFIG_MTRR
 
 Help:       On Intel P6 family processors (Pentium Pro, Pentium II and later)
@@ -1251,7 +1251,7 @@ Reason:     It's highly recommended that you include this option in your kernel
                 cat /proc/cpuinfo | grep mtrr
 ```
 <h3>[&ast;]   MTRR cleanup support</h3>
-```none
+```properties
 Symbol:     CONFIG_MTRR_SANITIZER
 
 Help:       Convert MTRR layout from continuous to discrete, so X drivers can
@@ -1271,7 +1271,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             as it fixes most MTRR programming issues in the kernel.
 ```
 <h3>(1)     MTRR cleanup enable value (0-1)</h3>
-```none
+```properties
 Symbol:     CONFIG_MTRR_SANITIZER_ENABLE_DEFAULT
 
 Help:       Enable mtrr cleanup default value
@@ -1284,7 +1284,7 @@ Reason:     It's highly recommended that you set the value of this option to (1)
             to enable mtrr cleanup.
 ```
 <h3>(1)     MTRR cleanup spare reg num (0-7)</h3>
-```none
+```properties
 Symbol:     CONFIG_MTRR_SANITIZER_SPARE_REG_NR_DEFAULT
 
 Help:       mtrr cleanup spare entries default, it can be changed via
@@ -1301,7 +1301,7 @@ Reason:     It's highly recommended that you set the value of this option to (1)
             MTRR errors and type mismatch errors.
 ```
 <h3>[&ast;]   x86 PAT support</h3>
-```none
+```properties
 Symbol:     CONFIG_X86_PAT
 
 Help:       Use PAT attributes to setup page level cache control.
@@ -1341,7 +1341,7 @@ Reason:     It's highly recommended that you include this option in your kernel
                 cat /proc/cpuinfo | grep pat
 ```
 <h3>[&ast;] x86 architectural random number generator</h3>
-```none
+```properties
 Symbol:     CONFIG_ARCH_RANDOM
 
 Help:       Enable the x86 architectural RDRAND instruction
@@ -1376,7 +1376,7 @@ Reason:     It's highly recommended that you include this option in your kernel
                 cat /proc/cpuinfo | grep rdrand
 ```
 <h3>[ ] Supervisor Mode Access Prevention</h3>
-```none
+```properties
 Symbol:     CONFIG_X86_SMAP
 
 Help:       Supervisor Mode Access Prevention (SMAP) is a security
@@ -1394,7 +1394,7 @@ Reason:     You can safely exclude this option if your CPU doesn't support SMAP,
             as it increases security at the cost of performance.
 ```
 <h3>[ ] Intel MPX (Memory Protection Extensions)</h3>
-```none
+```properties
 Symbol:     CONFIG_X86_INTEL_MPX
 
 Help:       MPX provides hardware features that can be used in
@@ -1426,7 +1426,7 @@ Reason:     You can safely exclude this option if your CPU doesn't support MPX,
             as it increases security at the cost of performance.
 ```
 <h3>[ ] Intel Memory Protection Keys</h3>
-```none
+```properties
 Symbol:     CONFIG_X86_INTEL_MEMORY_PROTECTION_KEYS
 
 Help:       Memory Protection Keys provides a mechanism for enforcing
@@ -1445,7 +1445,7 @@ Reason:     You can safely exclude this option if your CPU doesn't support Memor
             Protection Keys as it increases security at the cost of performance.
 ```
 <h3>[ ] EFI runtime service support</h3>
-```none
+```properties
 Symbol:     CONFIG_EFI
 
 Help:       This enables the kernel to use EFI runtime services that are
@@ -1474,7 +1474,7 @@ Reason:     You can safely exclude this option if you're using MBR (MSDOS partit
             normally).
 ```
 <h3>[&ast;] Enable seccomp to safely compute untrusted bytecode</h3>
-```none
+```properties
 Symbol:     CONFIG_SECCOMP
 
 Help:       This kernel feature is useful for number crunching applications
@@ -1498,7 +1498,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             acheived by excluding it (no gains are gains with a damaged system).
 ```
 <h3>Timer frequency (100 HZ)  ---></h3>
-```none
+```properties
 Help:       Allows the configuration of the timer frequency. It is customary
             to have the timer interrupt run at 1000 Hz but 100 Hz may be more
             beneficial for servers and NUMA systems that do not need to have
@@ -1509,7 +1509,7 @@ Help:       Allows the configuration of the timer frequency. It is customary
             per second.
 ```
 <h3>(X) 100 HZ</h3>
-```none
+```properties
 Symbol:     CONFIG_HZ_100_MUQSS
 
 Help:       100 Hz is a suitable choice in combination with MuQSS which does
@@ -1527,7 +1527,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             performance considerably at the cost of some latency.
 ```
 <h3>[ ] kexec system call</h3>
-```none
+```properties
 Symbol:     CONFIG_KEXEC
 
 Help:       kexec is a system call that implements the ability to shutdown your
@@ -1551,7 +1551,7 @@ Reason:     You can safely exclude this option if you're not planning on shuttin
             down your current kernel to execute another kernel.
 ```
 <h3>[ ] kexec file based system call</h3>
-```none
+```properties
 Symbol:     CONFIG_KEXEC_FILE
 
 Help:       This is new version of kexec system call. This system call is
@@ -1567,7 +1567,7 @@ Reason:     You can safely exclude this option if you're not planning on shuttin
             down your current kernel to execute another kernel.
 ```
 <h3>[ ] kernel crash dumps</h3>
-```none
+```properties
 Symbol:     CONFIG_CRASH_DUMP
 
 Help:       Generate crash dump after being started by kexec.
@@ -1588,7 +1588,7 @@ Reason:     You can safely exclude this option if you're not planning on shuttin
             down your current kernel to execute another kernel.
 ```
 <h3>(0x1000000) Physical address where the kernel is loaded</h3>
-```none
+```properties
 Symbol:     CONFIG_PHYSICAL_START
 
 Help:       This gives the physical address where the kernel is loaded.
@@ -1637,7 +1637,7 @@ Reason:     It's highly recommended that you leave the value of this option set
             doing.
 ```
 <h3>[ ] Build a relocatable kernel</h3>
-```none
+```properties
 Symbol:     CONFIG_RELOCATABLE
 
 Help:       This builds a kernel image that retains relocation information
@@ -1666,7 +1666,7 @@ Reason:     You can safely exclude this option if you don't plan on using kexec 
             the primary kernel (the one with errors).
 ```
 <h3>(0x200000) Alignment value to which kernel should be aligned</h3>
-```none
+```properties
 Symbol:     CONFIG_PHYSICAL_ALIGN
 
 Help:       This value puts the alignment restrictions on physical address
@@ -1699,7 +1699,7 @@ Reason:     It's highly recommended that you leave the value of this option set
             doing.
 ```
 <h3>[ ] Support for hot-pluggable CPUs</h3>
-```none
+```properties
 Symbol:     CONFIG_HOTPLUG_CPU
 
 Help:       Say Y here to allow turning CPUs off and on. CPUs can be
@@ -1718,7 +1718,7 @@ Reason:     You can safely exclude this option as it'll be forcibly included
             Include this option only if you want suspend/resume support.
 ```
 <h3>[ ] Disable the 32-bit vDSO (needed for glibc 2.3.3)</h3>
-```none
+```properties
 Symbol:     CONFIG_COMPAT_VDSO
 
 Help:       Certain buggy versions of glibc will crash if they are
@@ -1752,7 +1752,7 @@ Reason:     You can safely exclude this option if you're using newer versions
             settings require it (which is highly unlikely).
 ```
 <h3>vsyscall table for legacy applications (None)  ---></h3>
-```none
+```properties
 Help:       Legacy user code that does not know how to find the vDSO expects
             to be able to issue three syscalls by calling fixed addresses in
             kernel space. Since this location is not randomized with ASLR,
@@ -1768,7 +1768,7 @@ Help:       Legacy user code that does not know how to find the vDSO expects
             If unsure, select "Emulate".
 ```
 <h3>(X) None</h3>
-```none
+```properties
 Symbol:     CONFIG_LEGACY_VSYSCALL_NONE
 
 Help:       There will be no vsyscall mapping at all. This will
@@ -1785,7 +1785,7 @@ Reason:     You can safely exclude this option if you're using a recent version
             of glibc.
 ```
 <h3>[ ] Built-in kernel command line</h3>
-```none
+```properties
 Symbol:     CONFIG_CMDLINE_BOOL
 
 Help:       Allow for specifying boot arguments to the kernel at
@@ -1810,7 +1810,7 @@ Reason:     You can safely exclude this option if you're using a fully functiona
             being built for an embedded system.
 ```
 <h3>[ ] Enable the LDT (local descriptor table)</h3>
-```none
+```properties
 Symbol:     CONFIG_MODIFY_LDT_SYSCALL
 
 Help:       Linux can allow user programs to install a per-process x86

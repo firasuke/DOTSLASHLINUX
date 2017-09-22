@@ -18,7 +18,7 @@ Again, the options I'll be listing here will be the ones that got forcibly inclu
 <hr/>
 <h3>Library routines  ---></h3>
 <h3>-&ast;- CRC-CCITT functions</h3>
-```none
+```properties
 Symbol:     CONFIG_CRC_CCITT
 
 Help:       This option is provided for the case where no in-kernel-tree
@@ -34,7 +34,7 @@ Reason:     Forcibly included as it's required by CONFIG_NET, CONFIG_WLAN,
             CONFIG_USB and a lot of important options.
 ```
 <h3>-&ast;- CRC16 functions</h3>
-```none
+```properties
 Symbol:     CONFIG_CRC16
 
 Help:       This option is provided for the case where no in-kernel-tree
@@ -51,7 +51,7 @@ Reason:     Forcibly included as it's required by CONFIG_NET, CONFIG_BT,
             important options.
 ```
 <h3><&ast;> CRC calculation for the T10 Data Integrity Field</h3>
-```none
+```properties
 Symbol:     CONFIG_CRC_T10DIF
 
 Help:       This option is only needed if a module that's not in the
@@ -69,7 +69,7 @@ Reason:     If you've followed the guide in part 11, then a simple:
             should tell you whether you need this option or not.
 ```
 <h3>-&ast;- CRC ITU-T V.41 functions</h3>
-```none
+```properties
 Symbol:     CONFIG_CRC_ITU_T
 
 Help:       This option is provided for the case where no in-kernel-tree
@@ -85,7 +85,7 @@ Reason:     Forcibly included as it's required by CONFIG_PCI, CONFIG_NET,
             CONFIG_64BIT, CONFIG_BLOCK and a lot of important options.
 ```
 <h3>-&ast;- CRC32/CRC32c functions</h3>
-```none
+```properties
 Symbol:     CONFIG_CRC32
 
 Help:       This option is provided for the case where no in-kernel-tree
@@ -100,13 +100,13 @@ Choice:     built-in -*-
 Reason:     Forcibly included as it's required by a lot of important options.
 ```
 <h3>CRC32 implementation (Slice by 8 bytes)  ---></h3>
-```none
+```properties
 Help:       This option allows a kernel builder to override the default choice
             of CRC32 algorithm.  Choose the default ("slice by 8") unless you
             know that you need one of the others.
 ```
 <h3>(X) Slice by 8 bytes</h3>
-```none
+```properties
 Symbol:     CONFIG_CRC32_SLICEBY8
 
 Help:       Calculate checksum 8 bytes at a time with a clever slicing algorithm.
@@ -125,7 +125,7 @@ Reason:     It's highly recommended that you include this options as other optio
             are intended for testing and debugging purposes.
 ```
 <h3>-&ast;- CRC32c (Castagnoli, et al) Cyclic Redundancy-Check</h3>
-```none
+```properties
 Symbol:     CONFIG_LIBCRC32C
 
 Help:       This option is provided for the case where no in-kernel-tree
@@ -142,7 +142,7 @@ Reason:     Forcibly included as it's required by CONFIG_PCI, CONFIG_NET and
             a lot of important options.
 ```
 <h3><&ast;> XZ decompression support</h3>
-```none
+```properties
 Symbol:     CONFIG_XZ_DEC
 
 Help:       LZMA2 compression algorithm and BCJ filters are supported using
@@ -154,7 +154,7 @@ Type:       tristate
 Choice:     built-in <*>
 ```
 <h3>[&ast;]   x86 BCJ filter decoder</h3>
-```none
+```properties
 Symbol:     CONFIG_XZ_DEC_X86
 
 Help:       There is no help available for this option.

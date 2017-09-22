@@ -16,7 +16,7 @@ I highly recommend installing the source files for slstatus from github and comp
 <br/>
 <br/>
 Void Linux:
-```none
+```properties
 xbps-install -Su && xbps-install -S slstatus
 ```
 <br/>
@@ -38,7 +38,7 @@ ln -s ~/slstatus/config.def.h ~/slstatus/config.h
 ```
 <br/>
 Now edit the file config.h with your beloved editor:
-```none
+```properties
 vim ~/slstatus/config.h
 ```
 <br/>
@@ -123,6 +123,6 @@ If so, simply use this instead:
 <hr/>
 <h3 id="Starting_slstatus">3- Starting slstatus</h3>
 After configuring slstatus, we now have to start it. To do that add the following to your .xinitrc:
-```none
+```properties
 slstatus &
 ```

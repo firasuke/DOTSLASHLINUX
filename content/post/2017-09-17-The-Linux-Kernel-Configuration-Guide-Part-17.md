@@ -9,7 +9,7 @@ imgalt = "kernel17"
 categories = [ "kernel" ]
 +++
 <h3>[&ast;] Virtualization  ---></h3>
-```none
+```properties
 Symbol:     CONFIG_VIRTUALIZATION
 
 Help:       Say Y here to get to see options for using your Linux host to run other
@@ -28,7 +28,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             It's also recommended by the Gentoo wiki.
 ```
 <h3><&ast;>   Kernel-based Virtual Machine (KVM) support</h3>
-```none
+```properties
 Symbol:     CONFIG_KVM
 
 Help:       Support hosting fully virtualized guest machines using hardware
@@ -54,7 +54,7 @@ Reason:     It's highly recommended that you include this option as the KVM
             It's also recommended by the Gentoo wiki.
 ```
 <h3><&ast;>     KVM for Intel processors support</h3>
-```none
+```properties
 Symbol:     CONFIG_KVM_INTEL
 
 Help:       Provides support for KVM on Intel processors equipped with the VT
@@ -74,7 +74,7 @@ Reason:     It's highly recommended that you include this option as the KVM
             It's also recommended by the Gentoo wiki.
 ```
 <h3><&ast;>   Host kernel accelerator for virtio net</h3>
-```none
+```properties
 Symbol:     CONFIG_VHOST_NET
 
 Help:       This kernel module can be loaded in host kernel to accelerate

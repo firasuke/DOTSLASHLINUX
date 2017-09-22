@@ -14,22 +14,22 @@ In this article I'll show you how to get your urxvt daemon up and running, and g
 <h3 id="Installation">1- Installation</h3>
 <br/>
 Gentoo Linux:
-```none
+```properties
 emerge --sync && emerge -av x11-terms/rxvt-unicode
 ```
 Void Linux:
-```none
+```properties
 xbps-install -Su && xbps-install -S rxvt-unicode
 ```
 Arch Linux:
-```none
+```properties
 pacman -Syu rxvt-unicode
 ```
 <hr/>
 <h3 id="Starting_the_urxvt_daemon">2- Starting the urxvt daemon</h3>
 <br/>
 Once urxvt is installed, we should enable and start its daemon.Assuming you've read our xinit configuration guide, paste the following line of span in your ~/.xinitrc just before your dwm or openbox session:
-```none
+```properties
 urxvtd --quiet --opendisplay --fork &
 ```
 This will start the urxvt daemon every time the X server is started via startx.
@@ -51,7 +51,7 @@ You need to have dejavu fonts installed in order for this to work. You can alway
 Now keep in mind that whenever you need to launch urxvtc you need to use these options, so it's highly recommended that you map them to your prefered shortcut keys.
 
 Another configuration made especially for use in dwm on gentoo (paste it in your ~/.Xresources):
-```none,line-numbers
+```properties,line-numbers
 urxvt*font:                 xft:xos4 Terminus:size=10
 
 urxvt*termName:             rxvt
@@ -111,7 +111,7 @@ Don't forget that <mark>URxvt.urlLauncher</mark> is deprecated, use <mark>URxvt.
 <br/>
 <br/>
 If these settings aren't being loaded (or are reset), then add the following to your .xinitrc file:
-```none
+```properties
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 ```
 <hr/>

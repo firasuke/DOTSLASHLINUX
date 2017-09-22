@@ -15,17 +15,17 @@ In this article I'll show you how to setup ALSA, with a working .asoundrc config
 <h3 id="Installation">1- Installation</h3>
 <br/>
 Gentoo Linux:
-```none
+```properties
 emerge --sync && emerge -av media-sound/alsa-utils
 ```
 <br/>
 Void Linux:
-```none
+```properties
 xbps-install -Su && xbps-install -S alsa-utils
 ```
 <br/>
 Arch Linux:
-```none
+```properties
 pacman -Syu alsa-utils
 ```
 <br/>
@@ -33,7 +33,7 @@ pacman -Syu alsa-utils
 <h3 id="Unmuting_Channels">2- Unmuting Channels</h3>
 <br/>
 Once ALSA is installed, we need to unmute the master channel for our sound card. We can do that using the ncurses interface of alsamixer (Use F6 to switch to your default soundcard, then press F5 to show all options):
-```none
+```properties
 ┌─────────────────────────────────────────────────────────────────────────── AlsaMixer v1.1.4 ───────────────────────────────────────────────────────────────────────────┐
 │ Card: HDA Intel PCH                                                                                                                            F1:  Help               │
 │ Chip: IDT 92HD99BXX                                                                                                                            F2:  System information │
@@ -159,7 +159,7 @@ touch ~/.asoundrc
 ```
 <br/>
 Now here's a custom configuration that I use to swap both cards, and enable sound from multiple applications without sacrificing any sound quality whatsoever:
-```none
+```properties
 pcm.!default {
 	type plug
 	slave.pcm "dmixer"
@@ -203,7 +203,7 @@ Now, let's map these commands to the hexadecimal code of your multimedia volume 
 ```bash
 xev
 ```
-```none
+```properties
 KeyRelease event, serial 32, synthetic NO, window 0xe00001,
     root 0xd4, subw 0xe00002, time 4421968, (57,25), root:(1111,260),
     state 0x0, keycode 122 (keysym 0x1008ff11, XF86AudioLowerVolume), same_screen YES,

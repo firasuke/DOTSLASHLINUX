@@ -14,17 +14,17 @@ In this article I'll show you how to correctly setup xinit to start your xorg se
 <h3 id="Installation">1- Installation</h3>
 <br/>
 Gentoo Linux:
-```none
+```properties
 emerge --sync && emerge -av x11-apps/xinit
 ```
 <br/>
 Void Linux:
-```none
+```properties
 xbps-install -Su && xbps-install -S xinit
 ```
 <br/>
 Arch Linux:
-```none
+```properties
 pacman -Syu xorg-xinit
 ```
 <hr/>
@@ -181,7 +181,7 @@ Please be noted that the program(s) that you intend to start must be installed!
 <h3 id="startx">4- startx</h3>
 <br/>
 Once you've done configuring xinit, you can now start your X session simply by running:
-```none
+```properties
 startx
 ```
 <hr/>

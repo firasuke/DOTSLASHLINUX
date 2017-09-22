@@ -60,7 +60,7 @@ make oldconfig && make prepare
 ```
 <br/>
 As for those who're willing to go through this with me, to make things less confusing, I'll be using a template like this:
-```none
+```properties
 Symbol:
 
 Help: 
@@ -72,7 +72,7 @@ Choice:
 (Reason:)
 ```
 In order not to create a state of confusion, I'll be using the word symbol for the capitalized underscore-separated version of the name. For example:
-```none
+```properties
 Symbol: CONFIG_MODULES
 Name: Enable loadable modules support
 ```

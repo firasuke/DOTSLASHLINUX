@@ -10,7 +10,7 @@ categories = [ "kernel" ]
 +++
 <h3>Power management and ACPI options  ---></h3>
 <h3>[ ] Suspend to RAM and standby</h3>
-```none
+```properties
 Symbol:     CONFIG_SUSPEND
 
 Help:       Allow the system to enter sleep states in which main memory is
@@ -25,7 +25,7 @@ Reason:     You can safely exclude this option if you don't plan on using suspen
             to RAM.
 ```
 <h3>[ ] Hibernation (aka 'suspend to disk')</h3>
-```none
+```properties
 Symbol:     CONFIG_HIBERNATION
 
 Help:       Enable the suspend to disk (STD) functionality, which is usually
@@ -77,7 +77,7 @@ Reason:     You can safely exclude this option if you don't plan on using suspen
             the disk allowing the device to power off completely.
 ```
 <h3>[&ast;] Device power management core functionality</h3>
-```none
+```properties
 Symbol:     CONFIG_PM
 
 Help:       Enable functionality allowing I/O devices to be put into energy-saving
@@ -99,7 +99,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             devices and it's also recommended by the Gentoo Wiki.
 ```
 <h3>[ ]   Power Management Debug Support</h3>
-```none
+```properties
 Symbol:     CONFIG_PM_DEBUG
 
 Help:       This option enables various debugging support in the Power Management
@@ -114,7 +114,7 @@ Reason:     You can safely exclude this option as it's intended for debugging
             purposes.
 ```
 <h3>[ ] Enable workqueue power-efficient mode by default</h3>
-```none
+```properties
 Symbol:     CONFIG_WQ_POWER_EFFICIENT_DEFAULT
 
 Help:       Per-cpu workqueues are generally preferred because they show
@@ -140,7 +140,7 @@ Reason:     You can safely exclude this option as it slightly improves power
             saving at the cost of performance.
 ```
 <h3>[&ast;] ACPI (Advanced Configuration and Power Interface) Support  ---></h3>
-```none
+```properties
 Symbol:     CONFIG_ACPI
 
 Help:       Advanced Configuration and Power Interface (ACPI) support for
@@ -188,7 +188,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             safely ignored).
 ```
 <h3>[ ]   AML debugger interface</h3>
-```none
+```properties
 Symbol:     CONFIG_ACPI_DEBUGGER
 
 Help:       Enable in-kernel debugging of AML facilities: statistics,
@@ -204,7 +204,7 @@ Reason:     You can safely exclude this option as it's intended for debugging
             purposes.
 ```
 <h3>[ ]   Deprecated power /proc/acpi directories</h3>
-```none
+```properties
 Symbol:     CONFIG_ACPI_PROCFS_POWER
 
 Help:       For backwards compatibility, this option allows
@@ -231,7 +231,7 @@ Reason:     You can safely exclude this option as it's deprecated.
             on your system.
 ```
 <h3>[ ]   Allow supported ACPI revision to be overridden</h3>
-```none
+```properties
 Symbol:     CONFIG_ACPI_REV_OVERRIDE_POSSIBLE
 
 Help:       The platform firmware on some systems expects Linux to return "5" as
@@ -257,7 +257,7 @@ Reason:     You can safely exclude this option if you have no need for this DMI-
             quirk.
 ```
 <h3>< >   EC read/write access through /sys/kernel/debug/ec</h3>
-```none
+```properties
 Symbol:     CONFIG_ACPI_EC_DEBUGFS
 
 Help:       Say N to disable Embedded Controller /sys/kernel/debug interface
@@ -282,7 +282,7 @@ Reason:     You can safely exclude this option as providing the kernel direct ac
             to the EC without ACPI sounds problematic.
 ```
 <h3><&ast;>   AC Adapter</h3>
-```none
+```properties
 Symbol:     CONFIG_ACPI_AC
 
 Help:       This driver supports the AC Adapter object, which indicates
@@ -304,7 +304,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             you're building the kernel for a desktop.
 ```
 <h3><&ast;>   Battery</h3>
-```none
+```properties
 Symbol:     CONFIG_ACPI_BATTERY
 
 Help:       This driver adds support for battery information through
@@ -326,7 +326,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             you're building the kernel for a desktop.
 ```
 <h3>-&ast;-   Button</h3>
-```none
+```properties
 Symbol:     CONFIG_ACPI_BUTTON
 
 Help:       This driver handles events on the power, sleep, and lid buttons.
@@ -346,7 +346,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             CONFIG_DRM, and CONFIG_DRM_I915).
 ```
 <h3>-&ast;-   Video</h3>
-```none
+```properties
 Symbol:     CONFIG_ACPI_VIDEO
 
 Help:       This driver implements the ACPI Extensions For Display Adapters
@@ -368,7 +368,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             important options).
 ```
 <h3><&ast;>   Fan</h3>
-```none
+```properties
 Symbol:     CONFIG_ACPI_FAN
 
 Help:       This driver supports ACPI fan devices, allowing user-mode
@@ -385,7 +385,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             to allow ACPI fan control.
 ```
 <h3>[ ]   Dock</h3>
-```none
+```properties
 Symbol:     CONFIG_ACPI_DOCK
 
 Help:       This driver supports ACPI-controlled docking stations and removable
@@ -399,7 +399,7 @@ Reason:     You can safely exclude this option if your system doesn't have a doc
             station and/or a removable drive bay.
 ```
 <h3>-&ast;-   Processor</h3>
-```none
+```properties
 Symbol:     CONFIG_ACPI_PROCESSOR
 
 Help:       This driver adds support for the ACPI Processor package. It is required
@@ -417,7 +417,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             if you're using Intel P-State as your CPU frequency scaling driver.
 ```
 <h3><&ast;>   Processor Aggregator</h3>
-```none
+```properties
 Symbol:     CONFIG_ACPI_PROCESSOR_AGGREGATOR
 
 Help:       ACPI 4.0 defines processor Aggregator, which enables OS to perform
@@ -434,7 +434,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             as it allows the kernel to let the CPUs enter idle state.
 ```
 <h3><&ast;>   Thermal Zone</h3>
-```none
+```properties
 Symbol:     CONFIG_ACPI_THERMAL
 
 Help:       This driver supports ACPI thermal zones.  Most mobile and
@@ -456,7 +456,7 @@ Choice:     It's highly recommended that you include this option in your kernel
             if it's that much important.
 ```
 <h3>()    Custom DSDT Table file to include</h3>
-```none
+```properties
 Symbol:     CONFIG_ACPI_CUSTOM_DSDT_FILE
 
 Help:       This option supports a custom DSDT by linking it into the kernel.
@@ -481,7 +481,7 @@ Reason:     You can safely leave the value of this option set to the default val
                 https://forums.gentoo.org/viewtopic.php?t=122145
 ```
 <h3>[ ]   Debug Statements</h3>
-```none
+```properties
 Symbol:     CONFIG_ACPI_DEBUG
 
 Help:       The ACPI subsystem can produce debug output.  Saying Y enables this
@@ -502,7 +502,7 @@ Reason:     You can safely exclude this option if you're receiving enough inform
             Include this option only if you want to debug ACPI errors.
 ```
 <h3>[ ]   PCI slot detection driver</h3>
-```none
+```properties
 Symbol:     CONFIG_ACPI_PCI_SLOT
 
 Help:       This driver creates entries in /sys/bus/pci/slots/ for all PCI
@@ -518,7 +518,7 @@ Reason:     You can safely exclude this option if you're sure that your applicat
             don't require it.
 ```
 <h3>[&ast;]   Power Management Timer Support</h3>
-```none
+```properties
 Symbol:     CONFIG_X86_PM_TIMER
 
 Help:       The Power Management Timer is available on all ACPI-capable,
@@ -540,7 +540,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             as many modern systems rely on its functionality.
 ```
 <h3>[ ]   Container and Module Devices</h3>
-```none
+```properties
 Symbol:     CONFIG_ACPI_CONTAINER
 
 Help:       This driver supports ACPI Container and Module devices (IDs
@@ -562,7 +562,7 @@ Reason:     You can safely exclude this option if you've already excluded
             and if you've already included CONFIG_HOTPLUG_CPU.
 ```
 <h3>< >   Smart Battery System</h3>
-```none
+```properties
 Symbol:     CONFIG_ACPI_SBS
 
 Help:       This driver supports the Smart Battery System, another
@@ -592,7 +592,7 @@ Reason:     You can safely exclude this option if you don't have a laptop
             to see if your laptop has this system or not.
 ```
 <h3>< >   Hardware Error Device</h3>
-```none
+```properties
 Symbol:     CONFIG_ACPI_HED
 
 Help:       This driver supports the Hardware Error Device (PNP0C33),
@@ -610,7 +610,7 @@ Reason:     You can safely exclude this option if you don't have a (PNP0C33)
             are mostly about corrected errors only and not all errors.
 ```
 <h3>[ ]   Hardware-reduced ACPI support only</h3>
-```none
+```properties
 Symbol:     CONFIG_ACPI_REDUCED_HARDWARE_ONLY
 
 Help:       This config item changes the way the ACPI code is built.  When this
@@ -629,7 +629,7 @@ Reason:     You can safely exclude this option as it's mostly for SoC and arm
             based devices; therefore.
 ```
 <h3>< >   ACPI NVDIMM Firmware Interface Table (NFIT)</h3>
-```none
+```properties
 Symbol:     CONFIG_ACPI_NFIT
 
 Help:       Infrastructure to probe ACPI 6 compliant platforms for
@@ -648,7 +648,7 @@ Reason:     You can safely exclude this option if you don't have NVDIMMs install
             in your system.
 ```
 <h3>[ ]   ACPI Platform Error Interface (APEI)</h3>
-```none
+```properties
 Symbol:     CONFIG_ACPI_APEI
 
 Help:       APEI allows to report errors (for example from the chipset)
@@ -664,7 +664,7 @@ Reason:     You can safely exclude this option as it's highly unlikely that you'
             need it.
 ```
 <h3>< >   DPTF Platform Power Participant</h3>
-```none
+```properties
 Symbol:     CONFIG_DPTF_POWER
 
 Help:       This driver adds support for Dynamic Platform and Thermal Framework
@@ -687,7 +687,7 @@ Reason:     You can safely exclude this option if you don't have a DPTF (INT3407
             device installed in your system.
 ```
 <h3>< >   Extended Error Log support</h3>
-```none
+```properties
 Symbol:     CONFIG_ACPI_EXTLOG
 
 Help:       Certain usages such as Predictive Failure Analysis (PFA) require
@@ -715,7 +715,7 @@ Reason:     You can safely exclude this option as you'll rarely need this extend
             Include this option only if you're suffering from such complicated errors.
 ```
 <h3>[ ]   PMIC (Power Management Integrated Circuit) operation region support  ----</h3>
-```none
+```properties
 Symbol:     CONFIG_PMIC_OPREGION
 
 Help:       Select this option to enable support for ACPI operation
@@ -731,7 +731,7 @@ Reason:     You can safely exclude this option if you don't have a PMIC chip ins
             in your system.
 ```
 <h3>< >   ACPI configfs support</h3>
-```none
+```properties
 Symbol:     CONFIG_ACPI_CONFIGFS
 
 Help:       Select this option to enable support for ACPI configuration from
@@ -745,7 +745,7 @@ Choice:     excluded < >
 Reason:     
 ```
 <h3>[ ] SFI (Simple Firmware Interface) Support  ----</h3>
-```none
+```properties
 Symbol:     CONFIG_SFI
 
 Help:       The Simple Firmware Interface (SFI) provides a lightweight method
@@ -768,7 +768,7 @@ Reason:     You can safely exclude this option as it's intended for small and lo
 ```
 <h3>CPU Frequency scaling  ---></h3>
 <h3>[&ast;] CPU Frequency scaling</h3>
-```none
+```properties
 Symbol:     CONFIG_CPU_FREQ
 
 Help:       CPU Frequency scaling allows you to change the clock speed of
@@ -793,7 +793,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             power.
 ```
 <h3>[ ]   CPU frequency transition statistics</h3>
-```none
+```properties
 Symbol:     CONFIG_CPU_FREQ_STAT
 
 Help:       Export CPU frequency statistics information through sysfs.
@@ -808,12 +808,12 @@ Reason:     You can safely exclude this option to lower system overheadm as you'
             rarely need this statistical information.
 ```
 <h3>Default CPUFreq governor (performance)  ---></h3>
-```none
+```properties
 Help:       This option sets which CPUFreq governor shall be loaded at
             startup. If in doubt, select 'performance'.
 ```
 <h3>(X) performance</h3>
-```none
+```properties
 Symbol:     CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
 
 Help:       Use the CPUFreq governor 'performance' as default. This sets
@@ -831,7 +831,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             only if pwoer saving was a major concern to you.
 ```
 <h3>( ) ondemand</h3>
-```none
+```properties
 Symbol:     CONFIG_CPU_FREQ_DEFAULT_GOV_ONDEMAND
 
 Help:       Use the CPUFreq governor 'ondemand' as default. This allows
@@ -866,7 +866,7 @@ Reason:     It's recommended that you include this option in your kernel
             when needed.
 ```
 <h3>-&ast;-   'performance' governor</h3>
-```none
+```properties
 Symbol:     CONFIG_CPU_FREQ_GOV_PERFORMANCE
 
 Help:       This cpufreq governor sets the frequency statically to the
@@ -885,7 +885,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             as it's required by CONFIG_X86_INTEL_PSTATE.
 ```
 <h3><&ast;>   'powersave' governor</h3>
-```none
+```properties
 Symbol:     CONFIG_CPU_FREQ_GOV_POWERSAVE
 
 Help:       This cpufreq governor sets the frequency statically to the
@@ -904,7 +904,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             as it's required by CONFIG_X86_INTEL_PSTATE.
 ```
 <h3>[ ]   'ondemand' cpufreq policy governor</h3>
-```none
+```properties
 Symbol:     CONFIG_CPU_FREQ_GOV_ONDEMAND
 
 Help:       'ondemand' - This driver adds a dynamic cpufreq policy governor.
@@ -938,7 +938,7 @@ Reason:     It's recommended that you include this option in your kernel
 ```
 <h3>&ast;&ast;&ast; CPU frequency scaling drivers &ast;&ast;&ast;</h3>
 <h3>[&ast;]   Intel P state control</h3>
-```none
+```properties
 Symbol:     CONFIG_X86_INTEL_PSTATE
 
 Help:       This driver provides a P state for Intel core processors.
@@ -964,7 +964,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 ```
 <h3>CPU Idle  ---></h3>
 <h3>-&ast;- CPU idle PM support</h3>
-```none
+```properties
 Symbol:     CONFIG_CPU_IDLE
 
 Help:       CPU idle is a generic framework for supporting software-controlled
@@ -981,7 +981,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             as it allows your CPU to enter idle state when not in use to conserve energy.
 ```
 <h3>-&ast;-   Ladder governor (for periodic timer tick)</h3>
-```none
+```properties
 Symbol:     CONFIG_CPU_IDLE_GOV_LADDER
 
 Help:       There is no help available for this option.
@@ -994,7 +994,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             that is if it isn't already forcibly included by CONFIG_HZ_PERIODIC.
 ```
 <h3>[ ]   Menu governor (for tickless system)</h3>
-```none
+```properties
 Symbol:     CONFIG_CPU_IDLE_GOV_MENU
 
 Help:       There is no help available for this option.
@@ -1007,7 +1007,7 @@ Reason:     You can safely exclude this option if you've already included CONFIG
             and CONFIG_CPU_IDLE_GOV_LADDER.
 ```
 <h3>[&ast;] Cpuidle Driver for Intel Processors</h3>
-```none
+```properties
 Symbol:     CONFIG_INTEL_IDLE
 
 Help:       Enable intel_idle, a cpuidle driver that includes knowledge of

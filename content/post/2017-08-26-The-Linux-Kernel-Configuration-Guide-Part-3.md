@@ -10,7 +10,7 @@ categories = [ "kernel" ]
 +++
 Before starting with the <mark>General setup</mark> section, there's this important option just before it:
 <h3>[&ast;] 64-bit kernel</h3>
-```none
+```properties
 Symbol:     CONFIG_64BIT
 
 Help:       Say yes to build a 64-bit kernel - formerly known as x86_64
@@ -26,7 +26,7 @@ Reason:     It's highly recommended that you include this option if you plan to
 <hr/>
 <h3>1- General setup</h3>
 <h3>() Cross-compiler tool prefix</h3>
-```none
+```properties
 Symbol:     CONFIG_CROSS_COMPILE
 
 Help:       Same as running 'make CROSS_COMPILE=prefix-' but stored for
@@ -42,7 +42,7 @@ Reason:     You can safely exclude this option if you're not building this kerne
             for another machine (an ARM device perhaps).
 ```
 <h3>[ ] Compile also drivers which will not load</h3>
-```none
+```properties
 Symbol:     CONFIG_COMPILE_TEST
 
 Help:       Some drivers can be compiled on a different platform than they are
@@ -63,7 +63,7 @@ Reason:     You can safely leave the value of this option empty if you don't pla
             to build drivers for different architectures as it's for developing purposes.
 ```
 <h3>() Local version - append to kernel release</h3>
-```none
+```properties
 Symbol:     CONFIG_LOCALVERSION
 
 Help:       Append an extra string to the end of your kernel version.
@@ -82,7 +82,7 @@ Reason:     You can safely leave the value of this option empty as it's only nee
             kernels by appending extra strings to the end of the kernel's version.
 ```
 <h3>[ ] Automatically append version information to the version string</h3>
-```none
+```properties
 Symbol:     CONFIG_LOCALVERSION_AUTO
 
 Help:       This will try to automatically determine if the current tree is a
@@ -111,7 +111,7 @@ Reason:     You can safely exclude this option as CONFIG_LOCALVERSION should be
 ```
 <h3>Kernel compression mode (LZ4)  ---></h3>
 Make sure you have <mark>app-arch/lz4</mark> installed before compiling your kernel.
-```none
+```properties
 Symbol:     CONFIG_KERNEL_LZ4
 
 Help:       LZ4 is an LZ77-type compressor with a fixed, byte-oriented encoding.
@@ -149,7 +149,7 @@ Reason:     It's highly recommended that you include this option in your
             proper tools for compression to prevent errors from popping up.
 ```
 <h3>(DOTSLASHLINUX) Default hostname</h3>
-```none
+```properties
 Symbol:     CONFIG_DEFAULT_HOSTNAME
 
 Help:       This option determines the default system hostname before userspace
@@ -169,7 +169,7 @@ Reason:     It's recommended if your system's default hostname was set here (rat
             system boots.
 ```
 <h3>[&ast;] Support for paging of anonymous memory (swap)</h3>
-```none
+```properties
 Symbol:     CONFIG_SWAP
 
 Help:       This option allows you to choose whether you want to have support
@@ -201,7 +201,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             compiling.
 ```
 <h3>-&ast;- System V IPC</h3>
-```none
+```properties
 Symbol:     CONFIG_SYSVIPC
 
 Help:       Inter Process Communication is a suite of library functions and
@@ -225,7 +225,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             and CONFIG_GENTOO_LINUX_PORTAGE).
 ```
 <h3>[ ] POSIX Message Queues</h3>
-```none
+```properties
 Symbol:     CONFIG_POSIX_MQUEUE
 
 Help:       POSIX variant of message queues is a part of IPC. In POSIX message
@@ -249,7 +249,7 @@ Reason:     You can safely exclude this option if you won't be compiling and
             queues.
 ```
 <h3>[ ] Enable process_vm_readv/writev syscalls</h3>
-```none
+```properties
 Symbol:     CONFIG_CROSS_MEMORY_ATTACH
 
 Help:       Enabling this option adds the system calls process_vm_readv and
@@ -265,7 +265,7 @@ Reason:     You can safely exclude this option if you're sure that no applicatio
             uses these system calls.
 ```
 <h3>[&ast;] open by fhandle syscalls</h3>
-```none
+```properties
 Symbol:     CONFIG_FHANDLE
 
 Help:       If you say Y here, a user level program will be able to map
@@ -289,7 +289,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             boot failure.
 ```
 <h3>[ ] uselib syscall</h3>
-```none
+```properties
 Symbol:     CONFIG_USELIB
 
 Help:       This option enables the uselib syscall, a system call used in the
@@ -306,7 +306,7 @@ Reason:     You can safely exclude this option if you're on a modern system runn
             a modern version of glibc.
 ```
 <h3>[ ] Auditing support</h3>
-```none
+```properties
 Symbol:     CONFIG_AUDIT
 
 Help:       Enable auditing infrastructure that can be used with another
@@ -323,7 +323,7 @@ Reason:     You can safely exclude this option if you don't plan to use SELinux
 ```
 <h3>IRQ subsystem   ---></h3>
 <h3>[ ] Expose hardware/virtual IRQ mapping via debugfs</h3>
-```none
+```properties
 Symbol:     CONFIG_IRQ_DOMAIN_DEBUG
 
 Help:       This option will show the mapping relationship between hardware irq
@@ -340,7 +340,7 @@ Reason:     You can safely exclude this option as it's intended for debugging
             purposes.
 ```
 <h3>[ ] Expose irq internals in debugfs</h3>
-```none
+```properties
 Symbol:     CONFIG_GENERIC_IRQ_DEBUGFS
 
 Help:       Exposes internal state information through debugfs. Mostly for
@@ -358,7 +358,7 @@ Reason:     You can safely exclude this option as it's intended for developing
 <h3>Timers subsystem  ---></h3>
 <h3>Timer tick handling (Periodic timer ticks (constant rate, no dynticks))  ---></h3>
 <h3>(X) Periodic timer ticks (constant rate, no dynticks)</h3>
-```none
+```properties
 Symbol:     CONFIG_HZ_PERIODIC
 
 Help:       This option keeps the tick running periodically at a constant
@@ -374,7 +374,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             Exclude this option if power saving is one of your concerns.
 ```
 <h3>[ ] Old Idle dynticks config</h3>
-```none
+```properties
 Symbol:     CONFIG_NO_HZ
 
 Help:       This is the old config entry that enables dynticks idle.
@@ -389,7 +389,7 @@ Reason:     You can safely exclude this option if you've already included
             CONFIG_HZ_PERIODIC.
 ```
 <h3>[ ] High Resolution Timer Support</h3>
-```none
+```properties
 Symbol:     CONFIG_HIGH_RES_TIMERS
 
 Help:       This option enables high resolution timer support. If your
@@ -407,7 +407,7 @@ Reason:     You can safely exclude this option if you're sure that no
 ```
 <h3>CPU/Task time and stats accounting  ---></h3>
 <h3>Cputime accounting (Simple tick based cputime accounting)  ---></h3>
-```none
+```properties
 Symbol:     CONFIG_TICK_CPU_ACCOUNTING
 
 Help:       This is the basic tick based cputime accounting that maintains
@@ -425,7 +425,7 @@ Reason:     It's recommended that you include this option as
             for those who are working on the full dynticks subsystem development.
 ```
 <h3>[ ] Fine granularity task level IRQ time accounting</h3>
-```none
+```properties
 Symbol:     CONFIG_IRQ_TIME_ACCOUNTING
 
 Help:       Select this option to enable fine granularity task irq time
@@ -442,7 +442,7 @@ Choice:     excluded [ ]
 Reason:     You can safely exclude this option as it impacts performance.
 ```
 <h3>[ ] BSD Process Accounting</h3>
-```none
+```properties
 Symbol:     CONFIG_BSD_PROCESS_ACCT
 
 Help:       If you say Y here, a user level program will be able to instruct the
@@ -464,7 +464,7 @@ Reason:     You can safely exclude this option to lower system overhead.
             sys-process/htop might complain, but it's totally harmless.
 ```
 <h3>[ ] Export task/process statistics through netlink</h3>
-```none
+```properties
 Symbol:     CONFIG_TASKSTATS
 
 Help:       Export selected statistics for tasks/processes through the
@@ -485,7 +485,7 @@ Reason:     You can safely exclude this option to lower system overhead.
 ```
 <h3>RCU Subsystem  ---></h3>
 <h3>[ ] Make expert-level adjustments to RCU configuration</h3>
-```none
+```properties
 Symbol:     CONFIG_RCU_EXPERT
 
 Help:       This option needs to be enabled if you wish to make
@@ -510,7 +510,7 @@ Reason:     You can safely exclude this option as it's mostly for testing
             may help lower latency at the cost of slight system overhead.
 ```
 <h3>< > Kernel .config support</h3>
-```none
+```properties
 Symbol:     CONFIG_IKCONFIG
 
 Help:       This option enables the complete Linux kernel ".config" file 
@@ -533,7 +533,7 @@ Reason:     You can safely exclude this option if you already know what options
             file and check that file for certain option whenever needed.
 ```
 <h3>(14) Kernel log buffer size (16 => 64KB, 17 => 128KB)</h3>
-```none
+```properties
 Symbol:     CONFIG_LOG_BUF_SHIFT
 
 Help:       Select the minimal kernel log buffer size as a power of 2.
@@ -564,7 +564,7 @@ Reason:     You can safely set the value of this option to (14).
             unlikely) then consider increasing the value of this option.
 ```
 <h3>(14) CPU kernel log buffer size contribution (13 => 8 KB, 17 => 128KB)</h3>
-```none
+```properties
 Symbol:     CONFIG_LOG_CPU_MAX_BUF_SHIFT
 
 Help:       This option allows to increase the default ring buffer size
@@ -609,7 +609,7 @@ Reason:     You can safely set the value of this option to (14).
             unlikely) then consider increasing the value of this option.
 ```
 <h3>(12) Temporary per-CPU printk log buffer size (12 => 4KB, 13 => 8KB)</h3>
-```none
+```properties
 Symbol:     CONFIG_PRINTK_SAFE_LOG_BUF_SHIFT
 
 Help:       Select the size of an alternate printk per-CPU buffer where messages
@@ -645,7 +645,7 @@ Reason:     You can safely set the value of this option to (12).
             unlikely) then consider increasing the value of this option.
 ```
 <h3>[ ] Control Group support  ---></h3>
-```none
+```properties
 Symbol:     CONFIG_CGROUPS
 
 Help:       This option adds support for grouping sets of processes together, for
@@ -672,7 +672,7 @@ Reason:     You can safely exclude this option if you're not using Gentoo Linux
             /sys/fs/cgroup directory.
 ```
 <h3>[ ] Checkpoint/restore support</h3>
-```none
+```properties
 Symbol:     CONFIG_CHECKPOINT_RESTORE
 
 Help:       Enables additional kernel features in a sake of checkpoint/restore.
@@ -690,7 +690,7 @@ Reason:     You can safely exclude this option if you don't plan on using suspen
             and hibernate.
 ```
 <h3>[ ] Namespaces support  ---></h3>
-```none
+```properties
 Symbol:     CONFIG_NAMESPACES
 
 Help:       Provides the way to make tasks work with different objects using
@@ -712,7 +712,7 @@ Reason:     You can safely exclude this option if you're not using Gentoo Linux.
             application requires it (and any of the nested options inside it).
 ```
 <h3>[ ] Automatic process group scheduling</h3>
-```none
+```properties
 Symbol:     CONFIG_SCHED_AUTOGROUP
 
 Help:       This option optimizes the scheduler for common desktop workloads by
@@ -729,7 +729,7 @@ Reason:     You can safely exclude this option if you've already excluded
             CONFIG_CGROUPS.
 ```
 <h3>[ ] Enable deprecated sysfs features to support old userspace tools</h3>
-```none
+```properties
 Symbol:     CONFIG_SYSFS_DEPRECATED
 
 Help:       This option adds code that switches the layout of the "block" class
@@ -758,7 +758,7 @@ Reason:     You can safely exclude this option if you're using a modern up-to-da
             (possibly a rolling-release) distribution.
 ```
 <h3>-&ast;- Kernel->user space relay support (formerly relayfs)</h3>
-```none
+```properties
 Symbol:     CONFIG_RELAY
 
 Help:       This option enables support for relay interface support in
@@ -778,7 +778,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             CONFIG_DRM_I915, CONFIG_WLAN and a lot of important options. 
 ```
 <h3>[ ] Initial RAM filesystem and RAM disk (initramfs/initrd) support</h3>
-```none
+```properties
 Symbol:     CONFIG_BLK_DEV_INITRD
 
 Help:       The initial RAM filesystem is a ramfs which is loaded by the
@@ -812,7 +812,7 @@ Reason:     You can safely exclude this option if you're not using an initrd/ini
 ```
 <h3>Compiler optimization level (Optimize for performance)  ---></h3>
 <h3>(X) Optimize for performance</h3>
-```none
+```properties
 Symbol:     CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
 
 Help:       This is the default optimization level for the kernel, building
@@ -827,7 +827,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             unless you're extremely space constrained on an embedded system.
 ```
 <h3>[&ast;] Configure standard kernel features (expert users)  ---></h3>
-```none
+```properties
 Symbol:     CONFIG_EXPERT
 
 Help:       This option allows certain base kernel options and settings
@@ -844,7 +844,7 @@ Reason:     It's recommended that you include this option in your kernel
             be needed on your system.
 ```
 <h3>[ ]   Enable 16-bit UID system calls</h3>
-```none
+```properties
 Symbol:     CONFIG_UID16
 
 Help:       This option allows certain base kernel options and settings
@@ -861,7 +861,7 @@ Reason:     You can safely exclude this option as it was used 12 years ago to
             (yes, that's how old this thing is).
 ```
 <h3>[&ast;]   Multiple users, groups and capabilities support</h3>
-```none
+```properties
 Symbol:     CONFIG_MULTIUSER
 
 Help:       This option enables support for non-root users, groups and
@@ -882,7 +882,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             if you wanted to use a non-root user.
 ```
 <h3>[ ]   sgetmask/ssetmask syscalls support</h3>
-```none
+```properties
 Symbol:     CONFIG_SGETMASK_SYSCALL
 
 Help:       sys_sgetmask and sys_ssetmask are obsolete system calls
@@ -898,7 +898,7 @@ Choice:     excluded [ ]
 Reason:     You can safely exclude this option as these system calls are obsolete.
 ```
 <h3>[ ]   Sysfs syscall support</h3>
-```none
+```properties
 Symbol:     CONFIG_SYSFS_SYSCALL
 
 Help:       sys_sysfs is an obsolete system call no longer supported in libc.
@@ -914,7 +914,7 @@ Choice:     excluded [ ]
 Reason:     You can safely exclude this option as this system call is obsolete.
 ```
 <h3>[ ]   Sysctl syscall support</h3>
-```none
+```properties
 Symbol:     CONFIG_SYSCTL_SYSCALL
 
 Help:       sys_sysctl uses binary paths that have been found challenging
@@ -935,7 +935,7 @@ Choice:     excluded [ ]
 Reason:     You can safely exclude this option as this system call is obsolete.
 ```
 <h3>[ ]   Posix Clocks & timers</h3>
-```none
+```properties
 Symbol:     CONFIG_POSIX_TIMERS
 
 Help:       This includes native support for POSIX timers to the kernel.
@@ -959,7 +959,7 @@ Reason:     You can safely exclude this option if you're sure that no applicatio
             uses it.
 ```
 <h3>[ ]   Load all symbols for debugging/ksymoops</h3>
-```none
+```properties
 Symbol:     CONFIG_KALLSYMS
 
 Help:       Say Y here to let the kernel print out symbolic crash information and
@@ -973,7 +973,7 @@ Choice:     excluded [ ]
 Reason:     You can safely exclude this option as it's intended for debugging purposes.
 ```
 <h3>[&ast;]   Enable support for printk</h3>
-```none
+```properties
 Symbol:     CONFIG_PRINTK
 
 Help:       This option enables normal printk support. Removing it
@@ -990,7 +990,7 @@ Reason:     It's highly recommended to include this option in your kernel
             to enable dmesg and printk support.
 ```
 <h3>[ ]   BUG() support</h3>
-```none
+```properties
 Symbol:     CONFIG_BUG
 
 Help:       Disabling this option eliminates support for BUG and WARN, reducing
@@ -1009,7 +1009,7 @@ Reason:     It's highly recommended that you include this option as it's useful
             You can safely exclude this option if you had no need for it.
 ```
 <h3>[&ast;]   Enable PC-Speaker support</h3>
-```none
+```properties
 Symbol:     CONFIG_PCSPKR_PLATFORM
 
 Help:       This option allows to disable the internal PC-Speaker
@@ -1023,7 +1023,7 @@ Reason:     You can safely exclude this option if you don't want to hear
             beeps anymore and it won't affect your normal sound experience.
 ```
 <h3>[&ast;]   Enable full-sized data structures for core</h3>
-```none
+```properties
 Symbol:     CONFIG_BASE_FULL
 
 Help:       Disabling this option reduces the size of miscellaneous core
@@ -1038,7 +1038,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             as it adds a slight performance boost.
 ```
 <h3>[&ast;]   Enable futex support</h3>
-```none
+```properties
 Symbol:     CONFIG_FUTEX
 
 Help:       Disabling this option will cause the kernel to be built without
@@ -1053,7 +1053,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             as it's required by all glibc-based applications.
 ```
 <h3>[&ast;]   Enable eventpoll support[*]</h3>
-```none
+```properties
 Symbol:     CONFIG_EPOLL
 
 Help:       Disabling this option will cause the kernel to be built without
@@ -1068,7 +1068,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             CONFIG_GENTOO_LINUX_INIT_SYSTEMD.
 ```
 <h3>[&ast;]   Enable signalfd() system call</h3>
-```none
+```properties
 Symbol:     CONFIG_SIGNALFD
 
 Help:       Enable the signalfd() system call that allows to receive signals
@@ -1085,7 +1085,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             CONFIG_GENTOO_LINUX_INIT_SYSTEMD.
 ```
 <h3>[&ast;]   Enable timerfd() system call</h3>
-```none
+```properties
 Symbol:     CONFIG_TIMERFD
 
 Help:       Enable the timerfd() system call that allows to receive timer
@@ -1102,7 +1102,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             CONFIG_GENTOO_LINUX_INIT_SYSTEMD.
 ```
 <h3>[&ast;]   Enable eventfd() system call</h3>
-```none
+```properties
 Symbol:     CONFIG_EVENTFD
 
 Help:       Enable the eventfd() system call that allows to receive both
@@ -1119,7 +1119,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             CONFIG_GENTOO_LINUX_INIT_SYSTEMD.
 ```
 <h3>[ ] Enable bpf() system call</h3>
-```none
+```properties
 Symbol:     CONFIG_BPF_SYSCALL
 
 Help:       Enable the bpf() system call that allows to manipulate eBPF
@@ -1132,7 +1132,7 @@ Choice:     excluded [ ]
 Reason:     You can safely exclude this option if you're not using eBPF programs.
 ```
 <h3>-&ast;- Use full shmem filesystem</h3>
-```none
+```properties
 Symbol:     CONFIG_SHMEM
 
 Help:       The shmem is an internal filesystem used to manage shared memory.
@@ -1153,7 +1153,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             a swap partition.
 ```
 <h3>[ ] Enable AIO support</h3>
-```none
+```properties
 Symbol:     CONFIG_AIO
 
 Help:       This option enables POSIX asynchronous I/O which may by used
@@ -1168,7 +1168,7 @@ Reason:     You can safely exclude this option as some users reported that it do
             'bad' things on their respective systems.
 ```
 <h3>[ ] Enable madvise/fadvise syscalls</h3>
-```none
+```properties
 Symbol:     CONFIG_ADVISE_SYSCALLS
 
 Help:       This option enables the madvise and fadvise syscalls, used by
@@ -1188,7 +1188,7 @@ Reason:     It's highly recommended that you include this option especially if y
             applications.
 ```
 <h3>[ ] Enable userfaultfd() system call</h3>
-```none
+```properties
 Symbol:     CONFIG_USERFAULTD
 
 Help:       Enable the userfaultfd() system call that allows to intercept and
@@ -1201,7 +1201,7 @@ Choice:     excluded [ ]
 Reason:     You can safely exclude this option to lower system overhead.
 ```
 <h3>[ ] Enable PCI quirk workarounds</h3>
-```none
+```properties
 Symbol:     CONFIG_PCI_QUIRKS
 
 Help:       This enables workarounds for various PCI chipset
@@ -1219,7 +1219,7 @@ Reason:     You can safely exclude this option if you're machine is unaffected
             buggy bios.
 ```
 <h3>[ ] Enable membarrier() system call</h3>
-```none
+```properties
 Symbol:     CONFIG_MEMBARRIER
 
 Help:       Enable the membarrier() system call that allows issuing memory
@@ -1237,7 +1237,7 @@ Choice:     excluded [ ]
 Reason:     You can safely exclude this option to lower system overhead.
 ```
 <h3>[ ] Embedded system</h3>
-```none
+```properties
 Symbol:     CONFIG_EMBEDDED
 
 Help:       This option should be enabled if compiling the kernel for
@@ -1252,7 +1252,7 @@ Reason:     You can safely exclude this option if you're not building this kerne
             for an embedded system.
 ```
 <h3>[ ] PC/104 support</h3>
-```none
+```properties
 Symbol:     CONFIG_PC104
 
 Help:       Expose PC/104 form factor device drivers and options available for
@@ -1268,7 +1268,7 @@ Reason:     You can safely exclude this option if you're not building this kerne
 ```
 <h3>Kernel Performance Events And Counters  ---></h3>
 <h3>-&ast;- Kernel performance events and counters</h3>
-```none
+```properties
 Symbol:     CONFIG_PERF_EVENTS
 
 Help:       Enable kernel support for various performance events provided
@@ -1302,7 +1302,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             and CONFIG_MULTIUSER).
 ```
 <h3>[ ]   Debug: use vmalloc to back perf mmap() buffers</h3>
-```none
+```properties
 Symbol:     CONFIG_DEBUG_PERF_USE_VMALLOC
 
 Help:       Use vmalloc memory to back perf mmap() buffers.
@@ -1320,7 +1320,7 @@ Reason:     You can safely exclude this option as it's intended for debugging
             purposes.
 ```
 <h3>[ ] Enable VM event counters for /proc/vmstat</h3>
-```none
+```properties
 Symbol:     CONFIG_VM_EVENT_COUNTERS
 
 Help:       VM event counters are needed for event counts to be shown.
@@ -1335,7 +1335,7 @@ Choice:     excluded [ ]
 Reason:     You can safely exclude this option to lower system overhead.
 ```
 <h3>[ ] Enable SLUB debugging support</h3>
-```none
+```properties
 Symbol:     CONFIG_SLUB_DEBUG
 
 Help:       SLUB has extensive debug support features. Disabling these can
@@ -1351,7 +1351,7 @@ Reason:     You can safely exclude this option as it's intended for debugging
             purposes.
 ```
 <h3>[&ast;] Disable heap randomization</h3>
-```none
+```properties
 Symbol:     CONFIG_COMPAT_BRK
 
 Help:       Randomizing heap placement makes heap exploits harder, but it
@@ -1370,7 +1370,7 @@ Reason:     You can safely include this option in your kernel to lower system ov
 ```
 <h3>Choose SLAB allocator (SLUB (Unqueued Allocator))  ---></h3>
 <h3>(X) SLUB (Unqueued Allocator)</h3>
-```none
+```properties
 Symbol:     CONFIG_SLUB
 
 Help:       SLUB is a slab allocator that minimizes cache line usage
@@ -1391,7 +1391,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             as it may take hours to extract a big package).
 ```
 <h3>[ ] SLAB freelist randomization</h3>
-```none
+```properties
 Symbol:     CONFIG_SLAB_FREELIST_RANDOM
 
 Help:       Randomizes the freelist order used on creating new pages. This
@@ -1405,7 +1405,7 @@ Choice:     excluded [ ]
 Reason:     You can safely exclude this option as it's related to CONFIG_SLAB.
 ```
 <h3>[&ast;] SLUB per cpu partial cache</h3>
-```none
+```properties
 Symbol:     CONFIG_SLUB_CPU_PARTIAL
 
 Help:       Per cpu partial caches accellerate objects allocation and freeing
@@ -1425,7 +1425,7 @@ Reason:     It's recommended that you include this option as it adds a performan
             Exclude only if you're concerned about latency.
 ```
 <h3>[ ] Profiling support</h3>
-```none
+```properties
 Symbol:     CONFIG_PROFILING
 
 Help:       Say Y here to enable the extended profiling support mechanisms used
@@ -1438,7 +1438,7 @@ Choice:     excluded [ ]
 Reason:     You can safely exclude this option to lower system overhead.
 ```
 <h3>[ ] Kprobes</h3>
-```none
+```properties
 Symbol:     CONFIG_KPROBES
 
 Help:       Kprobes allows you to trap at almost any kernel address and
@@ -1454,7 +1454,7 @@ Choice:     excluded [ ]
 Reason:     You can safely exclude this option to lower system overhead.
 ```
 <h3>[ ] Optimize very unlikely/likely branches</h3>
-```none
+```properties
 Symbol:     CONFIG_JUMP_LABEL
 
 Help:       This option enables a transparent branch optimization that
@@ -1486,7 +1486,7 @@ Reason:     You can safely exclude this option as it's intended for debugging
             purposes.
 ```
 <h3>[ ] GCC plugins  ----</h3>
-```none
+```properties
 Symbol:     CONFIG_GCC_PLUGINS
 
 Help:       GCC plugins are loadable modules that provide extra features to the
@@ -1502,7 +1502,7 @@ Reason:     You can safely exclude this option as you probably won't need those 
             modules provided.
 ```
 <h3>Stack Protector buffer overflow detection (None)  ---></h3>
-```none
+```properties
 Symbol:     CONFIG_CC_STACKPROTECTOR_NONE
 
 Help:       Disable "stack-protector" GCC feature.
@@ -1514,7 +1514,7 @@ Choice:     built-in [*]
 Reason:     You can safely exclude this option to lower system overhead.
 ```
 <h3>(28) Number of bits to use for ASLR of mmap base address</h3>
-```none
+```properties
 Symbol:     CONFIG_ARCH_MMAP_RND_BITS
 
 Help:       This value can be used to select the number of bits to use to
@@ -1533,7 +1533,7 @@ Reason:     You can safely leave the value of this option to its default value
             of (28).
 ```
 <h3>(8) Number of bits to use for ASLR of mmap base address for compatible applications</h3>
-```none
+```properties
 Symbol:     CONFIG_ARCH_MMAP_RND_COMPAT_BITS
 
 Help:       This value can be used to select the number of bits to use to
@@ -1553,7 +1553,7 @@ Reason:     You can safely leave the value of this option to its default value
             of (8).
 ```
 <h3>[ ] Use a virtually-mapped stack</h3>
-```none
+```properties
 Symbol:     CONFIG_VMAP_STACK
 
 Help:       Enable this if you want the use virtually-mapped kernel stacks
@@ -1572,7 +1572,7 @@ Choice:     excluded [ ]
 Reason:     You can safely exclude this option to lower system overhead.
 ```
 <h3>[ ] Perform full reference count validation at the expense of speed</h3>
-```none
+```properties
 Symbol:     CONFIG_REFCOUNT_FULL
 
 Help:       Enabling this switches the refcounting infrastructure from a fast
@@ -1589,7 +1589,7 @@ Reason:     You can safely exclude this option to lower system overhead.
 ```
 <h3>GCOV-based kernel profiling  ---></h3>
 <h3>[ ] Enable gcov-based kernel profiling</h3>
-```none
+```properties
 Symbol:     CONFIG_GCOV_KERNEL
 
 Help:       This option enables gcov-based code profiling (e.g. for code coverage

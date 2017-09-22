@@ -42,7 +42,7 @@ I personally prefer <mark>make menuconfig</mark> as it's better maintained and c
 <h3>2. Enable CPU Microcode Loading Support</h3>
 <br/>
 Navigate to <mark>Processor type and features</mark> and mark <mark>CONFIG_MICROCODE</mark> as built-in. You'll receive two options now "Blue vs Red" microcode loading support or should I say <mark>CONFIG_MICROCODE_INTEL</mark> vs <mark>CONFIG_MICROCODE_AMD</mark>.
-```none
+```properties
   [*] DMA memory allocation support
   [*] Symmetric multi-processing support
   [ ] Enable MPS table
@@ -88,17 +88,17 @@ Navigate to <mark>Processor type and features</mark> and mark <mark>CONFIG_MICRO
 <h3>3- Installing Intel CPU Microcode Updates</h3>
 <br/>
 Gentoo Linux:
-```none
+```properties
 emerge --sync && emerge -av sys-firmware/intel-microcode
 ```
 <br/>
 Void Linux:
-```none
+```properties
 xbps-install -Su && xbps-install -S intel-ucode
 ```
 <br/>
 Arch Linux:
-```none
+```properties
 pacman -Syu intel-ucode
 ```
 <br/>
@@ -117,7 +117,7 @@ Alright, looks like a new folder <mark>intel-ucode</mark> was created. Let's see
 ```bash
 ls -l /lib/firmware/intel-ucode
 ```
-```none
+```properties
 06-03-02  06-06-05  06-08-01  06-0a-01	06-0f-02  06-16-01  06-1c-02  06-26-01	06-3c-03  06-3f-04  06-56-02  0f-01-02	0f-03-02  0f-04-07  0f-06-05
 06-05-00  06-06-0a  06-08-03  06-0b-01	06-0f-06  06-17-06  06-1c-0a  06-2a-07	06-3d-04  06-45-01  06-56-03  0f-02-04	0f-03-03  0f-04-08  0f-06-08
 06-05-01  06-06-0d  06-08-06  06-0b-04	06-0f-07  06-17-07  06-1d-01  06-2d-06	06-3e-04  06-46-01  06-56-04  0f-02-05	0f-03-04  0f-04-09
@@ -132,7 +132,7 @@ Awesome, here are <strong>all</strong> of intel's CPUs microcode update files! N
 <h3>4- Choosing the Correct Microcode Update File</h3>
 <br/>
 The file names here are somewhat related to the CPUID signature. The default way to get your CPUID signature (as suggested by the <a href="https://wiki.gentoo.org/wiki/Intel_microcode#Software_3" target="_blank">Gentoo Wiki</a>) is to install a tool called <mark>iucode_tool</mark>:
-```none
+```properties
 emerge --sync && emerge -av sys-apps/iucode_tool
 ```
 <br/>
@@ -140,10 +140,10 @@ emerge --sync && emerge -av sys-apps/iucode_tool
 <br/>
 <br/>
 Now run this:
-```none
+```properties
 iucode_tool -S
 ```
-```none
+```properties
 iucode_tool: system has processor(s) with signature 0x000306c3
 ```
 <br/>
@@ -154,7 +154,7 @@ As you can see my CPUID signature is <mark>0x000306c3</mark>. If that didn't wor
 <div class="frame"><img src="/img/cpuid.png" alt="cpuid"></div>
 <br/>
 Another way to do this is to install <mark>cpuid</mark>:
-```none
+```properties
 emerge --sync && emerge -av sys-apps/cpuid
 ```
 <br/>
@@ -165,7 +165,7 @@ Now run:
 ```bash
 cpuid | grep "processor serial number"
 ```
-```none
+```properties
       processor serial number                = false
    processor serial number: 0003-06C3-0000-0000-0000-0000
       processor serial number                = false
@@ -191,17 +191,17 @@ Another way to do it, is to install <mark>dmidecode</mark>:
 <br/>
 <br/>
 Gentoo Linux:
-```none
+```properties
 emerge --sync && emerge -av sys-apps/dmidecode
 ```
 <br/>
 Void Linux:
-```none
+```properties
 xbps-install -Su && xbps-install -S dmidecode
 ```
 <br/>
 Arch Linux:
-```none
+```properties
 pacman -Syu dmidecode
 ```
 <br/>
@@ -209,7 +209,7 @@ Now run:
 ```bash
 dmidecode | grep -w ID
 ```
-```none
+```properties
   ID: 0
 	ID: 1
 	ID: 2
@@ -251,7 +251,7 @@ Navigate to <mark>Device Drivers</mark> then to <mark>Generic Driver Options</ma
 <br/>
 <br/>
 Now include <mark>CONFIG_FIRMWARE_IN_KERNEL</mark>,<mark>CONFIG_EXTRA_FIRMWARE</mark> and <mark>CONFIG_EXTRA_FIRMWARE_DIR</mark> as shown below:
-```none
+```properties
   [ ] Support for uevent helper
   -*- Maintain a devtmpfs filesystem to mount at /dev
   [*]   Automount devtmpfs at /dev, after the kernel mounted the rootfs
@@ -287,7 +287,7 @@ This is quite simple, just run:
 ```bash
 dmesg | grep microcode
 ```
-```none
+```properties
 [    0.000000] microcode: microcode updated early to revision 0x22, date = 2017-01-27
 [    0.795219] microcode: sig=0x306c3, pf=0x10, revision=0x22
 [    0.795433] microcode: Microcode Update Driver: v2.01 <tigran@aivazian.fsnet.co.uk>, Peter Oruba
