@@ -2311,6 +2311,11 @@ Choice:     built-in [*]
 Reason:     It's highly recommended that you include this option in your kernel
             as many applications (especially lightweight status bars such as slstatus
             rely on the existence of /dev/mixer).
+            
+            DOTSLASHLINUX has a guide on how to configure the lightest status bar
+            ever slstatus, kindly check:
+            
+                https://www.dotslashlinux.com/2017/04/24/best-slstatus-configuration/
 ```
 <h3><&ast;>   Advanced Linux Sound Architecture  ---></h3>
 ```none
@@ -2327,7 +2332,6 @@ Choice:     built-in <*>
 
 Reason:     It's highly recommended that you include this option in your kernel
             in order for sound to work.
-            
 ```
 <h3><&ast;>   OSS Mixer API</h3>
 ```none
@@ -2348,6 +2352,11 @@ Choice:     built-in <*>
 Reason:     It's highly recommended that you include this option in your kernel
             as many applications (especially lightweight status bars such as slstatus
             rely on the existence of /dev/mixer).
+            
+            DOTSLASHLINUX has a guide on how to configure the lightest status bar
+            ever slstatus, kindly check:
+            
+                https://www.dotslashlinux.com/2017/04/24/best-slstatus-configuration/
 ```
 <h3><&ast;>   OSS PCM (digital audio) API</h3>
 ```none
@@ -2368,6 +2377,11 @@ Choice:     built-in <*>
 Reason:     It's highly recommended that you include this option in your kernel
             as many applications (especially lightweight status bars such as slstatus
             rely on the existence of /dev/mixer).
+            
+            DOTSLASHLINUX has a guide on how to configure the lightest status bar
+            ever slstatus, kindly check:
+            
+                https://www.dotslashlinux.com/2017/04/24/best-slstatus-configuration/
 ```
 <h3>[&ast;]   PCM timer interface</h3>
 ```none
