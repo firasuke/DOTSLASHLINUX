@@ -16,12 +16,12 @@ In this article I'll show you how to setup ALSA, with a working .asoundrc config
 <br/>
 Gentoo Linux:
 ```none
-emerge --ask --update --newuse media-sound/alsa-utils
+emerge --sync && emerge -av media-sound/alsa-utils
 ```
 <br/>
 Void Linux:
 ```none
-xbps-install -S alsa-utils
+xbps-install -Su && xbps-install -S alsa-utils
 ```
 <br/>
 Arch Linux:

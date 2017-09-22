@@ -89,12 +89,12 @@ Navigate to <mark>Processor type and features</mark> and mark <mark>CONFIG_MICRO
 <br/>
 Gentoo Linux:
 ```none
-emerge --ask --update --newuse sys-firmware/intel-microcode
+emerge --sync && emerge -av sys-firmware/intel-microcode
 ```
 <br/>
 Void Linux:
 ```none
-xbps-install -S intel-ucode
+xbps-install -Su && xbps-install -S intel-ucode
 ```
 <br/>
 Arch Linux:
@@ -133,7 +133,7 @@ Awesome, here are <strong>all</strong> of intel's CPUs microcode update files! N
 <br/>
 The file names here are somewhat related to the CPUID signature. The default way to get your CPUID signature (as suggested by the <a href="https://wiki.gentoo.org/wiki/Intel_microcode#Software_3" target="_blank">Gentoo Wiki</a>) is to install a tool called <mark>iucode_tool</mark>:
 ```none
-emerge -av sys-apps/iucode_tool
+emerge --sync && emerge -av sys-apps/iucode_tool
 ```
 <br/>
 <mark>iucode_tool</mark> is also available in Arch's AUR. (This package isn't available on Void Linux by the time this article was written).
@@ -155,7 +155,7 @@ As you can see my CPUID signature is <mark>0x000306c3</mark>. If that didn't wor
 <br/>
 Another way to do this is to install <mark>cpuid</mark>:
 ```none
-emerge -av sys-apps/cpuid
+emerge --sync && emerge -av sys-apps/cpuid
 ```
 <br/>
 <mark>cpuid</mark> is also available in Arch's AUR. (This package isn't available on Void Linux by the time this article was written).
@@ -192,12 +192,12 @@ Another way to do it, is to install <mark>dmidecode</mark>:
 <br/>
 Gentoo Linux:
 ```none
-emerge --ask --update --newuse sys-apps/dmidecode
+emerge --sync && emerge -av sys-apps/dmidecode
 ```
 <br/>
 Void Linux:
 ```none
-xbps-install -S dmidecode
+xbps-install -Su && xbps-install -S dmidecode
 ```
 <br/>
 Arch Linux:

@@ -293,7 +293,7 @@ If you've followed along with this article then your bumblebee setup should be w
 <br/>
 To test our bumblebee configuration, install the package <mark>mesa-progs</mark>:
 ```none
-emerge -av mesa-progs
+emerge --sync && emerge -av mesa-progs
 ```
 <br/>
 Now before testing anything the NVIDIA card should be OFF, and the nvidia module shouldn't be loaded, instead the module bbswitch should be loaded. To double check fire up that terminal emulator and run:

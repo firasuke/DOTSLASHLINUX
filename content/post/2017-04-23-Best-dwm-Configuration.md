@@ -14,12 +14,12 @@ In this article I'll show you how to setup dwm and equip it with a nice basic co
 <br/>
 Gentoo Linux:
 ```none
-emerge --ask --update --newuse x11-wm/dwm
+emerge --sync && emerge -av x11-wm/dwm
 ```
 <br/>
 Void Linux:
 ```none
-xbps-install -S dwm
+xbps-install -Su && xbps-install -S dwm
 ```
 <br/>
 Arch Linux:

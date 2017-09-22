@@ -15,11 +15,11 @@ In this article I'll show you how to get your urxvt daemon up and running, and g
 <br/>
 Gentoo Linux:
 ```none
-emerge --ask --update --newuse x11-terms/rxvt-unicode
+emerge --sync && emerge -av x11-terms/rxvt-unicode
 ```
 Void Linux:
 ```none
-xbps-install -S rxvt-unicode
+xbps-install -Su && xbps-install -S rxvt-unicode
 ```
 Arch Linux:
 ```none

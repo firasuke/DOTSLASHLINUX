@@ -15,12 +15,12 @@ In this article I'll show you how to correctly setup xinit to start your xorg se
 <br/>
 Gentoo Linux:
 ```none
-emerge --ask --update --newuse  x11-apps/xinit
+emerge --sync && emerge -av x11-apps/xinit
 ```
 <br/>
 Void Linux:
 ```none
-xbps-install -S xinit
+xbps-install -Su && xbps-install -S xinit
 ```
 <br/>
 Arch Linux:

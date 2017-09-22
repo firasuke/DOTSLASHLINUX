@@ -16,12 +16,12 @@ In this article I'll show you how to setup mpv and arm it up with the best mpv.c
 <br/>
 Gentoo Linux:
 ```none
-emerge --ask --update --newuse media-video/mpv
+emerge --sync && emerge -av media-video/mpv
 ```
 <br/>
 Void Linux:
 ```none
-xbps-install -S mpv
+xbps-install -Su && xbps-install -S mpv
 ```
 <br/>
 Arch Linux:
