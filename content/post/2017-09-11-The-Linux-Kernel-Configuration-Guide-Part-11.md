@@ -2942,7 +2942,10 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            to have a working hardware clock.
+
+            It's also recommended by the Gentoo Wiki.
 ```
 <h3>[&ast;]   Set system time from RTC on startup and resume</h3>
 ```none
@@ -2956,7 +2959,10 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            as it speeds up boot time.
+
+            It's also recommended by the Gentoo Wiki.
 ```
 <h3>(rtc0)  RTC used to set the system time</h3>
 ```none
@@ -2984,7 +2990,8 @@ Type:       string
 
 Choice:     (rtc0) default
 
-Reason:     
+Reason:     You can safely leave the value of this option to the default value
+            of (rtc0) as recommended by the Gentoo Wiki.
 ```
 <h3>[&ast;]   /sys/class/rtc/rtcN (sysfs)</h3>
 ```none
@@ -2999,7 +3006,10 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            to have a working hardware clock.
+
+            It's also recommended by the Gentoo Wiki.
 ```
 <h3>[&ast;]   /proc/driver/rtc (procfs for rtcN)</h3>
 ```none
@@ -3017,7 +3027,10 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            to have a working hardware clock.
+
+            It's also recommended by the Gentoo Wiki.
 ```
 <h3>[&ast;]   /dev/rtcN (character devices)</h3>
 ```none
@@ -3038,7 +3051,10 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            to have a working hardware clock.
+
+            It's also recommended by the Gentoo Wiki.
 ```
 <h3><&ast;>   PC-style 'CMOS'</h3>
 ```none
@@ -3062,7 +3078,16 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            to have a working hardware clock.
+            
+            If you've followed the guide above, then a simple:
+
+                cat dmesg.txt | grep rtc
+
+            should tell you whether you need this option or not.
+
+            It's also recommended by the Gentoo Wiki.
 ```
 <h3>DMABUF options  ---></h3>
 <h3>-&ast;- Explicit Synchronization Framework</h3>
@@ -3102,7 +3127,8 @@ Type:       boolean
 
 Choice:     built-in [*]
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            if you wanted to include some vendor specific extension drivers.
 ```
 <h3><&ast;>   WMI</h3>
 ```none
@@ -3129,7 +3155,14 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            if your system supports ACPI-WMI.
+            
+            If you've followed the guide above, then a simple:
+
+                cat dmesg.txt | grep WMI
+
+            should tell you whether you need this option or not.
 ```
 <h3><&ast;>   Toshiba Bluetooth RFKill switch support</h3>
 ```none
@@ -3150,7 +3183,14 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     
+Reason:     It's highly recommended that you include this option in your kernel
+            if you wanted to include some vendor specific extension drivers.
+            
+            If you've followed the guide above, then a simple:
+
+                cat dmesg.txt | grep toshiba_bluetooth
+
+            should tell you whether you need this option or not.
 ```
 <h3><&ast;>   Toshiba HDD Active Protection Sensor</h3>
 ```none
@@ -3175,28 +3215,14 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     
-```
-<h3><&ast;>   Toshiba WMI Hotkeys Driver (EXPERIMENTAL)</h3>
-```none
-Symbol:     CONFIG_TOSHIBA_WMI
+Reason:     It's highly recommended that you include this option in your kernel
+            if your Toshiba laptop is equiped with a HID TOS620A device.
+            
+            If you've followed the guide above, then a simple:
 
-Help:       This driver adds hotkey monitoring support to some Toshiba models
-            that manage the hotkeys via WMI events.
+                cat lsmod.txt | grep toshiba_haps
 
-            WARNING: This driver is incomplete as it lacks a proper keymap and the
-            *notify function only prints the ACPI event type value. Be warned that
-            you will need to provide some information if you have a Toshiba model
-            with WMI event hotkeys and want to help with the develpment of this
-            driver.
-
-            If you have a WMI-based hotkeys Toshiba laptop, say Y or M here.
-
-Type:       tristate
-
-Choice:     built-in <*>
-
-Reason:     
+            should tell you whether you need this option or not.
 ```
 <h3><&ast;>   WMI support for MXM Laptop Graphics</h3>
 ```none
@@ -3209,62 +3235,12 @@ Type:       tristate
 
 Choice:     built-in <*>
 
-Reason:     
-```
-<h3><&ast;>   Intel Rapid Start Technology Driver</h3>
-```none
-Symbol:     CONFIG_INTEL_RST
+Reason:     It's highly recommended that you include this option in your kernel
+            in order to get a working bumblebee setup on an optimus based laptop.
 
-Help:       This driver provides support for modifying paramaters on systems
-            equipped with Intel's Rapid Start Technology. When put in an ACPI
-            sleep state, these devices will wake after either a configured
-            timeout or when the system battery reaches a critical state,
-            automatically copying memory contents to disk. On resume, the
-            firmware will copy the memory contents back to RAM and resume the OS
-            as usual.
+            DOTSLASHLINUX has a guide on how to setup bumblebee on Gentoo Linux:
 
-Type:       tristate
-
-Choice:     built-in <*>
-
-Reason:     
-```
-<h3>[&ast;] Generic powercap sysfs driver  ---></h3>
-```none
-Symbol:     CONFIG_POWERCAP
-
-Help:       The power capping sysfs interface allows kernel subsystems to expose power
-            capping settings to user space in a consistent way.  Usually, it consists
-            of multiple control types that determine which settings may be exposed and
-            power zones representing parts of the system that can be subject to power
-            capping.
-
-            If you want this code to be compiled in, say Y here.
-
-Type:       boolean
-
-Choice:     built-in [*]
-
-Reason:     
-```
-<h3><&ast;>   Intel RAPL Support</h3>
-```none
-Symbol:     CONFIG_INTEL_RAPL
-
-Help:       This enables support for the Intel Running Average Power Limit (RAPL)
-            technology which allows power limits to be enforced and monitored on
-            modern Intel processors (Sandy Bridge and later).
-
-            In RAPL, the platform level settings are divided into domains for
-            fine grained control. These domains include processor package, DRAM
-            controller, CPU core (Power Plance 0), graphics uncore (Power Plane
-            1), etc.
-
-Type:       tristate
-
-Choice:     built-in <*>
-
-Reason:     
+                https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/
 ```
 <hr/>
 <h3>Chinese Translation</h3>
