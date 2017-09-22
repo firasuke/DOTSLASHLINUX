@@ -137,13 +137,11 @@ Side Notes:           1- Options that aren't listed here are excluded [ ].
 <div class="box map">
   <h2>{{ .Title }}</h2>
   <div class="share">
-    <ul>
-      <li><a id="facebook" href="https://www.facebook.com/sharer.php?u={{ .Permalink }}" rel="nofollow" target="_blank">Facebook</a></li>
-      <li><a id="twitter" href="https://www.twitter.com/intent/tweet?source={{ .Permalink }}&text={{ .Permalink }}" rel="nofollow" target="_blank">Twitter</a></li>
-      <li><a id="googleplus" href="https://plus.google.com/share?url={{ .Permalink }}" rel="nofollow" target="_blank">Google+</a></li>
-      <li><a id="reddit" href="https://www.reddit.com/submit?url={{ .Permalink }}" rel="nofollow" target="_blank">Reddit</a></li>
-      <li><a id="linkedin" href="http://www.linkedin.com/shareArticle?mini=true&url={{ .Permalink }}&source={{ .Permalink }}" rel="nofollow" target="_blank">LinkedIn</a></li>
-    </ul>
+      <a id="facebook" href="https://www.facebook.com/sharer.php?u={{ .Permalink }}" rel="nofollow" target="_blank">Facebook</a>
+      <a id="twitter" href="https://www.twitter.com/intent/tweet?source={{ .Permalink }}&text={{ .Permalink }}" rel="nofollow" target="_blank">Twitter</a>
+      <a id="googleplus" href="https://plus.google.com/share?url={{ .Permalink }}" rel="nofollow" target="_blank">Google+</a>
+      <a id="reddit" href="https://www.reddit.com/submit?url={{ .Permalink }}" rel="nofollow" target="_blank">Reddit</a>
+      <a id="linkedin" href="http://www.linkedin.com/shareArticle?mini=true&url={{ .Permalink }}&source={{ .Permalink }}" rel="nofollow" target="_blank">LinkedIn</a>
   </div>
   <div class="frame"><img src="{{ .Params.imgsrc }}" alt="{{ .Params.imgalt }}"></div>
   <div class="info"><small>By {{ .Params.author }} on {{ .Date.Format "02/01/2006" }}</small></div>

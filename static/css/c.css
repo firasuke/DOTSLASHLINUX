@@ -189,9 +189,8 @@ nav li {
   color: #dadada;
 }
 
-.share ul li {
-  display: inline;
-  margin: 50px !important;
+.share {
+  margin: 20px 20px 20px 0;
 }
 
 .share a { 
