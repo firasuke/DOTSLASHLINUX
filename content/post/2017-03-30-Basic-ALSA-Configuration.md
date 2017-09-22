@@ -117,7 +117,7 @@ systemctl enable alsa-state.service
 <hr/>
 <h3 id="Default_Sound_Card_and_Sound_from_Multiple_Applications">4- Default Sound Card & Sound from Multiple Applications</h3>
 <br/>
-After you've done all the previous steps, ALSA should be working perfectly. Sound from multiple applications which is supported by alsa's dmix plugin is enabled by default. However, on some setups (like mine), the default sound card may not be your main sound card (for example HDMI and Intel HD Audio PCH):
+After you've done all the previous steps, ALSA should be working perfectly. Sound from multiple applications which is supported by alsa's dmix plug-in is enabled by default. However, on some setups (like mine), the default sound card may not be your main sound card (for example HDMI and Intel HD Audio PCH):
 ```bash
 aplay -l
 ```
