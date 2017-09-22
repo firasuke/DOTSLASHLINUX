@@ -189,8 +189,9 @@ nav li {
   color: #dadada;
 }
 
-.share {
-  margin: 20px 20px 20px 0;
+.share ul li {
+  display: inline;
+  margin: 50px !important;
 }
 
 .share a { 
@@ -218,14 +219,6 @@ nav li {
 
 #reddit {
   background-color: #ff4500;
-}
-
-#tumblr {
-  background-color: #35465c;
-}
-
-#pinterest {
-  background-color: #bd081c;
 }
 
 #linkedin {
