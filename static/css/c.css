@@ -189,12 +189,10 @@ nav li {
   color: #dadada;
 }
 
-.share {
-  margin: 20px 20px 20px 0;
-}
-
 .share a { 
   padding: 10px;
+  display: inline-block;
+  margin-bottom: 10px;
   text-decoration: none;
   color: #dadada;
 }
