@@ -16,7 +16,7 @@ I then moved to Geany, which was wonderful. It had everything I needed, a nice c
 Throughout the way I've gave Vim like 50 chances to prove it was worth it, but it failed me every time. I then found out about Bluefish Editor, and I hated it the moment I started using it. It was fast, and had a lot of features, but its editor lacked a lot of stuff I thought were important, plus using it just felt weird (with all do respect to all Bluefish developers, you're doing a great job, it's just that it wasn't suited for a user like me).
 <br/>
 <br/>
-A couple of months passed, and I was switching constantly between Geany, nano and Leafpad until I found out about Atom from Github and boy it was awesome! Fired up that terminal emulator and a whopping 600mb package was waiting to be built from source, now isn't that fantastic... Atom needed electron, the base Javascript framework that it was build on, and compiling a package this big from source isn't something easy (all the Gentoo boys and girls who tried to emerge chromium will be nodding their heads in approval... yes I can feel you...) as you never know if it'll work as expected or not, or if you've missed a feature or not but I did it, and couldn't be any happier.
+A couple of months passed, and I was switching constantly between Geany, nano and Leafpad until I found out about Atom from GitHub and boy it was awesome! Fired up that terminal emulator and a whopping 600mb package was waiting to be built from source, now isn't that fantastic... Atom needed electron, the base Javascript framework that it was build on, and compiling a package this big from source isn't something easy (all the Gentoo boys and girls who tried to emerge chromium will be nodding their heads in approval... yes I can feel you...) as you never know if it'll work as expected or not, or if you've missed a feature or not but I did it, and couldn't be any happier.
 <br/>
 <br/>
 I then wrote the first version of this website in Atom, things were really easy. Instant preview in an integrated web browser, auto completion, amazing color scheme, snippets for everything and a ton of features. But then as I added more and more plug-ins Atom was growing into a bloated mess of Javascript code that I couldn't withstand. I mean every time I started it, it took at least 10 seconds to get fully working and I hated that. It also (although rarely) crashed on me in several occasions which made me finally make the decision of switching to Vim.
@@ -385,9 +385,52 @@ emerge --sync && emerge -av app-vim/tcomment
 <br/>
 You can easily comment something by doing a visual select <mark>Shift + v</mark> then pressing <mark>g + c + +</mark> (yes that's a plus sign 'gc+').
 <br/>
+<h3>3.10- <a href="https://github.com/vim-scripts/loremipsum" target="_blank">loremipsum</a></h3>
+Who doesn't know the dummy text lorem ipsum. This plug-in generates a lorem ipsum text of a certain specified length to serve as a place holder. This plug-in isn't available in the official repositories of many distributions and you'll have to get it from GitHub (and it's unmaintained since 2008).
+<br/>
+<br/>
+Simply run:
+```properties
+cd ~ && git clone https://github.com/vim-scripts/loremipsum
+```
+<br/>
+then:
+```properties
+cd ~/loremipsum/
+```
+<br/>
+Now let's see what's in this directory:
+```properties
+ls -lh ~/loremipsum/
+```
+```properties
+total 4.0K
+drwxr-xr-x 2 firas firas  50 Sep 23 04:36 autoload
+drwxr-xr-x 2 firas firas  28 Sep 23 04:36 doc
+drwxr-xr-x 2 firas firas  28 Sep 23 04:36 plugin
+-rw-r--r-- 1 firas firas 771 Sep 23 04:36 README
+```
+<br/>
+So we have an autoload directory which needs its contents to be copied to <mark>/usr/share/vim/vimfiles/autoload</mark>, we also have a doc directory which needs it contents to be copied to <mark>/usr/share/vim/vimfiles/doc/</mark>, and a plugin directory which needs its contents to be copied to <mark>/usr/share/vim/vimfiles/plugin</mark>. We also have a README file which won't be needed for this plug-in to work.
+<br/>
+<br/>
+Now run:
+```properties
+cp -rav ~/loremipsum/autoload/ /usr/share/vim/vimfiles/autoload/
+cp -rav ~/loremipsum/doc/ /usr/share/vim/vimfiles/doc/
+cp -rav ~/loremipsum/plugin/ /usr/share/vim/vimfiles/plugin/
+```
+<br/>
+Now simply run:
+```none
+:Loremipsum 4
+```
+<br/>
+and you'll get 4 words from the lorem ipsum text.
+<br/>
 <br/>
 <hr/>
-<h3>3.10- <a href="https://github.com/tpope/vim-fugitive" target="_blank">fugitive.vim</a></h3>
+<h3>3.11- <a href="https://github.com/tpope/vim-fugitive" target="_blank">fugitive.vim</a></h3>
 Another awesome plug-in for Vim, from the creator of <a href="https://github.com/tpope/vim-pathogen" target="_blank">pathogen.vim</a> and <a href="https://github.com/tpope/vim-surround" target="_blank">surround.vim</a>. It's also the most popular Vim plug-in on VimAwesome. This Git wrapper adds a ton of functionality to your Vim editor and makes your life easier when working with Git as you'll never have to leave Vim to check for file changes, status, push and pull commits ...etc.
 <br/>
 <br/>
@@ -397,7 +440,7 @@ emerge --sync && emerge -av app-vim/fugitive
 ```
 <br/>
 <hr/>
-<h3>3.11- <a href="https://vimawesome.com/plugin/vim-gitgutter" target="_blank">vim-gitgutter</a></h3>
+<h3>3.12- <a href="https://vimawesome.com/plugin/vim-gitgutter" target="_blank">vim-gitgutter</a></h3>
 A pretty useful plug-in alongside fugitive, it shows you a git diff in the gutter to right next to your line numbers. You can easily recognize added, modified and removed lines.
 <br/>
 <br/>
