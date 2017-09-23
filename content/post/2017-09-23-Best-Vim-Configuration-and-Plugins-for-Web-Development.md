@@ -295,7 +295,17 @@ To go up the directory tree by one level, simply type <mark>..</mark> (double do
 <br/>
 <br/>
 <hr/>
-<h3>3.5- <a href="https://github.com/tpope/vim-surround" target="_blank">surround.vim</a></h3>rom the creator of the famous Vim plug-in manager <a href="https://github.com/tpope/vim-pathogen" target="_blank">pathogen.vim</a>, this plug-in is extremely useful to quickly surround your text/code with tags of different types.
+<h3>3.5- <a href="https://github.com/garbas/vim-snipmate" target="_blank">snipMate</a></h3>
+And no web development setup would be complete without snippets.
+<br/>
+<br/>
+To install snipMate on Gentoo Linux, simply run:
+```properties
+emerge --sync && emerge -av app-vim/snipmate
+```
+<br/>
+<hr/>
+<h3>3.6- <a href="https://github.com/tpope/vim-surround" target="_blank">surround.vim</a></h3>rom the creator of the famous Vim plug-in manager <a href="https://github.com/tpope/vim-pathogen" target="_blank">pathogen.vim</a>, this plug-in is extremely useful to quickly surround your text/code with tags of different types.
 <br/>
 <br/>
 To install surround.vim on Gentoo Linux, simply run:
@@ -304,7 +314,7 @@ emerge --sync && emerge -av app-vim/surround
 ```
 <br/>
 <hr/>
-<h3>3.6- <a href="https://github.com/mattn/emmet-vim" target="_blank">emmet-vim</a></h3>
+<h3>3.7- <a href="https://github.com/mattn/emmet-vim" target="_blank">emmet-vim</a></h3>
 Whenever we hear the term web development, we see emmet popping up and you guessed it, there's an emmet plug-in for Vim. For those who don't know, emmet expands on abbreviations and saves you a lot of time. 
 <br/>
 <br/>
@@ -317,39 +327,7 @@ To use emmet, do a visual select <mark>Shift+v</mark> then hit <mark>Ctrl + y + 
 <br/>
 <br/>
 <hr/>
-<h3>3.7- <a href="https://github.com/garbas/vim-snipmate" target="_blank">snipMate</a></h3>
-And no web development setup would be complete without snippets.
-<br/>
-<br/>
-To install snipMate on Gentoo Linux, simply run:
-```properties
-emerge --sync && emerge -av app-vim/snipmate
-```
-<br/>
-<hr/>
-<h3>3.8- <a href="https://github.com/tpope/vim-fugitive" target="_blank">fugitive.vim</a></h3>
-Another awesome plug-in for Vim, from the creator of <a href="https://github.com/tpope/vim-pathogen" target="_blank">pathogen.vim</a> and <a href="https://github.com/tpope/vim-surround" target="_blank">surround.vim</a>. It's also the most popular Vim plug-in on VimAwesome. This Git wrapper adds a ton of functionality to your Vim editor and makes your life easier when working with Git as you'll never have to leave Vim to check for file changes, status, push and pull commits ...etc.
-<br/>
-<br/>
-To install fugitive.vim on Gentoo Linux, simply run:
-```properties
-emerge --sync && emerge -av app-vim/fugitive
-```
-<br/>
-<hr/>
-<h3>3.9- <a href="https://vimawesome.com/plugin/vim-gitgutter" target="_blank">vim-gitgutter</a></h3>
-A pretty useful plug-in alongside fugitive, it shows you a git diff in the gutter to right next to your line numbers. You can easily recognize added, modified and removed lines.
-<br/>
-<br/>
-To install vim-gitgutter on Gentoo Linux, simply run:
-```properties
-emerge --sync && emerge -av app-vim/gitgutter
-```
-<br/>
-gitgutter should be automatically enabled when you edit a file in a git repository.
-<br/>
-<hr/>
-<h3>3.10- <a href="https://github.com/valloric/matchtagalways" target="_blank">MatchTagAlways</a></h3>
+<h3>3.8- <a href="https://github.com/valloric/matchtagalways" target="_blank">MatchTagAlways</a></h3>
 This plug-in will make your life easier, and it'll save you a lot of eye strain and brain power trying to figure out where on earth did the closing tag disappear, as it highlights both opening and closing tags for several file types. This plug-in isn't available in the official repositories of many distributions and you'll have to get it from GitHub.
 <br/>
 <br/>
@@ -394,5 +372,40 @@ cp -rav ~/matchtagalways/python/ /usr/share/vim/vimfiles/python/
 <br/>
 matchtagalways should be automatically working whenever you edit a file type that makes use of opening and closing tags.
 <br/>
+<br/>
+<hr/>
+<h3>3.9- <a href="https://github.com/tomtom/tcomment_vim" target="_blank">tComment</a></h3>
+A nice plug-in that automatically detects that language you're coding in and comments selected blocks when needed accordingly.
+<br/>
+<br/>
+To install tComment on Gentoo Linux, simply run:
+```properties
+emerge --sync && emerge -av app-vim/tcomment
+```
+<br/>
+You can easily comment something by doing a visual select <mark>Shift + v</mark> then pressing <mark>g + c + +</mark> (yes that's a plus sign 'gc+').
+<br/>
+<br/>
+<hr/>
+<h3>3.10- <a href="https://github.com/tpope/vim-fugitive" target="_blank">fugitive.vim</a></h3>
+Another awesome plug-in for Vim, from the creator of <a href="https://github.com/tpope/vim-pathogen" target="_blank">pathogen.vim</a> and <a href="https://github.com/tpope/vim-surround" target="_blank">surround.vim</a>. It's also the most popular Vim plug-in on VimAwesome. This Git wrapper adds a ton of functionality to your Vim editor and makes your life easier when working with Git as you'll never have to leave Vim to check for file changes, status, push and pull commits ...etc.
+<br/>
+<br/>
+To install fugitive.vim on Gentoo Linux, simply run:
+```properties
+emerge --sync && emerge -av app-vim/fugitive
+```
+<br/>
+<hr/>
+<h3>3.11- <a href="https://vimawesome.com/plugin/vim-gitgutter" target="_blank">vim-gitgutter</a></h3>
+A pretty useful plug-in alongside fugitive, it shows you a git diff in the gutter to right next to your line numbers. You can easily recognize added, modified and removed lines.
+<br/>
+<br/>
+To install vim-gitgutter on Gentoo Linux, simply run:
+```properties
+emerge --sync && emerge -av app-vim/gitgutter
+```
+<br/>
+gitgutter should be automatically enabled when you edit a file in a git repository.
 <br/>
 <hr/>
