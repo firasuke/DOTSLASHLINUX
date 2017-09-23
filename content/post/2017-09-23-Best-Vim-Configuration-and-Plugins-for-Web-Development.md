@@ -385,6 +385,8 @@ emerge --sync && emerge -av app-vim/tcomment
 <br/>
 You can easily comment something by doing a visual select <mark>Shift + v</mark> then pressing <mark>g + c + +</mark> (yes that's a plus sign 'gc+').
 <br/>
+<br/>
+<hr/>
 <h3>3.10- <a href="https://github.com/vim-scripts/loremipsum" target="_blank">loremipsum</a></h3>
 Who doesn't know the dummy text lorem ipsum. This plug-in generates a lorem ipsum text of a certain specified length to serve as a place holder. This plug-in isn't available in the official repositories of many distributions and you'll have to get it from GitHub (and it's unmaintained since 2008).
 <br/>
