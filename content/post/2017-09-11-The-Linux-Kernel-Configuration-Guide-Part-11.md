@@ -3367,6 +3367,34 @@ Reason:     It's highly recommended that you include this option in your kernel
 
             should tell you whether you need this option or not.
 ```
+<h3><&ast;>   Toshiba WMI Hotkeys Driver (EXPERIMENTAL)</h3>
+```none
+Symbol:     CONFIG_TOSHIBA_WMI
+
+Help:       This driver adds hotkey monitoring support to some Toshiba models
+            that manage the hotkeys via WMI events.
+
+            WARNING: This driver is incomplete as it lacks a proper keymap and the
+            *notify function only prints the ACPI event type value. Be warned that
+            you will need to provide some information if you have a Toshiba model
+            with WMI event hotkeys and want to help with the develpment of this
+            driver.
+
+            If you have a WMI-based hotkeys Toshiba laptop, say Y or M here.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     It's highly recommended that you include this option in your kernel
+            if your Toshiba laptop supports WMI.
+            
+            If you've followed the guide above, then a simple:
+
+                cat dmesg.txt | grep WMI
+
+            should tell you whether you need this option or not.
+```
 <h3><&ast;>   WMI support for MXM Laptop Graphics</h3>
 ```properties
 Symbol:     CONFIG_MXM_WMI
@@ -3384,6 +3412,75 @@ Reason:     It's highly recommended that you include this option in your kernel
             DOTSLASHLINUX has a guide on how to setup bumblebee on Gentoo Linux:
 
                 https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/
+```
+<h3><&ast;>   Intel Rapid Start Technology Driver</h3>
+```none
+Symbol:     CONFIG_INTEL_RST
+
+Help:       This driver provides support for modifying paramaters on systems
+            equipped with Intel's Rapid Start Technology. When put in an ACPI
+            sleep state, these devices will wake after either a configured
+            timeout or when the system battery reaches a critical state,
+            automatically copying memory contents to disk. On resume, the
+            firmware will copy the memory contents back to RAM and resume the OS
+            as usual.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     It's highly recommended that you include this option in your kernel
+            if your laptop supports Intel RST and you want to improve suspend
+            to disk and resume support.
+```
+<h3>[&ast;] Generic powercap sysfs driver  ---></h3>
+```none
+Symbol:     CONFIG_POWERCAP
+
+Help:       The power capping sysfs interface allows kernel subsystems to expose power
+            capping settings to user space in a consistent way.  Usually, it consists
+            of multiple control types that determine which settings may be exposed and
+            power zones representing parts of the system that can be subject to power
+            capping.
+
+            If you want this code to be compiled in, say Y here.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     It's highly recommended that you include this option in your kernel
+            if you're using an Intel CPU to enable RAPL support.
+```
+<h3><&ast;>   Intel RAPL Support</h3>
+```none
+Symbol:     CONFIG_INTEL_RAPL
+
+Help:       This enables support for the Intel Running Average Power Limit (RAPL)
+            technology which allows power limits to be enforced and monitored on
+            modern Intel processors (Sandy Bridge and later).
+
+            In RAPL, the platform level settings are divided into domains for
+            fine grained control. These domains include processor package, DRAM
+            controller, CPU core (Power Plance 0), graphics uncore (Power Plane
+            1), etc.
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     It's highly recommended that you include this option in your kernel
+            if you're using an Intel CPU to enable RAPL support.
+            
+            If you've followed the guide above, then a simple:
+
+                cat dmesg.txt | grep RAPL
+
+            and:
+
+                cat lsmod.txt | grep rapl
+
+            should tell you whether you need this option or not.
 ```
 <hr/>
 <h3>Chinese Translation</h3>
