@@ -1856,6 +1856,135 @@ Choice:     built-in -*-
 Reason:     It's highly recommended that you include this option in your kernel
             as step_wise is the best thermal governor.
 ```
+<h3><&ast;> Multimedia support  ---></h3>
+```none
+Symbol:     CONFIG_MEDIA_SUPPORT
+
+Help:       If you want to use Webcams, Video grabber devices and/or TV devices
+            enable this option and other options below.
+            Additional info and docs are available on the web at
+            <https://linuxtv.org>
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     It's highly recommended that you include this option in your kernel
+            in order for your webcam device to work.
+
+            It's also recommended by the Gentoo wiki.
+```
+<h3>[&ast;]   Cameras/video grabbers support</h3>
+```none
+Symbol:     CONFIG_MEDIA_CAMERA_SUPPORT
+
+Help:       Enable support for webcams and video grabbers.
+
+            Say Y when you have a webcam or a video capture grabber board.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     It's highly recommended that you include this option in your kernel
+            in order for your webcam device to work.
+
+            It's also recommended by the Gentoo wiki.
+```
+<h3>[&ast;]   Media USB Adapters  ---></h3>
+```none
+Symbol:     CONFIG_MEDIA_USB_SUPPORT
+
+Help:       Enable media drivers for USB bus.
+            If you have such devices, say Y.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     It's highly recommended that you include this option in your kernel
+            in order for your USB-bus webcam device to work.
+
+            If you've followed the guide above, then a simple:
+
+                cat lsusbv.txt | grep Camera
+
+            should tell you whether you need this option or not.
+```
+<h3><&ast;>   USB Video Class (UVC)</h3>
+```none
+Symbol:     CONFIG_USB_VIDEO_CLASS
+
+Help:       Support for the USB Video Class (UVC).  Currently only video
+            input devices, such as webcams, are supported.
+
+            For more information see: <http://linux-uvc.berlios.de/>
+
+Type:       tristate
+
+Choice:     built-in <*>
+
+Reason:     It's highly recommended that you include this option in your kernel
+            in order for your webcam device to work.
+
+            If you've followed the guide above, then a simple:
+
+                cat lsusbv.txt | grep UVC
+
+            should tell you whether you need this option or not.
+```
+<h3>[&ast;]     UVC input events device support (NEW)</h3>
+```none
+Symbol:     CONFIG_USB_VIDEO_CLASS_INPUT_EVDEV
+
+Help:       This option makes USB Video Class devices register an input device
+            to report button events.
+
+            If you are in doubt, say Y.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     It's highly recommended that you include this option in your kernel
+            in order for your webcam device to work.
+
+            If you've followed the guide above, then a simple:
+
+                cat lsusbv.txt | grep UVC
+
+            should tell you whether you need this option or not.
+            
+            It's also recommended by the Gentoo wiki.
+```
+<h3>[&ast;]   Autoselect ancillary drivers (tuners, sensors, i2c, spi, frontends) (NEW)</h3>
+```none
+Symbol:     CONFIG_MEDIA_SUBDRV_AUTOSELECT
+
+Help:       By default, a media driver auto-selects all possible ancillary
+            devices such as tuners, sensors, video encoders/decoders and
+            frontends, that are used by any of the supported devices.
+
+            This is generally the right thing to do, except when there
+            are strict constraints with regards to the kernel size,
+            like on embedded systems.
+
+            Use this option with care, as deselecting ancillary drivers which
+            are, in fact, necessary will result in the lack of the needed
+            functionality for your device (it may not tune or may not have
+            the needed demodulators).
+
+            If unsure say Y.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     It's highly recommended that you include this option in your kernel
+            if you've already included CONFIG_MEDIA_SUPPORT.
+
+            It's also recommended by the Gentoo wiki.
+```
 <h3>Graphics support  ---></h3>
 You may want to check <a href="https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/" target="_blank">Setting up Bumblebee on Gentoo Linux | DOTSLASHLINUX</a>.
 <h3><&ast;> /dev/agpgart (AGP Support)  ---></h3>
