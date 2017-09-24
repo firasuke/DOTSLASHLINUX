@@ -72,7 +72,13 @@ And use this configuration file:
 " Change Vim's default color scheme to apprentice which is
 " a dark, low contrast and slate color scheme that's undistracting
 " and suitable for coding as it reduces eye strain
-" (emerge app-vim/colorschemes)
+" (emerge app-vim/colorschemes).
+" If the theme's color look different to the colors in the picture above
+" then it's because I have a special configuration for my urxvt terminal
+" colors, kindly check this DOTSLASHLINUX guide on configuring urxvt:
+"
+"     https://www.dotslashlinux.com/2017/03/30/configuring-rxvt-unicode-urxvt/
+"
 colorscheme apprentice
 
 " This is extremely useful for indenation purposes
