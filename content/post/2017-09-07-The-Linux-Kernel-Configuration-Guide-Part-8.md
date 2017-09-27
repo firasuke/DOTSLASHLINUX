@@ -711,4 +711,4 @@ Reason:     You can safely exclude this option if you have an iGPU or a dGPU tha
 One of DOTSLASHLINUX's followers from china 杨鑫 (Yang Mame), decided to follow up with the series and provide chinese translation of the kernel configuration guides on his blog.
 <br/>
 <br/>
-To read this guide in chinese <a href="https://blog.yangmame.top/2017/09/21/linux%E5%86%85%E6%A0%B8%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97-bus-options-pci-etc/" target="_blank">click here</a>.
+To read this guide in chinese <a href="https://blog.yangmame.top/linux%E5%86%85%E6%A0%B8%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97-bus-options-pci-etc-%E5%92%8Cexecutable-file-formats-emulations/" target="_blank">click here</a>.

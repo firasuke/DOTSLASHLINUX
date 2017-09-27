@@ -1630,4 +1630,4 @@ Reason:     You can safely exclude this option if you've already excluded
 One of DOTSLASHLINUX's followers from china 杨鑫 (Yang Mame), decided to follow up with the series and provide chinese translation of the kernel configuration guides on his blog.
 <br/>
 <br/>
-To read this guide in chinese <a href="https://blog.yangmame.top/2017/09/10/linux%e5%86%85%e6%a0%b8%e9%85%8d%e7%bd%ae%e6%8c%87%e5%8d%97-general-setup/" target="_blank">click here</a>.
+To read this guide in chinese <a href="https://blog.yangmame.top/linux%E5%86%85%E6%A0%B8%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97-general-setup/" target="_blank">click here</a>.

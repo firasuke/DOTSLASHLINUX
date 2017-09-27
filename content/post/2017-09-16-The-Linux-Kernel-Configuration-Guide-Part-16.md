@@ -461,3 +461,9 @@ Choice:     built-in -*-
 
 Reason:     Forcibly included as it's required by some important options.
 ```
+<hr/>
+<h3>Chinese Translation</h3>
+One of DOTSLASHLINUX's followers from china 杨鑫 (Yang Mame), decided to follow up with the series and provide chinese translation of the kernel configuration guides on his blog.
+<br/>
+<br/>
+To read this guide in chinese <a href="https://blog.yangmame.top/linux%E5%86%85%E6%A0%B8%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97-kernel-hackinglibrary-routines-the-end/" target="_blank">click here</a>.
