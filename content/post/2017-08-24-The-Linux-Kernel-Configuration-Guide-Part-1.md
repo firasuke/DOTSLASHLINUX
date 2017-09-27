@@ -69,7 +69,7 @@ Type:
 
 Choice:
 
-(Reason:)
+Reason:
 ```
 In order not to create a state of confusion, I'll be using the word symbol for the capitalized underscore-separated version of the name. For example:
 ```properties
