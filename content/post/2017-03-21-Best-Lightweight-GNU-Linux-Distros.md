@@ -1,5 +1,5 @@
 +++
-title = "Best Lightweight GNU/Linux Distros!"
+title = "Best Lightweight GNU/Linux Distros"
 slug = "best lightweight gnu linux distros"
 nick = "ldistros"
 date = "2017-03-21"

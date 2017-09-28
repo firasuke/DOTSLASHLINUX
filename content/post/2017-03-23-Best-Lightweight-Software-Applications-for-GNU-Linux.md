@@ -1,5 +1,5 @@
 +++
-title = "Best Lightweight Software/Applications for GNU/Linux!"
+title = "Best Lightweight Software/Applications for GNU/Linux"
 slug = "best lightweight software applications for gnu linux"
 nick = "lapps"
 date = "2017-03-23"
