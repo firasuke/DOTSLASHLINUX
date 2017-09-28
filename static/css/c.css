@@ -259,11 +259,11 @@ nav li {
 }
 
 .side {
-  text-align: center;
   padding: 0 10px 10px 10px;
 }
 
 .side h3 {
+  text-align: center;
   margin: 0 0 10px 0;
   padding: 10px;
   border-top: 1px solid #232323;
@@ -300,16 +300,13 @@ nav li {
 
 .distros a {
   display: block;
+  text-align: center;
   padding: 30px;
   margin: 10px 0 10px 0;
   font-size: 1.4em;
 }
 
-.distros li {
-  margin: 10px 0 10px 0;
-}
-
-.distros li:hover {
+.distros a:hover {
   opacity: 0.9;
 }
 
