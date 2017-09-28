@@ -280,11 +280,6 @@ nav li {
   margin: 30px 0 30px 0;
 }
 
-.laptop img {
-  border: 1px solid #232323;
-  border-radius: 10px;
-}
-
 .laptop,
 .distros,
 .upcoming,
@@ -304,8 +299,9 @@ nav li {
 }
 
 .distros a {
-  display: inline-block;
+  display: block;
   padding: 30px;
+  margin: 10px 0 10px 0;
   font-size: 1.4em;
 }
 
