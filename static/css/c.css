@@ -276,6 +276,16 @@ nav li {
   padding: 0;
 }
 
+.laptop {
+  margin: 30px 0 30px 0;
+}
+
+.laptop img {
+  border: 1px solid #232323;
+  border-radius: 10px;
+}
+
+.laptop,
 .distros,
 .upcoming,
 .suggestions,
