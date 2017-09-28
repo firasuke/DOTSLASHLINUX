@@ -3414,7 +3414,7 @@ Reason:     It's highly recommended that you include this option in your kernel
                 https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/
 ```
 <h3><&ast;>   Intel Rapid Start Technology Driver</h3>
-```none
+```properties
 Symbol:     CONFIG_INTEL_RST
 
 Help:       This driver provides support for modifying paramaters on systems
@@ -3434,7 +3434,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             to disk and resume support.
 ```
 <h3>[&ast;] Generic powercap sysfs driver  ---></h3>
-```none
+```properties
 Symbol:     CONFIG_POWERCAP
 
 Help:       The power capping sysfs interface allows kernel subsystems to expose power
@@ -3453,7 +3453,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             if you're using an Intel CPU to enable RAPL support.
 ```
 <h3><&ast;>   Intel RAPL Support</h3>
-```none
+```properties
 Symbol:     CONFIG_INTEL_RAPL
 
 Help:       This enables support for the Intel Running Average Power Limit (RAPL)
