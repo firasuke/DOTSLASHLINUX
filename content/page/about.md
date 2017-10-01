@@ -4,20 +4,20 @@ type = "page"
 +++
 <div class="box about">
 <h2>ABOUT</h2>
-DOTSLASHLINUX is a GNU/Linux enthusiasts' hub, featuring configuration guides for the linux kernel and several lightweight open source and free software.
+DOTSLASHLINUX is a GNU/Linux enthusiasts' hub, featuring configuration guides for the Linux kernel and several lightweight open source and free software.
 <br/>
 <br/>
-It would be best if you use one of these distros, to follow up with our content (if you're new to GNU/Linux):
+It would be best if you use one of these distributions, to follow up with our content (if you're new to GNU/Linux):
 <br/>
 <ol>
   <li><a href="https://gentoo.org/">Gentoo Linux</a></li>
   <li><a href="https://www.voidlinux.eu/">Void Linux</a></li>
   <li><a href="https://www.archlinux.org/">Arch Linux</a></li>
 </ol>
-Otherwise any distro will be fine.
+Otherwise any distribution will be fine.
 <br/>
 <br/>
-My distro of choice is <mark>Gentoo Linux</mark>.
+My distribution of choice is <mark>Gentoo Linux</mark>.
 <br/>
 <br/>
 My daily driver is a <mark>Toshiba L50-A664</mark>.

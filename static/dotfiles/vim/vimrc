@@ -1,0 +1,36 @@
+colorscheme apprentice
+
+filetype plugin indent on
+
+set number
+set relativenumber
+
+syntax on
+set spell spelllang=en
+
+set modifiable
+
+set cursorline
+set cursorcolumn
+set mouse=a
+
+set lazyredraw
+set t_Co=256
+
+set incsearch
+set hlsearch
+
+set tabstop=2
+set shiftwidth=2
+set expandtab
+
+let NERDTreeShowHidden=1
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0

@@ -1,2 +1,2 @@
-# (fs)			(mountpoint)	(type)		(opts)		(dump/pass)
-/dev/sda1		/		         ext4		 noatime		0 1
+/dev/sda1		/		xfs		noatime		0 1
+/dev/sda2		none		swap		sw		0 0

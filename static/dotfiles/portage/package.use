@@ -4,7 +4,7 @@ app-admin/sudo -sendmail
 x11-wm/dwm savedconfig
 net-wireless/wpa_supplicant dbus
 net-misc/connman bluetooth iptables
-x11-base/xorg-server glamor
+x11-base/xorg-server glamor -minimal
 dev-lang/python sqlite
 media-libs/libpng apng
 media-libs/imlib2 jpeg png
@@ -15,9 +15,11 @@ x11-drivers/xf86-video-intel dri3 xvmc
 x11-libs/libfm -automount gtk
 media-video/ffmpegthumbnailer png
 dev-vcs/git -gpg
-x11-drivers/nvidia-drivers compat -kms
+x11-drivers/nvidia-drivers compat -kms -uvm
+sys-apps/kmod -lzma -zlib
+sys-apps/openrc -netifrc -newnet
 media-libs/harfbuzz icu
-www-client/chromium -hangouts -l10n_am -l10n_ar -l10n_bg -l10n_bn -l10n_ca -l10n_cs -l10n_da -l10n_de -l10n_el -l10n_en-GB -l10n_es -l10n_es-419 -l10n_et -l10n_fa -l10n_fi -l10n_fil -l10n_fr -l10n_gu -l10n_he -l10n_hi -l10n_hr -l10n_hu -l10n_id -l10n_it -l10n_ja -l10n_kn -l10n_ko -l10n_lt -l10n_lv -l10n_ml -l10n_mr -l10n_ms -l10n_nb -l10n_nl -l10n_pl -l10n_pt-BR -l10n_pt-PT -l10n_ro -l10n_ru -l10n_sk -l10n_sl -l10n_sr -l10n_sv -l10n_sw -l10n_ta -l10n_te -l10n_th -l10n_tr -l10n_uk -l10n_vi -l10n_zh-CN -l10n_zh-TW
+www-client/chromium custom-cflags -hangouts -l10n_am -l10n_ar -l10n_bg -l10n_bn -l10n_ca -l10n_cs -l10n_da -l10n_de -l10n_el -l10n_en-GB -l10n_es -l10n_es-419 -l10n_et -l10n_fa -l10n_fi -l10n_fil -l10n_fr -l10n_gu -l10n_he -l10n_hi -l10n_hr -l10n_hu -l10n_id -l10n_it -l10n_ja -l10n_kn -l10n_ko -l10n_lt -l10n_lv -l10n_ml -l10n_mr -l10n_ms -l10n_nb -l10n_nl -l10n_pl -l10n_pt-BR -l10n_pt-PT -l10n_ro -l10n_ru -l10n_sk -l10n_sl -l10n_sr -l10n_sv -l10n_sw -l10n_ta -l10n_te -l10n_th -l10n_tr -l10n_uk -l10n_vi -l10n_zh-CN -l10n_zh-TW system-icu system-libvpx
 dev-libs/libxml2 icu
 dev-libs/xmlsec nss
 app-text/xmlto text
@@ -29,7 +31,8 @@ media-gfx/blender -bullet -dds -elbeem -game-engine -openexr -opennl
 net-p2p/transmission gtk lightweight
 media-plugins/audacious-plugins aac fluidsynth lame mp3 vorbis wavpack
 app-misc/tmux vim-syntax
-app-editors/vim gpm python
+app-editors/vim gpm -minimal python
+app-editors/vim-core -minimal
 x11-libs/gdk-pixbuf jpeg
 www-plugins/adobe-flash -nsplugin
 dev-libs/glib dbus
@@ -58,7 +61,7 @@ x11-terms/rxvt-unicode blink unicode3
 app-editors/vim python_single_target_python2_7 -python_single_target_python3_4
 sys-devel/clang -llvm_targets_AMDGPU -llvm_targets_BPF
 sys-devel/llvm -llvm_targets_AMDGPU -llvm_targets_BPF
-www-client/seamonkey -calendar -chatzilla custom-cflags custom-optimization force-gtk3 ipc minimal -roaming system-harfbuzz system-icu system-jpeg system-libevent system-sqlite
+www-client/seamonkey -calendar -chatzilla custom-cflags custom-optimization force-gtk3 ipc minimal -roaming system-harfbuzz system-icu system-jpeg system-libevent system-libvpx system-sqlite
 media-video/mpv bluray cdda dvd
 media-plugins/audacious-plugins cdda ffmpeg flac libsamplerate
 app-emulation/wine-staging d3d9 mp3 osmesa -realtime s3tc -udisks
@@ -135,8 +138,15 @@ media-video/simplescreenrecorder mp3 theora vorbis x264
 app-mobilephone/heimdall qt5
 app-crypt/gnupg -smartcard
 sys-apps/lshw gtk
-app-emulation/qemu -jpeg -ncurses -png python spice -vnc xfs
+app-emulation/qemu -aio -caps -fdt -filecaps -jpeg -ncurses -pin-upstream-blobs -png qemu_user_targets_x86_64 spice -vnc xfs
 dev-qt/qtcore icu
-www-client/firefox bindist custom-cflags custom-optimization hwaccel minimal system-harfbuzz system-icu system-jpeg system-libevent system-libvpx system-sqlite
+www-client/firefox bindist custom-cflags custom-optimization hwaccel system-harfbuzz system-icu system-jpeg system-libevent system-libvpx system-sqlite
 dev-db/sqlite secure-delete
 media-libs/libvpx postproc
+sys-boot/lilo minimal
+x11-misc/libinput-gestures gtk
+net-wireless/aircrack-ng -airdrop-ng -airgraph-ng -netlink -pcre -sqlite
+media-gfx/fontforge png
+# required by media-gfx/gimp-2.9.6::gentoo
+# required by gimp (argument)
+>=media-libs/libmypaint-1.3.0 gegl
