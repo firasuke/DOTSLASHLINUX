@@ -18,7 +18,7 @@ GRUB_TIMEOUT=0
 #GRUB_TIMEOUT_STYLE=menu
 
 # Append parameters to the linux kernel command line
-GRUB_CMDLINE_LINUX="root=/dev/sda1 rootfstype=ext4 quiet"
+GRUB_CMDLINE_LINUX="rootfstype=xfs acpi_osi=Linux acpi_osi='!Windows 2012' acpi_osi='!Windows 2013'"
 #
 # Examples:
 #
