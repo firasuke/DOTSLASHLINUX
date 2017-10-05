@@ -1,0 +1,5 @@
+order: 25
+replying_to: '23'
+name: Mike
+comment: "Thank you so much! Actually I found the problem - between the chair and the computer. I had put the wrong driver name in make.conf (i915 instead of i965, duh) Everything is working exactly as advertised now. Your guide is really great!\r\n\r\nJust another question - I tried optirun nvidia-settings, the program starts (and runs on nvidia) but doesn't allow any settings because the xorg.server is not running on nvidia, I suppose this is perfectly normal and expected behavior, right?\r\n\r\nSo, my laptop will only use nvidia if and when I need it, and any program needing it must be launched with a preceding optirun. \r\n\r\nAnd bbswitch must be recompiled with every kernel, together with nvidia driver and intel drivers. \r\n\r\nI'm on a HP ENVY Notebook - 15-ae106nl (ENERGY STAR) Thanks again!"
+date: '2017-10-05'

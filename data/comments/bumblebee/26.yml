@@ -1,0 +1,5 @@
+order: 26
+replying_to: '23'
+name: DOTSLASHLINUX
+comment: "@Mike, That's really nice to hear, I'm super glad that it worked for you!\n\nAs for running nvidia-settings, yes it's perfectly normal, you just have to disable the bridge and specify a display and you'll be good to go:\n\n<mark>optirun -b none -c nvidia-settings :8</mark>\n\nYes, you'll have to recompile bbswitch and nvidia-drivers as they're the only out of tree kernel modules. You can simply execute:\n\n<mark>emerge -av @module-rebuild</mark>\n\nand it'll automatically recompile all out of tree kernel modules after updating your kernel version.\n\nHope that helps! Thanks for stopping by!"
+date: '2017-10-05'
