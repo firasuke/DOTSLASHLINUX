@@ -1,0 +1,5 @@
+order: 24
+replying_to: '23'
+name: DOTSLASHLINUX
+comment: "@Mike, Thanks for your feedback. As for the problem you're receiving, would you mind sharing your system logs?\n\n1- dmesg\n\n2- kernel config (if possible)\n\n3- lsmod\n\n 4- lspci -nnkkvvv\n\n5- /var/log/rc.log (if it exists)\n\n6- the USE flags for mesa, bumblebee, xf86-video-intel, nvidia-drivers, bbswitch and primus\n\nI'd also check if CONFIG_DRM_I915_USERPTR is included in your respective kernel configuration or not.\n\nAccording to the error message you've provided, it seems that the i965 driver refused to load, which may be due to a disabled i965 USE flag (which is unlikely if you've followed the guide above).\n\nHopefully, we'll be able to solve this problem! Keep me updated Mike!"
+date: '2017-10-05'
