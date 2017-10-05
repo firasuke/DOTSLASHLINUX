@@ -1,0 +1,5 @@
+order: 23
+replying_to: ''
+name: Mike
+comment: "Hi, thank you very much, everything was very clear. However, I get this error message when I arrive at: \r\n\r\noptirun glxgears\r\n\r\nlibGL error: unable to load driver: i965_dri.so\r\nlibGL error: driver pointer missing\r\n\r\nDid you ever see this before? How can I debug it?"
+date: '2017-10-05'
