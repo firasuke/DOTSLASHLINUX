@@ -55,6 +55,8 @@ tristate: < >
 string: (A_STRING)
 
 integer: (57)
+
+hex: (0x1000000)
 ```
 <hr/>
 <h3>(Gentoo Specific Options) Gentoo Linux  ---></h3>
