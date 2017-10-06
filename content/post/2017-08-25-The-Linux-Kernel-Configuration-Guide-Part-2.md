@@ -35,7 +35,27 @@ Similarly the <mark>y</mark> key can be used to include options [&ast;], and the
 The <mark>&#9166;</mark> (enter/return) button can be used to access the available nested child options for any single parent option.
 <br/>
 <br/>
-Some options may be included or excluded by other options. <mark>-&ast;-</mark> refers to these included options and you can't exclude them unless you exclude all the options that included it.
+The <mark>z</mark> key can be used to toggle hidden kernel options, this can be extremely useful if you're searching for an excluded kernel option (it'll make it easier to find that excluded option and include the options it requires to be enabled).
+<br/>
+<br/>
+Below is an explanation of the symbols before the names of the kernel options:
+```properties
+Included, built-in, enabled: [*], <*>, (X), (STRING), (57)
+Forcibly included: -*-
+
+Excluded, disabled: [ ], < >, ()
+Forcibly excluded: - -
+```
+and their relative types:
+```properties
+boolean: [ ]
+
+tristate: < >
+
+string: (A_STRING)
+
+integer: (57)
+```
 <hr/>
 <h3>(Gentoo Specific Options) Gentoo Linux  ---></h3>
 The first section you'll see in the menu options when using Gentoo Linux, will be the Gentoo Linux section (that was predictable =D). Select that option and you'll see the following:
