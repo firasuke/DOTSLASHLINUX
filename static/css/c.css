@@ -123,9 +123,7 @@ nav li {
 .first,
 .deck,
 .popular,
-.kernel,
 .map,
-.kernelmap,
 .dotfiles,
 .about,
 #search-results {
@@ -161,27 +159,19 @@ nav li {
   color: #dadada;
 }
 
-.map,
-.kernelmap {
+.map {
   margin: 0;
   padding-bottom: 10px;
 }
 
-.kernelmap {
-  margin-bottom: 10px;
-}
-
-.map a,
-.kernelmap a {
+.map a {
   text-decoration: underline;
 }
 
 .first h2,
 .deck h2,
 .popular h2,
-.kernel h2,
 .map h2,
-.kernelmap h2,
 .dotfiles h2,
 .about h2,
 #search-results h2 {
@@ -227,8 +217,7 @@ nav li {
   background-color: #0077b5;
 }
 
-.map h3,
-.kernelmap h3 {
+.map h3 {
   font-size: 1.5em;
 }
 
