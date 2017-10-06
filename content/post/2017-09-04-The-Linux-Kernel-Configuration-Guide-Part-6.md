@@ -1695,7 +1695,7 @@ Type:       hex
 Choice:     (0x200000) default
 
 Reason:     It's highly recommended that you leave the value of this option set
-            to its default value of (0x1000000) unles you seriously know what you're
+            to its default value of (0x200000) unles you seriously know what you're
             doing.
 ```
 <h3>[ ] Support for hot-pluggable CPUs</h3>
