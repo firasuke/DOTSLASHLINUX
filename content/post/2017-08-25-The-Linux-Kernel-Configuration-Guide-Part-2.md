@@ -41,22 +41,22 @@ The <mark>z</mark> key can be used to toggle hidden kernel options, this can be 
 Below is an explanation of the symbols before the names of the kernel options:
 ```properties
 Included, built-in, enabled: [*], <*>, (X), (STRING), (57), (0x1000000)
-Forcibly included: -*-
+Forcibly included, forcibly built-in, forcibly enabled: -*-
 
 Excluded, disabled: [ ], < >, ()
-Forcibly excluded: - -
+Forcibly excluded, forcibly disabled: - -
 ```
 and their relative types:
 ```properties
-boolean: [ ]
+boolean: [ ], [*], -*-, - -
 
-tristate: < >
+tristate: < >, <*>, <M>, -*-, - -
 
-string: (STRING)
+string: (STRING), ()
 
-integer: (57)
+integer: (57), ()
 
-hex: (0x1000000)
+hex: (0x1000000), ()
 ```
 <hr/>
 <h3>(Gentoo Specific Options) Gentoo Linux  ---></h3>
