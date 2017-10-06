@@ -529,27 +529,6 @@ Reason:     It's highly recommended that you include this option in your kernel 
             you're using one of the SCSI devices mentioned above (mainly a SCSI
             hard drive and CD-ROM).
 ```
-<h3>-&ast;- SCSI: use blk-mq I/O path by default</h3>
-```properties
-Symbol:     CONFIG_SCSI_MQ_DEFAULT
-
-Help:       This option enables the new blk-mq based I/O path for SCSI
-            devices by default.  With the option the scsi_mod.use_blk_mq
-            module/boot option defaults to Y, without it to N, but it can
-            still be overridden either way.
-
-            If unsure say N.
-
-Type:       boolean
-
-Choice:     built-in -*-
-
-Reason:     If you've checked the list of priorities listed at the top of this
-            page, you'll see "low-latency" listed as one of the top priorities.
-
-            To achieve that, you can use ck-sources (MuQSS + BFQ), and 
-            CONFIG_DEFAULT_BFQ requires this option to work.
-```
 <h3><&ast;> SCSI disk support</h3>
 ```properties
 Symbol:     CONFIG_BLK_DEV_SD
