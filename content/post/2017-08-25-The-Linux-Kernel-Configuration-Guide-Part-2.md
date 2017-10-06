@@ -40,7 +40,7 @@ The <mark>z</mark> key can be used to toggle hidden kernel options, this can be 
 <br/>
 Below is an explanation of the symbols before the names of the kernel options:
 ```properties
-Included, built-in, enabled: [*], <*>, (X), (STRING), (57)
+Included, built-in, enabled: [*], <*>, (X), (STRING), (57), (0x1000000)
 Forcibly included: -*-
 
 Excluded, disabled: [ ], < >, ()
@@ -52,7 +52,7 @@ boolean: [ ]
 
 tristate: < >
 
-string: (A_STRING)
+string: (STRING)
 
 integer: (57)
 
