@@ -1,0 +1,5 @@
+order: 27
+replying_to: '25'
+name: Mike
+comment: "I tried:\r\n\r\noptirun -b none -c nvidia-settings :8\r\n\r\n but I get\r\n\r\nError running \":8\": No such file or directory\r\n""
+date: '2017-10-10'
