@@ -1,0 +1,5 @@
+order: 28
+replying_to: '25'
+name: DOTSLASHLINUX
+comment: "@Mike, you'll need to enable the gtk3 USE flag on the nvidia-drivers package and ensure that nvidia-settings is installed."
+date: '2017-10-11'
