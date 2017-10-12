@@ -1,5 +1,5 @@
 order: 27
-replying_to: '23'
+replying_to: '25'
 name: Mike
-comment: "Ok, there were two problems: first, you can only run an xserver on :8 if you are working from X started with startx.\r\nFrom a desktop environment started with xdm it won't work.\r\nSecond, the correct command is apparently\r\n\r\noptirun -b none nvidia-settings :8 ( without -c option )\r\n\r\nHowever, nvidia-settings still complains about xserver not running on nvidia.\r\n\r\nActually, I tried to get nvidia working on this laptop without bumblebee (stopping bumblebee service, unloading bbswitch module, loading nvidia module, using an xorg.conf file which should be ok) and I get a black screen. But no error messages from startx. I also tried adding the xrandr lines in .xinitrc as someone suggested, but doesn't solve the problem.\r\n\r\nSo, now I have two questions:\r\n\r\n1) should I bother about getting my laptop working with just the nvidia driv er at all, since apparently apps with bumblebee work? Or is this going to bite me somehow?\r\n\r\n2) if you think it would be safer to check that nvidia-driver works without bumblebee, isn't there some script somewhere that can do a proper nvidia setup? I mean, distro's like Ubuntu or Mint do this automagically. Or what should I try?"
-date: '2017-10-12'
+comment: "I tried:\r\n\r\noptirun -b none -c nvidia-settings :8\r\n\r\n but I get\r\n\r\nError running \":8\": No such file or directory\r\n""
+date: '2017-10-10'

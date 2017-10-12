@@ -1,0 +1,5 @@
+order: 30
+replying_to: '23'
+name: DOTSLASHLINUX
+comment: "@Mike, You're asking too many questions in this regard. This setup is for those who have an Intel integrated GPU and a NVIDIA discrete GPU and want to get an optimus-like setup on a GNU/Linux distro. It isn't a setup for disabling the integrated GPU completely and running everything on the discrete GPU.\n\nAs for the nvidia-settings command that's weird. Last time I checked I had to use the '-c' in order to get it working.\n\nDon't remove the xdm part above if you're intending to use xdm (which makes me wonder why not stick to xinit)...\n\nYes, on Arch Linux setting bumblebee is as easy as it gets. Getting bumblebee running on Arch is a pretty straightforward, error-free and no-hacks-required way (probably the easiest among all distributions out there)."
+date: '2017-10-12'
