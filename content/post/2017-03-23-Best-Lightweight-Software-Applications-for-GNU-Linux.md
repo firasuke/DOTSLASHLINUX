@@ -26,7 +26,7 @@ On the other hand, EXTLINUX is another flavor of Syslinux the lightweight bootlo
 <br/>
 <hr/>
 <h3>2- Kernel: Custom Kernel</h3>
-Hopefully, a whole series on how to configure your kernel is coming, so please look up to it!
+DOTSLASHLINUX has an extensive series on how to configure your Linux kernel, kindly check the following <a href="https://www.dotslashlinux.com/2017/08/24/the-linux-kernel-configuration-guide-part-1/" target="_blank">The Linux Kernel Configuration Guide Part 1</a>
 <br/>
 <hr/>
 <h3>3- initrd/initramfs : None</h3>
@@ -106,33 +106,43 @@ Here's DOTSLASHLINUX's custom urxvt configuration for least memory footprint <a 
 Connman is lighter than both NetworkManager and WICD. It supports wifi connection via wpa_supplicant, bluetooth via bluez, automatically manages wired connections and supports the usage of proxies and VPNs. The only drawback to it is that there's no official applet for it and the currently available applets are either old, slow or lacking some features.
 <br/>
 <hr/>
-<h3>15- Image Viewer: <a href="https://spiegl.de/qiv/" target="_blank">QIV</a> VS <a href="http://lxde.sourceforge.net/gpicview/" target="_blank">GPicView</a></h3>
-It's a matter of preference and easiness of use as both are lightweight image viewers, but qiv is lighter and loads images faster. However, qiv's controls may be hard to learn for some users. On the other hand, gpicview has a simple gtk gui that many users will prefer.
+<h3>15- Image Viewer: <a href="https://spiegl.de/qiv/" target="_blank">QIV</a> VS <a href="http://lxde.sourceforge.net/gpicview/" target="_blank">GPicView</a> VS <a href="https://feh.finalrewind.org/" target="_blank">feh</a></h3>
+It's a matter of preference and easiness of use as all of these are lightweight image viewers with feh being the lightest and intended mainly for console users (can also set desktop wallpapers).
+<br/>
+<br/>
+qiv comes next being the lightest and fastest GUI image viewer. However, qiv's controls may be hard to learn for some users. On the other hand, gpicview has a simple GTK GUI that many users will prefer.
 <br/>
 <hr/>
-<h3>16- Web Browser: <a href="https://www.qupzilla.com/" target="_blank">Qupzilla</a> VS <a href="https://otter-browser.org/" target="_blank">Otter</a></h3>
+<h3>16- Desktop Background Wallpaper Setter: <a href="https://github.com/himdel/hsetroot" target="_blank">hsetroot</a> VS <a href="https://feh.finalrewind.org/" target="_blank">feh</a></h3>
+hsetroot is lighter than feh as feh depends on imlib2 (which is probably installed everywhere), but nevertheless these are some extremely lightweight background wallpapers setters for your desktop.
+<br/>
+<hr/>
+<h3>17- Web Browser: <a href="https://www.qupzilla.com/" target="_blank">Qupzilla</a> VS <a href="https://otter-browser.org/" target="_blank">Otter</a></h3>
 These two are the lightest "usable" web browsers with a GUI available on GNU/Linux. You may be wondering that " If they were so lightweight then why is my package manager pulling lots of dependencies? ". True they have some dependencies related to qt5 and qtwebkit, but once they're installed, they're much lighter than your mainstream browsers. They're even lighter than midori which is considered a lightweight gtk web browser. Otter is lighter than qupzilla but it's still under heavy development.
 <br/>
 <hr/>
-<h3>17- PDF Reader: <a href="https://github.com/jristz/epdfview" target="_blank">ePDFView</a> VS <a href="https://mupdf.com/" target="_blank">MuPDF</a></h3>
+<h3>18- PDF Reader: <a href="https://github.com/jristz/epdfview" target="_blank">ePDFView</a> VS <a href="https://mupdf.com/" target="_blank">MuPDF</a></h3>
 ePDFView is convenient lightweight pdf reader for GNU/Linux. It's so small it weighs less than 200 kilobytes. However, it's not the fastest. That title goes to MuPDF which is not so light (package is around ~20 megabytes) but is the fastest pdf reader available for GNU/Linux. MuPDF controls may be annoying to some users as well.
 <br/>
 <hr/>
-<h3>18- Audio Player: <a href="https://github.com/Alexey-Yakovenko/deadbeef" target="_blank">DeaDBeef</a> VS <a href="http://audacious-media-player.org/" target="_blank">Audacious</a></h3>
+<h3>19- Audio Player: <a href="https://github.com/Alexey-Yakovenko/deadbeef" target="_blank">DeaDBeef</a> VS <a href="http://audacious-media-player.org/" target="_blank">Audacious</a></h3>
 DeaDBeef is the lighter one (but not by much). However, I've encountered several problems while trying deadbeef. Audio files that had.m4a or.aac extension were unplayable and crashed the player. On the other hand, my experience with audacious was super smooth and it played whatever I through at it as long as it had audio.
 <br/>
 <hr/>
-<h3>17- Video Player: <a href="https://mpv.io/" target="blank">mpv</a></h3>
+<h3>20- Video Player: <a href="https://mpv.io/" target="blank">mpv</a></h3>
 Some may argue that mplayer is lighter, that is true but only slightly. Mpv plays all video formats known to man-kind and it uses less cpu resources than both mplayer and vlc. It also supports VAAPI (Video Acceleration API) and VDPAU (Video Decode and Presentation API) which can significantly reduce its cpu usage (VAAPI) and its gpu usage (VDPAU) making it the fastest, most powerful and least resource hungry video player on GNU/Linux.
 <br/>
 <br/>
 Here's DOTSLASHLINUX's custom mpv configuration for maximum performance and maximum powersaving <a href="https://www.dotslashlinux.com/2017/03/31/Optimal-mpv-Configuration.html" target="_blank">Optimal mpv Configuration</a>.
 <hr/>
-<h3>18- Text Editor: <a href="https://sites.google.com/site/e3editor/" target="_blank">e3</a> VS <a href="https://en.wikipedia.org/wiki/GNU_nano" target="_blank">GNU nano</a> VS <a href="http://tarot.freeshell.org/leafpad/" target="_blank">Leafpad</a></h3>
+<h3>21- Text Editor: <a href="https://sites.google.com/site/e3editor/" target="_blank">e3</a> VS <a href="https://en.wikipedia.org/wiki/GNU_nano" target="_blank">GNU nano</a> VS <a href="http://tarot.freeshell.org/leafpad/" target="_blank">Leafpad</a> VS <a href="https://www.dotslashlinux.com/2017/09/23/best-vim-configuration-and-plugins-for-web-development/" target="_blank">Vim</a></h3>
 e3 is the lightest and is written in assembly. Nano and e3 are for when you're inside a terminal or in a tty, and leafpad's when you're not. However, I'd pick e3/nano over leafpad any day any time.
 <br/>
+<br/>
+There's also Vim, which is the lightest extensible text editor out there. I mainly use Vim for everything and in fact this whole website was coded inside Vim. If you're interested, kindly check this <a href="" target="_blank">Best Vim Configuration and Plugins for Web Development</a>.
+<br/>
 <hr/>
-<h3>19- Screen Capture Tool: <a href="https://github.com/naelstrof/maim" target="_blank">maim</a></h3>
+<h3>22- Screen Capture Tool: <a href="https://github.com/naelstrof/maim" target="_blank">maim</a> vs <a href="https://github.com/dreamer/scrot" target="_blank">scrot</a> VS <a href="https://github.com/GNOME/gnome-screenshot" target="_blank">gnome-screenshot</a>></h3>
 MAIM or (MAke IMage) is a lightweight screen capture tool that utilizes imlib2 to take screenshots. Just fire up a terminal and type:
 ```properties
 maim imagename.format
@@ -140,44 +150,53 @@ maim imagename.format
 <br/>
 and a screenshot of your desktop with the name and format that you specified will be saved in the current directory that you're in. It has some nice options and can be mapped to a given keyboard shortcut.
 <br/>
+<br/>
+You also have scrot which requires imlib2 but is also considered lightweight, and gnome-screenshot which despite being related to the GNOME project doesn't pull many GNOME dependencies.
+<br/>
 <hr/>
-<h3>20- Screen Recording Tool: <a href="http://recordmydesktop.sourceforge.net/" target="_blank">recordMyDesktop</a> VS <a href="http://www.maartenbaert.be/simplescreenrecorder/" target="_blank">SimpleScreenRecorder</a> VS <a href="https://github.com/green-project/green-recorder" target="_blank">Green Recorder</a></h3>
+<h3>23- Screen Recording Tool: <a href="http://recordmydesktop.sourceforge.net/" target="_blank">recordMyDesktop</a> VS <a href="http://www.maartenbaert.be/simplescreenrecorder/" target="_blank">SimpleScreenRecorder</a> VS <a href="https://github.com/green-project/green-recorder" target="_blank">Green Recorder</a></h3>
 Recordmydesktop is slightly lighter than simplescreenrecorder but doesn't have as many options as it does. Unless you have a good reason not to choose simplescreenrecorder, go with recordmydesktop. Green recorder is a new screen recorder claiming to be simple and functional, it's also the first screen recorder to support Wayland display server on GNOME session.
 <br/>
 <hr/>
-<h3>21- BitTorrent Client: <a href ="https://transmissionbt.com/" target="_blank">Transmission</a></h3>
+<h3>24- Screen Auto Locking Tool: <a href="https://linux.die.net/man/1/xautolock" target="_blank">xautolock</a></h3>
+<br/>
+<hr/>
+<h3>25- Console Auto Locking Tool: <a href="https://www.linux.org/docs/man1/vlock.html" target="_blank">vlock</a></h3>
+<br/>
+<hr/>
+<h3>26- BitTorrent Client: <a href ="https://transmissionbt.com/" target="_blank">Transmission</a></h3>
 Available for CLI usage and has two GUI flavors (GTK & QT), transmission is a lightweight bittorrent client available for GNU/Linux.
 <br/>
 <hr/>
-<h3>22- Archive Manager: <a href="http://xarchiver.sourceforge.net/" target="_blank">xarchiver</a></h3>
+<h3>27- Archive Manager: <a href="http://xarchiver.sourceforge.net/" target="_blank">xarchiver</a></h3>
 Xarchiver supports <mark>7-zip, arj, bzip2, gzip, rar, lha, lzma, lzop, deb, rpm, tar and zip</mark>.
 <br/>
 <hr/>
-<h3>23- Process Viewer: <a href="https://hisham.hm/htop/" target="_blank">htop</a></h3>
+<h3>28- Process Viewer: <a href="https://hisham.hm/htop/" target="_blank">htop</a></h3>
 Htop is an interactive process viewer for GNU/Linux. It supports mouse usage in terminal or tty through GPM (General Purpose Mouse or Console Mouse Support). It also monitors your cpu usage, memory usage, battery...etc.
 <br/>
 <hr/>
-<h3>24- IRC Client: <a href="https://irssi.org/" target="_blank">irssi</a> VS <a href="http://xchat.org/" target="_blank">XChat</a></h3>
+<h3>29- IRC Client: <a href="https://irssi.org/" target="_blank">irssi</a> VS <a href="http://xchat.org/" target="_blank">XChat</a></h3>
 If you're in a terminal emulator or in a tty use irssi, otherwise use xchat. The only downside to irssi is that it's limited by the terminal emulator it was launched in and since many terminals don't support right to left languages (and if they did the text doesn't appear properly), you may want to choose xchat to talk in languages other than English.
 <br/>
 <hr/>
-<h3>25- HTTP Server: <a href="https://www.lighttpd.net/" target="_blank">Lighttpd</a> or <a href="https://www.nginx.com/" target="_blank">NGINX</a></h3>
+<h3>30- HTTP Server: <a href="https://www.lighttpd.net/" target="_blank">Lighttpd</a> or <a href="https://www.nginx.com/" target="_blank">NGINX</a></h3>
 True lighttpd is the lightest available http server out there for GNU/Linux, but nginx outperforms it under heavy load.
 <br/>
 <hr/>
-<h3>26- FTP Server: <a href="https://security.appspot.com/vsftpd.html" target="_blank">vsftpd</a></h3>
+<h3>31- FTP Server: <a href="https://security.appspot.com/vsftpd.html" target="_blank">vsftpd</a></h3>
 Very Secure FTP Daemon (or vsftpd for short) is a tiny, stable and secure FTP daemon for GNU/Linux. It has a simple configuration file and is super fast.
 <br/>
 <hr/>
-<h3>27- Voice Chat Server & Client: <a href="https://www.mumble.com/" target="_blank">Murmur</a> & <a href="https://www.mumble.com/" target="_blank">Mumble</a></h3>
+<h3>32- Voice Chat Server & Client: <a href="https://www.mumble.com/" target="_blank">Murmur</a> & <a href="https://www.mumble.com/" target="_blank">Mumble</a></h3>
 I was really shocked by the high quality of murmur (server) and mumble (client). I definitely recommend it for gamers, work offices, local use...etc
 <br/>
 <hr/>
-<h3>28- C/C++ IDE: <a href="https://www.geany.org/" target="_blank">Geany</a> VS <a href="https://www.qt.io/ide/" target="_blank">QtCreator</a></h3>
+<h3>33- C/C++ IDE: <a href="https://www.geany.org/" target="_blank">Geany</a> VS <a href="https://www.qt.io/ide/" target="_blank">QtCreator</a></h3>
 Geany is for GTK users and has poor autocompletion support (it can be extended using ctags but it's still not enough). On the other hand, qt creator albeit being used to create Qt applications, it can be used as a C/C++ IDE and it's a fast one indeed. It has an awesome autocompletion. To me it's a revamped code::blocks with a better GUI.
 <br/>
 <hr/>
-<h3>29- Download Manager: <a href="https://www.gnu.org/software/wget/" target="_blank">GNU Wget</a> or <a href="http://ugetdm.com/" target="_blank">uGet</a></h3>
+<h3>34- Download Manager: <a href="https://www.gnu.org/software/wget/" target="_blank">GNU Wget</a> or <a href="http://ugetdm.com/" target="_blank">uGet</a></h3>
 Wget something when you're in a terminal or a tty, uGet it when not.
 <br/>
 <hr/>
