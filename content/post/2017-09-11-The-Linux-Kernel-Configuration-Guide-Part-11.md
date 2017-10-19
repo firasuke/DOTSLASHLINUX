@@ -41,7 +41,7 @@ So grab a bootable ISO from the underlined links above and I highly recommend th
 The process is pretty much straight forward (and off-topic but meh...), the only reason I've included this section is because the bootable ISO for SystemRescueCd is for Cds (now who didn't see that coming =D), so it won't work with the good ol' <mark>dd if=PathToISO.iso of=/dev/sdX status=progress</mark> and that might be a reason for newbies leaving it and picking the Arch Linux ISO instead (which I don't recommend).
 <br/>
 <br/>
-<h3>SystemRescueCd</h3>
+<h3><u>SystemRescueCd</u></h3>
 So basically you create a temporary directory, and mount the bootable ISO with the options <mark>-o loop,exec</mark>, then you plug in the USB stick you intend to boot from, and memorize its path. Then simply change your directory to where you mounted the ISO and run <mark>usb_inst.sh</mark>. When it's done, you <mark>cd</mark> your way out and unmount the ISO.
 ```bash
 mkdir -p /tmp/cdrom
@@ -51,7 +51,7 @@ bash ./usb_inst.sh
 cd ~
 umount /tmp/cdrom
 ```
-<h3>Arch Linux</h3>
+<h3><u>Arch Linux</u></h3>
 Remember to change <mark>/dev/sdX</mark> to the real path of your USB stick.
 ```bash
 dd if=PathToISO.iso of=/dev/sdX status=progress
