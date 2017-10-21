@@ -1,0 +1,5 @@
+order: 8
+replying_to: '7'
+name: DOTSLASHLINUX
+comment: "@Francesco Turco, Thanks for stopping by! Unfortunately that is not possible at the moment as an initrd/initramfs is needed to decrypt the root file system before it's mounted.\n\nAlthough there were several attempts to fully dm-crypt the rootfs without using an initrd/initramfs (some include storing the key between the MBR and the root partition) but none are working as far as I know.\n\nSome say that it might work using a plain cryptsetup and GRUB2, but I think that beats the purpose of not using an initrd/initramfs for the sake of minimalism as GRUB2 is considered bloated compared to LILO and EXTLINUX (that is if GRUB2 worked in the first place as you won't be able to map crypt...).\n\n Others may pass the key on the kernel command line, but that beats the purpose of encrypting your system in the first place.\n\nBut don't worry, I'm still experimenting with full disk encryption without an initrd/initramfs. I'll post an article once I get everything working perfectly."
+date: '2017-10-21'
