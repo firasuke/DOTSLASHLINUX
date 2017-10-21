@@ -1,0 +1,5 @@
+order: 7
+replying_to: ''
+name: Francesco Turco
+comment: "What about encryption? Is it possible to disable initramfs and continue encrypting the root filesystem with LUKS?"
+date: '2017-10-21'
