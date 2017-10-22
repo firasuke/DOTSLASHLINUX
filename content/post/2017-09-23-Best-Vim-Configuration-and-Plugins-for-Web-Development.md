@@ -458,5 +458,3 @@ emerge --sync && emerge -av app-vim/gitgutter
 ```
 <br/>
 gitgutter should be automatically enabled when you edit a file in a git repository.
-<br/>
-<hr/>
