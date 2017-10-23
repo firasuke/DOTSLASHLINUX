@@ -83,8 +83,8 @@ If you're into openbox then LXPanel is your friend. Yes, LXPanel is lighter than
 Overall it has a significantly lower memory footprint than other panels using the same plugins.
 <br/>
 <hr/>
-<h3>10- File Manager: <a href="https://blog.lxde.org/category/pcmanfm/" target="_blank">PCManFM</a></h3>
-There really isn't much competition here. PCManFM dominates the lightweight category of file managers with a GUI.
+<h3>10- File Manager: <a href="https://github.com/ranger/ranger" target="_blank">ranger</a> VS <a href="https://blog.lxde.org/category/pcmanfm/" target="_blank">PCManFM</a></h3>
+There really isn't much competition here. ranger is one of the fastest and lightest CLI file managers (along with coreutils) and PCManFM dominates the lightweight category of GUI file managers.
 <br/>
 <hr/>
 <h3>11- Desktop Manager: None VS <a href="https://blog.lxde.org/category/pcmanfm/" target="_blank">PCManFM</a></h3>
@@ -125,7 +125,10 @@ These two are the lightest "usable" web browsers with a GUI available on GNU/Lin
 ePDFView is convenient lightweight pdf reader for GNU/Linux. It's so small it weighs less than 200 kilobytes. However, it's not the fastest. That title goes to MuPDF which is not so light (package is around ~20 megabytes) but is the fastest pdf reader available for GNU/Linux. MuPDF controls may be annoying to some users as well.
 <br/>
 <hr/>
-<h3>19- Audio Player: <a href="https://github.com/Alexey-Yakovenko/deadbeef" target="_blank">DeaDBeef</a> VS <a href="http://audacious-media-player.org/" target="_blank">Audacious</a></h3>
+<h3>19- Audio Player: <a href="https://cmus.github.io/" target="_blank">cmus</a> VS <a href="https://github.com/Alexey-Yakovenko/deadbeef" target="_blank">DeaDBeef</a> VS <a href="http://audacious-media-player.org/" target="_blank">Audacious</a></h3>
+cmus is considered an extrememly lightweight CLI audio player. However, if you found its shortcuts hard to memorize (which is highly unlikely), then mpd+ncmpcpp (which is also a lightweight CLI audio player that has a visualizer) will suit you better.
+<br/>
+<br/>
 DeaDBeef is the lighter one (but not by much). However, I've encountered several problems while trying deadbeef. Audio files that had.m4a or.aac extension were unplayable and crashed the player. On the other hand, my experience with audacious was super smooth and it played whatever I through at it as long as it had audio.
 <br/>
 <hr/>
