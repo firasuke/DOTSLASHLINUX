@@ -1,0 +1,5 @@
+order: 3
+replying_to: ''
+name: emerge -eva
+comment: "vote for:\r\n\r\nmedia-sound/mpd\r\n\nmedia-sound/ncmpcpp\r\n\r\nsys-apps/dstat\r\n\r\napp-misc/figlet\r\n\napp-misc/toilet\r\n\r\napp-misc/mc\r\n\napp-misc/worker\r\n\r\nmail-client/claws-mail\r\n\r\n"
+date: '2017-10-22'
