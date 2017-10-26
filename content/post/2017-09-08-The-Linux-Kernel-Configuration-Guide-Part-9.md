@@ -149,7 +149,7 @@ Reason:     You can safely exclude this option as it's not necessary to include
             Extremely old BSD and Linux systems may use a.out binaries that have
             shared libraries that rely on this format.
 ```
-<h3>[&ast;] x32 ABI for 64-bit mode</h3>
+<h3>[ ] x32 ABI for 64-bit mode</h3>
 ```properties
 Symbol:     CONFIG_X86_X32
 
@@ -164,10 +164,10 @@ Help:       Include code to run binaries for the x32 native 32-bit ABI
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     excluded [ ]
 
-Reason:     It's highly recommended that you include this option in your kernel
-            if you're planning on running 32-bit programs.
+Reason:     You can safely exclude this option as it's intended for development
+            and debugging purposes.
 ```
 <hr/>
 <h3>Chinese Translation</h3>
