@@ -1,0 +1,5 @@
+order: 9
+replying_to: ''
+name: cyberhoffman
+comment: "I suppose there should be something more in kernel config than just compile in hard controller support (ahci in my case too) and disabling CONFIG_BLK_DEV_INITRD. I had added these options: \"CONFIG_SATA_AHCI=y\", \"CONFIG_EXT4_FS=y\", \"CONFIG_CMDLINE=\"root=/dev/sda2 rootfstype=ext4\"\", \"# CONFIG_BLK_DEV_INITRD is not set\", compiled the kernel and copied it in efi - \"cp /boot/vmlinuz-4.12.12-gentoo /boot/efi/EFI/Boot/bootx64.efi\" (I boot system directly from efi, using initramfs is it ok) but got only kernel panic after reboot - it couldnt find root partition."
+date: '2017-10-31'

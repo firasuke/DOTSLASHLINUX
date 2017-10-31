@@ -1,0 +1,5 @@
+order: 8
+replying_to: '7'
+name: DOTSLASHLINUX
+comment: "@Zico, I'm glad that you've found the guide helpful!\n\nAs for the 3 seconds delay, then a wild guess would be that my configuration is tuned for maximum performance while maintaining a reasonably low latency. In your case (since you're using a heavy desktop environment) the latency options I've excluded in favor of performance may have impacted the startup time of your desktop environment.\n\nIf you had time then I'd advise you to go through the guide one more time and see what options were chosen for performance over latency as I've included them all.\n\nIf I were you, I'd double check to see if the performance gains on your end was worth the 3 seconds delay.\n\nThanks for stopping by! Let me know if you have anymore questions!"
+date: '2017-10-31'

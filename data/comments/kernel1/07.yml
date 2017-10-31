@@ -1,0 +1,5 @@
+order: 7
+replying_to: ''
+name: Zico
+comment: "Thanks for the guide, really helpful!\r\n\r\nJust one thing, after compiling the kernel, the Plasma 5 login take around 3 seconds longer before getting to the desktop vs genkernel all. I'm using the Nvidia driver with both kernels.\r\n\r\nBest place to investigate this in the kernel?"
+date: '2017-10-31'
