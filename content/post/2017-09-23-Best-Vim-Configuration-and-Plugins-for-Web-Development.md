@@ -57,12 +57,12 @@ pacman -Syu vim
 <br/>
 <hr/>
 <h3>2- Configuration</h3>
-As most programs in GNU/Linux, the configuration file found in /etc <mark>/etc/vim/vimrc</mark> is intended for system-wide or global settings (meaning it'll be applied to all users including your root user), and the recommended configuration file that you should be editing is <mark>/.vimrc</mark>.
+As most programs in GNU/Linux, the configuration file found in /etc <mark>/etc/vim/vimrc</mark> is intended for system-wide or global settings (meaning it'll be applied to all users including your root user), and the recommended configuration file that you should be editing is <mark>~/.vimrc</mark>.
 <br/>
 <br/>
 So fire up your favorite editor (... Wait a second, we're going to use Vim to configure Vim... makes sense...), and run:
 ```properties
-vim /.vimrc
+vim ~/.vimrc
 ```
 <br/>
 And use this configuration file:
@@ -222,7 +222,7 @@ To move from your editor to The NERDTree, hit <mark>Ctrl + w</mark> then <mark>&
 To get back to the editor hit <mark>Ctrl + w</mark> then <mark>&rarr;</mark> (the right arrow key).
 <br/>
 <br/>
-To show hidden files using The NERDTree, add this line to your <mark>/.vimrc</mark>:
+To show hidden files using The NERDTree, add this line to your <mark>~/.vimrc</mark>:
 ```vim
 ...
 let NERDTreeShowHidden=1
