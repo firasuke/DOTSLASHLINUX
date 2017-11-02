@@ -145,7 +145,7 @@ e3 is the lightest and is written in assembly. Nano and e3 are for when you're i
 There's also Vim, which is the lightest extensible text editor out there. I mainly use Vim for everything and in fact this whole website was coded inside Vim. If you're interested, kindly check this <a href="" target="_blank">Best Vim Configuration and Plugins for Web Development</a>.
 <br/>
 <hr/>
-<h3>22- Screen Capture Tool: <a href="https://github.com/naelstrof/maim" target="_blank">maim</a> vs <a href="https://github.com/dreamer/scrot" target="_blank">scrot</a> VS <a href="https://github.com/GNOME/gnome-screenshot" target="_blank">gnome-screenshot</a>></h3>
+<h3>22- Screen Capture Tool: <a href="https://github.com/naelstrof/maim" target="_blank">maim</a> vs <a href="https://github.com/dreamer/scrot" target="_blank">scrot</a> VS <a href="https://github.com/GNOME/gnome-screenshot" target="_blank">gnome-screenshot</a></h3>
 MAIM or (MAke IMage) is a lightweight screen capture tool that utilizes imlib2 to take screenshots. Just fire up a terminal and type:
 ```properties
 maim imagename.format
