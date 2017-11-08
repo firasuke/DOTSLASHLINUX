@@ -1,0 +1,5 @@
+order: 7
+replying_to: ''
+name: Joe
+comment: "Thanks for this.\r\n\r\nBut the folder intel-ucode does not exist on Arch Linux after installing the package. It just installs a .img file in /boot which works with initrd only I guess!\r\n\r\nAny tips appreciated!"
+date: '2017-11-07'
