@@ -1,0 +1,5 @@
+order: 12
+replying_to: '11'
+name: DOTSLASHLINUX
+comment: "@alf, Thanks for stopping by! I'm afraid that isn't possible as (at least as far as I know) plymouth needs an initramfs to be built in and it's highly unlikely that it would be possible to get build it within the kernel itself.\n\nHope that helps! Let me know if you have any more questions!"
+date: '2017-11-10'
