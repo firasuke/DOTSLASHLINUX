@@ -1,0 +1,5 @@
+order: 8
+replying_to: '7'
+name: DOTSLASHLINUX
+comment: "@Joe, Thanks and I'm sorry to hear that. Arch linux tends to build the microcode update files as an image into the initramfs itself (which is the sane thing to do for a distribution targeting such a large user base). You can still manually download the microcode update files from Intel's website (a 2-3MB microcode-date.tgz file) and extract it to '/lib/firmware'. Make sure that it's owned by root:root and it has 755 permissions.\n\nHope that helps! Let me know if you have any more questions!"
+date: '2017-11-10'
