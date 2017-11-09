@@ -6,7 +6,7 @@ date = "2017-04-30"
 author = "Firas Khalil Khana"
 imgsrc = "/img/microcode.png"
 imgalt = "microcode"
-categories = [ "popular" ]
+categories = [ "fame" ]
 +++
 <mark>DOTSLASHLINUX is proud to say that part of this article was added to the <a href="https://wiki.gentoo.org/wiki/Intel_microcode#Kernel_3" target="_blank">Gentoo Wiki</a></mark>
 <br/>

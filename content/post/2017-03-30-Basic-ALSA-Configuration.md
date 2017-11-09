@@ -6,7 +6,7 @@ date = "2017-03-30"
 author = "Firas Khalil Khana"
 imgsrc = "/img/alsa.png"
 imgalt = "alsa"
-categories = [ "popular" ]
+categories = [ "fame" ]
 +++
 In this article I'll show you how to setup ALSA, with a working .asoundrc configuration file that supports multiple applications!
 <br/>

@@ -1,8 +1,8 @@
 {{ if .IsHome }}</div>
 <div class="box popular">
-  <h2>Popular Articles</h2>
+  <h2>Hall of Fame</h2>
   <div class="row">
-    {{ range .Site.Taxonomies.categories.popular }}
+    {{ range .Site.Taxonomies.categories.fame }}
     <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
       <div class="box card">
         <a href="{{ .Permalink }}">

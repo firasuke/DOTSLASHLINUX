@@ -6,7 +6,7 @@ date = "2017-03-23"
 author = "Firas Khalil Khana"
 imgsrc = "/img/lightweight.png"
 imgalt = "lightweight"
-categories = [ "popular" ]
+categories = [ "fame" ]
 +++
 In this article I'll be listing some of the lightest applications the GNU/Linux world has to offer, some of which you may know and some not. These applications will not only be lightweight but will not sacrifice that much convenience for the performance and low memory footprint they offer.
 <br/>

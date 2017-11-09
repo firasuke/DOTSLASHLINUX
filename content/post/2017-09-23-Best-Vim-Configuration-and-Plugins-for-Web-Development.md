@@ -195,7 +195,7 @@ drwxr-xr-x   2 root root 4.0K Sep 22 13:51 syntax
 drwxr-xr-x 107 root root 4.0K Sep 22 13:49 syntax_checkers
 ```
 <br/>
-The reason behind doing this is to get you familiar to the structure of this directory. In most cases, you'll be manually copying the scattered contents of a plug-in downloaded from GitHub to some directories located in vimfiles. Don't worry I'll be showing you an example of a plug-in manually installed from GitHub.
+The reason behind doing this is to get you familiar with the structure of this directory. In most cases, you'll be manually copying the scattered contents of a plug-in downloaded from GitHub to some directories located in vimfiles. Don't worry I'll be showing you an example of a plug-in manually installed from GitHub.
 <br/>
 <br/>
 With that being said, let's get started!

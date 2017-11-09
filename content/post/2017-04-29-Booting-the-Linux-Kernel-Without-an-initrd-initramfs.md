@@ -6,7 +6,7 @@ date = "2017-04-29"
 author = "Firas Khalil Khana"
 imgsrc = "/img/noinitrd.png"
 imgalt = "noinitrd"
-categories = [ "popular" ]
+categories = [ "fame" ]
 +++
 No, this is not a myth... It's not a legend... It's the truth and it's doable!
 <br/>
