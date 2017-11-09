@@ -116,7 +116,7 @@ nav li {
 
 
 .first,
-.deck,
+#deck,
 .popular,
 .map,
 .dotfiles,
@@ -138,7 +138,7 @@ nav li {
   margin-top: 30px;
 }
 
-.deck h2 {
+#deck h2 {
   text-align: center;
   margin:0 0 10px 0;
 }
@@ -164,7 +164,7 @@ nav li {
 }
 
 .first h2,
-.deck h2,
+#deck h2,
 .popular h2,
 .map h2,
 .dotfiles h2,
@@ -269,12 +269,15 @@ nav li {
   margin: 30px 0 30px 0;
 }
 
+.navigate,
 .patreon,
 .distros,
-.upcoming,
-.suggestions,
-.donate {
+.upcoming {
   margin-bottom: 30px;
+}
+
+.navigate a {
+  text-decoration: underline;
 }
 
 .search {

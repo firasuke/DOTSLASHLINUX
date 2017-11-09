@@ -5,9 +5,9 @@
     <div class="frame"><img src="{{ .Params.imgsrc }}" alt="{{ .Params.imgalt }}"></div>
   </a>
 </div>{{ end }}
-<div class="box deck">
-  <h2>Latest Articles{{ if or ($paginator.HasPrev) ($paginator.HasNext) }}
+<div id="deck" class="box">
+  <h2>{{ if or ($paginator.HasPrev) ($paginator.HasNext) }}
+    {{ if $paginator.HasPrev }}<a href="{{ $paginator.Prev.URL }}#deck"><< Previous</a>{{ end }}
     ({{ $paginator.PageNumber }}/{{ $paginator.TotalPages }})
-    {{ if $paginator.HasPrev }}<a href="{{ $paginator.Prev.URL }}">Previous</a>{{ end }}
-    {{ if $paginator.HasNext }}<a href="{{ $paginator.Next.URL }}">Next</a>{{ end }}
+    {{ if $paginator.HasNext }}<a href="{{ $paginator.Next.URL }}#deck">Next >></a>{{ end }}
     {{ end }}</h2>{{ end }}
