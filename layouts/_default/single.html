@@ -41,11 +41,11 @@ Side Notes:           1- Options that aren't listed here are excluded [ ].
                          or sending me an email on: firasuke@gmail.com
                       5- If you found these guides helpful, then please don't forget to
                          support DOTSLASHLINUX on Patreon:
-                            
+
                             https://www.patreon.com/DOTSLASHLINUX
 
                          or on PayPal:
-                            
+
                             https://www.paypal.me/DOTSLASHLINUX/5</code></pre>
   <table>
     <tr>
@@ -149,15 +149,15 @@ Side Notes:           1- Options that aren't listed here are excluded [ ].
 <div class="box map">
   <h2>{{ .Title }}</h2>
   <div class="share">
-      <a id="facebook" href="https://www.facebook.com/sharer.php?u={{ .Permalink }}" rel="nofollow" target="_blank">Facebook</a>
-      <a id="twitter" href="https://www.twitter.com/intent/tweet?source={{ .Permalink }}&text={{ .Permalink }}" rel="nofollow" target="_blank">Twitter</a>
-      <a id="googleplus" href="https://plus.google.com/share?url={{ .Permalink }}" rel="nofollow" target="_blank">Google+</a>
-      <a id="reddit" href="https://www.reddit.com/submit?url={{ .Permalink }}" rel="nofollow" target="_blank">Reddit</a>
-      <a id="linkedin" href="http://www.linkedin.com/shareArticle?mini=true&url={{ .Permalink }}&source={{ .Permalink }}" rel="nofollow" target="_blank">LinkedIn</a>
+    <a id="facebook" href="https://www.facebook.com/sharer.php?u={{ .Permalink }}" rel="nofollow" target="_blank">Facebook</a>
+    <a id="twitter" href="https://www.twitter.com/intent/tweet?source={{ .Permalink }}&text={{ .Permalink }}" rel="nofollow" target="_blank">Twitter</a>
+    <a id="googleplus" href="https://plus.google.com/share?url={{ .Permalink }}" rel="nofollow" target="_blank">Google+</a>
+    <a id="reddit" href="https://www.reddit.com/submit?url={{ .Permalink }}" rel="nofollow" target="_blank">Reddit</a>
+    <a id="linkedin" href="http://www.linkedin.com/shareArticle?mini=true&url={{ .Permalink }}&source={{ .Permalink }}" rel="nofollow" target="_blank">LinkedIn</a>
   </div>
   <div class="frame"><a href="https://www.dotslashlinux.com{{ .Params.imgsrc }}" target="_blank"><img src="{{ .Params.imgsrc }}" alt="{{ .Params.imgalt }}"></div></a>
-  <div class="info">{{ .Params.author }} | {{ .Date.Format "02/01/2006" }}</div>
-  {{ .Content }}
+    <div class="info">{{ .Params.author }} | {{ .Date.Format "02/01/2006" }}</div>
+    {{ .Content }}
 </div>
 <div id="comments" class="box">{{ $.Scratch.Set "path" "/data/comments/" }}{{ $.Scratch.Add "path" .Params.nick }}{{ $path := $.Scratch.Get "path" }}{{ $comments := readDir $path }}{{ $.Scratch.Set "counter" 1 }}
   {{ if gt (sub (len $comments) 1) 0 }}<h3>{{ sub (len $comments) 1 }} Comments</h3>{{ end }}{{ range $index, $comments := (index $.Site.Data.comments .Params.nick) }}{{ if eq .order ($.Scratch.Get "counter") }}
