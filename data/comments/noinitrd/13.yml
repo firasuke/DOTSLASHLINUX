@@ -1,0 +1,5 @@
+order: 13
+replying_to: '11'
+name: alf
+comment: "I follow your tutorial, no initramfs and built in ucode into my custom kernel. since plymouth depend on systemd and my os uses systemd, plymouth works flawlessly. it even perform better since I include i915 into my kernel. since I use arch linux, I think it is easier to compile kernel using Arch Build System.\r\n\r\nthanks for your tutorial. Now my system boots faster and perform better."
+date: '2017-11-10'
