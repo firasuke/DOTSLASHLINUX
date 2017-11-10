@@ -153,6 +153,14 @@ nav li {
   color: #dadada;
 }
 
+.kernelmap pre {
+  margin-top: 0;
+}
+
+.kernelmap table {
+  margin: 10px 0 10px 0;
+}
+
 .map {
   margin: 0;
   padding-bottom: 10px;
