@@ -3,91 +3,91 @@
 code[class*=language-],pre[class*=language-]{color:#f8f8f2;background:0 0;text-shadow:0 1px rgba(0,0,0,.3);font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto;border-radius:.3em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#272822}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#f8f8f2}.token.boolean,.token.number{color:#ae81ff}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#a6e22e}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url,.token.variable{color:#f8f8f2}.token.atrule,.token.attr-value,.token.function{color:#e6db74}.token.keyword{color:#66d9ef}pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}pre.line-numbers>code{position:relative;white-space:inherit}.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:0;font-size:100%;left:-3.8em;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}
 
 * {
-    font-weight: 100;
-    font-family: monospace!important
+  font-weight: 100;
+  font-family: monospace!important
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    background-color: #333;
-    color: #dadada
+  margin: 0;
+  padding: 0;
+  background-color: #333;
+  color: #dadada
 }
 
 a {
-    text-decoration: none;
-    color: #dadada
+  text-decoration: none;
+  color: #dadada
 }
 
 .cur a,
 a:hover {
-    color: #232323!important
+  color: #232323!important
 }
 
 ul {
-    padding: 0
+  padding: 0
 }
 
 li {
-    list-style-type: none
+  list-style-type: none
 }
 
 td,
 th,
 tr {
-    border: 1px solid #232323;
-    text-align: center;
-    padding: 5px
+  border: 1px solid #232323;
+  text-align: center;
+  padding: 5px
 }
 
 table {
-    width: 100%
+  width: 100%
 }
 
 hr {
-    border-color: #232323
+  border-color: #232323
 }
 
 mark,
 pre {
-    border-radius: 0!important
+  border-radius: 0!important
 }
 
 code,
 pre {
-    background-color: #232323!important
+  background-color: #232323!important
 }
 
 mark {
-    background-color: #232323;
-    color: #dadada
+  background-color: #232323;
+  color: #dadada
 }
 
 button,
 input,
 textarea {
-    box-sizing: border-box;
-    padding: 7px;
-    margin: 5px;
-    background-color: #232323;
-    border: 1px solid #232323;
-    outline: 0;
-    color: #dadada!important
+  box-sizing: border-box;
+  padding: 7px;
+  margin: 5px;
+  background-color: #232323;
+  border: 1px solid #232323;
+  outline: 0;
+  color: #dadada!important
 }
 
 input {
-    margin-top: 0!important
+  margin-top: 0!important
 }
 
 img {
-    vertical-align: middle;
-    width: 100%;
-    height: auto;
-    transition: all .2s
+  vertical-align: middle;
+  width: 100%;
+  height: auto;
+  transition: all .2s
 }
 
 img:hover {
-    transform: scale(1.026)
+  transform: scale(1.026)
 }
 
 .content,
@@ -95,22 +95,22 @@ img:hover {
 .header,
 .main,
 .side {
-    margin: 0;
-    padding: 0
+  margin: 0;
+  padding: 0
 }
 
 .header {
-    border-bottom: 1px solid #232323
+  border-bottom: 1px solid #232323
 }
 
 .footer a,
 .header a {
-    color: #dadada
+  color: #dadada
 }
 
 nav li {
-    display: inline;
-    padding: 15px
+  display: inline;
+  padding: 15px
 }
 
 #deck,
@@ -120,45 +120,45 @@ nav li {
 .first,
 .map,
 .popular {
-    padding: 10px;
-    background-color: #444;
-    margin: 30px 0 30px 0
+  padding: 10px;
+  background-color: #444;
+  margin: 30px 0 30px 0
 }
 
 #search-results,
 .about,
 .dotfiles,
 .first {
-    margin-top: 0
+  margin-top: 0
 }
 
 .main {
-    margin-top: 30px
+  margin-top: 30px
 }
 
 #deck h2 {
-    text-align: center;
-    margin: 0 0 10px 0
+  text-align: center;
+  margin: 0 0 10px 0
 }
 
 .card {
-    margin: 0 0 20px 0
+  margin: 0 0 20px 0
 }
 
 .card h3 {
-    margin: 0;
-    padding-top: 10px;
-    text-align: center;
-    color: #dadada
+  margin: 0;
+  padding-top: 10px;
+  text-align: center;
+  color: #dadada
 }
 
 .map {
-    margin: 0;
-    padding-bottom: 10px
+  margin: 0;
+  padding-bottom: 10px
 }
 
 .map a {
-    text-decoration: underline
+  text-decoration: underline
 }
 
 #deck h2,
@@ -168,190 +168,190 @@ nav li {
 .first h2,
 .map h2,
 .popular h2 {
-    padding: 10px;
-    margin: 5px 0 15px 0;
-    border-top: 1px solid #333;
-    border-bottom: 1px solid #333;
-    border-radius: 10px;
-    text-align: center;
-    color: #dadada
+  padding: 10px;
+  margin: 5px 0 15px 0;
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
+  border-radius: 10px;
+  text-align: center;
+  color: #dadada
 }
 
 .share a {
-    padding: 10px;
-    display: inline-block;
-    margin-bottom: 10px;
-    text-decoration: none;
-    color: #dadada
+  padding: 10px;
+  display: inline-block;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: #dadada
 }
 
 .share a:hover {
-    opacity: .9;
-    color: #fff!important
+  opacity: .9;
+  color: #fff!important
 }
 
 #facebook {
-    background-color: #3b5998
+  background-color: #3b5998
 }
 
 #twitter {
-    background-color: #1da1f2
+  background-color: #1da1f2
 }
 
 #googleplus {
-    background-color: #dd4b39
+  background-color: #dd4b39
 }
 
 #reddit {
-    background-color: #ff4500
+  background-color: #ff4500
 }
 
 #linkedin {
-    background-color: #0077b5
+  background-color: #0077b5
 }
 
 .map h3 {
-    font-size: 1.5em
+  font-size: 1.5em
 }
 
 .info {
-    text-align: center
+  text-align: center
 }
 
 #comments h3 {
-    text-align: center
+  text-align: center
 }
 
 .main-comment,
 .reply {
-    padding: 1px 10px 10px 10px
+  padding: 1px 10px 10px 10px
 }
 
 .reply {
-    border-left: 2px solid #232323;
-    border-radius: 10px;
-    margin: 10px 0 10px 30px
+  border-left: 2px solid #232323;
+  border-radius: 10px;
+  margin: 10px 0 10px 30px
 }
 
 #leavecomment button,
 #leavecomment input,
 #leavecomment textarea {
-    width: 100%;
-    box-sizing: border-box;
-    margin: 10px 0 10px 0
+  width: 100%;
+  box-sizing: border-box;
+  margin: 10px 0 10px 0
 }
 
 #leavecomment button {
-    margin-bottom: 30px
+  margin-bottom: 30px
 }
 
 .side {
-    padding: 0 10px 10px 10px
+  padding: 0 10px 10px 10px;
+  text-align: center;
 }
 
 .side h3 {
-    text-align: center;
-    margin: 0 0 10px 0;
-    padding: 10px;
-    border-top: 1px solid #232323;
-    border-bottom: 1px solid #232323;
-    border-radius: 10px
+  margin: 0 0 10px 0;
+  padding: 10px;
+  border-top: 1px solid #232323;
+  border-bottom: 1px solid #232323;
+  border-radius: 10px
 }
 
 .side ul {
-    margin: 0;
-    padding: 0
+  margin: 0;
+  padding: 0
 }
 
 .patreon {
-    margin: 30px 0 30px 0
+  margin: 30px 0 30px 0
 }
 
 .distros,
 .navigate,
 .patreon,
 .upcoming {
-    margin-bottom: 30px
+  margin-bottom: 30px
 }
 
 .search {
-    margin-bottom: 5px
+  margin-bottom: 5px
 }
 
 .search button,
 .search input {
-    margin: 5px 0 5px 0;
-    width: 100%
+  margin: 5px 0 5px 0;
+  width: 100%
 }
 
 .distros a,
 .patreon a {
-    display: block;
-    text-align: center;
-    padding: 30px;
-    margin: 10px 0 10px 0;
-    font-size: 1.4em
+  display: block;
+  text-align: center;
+  padding: 30px;
+  margin: 10px 0 10px 0;
+  font-size: 1.4em
 }
 
 .distros a:hover,
 .patreon a:hover {
-    opacity: .9;
-    color: #fff!important
+  opacity: .9;
+  color: #fff!important
 }
 
 #patreon {
-    background-color: #f96854
+  background-color: #f96854
 }
 
 #gentoo {
-    background-color: #54487a
+  background-color: #54487a
 }
 
 #void {
-    background-color: #478061
+  background-color: #478061
 }
 
 #arch {
-    background-color: #0f94d2
+  background-color: #0f94d2
 }
 
 .upcoming li {
-    margin: 10px 0 10px 0
+  margin: 10px 0 10px 0
 }
 
 .footer {
-    text-align: center;
-    color: #dadada;
-    border-top: 1px solid #232323
+  text-align: center;
+  color: #dadada;
+  border-top: 1px solid #232323
 }
 
 .container {
-    padding-right: 10px;
-    padding-left: 10px;
-    margin-right: auto;
-    margin-left: auto
+  padding-right: 10px;
+  padding-left: 10px;
+  margin-right: auto;
+  margin-left: auto
 }
 
 @media (min-width: 768px) {
-    .container {
-        width: 750px
-    }
+  .container {
+    width: 750px
+  }
 }
 
 @media (min-width: 992px) {
-    .container {
-        width: 970px
-    }
+  .container {
+    width: 970px
+  }
 }
 
 @media (max-width: 1023px) {
-    .side {
-        padding: 0
-    }
+  .side {
+    padding: 0
+  }
 }
 
 @media (min-width: 1200px) {
-    .container {
-        width: 1170px
-    }
+  .container {
+    width: 1170px
+  }
 }
