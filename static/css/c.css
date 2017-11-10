@@ -4,24 +4,24 @@ code[class*=language-],pre[class*=language-]{color:#f8f8f2;background:0 0;text-s
 
 * {
   font-weight: 100;
-  font-family: monospace!important
+  font-family: monospace!important;
 }
 
 body {
   margin: 0;
   padding: 0;
+  color: #dadada;
   background-color: #333;
-  color: #dadada
 }
 
 a {
   text-decoration: none;
-  color: #dadada
+  color: #dadada;
 }
 
 .cur a,
 a:hover {
-  color: #232323!important
+  color: #232323!important;
 }
 
 ul {
@@ -29,7 +29,7 @@ ul {
 }
 
 li {
-  list-style-type: none
+  list-style-type: none;
 }
 
 td,
@@ -37,30 +37,30 @@ th,
 tr {
   border: 1px solid #232323;
   text-align: center;
-  padding: 5px
+  padding: 5px;
 }
 
 table {
-  width: 100%
+  width: 100%;
 }
 
 hr {
-  border-color: #232323
+  border-color: #232323;
 }
 
 mark,
 pre {
-  border-radius: 0!important
+  border-radius: 0 !important;
 }
 
 code,
 pre {
-  background-color: #232323!important
+  background-color: #232323 !important;
 }
 
 mark {
   background-color: #232323;
-  color: #dadada
+  color: #dadada;
 }
 
 button,
@@ -72,22 +72,22 @@ textarea {
   background-color: #232323;
   border: 1px solid #232323;
   outline: 0;
-  color: #dadada!important
+  color: #dadada!important;
 }
 
 input {
-  margin-top: 0!important
+  margin-top: 0!important;
 }
 
 img {
   vertical-align: middle;
   width: 100%;
   height: auto;
-  transition: all .2s
+  transition: all .2s;
 }
 
 img:hover {
-  transform: scale(1.026)
+  transform: scale(1.026);
 }
 
 .content,
@@ -96,21 +96,22 @@ img:hover {
 .main,
 .side {
   margin: 0;
-  padding: 0
+  padding: 0;
 }
 
 .header {
-  border-bottom: 1px solid #232323
+  border-bottom: 1px solid #232323;
+  border-radius: 10px;
 }
 
 .footer a,
 .header a {
-  color: #dadada
+  color: #dadada;
 }
 
 nav li {
   display: inline;
-  padding: 15px
+  padding: 15px;
 }
 
 #deck,
@@ -122,43 +123,43 @@ nav li {
 .popular {
   padding: 10px;
   background-color: #444;
-  margin: 30px 0 30px 0
+  margin: 30px 0 30px 0;
 }
 
 #search-results,
 .about,
 .dotfiles,
 .first {
-  margin-top: 0
+  margin-top: 0;
 }
 
 .main {
-  margin-top: 30px
+  margin-top: 30px;
 }
 
 #deck h2 {
   text-align: center;
-  margin: 0 0 10px 0
+  margin: 0 0 10px 0;
 }
 
 .card {
-  margin: 0 0 20px 0
+  margin: 0 0 20px 0;
 }
 
 .card h3 {
   margin: 0;
   padding-top: 10px;
   text-align: center;
-  color: #dadada
+  color: #dadada;
 }
 
 .map {
   margin: 0;
-  padding-bottom: 10px
+  padding-bottom: 10px;
 }
 
 .map a {
-  text-decoration: underline
+  text-decoration: underline;
 }
 
 #deck h2,
@@ -174,7 +175,7 @@ nav li {
   border-bottom: 1px solid #333;
   border-radius: 10px;
   text-align: center;
-  color: #dadada
+  color: #dadada;
 }
 
 .share a {
@@ -182,55 +183,55 @@ nav li {
   display: inline-block;
   margin-bottom: 10px;
   text-decoration: none;
-  color: #dadada
+  color: #dadada;
 }
 
 .share a:hover {
   opacity: .9;
-  color: #fff!important
+  color: #fff!important;
 }
 
 #facebook {
-  background-color: #3b5998
+  background-color: #3b5998;
 }
 
 #twitter {
-  background-color: #1da1f2
+  background-color: #1da1f2;
 }
 
 #googleplus {
-  background-color: #dd4b39
+  background-color: #dd4b39;
 }
 
 #reddit {
-  background-color: #ff4500
+  background-color: #ff4500;
 }
 
 #linkedin {
-  background-color: #0077b5
+  background-color: #0077b5;
 }
 
 .map h3 {
-  font-size: 1.5em
+  font-size: 1.5em;
 }
 
 .info {
-  text-align: center
+  text-align: center;
 }
 
 #comments h3 {
-  text-align: center
+  text-align: center;
 }
 
 .main-comment,
 .reply {
-  padding: 1px 10px 10px 10px
+  padding: 1px 10px 10px 10px;
 }
 
 .reply {
   border-left: 2px solid #232323;
   border-radius: 10px;
-  margin: 10px 0 10px 30px
+  margin: 10px 0 10px 30px;
 }
 
 #leavecomment button,
@@ -238,11 +239,11 @@ nav li {
 #leavecomment textarea {
   width: 100%;
   box-sizing: border-box;
-  margin: 10px 0 10px 0
+  margin: 10px 0 10px 0;
 }
 
 #leavecomment button {
-  margin-bottom: 30px
+  margin-bottom: 30px;
 }
 
 .side {
@@ -255,33 +256,33 @@ nav li {
   padding: 10px;
   border-top: 1px solid #232323;
   border-bottom: 1px solid #232323;
-  border-radius: 10px
+  border-radius: 10px;
 }
 
 .side ul {
   margin: 0;
-  padding: 0
+  padding: 0;
 }
 
 .patreon {
-  margin: 30px 0 30px 0
+  margin: 30px 0 30px 0;
 }
 
 .distros,
 .navigate,
 .patreon,
 .upcoming {
-  margin-bottom: 30px
+  margin-bottom: 30px;
 }
 
 .search {
-  margin-bottom: 5px
+  margin-bottom: 5px;
 }
 
 .search button,
 .search input {
   margin: 5px 0 5px 0;
-  width: 100%
+  width: 100%;
 }
 
 .distros a,
@@ -290,68 +291,72 @@ nav li {
   text-align: center;
   padding: 30px;
   margin: 10px 0 10px 0;
-  font-size: 1.4em
+  font-size: 1.4em;
 }
 
 .distros a:hover,
 .patreon a:hover {
-  opacity: .9;
-  color: #fff!important
+  opacity: 0.9;
+  color: #fff !important;
 }
 
 #patreon {
-  background-color: #f96854
+  background-color: #f96854;
 }
 
 #gentoo {
-  background-color: #54487a
+  background-color: #54487a;
 }
 
 #void {
-  background-color: #478061
+  background-color: #478061;
 }
 
 #arch {
-  background-color: #0f94d2
+  background-color: #0f94d2;
 }
 
 .upcoming li {
-  margin: 10px 0 10px 0
+  margin: 10px 0 10px 0;
 }
 
 .footer {
   text-align: center;
   color: #dadada;
-  border-top: 1px solid #232323
+  border-top: 1px solid #232323;
+}
+
+.footer a {
+  text-decoration: underline;
 }
 
 .container {
   padding-right: 10px;
   padding-left: 10px;
   margin-right: auto;
-  margin-left: auto
+  margin-left: auto;
 }
 
 @media (min-width: 768px) {
   .container {
-    width: 750px
+    width: 750px;
   }
 }
 
 @media (min-width: 992px) {
   .container {
-    width: 970px
+    width: 970px;
   }
 }
 
 @media (max-width: 1023px) {
   .side {
-    padding: 0
+    padding: 0;
   }
 }
 
 @media (min-width: 1200px) {
   .container {
-    width: 1170px
+    width: 1170px;
   }
 }
