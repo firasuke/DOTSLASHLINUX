@@ -4,7 +4,7 @@ code[class*=language-],pre[class*=language-]{color:#f8f8f2;background:0 0;text-s
 
 * {
   font-weight: 100;
-  font-family: monospace!important;
+  font-family: sans!important;
 }
 
 body {
