@@ -1,0 +1,5 @@
+order: 33
+replying_to: ''
+name: Dorian Silenus
+comment: "Hello and thank you for this tutorial!\r\n\r\nI would like to add something here...\r\nFirst off, I am not sure whether disabling laptop_mode daemon is mandatory (for me, it works with laptop_mode enabled - but I'm going to test it a bit more as soon as I can).\r\nHowever, what was apparently mandatory for my system, was adding \"pcie_port_pm=off\" in the kernel GRUB line (GRUB_CMDLINE_LINUX_DEFAULT=\"pcie_port_pm=off\" in /etc/default/grub, and updating grub.cfg afterwards). Supposedly, this (sometimes?) happens with kernel >=4.8, so you might want to consider adding it to your article.\r\n\r\nThanks again!"
+date: '2017-11-11'
