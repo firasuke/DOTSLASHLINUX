@@ -49,6 +49,12 @@ hr {
 }
 
 mark,
+code,
+pre {
+  font-family: monospace !important;
+}
+
+mark,
 pre {
   border-radius: 0 !important;
 }
