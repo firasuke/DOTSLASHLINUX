@@ -4,7 +4,6 @@ code[class*=language-],pre[class*=language-]{color:#f8f8f2;background:0 0;text-s
 
 * {
   font-weight: 100;
-  font-family: sans!important;
 }
 
 body {
@@ -12,6 +11,7 @@ body {
   padding: 0;
   color: #dadada;
   background-color: #333;
+  font-family: sans!important;
 }
 
 a {
@@ -46,12 +46,6 @@ table {
 
 hr {
   border-color: #232323;
-}
-
-mark,
-code,
-pre {
-  font-family: monospace !important;
 }
 
 mark,
