@@ -1,0 +1,5 @@
+order: 35
+replying_to: '33'
+name: Dorian Silenus
+comment: "@DOTSLASHLINUX null sheen.\r\nYour article pointed me in the right direction in the first place, and it's good to have all the bells and whistles in one place. Have you considered editing the Gentoo Wiki and putting your tutorial there? Also, some of those things (e.g. the /etc/inint.d/bumblebee file) should really be updated by the package maintainers... I honestly don't understand why that isn't happening.\r\n\r\nAs for the workaround, I should probably mention that it renders PCIe-related powersaving unusable, FWIW."
+date: '2017-11-11'

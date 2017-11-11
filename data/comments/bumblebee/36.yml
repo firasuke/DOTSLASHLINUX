@@ -1,0 +1,5 @@
+order: 36
+replying_to: '33'
+name: DOTSLASHLINUX
+comment: "@Dorian Silenus, well several parts of the articles written on DOTSLASHLINUX were added to the Gentoo Wiki where appropriate. The thing is, I consider my articles (especially this one) to be extrememly hacky, meaning that they probably won't appeal to the majority of users hence maintainers choose to go with what's safe or used by a bigger userbase.\n\nAnother thing is that I'm using the unstable branch and maintainers expect users to use similar hacks to fix some of these problems until fixes are pushed into the stable branch.\n\nI believe that adding xdm as a dependency for the bumblebee service is to appeal to the larger user base that rely on display managers instead of using xinit. This is just a wild guess though.\n\nThanks for your valued replies!"
+date: '2017-11-11'
