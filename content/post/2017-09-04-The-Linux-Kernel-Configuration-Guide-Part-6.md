@@ -721,6 +721,31 @@ Reason:     It's highly recommended that you include this option in your kernel
                 
                 cat /proc/cpuinfo | grep cpuid
 ```
+<h3>[ ] Enable 5-level page tables support</h3>
+```properties
+Symbol:     CONFIG_X86_5LEVEL
+
+Help:       5-level paging enables access to larger address space:
+            upto 128 PiB of virtual address space and 4 PiB of
+            physical address space.
+
+            It will be supported by future Intel CPUs.
+
+            Note: a kernel with this option enabled can only be booted
+            on machines that support the feature.
+
+            See Documentation/x86/x86_64/5level-paging.txt for more
+            information.
+
+            Say N if unsure.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     You can safely exclude this option as it's intendend for
+            future Intel CPUs.
+```
 <h3>[ ] Numa Memory Allocation and Scheduler Support</h3>
 ```properties
 Symbol:     CONFIG_NUMA

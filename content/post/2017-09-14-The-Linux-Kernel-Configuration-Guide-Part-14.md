@@ -143,7 +143,7 @@ Type:       integer
 
 Choice:     (3) custom
 ```
-<h3>IO delay type (no port-IO delay)  ---></h3>
+<h3>    IO delay type (no port-IO delay)  ---></h3>
 <h3>(X) no port-IO delay</h3>
 ```properties
 Symbol:     CONFIG_IO_DELAY_NONE
@@ -157,6 +157,30 @@ Choice:     built-in (X)
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you're on a modern system.
+```
+<h3>    Choose kernel unwinder (ORC unwinder)  ---></h3>
+<h3>(X) ORC unwinder</h3>
+```properties
+Symbol:     CONFIG_ORC_UNWINDER
+
+Help:       This option enables the ORC (Oops Rewind Capability) unwinder for
+            unwinding kernel stack traces.  It uses a custom data format which is
+            a simplified version of the DWARF Call Frame Information standard.
+            
+            This unwinder is more accurate across interrupt entry frames than the
+            frame pointer unwinder.  It also enables a 5-10% performance
+            improvement across the entire kernel compared to frame pointers.
+
+            Enabling this option will increase the kernel's runtime memory usage
+            by roughly 2-4MB, depending on your kernel config.
+
+Type:       boolean
+
+Choice:     built-in (X)
+
+Reason:     It's highly recommended that you include this option in your kernel
+            as it provides better performance over other unwinders as it disables
+            frame pointers.
 ```
 <hr/>
 <h3>Chinese Translation</h3>
