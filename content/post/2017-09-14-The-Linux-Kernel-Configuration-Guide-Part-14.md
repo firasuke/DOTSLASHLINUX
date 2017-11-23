@@ -180,7 +180,8 @@ Choice:     built-in (X)
 
 Reason:     It's highly recommended that you include this option in your kernel
             as it provides better performance over other unwinders as it disables
-            frame pointers.
+            frame pointers thus making certain system calls faster by at least 1%
+            up to 10%.
 ```
 <hr/>
 <h3>Chinese Translation</h3>
