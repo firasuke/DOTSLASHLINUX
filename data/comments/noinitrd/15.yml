@@ -1,0 +1,5 @@
+order: 15
+replying_to: ''
+name: PCmaniak
+comment: "Thank you for great article.\r\nMy first kernel was built by genkernel (yes it's gentoo). I built my second kernel myself and it did not start because I did not build initramfs, so I had to run genkernel again with initramfs only option. Slowly I figured out how to boot without initramfs. But I modified fstab and grub only. Some how it boots with .config still set to BLK_DEV_INITRD [=y] without initrams. Got to correct it. On the next kernel upgrade. I am on 4.12 now. Thanks again!"
+date: '2017-12-02'
