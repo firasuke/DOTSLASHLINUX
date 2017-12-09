@@ -11,7 +11,7 @@ body {
   padding: 0;
   color: #dadada;
   background-color: #333;
-  font-family: sans!important;
+  font-family: sans !important;
 }
 
 a {
@@ -21,7 +21,7 @@ a {
 
 .cur a,
 a:hover {
-  color: #232323!important;
+  color: #232323 !important;
 }
 
 ul {
@@ -72,11 +72,11 @@ textarea {
   background-color: #232323;
   border: 1px solid #232323;
   outline: 0;
-  color: #dadada!important;
+  color: #dadada !important;
 }
 
 input {
-  margin-top: 0!important;
+  margin-top: 0 !important;
 }
 
 img {
@@ -203,7 +203,7 @@ nav li {
 
 .share a:hover {
   opacity: .9;
-  color: #fff!important;
+  color: #fff !important;
 }
 
 #facebook {

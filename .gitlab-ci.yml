@@ -1,7 +1,7 @@
 image: alpine
 variables:
-  HUGO_VERSION: '0.31'
-  HUGO_SHA: 'b7454c103d42dc7fd053c79b3d159f50f6c8171283f35996415245112beec99e'
+  HUGO_VERSION: '0.31.1'
+  HUGO_SHA: '2ec6fd0493fa246a5747b0f1875d94affaaa30f11715f26abcbe1bc91c940716'
 before_script:
   - apk update && apk add openssl ca-certificates
   - wget -O ${HUGO_VERSION}.tar.gz https://github.com/spf13/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz
