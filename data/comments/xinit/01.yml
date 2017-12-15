@@ -1,0 +1,5 @@
+order: 1
+replying_to: ''
+name: oldgaro
+comment: "Gentoo: Auto startx at login\r\n\r\n<mark>[[ -t 0 && $(tty) == /dev/tty1 && ! $DISPLAY ]] && exec startx</mark>\r\n"
+date: '2017-12-15'
