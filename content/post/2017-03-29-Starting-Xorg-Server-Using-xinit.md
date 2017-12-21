@@ -189,12 +189,5 @@ startx
 <br/>
 If you're using BASH you can automate the process of startx after logging in by adding this line to your ~/.bash_profile (create this file if it doesn't exist):
 ```bash,line-numbers
-if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
-  exec startx
-fi
-```
-<br/>
-In case the previous command doesn't work for you, you can simply replace it with:
-```bash
-[[ -t 0 && $(tty) == /dev/tty1 && ! $DISPLAY ]] && exec startx
+if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then exec startx; fi
 ```
