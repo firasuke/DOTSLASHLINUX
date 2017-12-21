@@ -193,3 +193,8 @@ if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
   exec startx
 fi
 ```
+<br/>
+In case the previous command doesn't work for you, you can simply replace it with:
+```bash
+[[ -t 0 && $(tty) == /dev/tty1 && ! $DISPLAY ]] && exec startx
+```
