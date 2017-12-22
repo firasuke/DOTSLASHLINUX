@@ -285,8 +285,7 @@ nav li {
 
 .distros,
 .navigate,
-.patreon,
-.upcoming {
+.patreon {
   margin-bottom: 30px;
 }
 
@@ -329,10 +328,6 @@ nav li {
 
 #arch {
   background-color: #0f94d2;
-}
-
-.upcoming li {
-  margin: 10px 0 10px 0;
 }
 
 .footer {
