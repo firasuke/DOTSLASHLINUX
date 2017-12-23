@@ -167,6 +167,7 @@ nav li {
 .map {
   margin: 0;
   padding-bottom: 10px;
+  text-align: justify;
 }
 
 .map a {
@@ -241,6 +242,7 @@ nav li {
 .main-comment,
 .reply {
   padding: 1px 10px 10px 10px;
+  text-align: justify;
 }
 
 .reply {
