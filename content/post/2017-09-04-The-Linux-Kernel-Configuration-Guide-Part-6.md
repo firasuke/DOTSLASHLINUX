@@ -299,7 +299,7 @@ Choice:     built-in [*]
 Reason:     It's highly recommended that you include this option in your kernel
             as it's required by newer versions of udev to detect many of your 
             system's components (especially input devices such as the Synaptics
-            PS/2 and SMBus touchpad).
+            PS/2 and SMBus touchpads).
 
             Excluding this option may result in an undetectable touchpad.
 ```

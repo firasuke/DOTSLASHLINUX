@@ -1356,7 +1356,7 @@ Reason:     It's highly recommended that you included this option in your kernel
             (that is if it weren't already forcibly included by several important
             options).
 ```
-<h3><&ast;> Raw access to serio ports</h3>
+<h3>< > Raw access to serio ports</h3>
 ```properties
 Symbol:     CONFIG_SERIO_RAW
 
@@ -1374,7 +1374,7 @@ Help:       Say Y here if you want to have raw access to serio ports, such as
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     excluded < >
 
 Reason:     You can safely exclude this option if your Synaptics PS/2
             or RMI4 SMBus Touchpad is already working.
