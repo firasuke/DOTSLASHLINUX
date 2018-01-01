@@ -274,8 +274,8 @@ So we have an autoload directory which needs its contents to be copied to <mark>
 <br/>
 Now run:
 ```properties
-cp -rav ~/vim-minimap/autoload/ /usr/share/vim/vimfiles/autoload/
-cp -rav ~/vim-minimap/plugin /usr/share/vim/vimfiles/plugin/
+cp -rav ~/vim-minimap/autoload/* /usr/share/vim/vimfiles/autoload/
+cp -rav ~/vim-minimap/plugin/* /usr/share/vim/vimfiles/plugin/
 ```
 <br/>
 Start vim and toggle the minimap by running:
@@ -370,10 +370,10 @@ There's also this python directory, that needs its content to be copied to <mark
 <br/>
 Now run:
 ```properties
-cp -rav ~/matchtagalways/autoload/ /usr/share/vim/vimfiles/autoload/
-cp -rav ~/matchtagalways/doc/ /usr/share/vim/vimfiles/doc/
-cp -rav ~/matchtagalways/plugin/ /usr/share/vim/vimfiles/plugin/
-cp -rav ~/matchtagalways/python/ /usr/share/vim/vimfiles/python/
+cp -rav ~/matchtagalways/autoload/* /usr/share/vim/vimfiles/autoload/
+cp -rav ~/matchtagalways/doc/* /usr/share/vim/vimfiles/doc/
+cp -rav ~/matchtagalways/plugin/* /usr/share/vim/vimfiles/plugin/
+cp -rav ~/matchtagalways/python/* /usr/share/vim/vimfiles/python/
 ```
 <br/>
 matchtagalways should be automatically working whenever you edit a file type that makes use of opening and closing tags.
@@ -424,9 +424,9 @@ So we have an autoload directory which needs its contents to be copied to <mark>
 <br/>
 Now run:
 ```properties
-cp -rav ~/loremipsum/autoload/ /usr/share/vim/vimfiles/autoload/
-cp -rav ~/loremipsum/doc/ /usr/share/vim/vimfiles/doc/
-cp -rav ~/loremipsum/plugin/ /usr/share/vim/vimfiles/plugin/
+cp -rav ~/loremipsum/autoload/* /usr/share/vim/vimfiles/autoload/
+cp -rav ~/loremipsum/doc/* /usr/share/vim/vimfiles/doc/
+cp -rav ~/loremipsum/plugin/* /usr/share/vim/vimfiles/plugin/
 ```
 <br/>
 Now simply run:
