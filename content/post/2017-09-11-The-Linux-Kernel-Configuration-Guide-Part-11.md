@@ -185,6 +185,39 @@ Choice:     built-in [*]
 Reason:     It's recommended that you include this option in your kernel as it's
             useful when attempting a system rescue.
 ```
+<h3>[&ast;] Select only drivers that don't need compile-time external firmware</h3>
+```properties
+Symbol:     CONFIG_STANDALONE
+
+Help:       Select this option if you don't have magic firmware for drivers that
+            need it.
+
+            If unsure, say Y.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     It's highly recommended that you include this option in your kernel
+            as it's extremely unlikely that you'll have such 'magic' firmware.
+```
+<h3>[&ast;] Prevent firmware from being built</h3>
+```properties
+Symbol:     CONFIG_PREVENT_FIRMWARE_BUILD
+
+Help:       Say yes to avoid building firmware. Firmware is usually shipped
+            with the driver and only when updating the firmware should a
+            rebuild be made.
+            If unsure, say Y here.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     It's highly recommended that you include this option in your kernel
+            and rebuilding the firmware should only be considered when updating
+            it.
+```
 <h3>-&ast;- Userspace firmware loading support</h3>
 ```properties
 Symbol:     CONFIG_FW_LOADER
@@ -2769,7 +2802,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             
             It's also recommended by the Gentoo Wiki.
 ```
-<h3>[&ast] USB support  ---></h3>
+<h3>[&ast;] USB support  ---></h3>
 ```properties
 Symbol:     CONFIG_USB_SUPPORT
 
@@ -3347,7 +3380,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             should tell you whether you need this option or not.
 ```
 <h3><&ast;>   Toshiba WMI Hotkeys Driver (EXPERIMENTAL)</h3>
-```none
+```properties
 Symbol:     CONFIG_TOSHIBA_WMI
 
 Help:       This driver adds hotkey monitoring support to some Toshiba models

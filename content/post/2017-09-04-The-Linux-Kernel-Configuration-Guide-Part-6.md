@@ -263,7 +263,7 @@ Reason:     It's highly recommended that you tell the kernel what type of CPU
 
             In some cases, not doing so may result in an unbootable system.
 ```
-<h3>Support Intel processors</h3>
+<h3>[&ast;] Support Intel processors</h3>
 ```properties
 Symbol:     CONFIG_CPU_SUP_INTEL
 
@@ -829,7 +829,7 @@ Reason:     You can safely exclude this option as it's only useful for some cert
             cloud hosting services, that want to perform live system upgrades without
             experiencing any down time.
 ```
-<h3>-&ast;- Allow for memory compaction</h3>
+<h3>[&ast;] Allow for memory compaction</h3>
 ```properties
 Symbol:     CONFIG_COMPACTION
 
@@ -844,7 +844,7 @@ Help:       Compaction is the only memory management component to form
 
 Type:       boolean
 
-Choice:     built-in -*-
+Choice:     built-in [*]
 
 Reason:     It's highly recommended that you include this option in your kernel
             as it speeds up your system at the cost of some latency.
@@ -1806,8 +1806,11 @@ Type:       boolean
 
 Choice:     built-in (X)
 
-Reason:     You can safely exclude this option if you're using a recent version
-            of glibc.
+Reason:     It's highly recommended that you include this option in your kernel
+            if you're using a recent version of glibc as it boosts security.
+
+            Some users reported that including CONFIG_LEGACY_VSYSCALL_EMULATE
+            instead slightly increased the performance of some legacy applications.
 ```
 <h3>[ ] Built-in kernel command line</h3>
 ```properties

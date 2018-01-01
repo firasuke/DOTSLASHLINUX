@@ -9,25 +9,33 @@ imgalt = "kernel13"
 categories = [ "kernel" ]
 +++
 <h3>File systems  ---></h3>
-<h3><&ast;> XFS filesystem support</h3>
+<h3><&ast;> The Extended 4 (ext4) filesystem</h3>
 ```properties
-Symbol:     CONFIG_XFS_FS
+Symbol:     CONFIG_EXT4_FS
 
-Help:       XFS is a high performance journaling filesystem which originated
-            on the SGI IRIX platform.  It is completely multi-threaded, can
-            support large files and large filesystems, extended attributes,
-            variable block sizes, is extent based, and makes extensive use of
-            Btrees (directories, extents, free space) to aid both performance
-            and scalability.
+Help:       This is the next generation of the ext3 filesystem.
+            
+            Unlike the change from ext2 filesystem to ext3 filesystem,
+            the on-disk format of ext4 is not forwards compatible with
+            ext3; it is based on extent maps and it supports 48-bit
+            physical block numbers.  The ext4 filesystem also supports delayed
+            allocation, persistent preallocation, high resolution time stamps,
+            and a number of other features to improve performance and speed
+            up fsck time.  For more information, please see the web pages at
+            http://ext4.wiki.kernel.org.
+            
+            The ext4 filesystem supports mounting an ext3 filesystem; while there
+            are some performance gains from the delayed allocation and inode
+            table readahead, the best performance gains require enabling ext4
+            features in the filesystem using tune2fs, or formatting a new
+            filesystem as an ext4 filesystem initially. Without explicit enabling
+            of ext4 features, the on disk filesystem format stays fully backward
+            compatible.
 
-            Refer to the documentation at <http://oss.sgi.com/projects/xfs/>
-            for complete details.  This implementation is on-disk compatible
-            with the IRIX version of XFS.
-
-            To compile this file system support as a module, choose M here: the
-            module will be called xfs.  Be aware, however, that if the file
-            system of your root partition is compiled as a module, you'll need
-            to use an initial ramdisk (initrd) to boot.
+            To compile this file system support as a module, choose M here. The
+            module will be called ext4.
+            
+            If unsure, say N.
 
 Type:       tristate
 
@@ -38,6 +46,22 @@ Reason:     For a basic system using CONFIG_EXT4_FS is advised; however, if you
 
             Do not build this option as a module [M] as it'll result in an unbootable
             system if you're not using an initrd.
+```
+<h3>[&ast;]   Use ext4 for ext2 file systems</h3>
+```
+Symbol:     CONFIG_EXT4_USE_FOR_EXT2
+
+Help:       Allow the ext4 file system driver code to be used for ext2
+            file system mounts.  This allows users to reduce their
+            compiled kernel size by using one file system driver for
+            ext2, ext3, and ext4 file systems.
+
+Type:       boolean
+
+Choice:     built-in [*]
+
+Reason:     It's highly recommended that you include this option in your kernel
+            if you've already included CONFIG_EXT4_FS.
 ```
 <h3>[&ast;] Enable POSIX file locking API</h3>
 ```properties
