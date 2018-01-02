@@ -21,6 +21,11 @@ a {
 
 .cur a,
 a:hover {
+  color: #232323 !important;
+}
+
+.brand h1 a:hover,
+nav ul li a:hover {
   color: #333 !important;
 }
 
@@ -235,6 +240,10 @@ nav li {
   margin: 0 0 20px 0;
   padding: 5px;
   background-color: #333333;
+}
+
+.patreon a {
+  color: #f96854;
 }
 
 .search-box {
