@@ -94,7 +94,6 @@ img:hover {
 .brand h1 {
   overflow: hidden; 
   border-right: .15em solid #333;
-  letter-spacing: .2em;
   animation: 
   typing 3s steps(40, end),
   blink-caret .75s step-end infinite;
