@@ -1,5 +1,102 @@
 {{ partial "t" . }}
 {{ if in .Params.categories "kernel" }}
+<table>
+  <tr>
+    <th>Part</th>
+    <th>Section</th>
+    <th>Link</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Intro</td>
+    <td><a href="https://www.dotslashlinux.com/2017/08/24/the-linux-kernel-configuration-guide-part-1/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>[&ast;] Gentoo Linux support  ---></td>
+    <td><a href="https://www.dotslashlinux.com/2017/08/25/the-linux-kernel-configuration-guide-part-2/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>General setup  ---></td>
+    <td><a href="https://www.dotslashlinux.com/2017/08/26/the-linux-kernel-configuration-guide-part-3/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>[&ast;] Enable loadable module support  ---></td>
+    <td><a href="https://www.dotslashlinux.com/2017/08/27/the-linux-kernel-configuration-guide-part-4/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>[&ast;] Enable the block layer  ---></td>
+    <td><a href="https://www.dotslashlinux.com/2017/08/28/the-linux-kernel-configuration-guide-part-5/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>Processor type and features  ---></td>
+    <td><a href="https://www.dotslashlinux.com/2017/09/04/the-linux-kernel-configuration-guide-part-6/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>Power management and ACPI options  ---></td>
+    <td><a href="https://www.dotslashlinux.com/2017/09/06/the-linux-kernel-configuration-guide-part-7/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>Bus options (PCI etc.)  ---></td>
+    <td><a href="https://www.dotslashlinux.com/2017/09/07/the-linux-kernel-configuration-guide-part-8/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>9</td>
+    <td>Executable file formats / Emulations  ---></td>
+    <td><a href="https://www.dotslashlinux.com/2017/09/08/the-linux-kernel-configuration-guide-part-9/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>10</td>
+    <td>[*] Networking support  ---></td>
+    <td><a href="https://www.dotslashlinux.com/2017/09/09/the-linux-kernel-configuration-guide-part-10/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>11</td>
+    <td>Device Drivers  ---></td>
+    <td><a href="https://www.dotslashlinux.com/2017/09/11/the-linux-kernel-configuration-guide-part-11/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>12</td>
+    <td>Firmware Drivers  ---></td>
+    <td><a href="https://www.dotslashlinux.com/2017/09/12/the-linux-kernel-configuration-guide-part-12/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>13</td>
+    <td>File systems  ---></td>
+    <td><a href="https://www.dotslashlinux.com/2017/09/13/the-linux-kernel-configuration-guide-part-13/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>14</td>
+    <td>Kernel hacking  ---></td>
+    <td><a href="https://www.dotslashlinux.com/2017/09/14/the-linux-kernel-configuration-guide-part-14/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>15</td>
+    <td>Security options  ---></td>
+    <td><a href="https://www.dotslashlinux.com/2017/09/15/the-linux-kernel-configuration-guide-part-15/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>16</td>
+    <td>-*- Cryptographic API  ---></td>
+    <td><a href="https://www.dotslashlinux.com/2017/09/16/the-linux-kernel-configuration-guide-part-16/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>17</td>
+    <td>[*] Virtualization  ---></td>
+    <td><a href="https://www.dotslashlinux.com/2017/09/17/the-linux-kernel-configuration-guide-part-17/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>18</td>
+    <td>Library routines  ---></td>
+    <td><a href="https://www.dotslashlinux.com/2017/09/18/the-linux-kernel-configuration-guide-part-18/">Click Here</a></td>
+  </tr>
+</table>
 <div class="box kernelmap">
   <pre><code class="language-properties">Kernel Sources:       sys-kernel/gentoo-sources
 
@@ -7,13 +104,14 @@ Kernel Version:       4.14.10-r1
 
 Last Updated on:      1/1/2018
 
-Update Notice:        1- Added 'CONFIG_STANDALONE' to 'Device Drivers  --->'
-                      2- Added 'CONFIG_PREVENT_FIRMWARE_BUILD' to 'Device Drivers  --->'
-                      3- Added 'CONFIG_X86_5LEVEL' to 'Processor type and features  --->'
-                      4- Added 'CONFIG_ORC_UNWINDER' to 'Kernel hacking  --->'
-                      5- Excluded swap-related options
-                      6- Removed 32-bit support
-                      7- Switched from XFS to EXT4
+Update Notice:        1- Included 'CONFIG_STANDALONE' in 'Device Drivers  --->'
+                      2- Included 'CONFIG_PREVENT_FIRMWARE_BUILD' in 'Device Drivers  --->'
+                      3- Included 'CONFIG_X86_5LEVEL' in 'Processor type and features  --->'
+                      4- Included 'CONFIG_ORC_UNWINDER' in 'Kernel hacking  --->'
+                      5- Excluded QEMU-virtualization-related options in favor of VirtualBox
+                      6- Excluded swap-related options
+                      7- Removed 32-bit support
+                      8- Switched from XFS to EXT4
 
 Priorities:           1- high performance
                       2- minimal
@@ -46,108 +144,7 @@ Side Notes:           1- Options that aren't listed here are excluded [ ].
                       5- If you found these guides helpful, then please don't forget to
                          support DOTSLASHLINUX on Patreon:
 
-                            https://www.patreon.com/DOTSLASHLINUX
-
-                         or on PayPal:
-
-                            https://www.paypal.me/DOTSLASHLINUX/5</code></pre>
-  <table>
-    <tr>
-      <th>Part</th>
-      <th>Section</th>
-      <th>Link</th>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>Intro</td>
-      <td><a href="https://www.dotslashlinux.com/2017/08/24/the-linux-kernel-configuration-guide-part-1/">Click Here</a></td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>[&ast;] Gentoo Linux support  ---></td>
-      <td><a href="https://www.dotslashlinux.com/2017/08/25/the-linux-kernel-configuration-guide-part-2/">Click Here</a></td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>General setup  ---></td>
-      <td><a href="https://www.dotslashlinux.com/2017/08/26/the-linux-kernel-configuration-guide-part-3/">Click Here</a></td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>[&ast;] Enable loadable module support  ---></td>
-      <td><a href="https://www.dotslashlinux.com/2017/08/27/the-linux-kernel-configuration-guide-part-4/">Click Here</a></td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>[&ast;] Enable the block layer  ---></td>
-      <td><a href="https://www.dotslashlinux.com/2017/08/28/the-linux-kernel-configuration-guide-part-5/">Click Here</a></td>
-    </tr>
-    <tr>
-      <td>6</td>
-      <td>Processor type and features  ---></td>
-      <td><a href="https://www.dotslashlinux.com/2017/09/04/the-linux-kernel-configuration-guide-part-6/">Click Here</a></td>
-    </tr>
-    <tr>
-      <td>7</td>
-      <td>Power management and ACPI options  ---></td>
-      <td><a href="https://www.dotslashlinux.com/2017/09/06/the-linux-kernel-configuration-guide-part-7/">Click Here</a></td>
-    </tr>
-    <tr>
-      <td>8</td>
-      <td>Bus options (PCI etc.)  ---></td>
-      <td><a href="https://www.dotslashlinux.com/2017/09/07/the-linux-kernel-configuration-guide-part-8/">Click Here</a></td>
-    </tr>
-    <tr>
-      <td>9</td>
-      <td>Executable file formats / Emulations  ---></td>
-      <td><a href="https://www.dotslashlinux.com/2017/09/08/the-linux-kernel-configuration-guide-part-9/">Click Here</a></td>
-    </tr>
-    <tr>
-      <td>10</td>
-      <td>[*] Networking support  ---></td>
-      <td><a href="https://www.dotslashlinux.com/2017/09/09/the-linux-kernel-configuration-guide-part-10/">Click Here</a></td>
-    </tr>
-    <tr>
-      <td>11</td>
-      <td>Device Drivers  ---></td>
-      <td><a href="https://www.dotslashlinux.com/2017/09/11/the-linux-kernel-configuration-guide-part-11/">Click Here</a></td>
-    </tr>
-    <tr>
-      <td>12</td>
-      <td>Firmware Drivers  ---></td>
-      <td><a href="https://www.dotslashlinux.com/2017/09/12/the-linux-kernel-configuration-guide-part-12/">Click Here</a></td>
-    </tr>
-    <tr>
-      <td>13</td>
-      <td>File systems  ---></td>
-      <td><a href="https://www.dotslashlinux.com/2017/09/13/the-linux-kernel-configuration-guide-part-13/">Click Here</a></td>
-    </tr>
-    <tr>
-      <td>14</td>
-      <td>Kernel hacking  ---></td>
-      <td><a href="https://www.dotslashlinux.com/2017/09/14/the-linux-kernel-configuration-guide-part-14/">Click Here</a></td>
-    </tr>
-    <tr>
-      <td>15</td>
-      <td>Security options  ---></td>
-      <td><a href="https://www.dotslashlinux.com/2017/09/15/the-linux-kernel-configuration-guide-part-15/">Click Here</a></td>
-    </tr>
-    <tr>
-      <td>16</td>
-      <td>-*- Cryptographic API  ---></td>
-      <td><a href="https://www.dotslashlinux.com/2017/09/16/the-linux-kernel-configuration-guide-part-16/">Click Here</a></td>
-    </tr>
-    <tr>
-      <td>17</td>
-      <td>[*] Virtualization  ---></td>
-      <td><a href="https://www.dotslashlinux.com/2017/09/17/the-linux-kernel-configuration-guide-part-17/">Click Here</a></td>
-    </tr>
-    <tr>
-      <td>18</td>
-      <td>Library routines  ---></td>
-      <td><a href="https://www.dotslashlinux.com/2017/09/18/the-linux-kernel-configuration-guide-part-18/">Click Here</a></td>
-    </tr>
-  </table>
+                            https://www.patreon.com/DOTSLASHLINUX</code></pre>  
 </div>
 {{ end }}
 <div class="box map">
