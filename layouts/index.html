@@ -1,8 +1,8 @@
 {{ partial "t" . }}
 {{ template "_internal/p.html" . }}
 <div class="row">
-{{ range .Paginator.Pages }}
-{{ .Render "l" }}
-{{ end }}
+  {{ range .Paginator.Pages }}
+  {{ .Render "l" }}
+  {{ end }}
 </div>
 {{ partial "b" . }}

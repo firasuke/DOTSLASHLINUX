@@ -48,7 +48,7 @@ Reason:     For a basic system using CONFIG_EXT4_FS is advised; however, if you
             system if you're not using an initrd.
 ```
 <h3>[&ast;]   Use ext4 for ext2 file systems</h3>
-```
+```properties
 Symbol:     CONFIG_EXT4_USE_FOR_EXT2
 
 Help:       Allow the ext4 file system driver code to be used for ext2
