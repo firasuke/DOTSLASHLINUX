@@ -1,6 +1,5 @@
 {{ partial "t" . }}
 {{ .Content }}
-{{ if eq (relURL .URL) ("/search/" | safeHTML) }}
 <script>
 window.store = { {{ range $index, $page := where .Site.Pages "Section" "post"}}
   {{ if and $index (gt $index 0) }},{{ end }}"{{ $page.Title }}" : {
@@ -11,5 +10,4 @@ window.store = { {{ range $index, $page := where .Site.Pages "Section" "post"}}
     "imgalt": "{{ $page.Params.imgalt }}"
   } {{ end }} }
 </script>
-{{ end }}
 {{ partial "b" . }}
