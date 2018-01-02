@@ -91,25 +91,6 @@ img:hover {
   border-color: #232323;
 }
 
-.brand h1 {
-  overflow: hidden; 
-  border-right: .15em solid #333;
-  animation: 
-  typing 3s steps(40, end),
-  blink-caret .75s step-end infinite;
-  animation-iteration-count: infinite;
-}
-
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-
-@keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: #333; }
-}
-
 .content,
 .footer {
   margin: 0;
