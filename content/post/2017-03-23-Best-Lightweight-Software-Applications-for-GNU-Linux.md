@@ -90,8 +90,8 @@ Overall it has a significantly lower memory footprint than other panels using th
 <br/>
 <br/>
 <hr/>
-<h3>10- File Manager: <a href="https://github.com/ranger/ranger" target="_blank">ranger</a> VS <a href="http://www.boomerangsworld.de/cms/worker/" target="_blank">Worker</a> VS <a href="http://roland65.free.fr/xfe/" target="_blank">xfe</a> VS <a href="https://blog.lxde.org/category/pcmanfm/" target="_blank">PCManFM</a></h3>
-There isn't really much competition here as ranger is one of the fastest and lightest CLI file managers (along with coreutils). However, moving on to GUI file managers then worker is considered the lightest of all followed by xfe then PCManFM.
+<h3>10- File Manager: <a href="https://www.gnu.org/software/coreutils/coreutils.html" target="_blank">GNU Core Utilities</a> VS <a href="https://github.com/ranger/ranger" target="_blank">ranger</a> VS <a href="http://www.boomerangsworld.de/cms/worker/" target="_blank">Worker</a> VS <a href="http://roland65.free.fr/xfe/" target="_blank">xfe</a> VS <a href="https://blog.lxde.org/category/pcmanfm/" target="_blank">PCManFM</a></h3>
+GNU Core Utilities and ranger are considered the fastest and lightest CLI file managers. Moving on to GUI file managers, worker is considered the lightest of the bunch followed by xfe then PCManFM.
 <br/>
 <br/>
 <hr/>
