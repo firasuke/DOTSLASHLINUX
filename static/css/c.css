@@ -14,6 +14,16 @@ body {
   font-family: Ubuntu, Sans !important;
 }
 
+h2 {
+  padding: 10px;
+  margin: 5px 0 15px 0;
+  border-top: 1px solid #232323;
+  border-bottom: 1px solid #232323;
+  text-align: center;
+  background-color: #333;
+  color: #d6d6d6;
+}
+
 a {
   text-decoration: none;
   color: #d6d6d6;
@@ -115,11 +125,6 @@ nav li {
   background-color: #333;
 }
 
-#deck h2 {
-  text-align: center;
-  margin: 0 0 10px 0;
-}
-
 .card {
   margin: 0 0 20px 0;
 }
@@ -151,16 +156,6 @@ nav li {
 
 .map .frame {
   margin-bottom: 10px;
-}
-
-h2 {
-  padding: 10px;
-  margin: 5px 0 15px 0;
-  border-top: 1px solid #232323;
-  border-bottom: 1px solid #232323;
-  text-align: center;
-  background-color: #333;
-  color: #d6d6d6;
 }
 
 .share a {
