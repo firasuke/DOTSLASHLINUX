@@ -153,10 +153,7 @@ nav li {
   margin-bottom: 10px;
 }
 
-#deck h2,
-.about h2,
-.dotfiles h2,
-.map h2 {
+h2 {
   padding: 10px;
   margin: 5px 0 15px 0;
   border-top: 1px solid #232323;

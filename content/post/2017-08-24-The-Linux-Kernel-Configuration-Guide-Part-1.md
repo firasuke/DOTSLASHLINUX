@@ -71,21 +71,11 @@ Choice:
 
 Reason:
 ```
+<br/>
 In order not to create a state of confusion, I'll be using the word symbol for the capitalized underscore-separated version of the name. For example:
 ```properties
 Symbol: CONFIG_MODULES
 Name: Enable loadable modules support
 ```
+<br/>
 Not only that will make it easier for you(and me as well), it'll make it much easier for those who want to contribute to this series as well. Say you have an option from a different patchset and wanted to include it in the series, just send me the option using the template above, and the name of the patchset if any and I'll attribute everyone who contributes and list their names/blogs upon request.
-<hr/>
-<h3>Time</h3>
-This series will be as long as it needs to be, and that actually depends on how many configuration options there are.
-<hr/>
-<h3>Conclusion</h3>
-This article is only an intro to the series. And no that doesn't mean that you have to wait a couple of months before reading part 2. You can trust me on this as I'm determined to finish this series as fast and as precise as a human being possibly could, so stay tuned (for those who want to support me kindly click here <a href="https://www.paypal.me/DOTSLASHLINUX/5" target="_blank">Support DOTSLASHLINUX on PayPal</a>.
-<hr/>
-<h3>Chinese Translation</h3>
-One of DOTSLASHLINUX's followers from china 杨鑫 (Yang Mame), decided to follow up with the series and provide chinese translation of the kernel configuration guides on his blog.
-<br/>
-<br/>
-To read this guide in chinese <a href="https://blog.yangmame.top/linux%E5%86%85%E6%A0%B8%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97-%E8%AF%B4%E6%98%8E/" target="_blank">click here</a>.

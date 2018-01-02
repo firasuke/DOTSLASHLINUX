@@ -7,20 +7,7 @@ type = "page"
 DOTSLASHLINUX is a GNU/Linux enthusiasts' hub, featuring configuration guides for the Linux kernel and several lightweight open source and free software.
 <br/>
 <br/>
-It would be best if you use one of these distributions, to follow up with our content (if you're new to GNU/Linux):
-<br/>
-<ol>
-  <li><a href="https://gentoo.org/">Gentoo Linux</a></li>
-  <li><a href="https://www.voidlinux.eu/">Void Linux</a></li>
-  <li><a href="https://www.archlinux.org/">Arch Linux</a></li>
-</ol>
-Otherwise any distribution will be fine.
-<br/>
-<br/>
-My distribution of choice is <mark>Gentoo Linux</mark>.
-<br/>
-<br/>
-My daily driver is a <mark>Toshiba L50-A664</mark>.
+Coded on a <mark>Toshiba L50-A664</mark>.
 <pre><code class="language-properties">00:00.0 Host bridge: Intel Corporation Xeon E3-1200 v3/4th Gen Core Processor DRAM Controller (rev 06)
   Subsystem: Toshiba America Info Systems Device fa40
   Kernel modules: ie31200_edac

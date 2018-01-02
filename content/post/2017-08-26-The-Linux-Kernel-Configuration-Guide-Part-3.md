@@ -1627,7 +1627,7 @@ Reason:     You can safely exclude this option if you've already excluded
 ```
 <hr/>
 <h3>Chinese Translation</h3>
-One of DOTSLASHLINUX's followers from china 杨鑫 (Yang Mame), decided to follow up with the series and provide chinese translation of the kernel configuration guides on his blog.
+One of DOTSLASHLINUX followers 杨鑫 (Yang Mame) from China, decided to follow up with the series and provide Chinese translation of the kernel configuration guides on his blog.
 <br/>
 <br/>
-To read this guide in chinese <a href="https://blog.yangmame.top/linux%E5%86%85%E6%A0%B8%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97-general-setup/" target="_blank">click here</a>.
+To read this guide in Chinese <a href="https://blog.yangmame.top/Linux内核配置指南-General-setup.html" target="_blank">click here</a>.
