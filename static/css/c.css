@@ -19,7 +19,11 @@ a {
   color: #d6d6d6;
 }
 
-.cur a,
+.cur a {
+  color: #333 !important;
+}
+
+
 a:hover {
   color: #232323 !important;
 }
@@ -68,7 +72,7 @@ mark {
 button,
 input,
 textarea {
-  box-sizing: border-box;
+  box-sizing: border-box !important;
   padding: 7px;
   margin: 5px;
   background-color: #333;
@@ -76,10 +80,6 @@ textarea {
   outline: 0;
   color: #d6d6d6 !important;
   font-family: Ubuntu, Sans !important;
-}
-
-input {
-  margin-top: 0 !important;
 }
 
 img {
@@ -113,11 +113,6 @@ nav li {
 .map {
   padding: 10px;
   background-color: #333;
-}
-
-.about,
-.dotfiles {
-  margin-top: 0;
 }
 
 #deck h2 {
@@ -231,7 +226,6 @@ nav li {
 #leavecomment input,
 #leavecomment textarea {
   width: 100%;
-  box-sizing: border-box;
   margin: 10px 0 10px 0;
 }
 
@@ -247,13 +241,17 @@ nav li {
 }
 
 .search-box {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .search-box button,
 .search-box input {
-  margin: 10px 0 10px 0;
+  margin: 0 !important;
   width: 100%;
+}
+
+.search-box button {
+  margin-top: 20px !important;
 }
 
 .footer {
