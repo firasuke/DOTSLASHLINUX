@@ -100,18 +100,19 @@
 <div class="box kernelmap">
   <pre><code class="language-properties">Kernel Sources:       sys-kernel/gentoo-sources
 
-Kernel Version:       4.14.10-r1
+Kernel Version:       4.14.11
 
-Last Updated on:      1/1/2018
+Last Updated on:      4/1/2018
 
-Update Notice:        1- Included 'CONFIG_STANDALONE' in 'Device Drivers  --->'
-                      2- Included 'CONFIG_PREVENT_FIRMWARE_BUILD' in 'Device Drivers  --->'
-                      3- Included 'CONFIG_X86_5LEVEL' in 'Processor type and features  --->'
-                      4- Included 'CONFIG_ORC_UNWINDER' in 'Kernel hacking  --->'
-                      5- Excluded QEMU-virtualization-related options in favor of VirtualBox
-                      6- Excluded swap-related options
-                      7- Excluded 32-bit support
-                      8- Switched from XFS to EXT4
+Update Notice:        1- Excluded 'CONFIG_PAGE_TABLE_ISOLATION' in 'Security options --->'
+                      2- Included 'CONFIG_STANDALONE' in 'Device Drivers  --->'
+                      3- Included 'CONFIG_PREVENT_FIRMWARE_BUILD' in 'Device Drivers  --->'
+                      4- Included 'CONFIG_X86_5LEVEL' in 'Processor type and features  --->'
+                      5- Included 'CONFIG_ORC_UNWINDER' in 'Kernel hacking  --->'
+                      6- Excluded QEMU-virtualization-related options in favor of VirtualBox
+                      7- Excluded swap-related options
+                      8- Excluded 32-bit support
+                      9- Switched from XFS to EXT4
 
 Priorities:           1- high performance
                       2- minimal
@@ -121,13 +122,13 @@ Priorities:           1- high performance
                       6- security
                       7- low-latency
 
-Total Options:        2468 (grep -c 'CONFIG_' DOTSLASHLINUX.config)
+Total Options:        2469 (grep -c 'CONFIG_' DOTSLASHLINUX.config)
 
 Included Options:     645 (grep -c '=y' DOTSLASHLINUX.config)
 
-Excluded Options:     1760 (grep -c 'is not set' DOTSLASHLINUX.config)
+Excluded Options:     1761 (grep -c 'is not set' DOTSLASHLINUX.config)
 
-Final Size (LZ4):     5,623,760 Bytes
+Final Size (LZ4):     5,644,240 Bytes
 
 Total Patches:        1 (UKSM-4.14 Patch) (https://github.com/dolohow/uksm/blob/master/uksm-4.14.patch)
 
