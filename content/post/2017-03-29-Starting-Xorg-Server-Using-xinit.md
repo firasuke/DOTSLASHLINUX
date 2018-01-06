@@ -185,9 +185,14 @@ Once you've done configuring xinit, you can now start your X session simply by r
 startx
 ```
 <hr/>
-<h3 id="Auto_startx_at_Login">(Optional) Auto startx at Login (BASH Users Only)</h3>
-<br/>
+<h3 id="Auto_startx_at_Login">(Optional) Auto startx at Login</h3>
+<h3>- BASH</h3>
 If you're using BASH you can automate the process of startx after logging in by adding this line to your ~/.bash_profile (create this file if it doesn't exist):
-```bash,line-numbers
+```bash
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then exec startx; fi
+```
+<h3>- Other Shells</h3>
+If you're using dash or even plain sh, then you may want a more portable version of the BASH-exclusive code above, and you'll need to add it to your /etc/profile:
+```bash
+if [ -z $DISPLAY ] && [ $(tty) = /dev/tty1 ]; then exec startx; fi
 ```

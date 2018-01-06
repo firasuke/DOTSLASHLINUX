@@ -1,0 +1,5 @@
+order: 4
+replying_to: '3'
+name: DOTSLASHLINUX
+comment: "@random, thanks for stopping by and for your suggestion.\n\nI still don't think that what you suggested though would work for non bash users as you've used the bashism \"[[\", perhaps if it were \"[\" then it would work. Either way, article has been updated to include an auto-startx method for non-BASH users.\n\nComments undergo validation, spam detection and approval before being posted here, so kindly wait at least 1-2 hours before resubmitting your comments. Thanks for understanding." 
+date: '2017-01-06'

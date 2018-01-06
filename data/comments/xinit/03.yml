@@ -1,0 +1,5 @@
+order: 3
+replying_to: ''
+name: random
+comment: "Or If you are not a bash user. You can put this in /etc/profile:\r\nif [[ \"$(tty)\" == '/dev/tty1' ]]; then\r\n exec startx\r\nfi"
+date: '2018-01-06'
