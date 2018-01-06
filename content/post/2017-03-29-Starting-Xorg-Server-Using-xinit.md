@@ -192,7 +192,7 @@ If you're using BASH you can automate the process of startx after logging in by 
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then exec startx; fi
 ```
 <h3>- Other Shells</h3>
-If you're using dash or even plain sh, then you may want a more portable version of the BASH-exclusive code above, and you'll need to add it to your /etc/profile:
+If you're using dash or even plain sh, then you may want a more portable version of the BASH-exclusive code above, and you'll need to add it to your ~/.profile (create this file if it doesn't exist):
 ```bash
 if [ -z $DISPLAY ] && [ $(tty) = /dev/tty1 ]; then exec startx; fi
 ```
