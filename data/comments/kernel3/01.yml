@@ -1,0 +1,5 @@
+order: 1
+replying_to: ''
+name: The Man
+comment: "Trying this on 4.14.12 kernel and I can't exclude \"Control Group support —>\" unless I exclude CONFIG_GENTOO_LINUX (and you included this in part2)\r\n\r\n\r\nSelected by: GENTOO_LINUX_PORTAGE [=n] && GENTOO_LINUX [=y] || GENTOO_LINUX_INIT_SYSTEMD [=n] && GENTOO_LINUX [=y] && GENTOO_LINUX_UDEV [=y] || SCHED_AUTOGROUP [=y]"
+date: '2018-01-07'
