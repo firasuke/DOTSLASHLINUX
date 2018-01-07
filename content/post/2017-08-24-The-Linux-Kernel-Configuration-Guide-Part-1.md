@@ -25,6 +25,8 @@ But hang on, that wasn't the tough part. You have to compile your kernel after t
 <br/>
 <br/>
 This is a simple example of what you might face when configuring your kernel. I once had to recompile my whole gentoo system, because I thought that the kernel can't boot without an initrd on a xfs filesystem until I remembered that I'd forgotten to include support for xfs in my kernel (that caused this article to get delayed for 3 days so yeah... a real life example of what you might experience).
+<br/>
+<br/>
 <hr/>
 <h3>Expectations</h3>
 I'm no expert and I don't claim to be one. I'm a mere enthusiast that happens to have a proper time schedule and thus more time for testing and experimenting with what I love.
@@ -37,6 +39,8 @@ I'm not responsible for you breaking your system or losing important data becaus
 <br/>
 <br/>
 But don't worry, looking back at my previous articles I've noticed that a lot of you found them helpful, so I have high hopes for this series.
+<br/>
+<br/>
 <hr/>
 <h3>Target Audience</h3>
 Every single son of a tux out there who's interested in messing with the internals of his/her system. Anyone who wants to customize their kernel for maximum throughput, performance, (minimum)latency, gaming, streaming, music production, video editing, embedded systems etc...
@@ -49,6 +53,8 @@ Some of you may wonder, how on earth will I be able to provide proper configurat
 <br/>
 <br/>
 With my findings and your help, let's try to make this series a well established starting point (or even a reference) for all those who want to configure their kernels.
+<br/>
+<br/>
 <hr/>
 <h3>Description</h3>
 I'll go through every kernel configuration option out there, and include the help summary provided with it, its type and the choice I went with and the reason why (unless it was obvious). Furthermore, to keep things relatively simple and less confusing, I'll be using this template when describing kernel configuration options:
