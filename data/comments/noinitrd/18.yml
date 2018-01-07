@@ -1,0 +1,5 @@
+order: 18
+replying_to: '17'
+name: DOTSLASHLINUX
+comment: "@Ken, you're welcome, glad that you found it useful!\n\nIt's true that using an initrd/initramfs just adds complexity and the burden of maintaining an extra filesystem when your setup is extremely minimal as you won't need it most of the times. Although it has its uses, but for the sake of minimalism it would be better to do without it."
+date: '2017-12-02'
