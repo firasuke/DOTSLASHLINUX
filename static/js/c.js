@@ -11,17 +11,17 @@ Prism.languages.vim={string:/"(?:[^"\\\r\n]|\\.)*"|'(?:[^'\r\n]|'')*'/,comment:/
 (function(){
   function dsr(results, store){
     var sr = document.getElementById('search-results');
+    var appendString = '<div id="deck" class="box"><div class="row"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><div class="box"><h2>';
     if (results.length){
-      var appendString = '';
+      appendString += results.length + ' Search Result(s) Found</h2></div></div>';
       for (var i = 0; i < results.length; i++){
         var item = store[results[i].ref];
-        appendString += '<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3"><div class="box card">'+
-          '<a href="'+item.url+'">'+'<div class="frame"><img src="'+item.imgsrc+'" alt="'+item.imgalt+'"></div><h3>'+
-          item.title+'</h3></a></div></div>'} 
-      sr.innerHTML += appendString;}
-    else{
-      sr.innerHTML += '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><div class="box"><h3 style="text-align: center;">No results.</h3></box></div>';
+        appendString += '<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3"><div class="box card">'+'<a href="'+item.url+'">'+'<div class="frame"><img src="'+item.imgsrc+'" alt="'+item.imgalt+'"></div><h3>'+item.title+'</h3></a></div></div>'} 
+      appendString += '</div></div>';}
+    else {
+      appendString += 'No Search Results Found</h2></div></div></div></div>';
     }
+    sr.innerHTML += appendString;
   }
   function getQueryVariable(variable){
     var query = window.location.search.substring(1);
