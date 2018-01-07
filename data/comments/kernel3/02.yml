@@ -1,5 +1,5 @@
 order: 2
 replying_to: '1'
 name: DOTSLASHLINUX
-comment: "@The Man, you don't have to exclude CONFIG_GENTOO_LINUX in order to exclude CONFIG_CGROUPS. In your case excluding CONFIG_SCHED_AUTOGROUP would do the trick.\n\nAnd I never said that excluding CONFIG_GENTOO_LINUX is necessary to exclude CONFIG_CGROUPS, I only excluded CONFIG_GENTOO_LINUX_PORTAGE, and if you carefully read the help documentation provided for that option, you'll see that all it does is select other options, meaning if you excluded CONFIG_GENTOO_LINUX_PORTAGE and included the rest of the options it selects yourself, you'll be able to exclude CONFIG_CGROUPS.\n\nHope it makes more sense now."
+comment: "@The Man, you don't have to exclude CONFIG_GENTOO_LINUX in order to exclude CONFIG_CGROUPS. In your case excluding CONFIG_SCHED_AUTOGROUP would do the trick.\n\nAnd I never said that excluding CONFIG_GENTOO_LINUX is necessary to exclude CONFIG_CGROUPS, I only excluded CONFIG_GENTOO_LINUX_PORTAGE. Also if you read the help documentation provided for that option, you'll see that all it does is select other options, meaning if you excluded CONFIG_GENTOO_LINUX_PORTAGE and included the rest of the options it selects yourself, you'll be able to exclude CONFIG_CGROUPS.\n\nHope it makes more sense now."
 date: '2018-01-07'

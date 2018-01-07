@@ -1,0 +1,5 @@
+order: 8
+replying_to: '7'
+name: DOTSLASHLINUX
+comment: "@jeff, while I'd love to do that but I think there's already a plethora of tutorials out there on how to use Vim.\n\nFurthermore, Vim comes with a built-in tutorial program called vimtutor which you can use to learn Vim.\n\nOne final thing, if you really wanted to learn Vim then you need to force yourself to use it whenever possible and for the longest periods of time possible. Doing that, you'll slowly find yourself more productive (a rough estimate would be within a matter of one or two weeks) and you'll take a liking to Vim.\n\nHope that helps, good luck with your Vim-learning journey!"
+date: '2018-01-07'
