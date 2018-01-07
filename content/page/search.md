@@ -1,5 +1,5 @@
 +++
-title = "SEARCH RESULTS"
+title = "SEARCH"
 type = "page"
 +++
 <div class="box search-box">
