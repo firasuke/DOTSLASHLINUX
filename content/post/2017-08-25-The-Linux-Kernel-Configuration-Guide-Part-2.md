@@ -1,6 +1,6 @@
 +++
-title = "The Linux Kernel Configuration Guide Part 2"
-slug = "the linux kernel configuration guide part 2"
+title = "The Linux Kernel Configuration Guide Part 2 - [∗] Gentoo Linux support  --->"
+slug = "the linux kernel configuration guide part 2 gentoo linux support"
 nick = "kernel2"
 date = "2017-08-25"
 author = "Firas Khalil Khana"
@@ -26,10 +26,10 @@ The <mark>/</mark> button can be used to search the available symbols. In order 
 Symbol: CONFIG_MODULES
 Name: Enable loadable modules support
 ```
-The <mark>spacebar</mark> button can be used to include options in the kernel either as built-in [&ast;] or as modules [M] or exclude them [ ].
+The <mark>spacebar</mark> button can be used to include options in the kernel either as built-in [&lowast;] or as modules [M] or exclude them [ ].
 <br/>
 <br/>
-Similarly the <mark>y</mark> key can be used to include options [&ast;], and the <mark>n</mark> key can be used for excluding options [ ].
+Similarly the <mark>y</mark> key can be used to include options [&lowast;], and the <mark>n</mark> key can be used for excluding options [ ].
 <br/>
 <br/>
 The <mark>&#9166;</mark> (enter/return) button can be used to access the available nested child options for any single parent option.
@@ -40,17 +40,17 @@ The <mark>z</mark> key can be used to toggle hidden kernel options, this can be 
 <br/>
 Below is an explanation of the symbols before the names of the kernel options:
 ```properties
-Included, built-in, enabled: [*], <*>, (X), (STRING), (57), (0x1000000)
-Forcibly included, forcibly built-in, forcibly enabled: -*-
+Included, built-in, enabled: [∗], <∗>, (X), (STRING), (57), (0x1000000)
+Forcibly included, forcibly built-in, forcibly enabled: -∗-
 
 Excluded, disabled: [ ], < >, ()
 Forcibly excluded, forcibly disabled: - -
 ```
 and their relative types:
 ```properties
-boolean: [ ], [*], -*-, - -
+boolean: [ ], [∗], -∗-, - -
 
-tristate: < >, <*>, <M>, -*-, - -
+tristate: < >, <∗>, <M>, -∗-, - -
 
 string: (STRING), ()
 
@@ -62,12 +62,12 @@ hex: (0x1000000), ()
 <h3>(Gentoo Specific Options) Gentoo Linux  ---></h3>
 The first section you'll see in the menu options when using Gentoo Linux, will be the Gentoo Linux section (that was predictable =D). Select that option and you'll see the following:
 ```properties
-[*] Gentoo Linux support
-[*]   Linux dynamic and persistent device naming (userspace devfs) support
+[∗] Gentoo Linux support
+[∗]   Linux dynamic and persistent device naming (userspace devfs) support
 [ ]   Select options required by Portage features
     Support for init systems, system and service managers  --->
 ```
-<h3>[&ast;] Gentoo Linux support</h3>
+<h3>[&lowast;] Gentoo Linux support</h3>
 ```properties
 Symbol:     CONFIG_GENTOO_LINUX
 
@@ -80,13 +80,13 @@ Help:       In order to boot Gentoo Linux a minimal set of config settings needs
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     If you're on Gentoo Linux (or managed to get a copy of one of the sources
             available in the gentoo repos), then it's quite obvious that this option 
             should be built in.
 ```
-<h3>[&ast;] Linux dynamic and persistent device naming (userspace devfs) support</h3>
+<h3>[&lowast;] Linux dynamic and persistent device naming (userspace devfs) support</h3>
 ```properties
 Symbol:     CONFIG_GENTOO_LINUX_UDEV
 
@@ -107,7 +107,7 @@ Help:       In order to boot Gentoo Linux a minimal set of config settings needs
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     Include this option in for a bootable gentoo installation =D.
 ```
@@ -137,7 +137,7 @@ Reason:     It's highly recommended that you build this set of options in your k
             into the kernel (which is what I did).
 ```
 <h3>Support for init systems, system and service managers  ---></h3>
-<h3>[&ast;] OpenRC, runit and other script based systems and managers</h3>
+<h3>[&lowast;] OpenRC, runit and other script based systems and managers</h3>
 ```properties
 Symbol:     CONFIG_GENTOO_LINUX_INIT_SCRIPT
 
@@ -154,7 +154,7 @@ Help:       The init system is the first thing that loads after the kernel boote
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel if
             you're using OpenRC or runit as your init system.

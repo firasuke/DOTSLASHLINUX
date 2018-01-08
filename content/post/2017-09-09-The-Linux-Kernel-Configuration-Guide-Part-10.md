@@ -1,6 +1,6 @@
 +++
-title = "The Linux Kernel Configuration Guide Part 10"
-slug = "the linux kernel configuration guide part 10"
+title = "The Linux Kernel Configuration Guide Part 10 - [∗] Networking support  --->"
+slug = "the linux kernel configuration guide part 10 networking support"
 nick = "kernel10"
 date = "2017-09-09"
 author = "Firas Khalil Khana"
@@ -8,7 +8,7 @@ imgsrc = "/img/kernel10.png"
 imgalt = "kernel10"
 categories = [ "kernel" ]
 +++
-<h3>[&ast;] Networking support  ---></h3>
+<h3>[&lowast;] Networking support  ---></h3>
 ```properties
 Symbol:     CONFIG_NET
 
@@ -29,7 +29,7 @@ Help:       Unless you really know what you are doing, you should say Y here.
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel as
             many programs rely on it (many of Xorg server features depend on it).It's
@@ -40,7 +40,7 @@ Reason:     It's highly recommended that you include this option in your kernel 
             testing purposes.
 ```
 <h3>Networking options  ---></h3>
-<h3><&ast;> Packet socket</h3>
+<h3><&lowast;> Packet socket</h3>
 ```properties
 Symbol:     CONFIG_PACKET
 
@@ -56,7 +56,7 @@ Help:       The Packet protocol is used by applications which communicate
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             as it's required by net-wireless/wpa_supplicant.
@@ -70,7 +70,7 @@ Reason:     It's highly recommended that you include this option in your kernel
                 
                 https://googleprojectzero.blogspot.com/2017/05/exploiting-linux-kernel-via-packet.html
 ```
-<h3>-&ast;- Unix domain sockets</h3>
+<h3>-&lowast;- Unix domain sockets</h3>
 ```properties
 Symbol:     CONFIG_UNIX
 
@@ -90,14 +90,14 @@ Help:       If you say Y here, you will include support for Unix domain sockets;
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     It's highly recommended that you include this option in your kernel as
             it's required by many programs such as the Xorg server which is used
             in almost all user systems (that is if this option wasn't already
             forcibly included by CONFIG_GENTOO_LINUX and CONFIG_GENTOO_LINUX_UDEV).
 ```
-<h3>[&ast;] TCP/IP networking</h3>
+<h3>[&lowast;] TCP/IP networking</h3>
 ```properties
 Symbol:     CONFIG_INET
 
@@ -115,14 +115,14 @@ Help:       These are the protocols used on the Internet and on most local
             If you say Y here and also to "/proc file system support" and
             "Sysctl support" below, you can change various aspects of the
             behavior of the TCP/IP code by writing to the (virtual) files in
-            /proc/sys/net/ipv4/*; the options are explained in the file
+            /proc/sys/net/ipv4/∗; the options are explained in the file
             <file:Documentation/networking/ip-sysctl.txt>.
 
             Short answer: say Y.
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             as some say it's required by the Xorg server (although I doubt
@@ -202,7 +202,7 @@ Choice:     excluded < >
 Reason:     You can safely exclude this option as it's highly unlikely that 
             your laptop (modern laptops) will use this protocol.
 ```
-<h3><&ast;>   Bluetooth subsystem support  ---></h3>
+<h3><&lowast;>   Bluetooth subsystem support  ---></h3>
 ```properties
 Symbol:     CONFIG_BT
 
@@ -234,12 +234,12 @@ Help:       Bluetooth is low-cost, low-power, short-range wireless technology.
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     You can safely exclude this option if your device doesn't support 
             bluetooth or if you don't want bluetooth included at all.
 ```
-<h3>[&ast;]   Bluetooth Classic (BR/EDR) features</h3>
+<h3>[&lowast;]   Bluetooth Classic (BR/EDR) features</h3>
 ```properties
 Symbol:     CONFIG_BT_BREDR
 
@@ -247,7 +247,7 @@ Help:       There is no help available for this option.
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             if your device supports bluetooth.
@@ -319,7 +319,7 @@ Choice:     excluded < >
 Reason:     You can safely exclude this option as it's highly unlikely to be needed
             by users who want basic bluetooth support.
 ```
-<h3>[&ast;]     Bluetooth High Speed (HS) features</h3>
+<h3>[&lowast;]     Bluetooth High Speed (HS) features</h3>
 ```properties
 Symbol:     CONFIG_BT_HS
 
@@ -327,12 +327,12 @@ Help:       There is no help available for this option.
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             if your device supports bluetooth as recommended by the Gentoo wiki.
 ```
-<h3>[&ast;]   Bluetooth Low Energy (LE) features</h3>
+<h3>[&lowast;]   Bluetooth Low Energy (LE) features</h3>
 ```properties
 Symbol:     CONFIG_BT_LE
 
@@ -340,7 +340,7 @@ Help:       There is no help available for this option.
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             if your device supports bluetooth as recommended by the Gentoo wiki.
@@ -379,7 +379,7 @@ Reason:     You can safely exclude this option as it's for intended for developi
             and testing purposes.
 ```
 <h3>Bluetooth device drivers  ---></h3>
-<h3><&ast;> HCI USB driver</h3>
+<h3><&lowast;> HCI USB driver</h3>
 ```properties
 Symbol:     CONFIG_BT_HCIBTUSB
 
@@ -392,7 +392,7 @@ Help:       Bluetooth HCI USB driver.
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you have a Bluetooth device with USB interface.
@@ -410,7 +410,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 
             to see if your system has a Bluetooth device with USB interface or not.
 ```
-<h3><&ast;> HCI UART driver</h3>
+<h3><&lowast;> HCI UART driver</h3>
 ```properties
 Symbol:     CONFIG_BT_HCIUART
 
@@ -425,7 +425,7 @@ Help:       Bluetooth HCI UART driver.
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you have a UART based Bluetooth device.
@@ -443,7 +443,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 
             to see if your system has a UART based Bluetooth device or not.
 ```
-<h3>-&ast;-   UART (H4) protocol support</h3>
+<h3>-&lowast;-   UART (H4) protocol support</h3>
 ```properties
 Symbol:     CONFIG_BT_HCIUART_H4
 
@@ -455,7 +455,7 @@ Help:       UART (H4) is serial protocol for communication between Bluetooth
 
 Type:       boolean
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you have a UART based Bluetooth device.
@@ -473,7 +473,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 
             to see if your system has a UART based Bluetooth device or not.
 ```
-<h3>[&ast;]   Atheros AR300x serial support</h3>
+<h3>[&lowast;]   Atheros AR300x serial support</h3>
 ```properties
 Symbol:     CONFIG_BT_HCIUART_ATH3K
 
@@ -487,7 +487,7 @@ Help:       HCIATH3K (HCI Atheros AR300x) is a serial protocol for
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you have a AR300x Bluetooth device.
@@ -505,7 +505,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 
             to see if your system has a AR300x Bluetooth device or not.
 ```
-<h3><&ast;> Atheros firmware download driver</h3>
+<h3><&lowast;> Atheros firmware download driver</h3>
 ```properties
 Symbol:     CONFIG_BT_ATH3K
 
@@ -518,7 +518,7 @@ Help:       Bluetooth firmware download driver.
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you have a AR300x Bluetooth device.
@@ -573,7 +573,7 @@ Choice:     excluded < >
 Reason:     You can safely exclude this option as it's highly unlikely that
             a normal user will be using this option.
 ```
-<h3>-&ast;-   Wireless  ---></h3>
+<h3>-&lowast;-   Wireless  ---></h3>
 ```properties
 Symbol:     CONFIG_WIRELESS
 
@@ -581,12 +581,12 @@ Help:       There is no help available for this option.
 
 Type:       boolean
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you're using a laptop or any other system that has a wireless network device.
 ```
-<h3><&ast;>   cfg80211 - wireless configuration API</h3>
+<h3><&lowast;>   cfg80211 - wireless configuration API</h3>
 ```properties
 Symbol:     CONFIG_CFG80211
 
@@ -601,7 +601,7 @@ Help:       cfg80211 is the Linux wireless LAN (802.11) configuration API.
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you have a wireless device (recommended also by the Gentoo wiki).
@@ -609,7 +609,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             This option is aka WEXT, which is basically support for old
             "wireless-tools" and "iwconfig".
 ```
-<h3>[&ast;]     enable powersave by default</h3>
+<h3>[&lowast;]     enable powersave by default</h3>
 ```properties
 Symbol:     CONFIG_CFG80211_DEFAULT_PS
 
@@ -621,7 +621,7 @@ Help:       This option enables powersave mode by default.
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             if powersaving on wireless devices was a main concern to you as it'll
@@ -631,7 +631,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             The Gentoo wiki recommends that you include it, but on some buggy
             drivers this may cause some connection problems.
 ```
-<h3><&ast;>   Generic IEEE 802.11 Networking Stack (mac80211)</h3>
+<h3><&lowast;>   Generic IEEE 802.11 Networking Stack (mac80211)</h3>
 ```properties
 Symbol:     CONFIG_MAC80211
 
@@ -640,12 +640,12 @@ Help:       This option enables the hardware independent IEEE 802.11
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             as mentioned in the Gentoo wiki.
 ```
-<h3>[&ast;]   Minstrel</h3>
+<h3>[&lowast;]   Minstrel</h3>
 ```properties
 Symbol:     CONFIG_MAC80211_RC_MINSTREL
 
@@ -653,13 +653,13 @@ Help:       This option enables the 'minstrel' TX rate control algorithm
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this rate control algorithm
             if you have a wireless network device as it's famous for its efficiency
             and precision (and it's recommended by the Gentoo wiki).
 ```
-<h3>[&ast;]     Minstrel 802.11n support</h3>
+<h3>[&lowast;]     Minstrel 802.11n support</h3>
 ```properties
 Symbol:     CONFIG_MAC80211_RC_MINSTREL_HT
 
@@ -667,7 +667,7 @@ Help:       This option enables the 'minstrel_ht' TX rate control algorithm
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this rate control algorithm
             if you have a wireless network device as it's famous for its efficiency
@@ -694,7 +694,7 @@ Reason:     It's highly recommended that you include this rate control algorithm
             if you have a wireless network device as it's famous for its efficiency
             and precision (and it's recommended by the Gentoo wiki).
 ```
-<h3>-&ast;-   Enable LED triggers</h3>
+<h3>-&lowast;-   Enable LED triggers</h3>
 ```properties
 Symbol:     CONFIG_MAC80211_LEDS
 
@@ -703,7 +703,7 @@ Help:       This option enables a few LED triggers for different
 
 Type:       boolean
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     It's highly recommended that you include this option in your kernel
             to enable LED triggers when receiving/transmitting packets, that is
@@ -748,7 +748,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 
             to see if your system has a device that uses the WiMAX protocol or not.
 ```
-<h3><&ast;>   RF switch subsystem support  ---></h3>
+<h3><&lowast;>   RF switch subsystem support  ---></h3>
 ```properties
 Symbol:     CONFIG_RFKILL
 
@@ -760,7 +760,7 @@ Help:       Say Y here if you want to have control over RF switches
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             as RF switches are found in a lot of wireless network devices and
@@ -769,7 +769,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             Plus if you ever wonder why your wireless or bluetooth cards aren't
             working then you may need rfkill to unblock them in order to use them.
 ```
-<h3>[&ast;]   RF switch input support</h3>
+<h3>[&lowast;]   RF switch input support</h3>
 ```properties
 Symbol:     CONFIG_RFKILL_INPUT
 
@@ -777,7 +777,7 @@ Help:       There is no help available for this option.
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's recommended that you include this option in your kernel
             along with CONFIG_RFKILL to ensure that "rfkill" works properly.
@@ -844,7 +844,7 @@ Choice:     excluded < >
 Reason:     You can safely exclude this option as it's highly unlikely that
             a normal user will be using this option.
 ```
-<h3><&ast;>   NFC subsystem support  ---></h3>
+<h3><&lowast;>   NFC subsystem support  ---></h3>
 ```properties
 Symbol:     CONFIG_NFC
 
@@ -856,7 +856,7 @@ Help:       Say Y here if you want to build support for NFC (Near field
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you have a NFC device (the 'evil' Intel's Management Engine requires
@@ -875,7 +875,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 
             to see if your system has a NFC device or not.
 ```
-<h3><&ast;>   NFC HCI implementation</h3>
+<h3><&lowast;>   NFC HCI implementation</h3>
 ```properties
 Symbol:     CONFIG_NFC_HCI
 
@@ -885,7 +885,7 @@ Help:       Say Y here if you want to build support for a kernel NFC HCI
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you have a NFC device (the 'evil' Intel's Management Engine requires
@@ -905,7 +905,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             to see if your system has a NFC device or not.
 ```
 <h3>Near Field Communication (NFC) devices  ---></h3>
-<h3><&ast;> MEI bus NFC device support</h3>
+<h3><&lowast;> MEI bus NFC device support</h3>
 ```properties
 Symbol:     CONFIG_NFC_MEI_PHY
 
@@ -917,7 +917,7 @@ Help:       This adds support to use an mei bus nfc device. Select this if you
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you have a NFC chip connected behind an Intel's Management Engine
@@ -937,7 +937,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             to see if your system has a NFC chip connected behind ann Intel's 
             Management Engine chip or not.
 ```
-<h3><&ast;> NXP PN544 device support (MEI)</h3>
+<h3><&lowast;> NXP PN544 device support (MEI)</h3>
 ```properties
 Symbol:     CONFIG_NFC_PN544_MEI
 
@@ -950,7 +950,7 @@ Help:       This module adds support for the mei interface of adapters using
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you have a pn544 chipset handled by Intel's Management Engine

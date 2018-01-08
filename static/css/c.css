@@ -39,7 +39,9 @@ a:hover {
 }
 
 .brand h1 a:hover,
-nav ul li a:hover {
+nav ul li a:hover,
+td a:hover,
+.footer a:hover {
   color: #333 !important;
 }
 
@@ -251,6 +253,9 @@ nav li {
 
 .footer a {
   color: #d6d6d6;
+}
+
+#creativecommons {
   text-decoration: underline;
 }
 

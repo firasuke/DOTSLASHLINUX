@@ -1,6 +1,6 @@
 +++
-title = "The Linux Kernel Configuration Guide Part 17"
-slug = "the linux kernel configuration guide part 17"
+title = "The Linux Kernel Configuration Guide Part 17 - [∗] Virtualization  --->"
+slug = "the linux kernel configuration guide part 17 virtualization"
 nick = "kernel17"
 date = "2017-09-17"
 author = "Firas Khalil Khana"
@@ -13,7 +13,7 @@ As of kernel version <mark>4.14.10-r1</mark>, all virtualization-related options
 <br/>
 Include the options below only if you're using QEMU.
 <hr/>
-<h3>[&ast;] Virtualization  ---></h3>
+<h3>[&lowast;] Virtualization  ---></h3>
 ```properties
 Symbol:     CONFIG_VIRTUALIZATION
 
@@ -25,14 +25,14 @@ Help:       Say Y here to get to see options for using your Linux host to run ot
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you're planning to run guest vms on your host system.
 
             It's also recommended by the Gentoo wiki.
 ```
-<h3><&ast;>   Kernel-based Virtual Machine (KVM) support</h3>
+<h3><&lowast;>   Kernel-based Virtual Machine (KVM) support</h3>
 ```properties
 Symbol:     CONFIG_KVM
 
@@ -51,14 +51,14 @@ Help:       Support hosting fully virtualized guest machines using hardware
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option as the KVM
             hypervisor enhances performance considerably in linux guests.
             
             It's also recommended by the Gentoo wiki.
 ```
-<h3><&ast;>     KVM for Intel processors support</h3>
+<h3><&lowast;>     KVM for Intel processors support</h3>
 ```properties
 Symbol:     CONFIG_KVM_INTEL
 
@@ -70,7 +70,7 @@ Help:       Provides support for KVM on Intel processors equipped with the VT
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option as the KVM
             hypervisor for Intel CPUs enhances performance considerably in
@@ -78,7 +78,7 @@ Reason:     It's highly recommended that you include this option as the KVM
             
             It's also recommended by the Gentoo wiki.
 ```
-<h3><&ast;>   Host kernel accelerator for virtio net</h3>
+<h3><&lowast;>   Host kernel accelerator for virtio net</h3>
 ```properties
 Symbol:     CONFIG_VHOST_NET
 
@@ -91,7 +91,7 @@ Help:       This kernel module can be loaded in host kernel to accelerate
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option as virtio
             net boosts network performance considerably in guest vms.

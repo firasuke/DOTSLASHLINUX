@@ -1,6 +1,6 @@
 +++
-title = "The Linux Kernel Configuration Guide Part 9"
-slug = "the linux kernel configuration guide part 9"
+title = "The Linux Kernel Configuration Guide Part 9 - Executable file formats / Emulations  --->"
+slug = "the linux kernel configuration guide part 9 executable file formats emulations"
 nick = "kernel9"
 date = "2017-09-08"
 author = "Firas Khalil Khana"
@@ -9,7 +9,7 @@ imgalt = "kernel9"
 categories = [ "kernel" ]
 +++
 <h3>Executable file formats / Emulations  ---></h3>
-<h3>-&ast;- Kernel support for ELF binaries</h3>
+<h3>-&lowast;- Kernel support for ELF binaries</h3>
 ```properties
 Symbol:     CONFIG_BINFMT_ELF
 
@@ -18,7 +18,7 @@ Help:       ELF (Executable and Linkable Format) is a format for libraries and
             systems. Saying Y here will enable your kernel to run ELF binaries
             and enlarge it by about 13 KB. ELF support under Linux has now all
             but replaced the traditional Linux a.out formats (QMAGIC and ZMAGIC)
-            because it is portable (this does *not* mean that you will be able
+            because it is portable (this does ∗not∗ mean that you will be able
             to run executables from different architectures or operating systems
             however) and makes building run-time libraries very easy. Many new
             executables are distributed solely in ELF format. You definitely
@@ -35,13 +35,13 @@ Help:       ELF (Executable and Linkable Format) is a format for libraries and
 
 Type:       boolean
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     It's highly recommended that you include this option in your kernel
             as ELF is the binary format used on linux systems (that is if it isn't
             already forcibly included by CONFIG_X86_64 and CONFIG_IA32_EMULATION.
 ```
-<h3>-&ast;- Kernel support for scripts starting with #!</h3>
+<h3>-&lowast;- Kernel support for scripts starting with #!</h3>
 ```properties
 Symbol:     CONFIG_BINFMT_SCRIPT
 
@@ -57,7 +57,7 @@ Help:       Say Y here if you want to execute interpreted scripts starting with
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     It's highly recommended that you include this option in your kernel
             as it's required to execute scripts and binaries that need an interpreter
@@ -66,7 +66,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             This is also required by many init scripts as well and is used on countless
             distributions (CONFIG_GENTOO_LINUX and CONFIG_GENTOO_LINUX_INIT_SCRIPT).
 ```
-<h3><&ast;> Kernel support for MISC binaries</h3>
+<h3><&lowast;> Kernel support for MISC binaries</h3>
 ```properties
 Symbol:     CONFIG_BINFMT_MISC
 
@@ -95,7 +95,7 @@ Help:       If you say Y here, it will be possible to plug wrapper-driven binary
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel as
             it's extremely useful when running emulators and virtual machines.
@@ -115,7 +115,7 @@ Choice:     excluded [ ]
 Reason:     You can safely exclude this option as it's intended for debugging
             purposes.
 ```
-<h3>[&ast;] IA32 Emulation</h3>
+<h3>[&lowast;] IA32 Emulation</h3>
 ```properties
 Symbol:     CONFIG_IA32_EMULATION
 
@@ -125,7 +125,7 @@ Help:       Include code to run legacy 32-bit programs under a
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you want to run 32-bit programs as you never know when you'll need

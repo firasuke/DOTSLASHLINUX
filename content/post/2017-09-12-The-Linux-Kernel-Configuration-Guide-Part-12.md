@@ -1,6 +1,6 @@
 +++
-title = "The Linux Kernel Configuration Guide Part 12"
-slug = "the linux kernel configuration guide part 12"
+title = "The Linux Kernel Configuration Guide Part 12 - Firmware Drivers  --->"
+slug = "the linux kernel configuration guide part 12 firmware drivers"
 nick = "kernel12"
 date = "2017-09-12"
 author = "Firas Khalil Khana"
@@ -83,7 +83,7 @@ Choice:     excluded < >
 
 Reason:     You can safely exclude this option if you're not using a DELL system.
 ```
-<h3>[&ast;] Export DMI identification via sysfs to userspace</h3>
+<h3>[&lowast;] Export DMI identification via sysfs to userspace</h3>
 ```properties
 Symbol:     CONFIG_DMIID
 
@@ -93,7 +93,7 @@ Help:       Say Y here if you want to query SMBIOS/DMI system identification
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's recommended that you include this option in your kernel as it
             provides important information about your hardware. This option is

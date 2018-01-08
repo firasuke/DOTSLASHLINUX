@@ -1,6 +1,6 @@
 +++
-title = "The Linux Kernel Configuration Guide Part 7"
-slug = "the linux kernel configuration guide part 7"
+title = "The Linux Kernel Configuration Guide Part 7 - Power management and ACPI options  --->"
+slug = "the linux kernel configuration guide part 7 power management and acpi options"
 nick = "kernel7"
 date = "2017-09-06"
 author = "Firas Khalil Khana"
@@ -76,7 +76,7 @@ Reason:     You can safely exclude this option if you don't plan on using suspen
             CONFIG_HIBERNATION or suspend to disk saves all data in the memory to
             the disk allowing the device to power off completely.
 ```
-<h3>[&ast;] Device power management core functionality</h3>
+<h3>[&lowast;] Device power management core functionality</h3>
 ```properties
 Symbol:     CONFIG_PM
 
@@ -92,7 +92,7 @@ Help:       Enable functionality allowing I/O devices to be put into energy-savi
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             as it's required for enabling the power saving functionality of I/O
@@ -139,7 +139,7 @@ Choice:     excluded [ ]
 Reason:     You can safely exclude this option as it slightly improves power
             saving at the cost of performance.
 ```
-<h3>[&ast;] ACPI (Advanced Configuration and Power Interface) Support  ---></h3>
+<h3>[&lowast;] ACPI (Advanced Configuration and Power Interface) Support  ---></h3>
 ```properties
 Symbol:     CONFIG_ACPI
 
@@ -175,7 +175,7 @@ Help:       Advanced Configuration and Power Interface (ACPI) support for
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             as many systems won't boot without ACPI support.
@@ -211,8 +211,8 @@ Help:       For backwards compatibility, this option allows
             deprecated power /proc/acpi/ directories to exist, even when
             they have been replaced by functions in /sys.
             The deprecated directories (and their replacements) include:
-            /proc/acpi/battery/* (/sys/class/power_supply/*)
-            /proc/acpi/ac_adapter/* (sys/class/power_supply/*)
+            /proc/acpi/battery/∗ (/sys/class/power_supply/∗)
+            /proc/acpi/ac_adapter/∗ (sys/class/power_supply/∗)
             This option has no effect on /proc/acpi/ directories
             and functions, which do not yet exist in /sys
             This option, together with the proc directories, will be
@@ -281,7 +281,7 @@ Choice:     excluded < >
 Reason:     You can safely exclude this option as providing the kernel direct access
             to the EC without ACPI sounds problematic.
 ```
-<h3><&ast;>   AC Adapter</h3>
+<h3><&lowast;>   AC Adapter</h3>
 ```properties
 Symbol:     CONFIG_ACPI_AC
 
@@ -294,7 +294,7 @@ Help:       This driver supports the AC Adapter object, which indicates
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you're building the kernel for a laptop which switches between A/C
@@ -303,7 +303,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             You can safely exclude this option along with CONFIG_ACPI_BATTERY if
             you're building the kernel for a desktop.
 ```
-<h3><&ast;>   Battery</h3>
+<h3><&lowast;>   Battery</h3>
 ```properties
 Symbol:     CONFIG_ACPI_BATTERY
 
@@ -316,7 +316,7 @@ Help:       This driver adds support for battery information through
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you're building the kernel for a laptop which switches between A/C
@@ -325,7 +325,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             You can safely exclude this option along with CONFIG_ACPI_AC if
             you're building the kernel for a desktop.
 ```
-<h3>-&ast;-   Button</h3>
+<h3>-&lowast;-   Button</h3>
 ```properties
 Symbol:     CONFIG_ACPI_BUTTON
 
@@ -339,13 +339,13 @@ Help:       This driver handles events on the power, sleep, and lid buttons.
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     It's highly recommended that you include this option in your kernel
             (that is if it isn't already forcibly included by CONFIG_X86, CONFIG_PCI
             CONFIG_DRM, and CONFIG_DRM_I915).
 ```
-<h3>-&ast;-   Video</h3>
+<h3>-&lowast;-   Video</h3>
 ```properties
 Symbol:     CONFIG_ACPI_VIDEO
 
@@ -360,14 +360,14 @@ Help:       This driver implements the ACPI Extensions For Display Adapters
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     It's highly recommended that you include this option in your kernel
             (that is if it isn't already forcibly included by CONFIG_X86, CONFIG_PCI
             CONFIG_DRM, CONFIG_DRM_I915, CONFIG_INPUT, CONFIG_RFKILL and a lot of
             important options).
 ```
-<h3><&ast;>   Fan</h3>
+<h3><&lowast;>   Fan</h3>
 ```properties
 Symbol:     CONFIG_ACPI_FAN
 
@@ -379,7 +379,7 @@ Help:       This driver supports ACPI fan devices, allowing user-mode
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     It's highly recommended that you include this option in your kernel
             to allow ACPI fan control.
@@ -398,7 +398,7 @@ Choice:     excluded [ ]
 Reason:     You can safely exclude this option if your system doesn't have a docking
             station and/or a removable drive bay.
 ```
-<h3>-&ast;-   Processor</h3>
+<h3>-&lowast;-   Processor</h3>
 ```properties
 Symbol:     CONFIG_ACPI_PROCESSOR
 
@@ -411,12 +411,12 @@ Help:       This driver adds support for the ACPI Processor package. It is requi
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you're using Intel P-State as your CPU frequency scaling driver.
 ```
-<h3><&ast;>   Processor Aggregator</h3>
+<h3><&lowast;>   Processor Aggregator</h3>
 ```properties
 Symbol:     CONFIG_ACPI_PROCESSOR_AGGREGATOR
 
@@ -428,12 +428,12 @@ Help:       ACPI 4.0 defines processor Aggregator, which enables OS to perform
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             as it allows the kernel to let the CPUs enter idle state.
 ```
-<h3><&ast;>   Thermal Zone</h3>
+<h3><&lowast;>   Thermal Zone</h3>
 ```properties
 Symbol:     CONFIG_ACPI_THERMAL
 
@@ -517,7 +517,7 @@ Choice:     excluded [ ]
 Reason:     You can safely exclude this option if you're sure that your applications
             don't require it.
 ```
-<h3>[&ast;]   Power Management Timer Support</h3>
+<h3>[&lowast;]   Power Management Timer Support</h3>
 ```properties
 Symbol:     CONFIG_X86_PM_TIMER
 
@@ -534,7 +534,7 @@ Help:       The Power Management Timer is available on all ACPI-capable,
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             as many modern systems rely on its functionality.
@@ -573,7 +573,7 @@ Help:       This driver supports the Smart Battery System, another
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     You can safely exclude this option if you don't have a laptop
             with a smart battery system.
@@ -767,7 +767,7 @@ Reason:     You can safely exclude this option as it's intended for small and lo
             speced devices (some smart phones).
 ```
 <h3>CPU Frequency scaling  ---></h3>
-<h3>[&ast;] CPU Frequency scaling</h3>
+<h3>[&lowast;] CPU Frequency scaling</h3>
 ```properties
 Symbol:     CONFIG_CPU_FREQ
 
@@ -785,7 +785,7 @@ Help:       CPU Frequency scaling allows you to change the clock speed of
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             especially if you're on a laptop and want to conserve power as it'll
@@ -865,7 +865,7 @@ Reason:     It's recommended that you include this option in your kernel
             reducing temperatures and conserving power while maintaining high performance
             when needed.
 ```
-<h3>-&ast;-   'performance' governor</h3>
+<h3>-&lowast;-   'performance' governor</h3>
 ```properties
 Symbol:     CONFIG_CPU_FREQ_GOV_PERFORMANCE
 
@@ -879,12 +879,12 @@ Help:       This cpufreq governor sets the frequency statically to the
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     It's highly recommended that you include this option in your kernel
             as it's required by CONFIG_X86_INTEL_PSTATE.
 ```
-<h3><&ast;>   'powersave' governor</h3>
+<h3><&lowast;>   'powersave' governor</h3>
 ```properties
 Symbol:     CONFIG_CPU_FREQ_GOV_POWERSAVE
 
@@ -898,7 +898,7 @@ Help:       This cpufreq governor sets the frequency statically to the
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             as it's required by CONFIG_X86_INTEL_PSTATE.
@@ -936,8 +936,8 @@ Reason:     It's recommended that you include this option in your kernel
             Don't forget to disable every other governor ('userspace', 'conservative'
             and 'schedutil')as well for a more minimal system, as they won't be used.
 ```
-<h3>&ast;&ast;&ast; CPU frequency scaling drivers &ast;&ast;&ast;</h3>
-<h3>[&ast;]   Intel P state control</h3>
+<h3>&lowast;&lowast;&lowast; CPU frequency scaling drivers &lowast;&lowast;&lowast;</h3>
+<h3>[&lowast;]   Intel P state control</h3>
 ```properties
 Symbol:     CONFIG_X86_INTEL_PSTATE
 
@@ -963,7 +963,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             CPU scaling driver for a more minimal system as they won't be used.
 ```
 <h3>CPU Idle  ---></h3>
-<h3>-&ast;- CPU idle PM support</h3>
+<h3>-&lowast;- CPU idle PM support</h3>
 ```properties
 Symbol:     CONFIG_CPU_IDLE
 
@@ -975,12 +975,12 @@ Help:       CPU idle is a generic framework for supporting software-controlled
 
 Type:       boolean
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     It's highly recommended that you include this option in your kernel
             as it allows your CPU to enter idle state when not in use to conserve energy.
 ```
-<h3>-&ast;-   Ladder governor (for periodic timer tick)</h3>
+<h3>-&lowast;-   Ladder governor (for periodic timer tick)</h3>
 ```properties
 Symbol:     CONFIG_CPU_IDLE_GOV_LADDER
 
@@ -988,7 +988,7 @@ Help:       There is no help available for this option.
 
 Type:       boolean
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     It's highly recommended that you include this option in your kernel
             that is if it isn't already forcibly included by CONFIG_HZ_PERIODIC.
@@ -1006,7 +1006,7 @@ Choice:     excluded [ ]
 Reason:     You can safely exclude this option if you've already included CONFIG_HZ_PERIODIC
             and CONFIG_CPU_IDLE_GOV_LADDER.
 ```
-<h3>[&ast;] Cpuidle Driver for Intel Processors</h3>
+<h3>[&lowast;] Cpuidle Driver for Intel Processors</h3>
 ```properties
 Symbol:     CONFIG_INTEL_IDLE
 
@@ -1017,7 +1017,7 @@ Help:       Enable intel_idle, a cpuidle driver that includes knowledge of
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you're using an Intel CPU along with CONFIG_CPU_IDLE as it's much

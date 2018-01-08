@@ -1,6 +1,6 @@
 +++
-title = "The Linux Kernel Configuration Guide Part 8"
-slug = "the linux kernel configuration guide part 8"
+title = "The Linux Kernel Configuration Guide Part 8 - Bus options (PCI etc.)  --->"
+slug = "the linux kernel configuration guide part 8 bus options pci etc"
 nick = "kernel8"
 date = "2017-09-07"
 author = "Firas Khalil Khana"
@@ -17,7 +17,7 @@ For those of you who want to know the options/features that their system support
 Thanks for your time! Have fun configuring your kernel!
 <hr/>
 <h3>Bus options (PCI etc.)  ---></h3>
-<h3>[&ast;] PCI support</h3>
+<h3>[&lowast;] PCI support</h3>
 ```properties
 Symbol:     CONFIG_PCI
 
@@ -28,7 +28,7 @@ Help:       Find out whether you have a PCI motherboard. PCI is the name of a
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             if your motherboard supports PCI (almost all graphic cards use PCI or PCIe).
@@ -46,7 +46,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 
             to see if your system has PCI or not.
 ```
-<h3>[&ast;]   Support mmconfig PCI config space access</h3>
+<h3>[&lowast;]   Support mmconfig PCI config space access</h3>
 ```properties
 Symbol:     CONFIG_PCI_MMCONFIG
 
@@ -54,7 +54,7 @@ Help:       There is no help available for this option.
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             as it's required to read extended information of PCI devices and
@@ -92,7 +92,7 @@ Reason:     You can safely exclude this option if you don't have a CNB20LE host 
 
             to see if your system has CNB20LE or not.
 ```
-<h3>[&ast;]   PCI Express Port Bus support</h3>
+<h3>[&lowast;]   PCI Express Port Bus support</h3>
 ```properties
 Symbol:     CONFIG_PCIEPORTBUS
 
@@ -103,7 +103,7 @@ Help:       This automatically enables PCI Express Port Bus support. Users can
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you have PCIe ports (PCIe is an improved version of PCI designed
@@ -166,7 +166,7 @@ Reason:     You can safely exclude this option as it's intended mostly for
             want to include this option in your kernel as it'll help you pinpoint the
             source of these errors.
 ```
-<h3>[*]     PCI Express ASPM control</h3>
+<h3>[∗]     PCI Express ASPM control</h3>
 ```properties
 Symbol:     CONFIG_PCIEASPM
 
@@ -185,7 +185,7 @@ Help:       This enables OS control over PCI Express ASPM (Active State
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include PCIe ASPM as it's really an important
             feature that allows your PCIe devices to enter an idle state when not in use.
@@ -283,7 +283,7 @@ Reason:     You can safely exclude this option.
 
                 https://en.wikipedia.org/wiki/Goldmont
 ```
-<h3>[&ast;]   Message Signaled Interrupts (MSI and MSI-X)</h3>
+<h3>[&lowast;]   Message Signaled Interrupts (MSI and MSI-X)</h3>
 ```properties
 Symbol:     CONFIG_PCI_MSI
 
@@ -300,7 +300,7 @@ Help:       This allows device drivers to enable MSI (Message Signaled
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel 
             as it improves performance. Almost all motherboards support this feature
@@ -365,7 +365,7 @@ Choice:     excluded < >
 Reason:     You can safely exclude this option if your CPU doesn't support IOMMU
             (aka VT-d for Intel CPUs and AMD-V for AMD CPUs).
 ```
-<h3>[&ast;]   Interrupts on hypertransport devices</h3>
+<h3>[&lowast;]   Interrupts on hypertransport devices</h3>
 ```properties
 Symbol:     CONFIG_HT_IRQ
 
@@ -375,7 +375,7 @@ Help:       This allows native hypertransport devices to use interrupts.
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             as it boosts performance.
@@ -432,7 +432,7 @@ Choice:     excluded [ ]
 Reason:     You can safely exclude this option if your CPU doesn't support IOMMU
             (aka VT-d for Intel CPUs and AMD-V for AMD CPUs).
 ```
-<h3>[*] Support for PCI Hotplug  ---></h3>
+<h3>[∗] Support for PCI Hotplug  ---></h3>
 ```properties
 Symbol:     CONFIG_HUTPLUG_PCI
 
@@ -444,7 +444,7 @@ Help:       Say Y here if you have a motherboard with a PCI Hotplug controller.
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             if your motherboard has USB Type-C, Thunderbolt, ExpressCard, XQD card or
@@ -453,7 +453,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             You should also include this option if you have a motherboard with a Hotplug
             controller (for example a SHPC PCI Hotplug controller).
 ```
-<h3><&ast;>   SHPC PCI Hotplug driver</h3>
+<h3><&lowast;>   SHPC PCI Hotplug driver</h3>
 ```properties
 Symbol:     CONFIG_HOTPLUG_PCI_SHPC
 
@@ -467,7 +467,7 @@ Help:       Say Y here if you have a motherboard with a SHPC PCI Hotplug
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             if your motherboard has a SHPC PCI Hotplug controller.
@@ -526,7 +526,7 @@ Choice:     excluded < >
 Reason:     You can safely exclude this option if you don't have such device.
 ```
 <h3>PCI Endpoint  ---></h3>
-<h3>[&ast;] PCI Endpoint Support</h3>
+<h3>[&lowast;] PCI Endpoint Support</h3>
 ```properties
 Symbol:     CONFIG_PCI_ENDPOINT
 
@@ -542,7 +542,7 @@ Help:       Enable this configuration option to support configurable PCI
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             if your motherboard has a SHPC PCI Hotplug controller.
@@ -570,7 +570,7 @@ Help:       This will enable the configfs entry that can be used to
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     You can safely exclude this option if you've already included
             CONFIG_PCI_ENDPOINT as you won't need it.

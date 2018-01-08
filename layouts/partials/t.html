@@ -22,7 +22,7 @@
           <nav>
             <ul>
               <li class="{{ if .IsHome }}cur{{ end }}"><a href="/">HOME</a></li>
-              <li class="{{ if eq (relURL .URL) ("/search/" | safeHTML) }}cur{{ end }}"><a href="/search/">SEARCH</a></li>
+              <li class="{{ if eq (relURL .URL) ("/page/search/" | safeHTML) }}cur{{ end }}"><a href="/page/search/">SEARCH</a></li>
               <li><a href="/index.xml" style="color: #f26522;">RSS</a></li>
             </ul>
           </nav>

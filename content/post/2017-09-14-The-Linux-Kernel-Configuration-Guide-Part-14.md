@@ -1,6 +1,6 @@
 +++
-title = "The Linux Kernel Configuration Guide Part 14"
-slug = "the linux kernel configuration guide part 14"
+title = "The Linux Kernel Configuration Guide Part 14 - Kernel hacking  --->"
+slug = "the linux kernel configuration guide part 14 kernel hacking"
 nick = "kernel14"
 date = "2017-09-14"
 author = "Firas Khalil Khana"
@@ -10,7 +10,7 @@ categories = [ "kernel" ]
 +++
 <h3>Kernel hacking  ---></h3>
 <h3>printk and dmesg options  ---></h3>
-<h3>[&ast;] Show timing information on printks</h3>
+<h3>[&lowast;] Show timing information on printks</h3>
 ```properties
 Symbol:     CONFIG_PRINTK_TIME
 
@@ -27,7 +27,7 @@ Help:       Selecting this option causes time stamps of the printk()
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             as timestamps add another level of precision to your system logs.
@@ -100,7 +100,7 @@ Choice:     (0) custom
 
 Reason:     If you can live with the warnings then don't disable this option.
 ```
-<h3>-&ast;- Kernel debugging</h3>
+<h3>-&lowast;- Kernel debugging</h3>
 ```properties
 Symbol:     CONFIG_DEBUG_KERNEL
 
@@ -109,7 +109,7 @@ Help:       Say Y here if you are developing drivers or trying to debug and
 
 Type:       boolean
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     Forcibly included by CONFIG_EXPERT.
 ```

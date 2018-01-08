@@ -1,6 +1,6 @@
 +++
-title = "The Linux Kernel Configuration Guide Part 4"
-slug = "the linux kernel configuration guide part 4"
+title = "The Linux Kernel Configuration Guide Part 4 - [∗] Enable loadable module support  --->"
+slug = "the linux kernel configuration guide part 4 enable loadable module support"
 nick = "kernel4"
 date = "2017-08-27"
 author = "Firas Khalil Khana"
@@ -8,7 +8,7 @@ imgsrc = "/img/kernel4.png"
 imgalt = "kernel4"
 categories = [ "kernel" ]
 +++
-<h3>2- [&ast;] Enable loadable module support  ---></h3>
+<h3>2- [&lowast;] Enable loadable module support  ---></h3>
 <h3>--- Enable loadable module support</h3>
 ```properties
 Symbol:     CONFIG_MODULES
@@ -32,7 +32,7 @@ Help:       Kernel modules are small pieces of compiled code which can
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             in order to get a working bumblebee setup on an optimus based laptop.
@@ -59,7 +59,7 @@ Choice:     excluded [ ]
 Reason:     You can safely exclude this option as forcing modules to load is dangerous
             and not recommended at all.
 ```
-<h3>[&ast;]   Module unloading</h3>
+<h3>[&lowast;]   Module unloading</h3>
 ```properties
 Symbol:     CONFIG_MODULE_UNLOAD
 
@@ -70,7 +70,7 @@ Help:       Without this option you will not be able to unload any
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             in order to get a working bumblebee setup on an optimus based laptop.

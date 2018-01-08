@@ -1,6 +1,6 @@
 +++
-title = "The Linux Kernel Configuration Guide Part 15"
-slug = "the linux kernel configuration guide part 15"
+title = "The Linux Kernel Configuration Guide Part 15 - Security options  --->"
+slug = "the linux kernel configuration guide part 15 security options"
 nick = "kernel15"
 date = "2017-09-15"
 author = "Firas Khalil Khana"

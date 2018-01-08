@@ -1,6 +1,6 @@
 +++
-title = "The Linux Kernel Configuration Guide Part 1"
-slug = "the linux kernel configuration guide part 1"
+title = "The Linux Kernel Configuration Guide Part 1 - Introduction"
+slug = "the linux kernel configuration guide part 1 introduction"
 nick = "kernel1"
 date = "2017-08-24"
 author = "Firas Khalil Khana"

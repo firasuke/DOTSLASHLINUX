@@ -1,6 +1,6 @@
 +++
-title = "The Linux Kernel Configuration Guide Part 6"
-slug = "the linux kernel configuration guide part 6"
+title = "The Linux Kernel Configuration Guide Part 6 - Processor type and features  --->"
+slug = "the linux kernel configuration guide part 6 processor type and features"
 nick = "kernel6"
 date = "2017-09-04"
 author = "Firas Khalil Khana"
@@ -10,7 +10,7 @@ categories = [ "kernel" ]
 +++
 The choice of my options will be heavily affected by the cpu my laptop uses (an <a href="http://ark.intel.com/products/75117/Intel-Core-i7-4700MQ-Processor-6M-Cache-up-to-3_40-GHz" target="_blank">Intel Core i7 4700MQ</a>
 <h3>Processor type and features  ---></h3>
-<h3>[&ast;] DMA memory allocation support</h3>
+<h3>[&lowast;] DMA memory allocation support</h3>
 ```properties
 Symbol:     CONFIG_ZONE_DMA
 
@@ -22,7 +22,7 @@ Help:       DMA memory allocation support allows devices with less than 32-bit
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option as it's required by
             x11-drivers/nvidia-drivers in order to get a working bumblebee setup on
@@ -34,7 +34,7 @@ Reason:     It's highly recommended that you include this option as it's require
 
             You can safely exclude this option if you're not on a optimus based laptop.
 ```
-<h3>[&ast;] Symmetric multi-processing support</h3>
+<h3>[&lowast;] Symmetric multi-processing support</h3>
 ```properties
 Symbol:     CONFIG_SMP
 
@@ -65,12 +65,12 @@ Help:       This enables support for systems with more than one CPU. If you have
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel as
             The Help that came with this option actually meant cores, so if you had
             for example a single cpu with 1 core and 2 threads you should enable this
-            as 1*2 is 2 logical cores, otherwise only 1 core will be detected.
+            as 1∗2 is 2 logical cores, otherwise only 1 core will be detected.
 ```
 <h3>[ ] Enable MPS table</h3>
 ```properties
@@ -98,7 +98,7 @@ Help:       Select to enable resource allocation which is a sub-feature of
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     You can safely exclude this option due to the lack of information
             and a proper list of intel CPUs that support this new feature
@@ -161,7 +161,7 @@ Choice:     excluded [ ]
 Reason:     You can safely exclude this option if you're not using these AMD
             chipsets.
 ```
-<h3>-&ast;- Intel SoC IOSF Sideband support for SoC platforms</h3>
+<h3>-&lowast;- Intel SoC IOSF Sideband support for SoC platforms</h3>
 ```properties
 Symbol:     CONFIG_IOSF_MBI
 
@@ -180,7 +180,7 @@ Help:       This option enables sideband register access support for Intel SoC
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     You can safely exclude this option if you're not using an Intel SoC
             product.
@@ -191,7 +191,7 @@ Reason:     You can safely exclude this option if you're not using an Intel SoC
 
             it was forcibly included it, due to I915 wake up related problems.
 ```
-<h3>[&ast;] Single-depth WCHAN output</h3>
+<h3>[&lowast;] Single-depth WCHAN output</h3>
 ```properties
 Symbol:     CONFIG_SCHED_OMIT_FRAME_POINTER
 
@@ -238,7 +238,7 @@ Help:       Select this for Intel Core 2 and newer Core 2 Xeons (Xeon 51xx and
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option if you're using
             an Intel CPU newer that Core 2 (for example, Core i3, Core i5, Core i7
@@ -247,7 +247,7 @@ Reason:     It's highly recommended that you include this option if you're using
             If you wanted your kernel to work on all X86_64 systems then include
             CONFIG_GENERIC_CPU.
 ```
-<h3>[&ast;] Supported processor vendors  ---></h3>
+<h3>[&lowast;] Supported processor vendors  ---></h3>
 ```properties
 Symbol:     CONFIG_PROCESSOR_SELECT
 
@@ -256,14 +256,14 @@ Help:       This lets you choose what x86 vendor support code your kernel
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you tell the kernel what type of CPU
             your system is using.
 
             In some cases, not doing so may result in an unbootable system.
 ```
-<h3>[&ast;] Support Intel processors</h3>
+<h3>[&lowast;] Support Intel processors</h3>
 ```properties
 Symbol:     CONFIG_CPU_SUP_INTEL
 
@@ -278,12 +278,12 @@ Help:       This enables detection, tunings and quirks for Intel processors
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you're using an Intel CPU.
 ```
-<h3>[&ast;] Enable DMI scanning</h3>
+<h3>[&lowast;] Enable DMI scanning</h3>
 ```properties
 Symbol:     CONFIG_DMI
 
@@ -294,7 +294,7 @@ Help:       Enabled scanning of DMI to identify machine quirks. Say Y
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             as it's required by newer versions of udev to detect many of your 
@@ -350,9 +350,9 @@ Reason:     It's highly recommended that you set the value of this option equal 
             the maximum number of cores (and multiply it by 2 if it supports Hyper-Threading).
 
             For example, an Intel 4700MQ CPU, has 4 physical cores and supports Hyper-Threading
-            so 4 * 2 = 8 which is the value I went with for this option.
+            so 4 ∗ 2 = 8 which is the value I went with for this option.
 ```
-<h3>[&ast;] SMT (Hyperthreading) scheduler support</h3>
+<h3>[&lowast;] SMT (Hyperthreading) scheduler support</h3>
 ```properties
 Symbol:     CONFIG_SCHED_SMT
 
@@ -363,7 +363,7 @@ Help:       SMT scheduler support improves the CPU scheduler's decision making
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             if your CPU supports Hyper-Threading.
@@ -439,7 +439,7 @@ Reason:     You can safely exclude this option if you're not receiving:
                 
                 irq X: nobody cared (try booting with "irqpoll" option)
 ```
-<h3>[&ast;] Machine Check / overheating reporting</h3>
+<h3>[&lowast;] Machine Check / overheating reporting</h3>
 ```properties
 Symbol:     CONFIG_X86_MCE
 
@@ -450,7 +450,7 @@ Help:       Machine Check support allows the processor to notify the
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's hihgly recommended that you include this option in your kernel
             as it reports overheating and other problems (mostly hardware issues)
@@ -470,7 +470,7 @@ Choice:     excluded [ ]
 
 Reason:     You can safely exclude this option if you're not using app-admin/mcelog.
 ```
-<h3>[&ast;]   Intel MCE features</h3>
+<h3>[&lowast;]   Intel MCE features</h3>
 ```properties
 Symbol:     CONFIG_X86_MCE_INTEL
 
@@ -479,13 +479,13 @@ Help:       Additional support for intel specific MCE features such as
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you've already included CONFIG_X86_MCE and have an Intel CPU.
 ```
 <h3>Performance monitoring  ---></h3>
-<h3><&ast;> Intel uncore performance events</h3>
+<h3><&lowast;> Intel uncore performance events</h3>
 ```properties
 Symbol:     CONFIG_PERF_EVENTS_INTEL_UNCORE
 
@@ -494,13 +494,13 @@ Help:       Include support for Intel uncore performance events. These are
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you're using an Intel CPU as performance and CPU power monitors
             are mandatory.
 ```
-<h3><&ast;> Intel rapl performance events</h3>
+<h3><&lowast;> Intel rapl performance events</h3>
 ```properties
 Symbol:     CONFIG_PERF_EVENTS_INTEL_RAPL
 
@@ -509,13 +509,13 @@ Help:       Include support for Intel rapl performance events for power
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you're using an Intel CPU as performance and CPU power monitors
             are mandatory.
 ```
-<h3><&ast;> Intel cstate performance events</h3>
+<h3><&lowast;> Intel cstate performance events</h3>
 ```properties
 Symbol:     CONFIG_PERF_EVENTS_INTEL_CSTATE
 
@@ -524,7 +524,7 @@ Help:       Include support for Intel cstate performance events for power
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you're using an Intel CPU as performance and CPU power monitors
@@ -580,7 +580,7 @@ Choice:     excluded < >
 
 Reason:     You can safely exclude this option if you're not using an old Dell laptop.
 ```
-<h3>[&ast;] CPU microcode loading support</h3>
+<h3>[&lowast;] CPU microcode loading support</h3>
 ```properties
 Symbol:     CONFIG_MICROCODE
 
@@ -602,7 +602,7 @@ Help:       If you say Y here, you will be able to update the microcode on
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             as updating the microcode on your respective CPU improves the performance
@@ -613,7 +613,7 @@ Reason:     It's highly recommended that you include this option in your kernel
                 
                 https://www.dotslashlinux.com/2017/04/30/building-intel-cpu-microcode-updates-directly-into-the-linux-kernel/
 ```
-<h3>[&ast;]   Intel microcode loading support</h3>
+<h3>[&lowast;]   Intel microcode loading support</h3>
 ```properties
 Symbol:     CONFIG_MICROCODE_INTEL
 
@@ -626,7 +626,7 @@ Help:       This options enables microcode patch loading support for Intel
 
 Type:       boolean
 
-Choice:     built [*]
+Choice:     built [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             as updating the microcode on your respective CPU improves the performance
@@ -650,7 +650,7 @@ Choice:     excluded [ ]
 
 Reason:     You can safely exclude this option if you're not using an AMD CPU.
 ```
-<h3><&ast;> /dev/cpu/*/msr - Model-specific register support</h3>
+<h3><&lowast;> /dev/cpu/∗/msr - Model-specific register support</h3>
 ```properties
 Symbol:     CONFIG_X86_MSR
 
@@ -662,7 +662,7 @@ Help:       This device gives privileged processes access to the x86
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             if your CPU supports it.
@@ -686,7 +686,7 @@ Reason:     It's highly recommended that you include this option in your kernel
                 
                 cat /proc/cpuinfo | grep msr
 ```
-<h3><&ast;> /dev/cpu/*/cpuid - CPU information support</h3>
+<h3><&lowast;> /dev/cpu/∗/cpuid - CPU information support</h3>
 ```properties
 Symbol:     CONFIG_X86_CPUID
 
@@ -697,7 +697,7 @@ Help:       This device gives processes access to the x86 CPUID instruction to
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             if your CPU supports it.
@@ -800,7 +800,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             (that is if it isn't already forcibly included as it's the only
             available option on many systems).
 ```
-<h3>[&ast;] Sparse Memory virtual memmap</h3>
+<h3>[&lowast;] Sparse Memory virtual memmap</h3>
 ```properties
 Symbol:     CONFIG_SPARSEMEM_VMEMMAP
 
@@ -810,7 +810,7 @@ Help:       SPARSEMEM_VMEMMAP uses a virtually mapped memmap to optimise
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommendded that you include this option in your kernel
             if you've already included CONFIG_SPARSEMEM_MANUAL since it boosts performance.
@@ -829,7 +829,7 @@ Reason:     You can safely exclude this option as it's only useful for some cert
             cloud hosting services, that want to perform live system upgrades without
             experiencing any down time.
 ```
-<h3>[&ast;] Allow for memory compaction</h3>
+<h3>[&lowast;] Allow for memory compaction</h3>
 ```properties
 Symbol:     CONFIG_COMPACTION
 
@@ -844,12 +844,12 @@ Help:       Compaction is the only memory management component to form
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             as it speeds up your system at the cost of some latency.
 ```
-<h3>-&ast;-   Page migration</h3>
+<h3>-&lowast;-   Page migration</h3>
 ```properties
 Symbol:     CONFIG_MIGRATION
 
@@ -862,12 +862,12 @@ Help:       Allows the migration of the physical location of pages of processes
 
 Type:       boolean
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     It's highly recommended that you include this option in your kernel
             (that is if it isn't already forcibly included by CONFIG_COMPACTION).
 ```
-<h3>[&ast;] Enable bounce buffers</h3>
+<h3>[&lowast;] Enable bounce buffers</h3>
 ```properties
 Symbol:     CONFIG_BOUNCE
 
@@ -878,14 +878,14 @@ Help:       Enable bounce buffers for devices that cannot access
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you've already included CONFIG_ZONE_DMA (if you have an NVIDIA GPU
             for example, as the nvidia module creates bounce buffers when attempting
             a DMA on an unreachable address.
 ```
-<h3>[&ast;] Enable KSM for page merging</h3>
+<h3>[&lowast;] Enable KSM for page merging</h3>
 ```properties
 Symbol:     CONFIG_KSM
 
@@ -901,7 +901,7 @@ Help:       Enable Kernel Samepage Merging: KSM periodically scans those areas
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             as KSM helps save a lot of memory.
@@ -1212,7 +1212,7 @@ Reason:     It's highly recommend that you set the value of this option to (64)
 
             and see what value is printed next to your BIOS.
 ```
-<h3>[&ast;] MTRR (Memory Type Range Register) support</h3>
+<h3>[&lowast;] MTRR (Memory Type Range Register) support</h3>
 ```properties
 Symbol:     CONFIG_MTRR
 
@@ -1249,7 +1249,7 @@ Help:       On Intel P6 family processors (Pentium Pro, Pentium II and later)
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             if your CPU supports it, as MTRR is really useful for applications such
@@ -1275,7 +1275,7 @@ Reason:     It's highly recommended that you include this option in your kernel
                 
                 cat /proc/cpuinfo | grep mtrr
 ```
-<h3>[&ast;]   MTRR cleanup support</h3>
+<h3>[&lowast;]   MTRR cleanup support</h3>
 ```properties
 Symbol:     CONFIG_MTRR_SANITIZER
 
@@ -1290,7 +1290,7 @@ Help:       Convert MTRR layout from continuous to discrete, so X drivers can
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             as it fixes most MTRR programming issues in the kernel.
@@ -1325,7 +1325,7 @@ Reason:     It's highly recommended that you set the value of this option to (1)
             CONFIG_MTRR_SANITIZER_ENABLE_DEFAULT to 1 helped them get rid of
             MTRR errors and type mismatch errors.
 ```
-<h3>[&ast;]   x86 PAT support</h3>
+<h3>[&lowast;]   x86 PAT support</h3>
 ```properties
 Symbol:     CONFIG_X86_PAT
 
@@ -1341,7 +1341,7 @@ Help:       Use PAT attributes to setup page level cache control.
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             if your CPU supports it.
@@ -1365,7 +1365,7 @@ Reason:     It's highly recommended that you include this option in your kernel
                 
                 cat /proc/cpuinfo | grep pat
 ```
-<h3>[&ast;] x86 architectural random number generator</h3>
+<h3>[&lowast;] x86 architectural random number generator</h3>
 ```properties
 Symbol:     CONFIG_ARCH_RANDOM
 
@@ -1376,7 +1376,7 @@ Help:       Enable the x86 architectural RDRAND instruction
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             if your CPU supports it.
@@ -1498,7 +1498,7 @@ Reason:     You can safely exclude this option if you're using MBR (MSDOS partit
             a bootable medium, for like 5 seconds before the system starts booting
             normally).
 ```
-<h3>[&ast;] Enable seccomp to safely compute untrusted bytecode</h3>
+<h3>[&lowast;] Enable seccomp to safely compute untrusted bytecode</h3>
 ```properties
 Symbol:     CONFIG_SECCOMP
 
@@ -1516,7 +1516,7 @@ Help:       This kernel feature is useful for number crunching applications
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             as the security advantages it offers overweigh the near-minimum gains
@@ -1530,7 +1530,7 @@ Help:       Allows the configuration of the timer frequency. It is customary
             a fast response for user interaction and that may experience bus
             contention and cacheline bounces as a result of timer interrupts.
             Note that the timer interrupt occurs on each processor in an SMP
-            environment leading to NR_CPUS * HZ number of timer interrupts
+            environment leading to NR_CPUS ∗ HZ number of timer interrupts
             per second.
 ```
 <h3>(X) 100 HZ</h3>
@@ -1757,7 +1757,7 @@ Help:       Certain buggy versions of glibc will crash if they are
             contains a buggy "glibc 2.3.2".
 
             The symptom of the bug is that everything crashes on startup, saying:
-            dl_main: Assertion `(void *) ph->p_vaddr == _rtld_local._dl_sysinfo_dso' failed!
+            dl_main: Assertion `(void ∗) ph->p_vaddr == _rtld_local._dl_sysinfo_dso' failed!
 
             Saying Y here changes the default value of the vdso32 boot
             option from 1 to 0, which turns off the 32-bit vDSO entirely.

@@ -39,8 +39,8 @@ verboseLog =                  false
 watch =                       true
 
 [Permalinks]
-  page = "/:filename/"
-  post = "/:year/:month/:day/:slug/"
+  page = "/:sections/:filename/"
+  post = "/:sections/:slug/"
 
 [sitemap]
   changefreq = "always"

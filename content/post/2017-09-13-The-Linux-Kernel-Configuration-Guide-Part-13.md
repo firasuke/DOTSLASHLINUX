@@ -1,6 +1,6 @@
 +++
-title = "The Linux Kernel Configuration Guide Part 13"
-slug = "the linux kernel configuration guide part 13"
+title = "The Linux Kernel Configuration Guide Part 13 - File systems  --->"
+slug = "the linux kernel configuration guide part 13 file systems"
 nick = "kernel13"
 date = "2017-09-13"
 author = "Firas Khalil Khana"
@@ -9,7 +9,7 @@ imgalt = "kernel13"
 categories = [ "kernel" ]
 +++
 <h3>File systems  ---></h3>
-<h3><&ast;> The Extended 4 (ext4) filesystem</h3>
+<h3><&lowast;> The Extended 4 (ext4) filesystem</h3>
 ```properties
 Symbol:     CONFIG_EXT4_FS
 
@@ -39,7 +39,7 @@ Help:       This is the next generation of the ext3 filesystem.
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     For a basic system using CONFIG_EXT4_FS is advised; however, if you
             wanted a change of pace you can try CONFIG_XFS_FS instead.
@@ -47,7 +47,7 @@ Reason:     For a basic system using CONFIG_EXT4_FS is advised; however, if you
             Do not build this option as a module [M] as it'll result in an unbootable
             system if you're not using an initrd.
 ```
-<h3>[&ast;]   Use ext4 for ext2 file systems</h3>
+<h3>[&lowast;]   Use ext4 for ext2 file systems</h3>
 ```properties
 Symbol:     CONFIG_EXT4_USE_FOR_EXT2
 
@@ -58,12 +58,12 @@ Help:       Allow the ext4 file system driver code to be used for ext2
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you've already included CONFIG_EXT4_FS.
 ```
-<h3>[&ast;] Enable POSIX file locking API</h3>
+<h3>[&lowast;] Enable POSIX file locking API</h3>
 ```properties
 Symbol:     CONFIG_FILE_LOCKING
 
@@ -73,12 +73,12 @@ Help:       This option enables standard file locking support, required
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             as excluding it may result in a read-only root partition.
 ```
-<h3>[&ast;] Inotify support for userspace</h3>
+<h3>[&lowast;] Inotify support for userspace</h3>
 ```properties
 Symbol:     CONFIG_INOTIFY_USER
 
@@ -96,7 +96,7 @@ Help:       Say Y here to enable inotify support for userspace, including the
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             as it's required by several important options including CONFIG_GENTOO_LINUX,
@@ -104,7 +104,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 
             It's also required by several applications.
 ```
-<h3><&ast;> FUSE (Filesystem in Userspace) support</h3>
+<h3><&lowast;> FUSE (Filesystem in Userspace) support</h3>
 ```properties
 Symbol:     CONFIG_FUSE_FS
 
@@ -125,7 +125,7 @@ Help:       With FUSE it is possible to implement a fully functional filesystem
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you want to use MTP to mount the storage of your portable devices
@@ -135,7 +135,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             read and write capabilities for NTFS in Linux.
 ```
 <h3>CD-ROM/DVD Filesystems  ---></h3>
-<h3><&ast;> ISO 9660 CDROM file system support</h3>
+<h3><&lowast;> ISO 9660 CDROM file system support</h3>
 ```properties
 Symbol:     CONFIG_ISO9960_FS
 
@@ -154,13 +154,13 @@ Help:       This is the standard file system used on CD-ROMs.  It was previously
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel as it's
             required to read and write on the majority of optical discs and it's 
             recommended as well by the Gentoo Wiki.
 ```
-<h3>[&ast;]   Microsoft Joliet CDROM extensions</h3>
+<h3>[&lowast;]   Microsoft Joliet CDROM extensions</h3>
 ```properties
 Symbol:     CONFIG_JOLIET
 
@@ -173,13 +173,13 @@ Help:       Joliet is a Microsoft extension for the ISO 9660 CD-ROM file system
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel as it's
             required to read and write on optical discs with long filenames and it's 
             recommended as well by the Gentoo Wiki.
 ```
-<h3>[&ast;]   Transparent decompression extension</h3>
+<h3>[&lowast;]   Transparent decompression extension</h3>
 ```properties
 Symbol:     CONFIG_ZISOFS
 
@@ -192,13 +192,13 @@ Help:       This is a Linux-specific extension to RockRidge which lets you store
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel as it's
             wanted to store more data on your discs via compression and it's 
             recommended as well by the Gentoo Wiki.
 ```
-<h3><&ast;> UDF file system support</h3>
+<h3><&lowast;> UDF file system support</h3>
 ```properties
 Symbol:     CONFIG_UDF_FS
 
@@ -216,7 +216,7 @@ Help:       This is a file system used on some CD-ROMs and DVDs. Since the
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel as it's
             required to read and write on rewritable optical discs and it's 
@@ -225,7 +225,7 @@ Reason:     It's highly recommended that you include this option in your kernel 
             It allows rewritable discs to behave more like removable USB disks.
 ```
 <h3>DOS/FAT/NT Filesystems  ---></h3>
-<h3><&ast;> VFAT (Windows-95) fs support </h3>
+<h3><&lowast;> VFAT (Windows-95) fs support </h3>
 ```properties
 Symbol:     CONFIG_VFAT_FS
 
@@ -244,7 +244,7 @@ Help:       This option provides support for normal Windows file systems with
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you're ever going to work with a FAT filesystem (common examples
@@ -291,7 +291,7 @@ Choice:     (iso8859-1) default
 Reason:     You can safely leave the value of this option set to the default value
             of (iso8859-1) as recommended by the Gentoo wiki.
 ```
-<h3>[&ast;]   Enable FAT UTF-8 option by default</h3>
+<h3>[&lowast;]   Enable FAT UTF-8 option by default</h3>
 ```properties
 Symbol:     CONFIG_FAT_DEFAULT_UTF8
 
@@ -307,13 +307,13 @@ Help:       Set this if you would like to have "utf8" mount option set
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel as
             it'll save you the hassle of specifying "utf8" as a mount option everytime
             you mount a FAT filesystem.
 ```
-<h3><&ast;> NTFS file system support</h3>
+<h3><&lowast;> NTFS file system support</h3>
 ```properties
 Symbol:     CONFIG_NTFS_FS
 
@@ -343,7 +343,7 @@ Help:       NTFS is the file system of Microsoft Windows NT, 2000, XP and 2003.
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you're ever going to work with a NTFS filesystem (common examples
@@ -352,7 +352,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 
             It's also recommended by the Gentoo wiki.
 ```
-<h3>[&ast;]   NTFS write support</h3>
+<h3>[&lowast;]   NTFS write support</h3>
 ```properties
 Symbol:     CONFIG_NTFS_RW
 
@@ -383,7 +383,7 @@ Help:       This enables the partial, but safe, write support in the NTFS driver
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     You can safely exclude this option as you probably won't need it,
             and the current support it provides is far from perfect.
@@ -396,7 +396,7 @@ Reason:     You can safely exclude this option as you probably won't need it,
             alongside CONFIG_NTFS_FS.
 ```
 <h3>Pseudo filesystems  ---></h3>
-<h3>[&ast;] /proc file system support</h3>
+<h3>[&lowast;] /proc file system support</h3>
 ```properties
 Symbol:     CONFIG_PROC_FS
 
@@ -428,14 +428,14 @@ Help:       This is a virtual file system providing information about the status
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel as
             it's required by several important options including CONFIG_GENTOO_LINUX,
             CONFIG_GENTOO_LINUX_UDEV and CONFIG_GENTOO_LINUX_INIT_SYSTEMD and by
             several drivers as well.
 ```
-<h3>[&ast;]   Sysctl support (/proc/sys)</h3>
+<h3>[&lowast;]   Sysctl support (/proc/sys)</h3>
 ```properties
 Symbol:     CONFIG_PROC_SYSCTL
 
@@ -454,12 +454,12 @@ Help:       The sysctl interface provides a means of dynamically changing
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel as
             it may be used by some other options like I915 and SCSI.
 ```
-<h3>[&ast;] sysfs file system support</h3>
+<h3>[&lowast;] sysfs file system support</h3>
 ```properties
 Symbol:     CONFIG_SYSFS
 
@@ -485,7 +485,7 @@ Help:       The sysfs filesystem is a virtual filesystem that the kernel uses to
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             as it provides an interface to kernel objects. It's also required by 
@@ -494,7 +494,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 
             CONFIG_KSM may rely on this option as well.
 ```
-<h3>-&ast;- Tmpfs virtual memory file system support (former shm fs)</h3>
+<h3>-&lowast;- Tmpfs virtual memory file system support (former shm fs)</h3>
 ```properties
 Symbol:     CONFIG_TMPFS
 
@@ -509,7 +509,7 @@ Help:       Tmpfs is a file system which keeps all files in virtual memory.
 
 Type:       boolean
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     It's highly recommended that you include this option in your kernel
             as it provides an interface to kernel objects (that is if it isn't
@@ -519,7 +519,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 
             It's also recommended by the Gentoo wiki.
 ```
-<h3>-&ast;- Native language support  ---></h3>
+<h3>-&lowast;- Native language support  ---></h3>
 ```properties
 Symbol:     CONFIG_NLS
 
@@ -535,7 +535,7 @@ Help:       The base Native Language Support. A number of filesystems
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     It's highly recommended that you include this option in your kernel
             as it's required for several filesystems (mainly FAT) to work properly.
@@ -568,7 +568,7 @@ Reason:     It's highly recommended that you set the value of this option to
 
             It's also recommended by the Gentoo wiki.
 ```
-<h3><&ast;>   Codepage 437 (United States, Canada)</h3>
+<h3><&lowast;>   Codepage 437 (United States, Canada)</h3>
 ```properties
 Symbol:     CONFIG_NLS_CODEPAGE_437
 
@@ -583,7 +583,7 @@ Help:       The Microsoft FAT file system family can deal with filenames in
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             as it's required to read and write filenames using native language
@@ -591,7 +591,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             
             It's also recommended by the Gentoo wiki.
 ```
-<h3><&ast;>   NLS ISO 8859-1  (Latin 1; Western European Languages)</h3>
+<h3><&lowast;>   NLS ISO 8859-1  (Latin 1; Western European Languages)</h3>
 ```properties
 Symbol:     CONFIG_NLS_ISO8859_1
 
@@ -606,7 +606,7 @@ Help:       If you want to display filenames with native language characters
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             as it's required to read and write filenames with native language
@@ -614,7 +614,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             
             It's also recommended by the Gentoo wiki.
 ```
-<h3><&ast;>   NLS UTF-8</h3>
+<h3><&lowast;>   NLS UTF-8</h3>
 ```properties
 Symbol:     CONFIG_NLS_UTF8
 
@@ -626,7 +626,7 @@ Help:       If you want to display filenames with native language characters
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             as it's required to read and write filenames with native language

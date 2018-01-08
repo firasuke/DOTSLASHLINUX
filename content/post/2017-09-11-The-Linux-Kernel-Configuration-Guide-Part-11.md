@@ -1,6 +1,6 @@
 +++
-title = "The Linux Kernel Configuration Guide Part 11"
-slug = "the linux kernel configuration guide part 11"
+title = "The Linux Kernel Configuration Guide Part 11 - Device Drivers  --->"
+slug = "the linux kernel configuration guide part 11 device drivers"
 nick = "kernel11"
 date = "2017-09-11"
 author = "Firas Khalil Khana"
@@ -17,7 +17,7 @@ The reason you're here is either because you've been reading the articles steadi
 I don't blame you, but for sanity's sake I had to put this in the <mark>Device Drivers  ---></mark> section as it's heavily related.
 <br/>
 <br/>
-Now you may have noticed that some of the options I included may not necessarly be required on your end. Worry not, as it's probably something driver specific . Though to be clear, we didn't go through a lot of driver options (maybe a little in the <mark>[&ast;] Networking support  ---></mark> section).
+Now you may have noticed that some of the options I included may not necessarly be required on your end. Worry not, as it's probably something driver specific . Though to be clear, we didn't go through a lot of driver options (maybe a little in the <mark>[&lowast;] Networking support  ---></mark> section).
 <br/>
 <br/>
 Okay enough talking, let's get this thing started!
@@ -135,7 +135,7 @@ One last thing, starting from this part, I'll only be listing the options that a
 <hr/>
 <h3>Device Drivers  ---></h3>
 <h3>Generic Driver Options  ---></h3>
-<h3>-&ast;- Maintain a devtmpfs filesystem to mount at /dev</h3>
+<h3>-&lowast;- Maintain a devtmpfs filesystem to mount at /dev</h3>
 ```properties
 Symbol:     CONFIG_DEVTMPFS
 
@@ -157,13 +157,13 @@ Help:       This creates a tmpfs/ramfs filesystem instance early at bootup.
 
 Type:       boolean
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     It's highly recommended that you include this option in your kernel
             (that is if it wasn't already forcibly included by CONFIG_GENTOO_LINUX
             and CONFIG_GENTOO_LINUX_UDEV).
 ```
-<h3>[&ast;]   Automount devtmpfs at /dev, after the kernel mounted the rootfs</h3>
+<h3>[&lowast;]   Automount devtmpfs at /dev, after the kernel mounted the rootfs</h3>
 ```properties
 Symbol:     CONFIG_DEVTMPFS_MOUNT
 
@@ -180,12 +180,12 @@ Help:       This will instruct the kernel to automatically mount the
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's recommended that you include this option in your kernel as it's
             useful when attempting a system rescue.
 ```
-<h3>[&ast;] Select only drivers that don't need compile-time external firmware</h3>
+<h3>[&lowast;] Select only drivers that don't need compile-time external firmware</h3>
 ```properties
 Symbol:     CONFIG_STANDALONE
 
@@ -196,12 +196,12 @@ Help:       Select this option if you don't have magic firmware for drivers that
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             as it's extremely unlikely that you'll have such 'magic' firmware.
 ```
-<h3>[&ast;] Prevent firmware from being built</h3>
+<h3>[&lowast;] Prevent firmware from being built</h3>
 ```properties
 Symbol:     CONFIG_PREVENT_FIRMWARE_BUILD
 
@@ -212,13 +212,13 @@ Help:       Say yes to avoid building firmware. Firmware is usually shipped
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             and rebuilding the firmware should only be considered when updating
             it.
 ```
-<h3>-&ast;- Userspace firmware loading support</h3>
+<h3>-&lowast;- Userspace firmware loading support</h3>
 ```properties
 Symbol:     CONFIG_FW_LOADER
 
@@ -228,13 +228,13 @@ Help:       This option is provided for the case where none of the in-tree modul
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     It's highly recommended that you include this option as well if you want
             to load modules (the list of options and drivers that require this option
             is endless so it's a good idea to include it).
 ```
-<h3>[&ast;]   Include in-kernel firmware blobs in kernel binary</h3>
+<h3>[&lowast;]   Include in-kernel firmware blobs in kernel binary</h3>
 ```properties
 Symbol:     CONFIG_FIRMARE_IN_KERNEL
 
@@ -260,7 +260,7 @@ Help:       The kernel source tree includes a number of firmware 'blobs'
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's recommended that you include this option in your kernel as it's
             required for building microcode updates directly into the linux kernel.
@@ -334,7 +334,7 @@ Reason:     It's recommended that you include this option in your kernel as it's
 
                 https://www.dotslashlinux.com/2017/04/30/building-intel-cpu-microcode-updates-directly-into-the-linux-kernel/
 ```
-<h3>-&ast;- Plug and Play support  ---></h3>
+<h3>-&lowast;- Plug and Play support  ---></h3>
 ```properties
 Symbol:     CONFIG_PNP
 
@@ -353,13 +353,13 @@ Help:       Plug and Play (PnP) is a standard for peripherals which allows those
 
 Type:       boolean
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     It's highly recommended that you include this option in your kernel
             (that is if it isn't already included by CONFIG_PCI, CONFIG_ACPI and
             CONFIG_X86).
 ```
-<h3>[&ast;]   PNP debugging messages</h3>
+<h3>[&lowast;]   PNP debugging messages</h3>
 ```properties
 Symbol:     CONFIG_PNP_DEBUG_MESSAGES
 
@@ -374,12 +374,12 @@ Help:       Say Y here if you want the PNP layer to be able to produce debugging
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's recommended that you include this option in your kernel as
             it provides really helpful information about PnP devices.
 ```
-<h3>[&ast;] Block devices  ---></h3>
+<h3>[&lowast;] Block devices  ---></h3>
 ```properties
 Symbol:     CONFIG_BLK_DEV
 
@@ -391,11 +391,11 @@ Help:       Say Y here to get to see options for various different block device
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's recommended that you include this option in your kernel.
 ```
-<h3><&ast;>   Loopback device support</h3>
+<h3><&lowast;>   Loopback device support</h3>
 ```properties
 Symbol:     CONFIG_BLK_DEV_LOOP
 
@@ -441,7 +441,7 @@ Help:       Saying Y here will allow you to use a regular file as a block
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             as it allows you to mount images (files with .img, .iso ...etc extensions)
@@ -470,7 +470,7 @@ Reason:     It's highly recommended that you set the value of this option to 0
             neccessary).
 ```
 <h3>Misc devices  ---></h3>
-<h3>-&ast;- Intel Management Engine Interface</h3>
+<h3>-&lowast;- Intel Management Engine Interface</h3>
 ```properties
 Symbol:     CONFIG_INTEL_MEI
 
@@ -483,7 +483,7 @@ Help:       The Intel Management Engine (Intel ME) provides Manageability,
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     It's recommended that you include this option in your kernel if you're
             using a system with a modern intel chipset.
@@ -494,7 +494,7 @@ Reason:     It's recommended that you include this option in your kernel if you'
 
             should tell you whether you need this option or not.
 ```
-<h3><&ast;> ME Enabled Intel Chipsets</h3>
+<h3><&lowast;> ME Enabled Intel Chipsets</h3>
 ```properties
 Symbol:     CONFIG_INTEL_MEI_ME
 
@@ -520,7 +520,7 @@ Help:       MEI support for ME Enabled Intel chipsets.
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's recommended that you include this option in your kernel if you're
             using a system with a modern intel chipset.
@@ -532,7 +532,7 @@ Reason:     It's recommended that you include this option in your kernel if you'
             should tell you whether you need this option or not.
 ```
 <h3>SCSI device support  ---></h3>
-<h3>-&ast;- SCSI device support</h3>
+<h3>-&lowast;- SCSI device support</h3>
 ```properties
 Symbol:     CONFIG_SCSI
 
@@ -556,13 +556,13 @@ Help:       If you want to use a SCSI hard disk, SCSI tape drive, SCSI CD-ROM or
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     It's highly recommended that you include this option in your kernel if
             you're using one of the SCSI devices mentioned above (mainly a SCSI
             hard drive and CD-ROM).
 ```
-<h3><&ast;> SCSI disk support</h3>
+<h3><&lowast;> SCSI disk support</h3>
 ```properties
 Symbol:     CONFIG_BLK_DEV_SD
 
@@ -585,7 +585,7 @@ Help:       If you want to use SCSI hard disks, Fibre Channel disks,
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you're using a SCSI hard disk.
@@ -597,7 +597,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             you shouldn't compile this option as a module as it may result in an
             unbootable system.
 ```
-<h3><&ast;> SCSI CDROM support</h3>
+<h3><&lowast;> SCSI CDROM support</h3>
 ```properties
 Symbol:     CONFIG_BLK_DEV_SR
 
@@ -613,12 +613,12 @@ Help:       If you want to use a CD or DVD drive attached to your computer
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you're using a SCSI CD/DVD drive.
 ```
-<h3>[&ast;] Asynchronous SCSI scanning</h3>
+<h3>[&lowast;] Asynchronous SCSI scanning</h3>
 ```properties
 Symbol:     CONFIG_SCSI_SCAN_ASYNC
 
@@ -634,7 +634,7 @@ Help:       The SCSI subsystem can probe for devices while the rest of the
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kerenl
             as it speeds up boot time.
@@ -644,7 +644,7 @@ Reason:     It's highly recommended that you include this option in your kerenl
             you can safely exclude this option (you might experience some
             increase in boot time though).
 ```
-<h3><&ast;> Serial ATA and Parallel ATA drivers (libata)  ---></h3>
+<h3><&lowast;> Serial ATA and Parallel ATA drivers (libata)  ---></h3>
 ```properties
 Symbol:     CONFIG_ATA
 
@@ -654,19 +654,19 @@ Help:       If you want to use an ATA hard disk, ATA tape drive, ATA CD-ROM or
             that "speaks" the ATA protocol, also called ATA controller),
             because you will be asked for it.
 
-            NOTE: ATA enables basic SCSI support; *however*,
+            NOTE: ATA enables basic SCSI support; ∗however∗,
             'SCSI disk support', 'SCSI tape support', or
             'SCSI CDROM support' may also be needed,
             depending on your hardware configuration.
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel if
             you're using a SCSI hard disk drive and a SCSI CD/DVD drive.
 ```
-<h3>[&ast;]   ATA ACPI Support</h3>
+<h3>[&lowast;]   ATA ACPI Support</h3>
 ```properties
 Symbol:     CONFIG_ATA_ACPI
 
@@ -680,13 +680,13 @@ Help:       This option adds support for ATA-related ACPI objects.
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you've already included CONFIG_ATA as it may boost performance
             and power saving features of ATA devices.
 ```
-<h3>[&ast;]     SATA Zero Power Optical Disc Drive (ZPODD) support</h3>
+<h3>[&lowast;]     SATA Zero Power Optical Disc Drive (ZPODD) support</h3>
 ```properties
 Symbol:     CONFIG_SATA_ZPODD
 
@@ -701,13 +701,13 @@ Help:       This option adds support for SATA Zero Power Optical Disc
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's recommended that you include this option in your kernel if you
             have a SCSI CD/DVD drive as it'll help save energy when the drive
             isn't in use.
 ```
-<h3><&ast;>   AHCI SATA support</h3>
+<h3><&lowast;>   AHCI SATA support</h3>
 ```properties
 Symbol:     CONFIG_SATA_AHCI
 
@@ -716,7 +716,7 @@ Help:       This option enables support for AHCI Serial ATA.
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             as it's basically the driver that'll be used for your SATA controller.
@@ -727,7 +727,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 
             should tell you whether you need this option or not.
 ```
-<h3>[&ast;] Network device support  ---></h3>
+<h3>[&lowast;] Network device support  ---></h3>
 ```properties
 Symbol:     CONFIG_NETDEVICES
 
@@ -747,12 +747,12 @@ Help:       You can say N here if you don't intend to connect your Linux box to
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             to access the network devices' drivers section.
 ```
-<h3>[&ast;]   Ethernet driver support  ---></h3>
+<h3>[&lowast;]   Ethernet driver support  ---></h3>
 ```properties
 Symbol:     CONFIG_ETHERNET
 
@@ -760,7 +760,7 @@ Help:       This section contains all the Ethernet device drivers.
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel 
             if you wanted your ethernet adapter to work.
@@ -771,7 +771,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 
             should tell you whether you need this option or not.
 ```
-<h3>[&ast;]   Atheros devices</h3>
+<h3>[&lowast;]   Atheros devices</h3>
 ```properties
 Symbol:     CONFIG_NET_VENDOR_ATHEROS
 
@@ -784,12 +784,12 @@ Help:       If you have a network (Ethernet) card belonging to this class, say Y
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel if
             you're using an atheros ethernet controller.
 ```
-<h3><&ast;>     Qualcomm Atheros AR816x/AR817x support</h3>
+<h3><&lowast;>     Qualcomm Atheros AR816x/AR817x support</h3>
 ```properties
 Symbol:     CONFIG_ALX
 
@@ -806,12 +806,12 @@ Help:       This driver supports the Qualcomm Atheros L1F ethernet adapter,
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel if
             you're using a Qualcomm Atheros L1F ethernet adapter.
 ```
-<h3>[&ast;]   Wireless LAN  ---></h3>
+<h3>[&lowast;]   Wireless LAN  ---></h3>
 ```properties
 Symbol:     CONFIG_WLAN
 
@@ -823,7 +823,7 @@ Help:       This section contains all the pre 802.11 and 802.11 wireless
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel if
             you wanted your wireless network adapter to work.
@@ -834,7 +834,7 @@ Reason:     It's highly recommended that you include this option in your kernel 
 
             should tell you whether you need this option or not.
 ```
-<h3>[&ast;]   Atheros/Qualcomm devices</h3>
+<h3>[&lowast;]   Atheros/Qualcomm devices</h3>
 ```properties
 Symbol:     CONFIG_WLAN_VENDOR_ATH
 
@@ -855,12 +855,12 @@ Help:       If you have a wireless card belonging to this class, say Y.
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel if
             you're using a Qualcomm Atheros wireless network adapter.
 ```
-<h3>[&ast;]     Atheros bluetooth coexistence support</h3>
+<h3>[&lowast;]     Atheros bluetooth coexistence support</h3>
 ```properties
 Symbol:     CONFIG_ATH9K_BTCOEX_SUPPORT
 
@@ -869,12 +869,12 @@ Help:       Say Y, if you want to use the ath9k/ath9k_htc radios together with
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel if
             you're using ath9k in order to get bluetooth working.
 ```
-<h3><&ast;>     Atheros 802.11n wireless cards support</h3>
+<h3><&lowast;>     Atheros 802.11n wireless cards support</h3>
 ```properties
 Symbol:     CONFIG_ATH9K
 
@@ -891,12 +891,12 @@ Help:       This module adds support for wireless adapters based on
 
 Type:       tristate
 
-Choice:     <*>
+Choice:     <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel if
             you're using a Qualcomm Atheros 802.11n wireless network adapter.
 ```
-<h3>[&ast;]       Atheros ath9k PCI/PCIe bus support</h3>
+<h3>[&lowast;]       Atheros ath9k PCI/PCIe bus support</h3>
 ```properties
 Symbol:     CONFIG_ATH9K_PCI
 
@@ -906,12 +906,12 @@ Help:       This option enables the PCI bus support in ath9k.
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel if
             you're using a Qualcomm Atheros PCI/PCIe compatible wireless network card.
 ```
-<h3>[&ast;]       Atheros ath9k rfkill support</h3>
+<h3>[&lowast;]       Atheros ath9k rfkill support</h3>
 ```properties
 Symbol:     CONFIG_ATH9K_RFKILL
 
@@ -921,7 +921,7 @@ Help:       Say Y to have ath9k poll the RF-Kill GPIO every couple of
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel if
             your Qualcomm Atheros wireless network adapter has a RF-Kill switch, as
@@ -929,7 +929,7 @@ Reason:     It's highly recommended that you include this option in your kernel 
             wireless cards may be blocked by the RF-Kill switch and you may have to
             unblock them).
 ```
-<h3>[&ast;]       Atheros ath9k support for PC OEM cards</h3>
+<h3>[&lowast;]       Atheros ath9k support for PC OEM cards</h3>
 ```properties
 Symbol:     CONFIG_ATH9K_PCOEM
 
@@ -937,14 +937,14 @@ Help:       There is no help available for this option.
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel if
             you're using ath9k as it's required on some systems for the detection
             of the wireless network adapter.
 ```
 <h3>Input device support  ---></h3>
-<h3>-&ast;- Generic input layer (needed for keyboard, mouse, ...)</h3>
+<h3>-&lowast;- Generic input layer (needed for keyboard, mouse, ...)</h3>
 ```properties
 Symbol:     CONFIG_INPUT
 
@@ -964,12 +964,12 @@ Help:       Say Y here if you have any input device (mouse, keyboard, tablet,
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you want to use your mouse and keyboard.
 ```
-<h3>-&ast;-   Sparse keymap support library</h3>
+<h3>-&lowast;-   Sparse keymap support library</h3>
 ```properties
 Symbol:     CONFIG_INPUT_SPARSEKMAP
 
@@ -985,12 +985,12 @@ Help:       Say Y here if you are using a driver for an input
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     You can safely exclude this option unless it was forcibly included
             by other options related to out-of-tree drivers.
 ```
-<h3><&ast;>   Mouse interface</h3>
+<h3><&lowast;>   Mouse interface</h3>
 ```properties
 Symbol:     CONFIG_INPUT_MOUSEDEV
 
@@ -1007,7 +1007,7 @@ Help:       Say Y here if you want your mouse to be accessible as char devices
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel in
             order for your mouse to work.
@@ -1044,7 +1044,7 @@ Choice:     (768) default
 Reason:     You can safely leave the value of this option to its default value
             of (768) if you're not using a digitizer or tablet pointing devices.
 ```
-<h3><&ast;>   Event interface</h3>
+<h3><&lowast;>   Event interface</h3>
 ```properties
 Symbol:     CONFIG_INPUT_EVDEV
 
@@ -1056,12 +1056,12 @@ Help:       Say Y here if you want your input device events be accessible
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             as it's required by Xorg input drivers (evdev, libinput ...etc).
 ```
-<h3>[&ast;]   Keyboards  ---></h3>
+<h3>[&lowast;]   Keyboards  ---></h3>
 ```properties
 Symbol:     CONFIG_INPUT_KEYBOARD
 
@@ -1072,12 +1072,12 @@ Help:       Say Y here, and a list of supported keyboards will be displayed.
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             in order for your keyboard to work.
 ```
-<h3><&ast;>   AT keyboard</h3>
+<h3><&lowast;>   AT keyboard</h3>
 ```properties
 Symbol:     CONFIG_KEYBOARD_ATKBD
 
@@ -1093,7 +1093,7 @@ Help:       Say Y here if you want to use a standard AT or PS/2 keyboard. Usuall
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel as
             in order for your AT or PS/2 keyboard to work.
@@ -1104,7 +1104,7 @@ Reason:     It's highly recommended that you include this option in your kernel 
 
             should tell you whether you need this option or not.
 ```
-<h3>[&ast;]   Mice  ---></h3>
+<h3>[&lowast;]   Mice  ---></h3>
 ```properties
 Symbol:     CONFIG_INPUT_MOUSE
 
@@ -1115,12 +1115,12 @@ Help:       Say Y here, and a list of supported mice will be displayed.
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             in order for your mouse and touchpad to work.
 ```
-<h3><&ast;>   PS/2 mouse</h3>
+<h3><&lowast;>   PS/2 mouse</h3>
 ```properties
 Symbol:     CONFIG_MOUSE_PS2
 
@@ -1144,7 +1144,7 @@ Help:       Say Y here if you have a PS/2 mouse connected to your system. This
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             in order for your PS/2 mouse and PS/2 touchpad to work.
@@ -1155,7 +1155,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 
             should tell you whether you need this option or not.
 ```
-<h3>[&ast;]     Synaptics PS/2 mouse protocol extension</h3>
+<h3>[&lowast;]     Synaptics PS/2 mouse protocol extension</h3>
 ```properties
 Symbol:     CONFIG_MOUSE_PS2_SYNAPTICS
 
@@ -1166,13 +1166,13 @@ Help:       Say Y here if you have a Synaptics PS/2 TouchPad connected to
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             in order for your Synaptics Touchpad to be enumerated through
             PS/2.
 ```
-<h3>[&ast;]     Synaptics PS/2 SMbus companion</h3>
+<h3>[&lowast;]     Synaptics PS/2 SMbus companion</h3>
 ```properties
 Symbol:     CONFIG_MOUSE_PS2_SYNAPTICS_SMBUS
 
@@ -1183,7 +1183,7 @@ Help:       Say Y here if you have a Synaptics RMI4 touchpad connected to
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             in order for your Synaptics RMI4 SMBus touchpad to work properly.
@@ -1196,7 +1196,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             
             "Your touchpad (PNP: TOS1150 TOS0310 PNP0f13) says it can support a different bus. If i2c-hid and hid-rmi are not used, you might want to try setting psmouse.synaptics_intertouch to 1 and report this to linux-input@vger.kernel.org"
 ```
-<h3>-&ast;-   Synaptics RMI4 bus support</h3>
+<h3>-&lowast;-   Synaptics RMI4 bus support</h3>
 ```properties
 Symbol:     CONFIG_RMI4_CORE
 
@@ -1207,12 +1207,12 @@ Help:       Say Y here if you want to support the Synaptics RMI4 bus.  This is
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     It's highly recommended that you include this option in your kernel
             in order for your Synaptics RMI4 SMBus touchpad to work properly.
 ```
-<h3><&ast;>     RMI4 SMB Support</h3>
+<h3><&lowast;>     RMI4 SMB Support</h3>
 ```properties
 Symbol:     CONFIG_RMI4_SMB
 
@@ -1226,12 +1226,12 @@ Help:       Say Y here if you want to support RMI4 devices connected to an SMB
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             in order for your Synaptics RMI4 SMBus touchpad to work properly.
 ```
-<h3>-&ast;-     RMI4 Function 03 (PS2 Guest)</h3>
+<h3>-&lowast;-     RMI4 Function 03 (PS2 Guest)</h3>
 ```properties
 Symbol:     CONFIG_RMI4_F03
 
@@ -1242,11 +1242,11 @@ Help:       Say Y here if you want to add support for RMI4 function 03.
 
 Type:       boolean
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     Forcibly included by CONFIG_HID_RMI.
 ```
-<h3>-&ast;-     RMI4 Function 11 (2D pointing)</h3>
+<h3>-&lowast;-     RMI4 Function 11 (2D pointing)</h3>
 ```properties
 Symbol:     CONFIG_RMI4_F11
 
@@ -1258,11 +1258,11 @@ Help:       Say Y here if you want to add support for RMI4 function 11.
 
 Type:       boolean
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     Forcibly included by CONFIG_HID_RMI.
 ```
-<h3>-&ast;-     RMI4 Function 12 (2D pointing)</h3>
+<h3>-&lowast;-     RMI4 Function 12 (2D pointing)</h3>
 ```properties
 Symbol:     CONFIG_RMI4_F12
 
@@ -1274,11 +1274,11 @@ Help:       Say Y here if you want to add support for RMI4 function 12.
 
 Type:       boolean
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     Forcibly included by CONFIG_HID_RMI.
 ```
-<h3>-&ast;-     RMI4 Function 30 (GPIO LED)</h3>
+<h3>-&lowast;-     RMI4 Function 30 (GPIO LED)</h3>
 ```properties
 Symbol:     CONFIG_RMI4_F30
 
@@ -1289,18 +1289,18 @@ Help:       Say Y here if you want to add support for RMI4 function 30.
 
 Type:       boolean
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     Forcibly included by CONFIG_HID_RMI.
 ```
 <h3>Hardware I/O ports  ---></h3>
-<h3>-&ast;- Serial I/O support</h3>
+<h3>-&lowast;- Serial I/O support</h3>
 ```properties
 Symbol:     CONFIG_SERIO
 
 Help:       Say Yes here if you have any input device that uses serial I/O to
             communicate with the system. This includes the
-                          * standard AT keyboard and PS/2 mouse *
+                          ∗ standard AT keyboard and PS/2 mouse ∗
             as well as serial mice, Sun keyboards, some joysticks and 6dof
             devices and more.
 
@@ -1311,13 +1311,13 @@ Help:       Say Yes here if you have any input device that uses serial I/O to
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     It's highly recommended that you included this option in your kernel
             (that is if it weren't already forcibly included by several important
             options).
 ```
-<h3>-&ast;- i8042 PC Keyboard controller</h3>
+<h3>-&lowast;- i8042 PC Keyboard controller</h3>
 ```properties
 Symbol:     CONFIG_SERIO_I8042
 
@@ -1332,13 +1332,13 @@ Help:       i8042 is the chip over which the standard AT keyboard and PS/2
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     It's highly recommended that you included this option in your kernel
             (that is if it weren't already forcibly included by several important
             options).
 ```
-<h3>-&ast;- PS/2 driver library</h3>
+<h3>-&lowast;- PS/2 driver library</h3>
 ```properties
 Symbol:     CONFIG_SERIO_LIBPS2
 
@@ -1350,7 +1350,7 @@ Help:       Say Y here if you are using a driver for device connected
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     It's highly recommended that you included this option in your kernel
             (that is if it weren't already forcibly included by several important
@@ -1383,7 +1383,7 @@ Reason:     You can safely exclude this option if your Synaptics PS/2
             Synpatics touchpad.
 ```
 <h3>Character devices  ---></h3>
-<h3>[&ast;] Enable TTY</h3>
+<h3>[&lowast;] Enable TTY</h3>
 ```properties
 Symbol:     CONFIG_TTY
 
@@ -1394,12 +1394,12 @@ Help:       Allows you to remove TTY support which can save space, and
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             in order for text terminals to work.
 ```
-<h3>[&ast;]   Virtual terminal</h3>
+<h3>[&lowast;]   Virtual terminal</h3>
 ```properties
 Symbol:     CONFIG_VT
 
@@ -1431,12 +1431,12 @@ Help:       If you say Y here, you will get support for terminal devices with
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             in order for virtual terminals to work.
 ```
-<h3>[&ast;]     Support for console on virtual terminal</h3>
+<h3>[&lowast;]     Support for console on virtual terminal</h3>
 ```properties
 Symbol:     CONFIG_VT_CONSOLE
 
@@ -1459,12 +1459,12 @@ Help:       The system console is the device which receives all kernel messages
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             in order for virtual terminals to work as system consoles as well.
 ```
-<h3>-&ast;-     Support for binding and unbinding console drivers</h3>
+<h3>-&lowast;-     Support for binding and unbinding console drivers</h3>
 ```properties
 Symbol:     CONFIG_VT_HW_CONSOLE_BINDING
 
@@ -1482,13 +1482,13 @@ Help:       The virtual terminal is the device that interacts with the physical
 
 Type:       boolean
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you've already included CONFIG_VT (that is if it isn't already 
             forcibly included by CONFIG_VT, CONFIG_FB and CONFIG_HAS_IOMEM).
 ```
-<h3>[&ast;]   Unix98 PTY support</h3>
+<h3>[&lowast;]   Unix98 PTY support</h3>
 ```properties
 Symbol:     CONFIG_UNIX98_PTYS
 
@@ -1513,12 +1513,12 @@ Help:       A pseudo terminal (PTY) is a software device consisting of two
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             as it's required by telnet servers, xterms and SSH.
 ```
-<h3><&ast;> Hardware Random Number Generator Core support  ---></h3>
+<h3><&lowast;> Hardware Random Number Generator Core support  ---></h3>
 ```properties
 Symbol:     CONFIG_HW_RANDOM
 
@@ -1538,7 +1538,7 @@ Help:       Hardware Random Number Generator Core infrastructure.
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             if your CPU supports the RDRAND instruction.
@@ -1549,7 +1549,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 
             should tell you whether you need this option or not.
 ```
-<h3><&ast;>   Intel HW Random Number Generator support (NEW)</h3>
+<h3><&lowast;>   Intel HW Random Number Generator support (NEW)</h3>
 ```properties
 Symbol:     CONFIG_HW_RANDOM_INTEL
 
@@ -1563,7 +1563,7 @@ Help:       This driver provides kernel-side support for the Random Number
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             if your CPU supports the RDRAND instruction.
@@ -1575,7 +1575,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             should tell you whether you need this option or not.
 ```
 <h3>I2C support  ---></h3>
-<h3>-&ast;- I2C support</h3>
+<h3>-&lowast;- I2C support</h3>
 ```properties
 Symbol:     CONFIG_I2C
 
@@ -1596,7 +1596,7 @@ Help:       I2C (pronounce: I-squared-C) is a slow serial bus protocol used in
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     If you've followed the guide above, then a simple:
 
@@ -1608,11 +1608,11 @@ Reason:     If you've followed the guide above, then a simple:
 
             should tell you whether you need this option or not.
 ```
-<h3><&ast;>   I2C device interface</h3>
+<h3><&lowast;>   I2C device interface</h3>
 ```properties
 Symbol:     CONFIG_I2C_CHARDEV
 
-Help:       Say Y here to use i2c-* device files, usually found in the /dev
+Help:       Say Y here to use i2c-∗ device files, usually found in the /dev
             directory on your system.  They make it possible to have user-space
             programs use the I2C bus.  Information on how to do this is
             contained in the file <file:Documentation/i2c/dev-interface>.
@@ -1622,13 +1622,13 @@ Help:       Say Y here to use i2c-* device files, usually found in the /dev
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you've already included CONFIG_I2C (it's also recommended by the
             Gentoo Wiki).
 ```
-<h3>-&ast;-   I2C bus multiplexing support</h3>
+<h3>-&lowast;-   I2C bus multiplexing support</h3>
 ```properties
 Symbol:     CONFIG_I2C_MUX
 
@@ -1641,12 +1641,12 @@ Help:       Say Y here if you want the I2C core to support the ability to
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     You can safely exclude this option unless it was forcibly included
             by some other important options.
 ```
-<h3>[&ast;]   Autoselect pertinent helper modules</h3>
+<h3>[&lowast;]   Autoselect pertinent helper modules</h3>
 ```properties
 Symbol:     CONFIG_I2C_HELPER_AUTO
 
@@ -1662,14 +1662,14 @@ Help:       Some I2C bus drivers require so-called "I2C algorithm" modules
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you've already included CONFIG_I2C (it's also recommended by the
             Gentoo Wiki).
 ```
 <h3>I2C Hardware Bus support  ---></h3>
-<h3><&ast;> Intel 82801 (ICH/PCH)</h3>
+<h3><&lowast;> Intel 82801 (ICH/PCH)</h3>
 ```properties
 Symbol:     CONFIG_I2C_I801
 
@@ -1715,7 +1715,7 @@ Help:       If you say yes to this option, support will be included for the Inte
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     If you've followed the guide above, then a simple:
 
@@ -1723,7 +1723,7 @@ Reason:     If you've followed the guide above, then a simple:
 
             should tell you whether you need this option or not.
 ```
-<h3>-&ast;- Power supply class support  ---></h3>
+<h3>-&lowast;- Power supply class support  ---></h3>
 ```properties
 Symbol:     CONFIG_POWER_SUPPLY
 
@@ -1734,14 +1734,14 @@ Help:       Say Y here to enable power supply class support. This allows
 
 Type:       boolean
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     It's highly recommended that you include this option in your kernel
             (that is if it isn't already forcibly included by CONFIG_ACPI,
             CONFIG_ACPI_AC, CONFIG_X86, CONFIG_INPUT, CONFIG_RFKILL and a lot
             of important options).
 ```
-<h3><&ast;> Hardware Monitoring support  ---></h3>
+<h3><&lowast;> Hardware Monitoring support  ---></h3>
 ```properties
 Symbol:     CONFIG_HWMON
 
@@ -1762,12 +1762,12 @@ Help:       Hardware monitoring devices let you monitor the hardware health
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             as it's required by sensors found on almost all modern motherboards.
 ```
-<h3><&ast;>   Intel Core/Core2/Atom temperature sensor</h3>
+<h3><&lowast;>   Intel Core/Core2/Atom temperature sensor</h3>
 ```properties
 Symbol:     CONFIG_SENSORS_CORETEMP
 
@@ -1777,7 +1777,7 @@ Help:       If you say yes here you get support for the temperature
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     If you've followed the guide above, then a simple:
 
@@ -1791,7 +1791,7 @@ Reason:     If you've followed the guide above, then a simple:
 
             It's also recommended by the Gentoo Wiki.
 ```
-<h3>-&ast;- Generic Thermal sysfs driver  ---></h3>
+<h3>-&lowast;- Generic Thermal sysfs driver  ---></h3>
 ```properties
 Symbol:     CONFIG_THERMAL
 
@@ -1805,7 +1805,7 @@ Help:       Generic Thermal Sysfs driver offers a generic mechanism for
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     It's highly recommended that you include this option in your kernel
             (that is if it isn't already forcibly included by CONFIG_X86, CONFIG_ACPI,
@@ -1854,7 +1854,7 @@ Choice:     built-in (X)
 Reason:     It's highly recommended that you include this option in your kernel
             as step_wise is the best thermal governor.
 ```
-<h3>-&ast;-   Step_wise thermal governor</h3>
+<h3>-&lowast;-   Step_wise thermal governor</h3>
 ```properties
 Symbol:     CONFIG_THERMAL_GOV_STEP_WISE
 
@@ -1863,12 +1863,12 @@ Help:       Enable this to manage platform thermals using a simple linear
 
 Type:       boolean
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     It's highly recommended that you include this option in your kernel
             as step_wise is the best thermal governor.
 ```
-<h3><&ast;> Multimedia support  ---></h3>
+<h3><&lowast;> Multimedia support  ---></h3>
 ```none
 Symbol:     CONFIG_MEDIA_SUPPORT
 
@@ -1879,14 +1879,14 @@ Help:       If you want to use Webcams, Video grabber devices and/or TV devices
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             in order for your webcam device to work.
 
             It's also recommended by the Gentoo wiki.
 ```
-<h3>[&ast;]   Cameras/video grabbers support</h3>
+<h3>[&lowast;]   Cameras/video grabbers support</h3>
 ```none
 Symbol:     CONFIG_MEDIA_CAMERA_SUPPORT
 
@@ -1896,14 +1896,14 @@ Help:       Enable support for webcams and video grabbers.
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             in order for your webcam device to work.
 
             It's also recommended by the Gentoo wiki.
 ```
-<h3>[&ast;]   Media USB Adapters  ---></h3>
+<h3>[&lowast;]   Media USB Adapters  ---></h3>
 ```none
 Symbol:     CONFIG_MEDIA_USB_SUPPORT
 
@@ -1912,7 +1912,7 @@ Help:       Enable media drivers for USB bus.
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             in order for your USB-bus webcam device to work.
@@ -1923,7 +1923,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 
             should tell you whether you need this option or not.
 ```
-<h3><&ast;>   USB Video Class (UVC)</h3>
+<h3><&lowast;>   USB Video Class (UVC)</h3>
 ```none
 Symbol:     CONFIG_USB_VIDEO_CLASS
 
@@ -1934,7 +1934,7 @@ Help:       Support for the USB Video Class (UVC).  Currently only video
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             in order for your webcam device to work.
@@ -1945,7 +1945,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 
             should tell you whether you need this option or not.
 ```
-<h3>[&ast;]     UVC input events device support (NEW)</h3>
+<h3>[&lowast;]     UVC input events device support (NEW)</h3>
 ```none
 Symbol:     CONFIG_USB_VIDEO_CLASS_INPUT_EVDEV
 
@@ -1956,7 +1956,7 @@ Help:       This option makes USB Video Class devices register an input device
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             in order for your webcam device to work.
@@ -1969,7 +1969,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             
             It's also recommended by the Gentoo wiki.
 ```
-<h3>[&ast;]   Autoselect ancillary drivers (tuners, sensors, i2c, spi, frontends) (NEW)</h3>
+<h3>[&lowast;]   Autoselect ancillary drivers (tuners, sensors, i2c, spi, frontends) (NEW)</h3>
 ```none
 Symbol:     CONFIG_MEDIA_SUBDRV_AUTOSELECT
 
@@ -1990,7 +1990,7 @@ Help:       By default, a media driver auto-selects all possible ancillary
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you've already included CONFIG_MEDIA_SUPPORT.
@@ -1999,7 +1999,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 ```
 <h3>Graphics support  ---></h3>
 You may want to check <a href="https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/" target="_blank">Setting up Bumblebee on Gentoo Linux | DOTSLASHLINUX</a>.
-<h3><&ast;> /dev/agpgart (AGP Support)  ---></h3>
+<h3><&lowast;> /dev/agpgart (AGP Support)  ---></h3>
 ```properties
 Symbol:     CONFIG_AGP
 
@@ -2028,7 +2028,7 @@ Help:       AGP (Accelerated Graphics Port) is a bus system mainly used to
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             in order to get a working bumblebee setup on an optimus based laptop.
@@ -2037,7 +2037,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 
                 https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/
 ```
-<h3><&ast;>   Intel 440LX/BX/GX, I8xx and E7x05 chipset support</h3>
+<h3><&lowast;>   Intel 440LX/BX/GX, I8xx and E7x05 chipset support</h3>
 ```properties
 Symbol:     CONFIG_AGP_INTEL
 
@@ -2048,7 +2048,7 @@ Help:       This option gives you AGP support for the GLX component of X
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             in order to get a working bumblebee setup on an optimus based laptop.
@@ -2057,7 +2057,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 
                 https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/
 ```
-<h3>[&ast;] VGA Arbitration</h3>
+<h3>[&lowast;] VGA Arbitration</h3>
 ```properties
 Symbol:     CONFIG_VGA_ARB
 
@@ -2069,7 +2069,7 @@ Help:       Some "legacy" VGA devices implemented on PCI typically have the same
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             in order to get a working bumblebee setup on an optimus based laptop.
@@ -2100,7 +2100,7 @@ Reason:     It's highly recommended that you set the value of this option to (2)
 
                 https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/
 ```
-<h3><&ast;> Direct Rendering Manager (XFree86 4.1.0 and higher DRI support)  ---></h3>
+<h3><&lowast;> Direct Rendering Manager (XFree86 4.1.0 and higher DRI support)  ---></h3>
 ```properties
 Symbol:     CONFIG_DRM
 
@@ -2114,7 +2114,7 @@ Help:       Kernel-level support for the Direct Rendering Infrastructure (DRI)
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             in order to get a working bumblebee setup on an optimus based laptop.
@@ -2123,7 +2123,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 
                 https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/
 ```
-<h3>[&ast;]   Enable legacy fbdev support for your modesetting driver</h3>
+<h3>[&lowast;]   Enable legacy fbdev support for your modesetting driver</h3>
 ```properties
 Symbol:     CONFIG_DRM_FBDEV_EMULATION
 
@@ -2135,7 +2135,7 @@ Help:       Choose this option if you have a need for the legacy fbdev
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             in order to get a working bumblebee setup on an optimus based laptop.
@@ -2165,7 +2165,7 @@ Reason:     It's highly recommended that you set the value of this option to (30
 
                 https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/
 ```
-<h3><&ast;> Intel 8xx/9xx/G3x/G4x/HD Graphics</h3>
+<h3><&lowast;> Intel 8xx/9xx/G3x/G4x/HD Graphics</h3>
 ```properties
 Symbol:     CONFIG_DRM_I915
 
@@ -2187,7 +2187,7 @@ Help:       Choose this option if you have a system that has "Intel Graphics
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             in order to get a working bumblebee setup on an optimus based laptop.
@@ -2196,7 +2196,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 
                 https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/
 ```
-<h3>[&ast;]   Always enable userptr support</h3>
+<h3>[&lowast;]   Always enable userptr support</h3>
 ```properties
 Symbol:     CONFIG_DRM_I915_USERPTR
 
@@ -2207,7 +2207,7 @@ Help:       This option selects CONFIG_MMU_NOTIFIER if it isn't already
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             in order to get a working bumblebee setup on an optimus based laptop.
@@ -2217,7 +2217,7 @@ Reason:     It's highly recommended that you include this option in your kernel
                 https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/
 ```
 <h3>Frame buffer Devices  ---></h3>
-<h3>-&ast;- Support for frame buffer devices  ---></h3>
+<h3>-&lowast;- Support for frame buffer devices  ---></h3>
 ```properties
 Symbol:     CONFIG_FB
 
@@ -2235,7 +2235,7 @@ Help:       The frame buffer device provides an abstraction for the graphics
             only way to use the graphics hardware.
 
             The device is accessed through special device nodes, usually located
-            in the /dev directory, i.e. /dev/fb*.
+            in the /dev directory, i.e. /dev/fb∗.
 
             You need an utility program called fbset to make full use of frame
             buffer devices. Please read <file:Documentation/fb/framebuffer.txt>
@@ -2254,13 +2254,13 @@ Help:       The frame buffer device provides an abstraction for the graphics
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     It's highly recommended that you include this option in your kernel
             (that is if it isn't already forcibly included by CONFIG_X86, CONFIG_PCI,
             CONFIG_DRM, CONFIG_MMU and CONFIG_HAS_IOMEM).
 ```
-<h3>-&ast;- Backlight & LCD device support  ---></h3>
+<h3>-&lowast;- Backlight & LCD device support  ---></h3>
 ```properties
 Symbol:     CONFIG_BACKLIGH_LCD_SUPPORT
 
@@ -2269,13 +2269,13 @@ Help:       Enable this to be able to choose the drivers for controlling the
 
 Type:       boolean
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     It's highly recommended that you include this option in your kernel
             (that is if it isn't already forcibly included by CONFIG_X86, CONFIG_PCI,
             CONFIG_ACPI, CONFIG_DRM, CONFIG_MMU and CONFIG_HAS_IOMEM).
 ```
-<h3>-&ast;-   Lowlevel Backlight controls</h3>
+<h3>-&lowast;-   Lowlevel Backlight controls</h3>
 ```properties
 Symbol:     CONFIG_BACKLIGHT_CLASS_DEVICE
 
@@ -2287,14 +2287,14 @@ Help:       This framework adds support for low-level control of the LCD
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     It's highly recommended that you include this option in your kernel
             (that is if it isn't already forcibly included by CONFIG_X86, CONFIG_PCI,
             CONFIG_ACPI, CONFIG_DRM, CONFIG_MMU and CONFIG_HAS_IOMEM).
 ```
 <h3>Console display driver support  ---></h3>
-<h3>[&ast;] VGA text console</h3>
+<h3>[&lowast;] VGA text console</h3>
 ```properties
 Symbol:     CONFIG_VGA_CONSOLE
 
@@ -2310,7 +2310,7 @@ Help:       Saying Y here will allow you to use Linux in text mode through a
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             in order to get a working bumblebee setup on an optimus based laptop.
@@ -2349,7 +2349,7 @@ Choice:     (25) default
 Reason:     You can safely leave the value of this option set to its default value
             of (25) as it's for dummy consoles.
 ```
-<h3><&ast;> Framebuffer Console support</h3>
+<h3><&lowast;> Framebuffer Console support</h3>
 ```properties
 Symbol:     CONFIG_FRAMEBUFFER_CONSOLE
 
@@ -2357,7 +2357,7 @@ Help:       Low-level framebuffer-based console driver.
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             in order to get a working bumblebee setup on an optimus based laptop.
@@ -2366,7 +2366,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 
                 https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/
 ```
-<h3>-&ast;-   Map the console to the primary display device</h3>
+<h3>-&lowast;-   Map the console to the primary display device</h3>
 ```properties
 Symbol:     CONFIG_FRAMEBUFFER_CONSOLE_DETECT_PRIMARY
 
@@ -2383,13 +2383,13 @@ Help:       If this option is selected, the framebuffer console will
 
 Type:       boolean
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     It's highly recommended that you include this option in your kernel
             (that is if it isn't already forcibly included by CONFIG_HAS_IOMEM
             and CONFIG_FRAMEBUFFER_CONSOLE).
 ```
-<h3><&ast;> Sound card support  ---></h3>
+<h3><&lowast;> Sound card support  ---></h3>
 ```properties
 Symbol:     CONFIG_SOUND
 
@@ -2404,7 +2404,7 @@ Help:       If you have a sound card in your computer, i.e. if it can say more
             <file:Documentation/sound/oss/Introduction>.  The file
             <file:Documentation/sound/oss/README.OSS> contains some slightly
             outdated but still useful information as well.  Newer sound
-            driver documentation is found in <file:Documentation/sound/alsa/*>.
+            driver documentation is found in <file:Documentation/sound/alsa/∗>.
 
             If you have a PnP sound card and you want to configure it at boot
             time using the ISA PnP tools (read
@@ -2416,27 +2416,27 @@ Help:       If you have a sound card in your computer, i.e. if it can say more
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             in order for sound to work.
 ```
-<h3>[&ast;]   Preclaim OSS device numbers</h3>
+<h3>[&lowast;]   Preclaim OSS device numbers</h3>
 ```properties
 Symbol:     CONFIG_SOUND_OSS_CORE_PRECLAIM
 
 Help:       With this option enabled, the kernel will claim all OSS device
             numbers if any OSS support (native or emulation) is enabled
             whether the respective module is loaded or not and try to load the
-            appropriate module using sound-slot/service-* and char-major-*
+            appropriate module using sound-slot/service-∗ and char-major-∗
             module aliases when one of the device numbers is opened.  With
             this option disabled, kernel will only claim actually in-use
             device numbers and opening a missing device will generate only the
-            standard char-major-* aliases.
+            standard char-major-∗ aliases.
 
             The only visible difference is use of additional module aliases
             and whether OSS sound devices appear multiple times in
-            /proc/devices.  sound-slot/service-* module aliases are scheduled
+            /proc/devices.  sound-slot/service-∗ module aliases are scheduled
             to be removed (ie. PRECLAIM won't be available) and this option is
             to make the transition easier.  This option can be overridden
             during boot using the kernel parameter soundcore.preclaim_oss.
@@ -2447,7 +2447,7 @@ Help:       With this option enabled, the kernel will claim all OSS device
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             as many applications (especially lightweight status bars such as slstatus
@@ -2458,7 +2458,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             
                 https://www.dotslashlinux.com/2017/04/24/best-slstatus-configuration/
 ```
-<h3><&ast;>   Advanced Linux Sound Architecture  ---></h3>
+<h3><&lowast;>   Advanced Linux Sound Architecture  ---></h3>
 ```properties
 Symbol:     CONFIG_SND
 
@@ -2469,16 +2469,16 @@ Help:       Say 'Y' or 'M' to enable ALSA (Advanced Linux Sound Architecture),
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             in order for sound to work.
 ```
-<h3><&ast;>   OSS Mixer API</h3>
+<h3><&lowast;>   OSS Mixer API</h3>
 ```properties
 Symbol:     CONFIG_SND_MIXER_OSS
 
-Help:       To enable OSS mixer API emulation (/dev/mixer*), say Y here
+Help:       To enable OSS mixer API emulation (/dev/mixer∗), say Y here
             and read <file:Documentation/sound/alsa/OSS-Emulation.txt>.
 
             Many programs still use the OSS API, so say Y.
@@ -2488,7 +2488,7 @@ Help:       To enable OSS mixer API emulation (/dev/mixer*), say Y here
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             as many applications (especially lightweight status bars such as slstatus
@@ -2499,11 +2499,11 @@ Reason:     It's highly recommended that you include this option in your kernel
             
                 https://www.dotslashlinux.com/2017/04/24/best-slstatus-configuration/
 ```
-<h3><&ast;>   OSS PCM (digital audio) API</h3>
+<h3><&lowast;>   OSS PCM (digital audio) API</h3>
 ```properties
 Symbol:     CONFIG_SND_PCM_OSS
 
-Help:       To enable OSS digital audio (PCM) emulation (/dev/dsp*), say Y
+Help:       To enable OSS digital audio (PCM) emulation (/dev/dsp∗), say Y
             here and read <file:Documentation/sound/alsa/OSS-Emulation.txt>.
 
             Many programs still use the OSS API, so say Y.
@@ -2513,7 +2513,7 @@ Help:       To enable OSS digital audio (PCM) emulation (/dev/dsp*), say Y
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             as many applications (especially lightweight status bars such as slstatus
@@ -2524,7 +2524,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             
                 https://www.dotslashlinux.com/2017/04/24/best-slstatus-configuration/
 ```
-<h3>[&ast;]   PCM timer interface</h3>
+<h3>[&lowast;]   PCM timer interface</h3>
 ```properties
 Symbol:     CONFIG_SND_PCM_TIMER
 
@@ -2537,7 +2537,7 @@ Help:       If you disable this option, pcm timer will be unavailable, so
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             in order for dmix which is required for allowing sound output from
@@ -2550,7 +2550,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 
                 https://www.dotslashlinux.com/2017/03/30/basic-alsa-configuration/
 ```
-<h3>[&ast;]   Dynamic device file minor numbers</h3>
+<h3>[&lowast;]   Dynamic device file minor numbers</h3>
 ```properties
 Symbol:     CONFIG_SND_DYNAMIC_MINORS
 
@@ -2563,7 +2563,7 @@ Help:       If you say Y here, the minor numbers of ALSA device files in
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you're receving dmesg errors indicating that you should include
@@ -2584,7 +2584,7 @@ Reason:     You can safely set the value of this option equal to (4)
             as on most systems you won't be using more than 1 or 2
             sound cards.
 ```
-<h3>[&ast;]   PCI sound devices  ---></h3>
+<h3>[&lowast;]   PCI sound devices  ---></h3>
 ```properties
 Symbol:     CONFIG_SND_PCI
 
@@ -2592,13 +2592,13 @@ Help:       Support for sound devices connected via the PCI bus.
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             in order for Intel High Definition Audio to work properly.
 ```
 <h3>HD-Audio  ---></h3>
-<h3><&ast;> HD Audio PCI</h3>
+<h3><&lowast;> HD Audio PCI</h3>
 ```properties
 Symbol:     CONFIG_SND_HDA_INTEL
 
@@ -2613,7 +2613,7 @@ Help:       Say Y here to include support for Intel "High Definition
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             in order for Intel High Definition Audio to work properly.
@@ -2624,7 +2624,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 
             should tell you whether you need this option or not.
 ```
-<h3><&ast;> Build IDT/Sigmatel HD-audio codec support</h3>
+<h3><&lowast;> Build IDT/Sigmatel HD-audio codec support</h3>
 ```properties
 Symbol:     CONFIG_SND_HDA_CODEC_SIGMATEL
 
@@ -2633,7 +2633,7 @@ Help:       Say Y or M here to include IDT (Sigmatel) HD-audio codec support in
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             in order for IDT codecs to work properly in Intel High Definition Audio driver.
@@ -2644,7 +2644,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 
             should tell you whether you need this option or not.
 ```
-<h3><&ast;> Build HDMI/DisplayPort HD-audio codec support</h3>
+<h3><&lowast;> Build HDMI/DisplayPort HD-audio codec support</h3>
 ```properties
 Symbol:     CONFIG_SND_HDA_CODEC_HDMI
 
@@ -2654,7 +2654,7 @@ Help:       Say Y or M here to include HDMI and DisplayPort HD-audio codec
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             in order for HDMI codecs to work properly in Intel High Definition Audio driver.
@@ -2665,7 +2665,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 
             should tell you whether you need this option or not.
 ```
-<h3>-&ast;- Enable generic HD-audio codec parser</h3>
+<h3>-&lowast;- Enable generic HD-audio codec parser</h3>
 ```properties
 Symbol:     CONFIG_SND_HDA_GENERIC
 
@@ -2674,7 +2674,7 @@ Help:       Say Y or M here to enable the generic HD-audio codec parser
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you've already included a CODEC option above (that is if it isn't
@@ -2705,7 +2705,7 @@ Help:       Specifies the default pre-allocated buffer-size in kB for the
             for compatibility reasons.
 
             Note that the pre-allocation size can be changed dynamically
-            via a proc file (/proc/asound/card*/pcm*/sub*/prealloc), too.
+            via a proc file (/proc/asound/card∗/pcm∗/sub∗/prealloc), too.
 
 Type:       integer
 
@@ -2725,7 +2725,7 @@ Reason:     You can safely leave the value of this option set to the default
             PulseAudio.
 ```
 <h3>HID support  ---></h3>
-<h3>-&ast;- HID bus support</h3>
+<h3>-&lowast;- HID bus support</h3>
 ```properties
 Symbol:     CONFIG_HID
 
@@ -2745,7 +2745,7 @@ Help:       A human interface device (HID) is a type of computer device that
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     It's highly recommended that you include this option in your kernel
             (that is if it isn't already forcibly included by CONFIG_X86_64, CONFIG_NET,
@@ -2753,7 +2753,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 
             It's also recommended by the Gentoo Wiki.
 ```
-<h3><&ast;>   Generic HID driver</h3>
+<h3><&lowast;>   Generic HID driver</h3>
 ```properties
 Symbol:     CONFIG_HID_GENERIC
 
@@ -2767,7 +2767,7 @@ Help:       Support for generic devices on the HID bus. This includes most
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             as it's required for USB keyboards and mice to work properly.
@@ -2775,7 +2775,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             It's also recommended by the Gentoo Wiki.
 ```
 <h3>USB HID support  ---></h3>
-<h3><&ast;> USB HID transport layer</h3>
+<h3><&lowast;> USB HID transport layer</h3>
 ```properties
 Symbol:     CONFIG_USB_HID
 
@@ -2795,14 +2795,14 @@ Help:       Say Y here if you want to connect USB keyboards,
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             as it's required for USB keyboards and mice to work properly.
             
             It's also recommended by the Gentoo Wiki.
 ```
-<h3>[&ast;] USB support  ---></h3>
+<h3>[&lowast;] USB support  ---></h3>
 ```properties
 Symbol:     CONFIG_USB_SUPPORT
 
@@ -2811,14 +2811,14 @@ Help:       This option adds core support for Universal Serial Bus (USB).
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you wanted USB support to work.
 
             It's also recommended by the Gentoo Wiki.
 ```
-<h3><&ast;>   Support for Host-side USB</h3>
+<h3><&lowast;>   Support for Host-side USB</h3>
 ```properties
 Symbol:     CONFIG_USB
 
@@ -2855,14 +2855,14 @@ Help:       Universal Serial Bus (USB) is a specification for a serial bus
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you wanted USB support to work.
 
             It's also recommended by the Gentoo Wiki.
 ```
-<h3>[&ast;]   PCI based USB host interface</h3>
+<h3>[&lowast;]   PCI based USB host interface</h3>
 ```properties
 Symbol:     CONFIG_USB_PCI
 
@@ -2874,13 +2874,13 @@ Help:       A lot of embeded system SOC (e.g. freescale T2080) have both
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             as it solves the problem of undetectable mice and keyboards as reported
             by many users.
 ```
-<h3>[&ast;]   Enable USB persist by default</h3>
+<h3>[&lowast;]   Enable USB persist by default</h3>
 ```properties
 Symbol:     CONFIG_USB_DEFAULT_PERSIST
 
@@ -2897,14 +2897,14 @@ Help:       Say N here if you don't want USB power session persistence
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you wanted USB support to work.
 
             It's also recommended by the Gentoo Wiki.
 ```
-<h3><&ast;>   xHCI HCD (USB 3.0) support</h3>
+<h3><&lowast;>   xHCI HCD (USB 3.0) support</h3>
 ```properties
 Symbol:     CONFIG_USB_XHCI_HCD
 
@@ -2916,7 +2916,7 @@ Help:       The eXtensible Host Controller Interface (xHCI) is standard for USB 
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you wanted USB 3.0 support to work.
@@ -2937,7 +2937,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             
             It's also recommended by the Gentoo Wiki.
 ```
-<h3><&ast;>   EHCI HCD (USB 2.0) support</h3>
+<h3><&lowast;>   EHCI HCD (USB 2.0) support</h3>
 ```properties
 Symbol:     CONFIG_USB_EHCI_HCD
 
@@ -2961,7 +2961,7 @@ Help:       The Enhanced Host Controller Interface (EHCI) is standard for USB 2.
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you wanted USB 2.0 support to work.
@@ -2982,7 +2982,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             
             It's also recommended by the Gentoo Wiki.
 ```
-<h3>[&ast;]     Improved Transaction Translator scheduling</h3>
+<h3>[&lowast;]     Improved Transaction Translator scheduling</h3>
 ```properties
 Symbol:     CONFIG_USB_EHCI_IT_NEWSCHED
 
@@ -3003,7 +3003,7 @@ Help:       This changes the periodic scheduling code to fill more of the low
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you've already included CONFIG_USB_EHCI_HCD as it speeds up USB
@@ -3011,7 +3011,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             
             It's also recommended by the Gentoo Wiki.
 ```
-<h3><&ast;>   USB Mass Storage support</h3>
+<h3><&lowast;>   USB Mass Storage support</h3>
 ```properties
 Symbol:     CONFIG_USB_STORAGE
 
@@ -3031,13 +3031,13 @@ Help:       Say Y here if you want to connect USB mass storage devices to your
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you've already included CONFIG_USB_SUPPORT.
             
 ```
-<h3>-&ast;- LED Support  ---></h3>
+<h3>-&lowast;- LED Support  ---></h3>
 ```properties
 Symbol:     CONFIG_NEW_LEDS
 
@@ -3046,14 +3046,14 @@ Help:       Say Y to enable Linux LED support.  This allows control of supported
 
 Type:       boolean
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     It's highly recommended that you include this option in your kernel
             (that is if it isn't already forcibly included by CONFIG_PCI, CONFIG_I2C,
             CONFIG_X86, CONFIG_ACPI, CONFIG_ACPI_VIDEO, CONFIG_RFKILL, CONFIG_INPUT
             and a lot of important options).
 ```
-<h3>-&ast;-   LED Class Support</h3>
+<h3>-&lowast;-   LED Class Support</h3>
 ```properties
 Symbol:     CONFIG_LEDS_CLASS
 
@@ -3062,14 +3062,14 @@ Help:       This option enables the led sysfs class in /sys/class/leds.  You'll
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     It's highly recommended that you include this option in your kernel
             (that is if it isn't already forcibly included by CONFIG_PCI, CONFIG_I2C,
             CONFIG_X86, CONFIG_ACPI, CONFIG_ACPI_VIDEO, CONFIG_RFKILL, CONFIG_INPUT
             and a lot of important options).
 ```
-<h3>-&ast;-   LED Trigger support  ---></h3>
+<h3>-&lowast;-   LED Trigger support  ---></h3>
 ```properties
 Symbol:     CONFIG_LEDS_TRIGGERS
 
@@ -3079,13 +3079,13 @@ Help:       This option enables trigger support for the leds class.
 
 Type:       boolean
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     It's highly recommended that you include this option in your kernel
             (that is if it isn't already forcibly included by CONFIG_NET, CONFIG_WLAN,
             CONFIG_HID and CONFIG_INPUT).
 ```
-<h3>[&ast;] Real Time Clock  ---></h3>
+<h3>[&lowast;] Real Time Clock  ---></h3>
 ```properties
 Symbol:     CONFIG_RTC_CLASS
 
@@ -3095,14 +3095,14 @@ Help:       Generic RTC class support. If you say yes here, you will
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             to have a working hardware clock.
 
             It's also recommended by the Gentoo Wiki.
 ```
-<h3>[&ast;]   Set system time from RTC on startup and resume</h3>
+<h3>[&lowast;]   Set system time from RTC on startup and resume</h3>
 ```properties
 Symbol:     CONFIG_RTC_HCTOSYS
 
@@ -3112,7 +3112,7 @@ Help:       If you say yes here, the system time (wall clock) will be set using
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             as it speeds up boot time.
@@ -3148,7 +3148,7 @@ Choice:     (rtc0) default
 Reason:     You can safely leave the value of this option to the default value
             of (rtc0) as recommended by the Gentoo Wiki.
 ```
-<h3>[&ast;]   /sys/class/rtc/rtcN (sysfs)</h3>
+<h3>[&lowast;]   /sys/class/rtc/rtcN (sysfs)</h3>
 ```properties
 Symbol:     CONFIG_RTC_INTF_SYSFS
 
@@ -3159,14 +3159,14 @@ Help:       Say yes here if you want to use your RTCs using sysfs interfaces,
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             to have a working hardware clock.
 
             It's also recommended by the Gentoo Wiki.
 ```
-<h3>[&ast;]   /proc/driver/rtc (procfs for rtcN)</h3>
+<h3>[&lowast;]   /proc/driver/rtc (procfs for rtcN)</h3>
 ```properties
 Symbol:     CONFIG_RTC_INTF_PROC
 
@@ -3180,14 +3180,14 @@ Help:       Say yes here if you want to use your system clock RTC through
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             to have a working hardware clock.
 
             It's also recommended by the Gentoo Wiki.
 ```
-<h3>[&ast;]   /dev/rtcN (character devices)</h3>
+<h3>[&lowast;]   /dev/rtcN (character devices)</h3>
 ```properties
 Symbol:     CONFIG_RTC_INTF_DEV
 
@@ -3204,14 +3204,14 @@ Help:       Say yes here if you want to use your RTCs using the /dev
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             to have a working hardware clock.
 
             It's also recommended by the Gentoo Wiki.
 ```
-<h3><&ast;>   PC-style 'CMOS'</h3>
+<h3><&lowast;>   PC-style 'CMOS'</h3>
 ```properties
 Symbol:     CONFIG_RTC_DRV_CMOS
 
@@ -3231,7 +3231,7 @@ Help:       Say "yes" here to get direct support for the real time clock
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             to have a working hardware clock.
@@ -3245,7 +3245,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             It's also recommended by the Gentoo Wiki.
 ```
 <h3>DMABUF options  ---></h3>
-<h3>-&ast;- Explicit Synchronization Framework</h3>
+<h3>-&lowast;- Explicit Synchronization Framework</h3>
 ```properties
 Symbol:     CONFIG_SYNC_FILE
 
@@ -3262,13 +3262,13 @@ Help:       The Sync File Framework adds explicit syncronization via
 
 Type:       boolean
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     It's highly recommended that you include this option in your kernel
             (that is if it isn't already forcibly included by CONFIG_X86, CONFIG_PCI,
             CONFIG_AGP, CONFIG_DRM, CONFIG_DRM_I915 and CONFIG_MMU).
 ```
-<h3>[&ast;] X86 Platform Specific Device Drivers  ---></h3>
+<h3>[&lowast;] X86 Platform Specific Device Drivers  ---></h3>
 ```properties
 Symbol:     CONFIG_X86_PLATFORM_DEVICES
 
@@ -3280,12 +3280,12 @@ Help:       Say Y here to get to see options for device drivers for various
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you wanted to include some vendor specific extension drivers.
 ```
-<h3><&ast;>   WMI</h3>
+<h3><&lowast;>   WMI</h3>
 ```properties
 Symbol:     CONFIG_ACPI_WMI
 
@@ -3308,7 +3308,7 @@ Help:       This driver adds support for the ACPI-WMI (Windows Management
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             if your system supports ACPI-WMI.
@@ -3319,7 +3319,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 
             should tell you whether you need this option or not.
 ```
-<h3><&ast;>   Toshiba Bluetooth RFKill switch support</h3>
+<h3><&lowast;>   Toshiba Bluetooth RFKill switch support</h3>
 ```properties
 Symbol:     CONFIG_TOSHIBA_BT_RFKILL
 
@@ -3336,7 +3336,7 @@ Help:       This driver adds support for Bluetooth events for the RFKill
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you wanted to include some vendor specific extension drivers.
@@ -3347,7 +3347,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 
             should tell you whether you need this option or not.
 ```
-<h3><&ast;>   Toshiba HDD Active Protection Sensor</h3>
+<h3><&lowast;>   Toshiba HDD Active Protection Sensor</h3>
 ```properties
 Symbol:     CONFIG_TOSHIBA_HAPS
 
@@ -3368,7 +3368,7 @@ Help:       This driver adds support for the built-in accelerometer
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             if your Toshiba laptop is equiped with a HID TOS620A device.
@@ -3379,7 +3379,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 
             should tell you whether you need this option or not.
 ```
-<h3><&ast;>   Toshiba WMI Hotkeys Driver (EXPERIMENTAL)</h3>
+<h3><&lowast;>   Toshiba WMI Hotkeys Driver (EXPERIMENTAL)</h3>
 ```properties
 Symbol:     CONFIG_TOSHIBA_WMI
 
@@ -3387,7 +3387,7 @@ Help:       This driver adds hotkey monitoring support to some Toshiba models
             that manage the hotkeys via WMI events.
 
             WARNING: This driver is incomplete as it lacks a proper keymap and the
-            *notify function only prints the ACPI event type value. Be warned that
+            ∗notify function only prints the ACPI event type value. Be warned that
             you will need to provide some information if you have a Toshiba model
             with WMI event hotkeys and want to help with the develpment of this
             driver.
@@ -3396,7 +3396,7 @@ Help:       This driver adds hotkey monitoring support to some Toshiba models
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             if your Toshiba laptop supports WMI.
@@ -3407,7 +3407,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 
             should tell you whether you need this option or not.
 ```
-<h3><&ast;>   WMI support for MXM Laptop Graphics</h3>
+<h3><&lowast;>   WMI support for MXM Laptop Graphics</h3>
 ```properties
 Symbol:     CONFIG_MXM_WMI
 
@@ -3416,7 +3416,7 @@ Help:       MXM is a standard for laptop graphics cards, the WMI interface
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             in order to get a working bumblebee setup on an optimus based laptop.
@@ -3425,7 +3425,7 @@ Reason:     It's highly recommended that you include this option in your kernel
 
                 https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/
 ```
-<h3><&ast;>   Intel Rapid Start Technology Driver</h3>
+<h3><&lowast;>   Intel Rapid Start Technology Driver</h3>
 ```properties
 Symbol:     CONFIG_INTEL_RST
 
@@ -3439,13 +3439,13 @@ Help:       This driver provides support for modifying paramaters on systems
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             if your laptop supports Intel RST and you want to improve suspend
             to disk and resume support.
 ```
-<h3>[&ast;] Generic powercap sysfs driver  ---></h3>
+<h3>[&lowast;] Generic powercap sysfs driver  ---></h3>
 ```properties
 Symbol:     CONFIG_POWERCAP
 
@@ -3459,12 +3459,12 @@ Help:       The power capping sysfs interface allows kernel subsystems to expose
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you're using an Intel CPU to enable RAPL support.
 ```
-<h3><&ast;>   Intel RAPL Support</h3>
+<h3><&lowast;>   Intel RAPL Support</h3>
 ```properties
 Symbol:     CONFIG_INTEL_RAPL
 
@@ -3479,7 +3479,7 @@ Help:       This enables support for the Intel Running Average Power Limit (RAPL
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             if you're using an Intel CPU to enable RAPL support.

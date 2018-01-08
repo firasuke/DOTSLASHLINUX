@@ -1,6 +1,6 @@
 +++
-title = "The Linux Kernel Configuration Guide Part 16"
-slug = "the linux kernel configuration guide part 16"
+title = "The Linux Kernel Configuration Guide Part 16 - -∗- Cryptographic API  --->"
+slug = "the linux kernel configuration guide part 16 cryptographic api"
 nick = "kernel16"
 date = "2017-09-16"
 author = "Firas Khalil Khana"
@@ -16,7 +16,7 @@ One thing you could do is after you've included all the required options for you
 <br/>
 Again, the options I'll be listing here will be the ones that got forcibly included on my system, in addition to some other options that I found useful (with the help of SystemRescueCd of course) as you may find it useful.
 <hr/>
-<h3>-&ast;- Cryptographic API  ---></h3>
+<h3>-&lowast;- Cryptographic API  ---></h3>
 ```properties
 Symbol:     CONFIG_CRYPTO
 
@@ -24,11 +24,11 @@ Help:       This option provides the core Cryptographic API.
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     Forcibly included as it's required by a lot of important options.
 ```
-<h3>-&ast;-   ECDH algorithm</h3>
+<h3>-&lowast;-   ECDH algorithm</h3>
 ```properties
 Symbol:     CONFIG_CRYPTO_ECDH
 
@@ -36,12 +36,12 @@ Help:       Generic implementation of the ECDH algorithm
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     Forcibly included as it's required by CONFIG_NET, CONFIG_BT and
             CONFIG_RFKILL.
 ```
-<h3>-&ast;-   Cryptographic algorithm manager</h3>
+<h3>-&lowast;-   Cryptographic algorithm manager</h3>
 ```properties
 Symbol:     CONFIG_CRYPTO_MANAGER
 
@@ -50,11 +50,11 @@ Help:       Create default cryptographic template instantiations such as
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     Forcibly included as it's required by a lot of important options.
 ```
-<h3>[&ast;]   Disable run-time self tests</h3>
+<h3>[&lowast;]   Disable run-time self tests</h3>
 ```properties
 Symbol:     CONFIG_CRYPTO_MANAGER_DISABLE_TESTS
 
@@ -63,12 +63,12 @@ Help:       Disable run-time self tests that normally take place at
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             as it speeds up boot time.
 ```
-<h3>-&ast;-   GF(2^128) multiplication functions</h3>
+<h3>-&lowast;-   GF(2^128) multiplication functions</h3>
 ```properties
 Symbol:     CONFIG_CRYPTO_GF128MUL
 
@@ -80,11 +80,11 @@ Help:       Efficient table driven implementation of multiplications in the
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     Forcibly included as it's required by CONFIG_CRYPTO_GHASH.
 ```
-<h3>-&ast;-   Null algorithms</h3>
+<h3>-&lowast;-   Null algorithms</h3>
 ```properties
 Symbol:     CONFIG_CRYPTO_NULL
 
@@ -92,11 +92,11 @@ Help:       These are 'Null' algorithms, used by IPsec, which do nothing.
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     Forcibly included as it's required by a lot of important options.
 ```
-<h3>-&ast;-   Software async crypto daemon</h3>
+<h3>-&lowast;-   Software async crypto daemon</h3>
 ```properties
 Symbol:     CONFIG_CRYPTO_CRYPTD
 
@@ -106,12 +106,12 @@ Help:       This is a generic software asynchronous crypto daemon that
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     Forcibly included as it's required by CONFIG_X86, CONFIG_64BIT,
             CONFIG_CRYPTO and a lot of important options.
 ```
-<h3>-&ast;-   CCM support</h3>
+<h3>-&lowast;-   CCM support</h3>
 ```properties
 Symbol:     CONFIG_CRYPTO_CCM
 
@@ -119,12 +119,12 @@ Help:       Support for Counter with CBC MAC. Required for IPsec.
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     Forcibly included as it's required by CONFIG_NET, CONFIG_WIRELESS,
             CONFIG_CFG80211 and CONFIG_MAC80211.
 ```
-<h3>-&ast;-   GCM/GMAC support</h3>
+<h3>-&lowast;-   GCM/GMAC support</h3>
 ```properties
 Symbol:     CONFIG_CRYPTO_GCM
 
@@ -133,12 +133,12 @@ Help:       Support for Galois/Counter Mode (GCM) and Galois Message
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     Forcibly included as it's required by CONFIG_NET, CONFIG_WIRELESS,
             CONFIG_CFG80211 and CONFIG_MAC80211.
 ```
-<h3>-&ast;-   Sequence Number IV Generator</h3>
+<h3>-&lowast;-   Sequence Number IV Generator</h3>
 ```properties
 Symbol:     CONFIG_CRYPTO_SEQIV
 
@@ -147,11 +147,11 @@ Help:       This IV generator generates an IV based on a sequence number by
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     Forcibly included as it's required by some important options.
 ```
-<h3>-&ast;-   CTR support</h3>
+<h3>-&lowast;-   CTR support</h3>
 ```properties
 Symbol:     CONFIG_CRYPTO_CTR
 
@@ -160,12 +160,12 @@ Help:       CTR: Counter mode
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     Forcibly included as it's required by CONFIG_NET and a lot of 
             important options.
 ```
-<h3>-&ast;-   ECB support</h3>
+<h3>-&lowast;-   ECB support</h3>
 ```properties
 Symbol:     CONFIG_CRYPTO_ECB
 
@@ -175,12 +175,12 @@ Help:       ECB: Electronic CodeBook mode
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     Forcibly included as it's required by CONFIG_PCI, CONFIG_NET,
             CONFIG_WLAN and a lot of important options.
 ```
-<h3>-&ast;-   CMAC support</h3>
+<h3>-&lowast;-   CMAC support</h3>
 ```properties
 Symbol:     CONFIG_CRYPTO_CMAC
 
@@ -192,12 +192,12 @@ Help:       Cipher-based Message Authentication Code (CMAC) specified by
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     Forcibly included as it's required by CONFIG_NET, CONFIG_BT,
             CONFIG_MAC80211, CONFIG_RFKILL and other important options.
 ```
-<h3>-&ast;-   HMAC support</h3>
+<h3>-&lowast;-   HMAC support</h3>
 ```properties
 Symbol:     CONFIG_CRYPTO_HMAC
 
@@ -206,13 +206,13 @@ Help:       HMAC: Keyed-Hashing for Message Authentication (RFC2104).
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     Forcibly included as it's required by CONFIG_GENTOO_LINUX,
             CONFIG_GENTOO_LINUX_INIT_SYSTEMD, CONFIG_NET and a lot of important
             options.
 ```
-<h3>-&ast;-   CRC32c CRC algorithm</h3>
+<h3>-&lowast;-   CRC32c CRC algorithm</h3>
 ```properties
 Symbol:     CONFIG_CRYPTO_CRC32C
 
@@ -222,12 +222,12 @@ Help:       Castagnoli, et al Cyclic Redundancy-Check Algorithm.  Used
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     Forcibly included as it's required by CONFIG_SCSI, CONFIG_NET,
             CONFIG_BLOCK, CONFIG_EXT4_FS and some other important options.
 ```
-<h3><&ast;>   CRC32c INTEL hardware acceleration</h3>
+<h3><&lowast;>   CRC32c INTEL hardware acceleration</h3>
 ```properties
 Symbol:     CONFIG_CRYPTO_CRC32C_INTEL
 
@@ -240,7 +240,7 @@ Help:       In Intel processor with SSE4.2 supported, the processor will
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     If you've followed the guide in part 11, then a simple:
 
@@ -248,7 +248,7 @@ Reason:     If you've followed the guide in part 11, then a simple:
 
             should tell you whether you need this option or not.
 ```
-<h3><&ast;>   CRC32 PCLMULQDQ hardware acceleration</h3>
+<h3><&lowast;>   CRC32 PCLMULQDQ hardware acceleration</h3>
 ```properties
 Symbol:     CONFIG_CRYPTO_CRC32_PCLMUL
 
@@ -261,7 +261,7 @@ Help:       From Intel Westmere and AMD Bulldozer processor with SSE4.2
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     If you've followed the guide in part 11, then a simple:
 
@@ -269,7 +269,7 @@ Reason:     If you've followed the guide in part 11, then a simple:
 
             should tell you whether you need this option or not.
 ```
-<h3>-&ast;-   CRCT10DIF algorithm</h3>
+<h3>-&lowast;-   CRCT10DIF algorithm</h3>
 ```properties
 Symbol:     CONFIG_CRYPTO_CRCT10DIF
 
@@ -279,7 +279,7 @@ Help:       CRC T10 Data Integrity Field computation is being cast as
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     If you've followed the guide in part 11, then a simple:
 
@@ -287,7 +287,7 @@ Reason:     If you've followed the guide in part 11, then a simple:
 
             should tell you whether you need this option or not.
 ```
-<h3><&ast;>   CRCT10DIF PCLMULQDQ hardware acceleration</h3>
+<h3><&lowast;>   CRCT10DIF PCLMULQDQ hardware acceleration</h3>
 ```properties
 Symbol:     CONFIG_CRYPTO_CRCT10DIF_PCLMUL
 
@@ -299,7 +299,7 @@ Help:       For x86_64 processors with SSE4.2 and PCLMULQDQ supported,
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     If you've followed the guide in part 11, then a simple:
 
@@ -307,7 +307,7 @@ Reason:     If you've followed the guide in part 11, then a simple:
 
             should tell you whether you need this option or not.
 ```
-<h3>-&ast;-   GHASH digest algorithm</h3>
+<h3>-&lowast;-   GHASH digest algorithm</h3>
 ```properties
 Symbol:     CONFIG_CRYPTO_GHASH
 
@@ -315,11 +315,11 @@ Help:       GHASH is message digest algorithm for GCM (Galois/Counter Mode).
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     Forcibly included as it's required by some important options.
 ```
-<h3><&ast;>   MD5 digest algorithm</h3>
+<h3><&lowast;>   MD5 digest algorithm</h3>
 ```properties
 Symbol:     CONFIG_CRYPTO_MD5
 
@@ -327,9 +327,9 @@ Help:       MD5 message digest algorithm (RFC1321).
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 ```
-<h3>-&ast;-   SHA224 and SHA256 digest algorithm</h3>
+<h3>-&lowast;-   SHA224 and SHA256 digest algorithm</h3>
 ```properties
 Symbol:     CONFIG_CRYPTO_SHA256
 
@@ -343,13 +343,13 @@ Help:       SHA256 secure hash standard (DFIPS 180-2).
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     Forcibly included as it's required by CONFIG_GENTOO_LINUX,
             CONFIG_GENTOO_LINUX_UDEV, CONFIG_GENTOO_LINUX_INIT_SYSTEMD,
             CONFIG_NET and a lot of important options.
 ```
-<h3><&ast;>   SHA384 and SHA512 digest algorithms</h3>
+<h3><&lowast;>   SHA384 and SHA512 digest algorithms</h3>
 ```properties
 Symbol:     CONFIG_CRYPTO_SHA512
 
@@ -363,9 +363,9 @@ Help:       SHA512 secure hash standard (DFIPS 180-2).
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 ```
-<h3>-&ast;-   AES cipher algorithms</h3>
+<h3>-&lowast;-   AES cipher algorithms</h3>
 ```properties
 Symbol:     CONFIG_CRYPTO_AES
 
@@ -387,13 +387,13 @@ Help:       AES cipher algorithms (FIPS-197). AES uses the Rijndael
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     Forcibly included as it's required by CONFIG_NET, CONFIG_BT,
             CONFIG_MAC80211, CONFIG_CFG80211, CONFIG_WIRELESS, CONFIG_RFKILL
             and a lot of important options.
 ```
-<h3>-&ast;-   ARC4 cipher algorithm</h3>
+<h3>-&lowast;-   ARC4 cipher algorithm</h3>
 ```properties
 Symbol:     CONFIG_CRYPTO_ARC4
 
@@ -406,13 +406,13 @@ Help:       ARC4 cipher algorithm.
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     Forcibly included as it's required by CONFIG_PCI, CONFIG_NET,
             CONFIG_MAC80211, CONFIG_CFG80211, CONFIG_WIRELESS, CONFIG_RFKILL
             and some other important options.
 ```
-<h3><&ast;>   LZO compression algorithm</h3>
+<h3><&lowast;>   LZO compression algorithm</h3>
 ```properties
 Symbol:     CONFIG_CRYPTO_LZO
 
@@ -420,9 +420,9 @@ Help:       This is the LZO algorithm.
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 ```
-<h3><&ast;>   LZ4 compression algorithm</h3>
+<h3><&lowast;>   LZ4 compression algorithm</h3>
 ```properties
 Symbol:     CONFIG_CRYPTO_LZ4
 
@@ -430,9 +430,9 @@ Help:       This is the LZ4 algorithm.
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 ```
-<h3>-&ast;-   NIST SP800-90A DRBG  ---></h3>
+<h3>-&lowast;-   NIST SP800-90A DRBG  ---></h3>
 ```properties
 Symbol:     CONFIG_CRYPTO_DRBG_MENU
 
@@ -441,11 +441,11 @@ Help:       NIST SP800-90A compliant DRBG. In the following submenu, one or
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     Forcibly included as it's required by some important options.
 ```
-<h3>-&ast;-   Jitterentropy Non-Deterministic Random Number Generator</h3>
+<h3>-&lowast;-   Jitterentropy Non-Deterministic Random Number Generator</h3>
 ```properties
 Symbol:     CONFIG_CRYPTO_JITTERENTROPY
 
@@ -457,7 +457,7 @@ Help:       The Jitterentropy RNG is a noise that is intended
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     Forcibly included as it's required by some important options.
 ```

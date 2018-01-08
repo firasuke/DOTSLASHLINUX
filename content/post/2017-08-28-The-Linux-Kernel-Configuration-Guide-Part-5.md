@@ -1,6 +1,6 @@
 +++
-title = "The Linux Kernel Configuration Guide Part 5"
-slug = "the linux kernel configuration guide part 5"
+title = "The Linux Kernel Configuration Guide Part 5 - [∗] Enable the block layer  --->"
+slug = "the linux kernel configuration guide part 5 enable the block layer"
 nick = "kernel5"
 date = "2017-08-28"
 author = "Firas Khalil Khana"
@@ -8,7 +8,7 @@ imgsrc = "/img/kernel5.png"
 imgalt = "kernel5"
 categories = [ "kernel" ]
 +++
-<h3>[&ast;] Enable the block layer  ---></h3>
+<h3>[&lowast;] Enable the block layer  ---></h3>
 <h3>--- Enable the block layer</h3>
 ```properties
 Symbol:     CONFIG_BLOCK
@@ -30,7 +30,7 @@ Help:       Provide block layer support for the kernel.
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             since it's mandatory for using block devices as you won't be able
@@ -40,7 +40,7 @@ Reason:     It's highly recommended that you include this option in your kernel
             It's also required by CONFIG_GENTOO_LINUX, CONFIG_GENTOO_LINUX_UDEV
             and CONFIG_GENTOO_LINUX_INIT_SYSTEMD.
 ```
-<h3>[&ast;]   Block layer SG support v4</h3>
+<h3>[&lowast;]   Block layer SG support v4</h3>
 ```properties
 Symbol:     CONFIG_BLK_DEV_BSG
 
@@ -60,7 +60,7 @@ Help:       Saying Y here will enable generic SG (SCSI generic) v4 support
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option in your kernel
             as it's required by CONFIG_BLOCK, CONFIG_GENTOO_LINUX, 
@@ -193,7 +193,7 @@ Reason:     You can safely exclude this option if your hard drive doesn't suppor
             You can check for opal support using sys-block/sedutil.
 ```
 <h3>Partition Types  ---></h3>
-<h3>[&ast;] Advanced partition selection</h3>
+<h3>[&lowast;] Advanced partition selection</h3>
 ```properties
 Symbol:     CONFIG_PARTITION_ADVANCED
 
@@ -209,12 +209,12 @@ Help:       Say Y here if you would like to use hard disks under Linux which
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this if you want to use mbr (msdos)
             or gpt partition or any other listed partition table.
 ```
-<h3>[&ast;]   PC BIOS (MSDOS partition tables) support</h3>
+<h3>[&lowast;]   PC BIOS (MSDOS partition tables) support</h3>
 ```properties
 Symbol:     CONFIG_MSDOS_PARTITION
 
@@ -222,7 +222,7 @@ Help:       Say Y here.
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 
 Reason:     It's highly recommended that you include this option if your system has
             a BIOS and UEFI, and your UEFI implementation was buggy (especially on
@@ -237,7 +237,7 @@ Reason:     It's highly recommended that you include this option if your system 
 Help:       Select the I/O scheduler which will be used by default for all
             block devices.
 ```
-<h3><&ast;> CFQ I/O scheduler</h3>
+<h3><&lowast;> CFQ I/O scheduler</h3>
 ```properties
 Symbol:     CONFIG_IOSCHED_CFQ
 
@@ -250,7 +250,7 @@ Help:       The CFQ I/O scheduler tries to distribute bandwidth equally
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     It's highly recommended that you include this option in your kernel
             as CFQ is the best I/O scheduler for throughput and performance

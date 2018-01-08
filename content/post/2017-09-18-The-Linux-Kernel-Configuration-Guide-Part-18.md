@@ -1,6 +1,6 @@
 +++
-title = "The Linux Kernel Configuration Guide Part 18"
-slug = "the linux kernel configuration guide part 18"
+title = "The Linux Kernel Configuration Guide Part 18 - Library routines  --->"
+slug = "the linux kernel configuration guide part 18 library routines"
 nick = "kernel18"
 date = "2017-09-18"
 author = "Firas Khalil Khana"
@@ -17,7 +17,7 @@ One thing you could do is after you've included all the required options for you
 Again, the options I'll be listing here will be the ones that got forcibly included on my system, in addition to some other options that I found useful (with the help of SystemRescueCd of course) as you may find it useful.
 <hr/>
 <h3>Library routines  ---></h3>
-<h3>-&ast;- CRC-CCITT functions</h3>
+<h3>-&lowast;- CRC-CCITT functions</h3>
 ```properties
 Symbol:     CONFIG_CRC_CCITT
 
@@ -28,12 +28,12 @@ Help:       This option is provided for the case where no in-kernel-tree
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     Forcibly included as it's required by CONFIG_NET, CONFIG_WLAN,
             CONFIG_USB and a lot of important options.
 ```
-<h3>-&ast;- CRC16 functions</h3>
+<h3>-&lowast;- CRC16 functions</h3>
 ```properties
 Symbol:     CONFIG_CRC16
 
@@ -44,13 +44,13 @@ Help:       This option is provided for the case where no in-kernel-tree
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     Forcibly included as it's required by CONFIG_NET, CONFIG_BT,
             CONFIG_BLOCK, CONFIG_EXT4_FS, CONFIG_RFKILL and a lot of
             important options.
 ```
-<h3><&ast;> CRC calculation for the T10 Data Integrity Field</h3>
+<h3><&lowast;> CRC calculation for the T10 Data Integrity Field</h3>
 ```properties
 Symbol:     CONFIG_CRC_T10DIF
 
@@ -60,7 +60,7 @@ Help:       This option is only needed if a module that's not in the
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 
 Reason:     If you've followed the guide in part 11, then a simple:
 
@@ -68,7 +68,7 @@ Reason:     If you've followed the guide in part 11, then a simple:
 
             should tell you whether you need this option or not.
 ```
-<h3>-&ast;- CRC ITU-T V.41 functions</h3>
+<h3>-&lowast;- CRC ITU-T V.41 functions</h3>
 ```properties
 Symbol:     CONFIG_CRC_ITU_T
 
@@ -79,12 +79,12 @@ Help:       This option is provided for the case where no in-kernel-tree
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     Forcibly included as it's required by CONFIG_PCI, CONFIG_NET,
             CONFIG_64BIT, CONFIG_BLOCK and a lot of important options.
 ```
-<h3>-&ast;- CRC32/CRC32c functions</h3>
+<h3>-&lowast;- CRC32/CRC32c functions</h3>
 ```properties
 Symbol:     CONFIG_CRC32
 
@@ -95,7 +95,7 @@ Help:       This option is provided for the case where no in-kernel-tree
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     Forcibly included as it's required by a lot of important options.
 ```
@@ -124,7 +124,7 @@ Choice:     built-in (X)
 Reason:     It's highly recommended that you include this options as other options
             are intended for testing and debugging purposes.
 ```
-<h3>-&ast;- CRC32c (Castagnoli, et al) Cyclic Redundancy-Check</h3>
+<h3>-&lowast;- CRC32c (Castagnoli, et al) Cyclic Redundancy-Check</h3>
 ```properties
 Symbol:     CONFIG_LIBCRC32C
 
@@ -136,12 +136,12 @@ Help:       This option is provided for the case where no in-kernel-tree
 
 Type:       tristate
 
-Choice:     built-in -*-
+Choice:     built-in -∗-
 
 Reason:     Forcibly included as it's required by CONFIG_PCI, CONFIG_NET and
             a lot of important options.
 ```
-<h3><&ast;> XZ decompression support</h3>
+<h3><&lowast;> XZ decompression support</h3>
 ```properties
 Symbol:     CONFIG_XZ_DEC
 
@@ -151,9 +151,9 @@ Help:       LZMA2 compression algorithm and BCJ filters are supported using
 
 Type:       tristate
 
-Choice:     built-in <*>
+Choice:     built-in <∗>
 ```
-<h3>[&ast;]   x86 BCJ filter decoder</h3>
+<h3>[&lowast;]   x86 BCJ filter decoder</h3>
 ```properties
 Symbol:     CONFIG_XZ_DEC_X86
 
@@ -161,7 +161,7 @@ Help:       There is no help available for this option.
 
 Type:       boolean
 
-Choice:     built-in [*]
+Choice:     built-in [∗]
 ```
 <hr/>
 <h3>Chinese Translation</h3>
