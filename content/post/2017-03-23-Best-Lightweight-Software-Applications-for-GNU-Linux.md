@@ -25,15 +25,15 @@ On the other hand, EXTLINUX is another flavor of Syslinux the lightweight bootlo
 <br/>
 <hr/>
 <h3>2- Kernel: Custom Kernel</h3>
-DOTSLASHLINUX has an extensive series on how to configure your Linux kernel, kindly check the following <a href="https://www.dotslashlinux.com/post/the-linux-kernel-configuration-guide-part-1-introduction/" target="_blank">The Linux Kernel Configuration Guide Part 1</a>
+DOTSLASHLINUX has an extensive series on how to configure your Linux kernel, kindly check the following <a href="https://www.dotslashlinux.com/post/the-linux-kernel-configuration-guide-part-1-introduction/" target="_blank">The Linux Kernel Configuration Guide Part 1 - Introduction</a>
 <br/>
 <br/>
 <hr/>
 <h3>3- initrd/initramfs : None</h3>
-Yes, you can boot without an initrd/initramfs. Kindly check our article <a href="https://www.dotslashlinux.com/post/Booting-the-Linux-Kernel-Without-an-initrd-initramfs.html" target="_blank">Booting the Linux Kernel Without an initrd/initramfs</a>.
+Yes, you can boot without an initrd/initramfs. Kindly check our article <a href="https://www.dotslashlinux.com/post/booting-the-linux-kernel-without-an-initrd-initramfs.html" target="_blank">Booting the Linux Kernel Without an initrd/initramfs</a>.
 <br/>
 <br/>
-"Hold your horses... What about the intel/amd microcode updates that boost my processor's performance?" Well, I never said that you needed an initrd to use them. You can easily build them directly into the linux kernel. How you ask? Kindly follow our guide on <a href="https://www.dotslashlinux.com/post/Building-Intel-CPU-Microcode-Updates-Directly-into-the-Linux-Kernel.html" target="_blank">Building Intel CPU Microcode Updates Directly into the Linux Kernel</a>.
+"Hold your horses... What about the intel/amd microcode updates that boost my processor's performance?" Well, I never said that you needed an initrd to use them. You can easily build them directly into the linux kernel. How you ask? Kindly follow our guide on <a href="https://www.dotslashlinux.com/post/building-intel-cpu-microcode-updates-directly-into-the-linux-kernel.html" target="_blank">Building Intel CPU Microcode Updates Directly into the Linux Kernel</a>.
 <br/>
 <br/>
 <hr/>
@@ -56,7 +56,7 @@ We have a tie here why? Well I'd pick a tie over flame wars any day! "Xorg is ou
 Yes, you do not need a display/login manager to start your Xorg server. You can easily use xinit and its frontend startx instead. You can even automate startx to start once you've logged in.
 <br/>
 <br/>
-Here's DOTSLASHLINUX's guide to do that <a href="https://www.dotslashlinux.com/post/Starting-Xorg-Server-Using-xinit.html" target="_blank">Starting Xorg Server Using xinit</a>.
+Here's DOTSLASHLINUX's guide to do that <a href="https://www.dotslashlinux.com/post/starting-xorg-server-using-xinit.html" target="_blank">Starting Xorg Server Using xinit</a>.
 <br/>
 <br/>
 <hr/>
@@ -64,7 +64,7 @@ Here's DOTSLASHLINUX's guide to do that <a href="https://www.dotslashlinux.com/p
 There isn't much comparison here as ALSA is a device driver, an interface between sound hardware and the kernel. Using ALSA alone is lighter than pulseaudio. Late versions of alsa support sound from multiple applications using the plugin dmix which is enabled by default. PulseAudio is a sound server built on top of alsa and can control sound coming from multiple applications unlike alsa which doesn't have this functionality.
 <br/>
 <br/>
-If you wanted a basic configuration file to use on laptops with PCH/HDMI sound cards, kindly check DOTSLASHLINUX's custom ALSA configuration <a href="https://www.dotslashlinux.com/post/Basic-ALSA-Configuration.html" target="_blank">Basic ALSA Configuration</a>.
+If you wanted a basic configuration file to use on laptops with PCH/HDMI sound cards, kindly check DOTSLASHLINUX's custom ALSA configuration <a href="https://www.dotslashlinux.com/post/basic-alsa-configuration.html" target="_blank">Basic ALSA Configuration</a>.
 <br/>
 <br/>
 <hr/>
@@ -72,7 +72,7 @@ If you wanted a basic configuration file to use on laptops with PCH/HDMI sound c
 DWM isn't only a tiled window manager for X, it's a dynamic one as well but the reason why I chose dwm is that it's highly configurable, does what it needs to do perfectly well and super fast! Can't it get any better!
 <br/>
 <br/>
-Here's DOTSLASHLINUX's custom dwm configuration <a href="https://www.dotslashlinux.com/post/Best-dwm-Configuration.html" target="_blank">Best dwm Configuration</a>.
+Here's DOTSLASHLINUX's custom dwm configuration <a href="https://www.dotslashlinux.com/post/best-dwm-configuration.html" target="_blank">Best dwm Configuration</a>.
 <br/>
 <br/>
 On the other hand, openbox is the de facto stacked window manager for lightweight GNU/Linux distros. It's heavier than dwm, but it's for those who absolutely can't use or hate tiled window managers.
@@ -80,7 +80,7 @@ On the other hand, openbox is the de facto stacked window manager for lightweigh
 <br/>
 <hr/>
 <h3>9- Status Bar vs Panel: <a href="https://github.com/drkhsh/slstatus/" target="_blank">slstatus</a> vs <a href="https://wiki.lxde.org/en/LXPanel" target="_blank">LXPanel</a></h3>
-slstatus is the lightest status bar, it was made and should be used with dwm. Here's DOTSLASHLINUX's custom slstatus configuration <a href="https://www.dotslashlinux.com/post/Best-slstatus-Configuration.html" target="_blank">Best slstatus Configuration</a>.
+slstatus is the lightest status bar, it was made and should be used with dwm. Here's DOTSLASHLINUX's custom slstatus configuration <a href="https://www.dotslashlinux.com/post/best-slstatus-configuration.html" target="_blank">Best slstatus Configuration</a>.
 <br/>
 <br/>
 If you're into openbox then LXPanel is your friend. Yes, LXPanel is lighter than fbpanel, pypanel, tint2... you name it! How come? Out of the box it has a workspace switcher, minimize-all-windows button, volume plugin, battery plugin, networking plugin, cpu/ram usage plugin, temperature plugin, date/time plugin...etc.
@@ -109,7 +109,7 @@ Lightest application launcher available. It was originally developed to be used 
 Some may argue and say that st is lighter or that lxterminal is better, but if you're only going to run a single instance of a terminal emulator without needing the support for scrolling back up then go with st... Otherwise, you can heavily benefit from urxvt. Once you get the daemon (urxvtd) running, you can open for example 100 clients (urxvtc) and the memory footprint would roughly stay the same. Try opening 100 tabs in lxterminal or opening 100 instances of st and measure its memory usage and see for yourself...
 <br/>
 <br/>
-Here's DOTSLASHLINUX's custom urxvt configuration for least memory footprint <a href="https://www.dotslashlinux.com/post/Configuring-rxvt-unicode-urxvt.html" target="_blank">Configuring rxvt-unicode (urxvt)</a>.
+Here's DOTSLASHLINUX's custom urxvt configuration for least memory footprint <a href="https://www.dotslashlinux.com/post/configuring-rxvt-unicode-urxvt.html" target="_blank">Configuring rxvt-unicode (urxvt)</a>.
 <br/>
 <br/>
 <hr/>
@@ -156,7 +156,7 @@ DeaDBeef is slightly lighter than Audacious. However, I've encountered several p
 Some may argue that mplayer is lighter, that is true but only slightly. Mpv plays all video formats known to man-kind and it uses less cpu resources than both mplayer and vlc. It also supports VAAPI (Video Acceleration API) and VDPAU (Video Decode and Presentation API) which can significantly reduce its cpu usage (VAAPI) and its gpu usage (VDPAU) making it the fastest, most powerful and least resource hungry video player on GNU/Linux.
 <br/>
 <br/>
-Here's DOTSLASHLINUX's custom mpv configuration for maximum performance and maximum powersaving <a href="https://www.dotslashlinux.com/post/Optimal-mpv-Configuration.html" target="_blank">Optimal mpv Configuration</a>.
+Here's DOTSLASHLINUX's custom mpv configuration for maximum performance and maximum powersaving <a href="https://www.dotslashlinux.com/post/optimal-mpv-configuration.html" target="_blank">Optimal mpv Configuration</a>.
 <br/>
 <br/>
 <hr/>
