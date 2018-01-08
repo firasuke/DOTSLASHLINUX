@@ -25,7 +25,7 @@ On the other hand, EXTLINUX is another flavor of Syslinux the lightweight bootlo
 <br/>
 <hr/>
 <h3>2- Kernel: Custom Kernel</h3>
-DOTSLASHLINUX has an extensive series on how to configure your Linux kernel, kindly check the following <a href="https://www.dotslashlinux.com/post/the-linux-kernel-configuration-guide-part-1-introduction/" target="_blank">The Linux Kernel Configuration Guide Part 1 - Introduction</a>
+DOTSLASHLINUX has an extensive series on how to configure your Linux kernel, kindly check the following <a href="https://www.dotslashlinux.com/post/the-linux-kernel-configuration-guide-part-1-introduction/" target="_blank">The Linux Kernel Configuration Guide Part 1 - Introduction</a>.
 <br/>
 <br/>
 <hr/>
