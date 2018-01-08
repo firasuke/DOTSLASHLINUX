@@ -1,3 +1,4 @@
 http://*dotslashlinux.com/ https://www.dotslashlinux.com/:splat 301!
 http://dotslashlinux.com/ https://www.dotslashlinux.com/:splat 301!
-/2017/* / 301!
+http://*dotslashlinux.com/2017/* https://www.dotslashlinux.com/ 301!
+https://*dotslashlinux.com/2017/* https://www.dotslashlinux.com/ 301!
