@@ -296,5 +296,5 @@ As you can see, microcode updates are 100% working, final revision <mark>0x22</m
 <br/>
 <hr/>
 <h3>Conclusion</h3>
-If you followed our previous article <a href="https://www.dotslashlinux.com/2017/04/29/Booting-the-Linux-Kernel-Without-an-initrd-initramfs.html" target="_blank">Booting the Linux Kernel Without an initrd/initramfs</a>, your boot folder now should only have the kernel inside it, as it contains everything from your modules to your microcode updates!
+If you followed our previous article <a href="https://www.dotslashlinux.com/post/Booting-the-Linux-Kernel-Without-an-initrd-initramfs.html" target="_blank">Booting the Linux Kernel Without an initrd/initramfs</a>, your boot folder now should only have the kernel inside it, as it contains everything from your modules to your microcode updates!
 <br/>

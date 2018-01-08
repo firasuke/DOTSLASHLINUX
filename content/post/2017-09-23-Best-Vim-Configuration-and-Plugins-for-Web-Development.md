@@ -77,7 +77,7 @@ And use this configuration file:
 " then it's because I have a special configuration for my urxvt terminal
 " colors, kindly check this DOTSLASHLINUX guide on configuring urxvt:
 "
-"     https://www.dotslashlinux.com/2017/03/30/configuring-rxvt-unicode-urxvt/
+"     https://www.dotslashlinux.com/post/configuring-rxvt-unicode-urxvt/
 "
 colorscheme apprentice
 
