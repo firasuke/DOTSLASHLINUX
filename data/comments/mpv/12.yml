@@ -1,0 +1,5 @@
+order: 12
+replying_to: '11'
+name: DOTSLASHLINUX
+comment: "@Ashraaf, glad that you found the guide helpful!\n\nI think it's better to specify 'hwdec=vaapi' if you're using an Intel Integrated GPU  as the technology itself 'VA-API' was developed by Intel and is used in their integrated GPUs and some AMD/ATI Radeon HD GPUs as well.\n\nAlthough 'VD-PAU' support was being planned for Intel's Integrated GPUs, I believe it never saw light or was buggy when compared to 'VA-API' or its performance wasn't on the same level as the one used in NVIDIA GPUs."
+date: '2018-01-09'

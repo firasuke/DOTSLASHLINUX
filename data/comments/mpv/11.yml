@@ -1,0 +1,5 @@
+order: 11
+replying_to: ''
+name: Ashraaf
+comment: "Thanks for the guide! just one thing i want to ask.\r\nIf using 'hwdec=auto', will it choose one among my 'va' available?, or it may not even using 'va' at all?\r\nCurrently i have installed and configured both vaapi and vdpau for my intel graphics."
+date: '2018-01-09'
