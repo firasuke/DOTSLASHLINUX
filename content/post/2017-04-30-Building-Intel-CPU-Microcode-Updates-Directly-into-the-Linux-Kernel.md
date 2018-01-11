@@ -42,8 +42,8 @@ I personally prefer <mark>make menuconfig</mark> as it's better maintained and c
 <br/>
 Navigate to <mark>Processor type and features</mark> and mark <mark>CONFIG_MICROCODE</mark> as built-in. You'll receive two options now "Blue vs Red" microcode loading support or should I say <mark>CONFIG_MICROCODE_INTEL</mark> vs <mark>CONFIG_MICROCODE_AMD</mark>.
 ```properties
-  [*] DMA memory allocation support
-  [*] Symmetric multi-processing support
+  [∗] DMA memory allocation support
+  [∗] Symmetric multi-processing support
   [ ] Enable MPS table
   [ ] Intel Resource Director Technology Allocation support
   [ ] Support for extended (non-PC) x86 platforms
@@ -53,31 +53,31 @@ Navigate to <mark>Processor type and features</mark> and mark <mark>CONFIG_MICRO
   [ ] Single-depth WCHAN output
   [ ] Linux guest support  ----
   Processor family (Core 2/newer Xeon)  --->
-  [*] Supported processor vendors  --->
-  [*] Enable DMI scanning
+  [∗] Supported processor vendors  --->
+  [∗] Enable DMI scanning
   [ ] IBM Calgary IOMMU support
   [ ] Enable Maximum number of SMP Processors and NUMA Nodes
   (8) Maximum number of CPUs
-  [*] SMT (Hyperthreading) scheduler support
-  [*] Multi-core scheduler support
-  [*]   CPU core priorities scheduler support
+  [∗] SMT (Hyperthreading) scheduler support
+  [∗] Multi-core scheduler support
+  [∗]   CPU core priorities scheduler support
   Preemption Model (No Forced Preemption (Server))  --->
   [ ] Reroute for broken boot IRQs
-  [*] Machine Check / overheating reporting
-  [*]   Intel MCE features
+  [∗] Machine Check / overheating reporting
+  [∗]   Intel MCE features
   < > Machine check injector support
   Performance monitoring  --->
   [ ] Enable support for 16-bit segments
-  [*] Enable vsyscall emulation
+  [∗] Enable vsyscall emulation
   < > Dell i8k legacy laptop support
-  [*] CPU microcode loading support
-  [*]   Intel microcode loading support
+  [∗] CPU microcode loading support
+  [∗]   Intel microcode loading support
   [ ]   AMD microcode loading support
-  <*> /dev/cpu/*/msr - Model-specific register support
-  <*> /dev/cpu/*/cpuid - CPU information support
-  [*] Numa Memory Allocation and Scheduler Support
+  <∗> /dev/cpu/∗/msr - Model-specific register support
+  <∗> /dev/cpu/∗/cpuid - CPU information support
+  [∗] Numa Memory Allocation and Scheduler Support
   [ ]   Old style AMD Opteron NUMA detection
-  [*]   ACPI NUMA detection
+  [∗]   ACPI NUMA detection
   [ ]   NUMA emulation
   (2) Maximum NUMA Nodes (as a power of 2)
   Memory model (Sparse Memory)  --->
@@ -252,12 +252,12 @@ Navigate to <mark>Device Drivers</mark> then to <mark>Generic Driver Options</ma
 Now include <mark>CONFIG_FIRMWARE_IN_KERNEL</mark>,<mark>CONFIG_EXTRA_FIRMWARE</mark> and <mark>CONFIG_EXTRA_FIRMWARE_DIR</mark> as shown below:
 ```properties
   [ ] Support for uevent helper
-  -*- Maintain a devtmpfs filesystem to mount at /dev
-  [*]   Automount devtmpfs at /dev, after the kernel mounted the rootfs
-  [ ] Select only drivers that don't need compile-time external firmware
-  [ ] Prevent firmware from being built
-  -*- Userspace firmware loading support
-  [*]   Include in-kernel firmware blobs in kernel binary
+  -∗- Maintain a devtmpfs filesystem to mount at /dev
+  [∗]   Automount devtmpfs at /dev, after the kernel mounted the rootfs
+  [∗] Select only drivers that don't need compile-time external firmware
+  [∗] Prevent firmware from being built
+  -∗- Userspace firmware loading support
+  [∗]   Include in-kernel firmware blobs in kernel binary
   (intel-ucode/06-3c-03) External firmware blobs to build into the kernel binary
   (/lib/firmware) Firmware blobs root directory
   [ ] Fallback user-helper invocation for firmware loading

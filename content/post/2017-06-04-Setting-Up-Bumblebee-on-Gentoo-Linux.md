@@ -93,8 +93,8 @@ For the installation part, we need 3 packages, <mark>bumblebee</mark>,<mark>prim
 <br/>
 Fire up your favorite text editor, and make sure your <mark>/etc/portage/package.accept_keywords</mark> -(which in my case is a single file and not a directory)- contains the following:
 ```properties,line-numbers
-=sys-power/bbswitch-9999 **
-=x11-misc/bumblebee-9999 **
+=sys-power/bbswitch-9999 ∗∗
+=x11-misc/bumblebee-9999 ∗∗
 =x11-misc/primus-0.2 ~amd64
 ```
 <br/>
@@ -171,7 +171,7 @@ stop() {
 <br/>
 We need to change some of the default settings that bumblebee uses, start that terminal emulator and with your favorite editor (vim), edit the file <mark>/etc/bumblebee/bumblebee.conf</mark>:
 ```properties,line-numbers
-# Configuration file for Bumblebee. Values should **not** be put between quotes
+# Configuration file for Bumblebee. Values should ∗∗not∗∗ be put between quotes
 
 ## Server options. Any change made in this section will need a server restart
 # to take effect.
@@ -375,7 +375,7 @@ For <mark>nvidia-drivers</mark>(notice how I disabled <mark>uvm</mark> and <mark
 equery u nvidia-drivers
 ```
 ```properties
-* Found these USE flags for x11-drivers/nvidia-drivers-381.22:
+∗ Found these USE flags for x11-drivers/nvidia-drivers-381.22:
  U I
  + + X           : Install the X.org driver, OpenGL libraries, XvMC libraries, and VDPAU libraries
  + + acpi        : Add support for Advanced Configuration and Power Interface
@@ -395,7 +395,7 @@ For <mark>xf86-video-intel</mark>:
 equery u xf86-video-intel
 ```
 ```properties
-* Found these USE flags for x11-drivers/xf86-video-intel-2.99.917_p20170313:
+∗ Found these USE flags for x11-drivers/xf86-video-intel-2.99.917_p20170313:
  U I
  - - debug : Enable extra debug codepaths, like asserts and extra output. If you want to get meaningful backtraces see
              https://wiki.gentoo.org/wiki/Project:Quality_Assurance/Backtraces
@@ -414,7 +414,7 @@ For <mark>bumblebee</mark>:
 equery u bumblebee
 ```
 ```properties
-* Found these USE flags for x11-misc/bumblebee-3.2.1:
+∗ Found these USE flags for x11-misc/bumblebee-3.2.1:
  U I
  + + bbswitch            : Add dependency on sys-power/bbswitch for PM feature
  - - video_cards_nouveau : VIDEO_CARDS setting to build reverse-engineered driver for nvidia cards
