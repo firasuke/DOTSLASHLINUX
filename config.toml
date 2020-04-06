@@ -1,4 +1,4 @@
-baseURL =                     "https://www.dotslashlinux.com/"
+baseURL =                     "https://firasuke.github.io/DOTSLASHLINUX"
 buildDrafts =                 false
 buildFuture =                 false
 buildExpired =                false
