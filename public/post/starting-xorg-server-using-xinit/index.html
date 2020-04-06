@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starting Xorg Server using xinit | DOTSLASHLINUX</title>
+    <meta name="description" content="DOTSLASHLINUX is a GNU/Linux enthusiasts' hub, featuring configuration guides for the linux kernel and several lightweight open source and free software.">
+    <meta name="author" content="Firas Khalil Khana">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="css/c.css">
+    <link rel="alternate" type="application/rss+xml" title="DOTSLASHLINUX RSS" href="/feed.xml">
+  </head>
+  <body>
+    <div class="row middle-xs middle-sm middle-md middle-lg container">
+      <div class="col-xs-12 center-xs col-sm-4 start-sm col-md-4 start-md col-lg-4 start-lg">
+        <div class="box brand">
+          <h1><a href="https://www.dotslashlinux.com/">DOTSLASHLINUX</a></h1>
+        </div>
+      </div>
+      <div class="col-xs-12 center-xs col-sm-8 end-sm col-md-8 end-md col-lg-8 end-lg">
+        <div class="box">
+          <nav>
+            <ul>
+              <li class=""><a href="/">HOME</a></li>
+              <li class=""><a href="/page/search/">SEARCH</a></li>
+              <li><a href="/index.xml" style="color: #f26522;">RSS</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content">
+        <div class="box patreon">
+          <p>Kindly support DOTSLASHLINUX on <a href="https://www.patreon.com/DOTSLASHLINUX" target="_target">Patreon</a> to keep the website up and running while remaining ads free.</p>
+        </div>
+
+
+<div class="box map">
+  <h2>Starting Xorg Server using xinit</h2>
+  <div class="share">
+    <a id="facebook" href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fstarting-xorg-server-using-xinit%2f" rel="nofollow" target="_blank">Facebook</a>
+    <a id="twitter" href="https://www.twitter.com/intent/tweet?source=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fstarting-xorg-server-using-xinit%2f&text=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fstarting-xorg-server-using-xinit%2f" rel="nofollow" target="_blank">Twitter</a>
+    <a id="googleplus" href="https://plus.google.com/share?url=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fstarting-xorg-server-using-xinit%2f" rel="nofollow" target="_blank">Google+</a>
+    <a id="reddit" href="https://www.reddit.com/submit?url=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fstarting-xorg-server-using-xinit%2f" rel="nofollow" target="_blank">Reddit</a>
+    <a id="linkedin" href="http://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fstarting-xorg-server-using-xinit%2f&source=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fstarting-xorg-server-using-xinit%2f" rel="nofollow" target="_blank">LinkedIn</a>
+  </div>
+  <div class="frame"><a href="/img/xinit.png" target="_blank"><img src="/img/xinit.png" alt="xinit"></div></a>
+    <div class="info">Firas Khalil Khana | 29/03/2017</div>
+    <p>In this article I&rsquo;ll show you how to correctly setup xinit to start your xorg server. I&rsquo;ll also demonstrate how you can auto startx once logged in a tty.
+<br/>
+<br/>
+<hr/>
+<h3 id="Installation">1- Installation</h3>
+<br/>
+Gentoo Linux:</p>
+
+<pre><code class="language-properties">emerge --sync &amp;&amp; emerge -av x11-apps/xinit
+</code></pre>
+
+<p><br/>
+Void Linux:</p>
+
+<pre><code class="language-properties">xbps-install -Su &amp;&amp; xbps-install -S xinit
+</code></pre>
+
+<p><br/>
+Arch Linux:</p>
+
+<pre><code class="language-properties">pacman -Syu xorg-xinit
+</code></pre>
+
+<hr/>
+
+<p><h3 id="xserverrc">2- xserverrc</h3>
+<br/>
+In order to correctly setup xinit, you need to copy the global xserverrc to your home directory and name it as .xserverrc:
+<br/></p>
+
+<pre><code class="language-bash">cp /etc/X11/xinit/xserverrc ~/.xserverrc
+</code></pre>
+
+<p><br/>
+Now, in order to maintain an authenticated session and prevent xauth from complaining about a missing .serverauth file every time you startx, you may need to modify you .xserverrc file. If your .xserverrc file looks like this:</p>
+
+<pre><code class="language-bash,line-numbers">#!/bin/sh
+if [ -z &quot;$XDG_VTNR&quot; ]; then
+  exec /usr/bin/X -nolisten tcp &quot;$@&quot;
+else
+  exec /usr/bin/X -nolisten tcp &quot;$@&quot; vt$XDG_VTNR
+fi
+</code></pre>
+
+<p><br/>
+Then you don&rsquo;t need to worry about an unautheticated X session, however if it were like this:</p>
+
+<pre><code class="language-bash,line-numbers">#!/bin/sh
+exec /usr/bin/X -nolisten tcp &quot;$@&quot;
+</code></pre>
+
+<p><br/>
+Then you need to add vt$XDG_VTNR to the end of the command. This states that Xorg has to be started on the same virtual terminal where the login occurred.</p>
+
+<pre><code class="language-bash,line-numbers">#!/bin/sh
+exec /usr/bin/X -nolisten tcp &quot;$@&quot; vt$XDG_VTNR
+</code></pre>
+
+<p><br/>
+If the problem persists (xauth keeps complaining about missing file /home/user/serverauth), you can edit the startx script with your favorite editor:</p>
+
+<pre><code class="language-bash">vim /usr/bin/startx
+</code></pre>
+
+<p><br/>
+Then change <mark>enable_xauth=1</mark> to <mark>enable_xauth=0</mark> (line 29 here):</p>
+
+<pre><code class="language-bash,line-numbers">#!/bin/sh
+
+#
+# This is just a sample implementation of a slightly less primitive
+# interface than xinit. It looks for user .xinitrc and .xserverrc
+# files, then system xinitrc and xserverrc files, else lets xinit choose
+# its default. The system xinitrc should probably do things like check
+# for .Xresources files and merge them in, start up a window manager,
+# and pop a clock and several xterms.
+#
+# Site administrators are STRONGLY urged to write nicer versions.
+#
+
+unset DBUS_SESSION_BUS_ADDRESS
+unset SESSION_MANAGER
+userclientrc=$HOME/.xinitrc
+sysclientrc=/etc/X11/xinit/xinitrc
+
+userserverrc=$HOME/.xserverrc
+sysserverrc=/etc/X11/xinit/xserverrc
+defaultclient=xterm
+defaultserver=/usr/bin/X
+defaultclientargs=&quot;&quot;
+defaultserverargs=&quot;&quot;
+defaultdisplay=&quot;:0&quot;
+clientargs=&quot;&quot;
+serverargs=&quot;&quot;
+vtarg=&quot;&quot;
+enable_xauth=0 # Change this from 1 to 0
+...
+</code></pre>
+
+<hr/>
+
+<p><h3 id="xinitrc">3- xinitrc</h3>
+<br/>
+As we did with xserverrc, we need to copy the global xinitrc to our home directory and name it as .xinitrc:</p>
+
+<pre><code class="language-bash">cp /etc/X11/xinit/xserverrc ~/.xserverrc
+</code></pre>
+
+<p><br/>
+The global xinitrc configuration file (which will be executed if you forgot to make your own in your home directory) has the following:</p>
+
+<pre><code class="language-bash,line-numbers">#!/bin/sh
+
+userresources=$HOME/.Xresources
+usermodmap=$HOME/.Xmodmap
+sysresources=/etc/X11/xinit/.Xresources
+sysmodmap=/etc/X11/xinit/.Xmodmap
+
+# merge in defaults and keymaps
+
+if [ -f $sysresources ]; then
+
+
+
+
+
+
+
+    xrdb -merge $sysresources
+
+fi
+
+if [ -f $sysmodmap ]; then
+    xmodmap $sysmodmap
+fi
+
+if [ -f &quot;$userresources&quot; ]; then
+
+
+
+
+
+
+
+    xrdb -merge &quot;$userresources&quot;
+
+fi
+
+if [ -f &quot;$usermodmap&quot; ]; then
+    xmodmap &quot;$usermodmap&quot;
+fi
+
+# start some nice programs
+
+if [ -d /etc/X11/xinit/xinitrc.d ] ; then
+ for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
+  [ -x &quot;$f&quot; ] &amp;&amp; . &quot;$f&quot;
+ done
+ unset f
+fi
+
+twm &amp;
+xclock -geometry 50x50-1+1 &amp;
+xterm -geometry 80x50+494+51 &amp;
+xterm -geometry 80x20+494-0 &amp;
+exec xterm -geometry 80x66+0+0 -name login
+</code></pre>
+
+<p><br/>
+Notice lines 51 to 55, these are the only lines that you should edit! These lines indicate that twm, xclock and 3 xterm instances will be started (if installed obviously) once an Xorg session starts.
+<br/>
+<br/>
+Since these are very outdated versions of what we intend to use, delete lines 51 to 55 and replace them with your favored session. In our case we love dwm and openbox delete lines 51 to 55 and add this for dwm:</p>
+
+<pre><code class="language-bash">exec dwm
+</code></pre>
+
+<p><br/>
+or this for openbox:</p>
+
+<pre><code class="language-bash">exec openbox-session
+</code></pre>
+
+<p><br/>
+Please be noted that the program(s) that you intend to start must be installed!
+<hr/>
+<h3 id="startx">4- startx</h3>
+<br/>
+Once you&rsquo;ve done configuring xinit, you can now start your X session simply by running:</p>
+
+<pre><code class="language-properties">startx
+</code></pre>
+
+<hr/>
+
+<p><h3 id="Auto_startx_at_Login">(Optional) Auto startx at Login</h3>
+<h3>- BASH</h3>
+If you&rsquo;re using BASH you can automate the process of startx after logging in by adding this line to your ~/.bash_profile (create this file if it doesn&rsquo;t exist):</p>
+
+<pre><code class="language-bash">if [[ -z $DISPLAY ]] &amp;&amp; [[ $(tty) = /dev/tty1 ]]; then exec startx; fi
+</code></pre>
+
+<p><h3>- Other Shells</h3>
+If you&rsquo;re using dash or even plain sh, then you may want a more portable version of the BASH-exclusive code above, and you&rsquo;ll need to add it to your ~/.profile (create this file if it doesn&rsquo;t exist):</p>
+
+<pre><code class="language-bash">if [ -z $DISPLAY ] &amp;&amp; [ $(tty) = /dev/tty1 ]; then exec startx; fi
+</code></pre>
+
+</div>
+<div id="comments" class="box">
+  <h3>4 Comments</h3>
+  <div class="main-comment">
+    <p>oldgaro</p>
+    <p>15/12/2017</p>
+    <hr/>
+    <p><p>Gentoo: Auto startx at login</p>
+
+<p><mark>[[ -t 0 &amp;&amp; $(tty) == /dev/tty1 &amp;&amp; ! $DISPLAY ]] &amp;&amp; exec startx</mark></p>
+</p>
+  </div>
+  <div class="reply">
+    <p>DOTSLASHLINUX</p>
+    <p>15/12/2017</p>
+    <hr/>
+    <p><p>@oldgaro, what an active son of a tux you are :)</p>
+
+<p>Thanks for your positive feedback and your awesome replies in several articles ;P</p>
+</p>
+  </div>
+  <div class="main-comment">
+    <p>random</p>
+    <p>06/01/2018</p>
+    <hr/>
+    <p>Or If you are not a bash user. You can put this in /etc/profile:
+if [[ &ldquo;$(tty)&rdquo; == &lsquo;/dev/tty1&rsquo; ]]; then
+ exec startx
+fi</p>
+  </div>
+  <div class="reply">
+    <p>DOTSLASHLINUX</p>
+    <p>06/01/2018</p>
+    <hr/>
+    <p><p>@random, thanks for stopping by and for your suggestion.</p>
+
+<p>I don&rsquo;t think that what you suggested though would work for all non-bash users as you&rsquo;ve used the bashism &ldquo;[[&ldquo;, perhaps if it were &ldquo;[&rdquo; then it would work. Also adding it to a ~/.profile would be the wiser thing to do.</p>
+
+<p>Either way, article has been updated to include an auto-startx method for non-BASH users.</p>
+
+<p>Comments undergo validation, spam detection and approval before being posted here, so kindly wait at least 1-2 hours before resubmitting your comments. Thanks for understanding.</p>
+</p>
+  </div>
+  <div id="leavecomment">
+    <h3>Leave A Comment</h3>
+    <form action="https://getsimpleform.com/messages?form_api_token=4458712617021cb12239cbfd2942b227" method="post">
+      <input name="options[redirect]" type="hidden" value="https://www.dotslashlinux.com//post/starting-xorg-server-using-xinit/#comments">
+      <input name="options[slug]" type="hidden" value="starting xorg server using xinit">
+      <input type="hidden" id="reply" name="fields[replying_to]" value="">
+      <input name="fields[name]" type="text" placeholder="Name" required>
+      <textarea rows="5" name="fields[comment]" placeholder="Your comment here.&#10;&#10;Comments support Markdown.&#10;&#10;Comments are being moderated to prevent spam so it may take a while before your comment is posted." required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+
+<div class="box footer">
+  <h4>Copyrights &copy; 2017-2018 <a href="/">DOTSLASHLINUX</a> | Licensed under <a id="creativecommons" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></h4>
+</div>
+</div>
+</div>
+<script src="/js/c.js"></script>
+</body>
+</html>
+

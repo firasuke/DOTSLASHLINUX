@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic ALSA Configuration | DOTSLASHLINUX</title>
+    <meta name="description" content="DOTSLASHLINUX is a GNU/Linux enthusiasts' hub, featuring configuration guides for the linux kernel and several lightweight open source and free software.">
+    <meta name="author" content="Firas Khalil Khana">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="css/c.css">
+    <link rel="alternate" type="application/rss+xml" title="DOTSLASHLINUX RSS" href="/feed.xml">
+  </head>
+  <body>
+    <div class="row middle-xs middle-sm middle-md middle-lg container">
+      <div class="col-xs-12 center-xs col-sm-4 start-sm col-md-4 start-md col-lg-4 start-lg">
+        <div class="box brand">
+          <h1><a href="https://www.dotslashlinux.com/">DOTSLASHLINUX</a></h1>
+        </div>
+      </div>
+      <div class="col-xs-12 center-xs col-sm-8 end-sm col-md-8 end-md col-lg-8 end-lg">
+        <div class="box">
+          <nav>
+            <ul>
+              <li class=""><a href="/">HOME</a></li>
+              <li class=""><a href="/page/search/">SEARCH</a></li>
+              <li><a href="/index.xml" style="color: #f26522;">RSS</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content">
+        <div class="box patreon">
+          <p>Kindly support DOTSLASHLINUX on <a href="https://www.patreon.com/DOTSLASHLINUX" target="_target">Patreon</a> to keep the website up and running while remaining ads free.</p>
+        </div>
+
+
+<div class="box map">
+  <h2>Basic ALSA Configuration</h2>
+  <div class="share">
+    <a id="facebook" href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fbasic-alsa-configuration%2f" rel="nofollow" target="_blank">Facebook</a>
+    <a id="twitter" href="https://www.twitter.com/intent/tweet?source=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fbasic-alsa-configuration%2f&text=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fbasic-alsa-configuration%2f" rel="nofollow" target="_blank">Twitter</a>
+    <a id="googleplus" href="https://plus.google.com/share?url=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fbasic-alsa-configuration%2f" rel="nofollow" target="_blank">Google+</a>
+    <a id="reddit" href="https://www.reddit.com/submit?url=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fbasic-alsa-configuration%2f" rel="nofollow" target="_blank">Reddit</a>
+    <a id="linkedin" href="http://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fbasic-alsa-configuration%2f&source=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fbasic-alsa-configuration%2f" rel="nofollow" target="_blank">LinkedIn</a>
+  </div>
+  <div class="frame"><a href="/img/alsa.png" target="_blank"><img src="/img/alsa.png" alt="alsa"></div></a>
+    <div class="info">Firas Khalil Khana | 30/03/2017</div>
+    <p>In this article I&rsquo;ll show you how to setup ALSA, with a working .asoundrc configuration file that supports multiple applications!
+<br/>
+<br/>
+<hr/>
+<h3 id="Installation">1- Installation</h3>
+<br/>
+Gentoo Linux:</p>
+
+<pre><code class="language-properties">emerge --sync &amp;&amp; emerge -av media-sound/alsa-utils
+</code></pre>
+
+<p><br/>
+Void Linux:</p>
+
+<pre><code class="language-properties">xbps-install -Su &amp;&amp; xbps-install -S alsa-utils
+</code></pre>
+
+<p><br/>
+Arch Linux:</p>
+
+<pre><code class="language-properties">pacman -Syu alsa-utils
+</code></pre>
+
+<p><br/>
+<hr/>
+<h3 id="Unmuting_Channels">2- Unmuting Channels</h3>
+<br/>
+Once ALSA is installed, we need to unmute the master channel for our sound card. We can do that using the ncurses interface of alsamixer (Use F6 to switch to your default soundcard, then press F5 to show all options):</p>
+
+<pre><code class="language-properties">┌─────────────────────────────────────────────────────────────────────────── AlsaMixer v1.1.4 ───────────────────────────────────────────────────────────────────────────┐
+│ Card: HDA Intel PCH                                                                                                                            F1:  Help               │
+│ Chip: IDT 92HD99BXX                                                                                                                            F2:  System information │
+│ View: F3: Playback  F4: Capture  F5:[All]                                                                                                      F6:  Select sound card  │
+│ Item: Master [dB gain: 0.00]                                                                                                                   Esc: Exit               │
+│                                                                                                                                                                        │
+│                                                                                                                                                                        │
+│                                                                                                                                                                        │
+│                                                                                                                                                                        │
+│                                                                                                                                                                        │
+│                                                                                                                                                                        │
+│                                                                                                                                                                        │
+│                                                                                                                                                                        │
+│          ┌──┐         ┌──┐         ┌──┐         ┌──┐         ┌──┐         ┌──┐         ┌──┐         ┌──┐                      ┌──┐         ┌──┐                        │
+│          │▒▒│         │▒▒│         │▒▒│         │▒▒│         │  │         │  │         │  │         │▒▒│                      │  │         │  │                        │
+│          │▒▒│         │▒▒│         │▒▒│         │▒▒│         │  │         │  │         │  │         │▒▒│                      │  │         │  │                        │
+│          │▒▒│         │▒▒│         │▒▒│         │▒▒│         │  │         │  │         │  │         │▒▒│                      │  │         │  │                        │
+│          │▒▒│         │▒▒│         │▒▒│         │▒▒│         │  │         │  │         │  │         │▒▒│                      │  │         │  │                        │
+│          │▒▒│         │▒▒│         │▒▒│         │▒▒│         │  │         │  │         │  │         │▒▒│                      │  │         │  │                        │
+│          │▒▒│         │▒▒│         │▒▒│         │▒▒│         │  │         │  │         │  │         │▒▒│                      │  │         │  │                        │
+│          │▒▒│         │▒▒│         │▒▒│         │▒▒│         │  │         │  │         │  │         │▒▒│                      │  │         │  │                        │
+│          │▒▒│         │▒▒│         │▒▒│         │▒▒│         │  │         │  │         │  │         │▒▒│                      │  │         │  │                        │
+│          │▒▒│         │▒▒│         │▒▒│         │▒▒│         │  │         │  │         │  │         │▒▒│                      │  │         │  │                        │
+│          │▒▒│         │▒▒│         │▒▒│         │▒▒│         │  │         │  │         │  │         │▒▒│                      │  │         │  │                        │
+│          │▒▒│         │▒▒│         │▒▒│         │▒▒│         │  │         │  │         │  │         │▒▒│                      │  │         │  │                        │
+│          │▒▒│         │▒▒│         │▒▒│         │▒▒│         │  │         │  │         │  │         │▒▒│                      │  │         │  │                        │
+│          │▒▒│         │▒▒│         │▒▒│         │▒▒│         │  │         │  │         │  │         │▒▒│                      │  │         │  │                        │
+│          │▒▒│         │▒▒│         │▒▒│         │▒▒│         │  │         │  │         │  │         │▒▒│                      │  │         │  │                        │
+│          │▒▒│         │▒▒│         │▒▒│         │▒▒│         │  │         │  │         │  │         │▒▒│                      │  │         │  │                        │
+│          │▒▒│         │▒▒│         │▒▒│         │▒▒│         │  │         │  │         │  │         │▒▒│                      │  │         │  │                        │
+│          │▒▒│         │▒▒│         │▒▒│         │▒▒│         │  │         │  │         │  │         │▒▒│                      │  │         │  │                        │
+│          │▒▒│         │▒▒│         │▒▒│         │▒▒│         │  │         │  │         │  │         │▒▒│                      │  │         │  │                        │
+│          │▒▒│         │▒▒│         │▒▒│         │▒▒│         │  │         │  │         │  │         │▒▒│                      │  │         │  │                        │
+│          │▒▒│         │▒▒│         │▒▒│         │▒▒│         │  │         │  │         │  │         │▒▒│                      │  │         │  │                        │
+│          │▒▒│         │▒▒│         │▒▒│         │▒▒│         │  │         │  │         │  │         │▒▒│                      │  │         │  │                        │
+│          │▒▒│         │▒▒│         │▒▒│         │▒▒│         │  │         │  │         │  │         │▒▒│                      │  │         │  │                        │
+│          │▒▒│         │▒▒│         │▒▒│         │▒▒│         │  │         │  │         │  │         │▒▒│                      │  │         │  │                        │
+│          │▒▒│         │▒▒│         │▒▒│         │▒▒│         │  │         │  │         │  │         │▒▒│                      │  │         │  │                        │
+│          │▒▒│         │▒▒│         │▒▒│         │▒▒│         │  │         │  │         │  │         │▒▒│                      │  │         │  │                        │
+│          ├──┤         ├──┤         ├──┤         ├──┤         └──┘         └──┘         ├──┤         └──┘       Enabled        └──┘         └──┘       Disabled         │
+│          │OO│         │OO│         │OO│         │OO│                                   │MM│                                                                            │
+│          └──┘         └──┘         └──┘         └──┘                                   └──┘        L    R                                                              │
+│                                                                                                   CAPTURE                                                              │
+│          100        100&lt;&gt;100     100&lt;&gt;100     100&lt;&gt;100       0&lt;&gt;0         0&lt;&gt;0          0         100&lt;&gt;100                    0&lt;&gt;0         0&lt;&gt;0                        │
+│     &lt;   Master   &gt; Headphone     Speaker        Mic       Mic Boost    Mic Boost       Beep       Capture    Auto-Mute Mo Internal Mic Internal Mic Loopback Mix       │
+│                                                                                                                                                                        │
+│                                                                                                                                                                        │
+│                                                                                                                                                                        │
+│                                                                                                                                                                        │
+│                                                                                                                                                                        │
+│                                                                                                                                                                        │
+│                                                                                                                                                                        │
+└────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+</code></pre>
+
+<p>If you can&rsquo;t record sound using your internal microphone make sure that the Mic and Capture channels are unmuted (pressing the <mark>spacebar</mark> key on the Capture channel should switch from &mdash;&mdash;- to L R CAPTURE, this is necessary for the microphone to work).
+<hr/>
+<h3 id="ALSA_Services">3- ALSA Services</h3>
+<br/>
+These are (alsa-restore, alsa-state, alsasound&hellip; etc). In most distros, these services are automatically enabled, however just to be safe, let&rsquo;s see how we can enable and start them on:
+<br/>
+<br/>
+Gentoo Linux (start and enable)</p>
+
+<pre><code class="language-bash">rc-service alsasound start
+rc-update add alsasound boot
+</code></pre>
+
+<p><br/>
+Void Linux (start and enable)</p>
+
+<pre><code class="language-bash">sv start alsa
+ln -s /etc/sv/alsa /var/service/
+</code></pre>
+
+<p><br/>
+Arch Linux (start and enable)</p>
+
+<pre><code class="language-bash">systemctl start alsa-restore.service
+systemctl start alsa-state.service
+systemctl enable alsa-restore.service
+systemctl enable alsa-state.service
+</code></pre>
+
+<hr/>
+
+<p><h3 id="Default_Sound_Card_and_Sound_from_Multiple_Applications">4- Default Sound Card &amp; Sound from Multiple Applications</h3>
+<br/>
+After you&rsquo;ve done all the previous steps, ALSA should be working perfectly. Sound from multiple applications which is supported by alsa&rsquo;s dmix plug-in is enabled by default. However, on some setups (like mine), the default sound card may not be your main sound card (for example HDMI and Intel HD Audio PCH):</p>
+
+<pre><code class="language-bash">aplay -l
+</code></pre>
+
+<pre><code class="language-bash">**** List of PLAYBACK Hardware Devices ****
+card 0: HDMI [HDA Intel HDMI], device 3: HDMI 0 [HDMI 0]
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 0: HDMI [HDA Intel HDMI], device 7: HDMI 1 [HDMI 1]
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 0: HDMI [HDA Intel HDMI], device 8: HDMI 2 [HDMI 2]
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: PCH [HDA Intel PCH], device 0: 92HD99BXX Analog [92HD99BXX Analog]
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+</code></pre>
+
+<p><br/>
+The HDMI soundcard is given an index of 0, and your main PCH soundcard is given an index of 1. Thus the default card chosen by ALSA is the HDMI card. Therefore, you&rsquo;ll hear nothing. To fix this, first we need to tell if the soundcard drivers and codecs are built into the kernel or left as modules.
+<br/>
+<br/>
+In the latter, we can easily fix this problem by specifying our default sound card as a kernel parameter. Create a file in /etc/modprobe.d called alsa.conf or whatever_you_like.conf:</p>
+
+<pre><code class="language-bash">touch /etc/modprobe.d/alsa.conf
+</code></pre>
+
+<p><br/>
+And put the following in it:</p>
+
+<pre><code class="language-bash">options snd-hda-intel index=1,0
+</code></pre>
+
+<p><br/>
+This swaps the index numbers of both cards giving your main PCH sound card an index of 0, and your HDMI soundcard an index of 1.
+<br/>
+<br/>
+However, if your soundcard drivers and codecs are built into the kernel. That previous line won&rsquo;t do a thing. You have to tell ALSA when you&rsquo;re starting an X session which card you want to use as your default soundcard. Therefore you need to create a file in your home directory called .asoundrc:</p>
+
+<pre><code class="language-bash">touch ~/.asoundrc
+</code></pre>
+
+<p><br/>
+Now here&rsquo;s a custom configuration that I use to swap both cards, and enable sound from multiple applications without sacrificing any sound quality whatsoever:</p>
+
+<pre><code class="language-properties">pcm.!default {
+	type plug
+	slave.pcm &quot;dmixer&quot;
+}
+
+pcm.dmixer  {
+ 	type dmix
+ 	ipc_key 1024
+ 	slave {
+		pcm &quot;hw:1,0&quot;
+		period_time 0
+		period_size 1024
+		buffer_size 4096
+		rate 44100
+	}
+	bindings {
+		0 0
+		1 1
+	}
+}
+
+ctl.dmixer {
+	type hw
+	card PCH
+}
+</code></pre>
+
+<hr/>
+
+<p><h3 id="Controlling_Volume_using_shortcut_keys_on_dwm">(Optional) Controlling Volume using shortcut keys on dwm</h3>
+Let&rsquo;s start by adding this to the commands section (Remeber we need to specify our default sound card in our previous case):</p>
+
+<pre><code class="language-c,line-numbers">/* commands */
+static const char *voldwcmd[]  = { &quot;amixer&quot;, &quot;-c&quot;, &quot;PCH&quot;, &quot;set&quot;, &quot;Master&quot;, &quot;1%-&quot;, NULL};
+static const char *volupcmd[]  = { &quot;amixer&quot;, &quot;-c&quot;, &quot;PCH&quot;, &quot;set&quot;, &quot;Master&quot;, &quot;1%+&quot;, NULL};
+static const char *volmcmd[]  = { &quot;amixer&quot;, &quot;-c&quot;, &quot;PCH&quot;, &quot;set&quot;, &quot;Master&quot;, &quot;toggle&quot;, NULL};
+</code></pre>
+
+<p><br/>
+This defines 3 character arrays that will hold our volume controlling commands respectively.
+<br/>
+<br/>
+Now, let&rsquo;s map these commands to the hexadecimal code of your multimedia volume keys. To find out the hexadecimal code of your multimedia volume keys, fire up a terminal in a X session, focus on the shown window, press your shortcut keys and copy the codes. You should get something like this:</p>
+
+<pre><code class="language-bash">xev
+</code></pre>
+
+<pre><code class="language-properties">KeyRelease event, serial 32, synthetic NO, window 0xe00001,
+    root 0xd4, subw 0xe00002, time 4421968, (57,25), root:(1111,260),
+    state 0x0, keycode 122 (keysym 0x1008ff11, XF86AudioLowerVolume), same_screen YES,
+    XLookupString gives 0 bytes:
+    XFilterEvent returns: False
+
+KeyRelease event, serial 32, synthetic NO, window 0xe00001,
+    root 0xd4, subw 0xe00002, time 4422488, (57,25), root:(1111,260),
+    state 0x0, keycode 123 (keysym 0x1008ff13, XF86AudioRaiseVolume), same_screen YES,
+    XLookupString gives 0 bytes:
+    XFilterEvent returns: False
+
+KeyPress event, serial 32, synthetic NO, window 0xe00001,
+    root 0xd4, subw 0xe00002, time 4423054, (57,25), root:(1111,260),
+    state 0x0, keycode 121 (keysym 0x1008ff12, XF86AudioMute), same_screen YES,
+    XLookupString gives 0 bytes:
+    XmbLookupString gives 0 bytes:
+    XFilterEvent returns: False
+</code></pre>
+
+<p><br/>
+Then we&rsquo;ll add this entry to the modifiers section:</p>
+
+<pre><code class="language-c,line-numbers">/* modifier                     key         function          argument */
+{ 0,                            0x1008ff11,	   spawn,          {.v = voldwcmd } },
+{ 0,             	            0x1008ff13,	   spawn,          {.v = volupcmd } },
+{ 0,                            0x1008ff12,	   spawn,          {.v = volmcmd } },
+</code></pre>
+
+</div>
+<div id="comments" class="box">
+  <h3>4 Comments</h3>
+  <div class="main-comment">
+    <p>5th</p>
+    <p>16/06/2017</p>
+    <hr/>
+    <p>Thank you a lot! It helped to setup ALSA on a freshly installed Void Linux. Just wanted to say thank you.</p>
+  </div>
+  <div class="reply">
+    <p>DOTSLASHLINUX</p>
+    <p>16/06/2017</p>
+    <hr/>
+    <p>@5th, you&rsquo;re most welcome. Glad you found this article helpful!</p>
+  </div>
+  <div class="main-comment">
+    <p>Apko</p>
+    <p>11/07/2017</p>
+    <hr/>
+    <p>thank you very much</p>
+  </div>
+  <div class="reply">
+    <p>DOTSLASHLINUX</p>
+    <p>11/07/2017</p>
+    <hr/>
+    <p>@Apko, you&rsquo;re most welcome! Thanks for passing by!</p>
+  </div>
+  <div id="leavecomment">
+    <h3>Leave A Comment</h3>
+    <form action="https://getsimpleform.com/messages?form_api_token=4458712617021cb12239cbfd2942b227" method="post">
+      <input name="options[redirect]" type="hidden" value="https://www.dotslashlinux.com//post/basic-alsa-configuration/#comments">
+      <input name="options[slug]" type="hidden" value="basic alsa configuration">
+      <input type="hidden" id="reply" name="fields[replying_to]" value="">
+      <input name="fields[name]" type="text" placeholder="Name" required>
+      <textarea rows="5" name="fields[comment]" placeholder="Your comment here.&#10;&#10;Comments support Markdown.&#10;&#10;Comments are being moderated to prevent spam so it may take a while before your comment is posted." required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+
+<div class="box footer">
+  <h4>Copyrights &copy; 2017-2018 <a href="/">DOTSLASHLINUX</a> | Licensed under <a id="creativecommons" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></h4>
+</div>
+</div>
+</div>
+<script src="/js/c.js"></script>
+</body>
+</html>
+

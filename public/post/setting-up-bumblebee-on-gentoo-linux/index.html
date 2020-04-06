@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setting Up Bumblebee on Gentoo Linux | DOTSLASHLINUX</title>
+    <meta name="description" content="DOTSLASHLINUX is a GNU/Linux enthusiasts' hub, featuring configuration guides for the linux kernel and several lightweight open source and free software.">
+    <meta name="author" content="Firas Khalil Khana">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="css/c.css">
+    <link rel="alternate" type="application/rss+xml" title="DOTSLASHLINUX RSS" href="/feed.xml">
+  </head>
+  <body>
+    <div class="row middle-xs middle-sm middle-md middle-lg container">
+      <div class="col-xs-12 center-xs col-sm-4 start-sm col-md-4 start-md col-lg-4 start-lg">
+        <div class="box brand">
+          <h1><a href="https://www.dotslashlinux.com/">DOTSLASHLINUX</a></h1>
+        </div>
+      </div>
+      <div class="col-xs-12 center-xs col-sm-8 end-sm col-md-8 end-md col-lg-8 end-lg">
+        <div class="box">
+          <nav>
+            <ul>
+              <li class=""><a href="/">HOME</a></li>
+              <li class=""><a href="/page/search/">SEARCH</a></li>
+              <li><a href="/index.xml" style="color: #f26522;">RSS</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content">
+        <div class="box patreon">
+          <p>Kindly support DOTSLASHLINUX on <a href="https://www.patreon.com/DOTSLASHLINUX" target="_target">Patreon</a> to keep the website up and running while remaining ads free.</p>
+        </div>
+
+
+<div class="box map">
+  <h2>Setting Up Bumblebee on Gentoo Linux</h2>
+  <div class="share">
+    <a id="facebook" href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fsetting-up-bumblebee-on-gentoo-linux%2f" rel="nofollow" target="_blank">Facebook</a>
+    <a id="twitter" href="https://www.twitter.com/intent/tweet?source=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fsetting-up-bumblebee-on-gentoo-linux%2f&text=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fsetting-up-bumblebee-on-gentoo-linux%2f" rel="nofollow" target="_blank">Twitter</a>
+    <a id="googleplus" href="https://plus.google.com/share?url=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fsetting-up-bumblebee-on-gentoo-linux%2f" rel="nofollow" target="_blank">Google+</a>
+    <a id="reddit" href="https://www.reddit.com/submit?url=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fsetting-up-bumblebee-on-gentoo-linux%2f" rel="nofollow" target="_blank">Reddit</a>
+    <a id="linkedin" href="http://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fsetting-up-bumblebee-on-gentoo-linux%2f&source=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fsetting-up-bumblebee-on-gentoo-linux%2f" rel="nofollow" target="_blank">LinkedIn</a>
+  </div>
+  <div class="frame"><a href="/img/bumblebee.png" target="_blank"><img src="/img/bumblebee.png" alt="bumblebee"></div></a>
+    <div class="info">Firas Khalil Khana | 04/06/2017</div>
+    <p>Optimus support on a GNU/Linux distro has always been a hassle thanks to NVIDIA&hellip; Therefore projects were created to compensate for this powersaving feature. Enter bumblebee a project aimed to replicate NVIDIA&rsquo;s optimus function on GNU/Linux!.
+<br/>
+<br/>
+In this article I&rsquo;ll be talking about setting up a working bumblebee setup on Gentoo Linux. Worry not because setting up bumblebee on Arch Linux/Void Linux is easy. Not that it&rsquo;s hard on Gentoo, but several steps are required to get a fully working bumblebee setup.</p>
+
+<p>When we talk bumblebee, several things should come to one&rsquo;s mind:
+<ol>
+<li>A laptop with 2 GPUs an iGPU (integrated intel gpu) and a dGPU (discrete NVIDIA gpu).</li>
+<li>A kernel that supports loading and unloading modules.</li>
+<li>A proper <mark>/etc/portage/make.conf</mark> that works with this setup.</li>
+<li>The packages bumblebee, primus and bbswitch must be installed.</li>
+<li>Your user must be added to the following groups <mark>video</mark> and <mark>bumblebee</mark>.</li>
+<li>You should enable the service <mark>bumblebee</mark>.</li>
+</ol>
+On Gentoo, extra steps are required to get bumblebee working, but guess what, you won&rsquo;t be going back to Arch Linux ever again because bumblebee on Gentoo is hard to setup.
+<br/>
+<br/>
+Before we get started, I want to point out that bumblebee is a fairly old project (last release was on 26 April 2013), but it still works perfectly. Until NVIDIA decides to make optimus working properly on GNU/Linux, you should be using bumblebee.
+<hr/>
+<h3>1- Checking if Your Laptop Uses NVIDIA Optimus</h3>
+<br/>
+This is pretty much straightforward. If you have an intel processor (2nd Gen +) and a NVIDIA gpu, then you probably have optimus on your laptop. For those who want to check fire up your favorite terminal and run:</p>
+
+<pre><code class="language-properties">lspci -k
+</code></pre>
+
+<pre><code class="language-properties">...
+00:02.0 VGA compatible controller: Intel Corporation 4th Gen Core Processor Integrated Graphics Controller (rev 06)
+	Subsystem: Toshiba America Info Systems 4th Gen Core Processor Integrated Graphics Controller
+	Kernel driver in use: i915
+01:00.0 3D controller: NVIDIA Corporation GK208M [GeForce GT 740M] (rev ff)
+...
+</code></pre>
+
+<p><br/>
+In my case I&rsquo;m using an <mark>Intel HD4600</mark> (cpu is 4th Gen Core i7 4700MQ) as my iGPU and my dGPU is a <mark>NVIDIA GT740M</mark>.
+<br/>
+Don&rsquo;t worry if your drivers in use (for now) are different, in my case I have built-in modules and my NVIDIA card is OFF (NVIDIA driver isn&rsquo;t loaded at boot which means bumblebee is working perfectly).
+<br/>
+<br/>
+As you can see, optimus laptops have VGA compatible controller which is the integrated intel card that manages the display and uses the i915 kernel driver, and a 3D controller which is the stronger NVIDIA card which is going to be used when needed via bumblebee.
+<br/>
+<br/>
+If your GNU/Linux experience was awful so far because your laptop was on fire <sup>24</sup>&frasl;<sub>7</sub>, then you probably have an optimus laptop that needs correct configuration.
+<hr/>
+<h3>2- Checking if Your Kernel Supports Loading/Unloading Modules</h3>
+<br/>
+In order for bumblebee to work, then <mark>bbswitch</mark> must be loaded at boot time and <mark>nvidia</mark> mustn&rsquo;t.
+<br/>
+<br/>
+Make sure that <mark>CONFIG_MODULES=y</mark> and <mark>CONFIG_MODULE_UNLOAD=y</mark> are enabled.
+    <br/>
+<hr/>
+<h3>3- Optimizing your &lsquo;/etc/portage/make.conf&rsquo;</h3>
+<br/>
+Now make sure that you have the following in your <mark>/etc/portage/make.conf</mark>:
+<br/></p>
+
+<pre><code class="language-properties">vim /etc/portage/make.conf
+</code></pre>
+
+<pre><code class="language-properties">...
+VIDEO_CARDS=&quot;intel i965 nvidia&quot;
+...
+</code></pre>
+
+<p><br/>
+In most cases using <mark>i965</mark> should be fine, however if you were using an older card then please check the following <a href="https://wiki.gentoo.org/wiki/Intel#Feature_support" target="_blank">Intel Feature Support on Gentoo Linux</a>.
+<br/>
+<br/>
+Now sync and update your system:</p>
+
+<pre><code class="language-properties">emerge --sync &amp;&amp; emerge -avuDN @world
+</code></pre>
+
+<p><br/>
+Now simply reboot your system, and continue this article.</p>
+
+<pre><code class="language-bash">shutdown -r now
+</code></pre>
+
+<hr/>
+
+<p><h3>4- Installation</h3>
+<br/>
+For the installation part, we need 3 packages, <mark>bumblebee</mark>,<mark>primus</mark> and <mark>bbswitch</mark>. It&rsquo;s recommended to download the live (git or -9999) versions of the previous packages to ensure that they work well with recent kernel and nvidia-drivers versions.
+<br/>
+<br/>
+Fire up your favorite text editor, and make sure your <mark>/etc/portage/package.accept_keywords</mark> -(which in my case is a single file and not a directory)- contains the following:</p>
+
+<pre><code class="language-properties,line-numbers">=sys-power/bbswitch-9999 ∗∗
+=x11-misc/bumblebee-9999 ∗∗
+=x11-misc/primus-0.2 ~amd64
+</code></pre>
+
+<p><br/>
+Now simply run:</p>
+
+<pre><code class="language-properties">emerge -av bbswitch primus bumblebee
+</code></pre>
+
+<hr/>
+
+<p><h3>5- Adding Your User to the Groups video and bumblebee</h3>
+<br/>
+After installing the previous packages, add your <mark>USER</mark> to the groups <mark>video</mark> and <mark>bumblebee</mark>:</p>
+
+<pre><code class="language-properties">gpasswd -a USER video &amp;&amp; gpasswd -a USER bumblebee
+</code></pre>
+
+<p><br/>
+Don&rsquo;t forget to replace <mark>USER</mark> with your real username.
+<br/>
+<br/>
+Now logout and relogin and your user should be in these groups.
+<hr/>
+<h3>6- Modifying /etc/init.d/bumblebee</h3>
+<br/>
+Here&rsquo;s where it gets tricky, this file is the one responsible for the hassle. Notice at the beginning of the file it depends on <mark>xdm</mark> and <mark>vgl</mark> and we don&rsquo;t need both of them for our setup to work.
+<br/>
+<br/>
+You see it depends on xdm to make sure that bumblebee isn&rsquo;t started if there&rsquo;s no Xorg server installed. As for vgl, then we&rsquo;re using primus which is much better performance wise.
+<br/>
+<br/>
+Open a terminal emulator and edit <mark>/etc/init.d/bumblebee</mark> with your favorite editor (vim is my favorite editor now), and delete the first 5 lines (or their equivalent; the depend() part) as shown below:
+<br/></p>
+
+<pre><code class="language-properties">vim /etc/init.d/bumblebee
+</code></pre>
+
+<pre><code class="language-properties,line-numbers">depend() {
+    need xdm
+    need vgl
+	after sshd
+}
+
+PIDFILE=&quot;${PIDFILE:-/var/run/bumblebee.pid}&quot;
+
+start() {
+	ebegin &quot;Starting BumbleBee Daemon&quot;
+		start-stop-daemon -S -p &quot;${PIDFILE}&quot; -x /usr/sbin/bumblebeed -- -D ${BUMBLEBEE_EXTRA_OPTS} --pidfile &quot;${PIDFILE}&quot;
+	eend $?
+}
+
+stop() {
+	ebegin &quot;Stopping BumbleBee Daemon&quot;
+		start-stop-daemon -K -p &quot;${PIDFILE}&quot; -R SIGTERM/10
+	eend $?
+}
+</code></pre>
+
+<p><br/>
+So your file should look like this:</p>
+
+<pre><code class="language-properties,line-numbers">PIDFILE=&quot;${PIDFILE:-/var/run/bumblebee.pid}&quot;
+
+start() {
+	ebegin &quot;Starting BumbleBee Daemon&quot;
+		start-stop-daemon -S -p &quot;${PIDFILE}&quot; -x /usr/sbin/bumblebeed -- -D ${BUMBLEBEE_EXTRA_OPTS} --pidfile &quot;${PIDFILE}&quot;
+	eend $?
+}
+
+stop() {
+	ebegin &quot;Stopping BumbleBee Daemon&quot;
+		start-stop-daemon -K -p &quot;${PIDFILE}&quot; -R SIGTERM/10
+	eend $?
+}
+</code></pre>
+
+<hr/>
+
+<p><h3>7- Modifying /etc/bumblebee/bumblebee.conf</h3>
+<br/>
+We need to change some of the default settings that bumblebee uses, start that terminal emulator and with your favorite editor (vim), edit the file <mark>/etc/bumblebee/bumblebee.conf</mark>:</p>
+
+<pre><code class="language-properties,line-numbers"># Configuration file for Bumblebee. Values should ∗∗not∗∗ be put between quotes
+
+## Server options. Any change made in this section will need a server restart
+# to take effect.
+[bumblebeed]
+# The secondary Xorg server DISPLAY number
+VirtualDisplay=:8
+# Should the unused Xorg server be kept running? Set this to true if waiting
+# for X to be ready is too long and don't need power management at all.
+KeepUnusedXServer=false
+# The name of the Bumbleblee server group name (GID name)
+ServerGroup=bumblebee
+# Card power state at exit. Set to false if the card shoud be ON when Bumblebee
+# server exits.
+TurnCardOffAtExit=false
+# The default behavior of '-f' option on optirun. If set to &quot;true&quot;, '-f' will
+# be ignored.
+NoEcoModeOverride=false
+# The Driver used by Bumblebee server. If this value is not set (or empty),
+# auto-detection is performed. The available drivers are nvidia and nouveau
+# (See also the driver-specific sections below)
+Driver=nvidia
+# Directory with a dummy config file to pass as a -configdir to secondary X
+XorgConfDir=/etc/bumblebee/xorg.conf.d
+
+## Client options. Will take effect on the next optirun executed.
+[optirun]
+# Acceleration/ rendering bridge, possible values are auto, virtualgl and
+# primus.
+Bridge=primus
+# The method used for VirtualGL to transport frames between X servers.
+# Possible values are proxy, jpeg, rgb, xv and yuv.
+VGLTransport=rgb
+# List of paths which are searched for the primus libGL.so.1 when using
+# the primus bridge
+PrimusLibraryPath=/usr/lib/primus:/usr/lib32/primus
+# Should the program run under optirun even if Bumblebee server or nvidia card
+# is not available?
+AllowFallbackToIGC=false
+
+
+# Driver-specific settings are grouped under [driver-NAME]. The sections are
+# parsed if the Driver setting in [bumblebeed] is set to NAME (or if auto-
+# detection resolves to NAME).
+# PMMethod: method to use for saving power by disabling the nvidia card, valid
+# values are: auto - automatically detect which PM method to use
+#         bbswitch - new in BB 3, recommended if available
+#       switcheroo - vga_switcheroo method, use at your own risk
+#             none - disable PM completely
+# https://github.com/Bumblebee-Project/Bumblebee/wiki/Comparison-of-PM-methods
+
+## Section with nvidia driver specific options, only parsed if Driver=nvidia
+[driver-nvidia]
+# Module name to load, defaults to Driver if empty or unset
+KernelDriver=nvidia
+PMMethod=bbswitch
+# colon-separated path to the nvidia libraries
+LibraryPath=/usr/lib64/opengl/nvidia/lib:/usr/lib/opengl/nvidia/lib
+# comma-separated path of the directory containing nvidia_drv.so and the
+# default Xorg modules path
+XorgModulePath=/usr/lib64/opengl/nvidia/lib,/usr/lib64/opengl/nvidia/extensions,/usr/lib64/xorg/modules/drivers,/usr/lib64/xorg/modules
+XorgConfFile=/etc/bumblebee/xorg.conf.nvidia
+</code></pre>
+
+<p><br/>
+I&rsquo;ve highlighted the lines that you should check, just make sure that:
+    <br/>
+    <br/>
+    KeepUnusedXServer=false
+    <br/>
+    Driver=nvidia
+    <br/>
+    Bridge=primus
+    <br/>
+    VGLTransport=rgb (for vgl users)
+    <br/>
+    KernelDriver=nvidia
+    <br/>
+    PMMethod=bbswitch
+    <br/>
+<hr/>
+<h3>8- Enabling and Starting bumblebee Service</h3>
+<br/>
+Simply add the service <mark>bumblebee</mark> to the runlevel <mark>default</mark>:</p>
+
+<pre><code class="language-properties">rc-update add bumblebee default
+</code></pre>
+
+<p><br/>
+Now simply reboot and you should be good to go!</p>
+
+<pre><code class="language-bash">shutdown -r now
+</code></pre>
+
+<hr/>
+
+<p><h3>9- Modifying /etc/modprobe.d/nvidia-rmmod.conf</h3>
+<br/>
+In order for bbswitch to work properly, the nvidia module should be removed with ease without spitting any errors. Therefore, we&rsquo;ve disable the <mark>kms</mark> and <mark>uvm</mark> USE flags of <mark>nvidia-drivers</mark>.
+<br/>
+<br/>
+Now we should only have the <mark>nvidia</mark> module, no <mark>nvidia-uvm</mark>, no <mark>nvidia-drm</mark>, no <mark>nvidia-modeset</mark>. We need to instruct <mark>modprobe -r nvidia </mark> to remove only <mark>nvidia</mark> and nothing else (as there&rsquo;s nothing else to be removed). So fire up your favorite editor and edit <mark>/etc/modprobe.d/nvidia-rmmod.conf</mark>:</p>
+
+<pre><code class="language-properties">vim /etc/modprobe.d/nvidia-rmmod.conf
+</code></pre>
+
+<pre><code class="language-bash"># Nvidia UVM support
+
+remove nvidia modprobe -r --ignore-remove nvidia-drm nvidia-modeset nvidia-uvm nvidia
+</code></pre>
+
+<p><br/>
+and remove every other module except for <mark>nvidia</mark> so the end file should look like this:</p>
+
+<pre><code class="language-properties">remove nvidia modprobe -r --ignore-remove nvidia
+</code></pre>
+
+<p><br/>
+This is an extremely important step as attempting to remove the nvidia module without it will result in errors.
+<hr/>
+<h3>(Optional) Checking if bumblebee is Working</h3>
+<br/>
+If you&rsquo;ve followed along with this article then your bumblebee setup should be working 100%. I recommend using <mark>primusrun</mark> instead of <mark>optirun</mark> since optirun tends to spit out more errors than primusrun (but after our configuration they should both be using the primus bridge and provide similar performance.
+<br/>
+<br/>
+To test our bumblebee configuration, install the package <mark>mesa-progs</mark>:</p>
+
+<pre><code class="language-properties">emerge --sync &amp;&amp; emerge -av mesa-progs
+</code></pre>
+
+<p><br/>
+Now before testing anything the NVIDIA card should be OFF, and the nvidia module shouldn&rsquo;t be loaded, instead the module bbswitch should be loaded. To double check fire up that terminal emulator and run:</p>
+
+<pre><code class="language-bash">lsmod
+</code></pre>
+
+<pre><code class="language-bash">Module                  Size  Used by
+bbswitch                5461  0
+</code></pre>
+
+<p><br/>
+then run:</p>
+
+<pre><code class="language-bash">cat /proc/acpi/bbswitch
+</code></pre>
+
+<pre><code class="language-properties">0000:01:00.0 OFF
+</code></pre>
+
+<p><br/>
+As you can see:
+<br/>
+1- bbswitch is loaded
+<br/>
+2- nvidia isn&rsquo;t loaded
+<br/>
+3- card is OFF as reported by bbswitch
+<br/>
+<br/>
+Now let&rsquo;s check if the NVIDIA card will be switched ON and the nvidia module will be loaded once optirun/primusrun are executed, and if it&rsquo;ll switch OFF and the nvidia module will be unloaded once optirun/primusrun finish executing.
+<br/>
+<br/>
+Inside your terminal emulator (and while you&rsquo;re running in a Xorg session&hellip; obviously&hellip;) run:</p>
+
+<pre><code class="language-properties">optirun glxgears
+</code></pre>
+
+<p><br/>
+or (but not both):</p>
+
+<pre><code class="language-properties">primusrun glxgears
+</code></pre>
+
+<p><br/>
+A window showing glxgears should open. While it&rsquo;s running check the following:</p>
+
+<pre><code class="language-properties">lsmod
+</code></pre>
+
+<pre><code class="language-properties">Module                  Size  Used by
+nvidia              10652360  51
+bbswitch                5461  0
+</code></pre>
+
+<p><br/>
+and:</p>
+
+<pre><code class="language-bash">cat /proc/acpi/bbswitch
+</code></pre>
+
+<pre><code class="language-properties">0000:01:00.0 ON
+</code></pre>
+
+<p><br/>
+Notice how the nvidia module got loaded and the card switched on. Now end the running glxgears and do a simple check, the card should be OFF and the nvidia module should be unloaded and bbswitch will stay loaded.
+<br/>
+<br/>
+Some of you may say that using vgl gets me more fps when running glxgears or any benchmark application. That is simply not the case as vgl doesn&rsquo;t adjust itself to the screen&rsquo;s refresh rate like primus does. Try running the following and see how primus crushes vgl:</p>
+
+<pre><code class="language-properties">vblank_mode=0 primusrun glxgears
+</code></pre>
+
+<p><br/>
+If your card was refusing to turn OFF and the nvidia module is still loaded upon finishing the execution, then run the following:</p>
+
+<pre><code class="language-bash">rmmod nvidia &amp;&amp; echo &quot;OFF&quot; &gt;&gt; /proc/acpi/bbswitch
+</code></pre>
+
+<hr/>
+
+<p><h3>(Optional) USE Flags</h3>
+<br/>
+For those of you that are wondering what USE flags I&rsquo;m using for my packages:
+<br/>
+<br/>
+For <mark>nvidia-drivers</mark>(notice how I disabled <mark>uvm</mark> and <mark>kms</mark> USE flags, as they can lead to errors when unloading the nvidia module unless you&rsquo;re using a patched version of bumblebee):</p>
+
+<pre><code class="language-properties">equery u nvidia-drivers
+</code></pre>
+
+<pre><code class="language-properties">∗ Found these USE flags for x11-drivers/nvidia-drivers-381.22:
+ U I
+ + + X           : Install the X.org driver, OpenGL libraries, XvMC libraries, and VDPAU libraries
+ + + acpi        : Add support for Advanced Configuration and Power Interface
+ + + compat      : Install non-GLVND libGL for backwards compatibility
+ + + driver      : Install the kernel driver module
+ + + gtk3        : Install nvidia-settings with support for GTK+ 3
+ - - kms         : Enable support for kernel mode setting (KMS)
+ - - pax_kernel  : PaX patches from the PaX project
+ - - static-libs : Build static versions of dynamic libraries as well
+ + + tools       : Install additional tools such as nvidia-settings
+ - - uvm         : Install the Unified Memory kernel module (nvidia-uvm) for sharing memory between CPU and GPU in CUDA programs
+ - - wayland     : Enable dev-libs/wayland backend
+</code></pre>
+
+<p><br/>
+For <mark>xf86-video-intel</mark>:</p>
+
+<pre><code class="language-properties">equery u xf86-video-intel
+</code></pre>
+
+<pre><code class="language-properties">∗ Found these USE flags for x11-drivers/xf86-video-intel-2.99.917_p20170313:
+ U I
+ - - debug : Enable extra debug codepaths, like asserts and extra output. If you want to get meaningful backtraces see
+             https://wiki.gentoo.org/wiki/Project:Quality_Assurance/Backtraces
+ + + dri   : Enable direct rendering: used for accelerated 3D and some 2D, like DMA
+ + + dri3  : (Restricted to &lt;=x11-drivers/xf86-video-intel-2.99.917_p20160621)
+             Enable DRI3 support
+ + + sna   : Enable SandyBridge's New Acceleration (useful on all chipsets, not just SandyBridge)
+ - - tools : Build the intel-virtual-output tool
+ + + udev  : Enable virtual/udev integration (device discovery, power and storage device support, etc)
+ - - uxa   : Enable UMA Acceleration Architecture
+ + + xvmc  : Enables X-Video Motion Compensation support
+</code></pre>
+
+<p><br/>
+For <mark>bumblebee</mark>:</p>
+
+<pre><code class="language-properties">equery u bumblebee
+</code></pre>
+
+<pre><code class="language-properties">∗ Found these USE flags for x11-misc/bumblebee-3.2.1:
+ U I
+ + + bbswitch            : Add dependency on sys-power/bbswitch for PM feature
+ - - video_cards_nouveau : VIDEO_CARDS setting to build reverse-engineered driver for nvidia cards
+ + + video_cards_nvidia  : VIDEO_CARDS setting to build driver for nvidia video cards
+</code></pre>
+
+<hr/>
+
+<p><h3>(Optional) Workarounds</h3>
+If bbswitch was unable to switch the ACPI state of the dGPU then you might want to double check your <mark>nvidia-drivers</mark> USE flags and make sure that only <mark>nvidia</mark> is being loaded and both <mark>uvm</mark> and <mark>kms</mark> are disabled. Make sure that no other power management services are running (as they may interfere with bbswitch and prevent it from turning the card off). These include <mark>tlp</mark>, <mark>powertop</mark> and <mark>laptop-mode-tools</mark> (either disable these services or uninstall them completely).
+<br/>
+<br/>
+If bbswitch is still refusing to turn off the card (which is unlikely if you followed what I mentioned earlier) try adding</p>
+
+<pre><code class="language-properties">&quot;acpi_osi=!Windows\x202013&quot; acpi_osi=Linux nogpumanager i915.enable_hd_vgaarb=1 enable_hd_vgaarb=1
+</code></pre>
+
+<p><br/>
+to your kernel command-line (this has worked for a couple of users, especially those with Thinkpads and Lenovo laptops).
+<br/>
+<br/>
+Some users were receiving vgaarb errors:</p>
+
+<pre><code class="language-properties">dmesg | grep vgaarb
+</code></pre>
+
+<pre><code class="language-properties">...
+vgaarb: this pci device is not a vga device
+vgaarb: this pci device is not a vga device
+...
+</code></pre>
+
+<p><br/>
+Make sure that <mark>CONFIG_VGA_ARB=y</mark> and <mark>CONFIG_VGA_ARB_MAX_GPUS=2</mark>. If you&rsquo;re still seeing this error (even though it was fixed in 3.10 according to this <a href="https://bugzilla.kernel.org/show_bug.cgi?id=63641" target="_blank">Bugzilla Kernel 63641</a> and <a href="https://github.com/Bumblebee-Project/Bumblebee/issues/159" target="_blank">Bumblebee Github Issue #159</a>), you can try to patch your kernel with this <a href="https://pastebin.com/wpmFi38k" target="_blank">vgaarb patch</a> by running this (after downloading the patch file of course).
+<br/>
+<br/>
+If bbswitch was working fine for you until a kernel version update killed it (in some cases it won&rsquo;t be working in the first place), then you can add <mark>pcie_port_pm=off</mark> to your kernel command line and notify your bootloader about the changes and hopefully it&rsquo;ll work for you.
+<br/>
+<br/>
+The reason I said hopefully is that this workaround used to work in earlier versions of the Linux kernel (4.8) but several users reported that it&rsquo;s not working as of (4.13). Still it won&rsquo;t hurt if you try it.
+<hr/>
+<h3>Chinese Translation</h3>
+One of DOTSLASHLINUX&rsquo;s followers from china 杨鑫 (Yang Mame), has provided a chinese translation of this guide on his blog.
+<br/>
+<br/>
+To read this guide in chinese <a href="https://blog.yangmame.top/2017/08/23/gentoo%E5%8F%8C%E6%98%BE%E5%8D%A1%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" target="_blank">click here</a>.</p>
+
+</div>
+<div id="comments" class="box">
+  <h3>36 Comments</h3>
+  <div class="main-comment">
+    <p>Drakkar</p>
+    <p>09/07/2017</p>
+    <hr/>
+    <p>Hi. I am Spanish and I am writing from the Google translator, I hope it is understood well. I followed your tutorial and I never turned off the Nvidia card, it always stays on.
+&ldquo;cat /proc/acpi/bbswitch
+0000:01:00.0 ON &ldquo;
+E followed the tutorial step by step. And the only way I have to shut down my Nvidia is this way
+&ldquo;rmmod nvidia
+rmmod nvidia_modeset
+tee /proc/acpi/bbswitch &lt;&lt;&lt; OFF &ldquo;
+Even without having switched it on before, bbswitch does not seem to be working.
+If you could lend me a hand I would be grateful.
+regards</p>
+  </div>
+  <div class="reply">
+    <p>DOTSLASHLINUX</p>
+    <p>09/07/2017</p>
+    <hr/>
+    <p>@Drakkar, Hey there, thanks for reading the article above. Yes, I completely understood what you said. As I mentioned above, setting up bumblebee on Gentoo GNU/Linux can really be a hassle. Looks like <mark>nvidia_modeset</mark> is being loaded along side <mark>nvidia</mark>, this may prevent bbswitch from correctly turning off the card after boot and will definitely prevent bumblebee from turning off the card using bbswitch after using optirun unless you&rsquo;re using a patched version of bumblebee. I listed my USE flags above and I recommend that you disable the <mark>kms</mark> USE flag for <mark>nvidia-drivers</mark> package and re-emerge it again. Disabling <mark>kms</mark> should remove the <mark>nvidia-modeset</mark> kernel module. Another thing to do would be to double check if <mark>bumblebee</mark> -the service- is actually running or not. Might as well confirm that the USE flags on your packages match the ones listed in the article above. Hope this helps! Best of luck!</p>
+  </div>
+  <div class="reply">
+    <p>Drakkar</p>
+    <p>12/07/2017</p>
+    <hr/>
+    <p>Hi. I compile with the USE that you have in the manual, but there is no way, do not turn off nvidia, I skipped no manual step, bbswitch does not seem to work</p>
+  </div>
+  <div class="reply">
+    <p>DOTSLASHLINUX</p>
+    <p>12/07/2017</p>
+    <hr/>
+    <p>@Drakkar, sorry to hear that. Can you share your dmesg output?</p>
+  </div>
+  <div class="reply">
+    <p>Drakkar</p>
+    <p>13/07/2017</p>
+    <hr/>
+    <p>Hello Goodnight. Sorry for the delay in passing the dmesg exit and for being these hours so late, but only now. Thank you very much for your attention and interest in helping me. I leave you the file with the output dmesg <a href="https://www.dropbox.com/s/z2gqccg6r8t8a8f/dmesg.log?dl=0">here</a>.</p>
+  </div>
+  <div class="reply">
+    <p>DOTSLASHLINUX</p>
+    <p>13/07/2017</p>
+    <hr/>
+    <p><p>@Drakkar, that dmesg output doesn&rsquo;t look so good. I suggest you stick around here until the kernel configuration guide comes out. For now here&rsquo;s what you can do.</p>
+
+<p>1- Disable &ldquo;CONFIG_VGA_SWITCHEROO&rdquo;, we&rsquo;re already relying on bbswitch so there&rsquo;s no need for vga_switcheroo.</p>
+
+<p>2- Looks like you&rsquo;re using more than one driver for you nvidia card which is creating conflicts, I suggest that you disable &ldquo;CONFIG_DRM_NOUVEAU&rdquo; and blacklist it&rsquo;s driver. The nvidia driver that you&rsquo;re supposed to use for this setup to work is &ldquo;nvidia.ko&rdquo; provided by the package &ldquo;nvidia-drivers&rdquo;.</p>
+
+<p>3- You should also disable &ldquo;nvidiafb&rdquo; the only framebuffer kernel config that you should be using is &ldquo;CONFIG_DRM_FBDEV_EMULATION&rdquo;.</p>
+
+<p>Keep me updated after you try the suggestions listed above. Best of luck!</p>
+</p>
+  </div>
+  <div class="reply">
+    <p>Drakkar</p>
+    <p>16/07/2017</p>
+    <hr/>
+    <p>Having done what you recommend, it seems that now it works for me and now bbswitch seems to be working, my nvidia card goes out. I&rsquo;m going to follow your web closely, it helped me a lot with bumblebee and with the guide intel-ucode, congratulations for your great work and thank you very much. Greetings from the Canary Islands</p>
+  </div>
+  <div class="reply">
+    <p>DOTSLASHLINUX</p>
+    <p>16/07/2017</p>
+    <hr/>
+    <p>@Drakkar, you&rsquo;re welcome! Glad that it worked for you! Let me know whenever you need any help. Thanks for your feedback!</p>
+  </div>
+  <div class="main-comment">
+    <p>Michael Mounteney</p>
+    <p>23/07/2017</p>
+    <hr/>
+    <p>I&rsquo;d be obliged if you could look over my configuration.  I think I&rsquo;ve done everything as you said.  Mine is a x86_64 build on a Lenovo W520.  When I start lightdm, for example, the system switches to another virtual console but never leaves text-mode (the blinking cursor never disappears).  Relevant output:  (1) lspci -v <a href="https://pastebin.com/g4GDD21J">https://pastebin.com/g4GDD21J</a> (2) dmesg <a href="https://pastebin.com/Fy2WsuFZ">https://pastebin.com/Fy2WsuFZ</a> (3) build use flags for nvidia-drivers <a href="https://pastebin.com/4CLDvPVa">https://pastebin.com/4CLDvPVa</a> (4) build use flags for xf86-video-intel <a href="https://pastebin.com/ZnPM9MmB">https://pastebin.com/ZnPM9MmB</a> (5) build use flags for bumblebee <a href="https://pastebin.com/J8n0zqBB">https://pastebin.com/J8n0zqBB</a> (6) Xorg.0.log <a href="https://pastebin.com/WAMACsNR">https://pastebin.com/WAMACsNR</a> (7) lsmod <a href="https://pastebin.com/AcLuyYq9">https://pastebin.com/AcLuyYq9</a> .  I had &lsquo;modprobe nvidia&rsquo; which accounts for the appearance of that driver in the lspci and lsmod output</p>
+  </div>
+  <div class="reply">
+    <p>DOTSLASHLINUX</p>
+    <p>23/07/2017</p>
+    <hr/>
+    <p>@Michael Mounteney, thanks for visiting the website. After reading through the log files you provided, it seems that bbswitch doesn&rsquo;t want to switch the nvidia card OFF leaving the card always ON (in D0 power state). I&rsquo;m not sure I fully understood the problem you&rsquo;re going through. Is it related to bumblebee or lightdm? Is the card OFF once you boot your system? Is the nvidia driver being loaded automatically upon booting? Can you turn off your card manually as suggested in the article? Is the problem only with lightdm? Hopefully we can figure something out once I fully understand what the problem is. I also noticed that you enabled both uxa and sna USE flags on xf86-video-intel. It&rsquo;d be better if you disabled the uxa USE flag and check if you&rsquo;re using sna as your acceleration method as it may have something to do with your problem. Thanks for passing by! Have a great day!</p>
+  </div>
+  <div class="reply">
+    <p>Michael Mounteney</p>
+    <p>23/07/2017</p>
+    <hr/>
+    <p>Sorry for re-posting.  I didn&rsquo;t appreciate that my OP would only appear when you reviewed it.  Thank you for the answer.</p>
+  </div>
+  <div class="reply">
+    <p>DOTSLASHLINUX</p>
+    <p>23/07/2017</p>
+    <hr/>
+    <p>@Michael Mounteney, oh don&rsquo;t you worry about it. Comments are being monitored to prevent spam, so it may take a while before your comment appears.</p>
+  </div>
+  <div class="reply">
+    <p>Michael Mounteney</p>
+    <p>24/07/2017</p>
+    <hr/>
+    <p><p>Thank you for the reply.</p>
+
+<p>Here are two more relevant files:  (8) /etc/bumblebee/bumblebee.conf <a href="https://pastebin.com/SjWZmK">https://pastebin.com/SjWZmK</a>
+wV (9) kernel .config <a href="https://pastebin.com/gvs5ES">https://pastebin.com/gvs5ES</a> .</p>
+
+<p>I removed use flag uxa and rebuilt.</p>
+
+<p>After rebooting, /proc/acpi/bbswitch contains &ldquo;0000:01:00.0 OFF&rdquo;</p>
+
+<p>If I run &ldquo;primusrun X&rdquo;, the output is as per Xorg.0.log in <a href="https://pastebin.com/WAMACsNR">https://pastebin.com/WAMACsNR</a> includi
+ng the &ldquo;no screens found(EE)&rdquo; line.</p>
+
+<p>After running &ldquo;primusrun X&rdquo; /proc/acpi/bbswitch still contains &ldquo;0000:01:00.0 OFF&rdquo; so it seems th
+at the nvidia driver is not being loaded.</p>
+
+<p>Kernel module &ldquo;nvidia_drm&rdquo; is loaded;  is that significant?</p>
+</p>
+  </div>
+  <div class="reply">
+    <p>DOTSLASHLINUX</p>
+    <p>24/07/2017</p>
+    <hr/>
+    <p>@Michael Mounteney, <mark>primusrun X</mark>? Are you trying to run a Xorg session on your discrete GPU? I&rsquo;d suggest checking <mark>eselect opengl list</mark> and switching it to <mark>xorg-x11</mark>. Another thing I&rsquo;d recommend is test older or stable versions of both the kernel and nvidia-drivers. I had problems getting the kernel and nvidia-drivers to work with bbswitch on the <mark>~amd64</mark> unstable branch , but it&rsquo;s working fine on the <mark>amd64</mark> stable branch (kernel version 4.9.34, nvidia-drivers version 381.22). You might want to disable runtime power manager as well for the nvidia card such as TLP/powertop and see how things go. Oh and the link to the kernel .config you shared is broken. It&rsquo;d be better as well if you clarified what the problem is because it&rsquo;s still vague to me, and perhaps mention the steps required to recreate it. Thanks for stopping by! Have a great day!</p>
+  </div>
+  <div class="main-comment">
+    <p>peedub</p>
+    <p>16/08/2017</p>
+    <hr/>
+    <p>@DOTSLASHLINUX, Great job documenting the process! I have run into a similar issue as to what @drakkar had. On boot bumblebee is running but the card is on and i have the 3 nvidia modules loaded &ldquo;nvidia nvidia_modeset nvidia_drm&rdquo;. I&rsquo;ve compiled nvidia-drivers with USE=&ldquo;-kms&rdquo; but the module is still being loaded and I was under the impression that getting rid of the kmd use flag would get rid of the modeset module but its not seaming to.. nvidia-drivers-384.59-r1. If I rmmod the modules after boot and turn off the card that works. also the card is turned back on when running primusrun glxgears but is not turned back off after exiting due to having the nvidia_modeset module loaded again. I&rsquo;m pretty sure my solution here is to blacklist the nvidia_modeset module but haven&rsquo;t given it a shot to verify if in fact this fi xes the issue or causes yet another. any ways, thanks and cheers for the docs so far, great work!! keep em coming!</p>
+  </div>
+  <div class="reply">
+    <p>DOTSLASHLINUX</p>
+    <p>17/08/2017</p>
+    <hr/>
+    <p>@peedub, thanks for your reply! Indeed, the problem is from nvidia_drm and nvidia_modeset being loaded at boot time. Unless bumblebee and bbswitch were patched to prevent these 3 from loading (which is unlikely), the only way to do that is by disabling the kms USE flag. The reason that they&rsquo;re still being loaded on your end is that the modules were previously built for your kernel so you have to remove them manually or remove the /lib/modules/linux* dir and build the kernel and nvidia-drivers and bbswitch again. That can be troublesome for some users, but give it a shot along with the blacklisting and tell me how things go! Glad you liked the article!</p>
+  </div>
+  <div class="reply">
+    <p>peedub</p>
+    <p>25/08/2017</p>
+    <hr/>
+    <p>@DOTSLASHLINUX after removing the drivers from /lib/modules I now have for the most part everything working as expected. One exception is is with blender, blender loads the nvidia_uvm module and it does not seam that primusrun is able to unload nvidia drivers after nvidia_uvm has been loaded. My /etc/modprobe.d/nvidia-rmmod.conf file has &ldquo;remove nvidia modprobe -r &ndash;ignore-remove nvidia-drm nvidia-modeset nvidia-uvm nvidia&rdquo; so im kinda at a loss as to why it isn&rsquo;t able to unload uvm. Other than that, seams to be working for most other stuff, glxgears tests are as expected. Cheers</p>
+  </div>
+  <div class="reply">
+    <p>DOTSLASHLINUX</p>
+    <p>25/08/2017</p>
+    <hr/>
+    <p>@peedub, well if it was working for the rest of your system as expected, then you can put up with turning it manually when uvm is being loaded when using blender. The correct order is to unload <mark>nvidia-uvm</mark> first then <mark>nvidia</mark>: <mark>modprobe -r nvidia-uvm nvidia</mark>. It&rsquo;s related to CUDA and your blender USE flags, so I&rsquo;ll double check these if I were you. Glad that it worked for everything else though!</p>
+  </div>
+  <div class="main-comment">
+    <p>VICTORGUERRAVELOSO</p>
+    <p>19/08/2017</p>
+    <hr/>
+    <p>@DOTSLASHLINUX Thanks for the Tutorial. Finally i can use Gentoo on my notebook. I`ve been stuck on Arch since the last year cause i couldn&rsquo;t figure out what i was doing wrong. I followed your steps exactly as you said, and it&rsquo;s working!</p>
+  </div>
+  <div class="reply">
+    <p>DOTSLASHLINUX</p>
+    <p>20/08/2017</p>
+    <hr/>
+    <p>@VICTORGUERRAVELOSO Thanks for your stopping by, glad that it worked for you!</p>
+  </div>
+  <div class="main-comment">
+    <p>HerrSchafer</p>
+    <p>28/08/2017</p>
+    <hr/>
+    <p>Thanks for sharing!
+Applications must be started with &ldquo;optirun app&rdquo; in order to use Nvidia card? Switch it ON and OFF should be automatic, as far as I understand the goal of bumblebee. By the way, how will the program knows when to use or not the dGPU?</p>
+  </div>
+  <div class="reply">
+    <p>DOTSLASHLINUX</p>
+    <p>28/08/2017</p>
+    <hr/>
+    <p>@HerrSchafer, thanks for your reply! Applications will use the iGPU when the dGPU is turned off, you don&rsquo;t have to specify anything (the iGPU will be picked by default since it&rsquo;s responsible for the display). Using <mark>optirun app</mark> or <mark>primusrun app</mark> will fire up your dGPU and will start the program you specify on the dGPU. You can install mesa-progs (or mesa-demos or glxinfo) and see for yourself, <mark>glxinfo | grep &lsquo;OpenGL renderer&rsquo;</mark> will show the internal card, try adding optirun or primusrun <mark>optirun glxinfo | grep &lsquo;OpenGL renderer&rsquo;</mark> and you&rsquo;ll get the nvidia card in the output. Hope that helps!</p>
+  </div>
+  <div class="main-comment">
+    <p>Mike</p>
+    <p>05/10/2017</p>
+    <hr/>
+    <p><p>Hi, thank you very much, everything was very clear. However, I get this error message when I arrive at:</p>
+
+<p>optirun glxgears</p>
+
+<p>libGL error: unable to load driver: i965_dri.so
+libGL error: driver pointer missing</p>
+
+<p>Did you ever see this before? How can I debug it?</p>
+</p>
+  </div>
+  <div class="reply">
+    <p>DOTSLASHLINUX</p>
+    <p>05/10/2017</p>
+    <hr/>
+    <p><p>@Mike, Thanks for your feedback. To debug this problem (and any libGL related problem), you&rsquo;ll want to add this environment variable before the command you want to execute (perhaps share its output as well):</p>
+
+<pre><code>LIBGL_DEBUG=verbose optirun glxgears
+</code></pre>
+
+<p>As for the problem you&rsquo;re receiving, would you mind sharing your system logs?</p>
+
+<p>1- dmesg</p>
+
+<p>2- kernel config (if possible)</p>
+
+<p>3- lsmod</p>
+
+<p>4- lspci -nnkkvvv</p>
+
+<p>5- /var/log/rc.log (if it exists)</p>
+
+<p>6- the USE flags for mesa, bumblebee, xf86-video-intel, nvidia-drivers, bbswitch and primus</p>
+
+<p>I&rsquo;d also check if CONFIG_DRM_I915_USERPTR is included in your respective kernel configuration or not.</p>
+
+<p>According to the error message you&rsquo;ve provided, it seems that the i965 driver refused to load, which may be due to a disabled i965 USE flag (which is unlikely if you&rsquo;ve followed the guide above).</p>
+
+<p>Hopefully, we&rsquo;ll be able to solve this problem! Keep me updated Mike!</p>
+</p>
+  </div>
+  <div class="reply">
+    <p>Mike</p>
+    <p>05/10/2017</p>
+    <hr/>
+    <p><p>Thank you so much! Actually I found the problem - between the chair and the computer. I had put the wrong driver name in make.conf (i915 instead of i965, duh) Everything is working exactly as advertised now. Your guide is really great!</p>
+
+<p>Just another question - I tried optirun nvidia-settings, the program starts (and runs on nvidia) but doesn&rsquo;t allow any settings because the xorg.server is not running on nvidia, I suppose this is perfectly normal and expected behavior, right?</p>
+
+<p>So, my laptop will only use nvidia if and when I need it, and any program needing it must be launched with a preceding optirun.</p>
+
+<p>And bbswitch must be recompiled with every kernel, together with nvidia driver and intel drivers.</p>
+
+<p>I&rsquo;m on a HP ENVY Notebook - 15-ae106nl (ENERGY STAR) Thanks again!</p>
+</p>
+  </div>
+  <div class="reply">
+    <p>DOTSLASHLINUX</p>
+    <p>05/10/2017</p>
+    <hr/>
+    <p><p>@Mike, That&rsquo;s really nice to hear, I&rsquo;m super glad that it worked for you!</p>
+
+<p>As for running nvidia-settings, yes it&rsquo;s perfectly normal, you just have to disable the bridge and specify a display and you&rsquo;ll be good to go:</p>
+
+<p><mark>optirun -b none -c nvidia-settings :8</mark></p>
+
+<p>Yes, you&rsquo;ll have to recompile bbswitch and nvidia-drivers as they&rsquo;re the only out of tree kernel modules. You can simply execute:</p>
+
+<p><mark>emerge -av @module-rebuild</mark></p>
+
+<p>and it&rsquo;ll automatically recompile all out of tree kernel modules after updating your kernel version.</p>
+
+<p>Hope that helps! Thanks for stopping by!</p>
+</p>
+  </div>
+  <div class="reply">
+    <p>Mike</p>
+    <p>10/10/2017</p>
+    <hr/>
+    <p><p>I tried:</p>
+
+<p>optirun -b none -c nvidia-settings :8</p>
+
+<p>but I get</p>
+
+<p>Error running &lsquo;:8&rsquo;: No such file or directory
+&lsquo;</p>
+</p>
+  </div>
+  <div class="reply">
+    <p>DOTSLASHLINUX</p>
+    <p>11/10/2017</p>
+    <hr/>
+    <p>@Mike, you&rsquo;ll need to enable the gtk3 USE flag on the nvidia-drivers package and ensure that nvidia-settings is installed.</p>
+  </div>
+  <div class="reply">
+    <p>Mike</p>
+    <p>12/10/2017</p>
+    <hr/>
+    <p><p>Ok, there were two problems: first, you can only run an xserver on :8 if you are working from X started with startx.
+From a desktop environment started with xdm it won&rsquo;t work.
+Second, the correct command is apparently</p>
+
+<p>optirun -b none nvidia-settings :8 ( without -c option )</p>
+
+<p>However, nvidia-settings still complains about xserver not running on nvidia.</p>
+
+<p>Actually, I tried to get nvidia working on this laptop without bumblebee (stopping bumblebee service, unloading bbswitch module, loading nvidia module, using an xorg.conf file which should be ok) and I get a black screen. But no error messages from startx. I also tried adding the xrandr lines in .xinitrc as someone suggested, but doesn&rsquo;t solve the problem.</p>
+
+<p>So, now I have two questions:</p>
+
+<p>1) should I bother about getting my laptop working with just the nvidia driv er at all, since apparently apps with bumblebee work? Or is this going to bite me somehow?</p>
+
+<p>2) if you think it would be safer to check that nvidia-driver works without bumblebee, isn&rsquo;t there some script somewhere that can do a proper nvidia setup? I mean, distro&rsquo;s like Ubuntu or Mint do this automagically. Or what should I try?</p>
+</p>
+  </div>
+  <div class="reply">
+    <p>DOTSLASHLINUX</p>
+    <p>12/10/2017</p>
+    <hr/>
+    <p><p>@Mike, You&rsquo;re asking too many questions in this regard. This setup is for those who have an Intel integrated GPU and a NVIDIA discrete GPU and want to get an optimus-like setup on a GNU/Linux distro. It isn&rsquo;t a setup for disabling the integrated GPU completely and running everything on the discrete GPU.</p>
+
+<p>As for the nvidia-settings command that&rsquo;s weird. Last time I checked I had to use the &lsquo;-c&rsquo; in order to get it working.</p>
+
+<p>Don&rsquo;t remove the xdm part above if you&rsquo;re intending to use xdm (which makes me wonder why not stick to xinit)&hellip;</p>
+
+<p>Yes, on Arch Linux setting bumblebee is as easy as it gets. Getting bumblebee running on Arch is a pretty straightforward, error-free and no-hacks-required way (probably the easiest among all distributions out there).</p>
+</p>
+  </div>
+  <div class="main-comment">
+    <p>Raptor</p>
+    <p>14/10/2017</p>
+    <hr/>
+    <p>I just wanted to say thanks a lot ! worked like a charm ! the only guide that is truly thorough about gentoo &amp; bumblebee . My battery time literally jumped to more than double thanks to this.</p>
+  </div>
+  <div class="reply">
+    <p>DOTSLASHLINUX</p>
+    <p>14/10/2017</p>
+    <hr/>
+    <p>@Raptor, Thanks so much for your feedback! Glad that it worked for you!</p>
+  </div>
+  <div class="main-comment">
+    <p>Dorian Silenus</p>
+    <p>11/11/2017</p>
+    <hr/>
+    <p><p>Hello and thank you for this tutorial!</p>
+
+<p>I would like to add something here&hellip;
+First off, I am not sure whether disabling laptop_mode daemon is mandatory (for me, it works with laptop_mode enabled - but I&rsquo;m going to test it a bit more as soon as I can).
+However, what was apparently mandatory for my system, was adding &ldquo;pcie_port_pm=off&rdquo; in the kernel GRUB line (GRUB_CMDLINE_LINUX_DEFAULT=&ldquo;pcie_port_pm=off&rdquo; in /etc/default/grub, and updating grub.cfg afterwards). Supposedly, this (sometimes?) happens with kernel &gt;=4.8, so you might want to consider adding it to your article.</p>
+
+<p>Thanks again!</p>
+</p>
+  </div>
+  <div class="reply">
+    <p>DOTSLASHLINUX</p>
+    <p>14/10/2017</p>
+    <hr/>
+    <p><p>@Dorian Silenus, Thanks for stopping by and sharing your thought and experience on the matter. To be honest I&rsquo;ve been trying to remember the workaround that fixed bbswitch which 4.8 broke but to no avail.</p>
+
+<p>Thanks for taking some of your time to share the workaround and the article will be updated as soon as possible.</p>
+</p>
+  </div>
+  <div class="reply">
+    <p>Dorian Silenus</p>
+    <p>11/11/2017</p>
+    <hr/>
+    <p><p>@DOTSLASHLINUX null sheen.
+Your article pointed me in the right direction in the first place, and it&rsquo;s good to have all the bells and whistles in one place. Have you considered editing the Gentoo Wiki and putting your tutorial there? Also, some of those things (e.g. the /etc/inint.d/bumblebee file) should really be updated by the package maintainers&hellip; I honestly don&rsquo;t understand why that isn&rsquo;t happening.</p>
+
+<p>As for the workaround, I should probably mention that it renders PCIe-related powersaving unusable, FWIW.</p>
+</p>
+  </div>
+  <div class="reply">
+    <p>DOTSLASHLINUX</p>
+    <p>11/11/2017</p>
+    <hr/>
+    <p><p>@Dorian Silenus, well several parts of the articles written on DOTSLASHLINUX were added to the Gentoo Wiki where appropriate. The thing is, I consider my articles (especially this one) to be extrememly hacky, meaning that they probably won&rsquo;t appeal to the majority of users hence maintainers choose to go with what&rsquo;s safe or used by a bigger userbase.</p>
+
+<p>Another thing is that I&rsquo;m using the unstable branch and maintainers expect users to use similar hacks to fix some of these problems until fixes are pushed into the stable branch.</p>
+
+<p>I believe that adding xdm as a dependency for the bumblebee service is to appeal to the larger user base that rely on display managers instead of using xinit. This is just a wild guess though.</p>
+
+<p>Thanks for your valued replies!</p>
+</p>
+  </div>
+  <div id="leavecomment">
+    <h3>Leave A Comment</h3>
+    <form action="https://getsimpleform.com/messages?form_api_token=4458712617021cb12239cbfd2942b227" method="post">
+      <input name="options[redirect]" type="hidden" value="https://www.dotslashlinux.com//post/setting-up-bumblebee-on-gentoo-linux/#comments">
+      <input name="options[slug]" type="hidden" value="setting up bumblebee on gentoo linux">
+      <input type="hidden" id="reply" name="fields[replying_to]" value="">
+      <input name="fields[name]" type="text" placeholder="Name" required>
+      <textarea rows="5" name="fields[comment]" placeholder="Your comment here.&#10;&#10;Comments support Markdown.&#10;&#10;Comments are being moderated to prevent spam so it may take a while before your comment is posted." required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+
+<div class="box footer">
+  <h4>Copyrights &copy; 2017-2018 <a href="/">DOTSLASHLINUX</a> | Licensed under <a id="creativecommons" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></h4>
+</div>
+</div>
+</div>
+<script src="/js/c.js"></script>
+</body>
+</html>
+

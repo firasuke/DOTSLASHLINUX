@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Linux Kernel Configuration Guide Part 2 - [∗] Gentoo Linux support  ---&gt; | DOTSLASHLINUX</title>
+    <meta name="description" content="DOTSLASHLINUX is a GNU/Linux enthusiasts' hub, featuring configuration guides for the linux kernel and several lightweight open source and free software.">
+    <meta name="author" content="Firas Khalil Khana">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="css/c.css">
+    <link rel="alternate" type="application/rss+xml" title="DOTSLASHLINUX RSS" href="/feed.xml">
+  </head>
+  <body>
+    <div class="row middle-xs middle-sm middle-md middle-lg container">
+      <div class="col-xs-12 center-xs col-sm-4 start-sm col-md-4 start-md col-lg-4 start-lg">
+        <div class="box brand">
+          <h1><a href="https://www.dotslashlinux.com/">DOTSLASHLINUX</a></h1>
+        </div>
+      </div>
+      <div class="col-xs-12 center-xs col-sm-8 end-sm col-md-8 end-md col-lg-8 end-lg">
+        <div class="box">
+          <nav>
+            <ul>
+              <li class=""><a href="/">HOME</a></li>
+              <li class=""><a href="/page/search/">SEARCH</a></li>
+              <li><a href="/index.xml" style="color: #f26522;">RSS</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content">
+        <div class="box patreon">
+          <p>Kindly support DOTSLASHLINUX on <a href="https://www.patreon.com/DOTSLASHLINUX" target="_target">Patreon</a> to keep the website up and running while remaining ads free.</p>
+        </div>
+
+
+<table>
+  <tr>
+    <th>Part</th>
+    <th>Section</th>
+    <th>Link</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Intro</td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-1-introduction/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>[&lowast;] Gentoo Linux support  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-2-gentoo-linux-support/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>General setup  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-3-general-setup/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>[&lowast;] Enable loadable module support  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-4-enable-loadable-module-support/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>[&lowast;] Enable the block layer  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-5-enable-the-block-layer/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>Processor type and features  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-6-processor-type-and-features/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>Power management and ACPI options  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-7-power-management-and-acpi-options/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>Bus options (PCI etc.)  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-8-bus-options-pci-etc/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>9</td>
+    <td>Executable file formats / Emulations  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-9-executable-file-formats-emulations/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>10</td>
+    <td>[&lowast;] Networking support  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-10-networking-support/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>11</td>
+    <td>Device Drivers  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-11-device-drivers/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>12</td>
+    <td>Firmware Drivers  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-12-firmware-drivers/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>13</td>
+    <td>File systems  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-13-file-systems/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>14</td>
+    <td>Kernel hacking  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-14-kernel-hacking/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>15</td>
+    <td>Security options  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-15-security-options/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>16</td>
+    <td>-&lowast;- Cryptographic API  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-16-cryptographic-api/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>17</td>
+    <td>[&lowast;] Virtualization  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-17-virtualization/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>18</td>
+    <td>Library routines  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-18-library-routines/">Click Here</a></td>
+  </tr>
+</table>
+<div class="box kernelmap">
+  <pre><code class="language-properties">Kernel Sources:       sys-kernel/gentoo-sources
+
+Kernel Version:       4.14.12
+
+Last Updated on:      06/01/2018
+
+Update Notice:        1- Excluded 'CONFIG_PAGE_TABLE_ISOLATION' in 'Security options --->'
+                      2- Included 'CONFIG_STANDALONE' in 'Device Drivers  --->'
+                      3- Included 'CONFIG_PREVENT_FIRMWARE_BUILD' in 'Device Drivers  --->'
+                      4- Included 'CONFIG_X86_5LEVEL' in 'Processor type and features  --->'
+                      5- Included 'CONFIG_ORC_UNWINDER' in 'Kernel hacking  --->'
+                      6- Excluded QEMU-virtualization-related options in favor of VirtualBox
+                      7- Excluded swap-related options
+                      8- Excluded 32-bit support
+                      9- Switched from XFS to EXT4
+
+Priorities:           1- high performance
+                      2- minimal
+                      3- low memory footprint
+                      4- small size
+                      5- power saving
+                      6- security
+                      7- low-latency
+
+Total Options:        2469 (grep -c 'CONFIG_' DOTSLASHLINUX.config)
+
+Included Options:     645 (grep -c '=y' DOTSLASHLINUX.config)
+
+Excluded Options:     1761 (grep -c 'is not set' DOTSLASHLINUX.config)
+
+Final Size (LZ4):     5,644,240 Bytes
+
+Patches Applied:      1- UKSM-4.14 Patch (https://github.com/dolohow/uksm/blob/master/uksm-4.14.patch)
+
+Contributors:         Firas Khalil Khana [irc: firas] [email: firasuke@gmail.com]
+
+Side Notes:           1- Options that aren't listed here are excluded [ ].
+                      2- These guides provide users with a solid starting setup to build on.
+                      3- These guides are constantly being updated.
+                      4- If there's something I didn't explain properly or I misexplained
+                         then please do let me know either by kindly leaving a comment below
+                         or by sending me an email on: firasuke@gmail.com</code></pre>
+</div>
+
+<div class="box map">
+  <h2>The Linux Kernel Configuration Guide Part 2 - [∗] Gentoo Linux support  ---&gt;</h2>
+  <div class="share">
+    <a id="facebook" href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fthe-linux-kernel-configuration-guide-part-2-gentoo-linux-support%2f" rel="nofollow" target="_blank">Facebook</a>
+    <a id="twitter" href="https://www.twitter.com/intent/tweet?source=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fthe-linux-kernel-configuration-guide-part-2-gentoo-linux-support%2f&text=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fthe-linux-kernel-configuration-guide-part-2-gentoo-linux-support%2f" rel="nofollow" target="_blank">Twitter</a>
+    <a id="googleplus" href="https://plus.google.com/share?url=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fthe-linux-kernel-configuration-guide-part-2-gentoo-linux-support%2f" rel="nofollow" target="_blank">Google+</a>
+    <a id="reddit" href="https://www.reddit.com/submit?url=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fthe-linux-kernel-configuration-guide-part-2-gentoo-linux-support%2f" rel="nofollow" target="_blank">Reddit</a>
+    <a id="linkedin" href="http://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fthe-linux-kernel-configuration-guide-part-2-gentoo-linux-support%2f&source=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fthe-linux-kernel-configuration-guide-part-2-gentoo-linux-support%2f" rel="nofollow" target="_blank">LinkedIn</a>
+  </div>
+  <div class="frame"><a href="/img/kernel2.png" target="_blank"><img src="/img/kernel2.png" alt="kernel2"></div></a>
+    <div class="info">Firas Khalil Khana | 25/08/2017</div>
+    <p><h3>Prerequisites</h3>
+It&rsquo;s preferrable if you were using a gnu/linux distro of any kind and have the ncurses library and make installed. I urge you to use one of the recommended distros and Gentoo is favored among others.
+<br/>
+<br/>
+I highly recommend that you stick with the ncurses version <mark>make menuconfig</mark>, since it&rsquo;s much better than the regular <mark>make config</mark>, as you can save your progress, go back and forth with options, can be opened in any terminal emulator with a proper size (when ncurses in installed) as well as on ttys and that&rsquo;s extremely helpful when rescuing your system since you&rsquo;ll be looking at the same interface wherever you go and whatever you choose.
+<hr/>
+<h3>Basic Controls</h3>
+The <mark>&uarr;</mark> and the <mark>&darr;</mark> arrows can be used to move between the configuration options shown.
+<br/>
+<br/>
+The <mark>&rarr;</mark> and the <mark>&larr;</mark> along with the <mark>&#8633;</mark> (tab) button can be used to move between the options (Select, Exit, Help, Save and Load) in the horizontal menu below.
+<br/>
+<br/>
+The <mark>/</mark> button can be used to search the available symbols. In order not to create a state of confusion, I&rsquo;ll be using the word symbol for the capitalized underscore-separated version of the name. For example:</p>
+
+<pre><code class="language-properties">Symbol: CONFIG_MODULES
+Name: Enable loadable modules support
+</code></pre>
+
+<p>The <mark>spacebar</mark> button can be used to include options in the kernel either as built-in [&lowast;] or as modules [M] or exclude them [ ].
+<br/>
+<br/>
+Similarly the <mark>y</mark> key can be used to include options [&lowast;], and the <mark>n</mark> key can be used for excluding options [ ].
+<br/>
+<br/>
+The <mark>&#9166;</mark> (enter/return) button can be used to access the available nested child options for any single parent option.
+<br/>
+<br/>
+The <mark>z</mark> key can be used to toggle hidden kernel options, this can be extremely useful if you&rsquo;re searching for an excluded kernel option (it&rsquo;ll make it easier to find that excluded option and include the options it requires to be enabled).
+<br/>
+<br/>
+Below is an explanation of the symbols before the names of the kernel options:</p>
+
+<pre><code class="language-properties">Included, built-in, enabled: [∗], &lt;∗&gt;, (X), (STRING), (57), (0x1000000)
+Forcibly included, forcibly built-in, forcibly enabled: -∗-
+
+Excluded, disabled: [ ], &lt; &gt;, ()
+Forcibly excluded, forcibly disabled: - -
+</code></pre>
+
+<p>and their relative types:</p>
+
+<pre><code class="language-properties">boolean: [ ], [∗], -∗-, - -
+
+tristate: &lt; &gt;, &lt;∗&gt;, &lt;M&gt;, -∗-, - -
+
+string: (STRING), ()
+
+integer: (57), ()
+
+hex: (0x1000000), ()
+</code></pre>
+
+<hr/>
+
+<p><h3>(Gentoo Specific Options) Gentoo Linux  &mdash;&gt;</h3>
+The first section you&rsquo;ll see in the menu options when using Gentoo Linux, will be the Gentoo Linux section (that was predictable =D). Select that option and you&rsquo;ll see the following:</p>
+
+<pre><code class="language-properties">[∗] Gentoo Linux support
+[∗]   Linux dynamic and persistent device naming (userspace devfs) support
+[ ]   Select options required by Portage features
+    Support for init systems, system and service managers  ---&gt;
+</code></pre>
+
+<p><h3>[&lowast;] Gentoo Linux support</h3></p>
+
+<pre><code class="language-properties">Symbol:     CONFIG_GENTOO_LINUX
+
+Help:       In order to boot Gentoo Linux a minimal set of config settings needs to
+            be enabled in the kernel; to avoid the users from having to enable them 
+            manually as part of a Gentoo Linux installation or a new clean config,
+            we enable these config settings by default for convenience.
+
+            See the settings that become available for more details and fine-tuning.
+
+Type:       boolean
+
+Choice:     built-in [∗]
+
+Reason:     If you're on Gentoo Linux (or managed to get a copy of one of the sources
+            available in the gentoo repos), then it's quite obvious that this option 
+            should be built in.
+</code></pre>
+
+<p><h3>[&lowast;] Linux dynamic and persistent device naming (userspace devfs) support</h3></p>
+
+<pre><code class="language-properties">Symbol:     CONFIG_GENTOO_LINUX_UDEV
+
+Help:       In order to boot Gentoo Linux a minimal set of config settings needs to
+            be enabled in the kernel; to avoid the users from having to enable them
+            manually as part of a Gentoo Linux installation or a new clean config,
+            we enable these config settings by default for convenience.
+            
+            Currently this only selects TMPFS, DEVTMPFS and their dependencies.
+            TMPFS is enabled to maintain a tmpfs file system at /dev/shm, /run and
+            /sys/fs/cgroup; DEVTMPFS to maintain a devtmpfs file system at /dev.
+
+            Some of these are critical files that need to be available early in the
+            boot process; if not available, it causes sysfs and udev to malfunction.
+
+            To ensure Gentoo Linux boots, it is best to leave this setting enabled;
+            if you run a custom setup, you could consider whether to disable this.
+
+Type:       boolean
+
+Choice:     built-in [∗]
+
+Reason:     Include this option in for a bootable gentoo installation =D.
+</code></pre>
+
+<p><h3>[ ] Select options required by Portage features</h3></p>
+
+<pre><code class="language-properties">Symbol:     CONFIG_GENTOO_LINUX_PORTAGE
+
+Help:       This enables options required by various Portage FEATURES.
+            Currently this selects:
+
+            CGROUPS     (required for FEATURES=cgroup)
+            IPC_NS	(required for FEATURES=ipc-sandbox)
+            NET_NS	(required for FEATURES=network-sandbox)
+            SYSVIPC     (required by IPC_NS)
+
+            It is highly recommended that you leave this enabled as these FEATURES
+            are, or will soon be, enabled by default.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     It's highly recommended that you build this set of options in your kernel.
+            
+            Users who want to exclude CONFIG_CGROUPS, may want to exclude this option
+            and build CONFIG_NAMESPACES, CONFIG_IPC_NS, CONFIG_NET_NS and CONFIG_SYSVIPC
+            into the kernel (which is what I did).
+</code></pre>
+
+<p><h3>Support for init systems, system and service managers  &mdash;&gt;</h3>
+<h3>[&lowast;] OpenRC, runit and other script based systems and managers</h3></p>
+
+<pre><code class="language-properties">Symbol:     CONFIG_GENTOO_LINUX_INIT_SCRIPT
+
+Help:       The init system is the first thing that loads after the kernel booted.
+            
+            These config settings allow you to select which init systems to support;
+            instead of having to select all the individual settings all over the
+            place, these settings allows you to select all the settings at once.
+            
+            This particular setting enables all the known requirements for OpenRC,
+            runit and similar script based systems and managers.
+            
+            If you are unsure about this, it is best to leave this setting enabled.
+
+Type:       boolean
+
+Choice:     built-in [∗]
+
+Reason:     It's highly recommended that you include this option in your kernel if
+            you're using OpenRC or runit as your init system.
+
+            You can safely exclude this option only if you're using systemd instead.
+</code></pre>
+
+<p><h3>[ ] systemd</h3></p>
+
+<pre><code class="language-properties">Symbol:     CONFIG_GENTOO_LINUX_INIT_SYSTEMD
+
+Help:       The init system is the first thing that loads after the kernel booted.
+            
+            These config settings allow you to select which init systems to support;
+            instead of having to select all the individual settings all over the
+            place, these settings allows you to select all the settings at once.
+            
+            This particular setting enables all the known requirements for systemd;
+            it also enables suggested optional settings, as the package suggests to.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     You can safely exclude this option if you're using OpenRC or runit as your
+            init system.
+            
+            Include this option only if you're using systemd instead.
+</code></pre>
+
+<hr/>
+
+<p><h3>Chinese Translation</h3>
+One of DOTSLASHLINUX followers 杨鑫 (Yang Mame) from China, decided to follow up with the series and provide Chinese translation of the kernel configuration guides on his blog.
+<br/>
+<br/>
+To read this guide in Chinese <a href="https://blog.yangmame.top/Linux内核配置指南-Gentoo-Linux-support.html" target="_blank">click here</a>.</p>
+
+</div>
+<div id="comments" class="box">
+  
+  <div id="leavecomment">
+    <h3>Leave A Comment</h3>
+    <form action="https://getsimpleform.com/messages?form_api_token=4458712617021cb12239cbfd2942b227" method="post">
+      <input name="options[redirect]" type="hidden" value="https://www.dotslashlinux.com//post/the-linux-kernel-configuration-guide-part-2-gentoo-linux-support/#comments">
+      <input name="options[slug]" type="hidden" value="the linux kernel configuration guide part 2 gentoo linux support">
+      <input type="hidden" id="reply" name="fields[replying_to]" value="">
+      <input name="fields[name]" type="text" placeholder="Name" required>
+      <textarea rows="5" name="fields[comment]" placeholder="Your comment here.&#10;&#10;Comments support Markdown.&#10;&#10;Comments are being moderated to prevent spam so it may take a while before your comment is posted." required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+
+<div class="box footer">
+  <h4>Copyrights &copy; 2017-2018 <a href="/">DOTSLASHLINUX</a> | Licensed under <a id="creativecommons" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></h4>
+</div>
+</div>
+</div>
+<script src="/js/c.js"></script>
+</body>
+</html>
+

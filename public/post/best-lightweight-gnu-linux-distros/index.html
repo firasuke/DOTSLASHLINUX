@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Lightweight GNU/Linux Distros | DOTSLASHLINUX</title>
+    <meta name="description" content="DOTSLASHLINUX is a GNU/Linux enthusiasts' hub, featuring configuration guides for the linux kernel and several lightweight open source and free software.">
+    <meta name="author" content="Firas Khalil Khana">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="css/c.css">
+    <link rel="alternate" type="application/rss+xml" title="DOTSLASHLINUX RSS" href="/feed.xml">
+  </head>
+  <body>
+    <div class="row middle-xs middle-sm middle-md middle-lg container">
+      <div class="col-xs-12 center-xs col-sm-4 start-sm col-md-4 start-md col-lg-4 start-lg">
+        <div class="box brand">
+          <h1><a href="https://www.dotslashlinux.com/">DOTSLASHLINUX</a></h1>
+        </div>
+      </div>
+      <div class="col-xs-12 center-xs col-sm-8 end-sm col-md-8 end-md col-lg-8 end-lg">
+        <div class="box">
+          <nav>
+            <ul>
+              <li class=""><a href="/">HOME</a></li>
+              <li class=""><a href="/page/search/">SEARCH</a></li>
+              <li><a href="/index.xml" style="color: #f26522;">RSS</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content">
+        <div class="box patreon">
+          <p>Kindly support DOTSLASHLINUX on <a href="https://www.patreon.com/DOTSLASHLINUX" target="_target">Patreon</a> to keep the website up and running while remaining ads free.</p>
+        </div>
+
+
+<div class="box map">
+  <h2>Best Lightweight GNU/Linux Distros</h2>
+  <div class="share">
+    <a id="facebook" href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fbest-lightweight-gnu-linux-distros%2f" rel="nofollow" target="_blank">Facebook</a>
+    <a id="twitter" href="https://www.twitter.com/intent/tweet?source=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fbest-lightweight-gnu-linux-distros%2f&text=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fbest-lightweight-gnu-linux-distros%2f" rel="nofollow" target="_blank">Twitter</a>
+    <a id="googleplus" href="https://plus.google.com/share?url=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fbest-lightweight-gnu-linux-distros%2f" rel="nofollow" target="_blank">Google+</a>
+    <a id="reddit" href="https://www.reddit.com/submit?url=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fbest-lightweight-gnu-linux-distros%2f" rel="nofollow" target="_blank">Reddit</a>
+    <a id="linkedin" href="http://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fbest-lightweight-gnu-linux-distros%2f&source=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fbest-lightweight-gnu-linux-distros%2f" rel="nofollow" target="_blank">LinkedIn</a>
+  </div>
+  <div class="frame"><a href="/img/lightweight.png" target="_blank"><img src="/img/lightweight.png" alt="lightweight"></div></a>
+    <div class="info">Firas Khalil Khana | 21/03/2017</div>
+    <p>In this article I&rsquo;ll be talking about some lightweight GNU/Linux distro that don&rsquo;t sacrifice conveniency for being lightweight. (Yes I&rsquo;m looking at you TinyCoreLinux)&hellip;
+<br/>
+<br/>
+Let&rsquo;s define some rough outlines before venturing any further. The distros that I&rsquo;ll be mentioning won&rsquo;t be those super tiny ones that can be run on a toaster. They will be distros that can be run mainly on a x64/x32 machine and possibly on ARM hardware.
+<br/>
+<br/>
+<hr/>
+<h3><a href="https://gentoo.org/" target="_blank">Gentoo Linux</a></h3>
+Who didn&rsquo;t see this coming&hellip; The truth is that gentoo is an awesome independent source-based rolling-release GNU/Linux Distro. What that means is that you download the source code of the packages you want and build them. The devs were kind enough to provide a precompiled version of the basic files used for the installation of gentoo known as stages.
+<br/>
+<br/>
+&ldquo;But wait aren&rsquo;t source files bigger than their compiled relatives?&rdquo;, bigger yes as they take more space, but once you&rsquo;ve compiled the package the result is almost always smaller (even if by 1%) that it&rsquo;s original relative. Not only that but you can choose what you want from a certain package and disable what you don&rsquo;t want (this feature is known as USE flags).
+<br/>
+<br/>
+Why on earth would you want to download all the locales available in the world for every single package when you only speak one maybe two or three languages? Why would you need xorg server support and sound support when you&rsquo;re building a headless server (without a GUI)? Why would you need networking support in a package that you know most certainly isn&rsquo;t going to use it anyways? The list goes on and on&hellip;
+<br/>
+<br/>
+The same thing that goes for the packages can be applied to the kernel as they highly recommend that you build your own kernel. For example, I was able to idle at 37mb RAM usage on a headless 64bit machine, and at 49mb RAM usage using DWM (a super lightweight dynamic wm that does its thing perfectly) and I had everything working from sound to microcode updates to compositing to everything just name it&hellip; (Don&rsquo;t you worry I&rsquo;ll be posting my results and my builds and what I did to achieve them later on).
+The number of packages it provides by default is also quite notable. It can be extended further more using overlays (some are official and some are not).
+<br/>
+<br/>
+&ldquo;Alright I&rsquo;ll go download that gentoo and install it on my Pi!!&rdquo;&hellip; woah woah woah hold on there&hellip; It&rsquo;s true that gentoo has lots of pros, but let&rsquo;s look at the cons as well. First of all compiling everything from source is a time consuming, heat producing and age reducing process.. (your age as well as the hardware&rsquo;s age). I was running gentoo on my toshiba laptop and compiling everything meant that I had to leave the machine running at 80 to 90 degrees celsius and at 90-99% CPU usage for times varying from 1 minute to sometimes hours.
+<br/>
+<br/>
+My laptop had a quad core intel cpu, now imagine doing that on a pi&hellip; I wonder if it&rsquo;s ever going to finish compiling&hellip; But you can as always cross-compile by forcing your stronger higher end hardware to build the packages with a configuration suitable for that pi or any other lower end hardware. &ldquo;Ok I have a high-end PC should I download gentoo now?&rdquo;&hellip; The truth is that gentoo requires a lot and a lot of knowledge to work with. But if you&rsquo;re interested I&rsquo;ll be more than pleased to help you on that (let me know by leaving a comment below).
+<br/>
+<br/>
+<hr/>
+<h3><a href="https://www.voidlinux.eu/" target="_blank">Void Linux</a></h3>
+&ldquo;Wait what? I&rsquo;ve never heard of this distro before? How did it make it here?&rdquo;.. Simply said it EARNED it. Sorry for being too loud but that&rsquo;s the truth. Void Linux is an independent rolling-release GNU/Linux distro, developed entirely by volunteers and they nailed every aspect in it. Everything in it is lightweight and does what it needs to do perfectly. Their package manager xbps is awesome. Their service manager runit kicks systemd&rsquo;s and openrc&rsquo;s ass. It boots under 10 seconds on an old HDD and between 2-4 seconds on an SSD.
+<br/>
+<br/>
+They even provide two flavors of void. The glibc based void with glibc packages and the musl based void with musl based packages. The different between the two is that musl is lighter and somewhat faster but has very little packages as many software in the GNU/Linux won&rsquo;t compile using musl. But if you&rsquo;re lucky and all the software you use is available in the musl repositories then go for the musl version.
+<br/>
+<br/>
+That&rsquo;s not it they even provide a source based version of void using xbps-src, which I think is good for those who want to tinker with their packages. But seriously if you want to use a source based distro just choose gentoo&hellip;
+<br/>
+<br/>
+I can&rsquo;t think of any cons for void as I didn&rsquo;t use it for a long period of time (it took me alot to configure bumblebee for my optimus laptop which I didn&rsquo;t like other than that it was great).
+<br/>
+<br/>
+<hr/>
+<h3><a href="https://www.archlinux.org/" target="_blank">Arch Linux</a></h3>
+Oh boy&hellip; You saw this coming from a mile didn&rsquo;t you&hellip; It&rsquo;s our all time star Arch Linux! The distro with the worst community ever. The distro where I tried to report several bugs in the irc and got roasted as either they were upstream or that I&rsquo;m a retard for using the features that bugs made unavailable&hellip; Anyways&hellip;
+<br/>
+<br/>
+Archlinux, is an independent rolling-release binary based GNU/Linux distro. And no it&rsquo;s not hard to install unlike gentoo&hellip; In fact the whole installation process can be automated using scripts so you don&rsquo;t have to manually reinstall it (if you ever needed to). In fact that&rsquo;s what some distros are doing. They&rsquo;re automating the installation process of archlinux and leave you with a basic archlinux install.
+<br/>
+<br/>
+Archlinux uses systemd by default which will hopefully be a distro of itself if they keep doing what they&rsquo;re doing now. Thus it offers you a fast boot time (faster than OpenRC in gentoo and slightly slower than runit on void), and higher memory footprint for its journald service. The wiki is astonishing. It has everything you need to know to make arch whatever you want. But that doesn&rsquo;t mean that their community should badmouth everyone who asks for help. In fact the installation of archlinux is the easier among the distros mentioned on this list, so they get no right to brag&hellip;
+<br/>
+<br/>
+The official repositories offer a fair amount of packages (more than voidlinux and less than gentoo). This can also be extended using the aur which is completely unofficial. Everything seems super smooth with arch as pacman does most of the work for you. Optimus laptops won&rsquo;t have any hard time using arch. In fact arch is the only distro that makes the &ldquo;But I have 2 graphics card an iGPU and dGPU&hellip;&rdquo; a problem of the past. The devs did a lot of configuration for the packages so you don&rsquo;t have to bother about missing libs or having to relink libs or stuff like that.
+<br/>
+<br/>
+You don&rsquo;t need to know that much in GNU/Linux to install arch. The amount of knowledge needed to install arch is like a mere 5% to 20% (at max) compared to gentoo.
+<br/>
+<br/>
+<hr/>
+<h3><span class="line-center">Conclusion</span></h3>
+If you have the time and wanted to learn GNU/Linux then go with Gentoo. Otherwise go with Arch or Void. Just remember this one thing &ldquo;never make an OS your end goal unless you&rsquo;re willing to become a sysadmin&rdquo;.
+<br/>
+<br/>
+In the end, every distro can be lightweight if it offered the means for users to customize it to their likings without breaking on every stupid thing. This is just the start, after you&rsquo;ve installed a base system using one of these distros, be sure to follow other guides on our site to choose your set of lightweight apps suitable for your work.</p>
+
+</div>
+<div id="comments" class="box">
+  <h3>4 Comments</h3>
+  <div class="main-comment">
+    <p>ramata</p>
+    <p>17/06/2017</p>
+    <hr/>
+    <p>Hi,
+thanks for the comparision. Gentoo with dwm is the best way for a productive desktop system, fast, secure and lovely. Arch is good for building a small testing envirement, but using systemd, the openrc variant is for medium users, like me  buggy. I‘m searching for a binary distro, systemdfree for a multiboot system.  Alpine. Arch, Sabayon and BSD variants arenot my way.
+Greets ramata</p>
+  </div>
+  <div class="reply">
+    <p>DOTSLASHLINUX</p>
+    <p>17/06/2017</p>
+    <hr/>
+    <p>@ramata, you&rsquo;re welcome! Well the only choice you have left for a systemd-free binary distro is Void Linux. It&rsquo;s super lightweight and uses runit instead of systemd and is very easy to install which makes it perfect for what you need. However, it&rsquo;s lacking in packages so you better check if it has all the packages you need before using it. Other than that it&rsquo;s a great distro!</p>
+  </div>
+  <div class="main-comment">
+    <p>oldgaro</p>
+    <p>07/10/2017</p>
+    <hr/>
+    <p><p>As a minimalist I am really really interested in Gentoo. I love Arch Linux but if is there any true in what you say about installing only what I need, well boy&hellip;I am up to it!</p>
+
+<p>Dwm user too! haha</p>
+</p>
+  </div>
+  <div class="reply">
+    <p>DOTSLASHLINUX</p>
+    <p>17/06/2017</p>
+    <hr/>
+    <p><p>@oldgaro, Thanks for stopping by! Yes, I&rsquo;m a man of my word! If you&rsquo;re a fan of minimalism and have got some time to spare, then go with Gentoo :D</p>
+
+<p>Lemme know if you have any questions or need any help along the road.</p>
+</p>
+  </div>
+  <div id="leavecomment">
+    <h3>Leave A Comment</h3>
+    <form action="https://getsimpleform.com/messages?form_api_token=4458712617021cb12239cbfd2942b227" method="post">
+      <input name="options[redirect]" type="hidden" value="https://www.dotslashlinux.com//post/best-lightweight-gnu-linux-distros/#comments">
+      <input name="options[slug]" type="hidden" value="best lightweight gnu linux distros">
+      <input type="hidden" id="reply" name="fields[replying_to]" value="">
+      <input name="fields[name]" type="text" placeholder="Name" required>
+      <textarea rows="5" name="fields[comment]" placeholder="Your comment here.&#10;&#10;Comments support Markdown.&#10;&#10;Comments are being moderated to prevent spam so it may take a while before your comment is posted." required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+
+<div class="box footer">
+  <h4>Copyrights &copy; 2017-2018 <a href="/">DOTSLASHLINUX</a> | Licensed under <a id="creativecommons" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></h4>
+</div>
+</div>
+</div>
+<script src="/js/c.js"></script>
+</body>
+</html>
+
