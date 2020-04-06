@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pages | DOTSLASHLINUX</title>
+    <link>https://www.dotslashlinux.com/page/</link>
+    
+    <item>
+      <title>SEARCH</title>
+      <link>https://www.dotslashlinux.com/page/search/</link>
+      <pubDate>01/01/0001</pubDate>
+    </item>
+    
+  </channel>
+</rss>

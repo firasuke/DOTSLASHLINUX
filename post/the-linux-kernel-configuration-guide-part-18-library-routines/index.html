@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Linux Kernel Configuration Guide Part 18 - Library routines  ---&gt; | DOTSLASHLINUX</title>
+    <meta name="description" content="DOTSLASHLINUX is a GNU/Linux enthusiasts' hub, featuring configuration guides for the linux kernel and several lightweight open source and free software.">
+    <meta name="author" content="Firas Khalil Khana">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/c.css">
+    <link rel="alternate" type="application/rss+xml" title="DOTSLASHLINUX RSS" href="/feed.xml">
+  </head>
+  <body>
+    <div class="row middle-xs middle-sm middle-md middle-lg container">
+      <div class="col-xs-12 center-xs col-sm-4 start-sm col-md-4 start-md col-lg-4 start-lg">
+        <div class="box brand">
+          <h1><a href="https://www.dotslashlinux.com/">DOTSLASHLINUX</a></h1>
+        </div>
+      </div>
+      <div class="col-xs-12 center-xs col-sm-8 end-sm col-md-8 end-md col-lg-8 end-lg">
+        <div class="box">
+          <nav>
+            <ul>
+              <li class=""><a href="/">HOME</a></li>
+              <li class=""><a href="/page/search/">SEARCH</a></li>
+              <li><a href="/index.xml" style="color: #f26522;">RSS</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content">
+        <div class="box patreon">
+          <p>Kindly support DOTSLASHLINUX on <a href="https://www.patreon.com/DOTSLASHLINUX" target="_target">Patreon</a> to keep the website up and running while remaining ads free.</p>
+        </div>
+
+
+<table>
+  <tr>
+    <th>Part</th>
+    <th>Section</th>
+    <th>Link</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Intro</td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-1-introduction/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>[&lowast;] Gentoo Linux support  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-2-gentoo-linux-support/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>General setup  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-3-general-setup/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>[&lowast;] Enable loadable module support  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-4-enable-loadable-module-support/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>[&lowast;] Enable the block layer  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-5-enable-the-block-layer/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>Processor type and features  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-6-processor-type-and-features/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>Power management and ACPI options  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-7-power-management-and-acpi-options/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>Bus options (PCI etc.)  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-8-bus-options-pci-etc/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>9</td>
+    <td>Executable file formats / Emulations  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-9-executable-file-formats-emulations/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>10</td>
+    <td>[&lowast;] Networking support  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-10-networking-support/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>11</td>
+    <td>Device Drivers  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-11-device-drivers/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>12</td>
+    <td>Firmware Drivers  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-12-firmware-drivers/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>13</td>
+    <td>File systems  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-13-file-systems/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>14</td>
+    <td>Kernel hacking  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-14-kernel-hacking/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>15</td>
+    <td>Security options  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-15-security-options/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>16</td>
+    <td>-&lowast;- Cryptographic API  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-16-cryptographic-api/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>17</td>
+    <td>[&lowast;] Virtualization  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-17-virtualization/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>18</td>
+    <td>Library routines  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-18-library-routines/">Click Here</a></td>
+  </tr>
+</table>
+<div class="box kernelmap">
+  <pre><code class="language-properties">Kernel Sources:       sys-kernel/gentoo-sources
+
+Kernel Version:       4.14.12
+
+Last Updated on:      06/01/2018
+
+Update Notice:        1- Excluded 'CONFIG_PAGE_TABLE_ISOLATION' in 'Security options --->'
+                      2- Included 'CONFIG_STANDALONE' in 'Device Drivers  --->'
+                      3- Included 'CONFIG_PREVENT_FIRMWARE_BUILD' in 'Device Drivers  --->'
+                      4- Included 'CONFIG_X86_5LEVEL' in 'Processor type and features  --->'
+                      5- Included 'CONFIG_ORC_UNWINDER' in 'Kernel hacking  --->'
+                      6- Excluded QEMU-virtualization-related options in favor of VirtualBox
+                      7- Excluded swap-related options
+                      8- Excluded 32-bit support
+                      9- Switched from XFS to EXT4
+
+Priorities:           1- high performance
+                      2- minimal
+                      3- low memory footprint
+                      4- small size
+                      5- power saving
+                      6- security
+                      7- low-latency
+
+Total Options:        2469 (grep -c 'CONFIG_' DOTSLASHLINUX.config)
+
+Included Options:     645 (grep -c '=y' DOTSLASHLINUX.config)
+
+Excluded Options:     1761 (grep -c 'is not set' DOTSLASHLINUX.config)
+
+Final Size (LZ4):     5,644,240 Bytes
+
+Patches Applied:      1- UKSM-4.14 Patch (https://github.com/dolohow/uksm/blob/master/uksm-4.14.patch)
+
+Contributors:         Firas Khalil Khana [irc: firas] [email: firasuke@gmail.com]
+
+Side Notes:           1- Options that aren't listed here are excluded [ ].
+                      2- These guides provide users with a solid starting setup to build on.
+                      3- These guides are constantly being updated.
+                      4- If there's something I didn't explain properly or I misexplained
+                         then please do let me know either by kindly leaving a comment below
+                         or by sending me an email on: firasuke@gmail.com</code></pre>
+</div>
+
+<div class="box map">
+  <h2>The Linux Kernel Configuration Guide Part 18 - Library routines  ---&gt;</h2>
+  <div class="share">
+    <a id="facebook" href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fthe-linux-kernel-configuration-guide-part-18-library-routines%2f" rel="nofollow" target="_blank">Facebook</a>
+    <a id="twitter" href="https://www.twitter.com/intent/tweet?source=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fthe-linux-kernel-configuration-guide-part-18-library-routines%2f&text=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fthe-linux-kernel-configuration-guide-part-18-library-routines%2f" rel="nofollow" target="_blank">Twitter</a>
+    <a id="googleplus" href="https://plus.google.com/share?url=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fthe-linux-kernel-configuration-guide-part-18-library-routines%2f" rel="nofollow" target="_blank">Google+</a>
+    <a id="reddit" href="https://www.reddit.com/submit?url=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fthe-linux-kernel-configuration-guide-part-18-library-routines%2f" rel="nofollow" target="_blank">Reddit</a>
+    <a id="linkedin" href="http://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fthe-linux-kernel-configuration-guide-part-18-library-routines%2f&source=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fthe-linux-kernel-configuration-guide-part-18-library-routines%2f" rel="nofollow" target="_blank">LinkedIn</a>
+  </div>
+  <div class="frame"><a href="/img/kernel18.png" target="_blank"><img src="/img/kernel18.png" alt="kernel18"></div></a>
+    <div class="info">Firas Khalil Khana | 18/09/2017</div>
+    <p>Similarly to part 16, it&rsquo;s highly recommended that you leave this section alone. All needed options in this section will be forcibly included by other options in other sections so you don&rsquo;t have to worry about this section much.
+<br/>
+<br/>
+One thing you could do is after you&rsquo;ve included all the required options for your system, you can enter this section and exclude options that weren&rsquo;t forcibly included by other options (as in most cases they will not be used).
+<br/>
+<br/>
+Again, the options I&rsquo;ll be listing here will be the ones that got forcibly included on my system, in addition to some other options that I found useful (with the help of SystemRescueCd of course) as you may find it useful.
+<hr/>
+<h3>Library routines  &mdash;&gt;</h3>
+<h3>-&lowast;- CRC-CCITT functions</h3></p>
+
+<pre><code class="language-properties">Symbol:     CONFIG_CRC_CCITT
+
+Help:       This option is provided for the case where no in-kernel-tree
+            modules require CRC-CCITT functions, but a module built outside
+            the kernel tree does. Such modules that use library CRC-CCITT
+            functions require M here.
+
+Type:       tristate
+
+Choice:     built-in -∗-
+
+Reason:     Forcibly included as it's required by CONFIG_NET, CONFIG_WLAN,
+            CONFIG_USB and a lot of important options.
+</code></pre>
+
+<p><h3>-&lowast;- CRC16 functions</h3></p>
+
+<pre><code class="language-properties">Symbol:     CONFIG_CRC16
+
+Help:       This option is provided for the case where no in-kernel-tree
+            modules require CRC16 functions, but a module built outside
+            the kernel tree does. Such modules that use library CRC16
+            functions require M here.
+
+Type:       tristate
+
+Choice:     built-in -∗-
+
+Reason:     Forcibly included as it's required by CONFIG_NET, CONFIG_BT,
+            CONFIG_BLOCK, CONFIG_EXT4_FS, CONFIG_RFKILL and a lot of
+            important options.
+</code></pre>
+
+<p><h3>&lt;&lowast;&gt; CRC calculation for the T10 Data Integrity Field</h3></p>
+
+<pre><code class="language-properties">Symbol:     CONFIG_CRC_T10DIF
+
+Help:       This option is only needed if a module that's not in the
+            kernel tree needs to calculate CRC checks for use with the
+            SCSI data integrity subsystem.
+
+Type:       tristate
+
+Choice:     built-in &lt;∗&gt;
+
+Reason:     If you've followed the guide in part 11, then a simple:
+
+                cat lsmod.txt | grep crct10dif
+
+            should tell you whether you need this option or not.
+</code></pre>
+
+<p><h3>-&lowast;- CRC ITU-T V.41 functions</h3></p>
+
+<pre><code class="language-properties">Symbol:     CONFIG_CRC_ITU_T
+
+Help:       This option is provided for the case where no in-kernel-tree
+            modules require CRC ITU-T V.41 functions, but a module built outside
+            the kernel tree does. Such modules that use library CRC ITU-T V.41
+            functions require M here.
+
+Type:       tristate
+
+Choice:     built-in -∗-
+
+Reason:     Forcibly included as it's required by CONFIG_PCI, CONFIG_NET,
+            CONFIG_64BIT, CONFIG_BLOCK and a lot of important options.
+</code></pre>
+
+<p><h3>-&lowast;- CRC32/CRC32c functions</h3></p>
+
+<pre><code class="language-properties">Symbol:     CONFIG_CRC32
+
+Help:       This option is provided for the case where no in-kernel-tree
+            modules require CRC32/CRC32c functions, but a module built outside
+            the kernel tree does. Such modules that use library CRC32/CRC32c
+            functions require M here.
+
+Type:       tristate
+
+Choice:     built-in -∗-
+
+Reason:     Forcibly included as it's required by a lot of important options.
+</code></pre>
+
+<p><h3>CRC32 implementation (Slice by 8 bytes)  &mdash;&gt;</h3></p>
+
+<pre><code class="language-properties">Help:       This option allows a kernel builder to override the default choice
+            of CRC32 algorithm.  Choose the default (&quot;slice by 8&quot;) unless you
+            know that you need one of the others.
+</code></pre>
+
+<p><h3>(X) Slice by 8 bytes</h3></p>
+
+<pre><code class="language-properties">Symbol:     CONFIG_CRC32_SLICEBY8
+
+Help:       Calculate checksum 8 bytes at a time with a clever slicing algorithm.
+            This is the fastest algorithm, but comes with a 8KiB lookup table.
+            Most modern processors have enough cache to hold this table without
+            thrashing the cache.
+
+            This is the default implementation choice.  Choose this one unless
+            you have a good reason not to.
+
+Type:       boolean
+
+Choice:     built-in (X)
+
+Reason:     It's highly recommended that you include this options as other options
+            are intended for testing and debugging purposes.
+</code></pre>
+
+<p><h3>-&lowast;- CRC32c (Castagnoli, et al) Cyclic Redundancy-Check</h3></p>
+
+<pre><code class="language-properties">Symbol:     CONFIG_LIBCRC32C
+
+Help:       This option is provided for the case where no in-kernel-tree
+            modules require CRC32c functions, but a module built outside the
+            kernel tree does. Such modules that use library CRC32c functions
+            require M here.  See Castagnoli93.
+            Module will be libcrc32c.
+
+Type:       tristate
+
+Choice:     built-in -∗-
+
+Reason:     Forcibly included as it's required by CONFIG_PCI, CONFIG_NET and
+            a lot of important options.
+</code></pre>
+
+<p><h3>&lt;&lowast;&gt; XZ decompression support</h3></p>
+
+<pre><code class="language-properties">Symbol:     CONFIG_XZ_DEC
+
+Help:       LZMA2 compression algorithm and BCJ filters are supported using
+            the .xz file format as the container. For integrity checking,
+            CRC32 is supported. See Documentation/xz.txt for more information.
+
+Type:       tristate
+
+Choice:     built-in &lt;∗&gt;
+</code></pre>
+
+<p><h3>[&lowast;]   x86 BCJ filter decoder</h3></p>
+
+<pre><code class="language-properties">Symbol:     CONFIG_XZ_DEC_X86
+
+Help:       There is no help available for this option.
+
+Type:       boolean
+
+Choice:     built-in [∗]
+</code></pre>
+
+<hr/>
+
+<p><h3>Chinese Translation</h3>
+One of DOTSLASHLINUX followers 杨鑫 (Yang Mame) from China, decided to follow up with the series and provide Chinese translation of the kernel configuration guides on his blog.
+<br/>
+<br/>
+To read this guide in Chinese <a href="https://blog.yangmame.top/Linux内核配置指南-Kernel-hacking-Library-routines-The-End.html" target="_blank">click here</a>.</p>
+
+</div>
+<div id="comments" class="box">
+  <h3>2 Comments</h3>
+  <div class="main-comment">
+    <p>Alpha</p>
+    <p>20/12/2017</p>
+    <hr/>
+    <p>Do we really need to use System Rescue cd or can we use our current install.
+I&rsquo;m currently using the generic linux kernel on arch.
+Also there should be some notification system here.. how do I know if you replied.
+Finally, awesome series! seriously perfect timing for me atleast.
+I wonder how far you can mush this minimalistic behaviour&hellip; <em>Evil Grin</em>
+I must say.. It&rsquo;s quite addicting. :D</p>
+  </div>
+  <div class="reply">
+    <p>DOTSLASHLINUX</p>
+    <p>20/12/2017</p>
+    <hr/>
+    <p><p>@Alpha, thanks for your comment.</p>
+
+<p>To be honest with you, the answer is yes and no. Yes, as in you can pretty much use every live installation ISO out there to save the output of the commands listed in the kernel configuration guide part 11, and no as in that output won&rsquo;t be 100% identical on all of these ISOs, as every one is tuned to fit the needs of their users (in case of a distribution), and from that point of view, since SystemRescueCD is based on Gentoo Linux (the distribution of choice that DOTSLASHLINUX recommends), and is a &lsquo;Rescue&rsquo; distribution after all, it should pretty much have everything the user needs and the logs and outputs should have almost all of the information you need.</p>
+
+<p>Sure you can use your generic Arch install and I doubt it&rsquo;ll even make a difference, but I highly recommend you opt for SystemRescueCD, just boot it once, save the output of the commands listed in the kernel configuration guide part 11 and reboot into your Arch installation.</p>
+
+<p>Sorry if the comment system was lacking. Since DOTSLASHLINUX is 100% static, a simple and basic commenting system was created from scratch (kinda like reinventing the wheel) it is also free of JavaScript code, and will easily work on all web browsers (even terminal web browsers!). Unfortunately, no notifications system is implemented as of now (but one is currently planned, please keep in mind that rethinking such &lsquo;simple&rsquo; ideas in a static point of view isn&rsquo;t that &lsquo;simple&rsquo;).</p>
+
+<p>As for where DOTSLASHLINUX is going with the whole lightweight thing, the answer is simple, until we get a source-based system that runs an extremely lightweight Linux kernel with musl libc and toybox (or busybox) and runit/sinit as the init system with statically linked libraries with a simple lightweight package manager.</p>
+
+<p>There are several projects that aim to achieve the system I described above. These include:</p>
+
+<p>1- <a href="https://sta.li/">https://sta.li/</a></p>
+
+<p>2- <a href="https://github.com/michaelforney/oasis">https://github.com/michaelforney/oasis</a></p>
+
+<p>3- <a href="https://github.com/sabotage-linux/sabotage">https://github.com/sabotage-linux/sabotage</a></p>
+
+<p>4- <a href="http://landley.net/aboriginal/">http://landley.net/aboriginal/</a></p>
+
+<p>and many more, but still none of them saw light to this day.</p>
+
+<p>Sorry for the lengthy reply, and thanks a lot for stopping by.</p>
+</p>
+  </div>
+  <div id="leavecomment">
+    <h3>Leave A Comment</h3>
+    <form action="https://getsimpleform.com/messages?form_api_token=4458712617021cb12239cbfd2942b227" method="post">
+      <input name="options[redirect]" type="hidden" value="https://www.dotslashlinux.com//post/the-linux-kernel-configuration-guide-part-18-library-routines/#comments">
+      <input name="options[slug]" type="hidden" value="the linux kernel configuration guide part 18 library routines">
+      <input type="hidden" id="reply" name="fields[replying_to]" value="">
+      <input name="fields[name]" type="text" placeholder="Name" required>
+      <textarea rows="5" name="fields[comment]" placeholder="Your comment here.&#10;&#10;Comments support Markdown.&#10;&#10;Comments are being moderated to prevent spam so it may take a while before your comment is posted." required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+
+<div class="box footer">
+  <h4>Copyrights &copy; 2017-2018 <a href="/">DOTSLASHLINUX</a> | Licensed under <a id="creativecommons" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></h4>
+</div>
+</div>
+</div>
+<script src="/js/c.js"></script>
+</body>
+</html>
+

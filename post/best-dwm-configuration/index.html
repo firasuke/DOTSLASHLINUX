@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best dwm Configuration | DOTSLASHLINUX</title>
+    <meta name="description" content="DOTSLASHLINUX is a GNU/Linux enthusiasts' hub, featuring configuration guides for the linux kernel and several lightweight open source and free software.">
+    <meta name="author" content="Firas Khalil Khana">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/c.css">
+    <link rel="alternate" type="application/rss+xml" title="DOTSLASHLINUX RSS" href="/feed.xml">
+  </head>
+  <body>
+    <div class="row middle-xs middle-sm middle-md middle-lg container">
+      <div class="col-xs-12 center-xs col-sm-4 start-sm col-md-4 start-md col-lg-4 start-lg">
+        <div class="box brand">
+          <h1><a href="https://www.dotslashlinux.com/">DOTSLASHLINUX</a></h1>
+        </div>
+      </div>
+      <div class="col-xs-12 center-xs col-sm-8 end-sm col-md-8 end-md col-lg-8 end-lg">
+        <div class="box">
+          <nav>
+            <ul>
+              <li class=""><a href="/">HOME</a></li>
+              <li class=""><a href="/page/search/">SEARCH</a></li>
+              <li><a href="/index.xml" style="color: #f26522;">RSS</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content">
+        <div class="box patreon">
+          <p>Kindly support DOTSLASHLINUX on <a href="https://www.patreon.com/DOTSLASHLINUX" target="_target">Patreon</a> to keep the website up and running while remaining ads free.</p>
+        </div>
+
+
+<div class="box map">
+  <h2>Best dwm Configuration</h2>
+  <div class="share">
+    <a id="facebook" href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fbest-dwm-configuration%2f" rel="nofollow" target="_blank">Facebook</a>
+    <a id="twitter" href="https://www.twitter.com/intent/tweet?source=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fbest-dwm-configuration%2f&text=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fbest-dwm-configuration%2f" rel="nofollow" target="_blank">Twitter</a>
+    <a id="googleplus" href="https://plus.google.com/share?url=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fbest-dwm-configuration%2f" rel="nofollow" target="_blank">Google+</a>
+    <a id="reddit" href="https://www.reddit.com/submit?url=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fbest-dwm-configuration%2f" rel="nofollow" target="_blank">Reddit</a>
+    <a id="linkedin" href="http://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fbest-dwm-configuration%2f&source=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fbest-dwm-configuration%2f" rel="nofollow" target="_blank">LinkedIn</a>
+  </div>
+  <div class="frame"><a href="/img/dwm.png" target="_blank"><img src="/img/dwm.png" alt="dwm"></div></a>
+    <div class="info">Firas Khalil Khana | 23/04/2017</div>
+    <p>In this article I&rsquo;ll show you how to setup dwm and equip it with a nice basic configuration file.
+<br/>
+<hr/>
+<h3>1- Installation</h3>
+<br/>
+Gentoo Linux:</p>
+
+<pre><code class="language-properties">emerge --sync &amp;&amp; emerge -av x11-wm/dwm
+</code></pre>
+
+<p><br/>
+Void Linux:</p>
+
+<pre><code class="language-properties">xbps-install -Su &amp;&amp; xbps-install -S dwm
+</code></pre>
+
+<p><br/>
+Arch Linux:</p>
+
+<pre><code class="language-properties">pacman -Syu dwm
+</code></pre>
+
+<hr/>
+
+<p><h3>2- Accessing Configuration Files</h3>
+<br/>
+Since dwm&rsquo;s configuration file is written in C, chances are you&rsquo;re pretty much losing all customization options by downloading a binary based version of dwm. This is the case in Arch Linux and in Void Linux. To configure dwm, you need to compile it from source with the configuration you want. This is easily done in gentoo since you&rsquo;re pretty much building everything from source.
+<br/>
+<br/>
+However, if you&rsquo;re using Arch Linux or Void Linux then you&rsquo;ll want to check <a href="https://wiki.archlinux.org/index.php/dwm#Configuration">Configuring dwm on Arch Linux</a>.The same applies to Void Linux, but you need to use xbps-src to install from source. Since no wiki article is written on dwm configuration on Void Linux at the moment, check this out <a href="https://wiki.voidlinux.eu/Xbps-src">Xbps-src Void Linux</a>. Don&rsquo;t worry I&rsquo;ll be waiting for you! Once you have access to the configuration file, you can tag along with us.
+<br/>
+<br/>
+On gentoo, it&rsquo;s highly recommended to enable the <mark>savedconfig</mark> USE flag (After all who wouldn&rsquo;t want to save their configuration file once they&rsquo;re done lol). You can do that easily by:</p>
+
+<pre><code class="language-bash">echo &quot;x11-wm/dwm savedconfig&quot; &gt;&gt; /etc/portage/package.use
+</code></pre>
+
+<p><br/>
+Before accessing the configuration file, and in order to enable syntax highlighting for the C language in your favourite editor, you need to create a symlink using a header filename:</p>
+
+<pre><code class="language-bash">ln -s /etc/portage/savedconfig/x11-wm/dwm-6.1-r1 /etc/portage/savedconfig/x11-wm/dwm-6.1-r1.h
+</code></pre>
+
+<p><br/>
+Now, you can easily edit the configuration file (or the header file for syntax highlighting support) and start editing it with your favorite editor (for me that&rsquo;s vim and I respect your editor!):</p>
+
+<pre><code class="language-bash">vim /etc/portage/savedconfig/x11-wm/dwm-6.1-r1.h
+</code></pre>
+
+<p><br/>
+At the time of writing this article, dwm&rsquo;s version is 6.1-r1. Your version is probably the same, even if it&rsquo;s different just change the version number and you&rsquo;ll be good to go.
+<br/>
+<br/>
+For those using nano as well, I recommend enabling syntax highlighting since it makes your life much easier, especially when editing text files in the terminal.
+<hr/>
+<h3>3- Configuration</h3>
+<br/>
+Once you&rsquo;ve opened the configuration file, start editing it and tuning it to your liking. It&rsquo;s pretty straightforward as everything is explained. However, I&rsquo;m here to provide you with a nice configuration file and save you some time. Here&rsquo;s my configuration file tuned to be used with gentoo:</p>
+
+<pre><code class="language-c,line-numbers">/* appearance */
+static const char *fonts[] = {
+	&quot;xos4 Terminus:size=10&quot;
+};
+static const char dmenufont[]       = &quot;xos4 Terminus:size=10&quot;;
+static const char normbordercolor[] = &quot;#33393b&quot;;
+static const char normbgcolor[]     = &quot;#33393b&quot;;
+static const char normfgcolor[]     = &quot;#ffffff&quot;;
+static const char selbordercolor[]  = &quot;#54487a&quot;;
+static const char selbgcolor[]      = &quot;#54487a&quot;;
+static const char selfgcolor[]      = &quot;#ffffff&quot;;
+static const unsigned int borderpx  = 0;        /* border pixel of windows */
+static const unsigned int snap      = 0;       /* snap pixel, I've disabled pixel snapping by setting the value to 0, the default was 32 and it's only applicable in floating mode */
+static const int showbar            = 1;        /* 0 means no bar */
+static const int topbar             = 1;        /* 0 means bottom bar */
+
+/* tagging */
+/* I'm using a single tag as I don't require more. If you want more tags use this instead and as many tags as you want: */
+/* static const char *tags[] = {&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;}; */
+static const char *tags[] = {&quot;DOTSLASHLINUX&quot;};
+
+/* rules */
+static Rule rules[] = {
+    /* class                instance        title       tags mask     isfloating */
+    { &quot;Gimp&quot;,                 NULL,       NULL,       NULL,            True },
+};
+
+/* layout(s) */
+static const float mfact     = 0.70; /* factor of master area size [0.05..0.95] */
+static const int nmaster     = 1;    /* number of clients in master area */
+static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
+
+static const Layout layouts[] = {
+	/* symbol     arrange function */
+	{ &quot;[T]&quot;,      tile },    /* first entry is default */
+	{ &quot;[F]&quot;,      NULL },    /* no layout function means floating behavior */
+	{ &quot;[M]&quot;,      monocle }
+};
+
+/* key definitions */
+#define MODKEY Mod1Mask
+#define TAGKEYS(KEY,TAG) \
+	{ MODKEY,                       KEY,      view,           {.ui = 1 &lt;&lt; TAG} }, \
+	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 &lt;&lt; TAG} }, \
+	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 &lt;&lt; TAG} }, \
+	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 &lt;&lt; TAG} },
+
+/* helper for spawning shell commands in the pre dwm-5.0 fashion */
+/* I'm using the dash shell here, if you're using any other shell just chande dash to sh */
+/* #define SHCMD(cmd) { .v = (const char*[]){ &quot;/bin/sh&quot;, &quot;-c&quot;, cmd, NULL } } */
+#define SHCMD(cmd) { .v = (const char*[]){ &quot;/bin/dash&quot;, &quot;-c&quot;, cmd, NULL } }
+
+/* commands */
+/* I've made several commands for my different applications. You can create your own simply by
+taking the command, splitting every word between whitespaces with quotation marks and terminating
+the array with a NULL terminator (command eg. &quot;wpa_supplicant -B -i wlp3s0 -c wpa.conf -D&quot;) */
+/* static const char *commandname[] = {&quot;wpa_supplicant&quot;, &quot;-B&quot;, &quot;-i&quot;, &quot;wlp3s0&quot;, &quot;-c&quot;, &quot;wpa.conf&quot;, &quot;-D&quot;, NULL} */
+static char dmenumon[2] = &quot;0&quot;; /* component of dmenucmd, manipulated in spawn() */
+static const char *dmenucmd[] = { &quot;dmenu_run&quot;, &quot;-m&quot;, dmenumon, &quot;-fn&quot;, dmenufont, &quot;-nb&quot;, normbgcolor, &quot;-nf&quot;, normfgcolor, &quot;-sb&quot;, selbgcolor, &quot;-sf&quot;, selfgcolor, NULL };
+static const char *termcmd[]  = { &quot;urxvtc&quot;, NULL};
+static const char *webcmd[]  = { &quot;firefox&quot;, NULL};
+static const char *filecmd[]  = { &quot;pcmanfm&quot;, &quot;/home/firas&quot;, NULL};
+static const char *voldwcmd[]  = { &quot;amixer&quot;, &quot;-c&quot;, &quot;PCH&quot;, &quot;set&quot;, &quot;Master&quot;, &quot;1%-&quot;, NULL};
+static const char *volupcmd[]  = { &quot;amixer&quot;, &quot;-c&quot;, &quot;PCH&quot;, &quot;set&quot;, &quot;Master&quot;, &quot;1%+&quot;, NULL};
+static const char *volmcmd[]  = { &quot;amixer&quot;, &quot;-c&quot;, &quot;PCH&quot;, &quot;set&quot;, &quot;Master&quot;, &quot;toggle&quot;, NULL};
+static const char *brtdwncmd[]  = { &quot;xbacklight&quot;,&quot;-10&quot;, NULL};
+static const char *brtupcmd[]  = { &quot;xbacklight&quot;,&quot;+10&quot;, NULL};
+
+/* shortcut keys */
+static Key keys[] = {
+	/* modifier                     key             function        argument */
+	{ MODKEY,                       XK_d,           spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_x, 	        spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_w,           spawn,          {.v = webcmd } },
+    { MODKEY,                       XK_e,	        spawn,          {.v = filecmd } },
+    { 0,                            0x1008ff03,     spawn,          {.v = brtdwncmd } },
+    { 0,                            0x1008ff02,     spawn,          {.v = brtupcmd } },
+    { 0,                            0x1008ff11,	    spawn,          {.v = voldwcmd } },
+    { 0,             	        	0x1008ff13,	   	spawn,          {.v = volupcmd } },
+    { 0,                            0x1008ff12,	    spawn,          {.v = volmcmd } },
+	{ MODKEY,                       XK_b,           togglebar,      {0} },
+	{ MODKEY,                       XK_j,           focusstack,     {.i = +1 } },
+	{ MODKEY,                       XK_k,           focusstack,     {.i = -1 } },
+	{ MODKEY,                       XK_i,           incnmaster,     {.i = +1 } },
+	{ MODKEY,                       XK_p,           incnmaster,     {.i = -1 } },
+	{ MODKEY,                       XK_h,           setmfact,       {.f = -0.05} },
+	{ MODKEY,                       XK_l,           setmfact,       {.f = +0.05} },
+	{ MODKEY,                       XK_Return,      zoom,           {0} },
+	{ MODKEY,                       XK_Tab,         view,           {0} },
+	/* Since I use Shift+Alt to switch keyboard layouts I've changed ShiftMask to ControlMask */
+	/* If you wanted to revert to the default configuration use this instead: */
+	/* { MODKEY|ShiftMask,          XK_c,           killclient,     {0} }, */
+	{ MODKEY,           			XK_c,           killclient,     {0} },
+	{ MODKEY,                       XK_t,           setlayout,      {.v = &amp;layouts[0]} },
+	{ MODKEY,                       XK_f,           setlayout,      {.v = &amp;layouts[1]} },
+	{ MODKEY,                       XK_m,           setlayout,      {.v = &amp;layouts[2]} },
+	{ MODKEY,                       XK_space,       setlayout,      {0} },
+	{ MODKEY|ControlMask,           XK_space,       togglefloating, {0} },
+	{ MODKEY,                       XK_0,           view,           {.ui = ~0 } },
+	{ MODKEY|ControlMask,           XK_0,           tag,            {.ui = ~0 } },
+	{ MODKEY,                       XK_comma,       focusmon,       {.i = -1 } },
+	{ MODKEY,                       XK_period,      focusmon,       {.i = +1 } },
+	{ MODKEY|ControlMask,           XK_comma,       tagmon,         {.i = -1 } },
+	{ MODKEY|ControlMask,           XK_period,      tagmon,         {.i = +1 } },
+	/* Since I use Shift+Alt to switch keyboard layouts I've changed ShiftMask to ControlMask */
+	/* If you wanted to revert to the default configuration use this instead: */
+	/* { MODKEY|ShiftMask,          XK_q,           quit,           {0} } */
+	{ MODKEY|ControlMask,           XK_q,           quit,           {0} }
+};
+
+/* button definitions */
+/* click can be ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
+static Button buttons[] = {
+	/* click                event mask      button          function        argument */
+	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
+	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &amp;layouts[2]} },
+	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
+	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
+	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
+	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
+	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
+	{ ClkTagBar,            0,              Button1,        view,           {0} },
+	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
+	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
+	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
+};
+</code></pre>
+
+<p><br/>
+I&rsquo;ve explained the basic stuff using comments in the configuration file for those who want further optimization. For those who love to copy-paste configuration files and use them directly, I&rsquo;ve changed the main shortcuts for killing clients and quiting dwm since I use <mark>Shift+Alt</mark> for changing keyboard layouts. Here are the changes I made:
+<br/>
+<br/>
+<mark>Shift+Alt+c</mark> to <mark>Alt+c</mark> to kill clients
+<br/>
+<mark>Shift+Alt+q</mark> to <mark>Ctrl+Alt+q</mark> to quit dwm
+<br/>
+<br/>
+I&rsquo;ve included these default shortcuts in the configuration file as well, just comment out my shortcuts and uncomment the defaults.
+<br/>
+<hr/>
+<h3>4- Starting dwm</h3>
+After we&rsquo;ve done configuring dwm, it&rsquo;s time to fire it up. To start dwm, simply add the following to your .xinitrc:</p>
+
+<pre><code class="language-bash">exec dwm
+</code></pre>
+
+<p><br/>
+<hr/>
+<h3>Conclusion</h3>
+Hope you enjoyed this article and managed to get a successfuly working dwm tuned to your liking!</p>
+
+</div>
+<div id="comments" class="box">
+  
+  <div id="leavecomment">
+    <h3>Leave A Comment</h3>
+    <form action="https://getsimpleform.com/messages?form_api_token=4458712617021cb12239cbfd2942b227" method="post">
+      <input name="options[redirect]" type="hidden" value="https://www.dotslashlinux.com//post/best-dwm-configuration/#comments">
+      <input name="options[slug]" type="hidden" value="best dwm configuration">
+      <input type="hidden" id="reply" name="fields[replying_to]" value="">
+      <input name="fields[name]" type="text" placeholder="Name" required>
+      <textarea rows="5" name="fields[comment]" placeholder="Your comment here.&#10;&#10;Comments support Markdown.&#10;&#10;Comments are being moderated to prevent spam so it may take a while before your comment is posted." required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+
+<div class="box footer">
+  <h4>Copyrights &copy; 2017-2018 <a href="/">DOTSLASHLINUX</a> | Licensed under <a id="creativecommons" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></h4>
+</div>
+</div>
+</div>
+<script src="/js/c.js"></script>
+</body>
+</html>
+

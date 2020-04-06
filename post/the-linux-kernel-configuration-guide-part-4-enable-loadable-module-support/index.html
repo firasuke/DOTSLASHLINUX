@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Linux Kernel Configuration Guide Part 4 - [∗] Enable loadable module support  ---&gt; | DOTSLASHLINUX</title>
+    <meta name="description" content="DOTSLASHLINUX is a GNU/Linux enthusiasts' hub, featuring configuration guides for the linux kernel and several lightweight open source and free software.">
+    <meta name="author" content="Firas Khalil Khana">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/c.css">
+    <link rel="alternate" type="application/rss+xml" title="DOTSLASHLINUX RSS" href="/feed.xml">
+  </head>
+  <body>
+    <div class="row middle-xs middle-sm middle-md middle-lg container">
+      <div class="col-xs-12 center-xs col-sm-4 start-sm col-md-4 start-md col-lg-4 start-lg">
+        <div class="box brand">
+          <h1><a href="https://www.dotslashlinux.com/">DOTSLASHLINUX</a></h1>
+        </div>
+      </div>
+      <div class="col-xs-12 center-xs col-sm-8 end-sm col-md-8 end-md col-lg-8 end-lg">
+        <div class="box">
+          <nav>
+            <ul>
+              <li class=""><a href="/">HOME</a></li>
+              <li class=""><a href="/page/search/">SEARCH</a></li>
+              <li><a href="/index.xml" style="color: #f26522;">RSS</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content">
+        <div class="box patreon">
+          <p>Kindly support DOTSLASHLINUX on <a href="https://www.patreon.com/DOTSLASHLINUX" target="_target">Patreon</a> to keep the website up and running while remaining ads free.</p>
+        </div>
+
+
+<table>
+  <tr>
+    <th>Part</th>
+    <th>Section</th>
+    <th>Link</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Intro</td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-1-introduction/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>[&lowast;] Gentoo Linux support  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-2-gentoo-linux-support/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>General setup  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-3-general-setup/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>[&lowast;] Enable loadable module support  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-4-enable-loadable-module-support/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>[&lowast;] Enable the block layer  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-5-enable-the-block-layer/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>Processor type and features  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-6-processor-type-and-features/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>Power management and ACPI options  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-7-power-management-and-acpi-options/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>Bus options (PCI etc.)  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-8-bus-options-pci-etc/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>9</td>
+    <td>Executable file formats / Emulations  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-9-executable-file-formats-emulations/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>10</td>
+    <td>[&lowast;] Networking support  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-10-networking-support/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>11</td>
+    <td>Device Drivers  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-11-device-drivers/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>12</td>
+    <td>Firmware Drivers  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-12-firmware-drivers/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>13</td>
+    <td>File systems  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-13-file-systems/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>14</td>
+    <td>Kernel hacking  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-14-kernel-hacking/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>15</td>
+    <td>Security options  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-15-security-options/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>16</td>
+    <td>-&lowast;- Cryptographic API  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-16-cryptographic-api/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>17</td>
+    <td>[&lowast;] Virtualization  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-17-virtualization/">Click Here</a></td>
+  </tr>
+  <tr>
+    <td>18</td>
+    <td>Library routines  ---></td>
+    <td><a href="/post/the-linux-kernel-configuration-guide-part-18-library-routines/">Click Here</a></td>
+  </tr>
+</table>
+<div class="box kernelmap">
+  <pre><code class="language-properties">Kernel Sources:       sys-kernel/gentoo-sources
+
+Kernel Version:       4.14.12
+
+Last Updated on:      06/01/2018
+
+Update Notice:        1- Excluded 'CONFIG_PAGE_TABLE_ISOLATION' in 'Security options --->'
+                      2- Included 'CONFIG_STANDALONE' in 'Device Drivers  --->'
+                      3- Included 'CONFIG_PREVENT_FIRMWARE_BUILD' in 'Device Drivers  --->'
+                      4- Included 'CONFIG_X86_5LEVEL' in 'Processor type and features  --->'
+                      5- Included 'CONFIG_ORC_UNWINDER' in 'Kernel hacking  --->'
+                      6- Excluded QEMU-virtualization-related options in favor of VirtualBox
+                      7- Excluded swap-related options
+                      8- Excluded 32-bit support
+                      9- Switched from XFS to EXT4
+
+Priorities:           1- high performance
+                      2- minimal
+                      3- low memory footprint
+                      4- small size
+                      5- power saving
+                      6- security
+                      7- low-latency
+
+Total Options:        2469 (grep -c 'CONFIG_' DOTSLASHLINUX.config)
+
+Included Options:     645 (grep -c '=y' DOTSLASHLINUX.config)
+
+Excluded Options:     1761 (grep -c 'is not set' DOTSLASHLINUX.config)
+
+Final Size (LZ4):     5,644,240 Bytes
+
+Patches Applied:      1- UKSM-4.14 Patch (https://github.com/dolohow/uksm/blob/master/uksm-4.14.patch)
+
+Contributors:         Firas Khalil Khana [irc: firas] [email: firasuke@gmail.com]
+
+Side Notes:           1- Options that aren't listed here are excluded [ ].
+                      2- These guides provide users with a solid starting setup to build on.
+                      3- These guides are constantly being updated.
+                      4- If there's something I didn't explain properly or I misexplained
+                         then please do let me know either by kindly leaving a comment below
+                         or by sending me an email on: firasuke@gmail.com</code></pre>
+</div>
+
+<div class="box map">
+  <h2>The Linux Kernel Configuration Guide Part 4 - [∗] Enable loadable module support  ---&gt;</h2>
+  <div class="share">
+    <a id="facebook" href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fthe-linux-kernel-configuration-guide-part-4-enable-loadable-module-support%2f" rel="nofollow" target="_blank">Facebook</a>
+    <a id="twitter" href="https://www.twitter.com/intent/tweet?source=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fthe-linux-kernel-configuration-guide-part-4-enable-loadable-module-support%2f&text=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fthe-linux-kernel-configuration-guide-part-4-enable-loadable-module-support%2f" rel="nofollow" target="_blank">Twitter</a>
+    <a id="googleplus" href="https://plus.google.com/share?url=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fthe-linux-kernel-configuration-guide-part-4-enable-loadable-module-support%2f" rel="nofollow" target="_blank">Google+</a>
+    <a id="reddit" href="https://www.reddit.com/submit?url=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fthe-linux-kernel-configuration-guide-part-4-enable-loadable-module-support%2f" rel="nofollow" target="_blank">Reddit</a>
+    <a id="linkedin" href="http://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fthe-linux-kernel-configuration-guide-part-4-enable-loadable-module-support%2f&source=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fthe-linux-kernel-configuration-guide-part-4-enable-loadable-module-support%2f" rel="nofollow" target="_blank">LinkedIn</a>
+  </div>
+  <div class="frame"><a href="/img/kernel4.png" target="_blank"><img src="/img/kernel4.png" alt="kernel4"></div></a>
+    <div class="info">Firas Khalil Khana | 27/08/2017</div>
+    <p><h3>2- [&lowast;] Enable loadable module support  &mdash;&gt;</h3>
+<h3>&mdash; Enable loadable module support</h3></p>
+
+<pre><code class="language-properties">Symbol:     CONFIG_MODULES
+
+Help:       Kernel modules are small pieces of compiled code which can
+            be inserted in the running kernel, rather than being
+            permanently built into the kernel.  You use the &quot;modprobe&quot;
+            tool to add (and sometimes remove) them.  If you say Y here,
+            many parts of the kernel can be built as modules (by
+            answering M instead of Y where indicated): this is most
+            useful for infrequently used options which are not required
+            for booting.  For more information, see the man pages for
+            modprobe, lsmod, modinfo, insmod and rmmod.
+
+            If you say Y here, you will need to run &quot;make
+            modules_install&quot; to put the modules under /lib/modules/
+            where modprobe can find them (you may need to be root to do
+            this).
+
+            If unsure, say Y.
+
+Type:       boolean
+
+Choice:     built-in [∗]
+
+Reason:     It's highly recommended that you include this option in your kernel
+            in order to get a working bumblebee setup on an optimus based laptop.
+
+            DOTSLASHLINUX has a guide on how to setup bumblebee on Gentoo Linux:
+
+                https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/
+
+            You can safely exclude this option if you're not on a optimus based laptop
+            and have built all modules directly into your kernel.
+</code></pre>
+
+<p><h3>[ ]   Forced module loading</h3></p>
+
+<pre><code class="language-properties">Symbol:     CONFIG_MODULE_FORCE_LOAD
+
+Help:       Allow loading of modules without version information (ie. modprobe
+            --force).  Forced module loading sets the 'F' (forced) taint flag and
+            is usually a really bad idea.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     You can safely exclude this option as forcing modules to load is dangerous
+            and not recommended at all.
+</code></pre>
+
+<p><h3>[&lowast;]   Module unloading</h3></p>
+
+<pre><code class="language-properties">Symbol:     CONFIG_MODULE_UNLOAD
+
+Help:       Without this option you will not be able to unload any
+            modules (note that some modules may not be unloadable
+            anyway), which makes your kernel smaller, faster
+            and simpler.  If unsure, say Y.
+
+Type:       boolean
+
+Choice:     built-in [∗]
+
+Reason:     It's highly recommended that you include this option in your kernel
+            in order to get a working bumblebee setup on an optimus based laptop.
+
+            DOTSLASHLINUX has a guide on how to setup bumblebee on Gentoo Linux:
+
+                https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/
+
+            You can safely exclude this option if you're not on a optimus based laptop
+            and have built all modules directly into your kernel.
+</code></pre>
+
+<p><h3>[ ]     Forced module unloading</h3></p>
+
+<pre><code class="language-properties">Symbol:     CONFIG_MODULE_FORCE_UNLOAD
+
+Help:       This option allows you to force a module to unload, even if the
+            kernel believes it is unsafe: the kernel will remove the module
+            without waiting for anyone to stop using it (using the -f option to
+            rmmod).  This is mainly for kernel developers and desperate users.
+
+            If unsure, say N.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     You can safely exclude this option as it's even more dangerous than
+            CONFIG_MODULE_FORCE_LOAD, and it's intended for developing purposes.
+</code></pre>
+
+<p><h3>[ ]   Module versioning support</h3></p>
+
+<pre><code class="language-properties">Symbol:     CONFIG_MODVERSIONS
+
+Help:       Usually, you have to use modules compiled with your kernel.
+            Saying Y here makes it sometimes possible to use modules
+            compiled for different kernels, by adding enough information
+            to the modules to (hopefully) spot any changes which would
+            make them incompatible with the kernel you are running.  If
+            unsure, say N.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     You can safely exclude this option as it's intended for testing
+            and debugging purposes.
+</code></pre>
+
+<p><h3>[ ]   Source checksum for all modules</h3></p>
+
+<pre><code class="language-properties">Symbol:     CONFIG_MODULE_SRCVERSION_ALL
+
+Help:       Modules which contain a MODULE_VERSION get an extra &quot;srcversion&quot;
+            field inserted into their modinfo section, which contains a
+            sum of the source files which made it.  This helps maintainers
+            see exactly which source was used to build a module (since
+            others sometimes change the module source without updating
+            the version).  With this option, such a &quot;srcversion&quot; field
+            will be created for all modules.  If unsure, say N.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     You can safely exclude this option as it's intended for maintaining
+            purposes.
+</code></pre>
+
+<p><h3>[ ]   Module signature verification</h3></p>
+
+<pre><code class="language-properties">Symbol:     CONFIG_MODULE_SIG
+
+Help:       Check modules for valid signatures upon load: the signature
+            is simply appended to the module. For more information see
+            Documentation/module-signing.txt.
+
+            Note that this option adds the OpenSSL development packages as a
+            kernel build dependency so that the signing tool can use its crypto
+            library.
+
+            !!!WARNING!!!  If you enable this option, you MUST make sure that the
+            module DOES NOT get stripped after being signed.  This includes the
+            debuginfo strip done by some packagers (such as rpmbuild) and
+            inclusion into an initramfs that wants the module size reduced.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     You can safely exclude this option as it's intended for maintaining
+            purposes.
+</code></pre>
+
+<p><h3>[ ]   Compress modules on installation</h3></p>
+
+<pre><code class="language-properties">Symbol:     CONFIG_MODULES_COMPRESS
+
+Help:       Compresses kernel modules when 'make modules_install' is run; gzip or
+            xz depending on &quot;Compression algorithm&quot; below.
+
+            module-init-tools MAY support gzip, and kmod MAY support gzip and xz.
+
+            Out-of-tree kernel modules installed using Kbuild will also be
+            compressed upon installation.
+
+            Note: for modules inside an initrd or initramfs, it's more efficient
+            to compress the whole initrd or initramfs instead.
+
+            Note: This is fully compatible with signed modules.
+
+            If in doubt, say N.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     You can safely exclude this option as compressing your loadable
+            kernel modules will slightly increase your boot time.
+
+            Include this option only if you're space restricted.
+</code></pre>
+
+<p><h3>[ ]   Trim unused exported kernel symbols</h3></p>
+
+<pre><code class="language-properties">Symbol:     CONFIG_TRIM_UNUSED_KSYMS
+
+Help:       The kernel and some modules make many symbols available for
+            other modules to use via EXPORT_SYMBOL() and variants. Depending
+            on the set of modules being selected in your kernel configuration,
+            many of those exported symbols might never be used.
+
+            This option allows for unused exported symbols to be dropped from
+            the build. In turn, this provides the compiler more opportunities
+            (especially when using LTO) for optimizing the code and reducing
+            binary size.  This might have some security advantages as well.
+
+            If unsure, or if you need to build out-of-tree modules, say N.
+
+Type:       boolean
+
+Choice:     excluded [ ]
+
+Reason:     You can safely exclude this option as nvidia.ko kernel module requires
+            these symbols in order to get a working bumblebee setup on an optimus
+            based laptop.
+
+            DOTSLASHLINUX has a guide on how to setup bumblebee on Gentoo Linux:
+
+                https://www.dotslashlinux.com/2017/06/04/setting-up-bumblebee-on-gentoo-linux/
+            
+            It's not recommended that you include this option, but you can try
+            and see if it works for you.
+</code></pre>
+
+<hr/>
+
+<p><h3>Chinese Translation</h3>
+One of DOTSLASHLINUX followers 杨鑫 (Yang Mame) from China, decided to follow up with the series and provide Chinese translation of the kernel configuration guides on his blog.
+<br/>
+<br/>
+To read this guide in Chinese <a href="https://blog.yangmame.top/Linux内核配置指南-Enable-loadable-module-support和-Enable-the-block-layer.html" target="_blank">click here</a>.</p>
+
+</div>
+<div id="comments" class="box">
+  
+  <div id="leavecomment">
+    <h3>Leave A Comment</h3>
+    <form action="https://getsimpleform.com/messages?form_api_token=4458712617021cb12239cbfd2942b227" method="post">
+      <input name="options[redirect]" type="hidden" value="https://www.dotslashlinux.com//post/the-linux-kernel-configuration-guide-part-4-enable-loadable-module-support/#comments">
+      <input name="options[slug]" type="hidden" value="the linux kernel configuration guide part 4 enable loadable module support">
+      <input type="hidden" id="reply" name="fields[replying_to]" value="">
+      <input name="fields[name]" type="text" placeholder="Name" required>
+      <textarea rows="5" name="fields[comment]" placeholder="Your comment here.&#10;&#10;Comments support Markdown.&#10;&#10;Comments are being moderated to prevent spam so it may take a while before your comment is posted." required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+
+<div class="box footer">
+  <h4>Copyrights &copy; 2017-2018 <a href="/">DOTSLASHLINUX</a> | Licensed under <a id="creativecommons" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></h4>
+</div>
+</div>
+</div>
+<script src="/js/c.js"></script>
+</body>
+</html>
+

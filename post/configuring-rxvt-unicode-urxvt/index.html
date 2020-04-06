@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuring rxvt-unicode (urxvt) | DOTSLASHLINUX</title>
+    <meta name="description" content="DOTSLASHLINUX is a GNU/Linux enthusiasts' hub, featuring configuration guides for the linux kernel and several lightweight open source and free software.">
+    <meta name="author" content="Firas Khalil Khana">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/c.css">
+    <link rel="alternate" type="application/rss+xml" title="DOTSLASHLINUX RSS" href="/feed.xml">
+  </head>
+  <body>
+    <div class="row middle-xs middle-sm middle-md middle-lg container">
+      <div class="col-xs-12 center-xs col-sm-4 start-sm col-md-4 start-md col-lg-4 start-lg">
+        <div class="box brand">
+          <h1><a href="https://www.dotslashlinux.com/">DOTSLASHLINUX</a></h1>
+        </div>
+      </div>
+      <div class="col-xs-12 center-xs col-sm-8 end-sm col-md-8 end-md col-lg-8 end-lg">
+        <div class="box">
+          <nav>
+            <ul>
+              <li class=""><a href="/">HOME</a></li>
+              <li class=""><a href="/page/search/">SEARCH</a></li>
+              <li><a href="/index.xml" style="color: #f26522;">RSS</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content">
+        <div class="box patreon">
+          <p>Kindly support DOTSLASHLINUX on <a href="https://www.patreon.com/DOTSLASHLINUX" target="_target">Patreon</a> to keep the website up and running while remaining ads free.</p>
+        </div>
+
+
+<div class="box map">
+  <h2>Configuring rxvt-unicode (urxvt)</h2>
+  <div class="share">
+    <a id="facebook" href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fconfiguring-rxvt-unicode-urxvt%2f" rel="nofollow" target="_blank">Facebook</a>
+    <a id="twitter" href="https://www.twitter.com/intent/tweet?source=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fconfiguring-rxvt-unicode-urxvt%2f&text=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fconfiguring-rxvt-unicode-urxvt%2f" rel="nofollow" target="_blank">Twitter</a>
+    <a id="googleplus" href="https://plus.google.com/share?url=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fconfiguring-rxvt-unicode-urxvt%2f" rel="nofollow" target="_blank">Google+</a>
+    <a id="reddit" href="https://www.reddit.com/submit?url=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fconfiguring-rxvt-unicode-urxvt%2f" rel="nofollow" target="_blank">Reddit</a>
+    <a id="linkedin" href="http://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fconfiguring-rxvt-unicode-urxvt%2f&source=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2fconfiguring-rxvt-unicode-urxvt%2f" rel="nofollow" target="_blank">LinkedIn</a>
+  </div>
+  <div class="frame"><a href="/img/urxvt.png" target="_blank"><img src="/img/urxvt.png" alt="urxvt"></div></a>
+    <div class="info">Firas Khalil Khana | 30/03/2017</div>
+    <p>In this article I&rsquo;ll show you how to get your urxvt daemon up and running, and give you a nice configuration file for urxvtc to use!
+<br/>
+<br/>
+<hr/>
+<h3 id="Installation">1- Installation</h3>
+<br/>
+Gentoo Linux:</p>
+
+<pre><code class="language-properties">emerge --sync &amp;&amp; emerge -av x11-terms/rxvt-unicode
+</code></pre>
+
+<p>Void Linux:</p>
+
+<pre><code class="language-properties">xbps-install -Su &amp;&amp; xbps-install -S rxvt-unicode
+</code></pre>
+
+<p>Arch Linux:</p>
+
+<pre><code class="language-properties">pacman -Syu rxvt-unicode
+</code></pre>
+
+<hr/>
+
+<p><h3 id="Starting_the_urxvt_daemon">2- Starting the urxvt daemon</h3>
+<br/>
+Once urxvt is installed, we should enable and start its daemon.Assuming you&rsquo;ve read our xinit configuration guide, paste the following line of span in your ~/.xinitrc just before your dwm or openbox session:</p>
+
+<pre><code class="language-properties">urxvtd --quiet --opendisplay --fork &amp;
+</code></pre>
+
+<p>This will start the urxvt daemon every time the X server is started via startx.
+<hr/>
+<h3 id="Configuring_urxvtc">3- Configuring urxvtc</h3>
+<br/>
+Let&rsquo;s face it, urxvt looks hideous out of the box with that super small font and that scroll bar. Luckily, it supports xft fonts, which means we can do a whole lot to it.</p>
+
+<p>Here&rsquo;s this useful piece of code:
+<br/></p>
+
+<pre><code class="language-bash">urxvtc -bg black -fg white -sr -fn &quot;xft:DejaVu Sans Mono:pixelsize=15,style=Book&quot;
+</code></pre>
+
+<p>This will start the urxvt client(s), with the following options (black background color, white text color, scrollbar to the right side, DejaVu Sans Book font with a size of 15 pixels).
+<br/>
+<br/>
+You need to have dejavu fonts installed in order for this to work. You can always change these options to your liking.</p>
+
+<p>Now keep in mind that whenever you need to launch urxvtc you need to use these options, so it&rsquo;s highly recommended that you map them to your prefered shortcut keys.</p>
+
+<p>Another configuration made especially for use in dwm on gentoo (paste it in your ~/.Xresources):</p>
+
+<pre><code class="language-properties,line-numbers">urxvt*font:                 xft:xos4 Terminus:size=10
+
+urxvt*termName:             rxvt
+urxvt*background:           #33393b
+urxvt*foreground:           white
+urxvt*scrollBar:            false
+
+URxvt.perl-ext-common:      default,matcher
+URxvt.url-launcher:         /usr/bin/xdg-open
+URxvt.matcher.button:       1
+
+Xft*dpi:                    96
+Xft*antialias:              true
+Xft*hinting:                true
+Xft*hintstyle:              hintfull
+Xft*rgba:                   rgb
+
+URxvt.transparent:          false
+URxvt.tintColor:            #54487a
+URxvt.shading:              100
+URxvt.inheritPixmap:        false
+URxvt.fading:               100
+
+URxvt.saveLines:            50000
+URxvt.cursorBlink:          1
+
+URxvt*scrollTtyOutput: 	    false
+URxvt*scrollWithBuffer:     true
+URxvt*scrollTtyKeypress:    true
+
+URxvt*color0:      	        #000000
+URxvt*color8:      	        #666666
+
+URxvt*color1:               #9e1828
+URxvt*color9:      	        #cf6171
+
+URxvt*color2:      	        #aece92
+URxvt*color10:     	        #c5f779
+
+URxvt*color3:      	        #968a38
+URxvt*color11:     	        #fff796
+
+URxvt*color4:      	        #414171
+URxvt*color12:     	        #4186be
+
+URxvt*color5:      	        #963c59
+URxvt*color13:     	        #cf9ebe
+
+URxvt*color6:      	        #418179
+URxvt*color14:     	        #71bebe
+
+URxvt*color7:      	        #bebebe
+URxvt*color15:     	        #ffffff
+</code></pre>
+
+<p><br/>
+Don&rsquo;t forget that <mark>URxvt.urlLauncher</mark> is deprecated, use <mark>URxvt.url-launcher</mark> instead.
+<br/>
+<br/>
+If these settings aren&rsquo;t being loaded (or are reset), then add the following to your .xinitrc file:</p>
+
+<pre><code class="language-properties">[[ -f ~/.Xresources ]] &amp;&amp; xrdb -merge ~/.Xresources
+</code></pre>
+
+<hr/>
+
+<p><h3 id="Mapping_urxvtc_to_a_shortcut_key_on_dwm">(Optional) Mapping urxvtc to a shortcut key on dwm</h3>
+<br/>
+Let&rsquo;s start by adding this to the commands section:</p>
+
+<pre><code class="language-c,line-numbers">/* commands */
+static const char *termcmd[]  = { &quot;urxvtc&quot;, NULL};
+</code></pre>
+
+<p><br/>
+Then let&rsquo;s add this entry to the modifiers section (In our case the shortcut keys will be ALT + x):</p>
+
+<pre><code class="language-c,line-numbers">/* modifier                     key        function        argument */
+{ MODKEY,	                XK_x, 	   spawn,          {.v = termcmd } },
+</code></pre>
+
+</div>
+<div id="comments" class="box">
+  
+  <div id="leavecomment">
+    <h3>Leave A Comment</h3>
+    <form action="https://getsimpleform.com/messages?form_api_token=4458712617021cb12239cbfd2942b227" method="post">
+      <input name="options[redirect]" type="hidden" value="https://www.dotslashlinux.com//post/configuring-rxvt-unicode-urxvt/#comments">
+      <input name="options[slug]" type="hidden" value="configuring rxvt-unicode urxvt">
+      <input type="hidden" id="reply" name="fields[replying_to]" value="">
+      <input name="fields[name]" type="text" placeholder="Name" required>
+      <textarea rows="5" name="fields[comment]" placeholder="Your comment here.&#10;&#10;Comments support Markdown.&#10;&#10;Comments are being moderated to prevent spam so it may take a while before your comment is posted." required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+
+<div class="box footer">
+  <h4>Copyrights &copy; 2017-2018 <a href="/">DOTSLASHLINUX</a> | Licensed under <a id="creativecommons" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></h4>
+</div>
+</div>
+</div>
+<script src="/js/c.js"></script>
+</body>
+</html>
+

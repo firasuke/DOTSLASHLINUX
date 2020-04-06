@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimal mpv Configuration | DOTSLASHLINUX</title>
+    <meta name="description" content="DOTSLASHLINUX is a GNU/Linux enthusiasts' hub, featuring configuration guides for the linux kernel and several lightweight open source and free software.">
+    <meta name="author" content="Firas Khalil Khana">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/c.css">
+    <link rel="alternate" type="application/rss+xml" title="DOTSLASHLINUX RSS" href="/feed.xml">
+  </head>
+  <body>
+    <div class="row middle-xs middle-sm middle-md middle-lg container">
+      <div class="col-xs-12 center-xs col-sm-4 start-sm col-md-4 start-md col-lg-4 start-lg">
+        <div class="box brand">
+          <h1><a href="https://www.dotslashlinux.com/">DOTSLASHLINUX</a></h1>
+        </div>
+      </div>
+      <div class="col-xs-12 center-xs col-sm-8 end-sm col-md-8 end-md col-lg-8 end-lg">
+        <div class="box">
+          <nav>
+            <ul>
+              <li class=""><a href="/">HOME</a></li>
+              <li class=""><a href="/page/search/">SEARCH</a></li>
+              <li><a href="/index.xml" style="color: #f26522;">RSS</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content">
+        <div class="box patreon">
+          <p>Kindly support DOTSLASHLINUX on <a href="https://www.patreon.com/DOTSLASHLINUX" target="_target">Patreon</a> to keep the website up and running while remaining ads free.</p>
+        </div>
+
+
+<div class="box map">
+  <h2>Optimal mpv Configuration</h2>
+  <div class="share">
+    <a id="facebook" href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2foptimal-mpv-configuration%2f" rel="nofollow" target="_blank">Facebook</a>
+    <a id="twitter" href="https://www.twitter.com/intent/tweet?source=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2foptimal-mpv-configuration%2f&text=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2foptimal-mpv-configuration%2f" rel="nofollow" target="_blank">Twitter</a>
+    <a id="googleplus" href="https://plus.google.com/share?url=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2foptimal-mpv-configuration%2f" rel="nofollow" target="_blank">Google+</a>
+    <a id="reddit" href="https://www.reddit.com/submit?url=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2foptimal-mpv-configuration%2f" rel="nofollow" target="_blank">Reddit</a>
+    <a id="linkedin" href="http://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2foptimal-mpv-configuration%2f&source=https%3a%2f%2fwww.dotslashlinux.com%2fpost%2foptimal-mpv-configuration%2f" rel="nofollow" target="_blank">LinkedIn</a>
+  </div>
+  <div class="frame"><a href="/img/mpv.png" target="_blank"><img src="/img/mpv.png" alt="mpv"></div></a>
+    <div class="info">Firas Khalil Khana | 31/03/2017</div>
+    <p>In this article I&rsquo;ll show you how to setup mpv and arm it up with the best mpv.config file (in terms of performance and resource usage).
+<br/>
+<br/>
+<hr/>
+<h3 id="Installation">1- Installation</h3>
+<br/>
+Gentoo Linux:</p>
+
+<pre><code class="language-properties">emerge --sync &amp;&amp; emerge -av media-video/mpv
+</code></pre>
+
+<p><br/>
+Void Linux:</p>
+
+<pre><code class="language-properties">xbps-install -Su &amp;&amp; xbps-install -S mpv
+</code></pre>
+
+<p><br/>
+Arch Linux:</p>
+
+<pre><code class="language-properties">pacman -Syu mpv
+</code></pre>
+
+<hr/>
+
+<p><h3 id="Setup_Configuration_Files">2- Setup Configuration Files</h3>
+<br/>
+To setup your local mpv configuration files, navigate to your home directory. From there you&rsquo;ll have to go to the hidden folder .config. Create a directory called mpv (if it doesn&rsquo;t exist) and enter it:</p>
+
+<pre><code class="language-bash">mkdir ~/.config/mpv &amp;&amp; cd ~/.config/mpv
+</code></pre>
+
+<p><br/>
+Now we&rsquo;ll have to create two files. The first being mpv.conf which controls mpv&rsquo;s settings and the second being input.conf which controls mpv&rsquo;s key bindings:</p>
+
+<pre><code class="language-bash">touch ~/.config/mpv/mpv.conf ~/.config/mpv/input.conf
+</code></pre>
+
+<hr/>
+
+<p><h3 id="mpv's_Settings">3- mpv&rsquo;s Settings (mpv.conf)</h3>
+<br/>
+After setting up the previous files, it&rsquo;s time to do some configuration! I&rsquo;ve got a nice configuration file to arm mpv with. For maximizing quality over performance choose the following settings:</p>
+
+<pre><code class="language-properties,line-numbers">profile=opengl-hq
+scale=ewa_lanczossharp
+cscale=ewa_lanczossoft
+dscale=mitchell
+scale-antiring=0.7
+cscale-antiring=0.7
+dither-depth=auto
+correct-downscaling=yes
+sigmoid-upscaling=yes
+deband=no
+volume-max=100
+hwdec=auto
+</code></pre>
+
+<p><br/>
+However, if you were on a laptop and wanted the best quality settings with the least CPU usage, you have to enable VAAPI (for example on your integrated Intel Graphics Card), which will result in lower resource usage, smaller memory footprint and the videos will still look as good. To do that just change line 12 from hwdec=auto to hwdec=vaapi:</p>
+
+<pre><code class="language-properties,line-numbers">profile=opengl-hq
+scale=ewa_lanczossharp
+cscale=ewa_lanczossoft
+dscale=mitchell
+scale-antiring=0.7
+cscale-antiring=0.7
+dither-depth=auto
+correct-downscaling=yes
+sigmoid-upscaling=yes
+deband=no
+volume-max=100
+hwdec=vaapi
+</code></pre>
+
+<p><br/>
+Please do note that using <mark>vo=opengl-hq</mark> is deprecated. Use <mark>profile=opengl-hq</mark> instead.
+<hr/>
+<h3 id="mpv's_Key_Bindings">4- mpv&rsquo;s Key Bindings (input.conf)</h3>
+<br/>
+You can really tweak this file to your liking. I didn&rsquo;t tamper with the default keybindings for mpv, but the mousewheel seeking through the video thing had me go nuts. So I remapped the mousewheel to control the video&rsquo;s volume:</p>
+
+<pre><code class="language-properties,line-numbers">MOUSE_BTN3 add volume 5
+MOUSE_BTN4 add volume -5
+</code></pre>
+
+<p><br/>
+In my case <mark>MOUSE_BTN3</mark> and <mark>MOUSE_BTN4</mark> referred to scrolling up and down respectively.</p>
+
+</div>
+<div id="comments" class="box">
+  <h3>12 Comments</h3>
+  <div class="main-comment">
+    <p>follower</p>
+    <p>01/04/2017</p>
+    <hr/>
+    <p>niiicccce</p>
+  </div>
+  <div class="reply">
+    <p>DOTSLASHLINUX</p>
+    <p>10/04/2017</p>
+    <hr/>
+    <p>@follower , Thanks! Feedback is much appreciated :D</p>
+  </div>
+  <div class="main-comment">
+    <p>Rami Rahmeh</p>
+    <p>13/04/2017</p>
+    <hr/>
+    <p>Brilliant</p>
+  </div>
+  <div class="reply">
+    <p>DOTSLASHLINUX</p>
+    <p>13/04/2017</p>
+    <hr/>
+    <p>@Rami Rahmeh, Thanks a lot!</p>
+  </div>
+  <div class="main-comment">
+    <p>Superman</p>
+    <p>27/04/2017</p>
+    <hr/>
+    <p>Coool!</p>
+  </div>
+  <div class="reply">
+    <p>DOTSLASHLINUX</p>
+    <p>27/04/2017</p>
+    <hr/>
+    <p>@Superman, Thanks!</p>
+  </div>
+  <div class="main-comment">
+    <p>oldgaro</p>
+    <p>15/12/2017</p>
+    <hr/>
+    <p>thanks!</p>
+  </div>
+  <div class="reply">
+    <p>DOTSLASHLINUX</p>
+    <p>15/12/2017</p>
+    <hr/>
+    <p>@oldgaro, you&rsquo;re welcome! Glad you found the article useful!</p>
+  </div>
+  <div class="main-comment">
+    <p>uwu</p>
+    <p>28/12/2017</p>
+    <hr/>
+    <p>i love you dude</p>
+  </div>
+  <div class="reply">
+    <p>DOTSLASHLINUX</p>
+    <p>28/12/2017</p>
+    <hr/>
+    <p><p>@uwu, Thanks for all the love :P Glad you liked the website!</p>
+
+<p>Lemme know if you needed anything.</p>
+</p>
+  </div>
+  <div class="main-comment">
+    <p>Ashraaf</p>
+    <p>09/01/2018</p>
+    <hr/>
+    <p>Thanks for the guide! just one thing i want to ask.
+If using &lsquo;hwdec=auto&rsquo;, will it choose one among my &lsquo;va&rsquo; available?, or it may not even using &lsquo;va&rsquo; at all?
+Currently i have installed and configured both vaapi and vdpau for my intel graphics.</p>
+  </div>
+  <div class="reply">
+    <p>DOTSLASHLINUX</p>
+    <p>09/01/2018</p>
+    <hr/>
+    <p><p>@Ashraaf, glad that you found the guide helpful!</p>
+
+<p>I think it&rsquo;s better to specify &lsquo;hwdec=vaapi&rsquo; if you&rsquo;re using an Intel Integrated GPU  as the technology itself &lsquo;VA-API&rsquo; was developed by Intel and is used in their integrated GPUs and some AMD/ATI Radeon HD GPUs as well.</p>
+
+<p>Although &lsquo;VD-PAU&rsquo; support was being planned for Intel&rsquo;s Integrated GPUs, I believe it never saw light or was buggy when compared to &lsquo;VA-API&rsquo; or its performance wasn&rsquo;t on the same level as the one used in NVIDIA GPUs.</p>
+</p>
+  </div>
+  <div id="leavecomment">
+    <h3>Leave A Comment</h3>
+    <form action="https://getsimpleform.com/messages?form_api_token=4458712617021cb12239cbfd2942b227" method="post">
+      <input name="options[redirect]" type="hidden" value="https://www.dotslashlinux.com//post/optimal-mpv-configuration/#comments">
+      <input name="options[slug]" type="hidden" value="optimal mpv configuration">
+      <input type="hidden" id="reply" name="fields[replying_to]" value="">
+      <input name="fields[name]" type="text" placeholder="Name" required>
+      <textarea rows="5" name="fields[comment]" placeholder="Your comment here.&#10;&#10;Comments support Markdown.&#10;&#10;Comments are being moderated to prevent spam so it may take a while before your comment is posted." required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+
+<div class="box footer">
+  <h4>Copyrights &copy; 2017-2018 <a href="/">DOTSLASHLINUX</a> | Licensed under <a id="creativecommons" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></h4>
+</div>
+</div>
+</div>
+<script src="/js/c.js"></script>
+</body>
+</html>
+
