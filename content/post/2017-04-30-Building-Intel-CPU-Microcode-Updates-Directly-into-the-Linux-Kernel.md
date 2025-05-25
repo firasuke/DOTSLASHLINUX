@@ -3,7 +3,7 @@ title = "Building Intel CPU Microcode Updates Directly into the Linux Kernel"
 slug = "building intel cpu microcode updates directly into the linux kernel"
 nick = "microcode"
 date = "2017-04-30"
-author = "Firas Khalil Khana"
+author = "Firas Khana"
 imgsrc = "/img/microcode.png"
 imgalt = "microcode"
 +++

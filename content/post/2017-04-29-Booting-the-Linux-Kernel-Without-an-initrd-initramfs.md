@@ -3,7 +3,7 @@ title = "Booting the Linux Kernel Without an initrd/initramfs"
 slug = "booting the linux kernel without an initrd initramfs"
 nick = "noinitrd"
 date = "2017-04-29"
-author = "Firas Khalil Khana"
+author = "Firas Khana"
 imgsrc = "/img/noinitrd.png"
 imgalt = "noinitrd"
 +++

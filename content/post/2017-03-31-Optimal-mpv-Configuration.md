@@ -3,7 +3,7 @@ title = "Optimal mpv Configuration"
 slug = "optimal mpv configuration"
 nick = "mpv"
 date = "2017-03-31"
-author = "Firas Khalil Khana"
+author = "Firas Khana"
 imgsrc = "/img/mpv.png"
 imgalt = "mpv"
 +++

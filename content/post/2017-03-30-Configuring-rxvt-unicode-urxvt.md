@@ -3,7 +3,7 @@ title = "Configuring rxvt-unicode (urxvt)"
 slug = "configuring rxvt-unicode urxvt"
 nick = "urxvt"
 date = "2017-03-30"
-author = "Firas Khalil Khana"
+author = "Firas Khana"
 imgsrc = "/img/urxvt.png"
 imgalt = "urxvt"
 +++

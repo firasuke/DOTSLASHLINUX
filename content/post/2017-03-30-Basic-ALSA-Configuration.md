@@ -3,7 +3,7 @@ title = "Basic ALSA Configuration"
 slug = "basic alsa configuration"
 nick = "alsa"
 date = "2017-03-30"
-author = "Firas Khalil Khana"
+author = "Firas Khana"
 imgsrc = "/img/alsa.png"
 imgalt = "alsa"
 +++

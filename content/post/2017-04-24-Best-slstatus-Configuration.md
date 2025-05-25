@@ -3,7 +3,7 @@ title = "Best slstatus Configuration"
 slug = "best slstatus configuration"
 nick = "slstatus"
 date = "2017-04-24"
-author = "Firas Khalil Khana"
+author = "Firas Khana"
 imgsrc = "/img/slstatus.png"
 imgalt = "slstatus"
 +++

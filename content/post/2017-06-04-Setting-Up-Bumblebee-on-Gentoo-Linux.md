@@ -3,7 +3,7 @@ title = "Setting Up Bumblebee on Gentoo Linux"
 slug = "setting up bumblebee on gentoo linux"
 nick = "bumblebee"
 date = "2017-06-04"
-author = "Firas Khalil Khana"
+author = "Firas Khana"
 imgsrc = "/img/bumblebee.png"
 imgalt = "bumblebee"
 +++

@@ -3,7 +3,7 @@ title = "What is DOTSLASHLINUX?"
 slug = "what is dotslashlinux"
 nick = "what"
 date = "2017-03-20"
-author = "Firas Khalil Khana"
+author = "Firas Khana"
 imgsrc = "/img/lightweight.png"
 imgalt = "lightweight"
 +++
@@ -27,7 +27,7 @@ But doesn't that mean that I'll be neglecting user space, convenience and produc
 <br>
 <br>
 <br>
-One thing to note is that, this website was created by me (Firas Khalil Khana) and it represents my sole opinion. Everything mentioned here be it a link, a website, an application ...etc, has my utmost respect.
+One thing to note is that, this website was created by me (Firas Khana) and it represents my sole opinion. Everything mentioned here be it a link, a website, an application ...etc, has my utmost respect.
 <br>
 <br>
 <br>

@@ -3,7 +3,7 @@ title = "Best dwm Configuration"
 slug = "best dwm configuration"
 nick = "dwm"
 date = "2017-04-23"
-author = "Firas Khalil Khana"
+author = "Firas Khana"
 imgsrc = "/img/dwm.png"
 imgalt = "dwm"
 +++

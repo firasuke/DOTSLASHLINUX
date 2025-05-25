@@ -3,7 +3,7 @@ title = "Starting Xorg Server using xinit"
 slug = "starting xorg server using xinit"
 nick = "xinit"
 date = "2017-03-29"
-author = "Firas Khalil Khana"
+author = "Firas Khana"
 imgsrc = "/img/xinit.png"
 imgalt = "xinit"
 +++
